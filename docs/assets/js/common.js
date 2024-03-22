@@ -1,4 +1,4 @@
-let previewBtn = document.querySelector("#preview"),
+let previewBtn = document.querySelector(".fs__icon"),
   livePreviewBtn = document.querySelector("#live-preview"),
   closeFs = document.querySelector(".close__fs"),
   livePreviewFrame = document.getElementById("live-preview"),
@@ -37,7 +37,6 @@ function initializeLivePreview() {
   const styleElement = document.createElement("style");
   styleElement.setAttribute("id", "live-preview-style");
   livePreviewFrame.contentWindow.document.head.appendChild(styleElement);
-
   const pagedJsScript = document.createElement("script");
   pagedJsScript.src = "https://unpkg.com/pagedjs/dist/paged.legacy.polyfill.js";
   livePreviewFrame.contentWindow.document.head.appendChild(pagedJsScript);
@@ -45,28 +44,34 @@ function initializeLivePreview() {
 
 function setupLivePreviewStudio() {
   CodeMirror.on(codeMirrorHtml, "change", () => {
-    livePreviewFrame.contentWindow.document.body.innerHTML =
-      codeMirrorHtml.getValue();
+    let val = codeMirrorHtml.getValue();
+    livePreviewFrame.contentWindow.document.body.innerHTML = val;
   });
   CodeMirror.on(codeMirrorCss, "change", () => {
     const styleElement =
       livePreviewFrame.contentWindow.document.getElementById(
         "live-preview-style"
       );
-    styleElement.innerHTML = codeMirrorCss.getValue();
+    let val = codeMirrorCss.getValue();
+    styleElement.innerHTML = val;
   });
   CodeMirror.on(codeMirrorJs, "change", () => {
-    const scripts =
-      livePreviewFrame.contentWindow.document.body.getElementsByTagName(
-        "script"
-      );
-    for (let i = 0; i < scripts.length; i++) {
-      const script = scripts[i];
-      script.remove();
+    try {
+      const scripts =
+        livePreviewFrame.contentWindow.document.body.getElementsByTagName(
+          "script"
+        );
+      for (let i = 0; i < scripts.length; i++) {
+        const script = scripts[i];
+        script.remove();
+      }
+      const scriptElement = document.createElement("script");
+      let val = codeMirrorJs.getValue();
+      scriptElement.innerHTML = val;
+      livePreviewFrame.contentWindow.document.body.appendChild(scriptElement);
+    } catch (error) {
+      console.log("error", error);
     }
-    const scriptElement = document.createElement("script");
-    scriptElement.innerHTML = codeMirrorJs.getValue();
-    livePreviewFrame.contentWindow.document.body.appendChild(scriptElement);
   });
 }
 

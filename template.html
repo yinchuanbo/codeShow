@@ -12,24 +12,27 @@
       <div class="close__fs"></div>
       <div class="code__wrapper_header">
         <div class="code__wrapper_header_title">这里是文章的标题</div>
+        <div class="tools">
+          <div class="home__icon"></div>
+          <div class="fs__icon"></div>
+        </div>
       </div>
       <div class="code__wrapper_top">
         <div class="code__wrapper_top-html">
           <div class="title">HTML</div>
-          <textarea id="htmlCode"></textarea>
+          <textarea id="htmlCode"><%= htmlContent %></textarea>
         </div>
         <div class="code__wrapper_top-css">
           <div class="title">CSS</div>
-          <textarea id="cssCode"></textarea>
+          <textarea id="cssCode"><%= cssContent %></textarea>
         </div>
       </div>
       <div class="code__wrapper_bottom">
         <div class="code__wrapper_top-js">
           <div class="title">JAVASCRIPT</div>
-          <textarea id="cssJs"></textarea>
+          <textarea id="cssJs"><%= jsContent %></textarea>
         </div>
         <div class="code__wrapper_top-preview">
-          <div id="preview"></div>
           <iframe id="live-preview"></iframe>
         </div>
       </div>

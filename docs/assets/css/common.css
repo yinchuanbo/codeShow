@@ -23,17 +23,54 @@ body {
   overflow: hidden;
   position: relative;
 }
+
+
 .code__wrapper_header {
   width: 100%;
   height: 50px;
   background-color: #000;
   padding-left: 20px;
+  padding-right: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .code__wrapper_header_title {
   color: #fff;
   height: 100%;
   line-height: 50px;
+}
+
+.tools {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.tools > div:hover {
+  opacity: 0.8;
+}
+
+.tools > div:active {
+  opacity: 0.7;
+}
+
+.fs__icon {
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  background: url("../images/fullscreen.svg") no-repeat;
+  background-size: 100% 100%;
+}
+
+.home__icon {
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  background: url("../images/home.svg") no-repeat;
+  background-size: 100% 100%;
+  margin-right: 10px;
 }
 
 .close__fs {
@@ -141,8 +178,6 @@ body {
   font-family: "hack", sans-serif !important;
   line-height: 2 !important;
 }
-
-/* 滚动槽 */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -152,7 +187,6 @@ body {
   background: rgba(0, 0, 0, 0.06);
   -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.08);
 }
-/* 滚动条滑块 */
 ::-webkit-scrollbar-thumb {
   border-radius: 3px;
   background: rgba(255, 255, 255, 0.3);
@@ -160,18 +194,6 @@ body {
 }
 .CodeMirror-scrollbar-filler {
   display: none !important;
-}
-
-#preview {
-  width: 25px;
-  height: 25px;
-  font-family: "Skranji", system-ui;
-  position: absolute;
-  top: 20px;
-  right: 30px;
-  cursor: pointer;
-  background: url("../images/fullscreen.svg") no-repeat;
-  background-size: 100% 100%;
 }
 
 #preview:hover {
