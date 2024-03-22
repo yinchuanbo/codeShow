@@ -1,38 +1,36 @@
-const previewBtn = document.querySelector("#preview");
-const livePreviewBtn = document.querySelector("#live-preview");
-const closeFs = document.querySelector(".close__fs");
+let previewBtn = document.querySelector("#preview"),
+  livePreviewBtn = document.querySelector("#live-preview"),
+  closeFs = document.querySelector(".close__fs"),
+  livePreviewFrame = document.getElementById("live-preview"),
+  textareaHTML = document.getElementById("htmlCode"),
+  textareaCSS = document.getElementById("cssCode"),
+  textareaJS = document.getElementById("cssJs"),
+  codeWrapper = document.querySelector(".code__wrapper"),
+  theme = "blackboard",
+  codeMirrorHtml,
+  codeMirrorCss,
+  codeMirrorJs;
 
-const theme = "blackboard";
-let codeMirrorHtml, codeMirrorCss, codeMirrorJs;
-
-// HTML
-const textareaHTML = document.getElementById("htmlCode");
-codeMirrorHtml = CodeMirror.fromTextArea(textareaHTML, {
-  lineNumbers: true,
-  mode: "htmlmixed",
-  theme,
-  lineWrapping: true,
-  indentUnit: 4,
-  autoCloseTags: true,
-});
-
-// CSS
-const textareaCSS = document.getElementById("cssCode");
-codeMirrorCss = CodeMirror.fromTextArea(textareaCSS, {
-  lineNumbers: true,
-  mode: "css",
-  theme,
-});
-
-//  JS
-const textareaJS = document.getElementById("cssJs");
-codeMirrorJs = CodeMirror.fromTextArea(textareaJS, {
-  lineNumbers: true,
-  mode: "javascript",
-  theme,
-});
-
-const livePreviewFrame = document.getElementById("live-preview");
+function initEditor() {
+  codeMirrorHtml = CodeMirror.fromTextArea(textareaHTML, {
+    lineNumbers: true,
+    mode: "htmlmixed",
+    theme,
+    lineWrapping: true,
+    indentUnit: 4,
+    autoCloseTags: true,
+  });
+  codeMirrorCss = CodeMirror.fromTextArea(textareaCSS, {
+    lineNumbers: true,
+    mode: "css",
+    theme,
+  });
+  codeMirrorJs = CodeMirror.fromTextArea(textareaJS, {
+    lineNumbers: true,
+    mode: "javascript",
+    theme,
+  });
+}
 
 function initializeLivePreview() {
   livePreviewFrame.contentWindow.document.body.innerHTML = "";
@@ -72,16 +70,20 @@ function setupLivePreviewStudio() {
   });
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  initializeLivePreview();
-  setupLivePreviewStudio();
-  const codeWrapper = document.querySelector('.code__wrapper')
+function events() {
   previewBtn.onclick = () => {
     livePreviewBtn.classList.add("fullscreen");
-    codeWrapper.classList.add('fs');
+    codeWrapper.classList.add("fs");
   };
   closeFs.onclick = () => {
     livePreviewBtn.classList.remove("fullscreen");
-    codeWrapper.classList.remove('fs');
+    codeWrapper.classList.remove("fs");
   };
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  initEditor();
+  initializeLivePreview();
+  setupLivePreviewStudio();
+  events();
 });
