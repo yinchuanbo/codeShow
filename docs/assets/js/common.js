@@ -86,9 +86,43 @@ function events() {
   };
 }
 
+function loadCode() {
+  let html = codeMirrorHtml.getValue();
+  if (html) {
+    livePreviewFrame.contentWindow.document.body.innerHTML = html;
+  }
+  let css = codeMirrorCss.getValue();
+  if (css) {
+    const styleElement =
+      livePreviewFrame.contentWindow.document.getElementById(
+        "live-preview-style"
+      );
+    styleElement.innerHTML = css;
+  }
+  try {
+    let js = codeMirrorJs.getValue();
+    if (js) {
+      const scripts =
+        livePreviewFrame.contentWindow.document.body.getElementsByTagName(
+          "script"
+        );
+      for (let i = 0; i < scripts.length; i++) {
+        const script = scripts[i];
+        script.remove();
+      }
+      const scriptElement = document.createElement("script");
+      scriptElement.innerHTML = js;
+      livePreviewFrame.contentWindow.document.body.appendChild(scriptElement);
+    }
+  } catch (error) {
+    console.log("error", error);
+  }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   initEditor();
   initializeLivePreview();
   setupLivePreviewStudio();
   events();
+  loadCode();
 });
