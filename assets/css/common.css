@@ -1,0 +1,195 @@
+@import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Anta&family=Exo+2:ital,wght@0,100..900;1,100..900&family=Kadwa:wght@400;700&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Madimi+One&family=Mako&family=Marko+One&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Slab:wght@100..900&family=Skranji:wght@400;700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&family=ZCOOL+XiaoWei&display=swap");
+@import "https://cdn.jsdelivr.net/npm/hack-font@3/build/web/hack.css";
+@import "https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap";
+@import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Anta&family=Averia+Serif+Libre:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Exo+2:ital,wght@0,100..900;1,100..900&family=Kadwa:wght@400;700&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Madimi+One&family=Mako&family=Marko+One&family=Maven+Pro:wght@400..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Slab:wght@100..900&family=Skranji:wght@400;700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&family=ZCOOL+XiaoWei&display=swap");
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  box-sizing: inherit;
+  height: 100%;
+}
+
+body {
+  background-color: aliceblue;
+}
+
+.code__wrapper {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.close__fs {
+  display: none;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  background: url("../images/round_close_fill.svg") no-repeat;
+  background-size: 100% 100%;
+  z-index: 10;
+  cursor: pointer;
+}
+
+.close__fs:hover {
+  opacity: 0.8;
+}
+
+.code__wrapper.fs .close__fs {
+  display: block;
+}
+
+.code__wrapper_top,
+.code__wrapper_bottom {
+  width: 100%;
+  height: 50%;
+  display: flex;
+}
+
+.code__wrapper_top-html,
+.code__wrapper_top-css {
+  width: 50%;
+  height: 100%;
+  background-color: #0c1021;
+  position: relative;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.code__wrapper_top-html::before {
+  content: "";
+  position: absolute;
+  width: 1px;
+  height: 100%;
+  top: 0;
+  right: 0;
+  background-color: rgb(45, 46, 48);
+}
+
+.code__wrapper_top-css::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  bottom: 0;
+  left: 0;
+  background-color: rgb(45, 46, 48);
+}
+
+.code__wrapper_top-html::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  bottom: 0;
+  left: 0;
+  background-color: rgb(45, 46, 48);
+}
+
+.code__wrapper_top-js,
+.code__wrapper_top-preview {
+  width: 50%;
+  height: 100%;
+  background-color: #0c1021;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.code__wrapper_top-js {
+  padding: 10px;
+}
+
+.code__wrapper_top-js::before {
+  content: "";
+  position: absolute;
+  width: 1px;
+  height: 100%;
+  top: 0;
+  right: 0;
+  background-color: rgb(45, 46, 48);
+}
+
+.title {
+  color: #fff;
+  font-family: "Skranji", system-ui;
+  margin-bottom: 5px;
+}
+
+.CodeMirror {
+  flex: 1;
+  font-size: 14px;
+  font-family: "hack", sans-serif !important;
+  line-height: 2 !important;
+}
+
+/* 滚动槽 */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  border-radius: 3px;
+  background: rgba(0, 0, 0, 0.06);
+  -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.08);
+}
+/* 滚动条滑块 */
+::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.3);
+  -webkit-box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.3);
+}
+.CodeMirror-scrollbar-filler {
+  display: none !important;
+}
+
+#preview {
+  width: 25px;
+  height: 25px;
+  font-family: "Skranji", system-ui;
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  cursor: pointer;
+  background: url("../images/fullscreen.svg") no-repeat;
+  background-size: 100% 100%;
+}
+
+#preview:hover {
+  opacity: 0.9;
+}
+
+#preview:active {
+  opacity: 0.8;
+}
+
+iframe {
+  border: none;
+  outline: none;
+}
+
+#live-preview {
+  height: 100%;
+  outline: none;
+  border: 0;
+}
+
+#live-preview.fullscreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #0c1021;
+}
