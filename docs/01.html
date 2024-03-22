@@ -11,7 +11,7 @@
     <div class="code__wrapper">
       <div class="close__fs"></div>
       <div class="code__wrapper_header">
-        <div class="code__wrapper_header_title">我是一个文章的标题 111</div>
+        <div class="code__wrapper_header_title">纯CSS实现的6个按钮特效</div>
         <div class="tools">
           <div class="home__icon" onclick="window.location.href = '/'"></div>
           <div class="fs__icon"></div>
@@ -20,13 +20,221 @@
       <div class="code__wrapper_top">
         <div class="code__wrapper_top-html">
           <div class="title">HTML</div>
-          <textarea id="htmlCode">&lt;button id=&#34;buttonDom&#34;&gt;123&lt;/button&gt;
+          <textarea id="htmlCode">&lt;div class=&#34;btn-list&#34;&gt;
+  &lt;div class=&#34;btn twinkle&#34;&gt;开始&lt;/div&gt;
+  &lt;div class=&#34;btn slide&#34;&gt;开始&lt;/div&gt;
+  &lt;div class=&#34;btn ball&#34;&gt;
+    &lt;span&gt;开始&lt;/span&gt;
+    &lt;div class=&#34;dot&#34;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;btn boom&#34;&gt;开始&lt;/div&gt;
+  &lt;div class=&#34;btn circle&#34;&gt;开始&lt;/div&gt;
+  &lt;div class=&#34;btn three-d&#34;&gt;开始&lt;/div&gt;
+&lt;/div&gt;
 </textarea>
         </div>
         <div class="code__wrapper_top-css">
           <div class="title">CSS</div>
-          <textarea id="cssCode">.test {
-    font-size: 100px
+          <textarea id="cssCode">.btn-list {
+  display: grid;
+  grid-template-columns: repeat(3, 200px);
+  gap: 50px;
+  padding: 50px;
+  box-shadow: 0 0 5px 5px rgb(0 0 0 / 8%);
+}
+
+.btn {
+  width: 200px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  cursor: pointer;
+  user-select: none;
+  letter-spacing: 1rem;
+  text-indent: 1rem;
+  border-radius: 20px;
+  box-sizing: border-box;
+}
+.twinkle {
+  overflow: hidden;
+  position: relative;
+  border: 2px solid #2c3e50;
+  color: #2c3e50;
+  transition: background-color 0.2s;
+}
+
+.twinkle::before {
+  content: &#34;&#34;;
+  position: absolute;
+  width: 50px;
+  height: 200%;
+  background-color: rgba(255, 255, 255, 0.6);
+  transform: skew(45deg) translate3d(-200px, 0, 0);
+}
+
+.twinkle:hover {
+  background-color: #2c3e50;
+  color: #fff;
+}
+
+.twinkle:hover::before {
+  transition: ease-in-out 0.5s;
+  transform: skew(45deg) translate3d(300px, 0, 0);
+}
+
+.slide {
+  border: 2px solid #2980b9;
+  color: #2980b9;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition: 0.5s;
+}
+
+.slide::before {
+  content: &#34;&#34;;
+  position: absolute;
+  z-index: -1;
+  width: 0;
+  height: 100%;
+  left: 0;
+  background-color: #2980b9;
+  transition: ease-in-out 0.5s;
+}
+
+.slide:hover::before {
+  width: 100%;
+}
+
+.ball {
+  border: 2px solid #8e44ad;
+  color: #8e44ad;
+  position: relative;
+}
+
+.dot {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 60px;
+  height: 100%;
+  border-radius: 20px;
+  background-color: #bdc3c7;
+  transition: all 0.3s ease;
+  display: none;
+}
+
+.dot::before {
+  content: &#34;&#34;;
+  position: absolute;
+  top: -11px;
+  width: 10px;
+  height: 10px;
+  background-color: #8e44ad;
+  border-radius: 50%;
+  border: 4px solid #8e44ad;
+  box-shadow: 0 0 10px 0 #8e44ad;
+}
+
+.ball:hover {
+  color: #8e44ad;
+}
+
+.ball:hover .dot {
+  animation: move 2s infinite linear;
+  display: block;
+}
+
+@keyframes move {
+  0% {
+    transform: translateX(0) rotate(0);
+  }
+  30% {
+    transform: translateX(calc(200px - 60px)) rotate(0);
+  }
+  50% {
+    transform: translateX(calc(200px - 60px)) rotate(180deg);
+  }
+  80% {
+    transform: translateX(0) rotate(180deg);
+  }
+  100% {
+    transform: translateX(0) rotate(360deg);
+  }
+}
+.boom {
+  background-color: #16a085;
+  color: #fff;
+  position: relative;
+  z-index: 1;
+}
+
+.boom::before {
+  content: &#34;&#34;;
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  border: 2px solid #16a085;
+  border-radius: 20px;
+  transform-origin: center;
+}
+
+.boom:hover::before {
+  transform: scale(1.25);
+  transition: all ease-out 0.5s;
+  border: 1px solid #96f3e0;
+  opacity: 0;
+}
+
+.circle {
+  background-color: #e74c3c;
+  color: #fff;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.circle::before {
+  content: &#34;&#34;;
+  position: absolute;
+  z-index: -1;
+  top: 50%;
+  left: 50%;
+  width: 1rem;
+  height: 1rem;
+  transform: translate3d(-50%, -50%, 0) scale(0, 0);
+  border-radius: 50%;
+  background-color: #c0392b;
+  transform-origin: center;
+  transition: ease-in-out 0.5s;
+}
+
+.circle:hover::before {
+  transform: translate3d(-50%, -50%, 0) scale(15, 15);
+}
+
+.three-d {
+  color: #fff;
+  background-color: #f1c40f;
+  text-shadow: -2px 2px 2px rgb(209 132 0), -2px 2px 2px rgb(209 132 0),
+    -2px 2px 2px rgb(209 132 0), -2px 2px 2px rgb(209 132 0),
+    -2px 2px 2px rgb(209 132 0), -2px 2px 2px rgb(209 132 0);
+  box-shadow: 0px 15px 0px 0px #f39c12;
+  transition: all 0.5s;
+}
+
+.three-d:hover {
+  background-color: #fcdc5e;
+}
+
+.three-d:active {
+  transform: translate(0, 4px);
+  box-shadow: 0px 1px 0px 0px #f39c12;
 }
 </textarea>
         </div>
@@ -34,10 +242,7 @@
       <div class="code__wrapper_bottom">
         <div class="code__wrapper_top-js">
           <div class="title">JAVASCRIPT</div>
-          <textarea id="cssJs">buttonDom.onclick = function() {
-  alert(8899)
-}
-</textarea>
+          <textarea id="cssJs"></textarea>
         </div>
         <div class="code__wrapper_top-preview">
           <iframe id="live-preview"></iframe>

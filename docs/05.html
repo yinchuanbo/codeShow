@@ -11,7 +11,7 @@
     <div class="code__wrapper">
       <div class="close__fs"></div>
       <div class="code__wrapper_header">
-        <div class="code__wrapper_header_title">Box-shadow 实现圆环进度条动画</div>
+        <div class="code__wrapper_header_title">圆形进度条</div>
         <div class="tools">
           <div class="home__icon" onclick="window.location.href = '/'"></div>
           <div class="fs__icon"></div>
@@ -20,65 +20,74 @@
       <div class="code__wrapper_top">
         <div class="code__wrapper_top-html">
           <div class="title">HTML</div>
-          <textarea id="htmlCode">&lt;div class=&#34;container&#34;&gt;
-  &lt;div class=&#34;shadow&#34;&gt;Hover Me&lt;/div&gt;
+          <textarea id="htmlCode">&lt;div class=&#34;progress&#34;&gt;
+  &lt;div class=&#34;wrapper-circle left&#34;&gt;
+    &lt;div class=&#34;circle&#34;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;wrapper-circle right&#34;&gt;
+    &lt;div class=&#34;circle&#34;&gt;&lt;/div&gt;
+  &lt;/div&gt;
 &lt;/div&gt;
 </textarea>
         </div>
         <div class="code__wrapper_top-css">
           <div class="title">CSS</div>
-          <textarea id="cssCode">body {
-  background: #000;
-}
-.container {
-  position: relative;
-  overflow: hidden;
-  width: 124px;
-  height: 124px;
-  overflow: hidden;
-  margin: 100px auto;
-  border-radius: 50%;
-}
-.shadow {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 120px;
-  height: 120px;
-  line-height: 120px;
-  border-radius: 50%;
-  color: #fff;
-  font-size: 20px;
-  cursor: pointer;
-  box-shadow: 60px -60px 0 2px #e91e63, -60px -60px 0 2px #e91e63,
-    -60px 60px 0 2px #e91e63, 60px 60px 0 2px #e91e63;
-  text-align: center;
-}
-.shadow:hover {
-  animation: border 0.5s ease forwards;
-}
-@keyframes border {
-  0% {
-    box-shadow: 60px -60px 0 2px #e91e63, -60px -60px 0 2px #e91e63,
-      -60px 60px 0 2px #e91e63, 60px 60px 0 2px #e91e63, 0 0 0 2px transparent;
-  }
-  25% {
-    box-shadow: 0 -125px 0 2px #e91e63, -60px -60px 0 2px #e91e63,
-      -60px 60px 0 2px #e91e63, 60px 60px 0 2px #e91e63, 0 0 0 2px #fff;
-  }
+          <textarea id="cssCode">@keyframes left_cirlce_spin {
+  0%,
   50% {
-    box-shadow: 0 -125px 0 2px #e91e63, -125px 0px 0 2px #e91e63,
-      -60px 60px 0 2px #e91e63, 60px 60px 0 2px #e91e63, 0 0 0 2px #fff;
-  }
-  75% {
-    box-shadow: 0 -125px 0 2px #e91e63, -125px 0px 0 2px #e91e63,
-      0px 125px 0 2px #e91e63, 60px 60px 0 2px #e91e63, 0 0 0 2px #fff;
+    transform: rotate(-45deg);
   }
   100% {
-    box-shadow: 0 -125px 0 2px #e91e63, -125px 0px 0 2px #e91e63,
-      0px 125px 0 2px #e91e63, 120px 40px 0 2px #e91e63, 0 0 0 2px #fff;
+    transform: rotate(135deg);
   }
+}
+@keyframes right_cirlce_spin {
+  0% {
+    transform: rotate(45deg);
+  }
+  50%,
+  100% {
+    transform: rotate(225deg);
+  }
+}
+.progress {
+  overflow: hidden;
+  width: 100px;
+  height: 100px;
+}
+.progress .wrapper-circle {
+  overflow: hidden;
+  width: 50%;
+  height: 100%;
+}
+.left {
+  float: left;
+}
+.right {
+  float: right;
+}
+.progress {
+  margin: 20px;
+}
+.progress .circle {
+  border-radius: 50%;
+  width: 90px;
+  height: 90px;
+}
+.progress .left .circle {
+  float: left;
+  border: 5px solid red;
+  border-top-color: transparent;
+  border-left-color: transparent;
+  animation: left_cirlce_spin 4s linear infinite;
+}
+
+.progress .right .circle {
+  float: right;
+  border: 5px solid red;
+  border-top-color: transparent;
+  border-right-color: transparent;
+  animation: right_cirlce_spin 4s linear infinite;
 }
 </textarea>
         </div>

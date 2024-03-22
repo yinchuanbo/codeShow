@@ -25,7 +25,7 @@ function traverseFolder(folderPath) {
 
 traverseFolder(folderPath);
 
-let listHTML = `<ul>`;
+let listHTML = `<ul class="home__list">`;
 
 for (let i = 0; i < filesList.length; i++) {
   const file = filesList[i];
@@ -61,7 +61,7 @@ for (let i = 0; i < filesList.length; i++) {
     htmlContent,
   });
   fs.writeFileSync(`./docs/${file}.html`, compiledHtml);
-  listHTML += `<li><a href="/${file}.html">${h2Content}</a></li>`;
+  listHTML += `<li onclick="location.href='/${file}.html'"><div class="li__cover"><img src="assets/images/${file}.png" /></div><a href="javascript:;">${h2Content}</a></li>`;
 }
 
 function unescapeHtml(html) {
@@ -79,4 +79,5 @@ const homeContent = fs.readFileSync("./template-home.html", "utf-8");
 const homeHTML = ejs.render(homeContent, {
   content: unescapeHtml(listHTML),
 });
+
 fs.writeFileSync(`./docs/index.html`, homeHTML);
