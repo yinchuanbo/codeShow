@@ -11,7 +11,7 @@
     <div class="code__wrapper">
       <div class="close__fs"></div>
       <div class="code__wrapper_header">
-        <div class="code__wrapper_header_title"><%= h2Content %></div>
+        <div class="code__wrapper_header_title">我是一个文章的标题 222</div>
         <div class="tools">
           <div class="home__icon" onclick="window.location.href = '/'"></div>
           <div class="fs__icon"></div>
@@ -20,17 +20,24 @@
       <div class="code__wrapper_top">
         <div class="code__wrapper_top-html">
           <div class="title">HTML</div>
-          <textarea id="htmlCode"><%= htmlContent %></textarea>
+          <textarea id="htmlCode">&lt;button id=&#34;buttonDom&#34;&gt;123&lt;/button&gt;
+</textarea>
         </div>
         <div class="code__wrapper_top-css">
           <div class="title">CSS</div>
-          <textarea id="cssCode"><%= cssContent %></textarea>
+          <textarea id="cssCode">.test {
+    font-size: 100px
+}
+</textarea>
         </div>
       </div>
       <div class="code__wrapper_bottom">
         <div class="code__wrapper_top-js">
           <div class="title">JAVASCRIPT</div>
-          <textarea id="cssJs"><%= jsContent %></textarea>
+          <textarea id="cssJs">buttonDom.onclick = function() {
+  alert(8899)
+}
+</textarea>
         </div>
         <div class="code__wrapper_top-preview">
           <iframe id="live-preview"></iframe>
