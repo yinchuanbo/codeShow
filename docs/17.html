@@ -11,7 +11,7 @@
     <div class="code__wrapper">
       <div class="close__fs"></div>
       <div class="code__wrapper_header">
-        <div class="code__wrapper_header_title">Box-shadow 实现圆环进度条动画</div>
+        <div class="code__wrapper_header_title">彭罗斯三角</div>
         <div class="tools">
           <div class="home__icon" onclick="window.location.href = '/'"></div>
           <div class="fs__icon"></div>
@@ -20,66 +20,61 @@
       <div class="code__wrapper_top">
         <div class="code__wrapper_top-html">
           <div class="title">HTML</div>
-          <textarea id="htmlCode">&lt;div class=&#34;container&#34;&gt;
-  &lt;div class=&#34;shadow&#34;&gt;Hover Me&lt;/div&gt;
-&lt;/div&gt;
+          <textarea id="htmlCode">&lt;figure class=&#34;penrose&#34;&gt;
+  &lt;div&gt;&lt;/div&gt;
+  &lt;div&gt;&lt;/div&gt;
+  &lt;div&gt;&lt;/div&gt;
+&lt;/figure&gt;
 </textarea>
         </div>
         <div class="code__wrapper_top-css">
           <div class="title">CSS</div>
           <textarea id="cssCode">body {
+  margin: 0;
   display: flex;
   align-items: center;
   justify-content: center;
+  height: calc(100% - 20px);
 }
-.container {
+
+.penrose {
+  width: 20em;
+  height: 20em;
   position: relative;
-  overflow: hidden;
-  width: 124px;
-  height: 124px;
-  overflow: hidden;
-  border-radius: 50%;
+  top: -1em;
+  left: -3em;
 }
-.shadow {
+
+.penrose div {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 120px;
-  height: 120px;
-  line-height: 120px;
-  border-radius: 50%;
-  color: #fff;
-  font-size: 20px;
-  cursor: pointer;
-  box-shadow: 60px -60px 0 2px #e91e63, -60px -60px 0 2px #e91e63,
-    -60px 60px 0 2px #e91e63, 60px 60px 0 2px #e91e63;
-  text-align: center;
+  width: inherit;
+  height: inherit;
+  background-color: limegreen;
+  clip-path: polygon(57% 0, 75% 0, 26% 85%, 89.5% 85%, 98.4% 100%, 0 100%);
 }
-.shadow:hover {
-  animation: border 0.5s ease forwards;
+
+.penrose div:nth-child(2) {
+  transform: rotate(120deg);
 }
-@keyframes border {
-  0% {
-    box-shadow: 60px -60px 0 2px #e91e63, -60px -60px 0 2px #e91e63,
-      -60px 60px 0 2px #e91e63, 60px 60px 0 2px #e91e63, 0 0 0 2px transparent;
-  }
-  25% {
-    box-shadow: 0 -125px 0 2px #e91e63, -60px -60px 0 2px #e91e63,
-      -60px 60px 0 2px #e91e63, 60px 60px 0 2px #e91e63, 0 0 0 2px #fff;
-  }
-  50% {
-    box-shadow: 0 -125px 0 2px #e91e63, -125px 0px 0 2px #e91e63,
-      -60px 60px 0 2px #e91e63, 60px 60px 0 2px #e91e63, 0 0 0 2px #fff;
-  }
-  75% {
-    box-shadow: 0 -125px 0 2px #e91e63, -125px 0px 0 2px #e91e63,
-      0px 125px 0 2px #e91e63, 60px 60px 0 2px #e91e63, 0 0 0 2px #fff;
-  }
-  100% {
-    box-shadow: 0 -125px 0 2px #e91e63, -125px 0px 0 2px #e91e63,
-      0px 125px 0 2px #e91e63, 120px 40px 0 2px #e91e63, 0 0 0 2px #fff;
-  }
+.penrose div:nth-child(3) {
+  transform: rotate(240deg);
+}
+
+.penrose div:nth-child(2) {
+  filter: brightness(0.66);
+}
+.penrose div:nth-child(3) {
+  filter: brightness(0.33);
+}
+
+.penrose div:nth-child(2) {
+  top: 18.3%;
+  left: 43.3%;
+}
+
+.penrose div:nth-child(3) {
+  top: 46.5%;
+  left: 5.9%;
 }
 </textarea>
         </div>

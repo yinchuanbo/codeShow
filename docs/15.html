@@ -11,7 +11,7 @@
     <div class="code__wrapper">
       <div class="close__fs"></div>
       <div class="code__wrapper_header">
-        <div class="code__wrapper_header_title">Box-shadow 实现圆环进度条动画</div>
+        <div class="code__wrapper_header_title">字母卡片</div>
         <div class="tools">
           <div class="home__icon" onclick="window.location.href = '/'"></div>
           <div class="fs__icon"></div>
@@ -20,9 +20,11 @@
       <div class="code__wrapper_top">
         <div class="code__wrapper_top-html">
           <div class="title">HTML</div>
-          <textarea id="htmlCode">&lt;div class=&#34;container&#34;&gt;
-  &lt;div class=&#34;shadow&#34;&gt;Hover Me&lt;/div&gt;
-&lt;/div&gt;
+          <textarea id="htmlCode">&lt;figure class=&#34;word&#34;&gt;
+  &lt;div&gt;c&lt;/div&gt;
+  &lt;div&gt;s&lt;/div&gt;
+  &lt;div&gt;s&lt;/div&gt;
+&lt;/figure&gt;
 </textarea>
         </div>
         <div class="code__wrapper_top-css">
@@ -32,54 +34,30 @@
   align-items: center;
   justify-content: center;
 }
-.container {
+
+.word {
+  font-size: 100px;
+  color: orange;
+  text-transform: uppercase;
+  width: 2em;
+  display: flex;
+  justify-content: space-around;
+}
+
+.word div {
   position: relative;
-  overflow: hidden;
-  width: 124px;
-  height: 124px;
-  overflow: hidden;
-  border-radius: 50%;
 }
-.shadow {
+
+.word div::before {
+  content: &#34;&#34;;
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 120px;
-  height: 120px;
-  line-height: 120px;
-  border-radius: 50%;
-  color: #fff;
-  font-size: 20px;
-  cursor: pointer;
-  box-shadow: 60px -60px 0 2px #e91e63, -60px -60px 0 2px #e91e63,
-    -60px 60px 0 2px #e91e63, 60px 60px 0 2px #e91e63;
-  text-align: center;
-}
-.shadow:hover {
-  animation: border 0.5s ease forwards;
-}
-@keyframes border {
-  0% {
-    box-shadow: 60px -60px 0 2px #e91e63, -60px -60px 0 2px #e91e63,
-      -60px 60px 0 2px #e91e63, 60px 60px 0 2px #e91e63, 0 0 0 2px transparent;
-  }
-  25% {
-    box-shadow: 0 -125px 0 2px #e91e63, -60px -60px 0 2px #e91e63,
-      -60px 60px 0 2px #e91e63, 60px 60px 0 2px #e91e63, 0 0 0 2px #fff;
-  }
-  50% {
-    box-shadow: 0 -125px 0 2px #e91e63, -125px 0px 0 2px #e91e63,
-      -60px 60px 0 2px #e91e63, 60px 60px 0 2px #e91e63, 0 0 0 2px #fff;
-  }
-  75% {
-    box-shadow: 0 -125px 0 2px #e91e63, -125px 0px 0 2px #e91e63,
-      0px 125px 0 2px #e91e63, 60px 60px 0 2px #e91e63, 0 0 0 2px #fff;
-  }
-  100% {
-    box-shadow: 0 -125px 0 2px #e91e63, -125px 0px 0 2px #e91e63,
-      0px 125px 0 2px #e91e63, 120px 40px 0 2px #e91e63, 0 0 0 2px #fff;
-  }
+  height: 100%;
+  width: 130%;
+  left: -15%;
+  background-color: moccasin;
+  border-radius: 0.1em;
+  z-index: -1;
+  transform: rotate(-25deg);
 }
 </textarea>
         </div>

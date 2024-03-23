@@ -11,7 +11,7 @@
     <div class="code__wrapper">
       <div class="close__fs"></div>
       <div class="code__wrapper_header">
-        <div class="code__wrapper_header_title">Box-shadow 实现圆环进度条动画</div>
+        <div class="code__wrapper_header_title">Gradient Loading Animation Effects</div>
         <div class="tools">
           <div class="home__icon" onclick="window.location.href = '/'"></div>
           <div class="fs__icon"></div>
@@ -20,65 +20,81 @@
       <div class="code__wrapper_top">
         <div class="code__wrapper_top-html">
           <div class="title">HTML</div>
-          <textarea id="htmlCode">&lt;div class=&#34;container&#34;&gt;
-  &lt;div class=&#34;shadow&#34;&gt;Hover Me&lt;/div&gt;
+          <textarea id="htmlCode">&lt;div class=&#34;outer-circle&#34;&gt;
+  &lt;div class=&#34;inner-circle&#34;&gt;&lt;/div&gt;
+  &lt;span&gt;&lt;/span&gt;
+  &lt;span&gt;&lt;/span&gt;
+  &lt;span&gt;&lt;/span&gt;
+  &lt;span&gt;&lt;/span&gt;
 &lt;/div&gt;
 </textarea>
         </div>
         <div class="code__wrapper_top-css">
           <div class="title">CSS</div>
-          <textarea id="cssCode">body {
+          <textarea id="cssCode">* {
+  font-family: sans-serif;
+  box-sizing: border-box;
+}
+
+body {
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: calc(100% - 20px);
 }
-.container {
+
+.outer-circle {
   position: relative;
-  overflow: hidden;
-  width: 124px;
-  height: 124px;
-  overflow: hidden;
+  height: 200px;
+  width: 200px;
+  background: linear-gradient(#14ffe9, #ffeb3b, #ff00e0);
   border-radius: 50%;
+  animation: rotate 1.5s linear infinite;
 }
-.shadow {
+
+.outer-circle span {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 120px;
-  height: 120px;
-  line-height: 120px;
+  height: 200px;
+  width: 200px;
+  background: linear-gradient(#14ffe9, #ffeb3b, #ff00e0);
   border-radius: 50%;
-  color: #fff;
-  font-size: 20px;
-  cursor: pointer;
-  box-shadow: 60px -60px 0 2px #e91e63, -60px -60px 0 2px #e91e63,
-    -60px 60px 0 2px #e91e63, 60px 60px 0 2px #e91e63;
-  text-align: center;
 }
-.shadow:hover {
-  animation: border 0.5s ease forwards;
+
+span:nth-child(1) {
+  filter: blur(5px);
 }
-@keyframes border {
+
+span:nth-child(2) {
+  filter: blur(10px);
+}
+
+span:nth-child(3) {
+  filter: blur(25px);
+}
+
+span:nth-child(4) {
+  filter: blur(150px);
+}
+
+.inner-circle {
+  height: 180px;
+  width: 180px;
+  position: absolute;
+  background: black;
+  top: 10px;
+  left: 10px;
+  border-radius: 50%;
+  z-index: 9;
+}
+
+@keyframes rotate {
   0% {
-    box-shadow: 60px -60px 0 2px #e91e63, -60px -60px 0 2px #e91e63,
-      -60px 60px 0 2px #e91e63, 60px 60px 0 2px #e91e63, 0 0 0 2px transparent;
+    filter: hue-rotate(0deg);
   }
-  25% {
-    box-shadow: 0 -125px 0 2px #e91e63, -60px -60px 0 2px #e91e63,
-      -60px 60px 0 2px #e91e63, 60px 60px 0 2px #e91e63, 0 0 0 2px #fff;
-  }
-  50% {
-    box-shadow: 0 -125px 0 2px #e91e63, -125px 0px 0 2px #e91e63,
-      -60px 60px 0 2px #e91e63, 60px 60px 0 2px #e91e63, 0 0 0 2px #fff;
-  }
-  75% {
-    box-shadow: 0 -125px 0 2px #e91e63, -125px 0px 0 2px #e91e63,
-      0px 125px 0 2px #e91e63, 60px 60px 0 2px #e91e63, 0 0 0 2px #fff;
-  }
+
   100% {
-    box-shadow: 0 -125px 0 2px #e91e63, -125px 0px 0 2px #e91e63,
-      0px 125px 0 2px #e91e63, 120px 40px 0 2px #e91e63, 0 0 0 2px #fff;
+    filter: hue-rotate(360deg);
   }
 }
 </textarea>

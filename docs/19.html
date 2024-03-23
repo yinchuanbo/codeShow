@@ -11,7 +11,7 @@
     <div class="code__wrapper">
       <div class="close__fs"></div>
       <div class="code__wrapper_header">
-        <div class="code__wrapper_header_title">Box-shadow 实现圆环进度条动画</div>
+        <div class="code__wrapper_header_title">文本无限滚动</div>
         <div class="tools">
           <div class="home__icon" onclick="window.location.href = '/'"></div>
           <div class="fs__icon"></div>
@@ -20,8 +20,17 @@
       <div class="code__wrapper_top">
         <div class="code__wrapper_top-html">
           <div class="title">HTML</div>
-          <textarea id="htmlCode">&lt;div class=&#34;container&#34;&gt;
-  &lt;div class=&#34;shadow&#34;&gt;Hover Me&lt;/div&gt;
+          <textarea id="htmlCode">&lt;div class=&#34;box&#34;&gt;
+  &lt;div class=&#34;list&#34;&gt;
+    &lt;div&gt;1.这是一段文字&lt;/div&gt;
+    &lt;div&gt;2.这是一段文字&lt;/div&gt;
+    &lt;div&gt;3.这是一段文字&lt;/div&gt;
+    &lt;div&gt;4.这是一段文字&lt;/div&gt;
+    &lt;div&gt;5.这是一段文字&lt;/div&gt;
+    &lt;div&gt;6.这是一段文字&lt;/div&gt;
+    &lt;div&gt;7.这是一段文字&lt;/div&gt;
+    &lt;div&gt;8.这是一段文字&lt;/div&gt;
+  &lt;/div&gt;
 &lt;/div&gt;
 </textarea>
         </div>
@@ -29,57 +38,30 @@
           <div class="title">CSS</div>
           <textarea id="cssCode">body {
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
 }
-.container {
+.box {
+  width: 300px;
+  height: 160px;
+  overflow: hidden;
   position: relative;
-  overflow: hidden;
-  width: 124px;
-  height: 124px;
-  overflow: hidden;
-  border-radius: 50%;
+  border: 1px solid gray;
 }
-.shadow {
+
+.list {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 120px;
-  height: 120px;
-  line-height: 120px;
-  border-radius: 50%;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.list &gt; div {
+  width: 300px;
+  height: 20px;
+  box-sizing: border-box;
   color: #fff;
-  font-size: 20px;
-  cursor: pointer;
-  box-shadow: 60px -60px 0 2px #e91e63, -60px -60px 0 2px #e91e63,
-    -60px 60px 0 2px #e91e63, 60px 60px 0 2px #e91e63;
-  text-align: center;
-}
-.shadow:hover {
-  animation: border 0.5s ease forwards;
-}
-@keyframes border {
-  0% {
-    box-shadow: 60px -60px 0 2px #e91e63, -60px -60px 0 2px #e91e63,
-      -60px 60px 0 2px #e91e63, 60px 60px 0 2px #e91e63, 0 0 0 2px transparent;
-  }
-  25% {
-    box-shadow: 0 -125px 0 2px #e91e63, -60px -60px 0 2px #e91e63,
-      -60px 60px 0 2px #e91e63, 60px 60px 0 2px #e91e63, 0 0 0 2px #fff;
-  }
-  50% {
-    box-shadow: 0 -125px 0 2px #e91e63, -125px 0px 0 2px #e91e63,
-      -60px 60px 0 2px #e91e63, 60px 60px 0 2px #e91e63, 0 0 0 2px #fff;
-  }
-  75% {
-    box-shadow: 0 -125px 0 2px #e91e63, -125px 0px 0 2px #e91e63,
-      0px 125px 0 2px #e91e63, 60px 60px 0 2px #e91e63, 0 0 0 2px #fff;
-  }
-  100% {
-    box-shadow: 0 -125px 0 2px #e91e63, -125px 0px 0 2px #e91e63,
-      0px 125px 0 2px #e91e63, 120px 40px 0 2px #e91e63, 0 0 0 2px #fff;
-  }
 }
 </textarea>
         </div>
@@ -87,7 +69,33 @@
       <div class="code__wrapper_bottom">
         <div class="code__wrapper_top-js">
           <div class="title">JAVASCRIPT</div>
-          <textarea id="cssJs"></textarea>
+          <textarea id="cssJs">let list = document.querySelector(&#34;.list&#34;);
+let box = document.querySelector(&#34;.box&#34;);
+list.innerHTML += list.innerHTML;
+let currentTop = 0;
+
+let timer;
+
+const move = () =&gt; {
+  timer = setInterval(() =&gt; {
+    currentTop -= 2;
+    if (currentTop == -(6 * 20)) {
+      currentTop = 0;
+    }
+    list.style.top = currentTop + &#34;px&#34;;
+  }, 20);
+};
+
+move();
+
+box.onmouseenter = () =&gt; {
+  clearInterval(timer);
+};
+
+box.onmouseleave = () =&gt; {
+  move();
+};
+</textarea>
         </div>
         <div class="code__wrapper_top-preview">
           <iframe id="live-preview"></iframe>
