@@ -13,16 +13,15 @@
       <div class="code__wrapper_header">
         <div class="code__wrapper_header_title">伪元素 hover 实现纯 CSS 方式控制动画的暂停与播放</div>
         <div class="tools">
-          <div class="home__icon" onclick="window.location.href = '/'"></div>
-          <div class="fs__icon"></div>
+          <!-- <div class="home__icon" onclick="window.location.href = '/'"></div> -->
+          <!-- <div class="fs__icon"></div> -->
         </div>
       </div>
       <div class="code__wrapper_top">
         <div class="code__wrapper_top-html">
           <div class="title">HTML</div>
           <textarea id="htmlCode">&lt;div class=&#34;btn stop&#34;&gt;stop&lt;/div&gt;
-&lt;div class=&#34;animation&#34;&gt;&lt;/div&gt;
-</textarea>
+&lt;div class=&#34;animation&#34;&gt;&lt;/div&gt;</textarea>
         </div>
         <div class="code__wrapper_top-css">
           <div class="title">CSS</div>
@@ -75,8 +74,7 @@ input {
 
 .stop:hover ~ .animation {
   animation-play-state: paused;
-}
-</textarea>
+}</textarea>
         </div>
       </div>
       <div class="code__wrapper_bottom">
@@ -85,6 +83,7 @@ input {
           <textarea id="cssJs"></textarea>
         </div>
         <div class="code__wrapper_top-preview">
+          <div class="fs__icon"></div>
           <iframe id="live-preview"></iframe>
         </div>
       </div>

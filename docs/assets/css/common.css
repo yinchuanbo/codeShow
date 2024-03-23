@@ -8,6 +8,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  user-select: none;
 }
 
 html,
@@ -107,6 +108,14 @@ body {
   cursor: pointer;
   background: url("../images/fullscreen.svg") no-repeat;
   background-size: 100% 100%;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  display: none;
+}
+
+.code__wrapper_top-preview:hover .fs__icon {
+  display: block;
 }
 
 .home__icon {
@@ -284,21 +293,66 @@ ul {
 
 .home__list {
   display: grid;
-  grid-template-columns: repeat(4, 250px);
+  grid-template-columns: repeat(3, 360px);
   grid-gap: 30px;
   width: fit-content;
   margin: 0 auto;
 }
 
+.home__banner {
+  width: 1140px;
+  height: 358px;
+  background-color: #000;
+  margin: 0 auto;
+  margin-bottom: 30px;
+  position: relative;
+  overflow: hidden;
+}
+
+.home__banner:hover img {
+  transform: scale(1.2);
+  transition: all 0.5s;
+}
+
+.home__banner img {
+  width: 1140px;
+  height: 358px;
+  object-fit: cover;
+  border: 1px solid #ddd;
+  position: relative;
+  z-index: 1;
+  transition: all 0.5s;
+}
+
+.banner__name {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  font-size: 80px;
+  font-family: MyFont;
+  color: #fff;
+}
+
+.banner__desc {
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  font-size: 30px;
+  font-family: MyFont;
+  color: #fff;
+}
+
 .home__list li {
-  width: 260px;
-  height: 270px;
+  width: 360px;
+  height: 428px;
   background-color: #fff;
-  /* border-radius: 20px; */
   transition: all 0.5s;
   border: 1px solid #ddd;
   cursor: pointer;
-  border-radius: 1em;
 }
 
 .home__list li:hover {
@@ -315,16 +369,16 @@ ul {
 
 .li__cover {
   width: 100%;
-  height: 190px;
+  height: 320px;
   background-color: rgb(12, 16, 33);
-  border-top-left-radius: 1em;
-  border-top-right-radius: 1em;
   overflow: hidden;
+  display: flex;
+  align-items: center;
 }
 
 .li__cover img {
   width: 100%;
-  height: 190px;
+  height: 320px;
   object-fit: contain;
   transition: all 0.5s;
 }
@@ -332,7 +386,7 @@ ul {
 .li__cover + a {
   text-decoration: none;
   color: rgb(12, 16, 33);
-  padding: 10px;
+  padding: 20px 15px 0 15px;
   display: block;
   font-family: MyFont;
   font-size: 16px;

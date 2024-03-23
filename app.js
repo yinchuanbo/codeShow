@@ -53,12 +53,13 @@ for (let i = 0; i < filesList.length; i++) {
       h2Content += token.text;
     }
   });
+
   const templateContent = fs.readFileSync("./template.html", "utf-8");
   const compiledHtml = ejs.render(templateContent, {
-    h2Content,
-    cssContent,
-    jsContent,
-    htmlContent,
+    h2Content: (h2Content || "").trim(),
+    cssContent: (cssContent || "").trim(),
+    jsContent: (jsContent || "").trim(),
+    htmlContent: (htmlContent || "").trim(),
   });
   fs.writeFileSync(`./docs/${file}.html`, compiledHtml);
   listHTML += `<li onclick="location.href='/${file}.html'"><div class="li__cover"><img src="assets/images/${file}.png" /></div><a href="javascript:;">${h2Content}</a></li>`;
