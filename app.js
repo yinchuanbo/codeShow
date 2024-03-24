@@ -62,7 +62,11 @@ for (let i = 0; i < filesList.length; i++) {
     htmlContent: (htmlContent || "").trim(),
   });
   fs.writeFileSync(`./docs/${file}.html`, compiledHtml);
-  listHTML += `<li onclick="location.href='/${file}.html'"><div class="li__cover"><img src="assets/images/${file}.png" /></div><a href="javascript:;">${h2Content}</a></li>`;
+  let str = `style="display: none"`;
+  if(i < 6) {
+    str = ''
+  }
+  listHTML += `<li onclick="location.href='/${file}.html'" ${str}><div class="li__cover"><img src="assets/images/${file}.png" /></div><a href="javascript:;">${h2Content}</a></li>`;
 }
 
 function unescapeHtml(html) {

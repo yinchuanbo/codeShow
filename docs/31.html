@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>codeShow</title>
+    <link rel="stylesheet" href="assets/codemirror5/theme/blackboard.css" />
+    <link rel="stylesheet" href="assets/css/common.css" />
+  </head>
+  <body>
+    <div class="code__wrapper">
+      <div class="close__fs"></div>
+      <div class="code__wrapper_header">
+        <div class="code__wrapper_header_title">铅笔</div>
+        <div class="tools">
+          <!-- <div class="home__icon" onclick="window.location.href = '/'"></div> -->
+          <!-- <div class="fs__icon"></div> -->
+        </div>
+      </div>
+      <div class="code__wrapper_top">
+        <div class="code__wrapper_top-html">
+          <div class="title">HTML</div>
+          <textarea id="htmlCode">&lt;div class=&#34;pencil&#34;&gt;
+  &lt;span class=&#34;taper&#34;&gt;&lt;/span&gt;
+  &lt;span class=&#34;barrel&#34;&gt;Think Different&lt;/span&gt;
+  &lt;span class=&#34;eraser&#34;&gt;&lt;/span&gt;
+&lt;/div&gt;</textarea>
+        </div>
+        <div class="code__wrapper_top-css">
+          <div class="title">CSS</div>
+          <textarea id="cssCode">body {
+  height: calc(100% - 20px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* background-color: lightskyblue; */
+}
+
+.pencil {
+  display: flex;
+  width: 50em;
+  height: 3.5em;
+  font-size: 12px;
+  filter: drop-shadow(0.4em 0.8em 0.3em gray);
+}
+
+.taper {
+  width: 4em;
+}
+
+.taper::before,
+.taper::after {
+  content: &#34;&#34;;
+  position: absolute;
+  border-style: solid;
+  border-width: calc(3.5em / 2) 4em calc(3.5em / 2) 0;
+  border-color: transparent;
+}
+
+.taper::before {
+  border-right-color: burlywood;
+}
+
+.taper::after {
+  border-right-color: black;
+  transform-origin: left;
+  transform: scale(0.3);
+}
+
+.barrel {
+  width: 40em;
+  background-color: green;
+  border-top: 1em solid forestgreen;
+  border-bottom: 1em solid darkgreen;
+  color: silver;
+  line-height: 1.5em;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.eraser {
+  position: relative;
+  width: 6em;
+  background-color: lightpink;
+  border-top: 1em solid pink;
+  border-bottom: 1em solid lightcoral;
+  border-radius: 0 0.5em 0.5em 0;
+}
+
+.eraser::before {
+  content: &#34;&#34;;
+  position: absolute;
+  width: 1.5em;
+  height: 1.5em;
+  background-color: silver;
+  border-top: 1em solid lightgray;
+  border-bottom: 1em solid gray;
+  top: -1em;
+}</textarea>
+        </div>
+      </div>
+      <div class="code__wrapper_bottom">
+        <div class="code__wrapper_top-js">
+          <div class="title">JAVASCRIPT</div>
+          <textarea id="cssJs"></textarea>
+        </div>
+        <div class="code__wrapper_top-preview">
+          <div class="fs__icon"></div>
+          <iframe id="live-preview"></iframe>
+        </div>
+      </div>
+    </div>
+    <link rel="stylesheet" href="assets/codemirror5/lib/codemirror.css" />
+    <link rel="stylesheet" href="assets/codemirror5/addon/hint/show-hint.css" />
+    <script src="assets/lib/jquery-3.7.1.min.js"></script>
+    <script src="assets/codemirror5/lib/codemirror.js"></script>
+    <script src="assets/codemirror5/addon/hint/show-hint.js"></script>
+    <script src="assets/codemirror5/addon/hint/xml-hint.js"></script>
+    <script src="assets/codemirror5/addon/hint/html-hint.js"></script>
+    <script src="assets/codemirror5/mode/xml/xml.js"></script>
+    <script src="assets/codemirror5/mode/javascript/javascript.js"></script>
+    <script src="assets/codemirror5/mode/css/css.js"></script>
+    <script src="assets/codemirror5/mode/htmlmixed/htmlmixed.js"></script>
+    <script src="assets/codemirror5/addon/hint/css-hint.js"></script>
+    <script src="assets/js/common.js"></script>
+  </body>
+</html>

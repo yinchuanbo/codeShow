@@ -9,11 +9,32 @@
   <body>
     <div class="home__wrapper">
       <div class="home__banner">
-        <img src="assets/images/imgs/banner.jpg" />
-        <div class="banner__name">灏天阁</div>
-        <div class="banner__desc">我所期待的只是一个清宁世界而已。</div>
+        <div class="logo" onclick="location.href='/'">灏天阁</div>
+        <ul>
+          <li>
+            <a href="https://yinhao.vercel.app" target="_blank">技术站</a>
+          </li>
+          <li>
+            <a href="https://yinhao.vercel.app" target="_blank">技术站</a>
+          </li>
+          <li>
+            <a href="https://yinhao.vercel.app" target="_blank">技术站</a>
+          </li>
+          <li>
+            <a href="https://yinhao.vercel.app" target="_blank">技术站</a>
+          </li>
+        </ul>
+      </div>
+      <div class="article__list">
+        文章列表
+        <span>查看所有文章</span>
       </div>
       <%- content %>
+      <div class="home__pages">
+        <button id="prev__page" style="display: none">上一页</button>
+        <button id="next__page">下一页</button>
+      </div>
     </div>
+    <script src="assets/js/home.js"></script>
   </body>
 </html>
