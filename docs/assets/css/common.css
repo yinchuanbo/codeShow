@@ -72,7 +72,7 @@ body {
 .code__wrapper_header {
   width: 100%;
   height: 50px;
-  background-color: #000;
+  background-color:#000;
   padding-left: 10px;
   padding-right: 10px;
   display: flex;
@@ -162,6 +162,9 @@ body {
   background-color: #0c1021;
   position: relative;
   padding: 10px;
+  padding-left: 0;
+  padding-bottom: 0;
+  padding-right: 5px;
   display: flex;
   flex-direction: column;
 }
@@ -208,6 +211,9 @@ body {
 
 .code__wrapper_top-js {
   padding: 10px;
+  padding-left: 0;
+  padding-bottom: 0;
+  padding-right: 5px;
 }
 
 .code__wrapper_top-js::before {
@@ -224,6 +230,13 @@ body {
   color: #fff;
   font-family: Skranji, "myfont", system-ui;
   margin-bottom: 5px;
+  padding-left: 10px;
+}
+
+#htmlCode, #cssCode, #jsCode {
+  background-color: #0c1021;
+  border: 0;
+  outline: none;
 }
 
 .CodeMirror {
@@ -284,7 +297,7 @@ ul {
 }
 
 .home__wrapper {
-  background-color: rgb(232, 232, 232);
+  background-color: #f2f2f2;
   /* padding-top: 30px; */
   padding-bottom: 30px;
   width: 100%;
@@ -309,7 +322,7 @@ ul {
   height: 80px;
   display: flex;
   align-items: center;
-  border-bottom: 2px solid #ddd;
+  border-bottom: 2px solid #0c1021;
 }
 
 .home__banner .logo {
@@ -321,7 +334,7 @@ ul {
 }
 
 .home__banner ul li a {
-  color: #0c1021;
+  color: #999;
   text-decoration: none;
   font-family: myfont;
   transition: all 0.5s;
@@ -329,7 +342,7 @@ ul {
 
 .home__banner ul li a:hover {
   text-decoration: line-through;
-  color: #999;
+  color: #0c1021;
   transition: all 0.5s;
 }
 
@@ -395,6 +408,7 @@ ul {
   transition: all 0.5s;
   background-color: #fff;
   border: 1px solid #ddd;
+  color: #999;
 }
 
 #prev__page:hover,
@@ -433,6 +447,7 @@ ul {
   transition: all 0.5s;
   a {
     text-decoration: line-through;
+    color: #0c1021;
   }
 }
 
@@ -459,7 +474,7 @@ ul {
 
 .li__cover + a {
   text-decoration: none;
-  color: rgb(12, 16, 33);
+  color: #999;
   padding: 20px 15px 0 15px;
   display: block;
   font-family: MyFont;

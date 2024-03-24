@@ -27,7 +27,7 @@ traverseFolder(folderPath);
 
 let listHTML = `<ul class="home__list">`;
 
-for (let i = 0; i < filesList.length; i++) {
+for (let i = filesList.length - 1; i >= 0; i--) {
   const file = filesList[i];
   const markdownContent = fs.readFileSync(`./md/${file}.md`, "utf-8");
   marked.setOptions({
@@ -61,6 +61,7 @@ for (let i = 0; i < filesList.length; i++) {
     jsContent: (jsContent || "").trim(),
     htmlContent: (htmlContent || "").trim(),
   });
+
   fs.writeFileSync(`./docs/${file}.html`, compiledHtml);
   let str = `style="display: none"`;
   if(i < 6) {

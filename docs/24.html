@@ -13,7 +13,7 @@
       <div class="code__wrapper_header">
         <div class="code__wrapper_header_title">FLIP 动画思路做一个交换 dom 元素过渡动画</div>
         <div class="tools">
-          <!-- <div class="home__icon" onclick="window.location.href = '/'"></div> -->
+          <div class="home__icon" onclick="window.location.href = '/'"></div>
           <!-- <div class="fs__icon"></div> -->
         </div>
       </div>
@@ -44,7 +44,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: calc(100% - 20px);
+  height: 100%;
 }
 .operate-btn {
   font-size: 1em;
@@ -75,7 +75,7 @@ li {
       <div class="code__wrapper_bottom">
         <div class="code__wrapper_top-js">
           <div class="title">JAVASCRIPT</div>
-          <textarea id="cssJs">const list = document.querySelectorAll(&#34;.list-item&#34;);
+          <textarea id="jsCode">const list = document.querySelectorAll(&#34;.list-item&#34;);
 const ul = document.querySelector(&#34;ul&#34;);
 const operateBtn = document.querySelector(&#34;.operate-btn&#34;);
 
@@ -190,9 +190,9 @@ operateBtn.addEventListener(&#34;click&#34;, () =&gt; {
         </div>
       </div>
     </div>
+    <script src="assets/lib/jquery-3.7.1.min.js"></script>
     <link rel="stylesheet" href="assets/codemirror5/lib/codemirror.css" />
     <link rel="stylesheet" href="assets/codemirror5/addon/hint/show-hint.css" />
-    <script src="assets/lib/jquery-3.7.1.min.js"></script>
     <script src="assets/codemirror5/lib/codemirror.js"></script>
     <script src="assets/codemirror5/addon/hint/show-hint.js"></script>
     <script src="assets/codemirror5/addon/hint/xml-hint.js"></script>

@@ -13,7 +13,7 @@
       <div class="code__wrapper_header">
         <div class="code__wrapper_header_title">一个炫酷的 CSS 效果</div>
         <div class="tools">
-          <!-- <div class="home__icon" onclick="window.location.href = '/'"></div> -->
+          <div class="home__icon" onclick="window.location.href = '/'"></div>
           <!-- <div class="fs__icon"></div> -->
         </div>
       </div>
@@ -89,7 +89,12 @@
         </div>
         <div class="code__wrapper_top-css">
           <div class="title">CSS</div>
-          <textarea id="cssCode">body {
+          <textarea id="cssCode">* {
+  padding: 0;
+  margin: 0
+}
+
+body {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -372,7 +377,7 @@
       <div class="code__wrapper_bottom">
         <div class="code__wrapper_top-js">
           <div class="title">JAVASCRIPT</div>
-          <textarea id="cssJs">var elem = document.querySelector(&#34;.main1&#34;);
+          <textarea id="jsCode">var elem = document.querySelector(&#34;.main1&#34;);
 var isDragging = false; // 用于判断是否正在拖动
 var initialX = 0; // 初始鼠标X坐标
 var initialY = 0; // 初始鼠标Y坐标
@@ -423,9 +428,9 @@ document.addEventListener(&#34;mouseup&#34;, function () {
         </div>
       </div>
     </div>
+    <script src="assets/lib/jquery-3.7.1.min.js"></script>
     <link rel="stylesheet" href="assets/codemirror5/lib/codemirror.css" />
     <link rel="stylesheet" href="assets/codemirror5/addon/hint/show-hint.css" />
-    <script src="assets/lib/jquery-3.7.1.min.js"></script>
     <script src="assets/codemirror5/lib/codemirror.js"></script>
     <script src="assets/codemirror5/addon/hint/show-hint.js"></script>
     <script src="assets/codemirror5/addon/hint/xml-hint.js"></script>

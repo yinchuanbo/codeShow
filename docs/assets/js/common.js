@@ -4,7 +4,7 @@ let previewBtn = document.querySelector(".fs__icon"),
   livePreviewFrame = document.getElementById("live-preview"),
   textareaHTML = document.getElementById("htmlCode"),
   textareaCSS = document.getElementById("cssCode"),
-  textareaJS = document.getElementById("cssJs"),
+  textareaJS = document.getElementById("jsCode"),
   codeWrapper = document.querySelector(".code__wrapper"),
   theme = "blackboard",
   codeMirrorHtml,
@@ -30,48 +30,36 @@ function initEditor() {
     mode: "javascript",
     theme,
   });
+  setupLivePreviewStudio();
 }
 
 function initializeLivePreview() {
-  livePreviewFrame.contentWindow.document.body.innerHTML = "";
+  const doc = livePreviewFrame.contentWindow.document;
+  doc.body.innerHTML = "";
   const styleElement = document.createElement("style");
   styleElement.setAttribute("id", "live-preview-style");
-  livePreviewFrame.contentWindow.document.head.appendChild(styleElement);
+  doc.head.appendChild(styleElement);
   const pagedJsScript = document.createElement("script");
   pagedJsScript.src = "https://unpkg.com/pagedjs/dist/paged.legacy.polyfill.js";
-  livePreviewFrame.contentWindow.document.head.appendChild(pagedJsScript);
+  doc.head.appendChild(pagedJsScript);
 }
 
 function setupLivePreviewStudio() {
+  const doc = livePreviewFrame.contentWindow.document;
   CodeMirror.on(codeMirrorHtml, "change", () => {
     let val = codeMirrorHtml.getValue();
-    livePreviewFrame.contentWindow.document.body.innerHTML = val;
+    doc.body.innerHTML = val;
   });
   CodeMirror.on(codeMirrorCss, "change", () => {
-    const styleElement =
-      livePreviewFrame.contentWindow.document.getElementById(
-        "live-preview-style"
-      );
+    const styleElement = doc.getElementById("live-preview-style");
     let val = codeMirrorCss.getValue();
     styleElement.innerHTML = val;
   });
   CodeMirror.on(codeMirrorJs, "change", () => {
-    try {
-      const scripts =
-        livePreviewFrame.contentWindow.document.body.getElementsByTagName(
-          "script"
-        );
-      for (let i = 0; i < scripts.length; i++) {
-        const script = scripts[i];
-        script.remove();
-      }
-      const scriptElement = document.createElement("script");
-      let val = codeMirrorJs.getValue();
-      scriptElement.innerHTML = val;
-      livePreviewFrame.contentWindow.document.body.appendChild(scriptElement);
-    } catch (error) {
-      console.log("error", error);
-    }
+    let val = codeMirrorJs.getValue();
+    const bodyDom = doc.body;
+    const scriptDom = bodyDom.querySelector("#script__preview");
+    scriptDom.innerHTML = val;
   });
 }
 
@@ -87,42 +75,30 @@ function events() {
 }
 
 function loadCode() {
+  let doc = livePreviewFrame.contentWindow.document;
   let html = codeMirrorHtml.getValue();
   if (html) {
-    livePreviewFrame.contentWindow.document.body.innerHTML = html;
+    doc.body.innerHTML = html;
   }
+  const scriptDomC = document.createElement("script");
+  scriptDomC.id = "script__preview";
+  doc.body.appendChild(scriptDomC);
   let css = codeMirrorCss.getValue();
   if (css) {
-    const styleElement =
-      livePreviewFrame.contentWindow.document.getElementById(
-        "live-preview-style"
-      );
+    const styleElement = doc.getElementById("live-preview-style");
     styleElement.innerHTML = css;
   }
-  try {
-    let js = codeMirrorJs.getValue();
-    if (js) {
-      const scripts =
-        livePreviewFrame.contentWindow.document.body.getElementsByTagName(
-          "script"
-        );
-      for (let i = 0; i < scripts.length; i++) {
-        const script = scripts[i];
-        script.remove();
-      }
-      const scriptElement = document.createElement("script");
-      scriptElement.innerHTML = js;
-      livePreviewFrame.contentWindow.document.body.appendChild(scriptElement);
-    }
-  } catch (error) {
-    console.log("error", error);
+  let js = codeMirrorJs.getValue();
+  if (js) {
+    const bodyDom = doc.body;
+    const scriptDom = bodyDom.querySelector("#script__preview");
+    scriptDom.innerHTML = js;
   }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  initEditor();
   initializeLivePreview();
-  setupLivePreviewStudio();
+  initEditor();
   events();
   loadCode();
 });

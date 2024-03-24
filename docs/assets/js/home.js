@@ -15,6 +15,7 @@ function calculateTotalPages(totalItems, itemsPerPage) {
 let pagesNum = calculateTotalPages(lisLens, needLens);
 
 const changePage = () => {
+  localStorage.setItem("curNum", curNum);
   if (curNum <= 0) {
     prevPage.style.display = "none";
     nextPage.style.display = "block";
@@ -65,11 +66,8 @@ const initLiLists = () => {
 };
 
 const initPageChangeBtn = () => {
-  if (pageNum <= 0) {
-    pageNum = 0;
-    prevPage.style.display = "none";
-    nextPage.style.display = "block";
-  }
+  curNum = Number(localStorage.getItem("curNum") ?? 0);
+  changePage();
 };
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -84,7 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
         element.style.display = "block";
         prevPage.style.display = "none";
         nextPage.style.display = "none";
-        seeAll.innerHTML = "收回";
+        seeAll.innerHTML = "查看分页文章";
       }
     } else {
       // 回收

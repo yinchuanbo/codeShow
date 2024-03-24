@@ -11,7 +11,7 @@
     <div class="code__wrapper">
       <div class="close__fs"></div>
       <div class="code__wrapper_header">
-        <div class="code__wrapper_header_title">无缝轮播</div>
+        <div class="code__wrapper_header_title">雷达扫描</div>
         <div class="tools">
           <div class="home__icon" onclick="window.location.href = '/'"></div>
           <!-- <div class="fs__icon"></div> -->
@@ -20,14 +20,7 @@
       <div class="code__wrapper_top">
         <div class="code__wrapper_top-html">
           <div class="title">HTML</div>
-          <textarea id="htmlCode">&lt;div class=&#34;box&#34;&gt;
-  &lt;div class=&#34;list&#34;&gt;
-    &lt;div&gt;1&lt;/div&gt;
-    &lt;div&gt;2&lt;/div&gt;
-    &lt;div&gt;3&lt;/div&gt;
-    &lt;div&gt;4&lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;</textarea>
+          <textarea id="htmlCode">&lt;div class=&#34;radar&#34;&gt;&lt;/div&gt;</textarea>
         </div>
         <div class="code__wrapper_top-css">
           <div class="title">CSS</div>
@@ -37,56 +30,64 @@
 }
 
 body {
+  margin: 0;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  background: radial-gradient(circle at center, silver, black);
 }
 
-.box {
-  width: 320px;
-  height: 80px;
-  overflow: hidden;
+.radar {
+  width: calc(8em + 1.5em);
+  height: calc(8em + 1.5em);
+  font-size: 30px;
+  background-color: black;
+  background-image: linear-gradient(
+      90deg,
+      transparent 49.75%,
+      darkgreen 49.75%,
+      darkgreen 50.25%,
+      transparent 50.25%
+    ), linear-gradient(
+      transparent 49.75%,
+      darkgreen 49.75%,
+      darkgreen 50.25%,
+      transparent 50.25%
+    ), repeating-radial-gradient(transparent 0, transparent 0.95em, darkgreen
+        0.95em, darkgreen 1em);
   position: relative;
-  border: 1px solid gray;
+  border-radius: 50%;
 }
 
-.list {
+.radar::before {
+  content: &#34;&#34;;
   position: absolute;
-  left: 0;
-  display: flex;
-  align-items: center;
-  transition: left 0.5s ease;
+  width: calc(8em / 2);
+  height: calc(8em / 2);
+  background: linear-gradient(
+    45deg,
+    rgba(0, 0, 0, 0) 50%,
+    rgba(0, 192, 0, 1) 100%
+  );
+  border-radius: 100% 0 0 0;
+  left: calc(1.5em / 2);
+  top: calc(1.5em / 2);
+  animation: scaning 5s linear infinite;
+  transform-origin: right bottom;
 }
 
-.list &gt; div {
-  width: 80px;
-  height: 80px;
-  border: 1px solid gray;
-  box-sizing: border-box;
-  color: #fff;
-  text-align: center;
-  line-height: 80px;
+@keyframes scaning {
+  to {
+    transform: rotate(1turn);
+  }
 }</textarea>
         </div>
       </div>
       <div class="code__wrapper_bottom">
         <div class="code__wrapper_top-js">
           <div class="title">JAVASCRIPT</div>
-          <textarea id="jsCode">let list = document.querySelector(&#34;.list&#34;);
-list.innerHTML += list.innerHTML;
-let left = 0;
-
-setInterval(() =&gt; {
-  left -= 80;
-  if (left === -(5 * 80)) {
-    list.style.transition = &#34;none&#34;; // Remove transition
-    left = 0;
-    setTimeout(() =&gt; {
-      list.style.transition = &#34;left 0.5s ease&#34;; // Restore transition after a short delay
-    }, 0);
-  }
-  list.style.left = left + &#34;px&#34;;
-}, 2000);</textarea>
+          <textarea id="jsCode"></textarea>
         </div>
         <div class="code__wrapper_top-preview">
           <div class="fs__icon"></div>

@@ -13,7 +13,7 @@
       <div class="code__wrapper_header">
         <div class="code__wrapper_header_title">当文字成为雨滴</div>
         <div class="tools">
-          <!-- <div class="home__icon" onclick="window.location.href = '/'"></div> -->
+          <div class="home__icon" onclick="window.location.href = '/'"></div>
           <!-- <div class="fs__icon"></div> -->
         </div>
       </div>
@@ -46,8 +46,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  background-color: var(--body-color);
+  height: 100%;
+  /* background-color: var(--body-color); */
 }
 
 .container {
@@ -122,7 +122,7 @@ body {
       <div class="code__wrapper_bottom">
         <div class="code__wrapper_top-js">
           <div class="title">JAVASCRIPT</div>
-          <textarea id="cssJs">// 生成字母和数字数组
+          <textarea id="jsCode">// 生成字母和数字数组
 function generateText() {
   const letters = [];
   const numbers = [];
@@ -180,9 +180,9 @@ setInterval(() =&gt; rainEffect(), 20);</textarea>
         </div>
       </div>
     </div>
+    <script src="assets/lib/jquery-3.7.1.min.js"></script>
     <link rel="stylesheet" href="assets/codemirror5/lib/codemirror.css" />
     <link rel="stylesheet" href="assets/codemirror5/addon/hint/show-hint.css" />
-    <script src="assets/lib/jquery-3.7.1.min.js"></script>
     <script src="assets/codemirror5/lib/codemirror.js"></script>
     <script src="assets/codemirror5/addon/hint/show-hint.js"></script>
     <script src="assets/codemirror5/addon/hint/xml-hint.js"></script>

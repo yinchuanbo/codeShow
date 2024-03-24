@@ -13,7 +13,7 @@
       <div class="code__wrapper_header">
         <div class="code__wrapper_header_title">利用 FLIP 思路完成过渡动画</div>
         <div class="tools">
-          <!-- <div class="home__icon" onclick="window.location.href = '/'"></div> -->
+          <div class="home__icon" onclick="window.location.href = '/'"></div>
           <!-- <div class="fs__icon"></div> -->
         </div>
       </div>
@@ -25,12 +25,17 @@
         </div>
         <div class="code__wrapper_top-css">
           <div class="title">CSS</div>
-          <textarea id="cssCode">body {
+          <textarea id="cssCode">* {
+  padding: 0;
+  margin: 0
+}
+
+body {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: calc(100% - 20px)
+  height: 100%;
 }
 
 .row span {
@@ -48,7 +53,7 @@ button {
       <div class="code__wrapper_bottom">
         <div class="code__wrapper_top-js">
           <div class="title">JAVASCRIPT</div>
-          <textarea id="cssJs">const render = (arr) =&gt; {
+          <textarea id="jsCode">const render = (arr) =&gt; {
   document.getElementById(&#34;row&#34;).innerHTML = arr
     .map((v) =&gt; `&lt;span id=&#34;k${v}&#34;&gt;${v}&lt;/span&gt;`)
     .join(&#34;&#34;);
@@ -119,9 +124,9 @@ function randomFLIP() {
         </div>
       </div>
     </div>
+    <script src="assets/lib/jquery-3.7.1.min.js"></script>
     <link rel="stylesheet" href="assets/codemirror5/lib/codemirror.css" />
     <link rel="stylesheet" href="assets/codemirror5/addon/hint/show-hint.css" />
-    <script src="assets/lib/jquery-3.7.1.min.js"></script>
     <script src="assets/codemirror5/lib/codemirror.js"></script>
     <script src="assets/codemirror5/addon/hint/show-hint.js"></script>
     <script src="assets/codemirror5/addon/hint/xml-hint.js"></script>
