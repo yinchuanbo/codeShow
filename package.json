@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "w": "pm2 start start.js --name codeShow --restart-delay 5000"
+    "w": "pm2 start start.js --name codeShow --restart-delay 5000",
+    "s": "pm2 stop all"
   },
   "keywords": [],
   "author": "",
