@@ -9,7 +9,12 @@ let previewBtn = document.querySelector(".fs__icon"),
   theme = "blackboard",
   codeMirrorHtml,
   codeMirrorCss,
-  codeMirrorJs, iframeWrapper, styleContent, scriptContent;
+  codeMirrorJs,
+  iframeDocument,
+  iframeWrapper,
+  styleContent,
+  scriptContent,
+  timer = null;
 
 function initEditor() {
   codeMirrorHtml = CodeMirror.fromTextArea(textareaHTML, {
@@ -43,8 +48,15 @@ function setupLivePreviewStudio() {
     styleContent.innerHTML = val;
   });
   CodeMirror.on(codeMirrorJs, "change", () => {
+    clearTimeout(timer);
+    timer = null;
     let val = codeMirrorJs.getValue();
     scriptContent.innerHTML = val;
+    timer = setTimeout(() => {
+      iframeDocument.location.reload();
+      clearTimeout(timer);
+      timer = null;
+    }, 3000);
   });
 }
 
@@ -61,7 +73,7 @@ function events() {
 
 function loadCode() {
   livePreviewBtn.onload = function () {
-    let iframeDocument =
+    iframeDocument =
       livePreviewBtn.contentDocument || livePreviewBtn.contentWindow.document;
     iframeWrapper = iframeDocument.getElementById("iframe__wrapper");
     styleContent = iframeDocument.getElementById("live-preview-style");
