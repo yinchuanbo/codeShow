@@ -1,20 +1,24 @@
-const fs = require("fs");
-const spawn = require("cross-spawn");
-const folderPath = "./md";
+const fs = require('fs');
+const { spawn } = require('child_process');
+const { exec } = require('child_process');
 
-fs.watch(folderPath, (eventType, filename) => {
-  if (filename && filename.endsWith(".md") && eventType === "change") {
-    console.log(`${filename} has been modified. Executing command...`);
-    const child = spawn("node", ["app.js"], {
-      stdio: "inherit",
+const mdFolder = './md';
+const appScript = 'app.js';
+
+exec('node doc.js');
+
+fs.watch(mdFolder, (eventType, filename) => {
+  if (filename && filename.endsWith('.md')) {
+    console.log(`File ${filename} has been ${eventType}`);
+    const appProcess = spawn('node', [appScript]);
+    appProcess.stdout.on('data', (data) => {
+      console.log(`stdout: ${data}`);
     });
-
-    child.on("error", (error) => {
-      console.error(`Error executing command: ${error}`);
+    appProcess.stderr.on('data', (data) => {
+      console.error(`stderr: ${data}`);
     });
-
-    child.on("exit", (code) => {
-      console.log(`Command exited with code ${code}`);
+    appProcess.on('close', (code) => {
+      console.log(`app.js process exited with code ${code}`);
     });
   }
 });
