@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>codeShow</title>
+    <link rel="stylesheet" href="assets/codemirror5/theme/blackboard.css" />
+    <link rel="stylesheet" href="assets/css/common.css" />
+  </head>
+  <body>
+    <div class="code__wrapper">
+      <div class="close__fs"></div>
+      <div class="code__wrapper_header">
+        <div class="code__wrapper_header_title">Sliding tabs</div>
+        <div class="tools">
+          <div class="home__icon" onclick="window.location.href = '/'"></div>
+        </div>
+      </div>
+      <div class="code__wrapper_top">
+        <div class="code__wrapper_top-html">
+          <div class="title">HTML</div>
+          <textarea id="htmlCode">&lt;div class=&#34;container&#34;&gt;
+  &lt;div class=&#34;tabs&#34;&gt;
+    &lt;input type=&#34;radio&#34; id=&#34;radio-1&#34; name=&#34;tabs&#34; checked /&gt;
+    &lt;label class=&#34;tab&#34; for=&#34;radio-1&#34;&gt;Upcoming&lt;/label&gt;
+    &lt;input type=&#34;radio&#34; id=&#34;radio-2&#34; name=&#34;tabs&#34; /&gt;
+    &lt;label class=&#34;tab&#34; for=&#34;radio-2&#34;&gt;Development&lt;/label&gt;
+    &lt;input type=&#34;radio&#34; id=&#34;radio-3&#34; name=&#34;tabs&#34; /&gt;
+    &lt;label class=&#34;tab&#34; for=&#34;radio-3&#34;&gt;Completed&lt;/label&gt;
+    &lt;span class=&#34;glider&#34;&gt;&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</textarea>
+        </div>
+        <div class="code__wrapper_top-css">
+          <div class="title">CSS</div>
+          <textarea id="cssCode">@import url(&#34;https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;display=swap&#34;);
+
+:root {
+  --primary-color: #185ee0;
+  --secondary-color: #e6eef9;
+}
+
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: &#34;Inter&#34;, sans-serif;
+  background-color: rgba(#e6eef9, 0.5);
+}
+.container {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.tabs {
+  display: flex;
+  position: relative;
+  background-color: #fff;
+  box-shadow: 0 0 1px 0 rgba(#185ee0, 0.15), 0 6px 12px 0 rgba(#185ee0, 0.15);
+  padding: 0.75rem;
+  border-radius: 99px;
+  * {
+    z-index: 2;
+  }
+}
+
+input[type=&#34;radio&#34;] {
+  display: none;
+}
+
+.tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 54px;
+  width: 200px;
+  font-size: 1.25rem;
+  font-weight: 500;
+  border-radius: 99px;
+  cursor: pointer;
+  transition: color 0.15s ease-in;
+}
+
+.notification {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  margin-left: 0.75rem;
+  border-radius: 50%;
+  background-color: var(--secondary-color);
+  transition: 0.15s ease-in;
+}
+
+input[type=&#34;radio&#34;] {
+  &amp;:checked {
+    &amp; + label {
+      color: var(--primary-color);
+      &amp; &gt; .notification {
+        background-color: var(--primary-color);
+        color: #fff;
+      }
+    }
+  }
+}
+
+input[id=&#34;radio-1&#34;] {
+  &amp;:checked {
+    &amp; ~ .glider {
+      transform: translateX(0);
+    }
+  }
+}
+
+input[id=&#34;radio-2&#34;] {
+  &amp;:checked {
+    &amp; ~ .glider {
+      transform: translateX(100%);
+    }
+  }
+}
+
+input[id=&#34;radio-3&#34;] {
+  &amp;:checked {
+    &amp; ~ .glider {
+      transform: translateX(200%);
+    }
+  }
+}
+
+.glider {
+  position: absolute;
+  display: flex;
+  height: 54px;
+  width: 200px;
+  background-color: var(--secondary-color);
+  z-index: 1;
+  border-radius: 99px;
+  transition: 0.25s ease-out;
+}
+
+@media (max-width: 700px) {
+  .tabs {
+    transform: scale(0.6);
+  }
+}</textarea>
+        </div>
+        <div class="code__wrapper_top-js">
+          <div class="title">JAVASCRIPT</div>
+          <textarea id="jsCode"></textarea>
+        </div>
+      </div>
+      <div class="code__wrapper_bottom">
+        <!-- <div class="code__wrapper_top-js">
+          <div class="title">JAVASCRIPT</div>
+          <textarea id="jsCode"></textarea>
+        </div> -->
+        <div class="code__wrapper_top-preview">
+          <div class="fs__icon"></div>
+          <iframe id="live-preview" src="assets/templates/template-iframe.html" width="100%" height="100%" allow="accelerometer *; camera *; encrypted-media *; display-capture *; geolocation *; gyroscope *; microphone *; midi *; clipboard-read *; clipboard-write *; web-share *; serial *; xr-spatial-tracking *" allowfullscreen="true" allowpaymentrequest="true" allowtransparency="true" sandbox="allow-forms allow-modals allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation allow-downloads allow-presentation" class="result-iframe iframe-visual-update" name="codeShow" loading="lazy"></iframe>
+        </div>
+      </div>
+    </div>
+    <script src="assets/lib/jquery-3.7.1.min.js"></script>
+    <link rel="stylesheet" href="assets/codemirror5/lib/codemirror.css" />
+    <link rel="stylesheet" href="assets/codemirror5/addon/hint/show-hint.css" />
+    <script src="assets/codemirror5/lib/codemirror.js"></script>
+    <script src="assets/codemirror5/addon/hint/show-hint.js"></script>
+    <script src="assets/codemirror5/addon/hint/xml-hint.js"></script>
+    <script src="assets/codemirror5/addon/hint/html-hint.js"></script>
+    <script src="assets/codemirror5/mode/xml/xml.js"></script>
+    <script src="assets/codemirror5/mode/javascript/javascript.js"></script>
+    <script src="assets/codemirror5/mode/css/css.js"></script>
+    <script src="assets/codemirror5/mode/htmlmixed/htmlmixed.js"></script>
+    <script src="assets/codemirror5/addon/hint/css-hint.js"></script>
+    <script src="assets/js/common.js"></script>
+  </body>
+</html>
