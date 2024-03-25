@@ -40,8 +40,15 @@ function initEditor() {
 
 function setupLivePreviewStudio() {
   CodeMirror.on(codeMirrorHtml, "change", () => {
+    clearTimeout(timer);
+    timer = null;
     let val = codeMirrorHtml.getValue();
     iframeWrapper.innerHTML = val;
+    timer = setTimeout(() => {
+      iframeDocument.location.reload();
+      clearTimeout(timer);
+      timer = null;
+    }, 3000);
   });
   CodeMirror.on(codeMirrorCss, "change", () => {
     let val = codeMirrorCss.getValue();
