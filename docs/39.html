@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>codeShow</title>
+    <link rel="stylesheet" href="assets/codemirror5/theme/blackboard.css" />
+    <link rel="stylesheet" href="assets/css/common.css" />
+  </head>
+  <body>
+    <div class="code__wrapper">
+      <div class="close__fs"></div>
+      <div class="code__wrapper_header">
+        <div class="code__wrapper_header_title">官网效果 [pc + mobile]</div>
+        <div class="tools">
+          <div class="home__icon" onclick="window.location.href = '/'"></div>
+        </div>
+      </div>
+      <div class="code__wrapper_top">
+        <div class="code__wrapper_top-html">
+          <div class="title">HTML</div>
+          <textarea id="htmlCode">&lt;section class=&#34;traditional__compare&#34;&gt;
+  &lt;h2 class=&#34;traditional__compare_title&#34;&gt;
+    Traditional Approach vs. AI Video Translation
+  &lt;/h2&gt;
+  &lt;p class=&#34;traditional__compare_desc&#34;&gt;
+    AI is transforming video translation, helping break down language barriers
+    and engage with global audiences more easily. It has proven to be highly
+    superior to the manual method in many aspects.
+  &lt;/p&gt;
+  &lt;div class=&#34;traditional__compare_lists&#34;&gt;
+    &lt;div class=&#34;traditional__compare_top traditional__compare_box&#34;&gt;
+      &lt;h3 class=&#34;traditional__compare_box-title&#34;&gt;Traditional Approach&lt;/h3&gt;
+      &lt;ul class=&#34;traditional__compare_box-ul&#34;&gt;
+        &lt;li class=&#34;traditional__compare_box-li&#34;&gt;At least 24-hour delivery&lt;/li&gt;
+        &lt;li class=&#34;traditional__compare_box-li&#34;&gt;
+          $39 to $53 for a 1-min video with subtitles
+        &lt;/li&gt;
+        &lt;li class=&#34;traditional__compare_box-li&#34;&gt;
+          Need to find &amp;amp; hire a human translator
+        &lt;/li&gt;
+        &lt;li class=&#34;traditional__compare_box-li&#34;&gt;
+          Can’t always guarantee high quality
+        &lt;/li&gt;
+        &lt;li class=&#34;traditional__compare_box-li&#34;&gt;
+          Only offer 1-2 language pairs
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;traditional__compare_bottom traditional__compare_box&#34;&gt;
+      &lt;h3 class=&#34;traditional__compare_box-title&#34;&gt;
+        Vidnoz AI Video Translation
+      &lt;/h3&gt;
+      &lt;ul class=&#34;traditional__compare_box-ul&#34;&gt;
+        &lt;li class=&#34;traditional__compare_box-li&#34;&gt;Less than 5 minutes&lt;/li&gt;
+        &lt;li class=&#34;traditional__compare_box-li&#34;&gt;Free to use&lt;/li&gt;
+        &lt;li class=&#34;traditional__compare_box-li&#34;&gt;
+          Online tool that works anywhere anytime
+        &lt;/li&gt;
+        &lt;li class=&#34;traditional__compare_box-li&#34;&gt;
+          Top-tier quality across all languages
+        &lt;/li&gt;
+        &lt;li class=&#34;traditional__compare_box-li&#34;&gt;Support for 140+ languages&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;button type=&#34;button&#34; class=&#34;primary&#34; onclick=&#34;window.scrollTo(0, 0)&#34;&gt;
+    Translate Now
+  &lt;/button&gt;
+&lt;/section&gt;</textarea>
+        </div>
+        <div class="code__wrapper_top-css">
+          <div class="title">CSS</div>
+          <textarea id="cssCode">@import url(&#39;https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap&#39;);
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: &#34;Poppins&#34;, sans-serif;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  scroll-behavior: smooth;
+  user-select: none;
+}
+html,
+body {
+  box-sizing: inherit;
+}
+:root {
+  --btn-bg-color: #8b3dff;
+  --text-color: #fff;
+  --text-b-color: #000000;
+  --border-color: #ebebeb;
+  --border-radius: 3px;
+  --ball-color: #ddc7ff;
+  --border-top-color: #a065f9;
+  --dot-color: #beb8cb;
+  --dot-active-color: #6d4dff;
+  --bg-color: #f8f8f8;
+  --border-bottom-color: #d2d0de;
+  --a-val: 0.17;
+  --click-btn-color: #15151c;
+  --bg-hover-color: #eadcff;
+  --article-border-color: #d7d4e5;
+}
+ul,
+li {
+  list-style: none;
+}
+a {
+  color: var(--btn-bg-color);
+}
+button.primary {
+  outline: none;
+  border: 0;
+  cursor: pointer;
+  background-color: #6d4dff;
+  width: 81.3333333333vw;
+  height: 13.3333333333vw;
+  border-radius: 6.6666666667vw;
+  color: var(--text-color);
+  font-size: 4.2666666667vw;
+  font-weight: 500;
+}
+@media (min-width: 1200px) {
+  button.primary {
+    outline: none;
+    border: 0;
+    cursor: pointer;
+    background-color: #6d4dff;
+    width: 312px;
+    height: 49px;
+    border-radius: 25px;
+    color: var(--text-color);
+    font-size: 18px;
+    font-weight: 500;
+    transition: all 0.5s;
+  }
+  button.primary:hover {
+    background: #4a34da;
+    transition: all 0.5s;
+  }
+}
+.traditional__compare {
+  padding-top: 13.3333333333vw;
+  padding-bottom: 13.3333333333vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-image: linear-gradient(88deg, #fff9f9, #ebe9ff);
+}
+.traditional__compare .traditional__compare_title {
+  max-width: 84vw;
+  margin-bottom: 3.2vw;
+  font-size: 5.8666666667vw;
+  font-weight: 600;
+  line-height: 9.4666666667vw;
+  font-family: inherit;
+  color: var(--text-b-color);
+  text-align: center;
+}
+.traditional__compare .traditional__compare_desc {
+  max-width: 84vw;
+  margin-bottom: 5.3333333333vw;
+  font-size: 4.2666666667vw;
+  font-weight: 300;
+  line-height: 7.3333333333vw;
+  font-family: inherit;
+  color: var(--text-b-color);
+  text-align: center;
+}
+.traditional__compare .traditional__compare_lists {
+  margin-bottom: 6.6666666667vw;
+}
+.traditional__compare .traditional__compare_lists .traditional__compare_box {
+  width: 84vw;
+  background-image: linear-gradient(324deg, #e9d9ff, #e7d6ff);
+  padding-top: 10.9333333333vw;
+  padding-bottom: 13.8666666667vw;
+  border-radius: 2.6666666667vw;
+}
+.traditional__compare
+  .traditional__compare_lists
+  .traditional__compare_box
+  + .traditional__compare_box {
+  margin-top: 5.3333333333vw;
+}
+.traditional__compare
+  .traditional__compare_lists
+  .traditional__compare_box-title {
+  padding-left: 5.0666666667vw;
+  padding-bottom: 3.4666666667vw;
+  position: relative;
+  font-size: 4.2666666667vw;
+  font-weight: 600;
+  line-height: 6.4vw;
+  font-family: inherit;
+  color: var(--text-b-color);
+  text-align: left;
+}
+.traditional__compare
+  .traditional__compare_lists
+  .traditional__compare_box-title::after {
+  content: &#34;&#34;;
+  position: absolute;
+  left: 5.3333333333vw;
+  top: 100%;
+  width: 73.2vw;
+  height: 1px;
+  background-color: rgba(160, 101, 249, var(--a-val));
+}
+.traditional__compare .traditional__compare_lists .traditional__compare_box-ul {
+  margin: 0 auto;
+}
+.traditional__compare .traditional__compare_lists .traditional__compare_box-li {
+  width: 100%;
+  height: 11.0666666667vw;
+  padding-left: 13.3333333333vw;
+  position: relative;
+  font-size: 3.2vw;
+  font-weight: 300;
+  line-height: 11.0666666667vw;
+  font-family: inherit;
+  color: var(--text-b-color);
+  text-align: left;
+}
+.traditional__compare
+  .traditional__compare_lists
+  .traditional__compare_box-li::after {
+  content: &#34;&#34;;
+  position: absolute;
+  left: 5.3333333333vw;
+  top: 100%;
+  width: 73.2vw;
+  height: 1px;
+  background-color: rgba(160, 101, 249, var(--a-val));
+}
+.traditional__compare
+  .traditional__compare_lists
+  .traditional__compare_box-li::before {
+  content: &#34;&#34;;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 5.3333333333vw;
+  width: 5.0666666667vw;
+  height: 5.0666666667vw;
+  border-radius: 100%;
+  background-color: transparent;
+  background-image: url(&#34;https://www.vidnoz.com/img/video-translate/icon_1.svg&#34;);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.traditional__compare .traditional__compare_lists .traditional__compare_bottom {
+  background-image: linear-gradient(164deg, #8b3dff, #912ad5);
+  box-shadow: 0px 10px 40px #ab97c9;
+}
+.traditional__compare
+  .traditional__compare_lists
+  .traditional__compare_bottom
+  .traditional__compare_box-title,
+.traditional__compare
+  .traditional__compare_lists
+  .traditional__compare_bottom
+  .traditional__compare_box-li {
+  color: var(--text-color);
+}
+.traditional__compare
+  .traditional__compare_lists
+  .traditional__compare_bottom
+  .traditional__compare_box-title::after,
+.traditional__compare
+  .traditional__compare_lists
+  .traditional__compare_bottom
+  .traditional__compare_box-li::after {
+  --a-val: 0.72;
+}
+.traditional__compare
+  .traditional__compare_lists
+  .traditional__compare_bottom
+  .traditional__compare_box-li::before {
+  background-color: transparent;
+  background-image: url(&#34;https://www.vidnoz.com/img/video-translate/icon_2.svg&#34;);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+@media (min-width: 1200px) {
+  .traditional__compare {
+    padding-top: 100px;
+    padding-bottom: 80px;
+  }
+  .traditional__compare .traditional__compare_title {
+    font-size: 44px;
+    font-weight: 600;
+    line-height: 61px;
+    font-family: inherit;
+    color: var(--text-b-color);
+    text-align: center;
+    margin-bottom: 15px;
+  }
+  .traditional__compare .traditional__compare_desc {
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 25px;
+    font-family: inherit;
+    color: var(--text-b-color);
+    text-align: center;
+    max-width: 980px;
+    margin-bottom: 68px;
+  }
+  .traditional__compare .traditional__compare_lists {
+    display: flex;
+    align-items: center;
+    margin-bottom: 50px;
+  }
+  .traditional__compare .traditional__compare_lists .traditional__compare_box {
+    width: 453px;
+    height: 482px;
+    border-radius: 20px;
+    padding-top: 64px;
+    padding-bottom: 0;
+  }
+  .traditional__compare
+    .traditional__compare_lists
+    .traditional__compare_box
+    + .traditional__compare_box {
+    margin-top: 0;
+  }
+  .traditional__compare
+    .traditional__compare_lists
+    .traditional__compare_box:not(.traditional__compare_bottom) {
+    margin-right: -35px;
+  }
+  .traditional__compare
+    .traditional__compare_lists
+    .traditional__compare_bottom {
+    width: 448px;
+    height: 554px;
+    padding-top: 85px;
+  }
+  .traditional__compare
+    .traditional__compare_lists
+    .traditional__compare_bottom
+    .traditional__compare_box-title {
+    padding-bottom: 42px;
+  }
+  .traditional__compare
+    .traditional__compare_lists
+    .traditional__compare_box-title {
+    padding-left: 44px;
+    padding-bottom: 19px;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 28px;
+    font-family: inherit;
+    color: var(--text-b-color);
+    text-align: left;
+  }
+  .traditional__compare
+    .traditional__compare_lists
+    .traditional__compare_box-title::after {
+    width: 333px;
+    left: 44px;
+  }
+  .traditional__compare
+    .traditional__compare_lists
+    .traditional__compare_box-li {
+    padding-left: 81px;
+    height: 60px;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 60px;
+    font-family: inherit;
+    color: var(--text-b-color);
+    text-align: left;
+  }
+  .traditional__compare
+    .traditional__compare_lists
+    .traditional__compare_box-li::before {
+    left: 44px;
+    width: 20px;
+    height: 20px;
+  }
+  .traditional__compare
+    .traditional__compare_lists
+    .traditional__compare_box-li:after {
+    width: 333px;
+    left: 44px;
+  }
+}</textarea>
+        </div>
+        <div class="code__wrapper_top-js">
+          <div class="title">JAVASCRIPT</div>
+          <textarea id="jsCode"></textarea>
+        </div>
+      </div>
+      <div class="code__wrapper_bottom">
+        <!-- <div class="code__wrapper_top-js">
+          <div class="title">JAVASCRIPT</div>
+          <textarea id="jsCode"></textarea>
+        </div> -->
+        <div class="code__wrapper_top-preview">
+          <div class="fs__icon"></div>
+          <iframe id="live-preview" src="assets/templates/template-iframe.html" width="100%" height="100%" allow="accelerometer *; camera *; encrypted-media *; display-capture *; geolocation *; gyroscope *; microphone *; midi *; clipboard-read *; clipboard-write *; web-share *; serial *; xr-spatial-tracking *" allowfullscreen="true" allowpaymentrequest="true" allowtransparency="true" sandbox="allow-forms allow-modals allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation allow-downloads allow-presentation" class="result-iframe iframe-visual-update" name="codeShow" loading="lazy"></iframe>
+        </div>
+      </div>
+    </div>
+    <script src="assets/lib/jquery-3.7.1.min.js"></script>
+    <link rel="stylesheet" href="assets/codemirror5/lib/codemirror.css" />
+    <link rel="stylesheet" href="assets/codemirror5/addon/hint/show-hint.css" />
+    <script src="assets/codemirror5/lib/codemirror.js"></script>
+    <script src="assets/codemirror5/addon/hint/show-hint.js"></script>
+    <script src="assets/codemirror5/addon/hint/xml-hint.js"></script>
+    <script src="assets/codemirror5/addon/hint/html-hint.js"></script>
+    <script src="assets/codemirror5/mode/xml/xml.js"></script>
+    <script src="assets/codemirror5/mode/javascript/javascript.js"></script>
+    <script src="assets/codemirror5/mode/css/css.js"></script>
+    <script src="assets/codemirror5/mode/htmlmixed/htmlmixed.js"></script>
+    <script src="assets/codemirror5/addon/hint/css-hint.js"></script>
+    <script src="assets/js/common.js"></script>
+  </body>
+</html>
