@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>codeShow</title>
+    <link rel="stylesheet" href="assets/codemirror5/theme/blackboard.css" />
+    <link rel="stylesheet" href="assets/css/common.css" />
+  </head>
+  <body>
+    <div class="code__wrapper">
+      <div class="close__fs"></div>
+      <div class="code__wrapper_header">
+        <div class="code__wrapper_header_title">官网效果 [pc + mobile]</div>
+        <div class="tools">
+          <div class="home__icon" onclick="window.location.href = '/'"></div>
+        </div>
+      </div>
+      <div class="code__wrapper_top">
+        <div class="code__wrapper_top-html">
+          <div class="title">HTML</div>
+          <textarea id="htmlCode">&lt;section class=&#34;faqs__translator&#34;&gt;
+  &lt;h2 class=&#34;faqs__translator_title&#34;&gt;FAQs on Vidnoz AI Video Translator&lt;/h2&gt;
+  &lt;div class=&#34;faqs__translator_lists&#34;&gt;
+    &lt;div class=&#34;faqs__translator_item&#34;&gt;
+      &lt;div class=&#34;faqs__translator_item-header show&#34;&gt;
+        How can I translate a video without subtitles?
+      &lt;/div&gt;
+      &lt;div class=&#34;faqs__translator_item-body&#34; style=&#34;max-height: 300px;&#34;&gt;
+        Yes, Vidnoz AI Video Translator supports AI dubbing and voice-over
+        translation without subtitles. You can also choose to disable or enable
+        subtitle translation if the video has subtitles included.
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;faqs__translator_item&#34;&gt;
+      &lt;div class=&#34;faqs__translator_item-header&#34;&gt;
+        How do I auto-translate a video?
+      &lt;/div&gt;
+      &lt;div class=&#34;faqs__translator_item-body&#34;&gt;
+        Our AI video translator features an automated process from start to
+        finish. The only user steps are uploading a video, choosing your
+        preferred options, and clicking the Translate Now button.
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;faqs__translator_item&#34;&gt;
+      &lt;div class=&#34;faqs__translator_item-header&#34;&gt;
+        Can I translate an audio file?
+      &lt;/div&gt;
+      &lt;div class=&#34;faqs__translator_item-body&#34;&gt;
+        This video translate AI tool doesn’t support audio file formats. Still,
+        a workable solution is converting the audio to M4V, MP4, MOV, or WEBM
+        first and translating audio only in the converted file.
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;faqs__translator_item&#34;&gt;
+      &lt;div class=&#34;faqs__translator_item-header&#34;&gt;
+        How to translate a YouTube video?
+      &lt;/div&gt;
+      &lt;div class=&#34;faqs__translator_item-body&#34;&gt;
+        Before uploading, you can translate the YouTube video as you do with
+        other videos. When it comes to an online YouTube video, please save it
+        offline and do the translation with Vidnoz Youtube Video Translator.
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;faqs__translator_item&#34;&gt;
+      &lt;div class=&#34;faqs__translator_item-header&#34;&gt;
+        Can I translate a video from any language?
+      &lt;/div&gt;
+      &lt;div class=&#34;faqs__translator_item-body&#34;&gt;
+        The support for 140+ languages also refers to the input sources. In
+        other words, Vidnoz AI Video Translator can help you translate video
+        free in any popular spoken language for sure.
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;faqs__translator_item&#34;&gt;
+      &lt;div class=&#34;faqs__translator_item-header&#34;&gt;
+        How can I download my translations?
+      &lt;/div&gt;
+      &lt;div class=&#34;faqs__translator_item-body&#34;&gt;
+        Once the translation process is complete, click the Download button
+        below the translated video. A sign-up window will pop up. Sign in with
+        your Gmail address at a single click away and the download will start at
+        the next second.
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;</textarea>
+        </div>
+        <div class="code__wrapper_top-css">
+          <div class="title">CSS</div>
+          <textarea id="cssCode">@import url(&#34;https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap&#34;);
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: &#34;Poppins&#34;, sans-serif;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  scroll-behavior: smooth;
+  user-select: none;
+}
+html,
+body {
+  box-sizing: inherit;
+}
+:root {
+  --btn-bg-color: #8b3dff;
+  --text-color: #fff;
+  --text-b-color: #000000;
+  --border-color: #ebebeb;
+  --border-radius: 3px;
+  --ball-color: #ddc7ff;
+  --border-top-color: #a065f9;
+  --dot-color: #beb8cb;
+  --dot-active-color: #6d4dff;
+  --bg-color: #f8f8f8;
+  --border-bottom-color: #d2d0de;
+  --a-val: 0.17;
+  --click-btn-color: #15151c;
+  --bg-hover-color: #eadcff;
+  --article-border-color: #d7d4e5;
+}
+
+#iframe__wrapper {
+  height: fit-content;
+}
+ul,
+li {
+  list-style: none;
+}
+a {
+  color: var(--btn-bg-color);
+}
+.faqs__translator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 13.3333333333vw;
+  padding-bottom: 13.3333333333vw;
+  background-color: var(--bg-color);
+  height: 100%;
+  min-height: 100vh;
+}
+.faqs__translator .faqs__translator_title {
+  max-width: 84vw;
+  margin-bottom: 3.2vw;
+  font-size: 5.8666666667vw;
+  font-weight: 600;
+  line-height: 9.4666666667vw;
+  font-family: inherit;
+  color: var(--text-b-color);
+  text-align: center;
+  margin-bottom: 11.2vw;
+}
+.faqs__translator .faqs__translator_lists {
+  max-width: 84vw;
+}
+.faqs__translator .faqs__translator_item {
+  width: 100%;
+  border-bottom: 1px solid var(--border-bottom-color);
+  padding-bottom: 4.4vw;
+}
+.faqs__translator .faqs__translator_item + .faqs__translator_item {
+  padding-top: 4.4vw;
+}
+.faqs__translator .faqs__translator_item .faqs__translator_item-header {
+  font-size: 4.2666666667vw;
+  font-weight: 500;
+  line-height: 6.4vw;
+  font-family: inherit;
+  color: var(--text-b-color);
+  text-align: left;
+  margin-bottom: 1.0666666667vw;
+  max-width: 71.8666666667vw;
+  position: relative;
+  transition: all 0.5s;
+}
+.faqs__translator .faqs__translator_item .faqs__translator_item-header::before {
+  content: &#34;&#34;;
+  position: absolute;
+  top: 0;
+  right: -6.5333333333vw;
+  width: 5.3333333333vw;
+  height: 5.3333333333vw;
+  background-color: transparent;
+  background-image: url(&#34;https://www.vidnoz.com/img/video-translate/arrow-down.svg&#34;);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition: all 0.5s;
+}
+.faqs__translator
+  .faqs__translator_item
+  .faqs__translator_item-header.show::before {
+  transition: all 0.5s;
+  transform-origin: center;
+  transform: rotate(-180deg);
+}
+.faqs__translator .faqs__translator_item .faqs__translator_item-body {
+  font-size: 4.2666666667vw;
+  font-weight: 300;
+  line-height: 7.3333333333vw;
+  font-family: inherit;
+  color: var(--text-b-color);
+  text-align: left;
+  letter-spacing: 0.64px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+}
+@media (min-width: 1200px) {
+  .faqs__translator {
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+  .faqs__translator .faqs__translator_title {
+    font-size: 44px;
+    font-weight: 600;
+    line-height: 61px;
+    font-family: inherit;
+    color: var(--text-b-color);
+    text-align: center;
+    margin-bottom: 42px;
+  }
+  .faqs__translator .faqs__translator_lists {
+    max-width: 700px;
+  }
+  .faqs__translator .faqs__translator_item {
+    padding-bottom: 25.5px;
+  }
+  .faqs__translator .faqs__translator_item + .faqs__translator_item {
+    padding-top: 25.5px;
+  }
+  .faqs__translator .faqs__translator_item .faqs__translator_item-header {
+    max-width: 666px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 27px;
+    font-family: inherit;
+    color: var(--text-b-color);
+    text-align: left;
+    margin-bottom: 0;
+  }
+  .faqs__translator .faqs__translator_item .faqs__translator_item-header.show {
+    padding-bottom: 25.5px;
+  }
+  .faqs__translator
+    .faqs__translator_item
+    .faqs__translator_item-header::before {
+    width: 18px;
+    height: 18px;
+    right: 0;
+  }
+  .faqs__translator .faqs__translator_item .faqs__translator_item-body {
+    max-width: 666px;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 25px;
+    font-family: inherit;
+    color: var(--text-b-color);
+    text-align: left;
+  }
+}</textarea>
+        </div>
+        <div class="code__wrapper_top-js">
+          <div class="title">JAVASCRIPT</div>
+          <textarea id="jsCode">const faqsTranslatorItems = document.querySelectorAll(&#34;.faqs__translator_item&#34;);
+
+function faqsTranslatorItemsClick() {
+  for (let i = 0; i &lt; faqsTranslatorItems.length; i++) {
+    const item = faqsTranslatorItems[i];
+    const header = item.querySelector(&#34;.faqs__translator_item-header&#34;);
+    const body = item.querySelector(&#34;.faqs__translator_item-body&#34;);
+    header.onclick = () =&gt; {
+      const show =
+        body.style.maxHeight === &#34;0px&#34; || body.style.maxHeight === &#34;&#34;;
+      body.style.maxHeight = show ? body.scrollHeight + &#34;px&#34; : &#34;0&#34;;
+      if (show) {
+        header.classList.add(&#34;show&#34;);
+      } else {
+        header.classList.remove(&#34;show&#34;);
+      }
+    };
+  }
+}
+
+faqsTranslatorItemsClick();</textarea>
+        </div>
+      </div>
+      <div class="code__wrapper_bottom">
+        <!-- <div class="code__wrapper_top-js">
+          <div class="title">JAVASCRIPT</div>
+          <textarea id="jsCode">const faqsTranslatorItems = document.querySelectorAll(&#34;.faqs__translator_item&#34;);
+
+function faqsTranslatorItemsClick() {
+  for (let i = 0; i &lt; faqsTranslatorItems.length; i++) {
+    const item = faqsTranslatorItems[i];
+    const header = item.querySelector(&#34;.faqs__translator_item-header&#34;);
+    const body = item.querySelector(&#34;.faqs__translator_item-body&#34;);
+    header.onclick = () =&gt; {
+      const show =
+        body.style.maxHeight === &#34;0px&#34; || body.style.maxHeight === &#34;&#34;;
+      body.style.maxHeight = show ? body.scrollHeight + &#34;px&#34; : &#34;0&#34;;
+      if (show) {
+        header.classList.add(&#34;show&#34;);
+      } else {
+        header.classList.remove(&#34;show&#34;);
+      }
+    };
+  }
+}
+
+faqsTranslatorItemsClick();</textarea>
+        </div> -->
+        <div class="code__wrapper_top-preview">
+          <div class="fs__icon"></div>
+          <iframe id="live-preview" src="assets/templates/template-iframe.html" width="100%" height="100%" allow="accelerometer *; camera *; encrypted-media *; display-capture *; geolocation *; gyroscope *; microphone *; midi *; clipboard-read *; clipboard-write *; web-share *; serial *; xr-spatial-tracking *" allowfullscreen="true" allowpaymentrequest="true" allowtransparency="true" sandbox="allow-forms allow-modals allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation allow-downloads allow-presentation" class="result-iframe iframe-visual-update" name="codeShow" loading="lazy"></iframe>
+        </div>
+      </div>
+    </div>
+    <script src="assets/lib/jquery-3.7.1.min.js"></script>
+    <link rel="stylesheet" href="assets/codemirror5/lib/codemirror.css" />
+    <link rel="stylesheet" href="assets/codemirror5/addon/hint/show-hint.css" />
+    <script src="assets/codemirror5/lib/codemirror.js"></script>
+    <script src="assets/codemirror5/addon/hint/show-hint.js"></script>
+    <script src="assets/codemirror5/addon/hint/xml-hint.js"></script>
+    <script src="assets/codemirror5/addon/hint/html-hint.js"></script>
+    <script src="assets/codemirror5/mode/xml/xml.js"></script>
+    <script src="assets/codemirror5/mode/javascript/javascript.js"></script>
+    <script src="assets/codemirror5/mode/css/css.js"></script>
+    <script src="assets/codemirror5/mode/htmlmixed/htmlmixed.js"></script>
+    <script src="assets/codemirror5/addon/hint/css-hint.js"></script>
+    <script src="assets/js/common.js"></script>
+  </body>
+</html>
