@@ -84,6 +84,7 @@ const homeContent = fs.readFileSync("./template-home.html", "utf-8");
 
 const homeHTML = ejs.render(homeContent, {
   content: unescapeHtml(listHTML),
+  len: filesList?.length ?? 0
 });
 
 fs.writeFileSync(`./docs/index.html`, homeHTML);

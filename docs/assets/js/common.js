@@ -27,7 +27,8 @@ function initEditor() {
   });
   codeMirrorCss = CodeMirror.fromTextArea(textareaCSS, {
     lineNumbers: true,
-    mode: "css",
+    matchBrackets: true,
+    mode: "text/x-scss",
     theme,
   });
   codeMirrorJs = CodeMirror.fromTextArea(textareaJS, {
@@ -52,7 +53,13 @@ function setupLivePreviewStudio() {
   });
   CodeMirror.on(codeMirrorCss, "change", () => {
     let val = codeMirrorCss.getValue();
-    styleContent.innerHTML = val;
+    Sass.compile(val, function (result) {
+      if (result.status === 0) {
+        styleContent.innerHTML = result.text;
+      } else {
+        styleContent.innerHTML = val;
+      }
+    });
   });
   CodeMirror.on(codeMirrorJs, "change", () => {
     clearTimeout(timer);
@@ -92,7 +99,13 @@ function loadCode() {
       iframeWrapper.innerHTML = html;
     }
     if (css) {
-      styleContent.innerHTML = css;
+      Sass.compile(css, function (result) {
+        if (result.status === 0) {
+          styleContent.innerHTML = result.text;
+        } else {
+          styleContent.innerHTML = css;
+        }
+      });
     }
     if (js) {
       scriptContent.innerHTML = js;
