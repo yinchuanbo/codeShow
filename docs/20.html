@@ -14,7 +14,6 @@
         <div class="code__wrapper_header_title">无缝轮播</div>
         <div class="tools">
           <div class="home__icon" onclick="window.location.href = '/'"></div>
-          <!-- <div class="fs__icon"></div> -->
         </div>
       </div>
       <div class="code__wrapper_top">
@@ -63,8 +62,6 @@
   line-height: 80px;
 }</textarea>
         </div>
-      </div>
-      <div class="code__wrapper_bottom">
         <div class="code__wrapper_top-js">
           <div class="title">JAVASCRIPT</div>
           <textarea id="jsCode">let list = document.querySelector(&#34;.list&#34;);
@@ -83,6 +80,26 @@ setInterval(() =&gt; {
   list.style.left = left + &#34;px&#34;;
 }, 2000);</textarea>
         </div>
+      </div>
+      <div class="code__wrapper_bottom">
+        <!-- <div class="code__wrapper_top-js">
+          <div class="title">JAVASCRIPT</div>
+          <textarea id="jsCode">let list = document.querySelector(&#34;.list&#34;);
+list.innerHTML += list.innerHTML;
+let left = 0;
+
+setInterval(() =&gt; {
+  left -= 80;
+  if (left === -(5 * 80)) {
+    list.style.transition = &#34;none&#34;; // Remove transition
+    left = 0;
+    setTimeout(() =&gt; {
+      list.style.transition = &#34;left 0.5s ease&#34;; // Restore transition after a short delay
+    }, 0);
+  }
+  list.style.left = left + &#34;px&#34;;
+}, 2000);</textarea>
+        </div> -->
         <div class="code__wrapper_top-preview">
           <div class="fs__icon"></div>
           <iframe id="live-preview" src="assets/templates/template-iframe.html" width="100%" height="100%" allow="accelerometer *; camera *; encrypted-media *; display-capture *; geolocation *; gyroscope *; microphone *; midi *; clipboard-read *; clipboard-write *; web-share *; serial *; xr-spatial-tracking *" allowfullscreen="true" allowpaymentrequest="true" allowtransparency="true" sandbox="allow-forms allow-modals allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation allow-downloads allow-presentation" class="result-iframe iframe-visual-update" name="codeShow" loading="lazy"></iframe>
