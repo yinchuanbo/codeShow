@@ -9,7 +9,7 @@ let previewBtn = document.querySelector(".fs__icon"),
   theme = "blackboard",
   codeMirrorHtml,
   codeMirrorCss,
-  codeMirrorJs;
+  codeMirrorJs, iframeWrapper, styleContent, scriptContent;
 
 function initEditor() {
   codeMirrorHtml = CodeMirror.fromTextArea(textareaHTML, {
@@ -33,33 +33,18 @@ function initEditor() {
   setupLivePreviewStudio();
 }
 
-function initializeLivePreview() {
-  const doc = livePreviewFrame.contentWindow.document;
-  doc.body.innerHTML = "";
-  const styleElement = document.createElement("style");
-  styleElement.setAttribute("id", "live-preview-style");
-  doc.head.appendChild(styleElement);
-  const pagedJsScript = document.createElement("script");
-  pagedJsScript.src = "https://unpkg.com/pagedjs/dist/paged.legacy.polyfill.js";
-  doc.head.appendChild(pagedJsScript);
-}
-
 function setupLivePreviewStudio() {
-  const doc = livePreviewFrame.contentWindow.document;
   CodeMirror.on(codeMirrorHtml, "change", () => {
     let val = codeMirrorHtml.getValue();
-    doc.body.innerHTML = val;
+    iframeWrapper.innerHTML = val;
   });
   CodeMirror.on(codeMirrorCss, "change", () => {
-    const styleElement = doc.getElementById("live-preview-style");
     let val = codeMirrorCss.getValue();
-    styleElement.innerHTML = val;
+    styleContent.innerHTML = val;
   });
   CodeMirror.on(codeMirrorJs, "change", () => {
     let val = codeMirrorJs.getValue();
-    const bodyDom = doc.body;
-    const scriptDom = bodyDom.querySelector("#script__preview");
-    scriptDom.innerHTML = val;
+    scriptContent.innerHTML = val;
   });
 }
 
@@ -75,29 +60,28 @@ function events() {
 }
 
 function loadCode() {
-  let doc = livePreviewFrame.contentWindow.document;
-  let html = codeMirrorHtml.getValue();
-  if (html) {
-    doc.body.innerHTML = html;
-  }
-  const scriptDomC = document.createElement("script");
-  scriptDomC.id = "script__preview";
-  doc.body.appendChild(scriptDomC);
-  let css = codeMirrorCss.getValue();
-  if (css) {
-    const styleElement = doc.getElementById("live-preview-style");
-    styleElement.innerHTML = css;
-  }
-  let js = codeMirrorJs.getValue();
-  if (js) {
-    const bodyDom = doc.body;
-    const scriptDom = bodyDom.querySelector("#script__preview");
-    scriptDom.innerHTML = js;
-  }
+  livePreviewBtn.onload = function () {
+    let iframeDocument =
+      livePreviewBtn.contentDocument || livePreviewBtn.contentWindow.document;
+    iframeWrapper = iframeDocument.getElementById("iframe__wrapper");
+    styleContent = iframeDocument.getElementById("live-preview-style");
+    scriptContent = iframeDocument.getElementById("script__preview");
+    let html = codeMirrorHtml.getValue();
+    let css = codeMirrorCss.getValue();
+    let js = codeMirrorJs.getValue();
+    if (html) {
+      iframeWrapper.innerHTML = html;
+    }
+    if (css) {
+      styleContent.innerHTML = css;
+    }
+    if (js) {
+      scriptContent.innerHTML = js;
+    }
+  };
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  initializeLivePreview();
   initEditor();
   events();
   loadCode();

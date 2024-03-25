@@ -127,12 +127,11 @@ body {
   background-size: 100% 100%;
   margin-right: 15px;
 }
-
 .close__fs {
   display: none;
   position: absolute;
   top: 20px;
-  right: 20px;
+  right: 40px;
   width: 40px;
   height: 40px;
   background: url("../images/round_close_fill.svg") no-repeat;
