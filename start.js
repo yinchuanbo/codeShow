@@ -20,16 +20,16 @@ fs.watch(mdFolder, (eventType, filename) => {
       console.log(`app.js process exited with code ${code}`);
     });
   }
-  if (eventType === 'rename' && filename && filename.endsWith('.md')) {
-    const htmlFilename = filename.replace('.md', '.html');
-    const htmlFilePath = `${docsFolder}/${htmlFilename}`;
-    try {
-      fs.unlinkSync(htmlFilePath);
-      console.log(`Deleted ${htmlFilePath}`);
-    } catch (error) {
-      console.error(`Error deleting ${htmlFilePath}:`, error);
-    }
-  }
+  // if (eventType === 'rename' && filename && filename.endsWith('.md')) {
+  //   const htmlFilename = filename.replace('.md', '.html');
+  //   const htmlFilePath = `${docsFolder}/${htmlFilename}`;
+  //   try {
+  //     fs.unlinkSync(htmlFilePath);
+  //     console.log(`Deleted ${htmlFilePath}`);
+  //   } catch (error) {
+  //     console.error(`Error deleting ${htmlFilePath}:`, error);
+  //   }
+  // }
 });
 
 try {

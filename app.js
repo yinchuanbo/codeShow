@@ -24,6 +24,31 @@ function traverseFolder(folderPath) {
 
 traverseFolder(folderPath);
 
+const docPath = "./docs";
+
+try {
+  const docsFiles = fs.readdirSync(docPath);
+  for (let i = 0; i < docsFiles.length; i++) {
+    const docsFile = docsFiles[i];
+    const filePath = path.join(docPath, docsFile);
+    const stats = fs.statSync(filePath);
+    if (stats.isFile() && path.extname(docsFile) === ".html") {
+      fs.unlinkSync(filePath);
+      console.log(`Deleted file: ${filePath}`);
+    }
+
+
+    // if (path.extname(docsFile) === ".html") {
+    //   const filePath = path.join(docPath, docsFile);
+    //   if (fs.existsSync(filePath)) {
+    //     fs.unlinkSync(filePath);
+    //   }
+    // }
+  }
+} catch (err) {
+  console.error("Error deleting files:", err);
+}
+
 let listHTML = `<ul class="home__list">`;
 
 filesList = filesList.sort((a, b) => Number(a) - Number(b));
@@ -72,12 +97,15 @@ for (let i = filesList.length - 1; i >= 0; i--) {
     htmlContent: (htmlContent || "").trim(),
   });
 
-  fs.writeFileSync(`./docs/${file}.html`, compiledHtml);
+  let params = `doc-${file}`;
+  fs.writeFileSync(`./docs/${params}.html`, compiledHtml);
   let str = `style="display: none"`;
   if (i < 6) {
     str = "";
   }
-  listHTML += `<li onclick="location.href='/${file}.html'" ${str}><div class="li__cover"><img src="assets/images/${file}.png" /></div><a href="javascript:;">${title}</a><span>${newDate(date)}</span></li>`;
+  listHTML += `<li onclick="location.href='/${params}.html'" ${str}><div class="li__cover"><img src="assets/images/${file}.png" /></div><a href="javascript:;">${title}</a><span>${newDate(
+    date
+  )}</span></li>`;
 }
 
 function newDate(dateString = "") {
