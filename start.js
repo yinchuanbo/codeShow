@@ -4,6 +4,7 @@ const { exec } = require("child_process");
 
 const mdFolder = "./md";
 const appScript = "app.js";
+const docsFolder = "./docs";
 
 fs.watch(mdFolder, (eventType, filename) => {
   if (filename && filename.endsWith(".md")) {
@@ -18,6 +19,16 @@ fs.watch(mdFolder, (eventType, filename) => {
     appProcess.on("close", (code) => {
       console.log(`app.js process exited with code ${code}`);
     });
+  }
+  if (eventType === 'rename' && filename && filename.endsWith('.md')) {
+    const htmlFilename = filename.replace('.md', '.html');
+    const htmlFilePath = `${docsFolder}/${htmlFilename}`;
+    try {
+      fs.unlinkSync(htmlFilePath);
+      console.log(`Deleted ${htmlFilePath}`);
+    } catch (error) {
+      console.error(`Error deleting ${htmlFilePath}:`, error);
+    }
   }
 });
 
