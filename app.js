@@ -55,20 +55,18 @@ for (let i = filesList.length - 1; i >= 0; i--) {
     }
   });
 
-  let title, date, lib;
+  let title, date, type;
 
   const titleMatch = h2Content.match(/title:\s*"([^"]+)"/);
   const dateMatch = h2Content.match(/date:\s*([^\s]+)/);
-  const libMatch = h2Content.match(/lib:\s*\[([^\]]+)\]/);
+  const typeMatch = h2Content.match(/type:\s*([^\s]+)/);
   title = titleMatch ? titleMatch[1] : null;
   date = dateMatch ? dateMatch[1] : null;
-  lib = libMatch
-    ? libMatch[1].split(",").map((item) => item.trim().replace(/'/g, ""))
-    : null;
-
+  type = typeMatch ? typeMatch[1] : null;
   const templateContent = fs.readFileSync("./template-editor.html", "utf-8");
   const compiledHtml = ejs.render(templateContent, {
     title: (title || "").trim(),
+    type: (type || "").trim(),
     cssContent: (cssContent || "").trim(),
     jsContent: (jsContent || "").trim(),
     htmlContent: (htmlContent || "").trim(),

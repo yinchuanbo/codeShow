@@ -322,19 +322,31 @@ body {
         <div class="code__wrapper_top-js">
           <div class="title">JAVASCRIPT</div>
           <textarea id="jsCode">function isMobileDevice() {
-  const userAgent = navigator.userAgent;
-  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-    userAgent
-  );
+  // const userAgent = navigator.userAgent;
+  // return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+  //   userAgent
+  // );
+  // 真正项目里，使用上面被注释的代码
+  const iframeWrapper = document.getElementById(&#34;iframe__wrapper&#34;);
+  if(iframeWrapper.clientWidth &lt;= 400) {
+    return true;
+  } else {
+    return false;
+  }
 }
+
 const initScrollBarPos = () =&gt; {
   const listsDom = document.querySelector(
     &#34;.recommende__article_swiper .swiper-wrapper&#34;
   );
-  listsDom.scrollTo(300, 0);
+  if(listsDom) {
+    listsDom.scrollTo(300, 0);
+  }
 };
 if (isMobileDevice()) {
-  initScrollBarPos();
+  setTimeout(() =&gt; {
+    initScrollBarPos();
+  }, 0)
 } else {
   new Swiper(&#34;.recommende__article_swiper&#34;, {
     width: 1088,
@@ -356,6 +368,9 @@ if (isMobileDevice()) {
       <div class="code__wrapper_bottom">
         <div class="code__wrapper_top-preview">
           <div class="fs__icon"></div>
+          
+            <div class="mobile__icon"></div>
+          
           <iframe
             id="live-preview"
             src="assets/templates/template-iframe.html"

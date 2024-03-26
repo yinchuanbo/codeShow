@@ -1,4 +1,5 @@
 let previewBtn = document.querySelector(".fs__icon"),
+  mobileIcon = document.querySelector(".mobile__icon"),
   livePreviewBtn = document.querySelector("#live-preview"),
   closeFs = document.querySelector(".close__fs"),
   livePreviewFrame = document.getElementById("live-preview"),
@@ -76,13 +77,18 @@ function setupLivePreviewStudio() {
 
 function events() {
   previewBtn.onclick = () => {
-    livePreviewBtn.classList.add("fullscreen");
     codeWrapper.classList.add("fs");
+    iframeDocument.location.reload();
   };
   closeFs.onclick = () => {
-    livePreviewBtn.classList.remove("fullscreen");
+    codeWrapper.classList.remove("mobile__show");
     codeWrapper.classList.remove("fs");
+    iframeDocument.location.reload();
   };
+  mobileIcon.onclick = () => {
+    codeWrapper.classList.add("mobile__show");
+    iframeDocument.location.reload();
+  }
 }
 
 function loadCode() {

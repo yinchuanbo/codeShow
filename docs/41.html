@@ -144,6 +144,9 @@ body {
   background-repeat: no-repeat;
   background-size: $size;
 }
+#iframe__wrapper {
+  display: grid;
+}
 .faqs__translator {
   @include flex-column-center-center;
   padding-top: pxToVw(100);
@@ -270,6 +273,9 @@ faqsTranslatorItemsClick();</textarea>
       <div class="code__wrapper_bottom">
         <div class="code__wrapper_top-preview">
           <div class="fs__icon"></div>
+          
+            <div class="mobile__icon"></div>
+          
           <iframe
             id="live-preview"
             src="assets/templates/template-iframe.html"
