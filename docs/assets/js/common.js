@@ -78,16 +78,24 @@ function setupLivePreviewStudio() {
 function events() {
   previewBtn.onclick = () => {
     codeWrapper.classList.add("fs");
-    iframeDocument.location.reload();
+    if(mobileIcon) {
+      iframeDocument.location.reload();
+    }
   };
   closeFs.onclick = () => {
     codeWrapper.classList.remove("mobile__show");
     codeWrapper.classList.remove("fs");
-    iframeDocument.location.reload();
+    if(mobileIcon) {
+      iframeDocument.location.reload();
+    }
   };
-  mobileIcon.onclick = () => {
-    codeWrapper.classList.add("mobile__show");
-    iframeDocument.location.reload();
+  if (mobileIcon) {
+    mobileIcon.onclick = () => {
+      codeWrapper.classList.add("mobile__show");
+      if(mobileIcon) {
+        iframeDocument.location.reload();
+      }
+    };
   }
 }
 

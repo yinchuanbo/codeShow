@@ -31,10 +31,7 @@
         onclick=&#34;window.open(&#39;https:\/\/www.vidnoz.com/ai-solutions/translate-video-to-english.html&#39;)&#34;
       &gt;
         &lt;div class=&#34;swiper-slide__img&#34;&gt;
-          &lt;img
-            src=&#34;https://www.vidnoz.com/bimg/translate-video-to-english.webp&#34;
-            alt=&#34;&#34;
-          /&gt;
+          &lt;img src=&#34;https://via.placeholder.com/258x195&#34; alt=&#34;&#34; /&gt;
         &lt;/div&gt;
         &lt;p class=&#34;swiper-slide__title&#34;&gt;
           Translate Video to English: Dubbing Your Video with AI
@@ -45,10 +42,7 @@
         onclick=&#34;window.open(&#39;https:\/\/www.vidnoz.com/ai-solutions/translate-spanish-video-to-english.html&#39;)&#34;
       &gt;
         &lt;div class=&#34;swiper-slide__img&#34;&gt;
-          &lt;img
-            src=&#34;https://www.vidnoz.com/bimg/translate-spanish-video-to-english.webp&#34;
-            alt=&#34;&#34;
-          /&gt;
+          &lt;img src=&#34;https://via.placeholder.com/258x195&#34; alt=&#34;&#34; /&gt;
         &lt;/div&gt;
         &lt;p class=&#34;swiper-slide__title&#34;&gt;
           Translate Spanish Video to English: Best 5 FREE Tools
@@ -59,10 +53,7 @@
         onclick=&#34;window.open(&#39;https:\/\/www.vidnoz.com/ai-solutions/ai-video-translation.html&#39;)&#34;
       &gt;
         &lt;div class=&#34;swiper-slide__img&#34;&gt;
-          &lt;img
-            src=&#34;https://www.vidnoz.com/bimg/ai-video-translation.webp&#34;
-            alt=&#34;&#34;
-          /&gt;
+          &lt;img src=&#34;https://via.placeholder.com/258x195&#34; alt=&#34;&#34; /&gt;
         &lt;/div&gt;
         &lt;p class=&#34;swiper-slide__title&#34;&gt;
           Unlock the Power of AI Video Translation - Fast &amp; Better
@@ -73,10 +64,7 @@
         onclick=&#34;window.open(&#39;https:\/\/www.vidnoz.com/video-creation/how-to-transcribe-videos.html&#39;)&#34;
       &gt;
         &lt;div class=&#34;swiper-slide__img&#34;&gt;
-          &lt;img
-            src=&#34;https://www.vidnoz.com/bimg/how-to-transcribe-videos-1.webp&#34;
-            alt=&#34;&#34;
-          /&gt;
+          &lt;img src=&#34;https://via.placeholder.com/258x195&#34; alt=&#34;&#34; /&gt;
         &lt;/div&gt;
         &lt;p class=&#34;swiper-slide__title&#34;&gt;
           How to Transcribe Videos - Your Video Transcription Guide
@@ -87,10 +75,7 @@
         onclick=&#34;window.open(&#39;https:\/\/www.vidnoz.com/ai-solutions/english-text-to-speech.html&#39;)&#34;
       &gt;
         &lt;div class=&#34;swiper-slide__img&#34;&gt;
-          &lt;img
-            src=&#34;https://www.vidnoz.com/bimg/english-text-to-speech-1.webp&#34;
-            alt=&#34;&#34;
-          /&gt;
+          &lt;img src=&#34;https://via.placeholder.com/258x195&#34; alt=&#34;&#34; /&gt;
         &lt;/div&gt;
         &lt;p class=&#34;swiper-slide__title&#34;&gt;
           Tutorial – AI English Text to Speech Online in Seconds
@@ -101,10 +86,7 @@
         onclick=&#34;window.open(&#39;https:\/\/www.vidnoz.com/ai-solutions/spanish-text-to-speech.html&#39;)&#34;
       &gt;
         &lt;div class=&#34;swiper-slide__img&#34;&gt;
-          &lt;img
-            src=&#34;https://www.vidnoz.com/bimg/spanish-text-to-speech-free.webp&#34;
-            alt=&#34;&#34;
-          /&gt;
+          &lt;img src=&#34;https://via.placeholder.com/258x195&#34; alt=&#34;&#34; /&gt;
         &lt;/div&gt;
         &lt;p class=&#34;swiper-slide__title&#34;&gt;
           5 Best Spanish Text to Speech Voice Generators for Free
@@ -321,29 +303,15 @@ body {
         </div>
         <div class="code__wrapper_top-js">
           <div class="title">JAVASCRIPT</div>
-          <textarea id="jsCode">function isMobileDevice() {
-  // const userAgent = navigator.userAgent;
-  // return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-  //   userAgent
-  // );
-  // 真正项目里，使用上面被注释的代码
-  const iframeWrapper = document.getElementById(&#34;iframe__wrapper&#34;);
-  if(iframeWrapper.clientWidth &lt;= 400) {
-    return true;
-  } else {
-    return false;
-  }
-}
-
-const initScrollBarPos = () =&gt; {
+          <textarea id="jsCode">const initScrollBarPos = () =&gt; {
   const listsDom = document.querySelector(
     &#34;.recommende__article_swiper .swiper-wrapper&#34;
   );
-  if(listsDom) {
-    listsDom.scrollTo(300, 0);
-  }
+  listsDom.scrollTo(300, 0);
 };
-if (isMobileDevice()) {
+
+const iframeWrapper = document.querySelector(&#34;#iframe__wrapper&#34;);
+if (iframeWrapper.clientWidth &lt;= 768) {
   setTimeout(() =&gt; {
     initScrollBarPos();
   }, 0)

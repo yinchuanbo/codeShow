@@ -72,7 +72,7 @@
         </div>
         <div class="code__wrapper_top-css">
           <div class="title">CSS</div>
-          <textarea id="cssCode">@import url(&#39;https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap&#39;);
+          <textarea id="cssCode">@import url(&#34;https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap&#34;);
 * {
   padding: 0;
   margin: 0;
@@ -87,46 +87,75 @@ body {
   box-sizing: inherit;
 }
 :root {
-  --btn-bg-color: #8b3dff;
   --text-color: #fff;
   --text-b-color: #000000;
-  --border-color: #ebebeb;
-  --border-radius: 3px;
-  --ball-color: #ddc7ff;
-  --border-top-color: #a065f9;
-  --dot-color: #beb8cb;
-  --dot-active-color: #6d4dff;
-  --bg-color: #f8f8f8;
-  --border-bottom-color: #d2d0de;
   --a-val: 0.17;
-  --click-btn-color: #15151c;
-  --bg-hover-color: #eadcff;
-  --article-border-color: #d7d4e5;
+}
+@function pxToVw($px) {
+  @return ($px / 750) * 100vw;
 }
 ul,
 li {
   list-style: none;
 }
-a {
-  color: var(--btn-bg-color);
-}
-button.primary {
+@mixin button-base {
   outline: none;
   border: 0;
   cursor: pointer;
+}
+
+@mixin flex-column-center-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin font-info($fs, $lh, $fw, $c, $ta: center) {
+  font-size: pxToVw($fs);
+  font-weight: $fw;
+  line-height: pxToVw($lh);
+  font-family: inherit;
+  color: $c;
+  text-align: $ta;
+}
+
+@mixin font-info-pc($fs, $lh, $fw, $c, $ta: center) {
+  font-size: $fs;
+  font-weight: $fw;
+  line-height: $lh;
+  font-family: inherit;
+  color: $c;
+  text-align: $ta;
+}
+
+@mixin bg-info($image, $color: transparent, $pos: center, $size: cover) {
+  background-color: $color;
+  background-image: url($image);
+  background-position: $pos;
+  background-repeat: no-repeat;
+  background-size: $size;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+button.primary {
+  @include button-base;
   background-color: #6d4dff;
-  width: 81.3333333333vw;
-  height: 13.3333333333vw;
-  border-radius: 6.6666666667vw;
+  width: pxToVw(610);
+  height: pxToVw(100);
+  border-radius: pxToVw(50);
   color: var(--text-color);
-  font-size: 4.2666666667vw;
+  font-size: pxToVw(32);
   font-weight: 500;
 }
+
 @media (min-width: 1200px) {
   button.primary {
-    outline: none;
-    border: 0;
-    cursor: pointer;
+    @include button-base;
     background-color: #6d4dff;
     width: 312px;
     height: 49px;
@@ -135,260 +164,173 @@ button.primary {
     font-size: 18px;
     font-weight: 500;
     transition: all 0.5s;
-  }
-  button.primary:hover {
-    background: #4a34da;
-    transition: all 0.5s;
+    &amp;:hover {
+      background: #4a34da;
+      transition: all 0.5s;
+    }
   }
 }
+
 .traditional__compare {
-  padding-top: 13.3333333333vw;
-  padding-bottom: 13.3333333333vw;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  padding-top: pxToVw(100);
+  padding-bottom: pxToVw(100);
+  @include flex-column-center-center;
   background-image: linear-gradient(88deg, #fff9f9, #ebe9ff);
-}
-.traditional__compare .traditional__compare_title {
-  max-width: 84vw;
-  margin-bottom: 3.2vw;
-  font-size: 5.8666666667vw;
-  font-weight: 600;
-  line-height: 9.4666666667vw;
-  font-family: inherit;
-  color: var(--text-b-color);
-  text-align: center;
-}
-.traditional__compare .traditional__compare_desc {
-  max-width: 84vw;
-  margin-bottom: 5.3333333333vw;
-  font-size: 4.2666666667vw;
-  font-weight: 300;
-  line-height: 7.3333333333vw;
-  font-family: inherit;
-  color: var(--text-b-color);
-  text-align: center;
-}
-.traditional__compare .traditional__compare_lists {
-  margin-bottom: 6.6666666667vw;
-}
-.traditional__compare .traditional__compare_lists .traditional__compare_box {
-  width: 84vw;
-  background-image: linear-gradient(324deg, #e9d9ff, #e7d6ff);
-  padding-top: 10.9333333333vw;
-  padding-bottom: 13.8666666667vw;
-  border-radius: 2.6666666667vw;
-}
-.traditional__compare
-  .traditional__compare_lists
-  .traditional__compare_box
-  + .traditional__compare_box {
-  margin-top: 5.3333333333vw;
-}
-.traditional__compare
-  .traditional__compare_lists
-  .traditional__compare_box-title {
-  padding-left: 5.0666666667vw;
-  padding-bottom: 3.4666666667vw;
-  position: relative;
-  font-size: 4.2666666667vw;
-  font-weight: 600;
-  line-height: 6.4vw;
-  font-family: inherit;
-  color: var(--text-b-color);
-  text-align: left;
-}
-.traditional__compare
-  .traditional__compare_lists
-  .traditional__compare_box-title::after {
-  content: &#34;&#34;;
-  position: absolute;
-  left: 5.3333333333vw;
-  top: 100%;
-  width: 73.2vw;
-  height: 1px;
-  background-color: rgba(160, 101, 249, var(--a-val));
-}
-.traditional__compare .traditional__compare_lists .traditional__compare_box-ul {
-  margin: 0 auto;
-}
-.traditional__compare .traditional__compare_lists .traditional__compare_box-li {
-  width: 100%;
-  height: 11.0666666667vw;
-  padding-left: 13.3333333333vw;
-  position: relative;
-  font-size: 3.2vw;
-  font-weight: 300;
-  line-height: 11.0666666667vw;
-  font-family: inherit;
-  color: var(--text-b-color);
-  text-align: left;
-}
-.traditional__compare
-  .traditional__compare_lists
-  .traditional__compare_box-li::after {
-  content: &#34;&#34;;
-  position: absolute;
-  left: 5.3333333333vw;
-  top: 100%;
-  width: 73.2vw;
-  height: 1px;
-  background-color: rgba(160, 101, 249, var(--a-val));
-}
-.traditional__compare
-  .traditional__compare_lists
-  .traditional__compare_box-li::before {
-  content: &#34;&#34;;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  left: 5.3333333333vw;
-  width: 5.0666666667vw;
-  height: 5.0666666667vw;
-  border-radius: 100%;
-  background-color: transparent;
-  background-image: url(&#34;https://www.vidnoz.com/img/video-translate/icon_1.svg&#34;);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-.traditional__compare .traditional__compare_lists .traditional__compare_bottom {
-  background-image: linear-gradient(164deg, #8b3dff, #912ad5);
-  box-shadow: 0px 10px 40px #ab97c9;
-}
-.traditional__compare
-  .traditional__compare_lists
-  .traditional__compare_bottom
-  .traditional__compare_box-title,
-.traditional__compare
-  .traditional__compare_lists
-  .traditional__compare_bottom
-  .traditional__compare_box-li {
-  color: var(--text-color);
-}
-.traditional__compare
-  .traditional__compare_lists
-  .traditional__compare_bottom
-  .traditional__compare_box-title::after,
-.traditional__compare
-  .traditional__compare_lists
-  .traditional__compare_bottom
-  .traditional__compare_box-li::after {
-  --a-val: 0.72;
-}
-.traditional__compare
-  .traditional__compare_lists
-  .traditional__compare_bottom
-  .traditional__compare_box-li::before {
-  background-color: transparent;
-  background-image: url(&#34;https://www.vidnoz.com/img/video-translate/icon_2.svg&#34;);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  .traditional__compare_title {
+    max-width: pxToVw(630);
+    margin-bottom: pxToVw(24);
+    @include font-info(44, 71, 600, var(--text-b-color));
+  }
+  .traditional__compare_desc {
+    max-width: pxToVw(630);
+    margin-bottom: pxToVw(40);
+    @include font-info(32, 55, 300, var(--text-b-color));
+  }
+  .traditional__compare_lists {
+    margin-bottom: pxToVw(50);
+    .traditional__compare_box {
+      width: pxToVw(630);
+      background-image: linear-gradient(324deg, #e9d9ff, #e7d6ff);
+      padding-top: pxToVw(82);
+      padding-bottom: pxToVw(104);
+      border-radius: pxToVw(20);
+      &amp; + .traditional__compare_box {
+        margin-top: pxToVw(40);
+      }
+    }
+    .traditional__compare_box-title {
+      padding-left: pxToVw(38);
+      padding-bottom: pxToVw(26);
+      position: relative;
+      @include font-info(32, 48, 600, var(--text-b-color), left);
+      &amp;::after {
+        content: &#34;&#34;;
+        position: absolute;
+        left: pxToVw(40);
+        top: 100%;
+        width: pxToVw(549);
+        height: 1px;
+        background-color: rgba($color: #a065f9, $alpha: var(--a-val));
+      }
+    }
+    .traditional__compare_box-ul {
+      margin: 0 auto;
+    }
+    .traditional__compare_box-li {
+      width: 100%;
+      height: pxToVw(83);
+      padding-left: pxToVw(100);
+      position: relative;
+      @include font-info(24, 83, 300, var(--text-b-color), left);
+      &amp;::after {
+        content: &#34;&#34;;
+        position: absolute;
+        left: pxToVw(40);
+        top: 100%;
+        width: pxToVw(549);
+        height: 1px;
+        background-color: rgba($color: #a065f9, $alpha: var(--a-val));
+      }
+      &amp;::before {
+        content: &#34;&#34;;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: pxToVw(40);
+        width: pxToVw(38);
+        height: pxToVw(38);
+        border-radius: 100%;
+        @include bg-info(
+          &#34;https://www.vidnoz.com/img/video-translate/icon_1.svg&#34;,
+          transparent,
+          center
+        );
+      }
+    }
+    .traditional__compare_bottom {
+      background-image: linear-gradient(164deg, #8b3dff, #912ad5);
+      box-shadow: 0px 10px 40px #ab97c9;
+      .traditional__compare_box-title,
+      .traditional__compare_box-li {
+        color: var(--text-color);
+        &amp;::after {
+          --a-val: 0.72;
+        }
+      }
+      .traditional__compare_box-li {
+        &amp;::before {
+          @include bg-info(
+            &#34;https://www.vidnoz.com/img/video-translate/icon_2.svg&#34;,
+            transparent,
+            center
+          );
+        }
+      }
+    }
+  }
 }
 @media (min-width: 1200px) {
   .traditional__compare {
     padding-top: 100px;
     padding-bottom: 80px;
-  }
-  .traditional__compare .traditional__compare_title {
-    font-size: 44px;
-    font-weight: 600;
-    line-height: 61px;
-    font-family: inherit;
-    color: var(--text-b-color);
-    text-align: center;
-    margin-bottom: 15px;
-  }
-  .traditional__compare .traditional__compare_desc {
-    font-size: 18px;
-    font-weight: 300;
-    line-height: 25px;
-    font-family: inherit;
-    color: var(--text-b-color);
-    text-align: center;
-    max-width: 980px;
-    margin-bottom: 68px;
-  }
-  .traditional__compare .traditional__compare_lists {
-    display: flex;
-    align-items: center;
-    margin-bottom: 50px;
-  }
-  .traditional__compare .traditional__compare_lists .traditional__compare_box {
-    width: 453px;
-    height: 482px;
-    border-radius: 20px;
-    padding-top: 64px;
-    padding-bottom: 0;
-  }
-  .traditional__compare
-    .traditional__compare_lists
-    .traditional__compare_box
-    + .traditional__compare_box {
-    margin-top: 0;
-  }
-  .traditional__compare
-    .traditional__compare_lists
-    .traditional__compare_box:not(.traditional__compare_bottom) {
-    margin-right: -35px;
-  }
-  .traditional__compare
-    .traditional__compare_lists
-    .traditional__compare_bottom {
-    width: 448px;
-    height: 554px;
-    padding-top: 85px;
-  }
-  .traditional__compare
-    .traditional__compare_lists
-    .traditional__compare_bottom
-    .traditional__compare_box-title {
-    padding-bottom: 42px;
-  }
-  .traditional__compare
-    .traditional__compare_lists
-    .traditional__compare_box-title {
-    padding-left: 44px;
-    padding-bottom: 19px;
-    font-size: 20px;
-    font-weight: 600;
-    line-height: 28px;
-    font-family: inherit;
-    color: var(--text-b-color);
-    text-align: left;
-  }
-  .traditional__compare
-    .traditional__compare_lists
-    .traditional__compare_box-title::after {
-    width: 333px;
-    left: 44px;
-  }
-  .traditional__compare
-    .traditional__compare_lists
-    .traditional__compare_box-li {
-    padding-left: 81px;
-    height: 60px;
-    font-size: 14px;
-    font-weight: 300;
-    line-height: 60px;
-    font-family: inherit;
-    color: var(--text-b-color);
-    text-align: left;
-  }
-  .traditional__compare
-    .traditional__compare_lists
-    .traditional__compare_box-li::before {
-    left: 44px;
-    width: 20px;
-    height: 20px;
-  }
-  .traditional__compare
-    .traditional__compare_lists
-    .traditional__compare_box-li:after {
-    width: 333px;
-    left: 44px;
+    .traditional__compare_title {
+      @include font-info-pc(44px, 61px, 600, var(--text-b-color));
+      margin-bottom: 15px;
+    }
+    .traditional__compare_desc {
+      @include font-info-pc(18px, 25px, 300, var(--text-b-color));
+      max-width: 980px;
+      margin-bottom: 68px;
+    }
+    .traditional__compare_lists {
+      display: flex;
+      align-items: center;
+      margin-bottom: 50px;
+      .traditional__compare_box {
+        width: 453px;
+        height: 482px;
+        border-radius: 20px;
+        padding-top: 64px;
+        padding-bottom: 0;
+        &amp; + .traditional__compare_box {
+          margin-top: 0;
+        }
+        &amp;:not(.traditional__compare_bottom) {
+          margin-right: -35px;
+        }
+      }
+      .traditional__compare_bottom {
+        width: 448px;
+        height: 554px;
+        padding-top: 85px;
+        .traditional__compare_box-title {
+          padding-bottom: 42px;
+        }
+      }
+      .traditional__compare_box-title {
+        padding-left: 44px;
+        padding-bottom: 19px;
+        @include font-info-pc(20px, 28px, 600, var(--text-b-color), left);
+        &amp;::after {
+          width: 333px;
+          left: 44px;
+        }
+      }
+      .traditional__compare_box-li {
+        padding-left: 81px;
+        &amp;::before {
+          left: 44px;
+          width: 20px;
+          height: 20px;
+        }
+        &amp;:after {
+          width: 333px;
+          left: 44px;
+        }
+        height: 60px;
+        @include font-info-pc(14px, 60px, 300, var(--text-b-color), left);
+      }
+    }
   }
 }</textarea>
         </div>

@@ -113,53 +113,89 @@
         </div>
         <div class="code__wrapper_top-css">
           <div class="title">CSS</div>
-          <textarea id="cssCode">* {
+          <textarea id="cssCode">@import url(&#39;https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap&#39;);
+
+* {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
   font-family: &#34;Poppins&#34;, sans-serif;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: rgba($color: #000000, $alpha: 0);
   scroll-behavior: smooth;
   user-select: none;
 }
-:root {
-  --btn-bg-color: #8b3dff;
-  --text-color: #fff;
-  --text-b-color: #000000;
-  --border-color: #ebebeb;
-  --border-radius: 3px;
-  --ball-color: #ddc7ff;
-  --border-top-color: #a065f9;
-  --dot-color: #beb8cb;
-  --dot-active-color: #6d4dff;
-  --bg-color: #f8f8f8;
-  --border-bottom-color: #d2d0de;
-  --a-val: 0.17;
-  --click-btn-color: #15151c;
-  --bg-hover-color: #eadcff;
-  --article-border-color: #d7d4e5;
-}
+
 html,
 body {
   box-sizing: inherit;
 }
-button.primary {
+
+:root {
+  --btn-bg-color: #8b3dff;
+  --text-color: #fff;
+  --text-b-color: #000000;
+  --dot-color: #beb8cb;
+  --click-btn-color: #15151c;
+  --dot-active-color: #6d4dff;
+}
+@mixin button-base {
   outline: none;
   border: 0;
   cursor: pointer;
+}
+
+@mixin flex-row-center-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-column-center-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin font-info($fs, $lh, $fw, $c, $ta: center) {
+  font-size: pxToVw($fs);
+  font-weight: $fw;
+  line-height: pxToVw($lh);
+  font-family: inherit;
+  color: $c;
+  text-align: $ta;
+}
+
+@mixin font-info-pc($fs, $lh, $fw, $c, $ta: center) {
+  font-size: $fs;
+  font-weight: $fw;
+  line-height: $lh;
+  font-family: inherit;
+  color: $c;
+  text-align: $ta;
+}
+
+@function pxToVw($px) {
+  @return ($px / 750) * 100vw;
+}
+
+a {
+  color: var(--btn-bg-color);
+}
+button.primary {
+  @include button-base;
   background-color: #6d4dff;
-  width: 81.3333333333vw;
-  height: 13.3333333333vw;
-  border-radius: 6.6666666667vw;
+  width: pxToVw(610);
+  height: pxToVw(100);
+  border-radius: pxToVw(50);
   color: var(--text-color);
-  font-size: 4.2666666667vw;
+  font-size: pxToVw(32);
   font-weight: 500;
 }
+
 @media (min-width: 1200px) {
   button.primary {
-    outline: none;
-    border: 0;
-    cursor: pointer;
+    @include button-base;
     background-color: #6d4dff;
     width: 312px;
     height: 49px;
@@ -168,272 +204,338 @@ button.primary {
     font-size: 18px;
     font-weight: 500;
     transition: all 0.5s;
-  }
-  button.primary:hover {
-    background: #4a34da;
-    transition: all 0.5s;
+    &amp;:hover {
+      background: #4a34da;
+      transition: all 0.5s;
+    }
   }
 }
 .use__occasions {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding-top: 13.3333333333vw;
-  padding-bottom: 13.3333333333vw;
+  @include flex-column-center-center;
+  padding-top: pxToVw(100);
+  padding-bottom: pxToVw(100);
+  background-color: #fff;
+  .use__occasions_title {
+    max-width: pxToVw(630);
+    margin-bottom: pxToVw(24);
+    @include font-info(44, 71, 600, var(--text-b-color));
+    margin-bottom: pxToVw(25);
+  }
+  .use__occasions_desc {
+    max-width: pxToVw(630);
+    margin-bottom: pxToVw(55);
+    @include font-info(32, 55, 300, var(--text-b-color));
+  }
+  // swiper
+  .use__occasions_swiper {
+    width: pxToVw(630);
+    height: fit-content;
+    position: relative;
+    overflow: hidden;
+    height: pxToVw(840);
+    .use__occasions_swiper-item {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      transition: all 0.3s;
+      top: 0;
+      &gt; h3 {
+        @include font-info(32, 45, 600, var(--text-b-color));
+        margin-bottom: pxToVw(25);
+      }
+      &gt; img {
+        max-width: 100%;
+        display: block;
+      }
+      &gt; p {
+        @include font-info(32, 55, 300, var(--text-b-color));
+        margin-top: pxToVw(40);
+        letter-spacing: 0.64px;
+      }
+    }
+    .swiper__dots {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: pxToVw(30);
+      @include flex-row-center-center;
+      z-index: 9;
+      .swiper__dots-item {
+        display: block;
+        width: pxToVw(34);
+        height: pxToVw(34);
+        border-radius: 100%;
+        transition: all 0.3s;
+        transform-origin: center;
+        position: relative;
+        &amp;::before {
+          content: &#34;&#34;;
+          position: absolute;
+          width: pxToVw(21);
+          height: pxToVw(21);
+          background-color: var(--dot-color);
+          border-radius: 100%;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          transition: all 0.3s;
+        }
+        &amp;:not(.active) {
+          cursor: pointer;
+        }
+        &amp; + .swiper__dots-item {
+          margin-left: pxToVw(18);
+        }
+        &amp;.active {
+          border-radius: 100%;
+          &amp;::before {
+            width: pxToVw(34);
+            height: pxToVw(34);
+            background-color: var(--dot-active-color);
+            transition: all 0.3s;
+          }
+        }
+      }
+    }
+  }
+  .swiper-button-next,
+  .swiper-button-prev {
+    display: none;
+  }
 }
-.use__occasions .use__occasions_title {
-  max-width: 84vw;
-  margin-bottom: 3.2vw;
-  font-size: 5.8666666667vw;
-  font-weight: 600;
-  line-height: 9.4666666667vw;
-  font-family: inherit;
-  color: var(--text-b-color);
-  text-align: center;
-  margin-bottom: 3.3333333333vw;
-  color: #fff;
-}
-.use__occasions .use__occasions_desc {
-  max-width: 84vw;
-  margin-bottom: 7.3333333333vw;
-  font-size: 4.2666666667vw;
-  font-weight: 300;
-  line-height: 7.3333333333vw;
-  font-family: inherit;
-  text-align: center;
-  color: #fff;
-}
-.use__occasions .use__occasions_swiper {
-  width: 84vw;
-  height: fit-content;
-  position: relative;
-  overflow: hidden;
-  height: 112vw;
-}
-.use__occasions .use__occasions_swiper .use__occasions_swiper-item {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  transition: all 0.3s;
-  top: 0;
-}
-.use__occasions .use__occasions_swiper .use__occasions_swiper-item &gt; h3 {
-  font-size: 4.2666666667vw;
-  font-weight: 600;
-  line-height: 6vw;
-  font-family: inherit;
-  color: var(--text-b-color);
-  text-align: center;
-  margin-bottom: 3.3333333333vw;
-  color: #fff;
-}
-.use__occasions .use__occasions_swiper .use__occasions_swiper-item &gt; img {
-  max-width: 100%;
-  display: block;
-}
-.use__occasions .use__occasions_swiper .use__occasions_swiper-item &gt; p {
-  font-size: 4.2666666667vw;
-  font-weight: 300;
-  line-height: 7.3333333333vw;
-  font-family: inherit;
-  color: var(--text-b-color);
-  text-align: center;
-  margin-top: 5.3333333333vw;
-  letter-spacing: 0.64px;
-  color: #fff;
-}
-.use__occasions .use__occasions_swiper .swiper__dots {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: 4vw;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 9;
-}
-.use__occasions .use__occasions_swiper .swiper__dots .swiper__dots-item {
-  display: block;
-  width: 4.5333333333vw;
-  height: 4.5333333333vw;
-  border-radius: 100%;
-  transition: all 0.3s;
-  transform-origin: center;
-  position: relative;
-}
-.use__occasions
-  .use__occasions_swiper
-  .swiper__dots
-  .swiper__dots-item::before {
-  content: &#34;&#34;;
-  position: absolute;
-  width: 2.8vw;
-  height: 2.8vw;
-  background-color: var(--dot-color);
-  border-radius: 100%;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  transition: all 0.3s;
-}
-.use__occasions
-  .use__occasions_swiper
-  .swiper__dots
-  .swiper__dots-item:not(.active) {
-  cursor: pointer;
-}
-.use__occasions
-  .use__occasions_swiper
-  .swiper__dots
-  .swiper__dots-item
-  + .swiper__dots-item {
-  margin-left: 2.4vw;
-}
-.use__occasions .use__occasions_swiper .swiper__dots .swiper__dots-item.active {
-  border-radius: 100%;
-}
-.use__occasions
-  .use__occasions_swiper
-  .swiper__dots
-  .swiper__dots-item.active::before {
-  width: 4.5333333333vw;
-  height: 4.5333333333vw;
-  background-color: var(--dot-active-color);
-  transition: all 0.3s;
-}
-.use__occasions .swiper-button-next,
-.use__occasions .swiper-button-prev {
-  display: none;
-}
+
 @media (min-width: 1200px) {
   .use__occasions {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding-top: 30px;
-    padding-bottom: 0;
+    @include flex-column-center-center;
+    padding-top: 100px;
+    padding-bottom: 108px;
     overflow: hidden;
-  }
-  .use__occasions .use__occasions_title {
-    font-size: 44px;
-    font-weight: 600;
-    line-height: 65px;
-    font-family: inherit;
-    color: var(--text-b-color);
-    text-align: center;
-    margin-bottom: 15px;
-    color: #fff;
-  }
-  .use__occasions .use__occasions_desc {
-    max-width: 890px;
-    font-size: 18px;
-    font-weight: 300;
-    line-height: 27px;
-    font-family: inherit;
-    text-align: center;
-    margin-bottom: 30px;
-  }
-  .use__occasions .use__occasions_swiper {
-    display: flex;
-    width: 678px;
-    height: 544px;
-    margin-bottom: 28px;
-    overflow: initial !important;
-  }
-  .use__occasions .use__occasions_swiper .use__occasions_swiper-item {
-    position: initial;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    transition: 0.5s;
-    height: auto !important;
-    cursor: pointer;
-  }
-  .use__occasions .use__occasions_swiper .use__occasions_swiper-item &gt; img {
-    max-width: 100%;
-    height: auto;
-    order: 0;
-    margin-bottom: 40px;
-    border-radius: 10px;
-  }
-  .use__occasions .use__occasions_swiper .use__occasions_swiper-item &gt; h3 {
-    font-size: 20px;
-    font-weight: 600;
-    line-height: 30px;
-    font-family: inherit;
-    color: var(--text-b-color);
-    text-align: left;
-    order: 1;
-    margin-bottom: 0;
-    color: #fff;
-  }
-  .use__occasions .use__occasions_swiper .use__occasions_swiper-item &gt; p {
-    font-size: 16px;
-    font-weight: 300;
-    line-height: 25px;
-    font-family: inherit;
-    color: var(--text-b-color);
-    text-align: left;
-    order: 2;
-    margin-top: 0;
-    opacity: 0;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    color: #fff;
-  }
-  .use__occasions .use__occasions_swiper .swiper-slide-active,
-  .use__occasions .use__occasions_swiper .swiper-slide-duplicate-active {
-    width: 678px !important;
-  }
-  .use__occasions .use__occasions_swiper .swiper-slide-active &gt; p,
-  .use__occasions .use__occasions_swiper .swiper-slide-duplicate-active &gt; p {
-    opacity: 1;
-  }
-  .use__occasions .use__occasions_swiper .swiper-button-next,
-  .use__occasions .use__occasions_swiper .swiper-button-prev {
-    width: 65px;
-    height: 65px;
-    background-color: var(--click-btn-color);
-    border-radius: 100%;
-    color: var(--text-color);
-    --swiper-navigation-size: 25px;
-    display: flex;
-    top: 40%;
+    background-color: #fff;
+    .use__occasions_title {
+      @include font-info-pc(44px, 65px, 600, var(--text-b-color));
+      margin-bottom: 15px;
+    }
+    .use__occasions_desc {
+      max-width: 890px;
+      @include font-info-pc(18px, 27px, 300, var(--text-b-color));
+      margin-bottom: 30px;
+    }
+    .use__occasions_swiper {
+      display: flex;
+      width: 678px;
+      height: 544px;
+      margin-bottom: 28px;
+      overflow: initial !important;
+      .use__occasions_swiper-item {
+        position: initial;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        transition: 0.5s;
+        height: auto !important;
+        cursor: pointer;
+        &gt; img {
+          max-width: 100%;
+          height: auto;
+          order: 0;
+          margin-bottom: 40px;
+        }
+        &gt; h3 {
+          @include font-info-pc(20px, 30px, 600, var(--text-b-color), left);
+          order: 1;
+          margin-bottom: 0;
+        }
+        &gt; p {
+          @include font-info-pc(16px, 25px, 300, var(--text-b-color), left);
+          order: 2;
+          margin-top: 0;
+          opacity: 0;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+        }
+      }
+      .swiper-slide-active,
+      .swiper-slide-duplicate-active {
+        width: 678px !important;
+        &gt; p {
+          opacity: 1;
+        }
+      }
+      .swiper-button-next,
+      .swiper-button-prev {
+        width: 65px;
+        height: 65px;
+        background-color: var(--click-btn-color);
+        border-radius: 100%;
+        color: var(--text-color);
+        --swiper-navigation-size: 25px;
+        display: flex;
+        top: 40%;
+      }
+    }
   }
 }</textarea>
         </div>
         <div class="code__wrapper_top-js">
           <div class="title">JAVASCRIPT</div>
-          <textarea id="jsCode">var mySwiper = new Swiper(&#34;.swiper-container&#34;, {
-  width: 270,
-  slidesPerView: 1,
-  initialSlide: 2,
-  observer: true,
-  observeParents: true,
-  spaceBetween: 15,
-  centeredSlides: true,
-  // loop: true,
-  navigation: {
-    nextEl: &#34;.use__occasions .swiper-button-next&#34;,
-    prevEl: &#34;.use__occasions .swiper-button-prev&#34;,
-  },
-});
-const slides = document.querySelectorAll(&#34;.use__occasions_swiper-item&#34;);
-slides.forEach((slide, index) =&gt; {
-  slide.addEventListener(&#34;click&#34;, function () {
-    mySwiper.slideTo(index);
+          <textarea id="jsCode">// 移动端
+class CustomSwiperOne {
+  constructor({ container = &#34;&#34;, children = &#34;&#34; }) {
+    this.container = container;
+    this.children = children;
+    this.swiperItemIndex = 0;
+    this.init();
+  }
+  init() {
+    this.containerDom = document.querySelector(this.container);
+    this.containerItemDom = this.containerDom.querySelectorAll(this.children);
+    this.containerItemLen = this.containerItemDom.length;
+    this.render();
+  }
+  render() {
+    let dots = `&lt;div class=&#34;swiper__dots&#34;&gt;`;
+    for (let i = 0; i &lt; this.containerItemLen; i++) {
+      const item = this.containerItemDom[i];
+      item.style.left = `${i * 100}%`;
+      let classes = &#34;&#34;;
+      if (i === 0) {
+        classes = &#34;active&#34;;
+      }
+      dots += `&lt;span class=&#34;swiper__dots-item ${classes}&#34; data-i=&#34;${i}&#34;&gt;&lt;/span&gt;`;
+      this.moveItemByTouch(item);
+    }
+    this.containerDom.insertAdjacentHTML(&#34;beforeend&#34;, dots);
+    this.dotsClick();
+  }
+  clearDotActive() {
+    for (let i = 0; i &lt; this.dotsItem.length; i++) {
+      const dotItem = this.dotsItem[i];
+      dotItem.classList.remove(&#34;active&#34;);
+    }
+  }
+  dotAddActive() {
+    for (let i = 0; i &lt; this.dotsItem.length; i++) {
+      const dotItem = this.dotsItem[i];
+      dotItem.classList.remove(&#34;active&#34;);
+      if (i === this.swiperItemIndex) {
+        dotItem.classList.add(&#34;active&#34;);
+      }
+    }
+  }
+  dotsClick() {
+    this.dotsItem = this.containerDom.querySelectorAll(&#34;.swiper__dots-item&#34;);
+    for (let i = 0; i &lt; this.dotsItem.length; i++) {
+      const dotItem = this.dotsItem[i];
+      dotItem.onclick = () =&gt; {
+        this.clearDotActive();
+        this.moveSwiperItem(dotItem.dataset.i);
+        dotItem.classList.add(&#34;active&#34;);
+      };
+    }
+  }
+  moveSwiperItem(i = 0) {
+    const dis = i - this.swiperItemIndex;
+    for (let i = 0; i &lt; this.containerItemLen; i++) {
+      const item = this.containerItemDom[i];
+      let left = parseInt(item.style.left);
+      left -= dis * 100;
+      item.style.left = `${left}%`;
+    }
+    this.swiperItemIndex = i;
+    this.dotAddActive();
+  }
+  moveItemByTouch(element = null) {
+    if (!element) return;
+    let startX, startY, distX, distY;
+    element.addEventListener(&#34;touchstart&#34;, handleTouchStart, false);
+    element.addEventListener(&#34;touchmove&#34;, handleTouchMove, false);
+    function handleTouchStart(event) {
+      startX = event.touches[0].clientX;
+      startY = event.touches[0].clientY;
+    }
+    function handleTouchMove(event) {
+      if (!startX || !startY) {
+        return;
+      }
+      distX = event.touches[0].clientX - startX;
+      distY = event.touches[0].clientY - startY;
+      if (Math.abs(distX) &gt; Math.abs(distY)) {
+        event.preventDefault();
+      }
+    }
+    element.addEventListener(
+      &#34;touchend&#34;,
+      () =&gt; {
+        if (Math.abs(distX) &gt; 50) {
+          let i = this.swiperItemIndex;
+          if (distX &gt; 0) {
+            if (this.swiperItemIndex &lt;= 0) {
+              i = 0;
+            } else {
+              i--;
+            }
+            this.handleSwiperItem(i);
+          } else if (distX &lt; 0) {
+            if (this.swiperItemIndex &gt;= this.containerItemLen - 1) {
+              i = this.containerItemLen - 1;
+            } else {
+              i++;
+            }
+            this.handleSwiperItem(i);
+          }
+        }
+        startX = null;
+        startY = null;
+        distX = 0;
+        distY = 0;
+      },
+      false
+    );
+  }
+  handleSwiperItem(i) {
+    this.moveSwiperItem(i);
+  }
+}
+
+const iframeWrapper = document.querySelector(&#34;#iframe__wrapper&#34;);
+
+if (iframeWrapper.clientWidth &lt;= 768) {
+  new CustomSwiperOne({
+    container: &#34;.use__occasions_swiper&#34;,
+    children: &#34;.use__occasions_swiper-item&#34;,
   });
-});</textarea>
+} else {
+  var mySwiper = new Swiper(&#34;.swiper-container&#34;, {
+    width: 270,
+    slidesPerView: 1,
+    initialSlide: 2,
+    observer: true,
+    observeParents: true,
+    spaceBetween: 15,
+    centeredSlides: true,
+    // loop: true,
+    navigation: {
+      nextEl: &#34;.use__occasions .swiper-button-next&#34;,
+      prevEl: &#34;.use__occasions .swiper-button-prev&#34;,
+    },
+  });
+  const slides = document.querySelectorAll(&#34;.use__occasions_swiper-item&#34;);
+  slides.forEach((slide, index) =&gt; {
+    slide.addEventListener(&#34;click&#34;, function () {
+      mySwiper.slideTo(index);
+    });
+  });
+}</textarea>
         </div>
       </div>
       <div class="code__wrapper_bottom">
         <div class="code__wrapper_top-preview">
           <div class="fs__icon"></div>
+          
+            <div class="mobile__icon"></div>
           
           <iframe
             id="live-preview"
