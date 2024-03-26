@@ -105,163 +105,140 @@ body {
   box-sizing: inherit;
 }
 :root {
-  --btn-bg-color: #8b3dff;
-  --text-color: #fff;
   --text-b-color: #000000;
-  --border-color: #ebebeb;
-  --border-radius: 3px;
-  --ball-color: #ddc7ff;
-  --border-top-color: #a065f9;
-  --dot-color: #beb8cb;
-  --dot-active-color: #6d4dff;
   --bg-color: #f8f8f8;
   --border-bottom-color: #d2d0de;
-  --a-val: 0.17;
-  --click-btn-color: #15151c;
-  --bg-hover-color: #eadcff;
-  --article-border-color: #d7d4e5;
 }
-
-#iframe__wrapper {
-  height: fit-content;
+@function pxToVw($px) {
+  @return ($px / 750) * 100vw;
 }
-ul,
-li {
-  list-style: none;
-}
-a {
-  color: var(--btn-bg-color);
-}
-.faqs__translator {
+@mixin flex-column-center-center {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding-top: 13.3333333333vw;
-  padding-bottom: 13.3333333333vw;
-  background-color: var(--bg-color);
-  height: 100%;
-  min-height: 100vh;
 }
-.faqs__translator .faqs__translator_title {
-  max-width: 84vw;
-  margin-bottom: 3.2vw;
-  font-size: 5.8666666667vw;
-  font-weight: 600;
-  line-height: 9.4666666667vw;
+
+@mixin font-info($fs, $lh, $fw, $c, $ta: center) {
+  font-size: pxToVw($fs);
+  font-weight: $fw;
+  line-height: pxToVw($lh);
   font-family: inherit;
-  color: var(--text-b-color);
-  text-align: center;
-  margin-bottom: 11.2vw;
+  color: $c;
+  text-align: $ta;
 }
-.faqs__translator .faqs__translator_lists {
-  max-width: 84vw;
-}
-.faqs__translator .faqs__translator_item {
-  width: 100%;
-  border-bottom: 1px solid var(--border-bottom-color);
-  padding-bottom: 4.4vw;
-}
-.faqs__translator .faqs__translator_item + .faqs__translator_item {
-  padding-top: 4.4vw;
-}
-.faqs__translator .faqs__translator_item .faqs__translator_item-header {
-  font-size: 4.2666666667vw;
-  font-weight: 500;
-  line-height: 6.4vw;
+
+@mixin font-info-pc($fs, $lh, $fw, $c, $ta: center) {
+  font-size: $fs;
+  font-weight: $fw;
+  line-height: $lh;
   font-family: inherit;
-  color: var(--text-b-color);
-  text-align: left;
-  margin-bottom: 1.0666666667vw;
-  max-width: 71.8666666667vw;
-  position: relative;
-  transition: all 0.5s;
+  color: $c;
+  text-align: $ta;
 }
-.faqs__translator .faqs__translator_item .faqs__translator_item-header::before {
-  content: &#34;&#34;;
-  position: absolute;
-  top: 0;
-  right: -6.5333333333vw;
-  width: 5.3333333333vw;
-  height: 5.3333333333vw;
-  background-color: transparent;
-  background-image: url(&#34;https://www.vidnoz.com/img/video-translate/arrow-down.svg&#34;);
-  background-position: center;
+
+@mixin bg-info($image, $color: transparent, $pos: center, $size: cover) {
+  background-color: $color;
+  background-image: url($image);
+  background-position: $pos;
   background-repeat: no-repeat;
-  background-size: cover;
-  transition: all 0.5s;
+  background-size: $size;
 }
-.faqs__translator
-  .faqs__translator_item
-  .faqs__translator_item-header.show::before {
-  transition: all 0.5s;
-  transform-origin: center;
-  transform: rotate(-180deg);
-}
-.faqs__translator .faqs__translator_item .faqs__translator_item-body {
-  font-size: 4.2666666667vw;
-  font-weight: 300;
-  line-height: 7.3333333333vw;
-  font-family: inherit;
-  color: var(--text-b-color);
-  text-align: left;
-  letter-spacing: 0.64px;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.5s ease;
+.faqs__translator {
+  @include flex-column-center-center;
+  padding-top: pxToVw(100);
+  padding-bottom: pxToVw(100);
+  background-color: var(--bg-color);
+  .faqs__translator_title {
+    max-width: pxToVw(630);
+    margin-bottom: pxToVw(24);
+    @include font-info(44, 71, 600, var(--text-b-color));
+    margin-bottom: pxToVw(84);
+  }
+  .faqs__translator_lists {
+    max-width: pxToVw(630);
+  }
+  .faqs__translator_item {
+    width: 100%;
+    border-bottom: 1px solid var(--border-bottom-color);
+    padding-bottom: pxToVw(33);
+    &amp; + .faqs__translator_item {
+      padding-top: pxToVw(33);
+    }
+    .faqs__translator_item-header {
+      @include font-info(32, 48, 500, var(--text-b-color), left);
+      margin-bottom: pxToVw(8);
+      max-width: pxToVw(539);
+      position: relative;
+      &amp;::before {
+        content: &#34;&#34;;
+        position: absolute;
+        top: 0;
+        right: pxToVw(-49);
+        width: pxToVw(40);
+        height: pxToVw(40);
+        @include bg-info(
+          &#34;https://www.vidnoz.com/img/video-translate/arrow-down.svg&#34;,
+          transparent,
+          center
+        );
+        transition: all 0.5s;
+      }
+      transition: all 0.5s;
+      &amp;.show {
+        &amp;::before {
+          transition: all 0.5s;
+          transform-origin: center;
+          transform: rotate(-180deg);
+        }
+      }
+    }
+    .faqs__translator_item-body {
+      @include font-info(32, 55, 300, var(--text-b-color), left);
+      letter-spacing: 0.64px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease;
+    }
+  }
 }
 @media (min-width: 1200px) {
   .faqs__translator {
     padding-top: 100px;
     padding-bottom: 100px;
-  }
-  .faqs__translator .faqs__translator_title {
-    font-size: 44px;
-    font-weight: 600;
-    line-height: 61px;
-    font-family: inherit;
-    color: var(--text-b-color);
-    text-align: center;
-    margin-bottom: 42px;
-  }
-  .faqs__translator .faqs__translator_lists {
-    max-width: 700px;
-  }
-  .faqs__translator .faqs__translator_item {
-    padding-bottom: 25.5px;
-  }
-  .faqs__translator .faqs__translator_item + .faqs__translator_item {
-    padding-top: 25.5px;
-  }
-  .faqs__translator .faqs__translator_item .faqs__translator_item-header {
-    max-width: 666px;
-    cursor: pointer;
-    font-size: 18px;
-    font-weight: 500;
-    line-height: 27px;
-    font-family: inherit;
-    color: var(--text-b-color);
-    text-align: left;
-    margin-bottom: 0;
-  }
-  .faqs__translator .faqs__translator_item .faqs__translator_item-header.show {
-    padding-bottom: 25.5px;
-  }
-  .faqs__translator
-    .faqs__translator_item
-    .faqs__translator_item-header::before {
-    width: 18px;
-    height: 18px;
-    right: 0;
-  }
-  .faqs__translator .faqs__translator_item .faqs__translator_item-body {
-    max-width: 666px;
-    font-size: 16px;
-    font-weight: 300;
-    line-height: 25px;
-    font-family: inherit;
-    color: var(--text-b-color);
-    text-align: left;
+    height: fit-content;
+    min-height: 100vh;
+    .faqs__translator_title {
+      @include font-info-pc(44px, 61px, 600, var(--text-b-color));
+      margin-bottom: 42px;
+    }
+    .faqs__translator_lists {
+      max-width: 700px;
+    }
+    .faqs__translator_item {
+      padding-bottom: 25.5px;
+      &amp; + .faqs__translator_item {
+        padding-top: 25.5px;
+      }
+      .faqs__translator_item-header {
+        max-width: 666px;
+        cursor: pointer;
+        @include font-info-pc(18px, 27px, 500, var(--text-b-color), left);
+        margin-bottom: 0;
+        &amp;.show {
+          padding-bottom: 25.5px;
+        }
+        &amp;::before {
+          width: 18px;
+          height: 18px;
+          right: 0;
+        }
+      }
+      .faqs__translator_item-body {
+        max-width: 666px;
+        @include font-info-pc(16px, 25px, 300, var(--text-b-color), left);
+      }
+    }
   }
 }</textarea>
         </div>
