@@ -316,6 +316,7 @@ ul {
   height: fit-content;
   min-height: 100%;
   /* background-image: linear-gradient(rgba(0, 0, 255, 0.5), rgba(255, 255, 0, 0.5)) */
+  padding-top: 30px;
 }
 
 .home__list {
@@ -324,6 +325,7 @@ ul {
   grid-gap: 30px;
   width: fit-content;
   margin: 0 auto;
+  margin-bottom: 30px;
 }
 
 .home__banner {
@@ -337,6 +339,7 @@ ul {
   align-items: center;
   justify-content: center;
   border-bottom: 3px solid #0c1021;
+  display: none;
 }
 
 .home__banner .logo {
@@ -399,7 +402,7 @@ ul {
   width: 1140px;
   height: fit-content;
   margin: 0 auto;
-  margin-top: 30px;
+  /* margin-top: 30px; */
   overflow: hidden;
 }
 
