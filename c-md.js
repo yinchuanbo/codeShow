@@ -26,12 +26,15 @@ function time() {
 }
 
 const fileContent =
-  "---\ntitle: \"\"\ndate: " + time() + "\n\n---\n\n" +
+  '---\ntitle: ""\ndate: ' +
+  time() +
+  "\n---\n\n" +
   "```html\n\n```\n\n" +
   "```css\n\n```\n\n" +
   "```js\n\n```";
 
-const filePath = path.join(__dirname, "md", `${curName}.md`);
+const timestamp = new Date().getTime();
+const filePath = path.join(__dirname, "md", `${timestamp}.md`);
 
 fs.writeFile(filePath, fileContent, (err) => {
   if (err) {
