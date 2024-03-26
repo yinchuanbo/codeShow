@@ -2,12 +2,10 @@ const fs = require("fs");
 const path = require("path");
 const ejs = require("ejs");
 const marked = require("marked");
-const yaml = require("js-yaml");
-
 const folderPath = "./md";
 
 const mdFilePaths = [];
-const filesList = [];
+let filesList = [];
 
 function traverseFolder(folderPath) {
   const files = fs.readdirSync(folderPath);
@@ -27,6 +25,8 @@ function traverseFolder(folderPath) {
 traverseFolder(folderPath);
 
 let listHTML = `<ul class="home__list">`;
+
+filesList = filesList.sort((a, b) => Number(a) - Number(b));
 
 for (let i = filesList.length - 1; i >= 0; i--) {
   const file = filesList[i];
