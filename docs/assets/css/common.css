@@ -459,6 +459,22 @@ ul {
   transition: all 0.5s;
   /* border: 1px solid #ddd; */
   cursor: pointer;
+  position: relative;
+}
+
+.home__list li span {
+  display: block;
+  font-size: 10px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-family: myfont;
+  color: #0c1021;
+  background-color: #e9efe5;
+  padding: 10px 10px;
+  padding-right: 15px;
+  /* border-top-right-radius: 20px; */
+  border-bottom-right-radius: 40px;
 }
 
 .home__list li:hover {

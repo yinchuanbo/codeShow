@@ -2,6 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const ejs = require("ejs");
 const marked = require("marked");
+const yaml = require("js-yaml");
 
 const folderPath = "./md";
 
@@ -54,9 +55,20 @@ for (let i = filesList.length - 1; i >= 0; i--) {
     }
   });
 
-  const templateContent = fs.readFileSync("./template.html", "utf-8");
+  let title, date, lib;
+
+  const titleMatch = h2Content.match(/title:\s*"([^"]+)"/);
+  const dateMatch = h2Content.match(/date:\s*([^\s]+)/);
+  const libMatch = h2Content.match(/lib:\s*\[([^\]]+)\]/);
+  title = titleMatch ? titleMatch[1] : null;
+  date = dateMatch ? dateMatch[1] : null;
+  lib = libMatch
+    ? libMatch[1].split(",").map((item) => item.trim().replace(/'/g, ""))
+    : null;
+
+  const templateContent = fs.readFileSync("./template-editor.html", "utf-8");
   const compiledHtml = ejs.render(templateContent, {
-    h2Content: (h2Content || "").trim(),
+    title: (title || "").trim(),
     cssContent: (cssContent || "").trim(),
     jsContent: (jsContent || "").trim(),
     htmlContent: (htmlContent || "").trim(),
@@ -64,10 +76,16 @@ for (let i = filesList.length - 1; i >= 0; i--) {
 
   fs.writeFileSync(`./docs/${file}.html`, compiledHtml);
   let str = `style="display: none"`;
-  if(i < 6) {
-    str = ''
+  if (i < 6) {
+    str = "";
   }
-  listHTML += `<li onclick="location.href='/${file}.html'" ${str}><div class="li__cover"><img src="assets/images/${file}.png" /></div><a href="javascript:;">${h2Content}</a></li>`;
+  listHTML += `<li onclick="location.href='/${file}.html'" ${str}><div class="li__cover"><img src="assets/images/${file}.png" /></div><a href="javascript:;">${title}</a><span>${newDate(date)}</span></li>`;
+}
+
+function newDate(dateString = "") {
+  const date = new Date(dateString);
+  const localDate = date.toLocaleString();
+  return localDate;
 }
 
 function unescapeHtml(html) {
@@ -84,7 +102,7 @@ const homeContent = fs.readFileSync("./template-home.html", "utf-8");
 
 const homeHTML = ejs.render(homeContent, {
   content: unescapeHtml(listHTML),
-  len: filesList?.length ?? 0
+  len: filesList?.length ?? 0,
 });
 
 fs.writeFileSync(`./docs/index.html`, homeHTML);
