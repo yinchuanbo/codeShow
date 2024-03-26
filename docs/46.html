@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>codeShow</title>
-    <link rel="icon" sizes="any" mask href="assets/images/ico.svg">
+    <link rel="icon" sizes="any" mask href="assets/images/ico.svg" />
     <link rel="stylesheet" href="assets/codemirror5/theme/blackboard.css" />
     <link rel="stylesheet" href="assets/css/common.css" />
   </head>
@@ -364,42 +364,22 @@ if (isMobileDevice()) {
         </div>
       </div>
       <div class="code__wrapper_bottom">
-        <!-- <div class="code__wrapper_top-js">
-          <div class="title">JAVASCRIPT</div>
-          <textarea id="jsCode">function isMobileDevice() {
-  const userAgent = navigator.userAgent;
-  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-    userAgent
-  );
-}
-const initScrollBarPos = () =&gt; {
-  const listsDom = document.querySelector(
-    &#34;.recommende__article_swiper .swiper-wrapper&#34;
-  );
-  listsDom.scrollTo(300, 0);
-};
-if (isMobileDevice()) {
-  initScrollBarPos();
-} else {
-  new Swiper(&#34;.recommende__article_swiper&#34;, {
-    width: 1088,
-    slidesPerView: 4,
-    spaceBetween: 16,
-    speed: 800,
-    autoplay: {
-      delay: 8000,
-      disableOnInteraction: false,
-    },
-    navigation: {
-      nextEl: &#34;.recommende__article .swiper-button-next&#34;,
-      prevEl: &#34;.recommende__article .swiper-button-prev&#34;,
-    },
-  });
-}</textarea>
-        </div> -->
         <div class="code__wrapper_top-preview">
           <div class="fs__icon"></div>
-          <iframe id="live-preview" src="assets/templates/template-iframe.html" width="100%" height="100%" allow="accelerometer *; camera *; encrypted-media *; display-capture *; geolocation *; gyroscope *; microphone *; midi *; clipboard-read *; clipboard-write *; web-share *; serial *; xr-spatial-tracking *" allowfullscreen="true" allowpaymentrequest="true" allowtransparency="true" sandbox="allow-forms allow-modals allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation allow-downloads allow-presentation" class="result-iframe iframe-visual-update" name="codeShow" loading="lazy"></iframe>
+          <iframe
+            id="live-preview"
+            src="assets/templates/template-iframe.html"
+            width="100%"
+            height="100%"
+            allow="accelerometer *; camera *; encrypted-media *; display-capture *; geolocation *; gyroscope *; microphone *; midi *; clipboard-read *; clipboard-write *; web-share *; serial *; xr-spatial-tracking *"
+            allowfullscreen="true"
+            allowpaymentrequest="true"
+            allowtransparency="true"
+            sandbox="allow-forms allow-modals allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation allow-downloads allow-presentation"
+            class="result-iframe iframe-visual-update"
+            name="codeShow"
+            loading="lazy"
+          ></iframe>
         </div>
       </div>
     </div>

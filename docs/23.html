@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>codeShow</title>
-    <link rel="icon" sizes="any" mask href="assets/images/ico.svg">
+    <link rel="icon" sizes="any" mask href="assets/images/ico.svg" />
     <link rel="stylesheet" href="assets/codemirror5/theme/blackboard.css" />
     <link rel="stylesheet" href="assets/css/common.css" />
   </head>
@@ -112,76 +112,22 @@ function randomFLIP() {
         </div>
       </div>
       <div class="code__wrapper_bottom">
-        <!-- <div class="code__wrapper_top-js">
-          <div class="title">JAVASCRIPT</div>
-          <textarea id="jsCode">const render = (arr) =&gt; {
-  document.getElementById(&#34;row&#34;).innerHTML = arr
-    .map((v) =&gt; `&lt;span id=&#34;k${v}&#34;&gt;${v}&lt;/span&gt;`)
-    .join(&#34;&#34;);
-};
-const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
-render(arr);
-
-// 随机打乱
-function shuffle(arr) {
-  for (var i = arr.length - 1; i &gt;= 0; i--) {
-    var randomIndex = Math.floor(Math.random() * (i + 1));
-    var itemAtIndex = arr[randomIndex];
-    arr[randomIndex] = arr[i];
-    arr[i] = itemAtIndex;
-  }
-  return arr;
-}
-
-// FLIP动画函数
-function randomFLIP() {
-  const randomArr = shuffle(arr);
-  // First
-  const firstRect = (() =&gt; {
-    const result = {};
-    arr.map((v) =&gt; {
-      result[`k${v}`] = document
-        .getElementById(`k${v}`)
-        .getBoundingClientRect();
-    });
-    return result;
-  })();
-
-  render(randomArr);
-
-  // Last
-  const lastRect = (() =&gt; {
-    const result = {};
-    randomArr.map((v) =&gt; {
-      result[`k${v}`] = document
-        .getElementById(`k${v}`)
-        .getBoundingClientRect();
-    });
-    return result;
-  })();
-
-  // invert
-
-  arr.forEach((v) =&gt; {
-    const first = firstRect[`k${v}`];
-    const last = lastRect[`k${v}`];
-    const deltaX = first.left - last.left;
-    const deltaY = first.top - last.top;
-
-    document.getElementById(
-      `k${v}`
-    ).style = `transform: translate(${deltaX}px, ${deltaY}px);`;
-    requestAnimationFrame(function () {
-      // Play 去掉translate, 加上动画
-      document.getElementById(`k${v}`).style = &#34;transition: all 1s&#34;;
-      document.getElementById(`k${v}`).style.transform = &#34;&#34;;
-    });
-  });
-}</textarea>
-        </div> -->
         <div class="code__wrapper_top-preview">
           <div class="fs__icon"></div>
-          <iframe id="live-preview" src="assets/templates/template-iframe.html" width="100%" height="100%" allow="accelerometer *; camera *; encrypted-media *; display-capture *; geolocation *; gyroscope *; microphone *; midi *; clipboard-read *; clipboard-write *; web-share *; serial *; xr-spatial-tracking *" allowfullscreen="true" allowpaymentrequest="true" allowtransparency="true" sandbox="allow-forms allow-modals allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation allow-downloads allow-presentation" class="result-iframe iframe-visual-update" name="codeShow" loading="lazy"></iframe>
+          <iframe
+            id="live-preview"
+            src="assets/templates/template-iframe.html"
+            width="100%"
+            height="100%"
+            allow="accelerometer *; camera *; encrypted-media *; display-capture *; geolocation *; gyroscope *; microphone *; midi *; clipboard-read *; clipboard-write *; web-share *; serial *; xr-spatial-tracking *"
+            allowfullscreen="true"
+            allowpaymentrequest="true"
+            allowtransparency="true"
+            sandbox="allow-forms allow-modals allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation allow-downloads allow-presentation"
+            class="result-iframe iframe-visual-update"
+            name="codeShow"
+            loading="lazy"
+          ></iframe>
         </div>
       </div>
     </div>

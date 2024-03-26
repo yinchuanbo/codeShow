@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>codeShow</title>
-    <link rel="icon" sizes="any" mask href="assets/images/ico.svg">
+    <link rel="icon" sizes="any" mask href="assets/images/ico.svg" />
     <link rel="stylesheet" href="assets/codemirror5/theme/blackboard.css" />
     <link rel="stylesheet" href="assets/css/common.css" />
   </head>
@@ -407,72 +407,22 @@ MaximizePcBoxsHeaderClick();</textarea>
         </div>
       </div>
       <div class="code__wrapper_bottom">
-        <!-- <div class="code__wrapper_top-js">
-          <div class="title">JAVASCRIPT</div>
-          <textarea id="jsCode">const MaximizePcBoxsHeader = document.querySelectorAll(
-  &#34;.Maximize_pc_boxs_header&#34;
-);
-const MaximizePcBoxsLi = document.querySelectorAll(&#34;.Maximize_pc_boxs_li&#34;);
-function clearMaximizePcBoxsLiAcive() {
-  for (let i = 0; i &lt; MaximizePcBoxsLi.length; i++) {
-    const item = MaximizePcBoxsLi[i];
-    item.classList.remove(&#34;active&#34;);
-    const content = item.querySelector(&#34;.Maximize_pc_boxs_ceontent&#34;);
-    content.style.maxHeight = 0;
-  }
-}
-function MaximizePcBoxsHeaderClick() {
-  const MaximizeImgs = document.querySelectorAll(&#34;.Maximize_pc_boxs_img img&#34;);
-  function MaximizeImgsClear() {
-    for (let i = 0; i &lt; MaximizeImgs.length; i++) {
-      const element = MaximizeImgs[i];
-      element.style.display = &#34;none&#34;;
-    }
-  }
-  for (let i = 0; i &lt; MaximizePcBoxsHeader.length; i++) {
-    const item = MaximizePcBoxsHeader[i];
-    const next = item.nextElementSibling;
-    if (i === 0) {
-      next.style.maxHeight = next.scrollHeight + &#34;px&#34;;
-    }
-    item.onclick = function () {
-      MaximizeImgsClear();
-      MaximizeImgs[i].style.display = &#34;block&#34;;
-      MaximizeImgs[i].animate(
-        [
-          {
-            transform: `scale(0.8)`,
-            opacity: 0,
-          },
-          {
-            transform: `scale(1)`,
-            opacity: 1,
-          },
-        ],
-        {
-          duration: 300,
-          easing: &#34;cubic-bezier(0.2, 0, 0.2, 1)&#34;,
-        }
-      );
-
-      const show =
-        next.style.maxHeight === &#34;0px&#34; || next.style.maxHeight === &#34;&#34;;
-      if (!show) {
-        // this.parentNode.classList.remove(&#34;active&#34;);
-        // next.style.maxHeight = 0;
-      } else {
-        clearMaximizePcBoxsLiAcive();
-        this.parentNode.classList.add(&#34;active&#34;);
-        next.style.maxHeight = next.scrollHeight + &#34;px&#34;;
-      }
-    };
-  }
-}
-MaximizePcBoxsHeaderClick();</textarea>
-        </div> -->
         <div class="code__wrapper_top-preview">
           <div class="fs__icon"></div>
-          <iframe id="live-preview" src="assets/templates/template-iframe.html" width="100%" height="100%" allow="accelerometer *; camera *; encrypted-media *; display-capture *; geolocation *; gyroscope *; microphone *; midi *; clipboard-read *; clipboard-write *; web-share *; serial *; xr-spatial-tracking *" allowfullscreen="true" allowpaymentrequest="true" allowtransparency="true" sandbox="allow-forms allow-modals allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation allow-downloads allow-presentation" class="result-iframe iframe-visual-update" name="codeShow" loading="lazy"></iframe>
+          <iframe
+            id="live-preview"
+            src="assets/templates/template-iframe.html"
+            width="100%"
+            height="100%"
+            allow="accelerometer *; camera *; encrypted-media *; display-capture *; geolocation *; gyroscope *; microphone *; midi *; clipboard-read *; clipboard-write *; web-share *; serial *; xr-spatial-tracking *"
+            allowfullscreen="true"
+            allowpaymentrequest="true"
+            allowtransparency="true"
+            sandbox="allow-forms allow-modals allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation allow-downloads allow-presentation"
+            class="result-iframe iframe-visual-update"
+            name="codeShow"
+            loading="lazy"
+          ></iframe>
         </div>
       </div>
     </div>

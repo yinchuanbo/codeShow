@@ -26,7 +26,7 @@ function time() {
 }
 
 const fileContent =
-  "---\ntitle: \"\"\ndate: " + time() + "\nlib: []\n---\n\n" +
+  "---\ntitle: \"\"\ndate: " + time() + "\n\n---\n\n" +
   "```html\n\n```\n\n" +
   "```css\n\n```\n\n" +
   "```js\n\n```";

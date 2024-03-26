@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>codeShow</title>
-    <link rel="icon" sizes="any" mask href="assets/images/ico.svg">
+    <link rel="icon" sizes="any" mask href="assets/images/ico.svg" />
     <link rel="stylesheet" href="assets/codemirror5/theme/blackboard.css" />
     <link rel="stylesheet" href="assets/css/common.css" />
   </head>
@@ -110,54 +110,22 @@ mouseOverContainer.addEventListener(&#34;mouseleave&#34;, (e) =&gt; {
         </div>
       </div>
       <div class="code__wrapper_bottom">
-        <!-- <div class="code__wrapper_top-js">
-          <div class="title">JAVASCRIPT</div>
-          <textarea id="jsCode">const multiple = 25;
-const mouseOverContainer = document.getElementsByTagName(&#34;body&#34;)[0];
-const element = document.getElementById(&#34;element&#34;);
-
-function transformElement(x, y) {
-  const box = element.getBoundingClientRect();
-  const calcX = -(y - box.y - box.height / 2) / multiple;
-  const calcY = (x - box.x - box.width / 2) / multiple;
-  let angle = Math.floor(
-    getMouseAngle(y - box.y - box.height / 2, x - box.x - box.width / 2)
-  );
-
-  element.style.transform =
-    &#34;rotateX(&#34; + calcX + &#34;deg) &#34; + &#34;rotateY(&#34; + calcY + &#34;deg)&#34;;
-  element.style.setProperty(&#34;--angle&#34;, `${-angle}deg`);
-  element.style.setProperty(&#34;--color&#34;, &#34;rgba(255,255,255,.8)&#34;);
-}
-
-function getMouseAngle(x, y) {
-  const radians = Math.atan2(y, x);
-  let angle = radians * (180 / Math.PI);
-
-  if (angle &lt; 0) {
-    angle += 360;
-  }
-
-  return angle;
-}
-
-mouseOverContainer.addEventListener(&#34;mousemove&#34;, (e) =&gt; {
-  window.requestAnimationFrame(function () {
-    transformElement(e.clientX, e.clientY);
-  });
-});
-
-mouseOverContainer.addEventListener(&#34;mouseleave&#34;, (e) =&gt; {
-  window.requestAnimationFrame(function () {
-    element.style.transform = &#34;rotateX(0) rotateY(0)&#34;;
-    element.style.setProperty(&#34;--angle&#34;, `NAN`);
-    element.style.setProperty(&#34;--color&#34;, &#34;rgba(255,255,255,1)&#34;);
-  });
-});</textarea>
-        </div> -->
         <div class="code__wrapper_top-preview">
           <div class="fs__icon"></div>
-          <iframe id="live-preview" src="assets/templates/template-iframe.html" width="100%" height="100%" allow="accelerometer *; camera *; encrypted-media *; display-capture *; geolocation *; gyroscope *; microphone *; midi *; clipboard-read *; clipboard-write *; web-share *; serial *; xr-spatial-tracking *" allowfullscreen="true" allowpaymentrequest="true" allowtransparency="true" sandbox="allow-forms allow-modals allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation allow-downloads allow-presentation" class="result-iframe iframe-visual-update" name="codeShow" loading="lazy"></iframe>
+          <iframe
+            id="live-preview"
+            src="assets/templates/template-iframe.html"
+            width="100%"
+            height="100%"
+            allow="accelerometer *; camera *; encrypted-media *; display-capture *; geolocation *; gyroscope *; microphone *; midi *; clipboard-read *; clipboard-write *; web-share *; serial *; xr-spatial-tracking *"
+            allowfullscreen="true"
+            allowpaymentrequest="true"
+            allowtransparency="true"
+            sandbox="allow-forms allow-modals allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation allow-downloads allow-presentation"
+            class="result-iframe iframe-visual-update"
+            name="codeShow"
+            loading="lazy"
+          ></iframe>
         </div>
       </div>
     </div>

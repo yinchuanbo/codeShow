@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>codeShow</title>
-    <link rel="icon" sizes="any" mask href="assets/images/ico.svg">
+    <link rel="icon" sizes="any" mask href="assets/images/ico.svg" />
     <link rel="stylesheet" href="assets/codemirror5/theme/blackboard.css" />
     <link rel="stylesheet" href="assets/css/common.css" />
   </head>
@@ -356,192 +356,22 @@ btnDownload.onclick = () =&gt; {
         </div>
       </div>
       <div class="code__wrapper_bottom">
-        <!-- <div class="code__wrapper_top-js">
-          <div class="title">JAVASCRIPT</div>
-          <textarea id="jsCode">function $$(id, type) {
-  var type = type ? type : 0;
-  if (type == 0) {
-    return document.getElementById(id);
-  } else {
-    return document.querySelector(id);
-  }
-}
-
-var filtersSelect = $$(&#34;select#filter&#34;, 1),
-  divConstraints = $$(&#34;div#constraints&#34;, 1),
-  videoplay = $$(&#34;video#player&#34;, 1),
-  timer = null,
-  time = 0,
-  shareType = &#34;no&#34;,
-  recvideo = $$(&#34;video#recplayer&#34;, 1),
-  btnRecord = $$(&#34;button#record&#34;, 1),
-  btnPlay = $$(&#34;button#recplay&#34;, 1),
-  btnDownload = $$(&#34;button#download&#34;, 1),
-  buffer,
-  mediaRecorder;
-
-function getShareType(type) {
-  shareType = type;
-}
-
-function handleError(err) {
-  console.log(&#34;getUserMedia error : &#34;, err);
-  if (err) {
-    $$(&#34;error&#34;).innerHTML = err;
-  }
-  $$(&#34;share&#34;).classList.remove(&#34;hide&#34;);
-  $$(&#34;record&#34;).classList.add(&#34;hide&#34;);
-}
-
-function start() {
-  $$(&#34;error&#34;).innerHTML = &#34;&#34;;
-  if (!navigator.mediaDevices || !navigator.mediaDevices.getDisplayMedia) {
-    console.log(&#34;getUserMedia is not supported&#34;);
-    return;
-  } else {
-    var constraints = {
-      video: true,
-      audio: true,
-    };
-    if (shareType == &#34;microphone&#34;) {
-      constraints = { audio: true, video: false };
-      navigator.mediaDevices
-        .getUserMedia(constraints)
-        .then(() =&gt; {
-          navigator.mediaDevices
-            .getDisplayMedia({ video: true })
-            .then(gotMediaStream)
-            .catch(handleError);
-        })
-        .catch(handleError);
-    } else {
-      constraints.audio = shareType == &#34;no&#34; ? false : true;
-      navigator.mediaDevices
-        .getDisplayMedia(constraints)
-        .then(gotMediaStream)
-        .catch(handleError);
-    }
-  }
-}
-
-function gotMediaStream(stream) {
-  $$(&#34;tip&#34;).classList.remove(&#34;hide&#34;);
-  videoplay.srcObject = stream;
-  var videoTrack = stream.getVideoTracks()[0];
-  var videoConstraints = videoTrack.getSettings();
-  divConstraints.textContent = JSON.stringify(videoConstraints, null, 2);
-  window.stream = stream;
-  return navigator.mediaDevices.enumerateDevices();
-}
-
-function closeTip() {
-  $$(&#34;tip&#34;).classList.add(&#34;hide&#34;);
-}
-
-function share() {
-  start();
-  $$(&#34;share&#34;).classList.add(&#34;hide&#34;);
-  $$(&#34;record&#34;).classList.remove(&#34;hide&#34;);
-}
-
-function setTime() {
-  $$(&#34;time&#34;).classList.remove(&#34;hide&#34;);
-  var min = 0,
-    sec = 0;
-  timer = setInterval(function () {
-    time++;
-    sec++;
-    if (sec == 60) {
-      min++;
-      sec = 0;
-    }
-    var minStr = min &lt; 10 ? &#34;0&#34; + min : min;
-    var secStr = sec &lt; 10 ? &#34;0&#34; + sec : sec;
-    $$(&#34;time&#34;).innerHTML = &#34;00&#34; + &#34;:&#34; + minStr + &#34;:&#34; + secStr;
-    if (time &gt; 15 * 60) {
-      stopRecord();
-      clearInterval(timer);
-    }
-  }, 1000);
-}
-
-function handleDataAvailable(e) {
-  if (e &amp;&amp; e.data &amp;&amp; e.data.size &gt; 0) {
-    buffer.push(e.data);
-  }
-}
-
-function startRecord() {
-  buffer = [];
-  var options = {
-    mimeType: &#34;video/webm; codecs = vp8&#34;,
-  };
-  if (!MediaRecorder.isTypeSupported(options.mimeType)) {
-    console.error(&#34;${options.mimeType} is not supported!&#34;);
-    return;
-  }
-  try {
-    mediaRecorder = new MediaRecorder(window.stream, options);
-    setTime();
-  } catch (e) {
-    console.error(&#34;Failed to create MediaRecorder:&#34;, e);
-    return;
-  }
-  mediaRecorder.ondataavailable = handleDataAvailable;
-  mediaRecorder.start(10);
-}
-
-function stopRecord() {
-  mediaRecorder.stop();
-  $$(&#34;record&#34;).classList.add(&#34;hide&#34;);
-  $$(&#34;recplay&#34;).classList.remove(&#34;hide&#34;);
-  $$(&#34;download&#34;).classList.remove(&#34;hide&#34;);
-  $$(&#34;time&#34;).classList.add(&#34;hide&#34;);
-  clearInterval(timer);
-}
-
-btnRecord.onclick = () =&gt; {
-  if (btnRecord.textContent === &#34;Start Record&#34;) {
-    startRecord();
-    btnRecord.textContent = &#34;Stop Record&#34;;
-  } else {
-    stopRecord();
-    btnRecord.textContent = &#34;Start Record&#34;;
-  }
-};
-
-btnPlay.onclick = () =&gt; {
-  var blob = new Blob(buffer, { type: &#34;video/webm&#34; });
-  recvideo.src = window.URL.createObjectURL(blob);
-  recvideo.srcObject = null;
-  recvideo.controls = true;
-  recvideo.play();
-};
-
-function randomString(len) {
-  len = len || 16;
-  var $chars = &#34;dnkf4hf5s78gjgodj878s7g8posigoerjgb878ks&#34;;
-  var maxPos = $chars.length;
-  var pwd = &#34;&#34;;
-  for (i = 0; i &lt; len; i++) {
-    pwd += $chars.charAt(Math.floor(Math.random() * maxPos));
-  }
-  return pwd;
-}
-btnDownload.onclick = () =&gt; {
-  var blob = new Blob(buffer, { type: &#34;video/webm&#34; });
-  var url = window.URL.createObjectURL(blob);
-  var a = document.createElement(&#34;a&#34;);
-
-  a.href = url;
-  a.style.display = &#34;none&#34;;
-  a.download = randomString(16) + &#34;.webm&#34;;
-  a.click();
-};</textarea>
-        </div> -->
         <div class="code__wrapper_top-preview">
           <div class="fs__icon"></div>
-          <iframe id="live-preview" src="assets/templates/template-iframe.html" width="100%" height="100%" allow="accelerometer *; camera *; encrypted-media *; display-capture *; geolocation *; gyroscope *; microphone *; midi *; clipboard-read *; clipboard-write *; web-share *; serial *; xr-spatial-tracking *" allowfullscreen="true" allowpaymentrequest="true" allowtransparency="true" sandbox="allow-forms allow-modals allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation allow-downloads allow-presentation" class="result-iframe iframe-visual-update" name="codeShow" loading="lazy"></iframe>
+          <iframe
+            id="live-preview"
+            src="assets/templates/template-iframe.html"
+            width="100%"
+            height="100%"
+            allow="accelerometer *; camera *; encrypted-media *; display-capture *; geolocation *; gyroscope *; microphone *; midi *; clipboard-read *; clipboard-write *; web-share *; serial *; xr-spatial-tracking *"
+            allowfullscreen="true"
+            allowpaymentrequest="true"
+            allowtransparency="true"
+            sandbox="allow-forms allow-modals allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation allow-downloads allow-presentation"
+            class="result-iframe iframe-visual-update"
+            name="codeShow"
+            loading="lazy"
+          ></iframe>
         </div>
       </div>
     </div>
