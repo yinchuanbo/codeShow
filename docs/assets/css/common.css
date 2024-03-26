@@ -249,6 +249,7 @@ body {
   background-color: #0c1021;
   border: 0;
   outline: none;
+  display: none;
 }
 
 .CodeMirror {
