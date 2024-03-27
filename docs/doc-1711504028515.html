@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>codeShow</title>
+    <link rel="icon" sizes="any" mask href="assets/images/ico.svg" />
+    <link rel="stylesheet" href="assets/codemirror5/theme/blackboard.css" />
+    <link rel="stylesheet" href="assets/css/common.css" />
+  </head>
+  <body>
+    <div class="code__wrapper">
+      <div class="close__fs"></div>
+      <div class="code__wrapper_header">
+        <div class="code__wrapper_header_title">九宫格抽奖</div>
+        <div class="tools">
+          <div class="home__icon" onclick="window.location.href = '/'"></div>
+        </div>
+      </div>
+      <div class="code__wrapper_top">
+        <div class="code__wrapper_top-html">
+          <div class="title">HTML</div>
+          <textarea id="htmlCode">&lt;div class=&#34;luckyDraw&#34;&gt;
+  &lt;ul class=&#34;lottery&#34;&gt;
+    &lt;li class=&#34;active&#34;&gt;1&lt;/li&gt;
+    &lt;li&gt;2&lt;/li&gt;
+    &lt;li&gt;3&lt;/li&gt;
+    &lt;li&gt;4&lt;/li&gt;
+    &lt;li&gt;5&lt;/li&gt;
+    &lt;li&gt;6&lt;/li&gt;
+    &lt;li&gt;7&lt;/li&gt;
+    &lt;li&gt;8&lt;/li&gt;
+    &lt;li&gt;点击抽奖&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;span class=&#34;prize&#34;&gt;奖品&lt;/span&gt;
+&lt;/div&gt;</textarea>
+        </div>
+        <div class="code__wrapper_top-css">
+          <div class="title">CSS</div>
+          <textarea id="cssCode">* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+}
+.luckyDraw {
+  width: 420px;
+  margin: 0 auto;
+}
+.prize {
+  font-size: 30px;
+}
+.lottery {
+  width: 240px;
+  margin: 30px auto;
+  position: relative;
+}
+.lottery li {
+  width: 80px;
+  height: 80px;
+  border: 1px solid #000;
+  box-sizing: border-box;
+  text-align: center;
+  line-height: 80px;
+  position: absolute;
+  background: #fff;
+}
+.lottery li:nth-of-type(1) {
+  left: 0;
+  top: 0;
+}
+.lottery li:nth-of-type(2) {
+  left: 80px;
+  top: 0;
+}
+.lottery li:nth-of-type(3) {
+  left: 160px;
+  top: 0;
+}
+.lottery li:nth-of-type(4) {
+  left: 160px;
+  top: 80px;
+}
+.lottery li:nth-of-type(5) {
+  left: 160px;
+  top: 160px;
+}
+.lottery li:nth-of-type(6) {
+  left: 80px;
+  top: 160px;
+}
+.lottery li:nth-of-type(7) {
+  left: 0;
+  top: 160px;
+}
+.lottery li:nth-of-type(8) {
+  left: 0;
+  top: 80px;
+}
+.lottery li:nth-of-type(9) {
+  left: 80px;
+  top: 80px;
+  cursor: pointer;
+  background: gold;
+}
+.active:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: &#34;&#34;;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.1);
+}
+.prize {
+  color: #fff;
+}</textarea>
+        </div>
+        <div class="code__wrapper_top-js">
+          <div class="title">JAVASCRIPT</div>
+          <textarea id="jsCode">var arr = [1, 2, 3, 4, 5, 6, 7, 8];
+var lottery = document.querySelector(&#34;.lottery&#34;);
+var prize = document.querySelector(&#34;.prize&#34;);
+var ali = lottery.querySelectorAll(&#34;li&#34;);
+
+var i = 0; //转到哪个位置
+var count = 0; //转圈初始值
+var totalCount = 9; //转动的总圈数
+var speed = 500; //转圈速度，越大越慢
+var minSpeed = 500;
+var timer;
+var isClick = true;
+var index = 3; //指定转到哪个奖品
+
+function roll() {
+  //速度衰减
+  speed -= 50;
+  if (speed &lt;= 10) {
+    speed = 10;
+  }
+  //每次调用都去掉全部active类名
+  for (var j = 0; j &lt; ali.length; j++) {
+    ali[j].classList.remove(&#34;active&#34;);
+  }
+  i++;
+  //计算转圈次数
+  if (i &gt;= ali.length - 1) {
+    i = 0;
+    count++;
+  }
+
+  prize.innerHTML = arr[i]; //旁边显示当前奖品
+
+  ali[i].classList.add(&#34;active&#34;); //添加变色类名
+  //满足转圈数和指定位置就停止
+  if (count &gt;= totalCount &amp;&amp; i + 1 == index) {
+    clearTimeout(timer);
+    isClick = true;
+    speed = minSpeed;
+  } else {
+    timer = setTimeout(roll, speed); //不满足条件时调用定时器
+    //最后一圈减速
+    if (count &gt;= totalCount - 1 || speed &lt;= 50) {
+      speed += 100;
+    }
+  }
+}
+
+ali[ali.length - 1].onclick = function () {
+  if (isClick) {
+    count = 0;
+    //随机产生中奖位置
+    index = Math.floor(Math.random() * arr.length + 1);
+    console.log(index);
+    roll();
+    isClick = false;
+  }
+};</textarea>
+        </div>
+      </div>
+      <div class="code__wrapper_bottom">
+        <div class="code__wrapper_top-preview">
+          <div class="fs__icon"></div>
+          
+          <iframe
+            id="live-preview"
+            src="assets/templates/template-iframe.html"
+            width="100%"
+            height="100%"
+            allow="accelerometer *; camera *; encrypted-media *; display-capture *; geolocation *; gyroscope *; microphone *; midi *; clipboard-read *; clipboard-write *; web-share *; serial *; xr-spatial-tracking *"
+            allowfullscreen="true"
+            allowpaymentrequest="true"
+            allowtransparency="true"
+            sandbox="allow-forms allow-modals allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation allow-downloads allow-presentation"
+            class="result-iframe iframe-visual-update"
+            name="codeShow"
+            loading="lazy"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+    <script src="assets/lib/jquery-3.7.1.min.js"></script>
+    <script src="assets/lib/sass.sync.min.js"></script>
+    <link rel="stylesheet" href="assets/codemirror5/lib/codemirror.css" />
+    <link rel="stylesheet" href="assets/codemirror5/addon/hint/show-hint.css" />
+    <script src="assets/codemirror5/lib/codemirror.js"></script>
+    <script src="assets/codemirror5/addon/hint/show-hint.js"></script>
+    <script src="assets/codemirror5/addon/hint/xml-hint.js"></script>
+    <script src="assets/codemirror5/addon/hint/html-hint.js"></script>
+    <script src="assets/codemirror5/mode/xml/xml.js"></script>
+    <script src="assets/codemirror5/mode/javascript/javascript.js"></script>
+    <script src="assets/codemirror5/mode/css/css.js"></script>
+    <script src="assets/codemirror5/mode/htmlmixed/htmlmixed.js"></script>
+    <script src="assets/codemirror5/addon/hint/css-hint.js"></script>
+    <script src="assets/js/common.js"></script>
+  </body>
+</html>
