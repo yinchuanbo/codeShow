@@ -133,7 +133,7 @@ body {
   cursor: pointer;
   background: url("../images/fullscreen.svg") no-repeat;
   background-size: 100% 100%;
-  position: absolute;
+  position: absolute!important;
   top: 10px;
   left: 10px;
   display: none;
