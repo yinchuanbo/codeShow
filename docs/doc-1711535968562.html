@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>codeShow</title>
+    <link rel="icon" sizes="any" mask href="assets/images/ico.svg" />
+    <link rel="stylesheet" href="assets/codemirror5/theme/blackboard.css" />
+    <link rel="stylesheet" href="assets/css/common.css" />
+    <link rel="stylesheet" href="assets/lib/wenk.min.css" />
+  </head>
+  <body>
+    <div class="code__wrapper">
+      <div class="close__fs"></div>
+      <div class="code__wrapper_header">
+        <div class="code__wrapper_header_title">border-radius 实现充电动画</div>
+        <div class="tools">
+          <div class="home__icon" onclick="window.location.href = '/'"></div>
+        </div>
+      </div>
+      <div class="code__wrapper_top">
+        <div class="code__wrapper_top-html">
+          <div class="title">HTML</div>
+          <textarea id="htmlCode">&lt;div class=&#34;container&#34;&gt;
+  &lt;div class=&#34;header&#34;&gt;&lt;/div&gt;
+  &lt;div class=&#34;battery&#34;&gt;&lt;/div&gt;
+  &lt;div class=&#34;battery-copy&#34;&gt;
+    &lt;div class=&#34;g-wave&#34;&gt;&lt;/div&gt;
+    &lt;div class=&#34;g-wave&#34;&gt;&lt;/div&gt;
+    &lt;div class=&#34;g-wave&#34;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</textarea>
+        </div>
+        <div class="code__wrapper_top-css">
+          <div class="title">CSS</div>
+          <textarea id="cssCode">body {
+  background: #e4e4e4;
+}
+
+#iframe__wrapper {
+  display: flex;
+}
+.container {
+  position: relative;
+  width: 140px;
+  margin: auto;
+}
+
+.header {
+  position: absolute;
+  width: 26px;
+  height: 10px;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%, -10px);
+  border-radius: 5px 5px 0 0;
+  background: rgba(255, 255, 255, 0.88);
+}
+
+.battery-copy {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 220px;
+  width: 140px;
+  border-radius: 15px 15px 5px 5px;
+  overflow: hidden;
+}
+
+.battery {
+  position: relative;
+  height: 220px;
+  box-sizing: border-box;
+  border-radius: 15px 15px 5px 5px;
+  box-shadow: 0 0 5px 2px rgba(255, 255, 255, 0.22);
+  background: #fff;
+  z-index: 1;
+
+  &amp;::after {
+    content: &#34;&#34;;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 80%;
+    background: linear-gradient(
+      to bottom,
+      #7abcff 0%,
+      #00bcd4 44%,
+      #2196f3 100%
+    );
+    border-radius: 0px 0px 5px 5px;
+    box-shadow: 0 14px 28px rgba(33, 150, 243, 0), 0 10px 10px rgba(9, 188, 215, 0.08);
+    animation: charging 10s linear infinite;
+    filter: hue-rotate(90deg);
+  }
+}
+
+.g-wave {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 45% 47% 44% 42%;
+  bottom: 25px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  z-index: 1;
+  animation: move 10s linear infinite;
+}
+
+.g-wave:nth-child(2) {
+  border-radius: 38% 46% 43% 47%;
+  transform: translate(-50%, 0) rotate(-135deg);
+}
+
+.g-wave:nth-child(3) {
+  border-radius: 42% 46% 37% 40%;
+  transform: translate(-50%, 0) rotate(135deg);
+}
+
+@keyframes charging {
+  50% {
+    box-shadow: 0 14px 28px rgba(0, 150, 136, 0.83), 0px 4px 10px rgba(9, 188, 215, 0.4);
+  }
+
+  95% {
+    top: 5%;
+    filter: hue-rotate(0deg);
+    border-radius: 0 0 5px 5px;
+    box-shadow: 0 14px 28px rgba(4, 188, 213, 0.2), 0 10px 10px rgba(9, 188, 215, 0.08);
+  }
+  100% {
+    top: 0%;
+    filter: hue-rotate(0deg);
+    border-radius: 15px 15px 5px 5px;
+    box-shadow: 0 14px 28px rgba(4, 188, 213, 0), 0 10px 10px rgba(9, 188, 215, 0.4);
+  }
+}
+
+@keyframes move {
+  100% {
+    transform: translate(-50%, -160px) rotate(720deg);
+  }
+}</textarea>
+        </div>
+        <div class="code__wrapper_top-js">
+          <div class="title">JAVASCRIPT</div>
+          <textarea id="jsCode"></textarea>
+        </div>
+      </div>
+      <div class="code__wrapper_bottom">
+        <div class="code__wrapper_top-preview">
+          <div class="fs__icon"></div>
+          
+          <iframe
+            id="live-preview"
+            src="assets/templates/template-iframe.html"
+            width="100%"
+            height="100%"
+            allow="accelerometer *; camera *; encrypted-media *; display-capture *; geolocation *; gyroscope *; microphone *; midi *; clipboard-read *; clipboard-write *; web-share *; serial *; xr-spatial-tracking *"
+            allowfullscreen="true"
+            allowpaymentrequest="true"
+            allowtransparency="true"
+            sandbox="allow-forms allow-modals allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation allow-downloads allow-presentation"
+            class="result-iframe iframe-visual-update"
+            name="codeShow"
+            loading="lazy"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+    <script src="assets/lib/jquery-3.7.1.min.js"></script>
+    <script src="assets/lib/sass.sync.min.js"></script>
+    <link rel="stylesheet" href="assets/codemirror5/lib/codemirror.css" />
+    <link rel="stylesheet" href="assets/codemirror5/addon/hint/show-hint.css" />
+    <script src="assets/codemirror5/lib/codemirror.js"></script>
+    <script src="assets/codemirror5/addon/hint/show-hint.js"></script>
+    <script src="assets/codemirror5/addon/hint/xml-hint.js"></script>
+    <script src="assets/codemirror5/addon/hint/html-hint.js"></script>
+    <script src="assets/codemirror5/mode/xml/xml.js"></script>
+    <script src="assets/codemirror5/mode/javascript/javascript.js"></script>
+    <script src="assets/codemirror5/mode/css/css.js"></script>
+    <script src="assets/codemirror5/mode/htmlmixed/htmlmixed.js"></script>
+    <script src="assets/codemirror5/addon/hint/css-hint.js"></script>
+    <script src="assets/js/common.js"></script>
+  </body>
+</html>
