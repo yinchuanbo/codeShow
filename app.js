@@ -34,16 +34,7 @@ try {
     const stats = fs.statSync(filePath);
     if (stats.isFile() && path.extname(docsFile) === ".html") {
       fs.unlinkSync(filePath);
-      console.log(`Deleted file: ${filePath}`);
     }
-
-
-    // if (path.extname(docsFile) === ".html") {
-    //   const filePath = path.join(docPath, docsFile);
-    //   if (fs.existsSync(filePath)) {
-    //     fs.unlinkSync(filePath);
-    //   }
-    // }
   }
 } catch (err) {
   console.error("Error deleting files:", err);

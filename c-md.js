@@ -1,8 +1,15 @@
 const fs = require("fs");
 const path = require("path");
+const { execSync } = require('child_process');
+// const files = fs.readdirSync("./md");
 
-const files = fs.readdirSync("./md");
-const curName = files.length + 1;
+let userName = "YinHao";
+
+try {
+  userName = execSync("git config user.name", { encoding: "utf-8" }).trim();
+} catch (err) {
+  console.error("Error getting Git user name:", err);
+}
 
 function time() {
   // 创建一个新的 Date 对象，表示当前时间
@@ -28,6 +35,9 @@ function time() {
 const fileContent =
   '---\ntitle: ""\ndate: ' +
   time() +
+  '\ncreate: "' +
+  userName +
+  '"' +
   "\n---\n\n" +
   "```html\n\n```\n\n" +
   "```css\n\n```\n\n" +
