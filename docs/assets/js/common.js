@@ -78,25 +78,25 @@ function setupLivePreviewStudio() {
 function events() {
   previewBtn.onclick = () => {
     codeWrapper.classList.add("fs");
-    if(mobileIcon) {
-      iframeDocument.location.reload();
-    }
+    // if (mobileIcon) {
+    //   iframeDocument.location.reload();
+    // }
   };
   closeFs.onclick = () => {
     codeWrapper.classList.remove("mobile__show");
     codeWrapper.classList.remove("fs");
-    if(mobileIcon) {
-      iframeDocument.location.reload();
-    }
+    // if (mobileIcon) {
+    //   iframeDocument.location.reload();
+    // }
   };
-  if (mobileIcon) {
-    mobileIcon.onclick = () => {
-      codeWrapper.classList.add("mobile__show");
-      if(mobileIcon) {
-        iframeDocument.location.reload();
-      }
-    };
-  }
+  // if (mobileIcon) {
+  //   mobileIcon.onclick = () => {
+  //     codeWrapper.classList.add("mobile__show");
+  //     if (mobileIcon) {
+  //       iframeDocument.location.reload();
+  //     }
+  //   };
+  // }
 }
 
 function loadCode() {
@@ -127,8 +127,26 @@ function loadCode() {
   };
 }
 
+const isMobileDevice = function () {
+  const userAgent = navigator.userAgent;
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+    userAgent
+  );
+};
+
+const changeDev = () => {
+  if (isMobileDevice()) {
+    codeWrapper.classList.add("isM");
+  } else {
+    codeWrapper.classList.remove("isM");
+  }
+  iframeDocument?.location?.reload?.();
+};
+
 document.addEventListener("DOMContentLoaded", () => {
   initEditor();
   events();
   loadCode();
+  changeDev();
+  window.addEventListener("resize", changeDev);
 });

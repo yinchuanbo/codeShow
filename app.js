@@ -96,24 +96,43 @@ for (let i = filesList.length - 1; i >= 0; i--) {
   if (i < 6) {
     str = "";
   }
-  creator = (creator || '').trim();
-  creator = creator.replace(/^"|"$/g, '');
-  creator ||= "YinHao"
+  creator = (creator || "").trim();
+  creator = creator.replace(/^"|"$/g, "");
+  creator ||= "YinHao";
 
-  const creatorDom = !creator ? '' : "<i class=\"creatorName\">" + creator + "</i>";
+  const creatorDom = !creator
+    ? ""
+    : '<i class="creatorName">' + creator + "</i>";
+
+  const isMobile = type && type.includes("mobile")
+    ? '<img src="assets/images/mobile-2.svg" />'
+    : "";
+
   listHTML += `
     <li onclick="location.href='/${params}.html'" ${str}>
-      <div class="li__cover"><img src="assets/images/${file}.png" /></div>
+      <div class="li__cover">
+        <img src="assets/images/${file}.png" />
+        <div class="support-dev">
+          <img src="assets/images/pc-2.svg" />
+          ${isMobile}
+        </div>
+      </div>
       <a href="javascript:;">${title}</a>
       <span>${newDate(date)}</span>
-      ${ creatorDom }
+      ${creatorDom}
     </li>`;
 }
 
 function newDate(dateString = "") {
   const date = new Date(dateString);
-  const localDate = date.toLocaleString();
-  return localDate;
+  const year = date.getFullYear();
+  const month = date.getMonth() + 1;
+  const day = date.getDate();
+  const formattedDate = `${year}/${month.toString().padStart(2, "0")}/${day
+    .toString()
+    .padStart(2, "0")}`;
+
+  return formattedDate;
 }
 
 function unescapeHtml(html) {

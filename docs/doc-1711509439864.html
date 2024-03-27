@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>codeShow</title>
+    <link rel="icon" sizes="any" mask href="assets/images/ico.svg" />
+    <link rel="stylesheet" href="assets/codemirror5/theme/blackboard.css" />
+    <link rel="stylesheet" href="assets/css/common.css" />
+    <link rel="stylesheet" href="assets/lib/wenk.min.css" />
+  </head>
+  <body>
+    <div class="code__wrapper">
+      <div class="close__fs"></div>
+      <div class="code__wrapper_header">
+        <div class="code__wrapper_header_title">Vertical Swiper thumbs</div>
+        <div class="tools">
+          <div class="home__icon" onclick="window.location.href = '/'"></div>
+        </div>
+      </div>
+      <div class="code__wrapper_top">
+        <div class="code__wrapper_top-html">
+          <div class="title">HTML</div>
+          <textarea id="htmlCode">&lt;div class=&#34;gallery-container&#34;&gt;
+  &lt;div class=&#34;swiper-container gallery-main&#34;&gt;
+    &lt;div class=&#34;swiper-wrapper&#34;&gt;
+      &lt;div class=&#34;swiper-slide&#34;&gt;
+        &lt;div class=&#34;gallery-title&#34;&gt;Vertical&lt;br /&gt;Swiper&lt;/div&gt;
+        &lt;img src=&#34;https://picsum.photos/seed/slide1/600/300&#34; alt=&#34;Slide 01&#34; /&gt;
+      &lt;/div&gt;
+      &lt;div class=&#34;swiper-slide&#34;&gt;
+        &lt;div class=&#34;gallery-title&#34;&gt;Slide 02&lt;/div&gt;
+        &lt;img src=&#34;https://picsum.photos/seed/slide2/600/300&#34; alt=&#34;Slide 02&#34; /&gt;
+      &lt;/div&gt;
+      &lt;div class=&#34;swiper-slide&#34;&gt;
+        &lt;div class=&#34;gallery-title&#34;&gt;Slide 03&lt;/div&gt;
+        &lt;img src=&#34;https://picsum.photos/seed/slide3/600/300&#34; alt=&#34;Slide 03&#34; /&gt;
+      &lt;/div&gt;
+      &lt;div class=&#34;swiper-slide&#34;&gt;
+        &lt;div class=&#34;gallery-title&#34;&gt;Slide 04&lt;/div&gt;
+        &lt;img src=&#34;https://picsum.photos/seed/slide4/600/300&#34; alt=&#34;Slide 04&#34; /&gt;
+      &lt;/div&gt;
+      &lt;div class=&#34;swiper-slide&#34;&gt;
+        &lt;div class=&#34;gallery-title&#34;&gt;Slide 04&lt;/div&gt;
+        &lt;img src=&#34;https://picsum.photos/seed/slide5/600/300&#34; alt=&#34;Slide 05&#34; /&gt;
+      &lt;/div&gt;
+      &lt;div class=&#34;swiper-slide&#34;&gt;
+        &lt;div class=&#34;gallery-title&#34;&gt;Slide 06&lt;/div&gt;
+        &lt;img src=&#34;https://picsum.photos/seed/slide6/600/300&#34; alt=&#34;Slide 06&#34; /&gt;
+      &lt;/div&gt;
+      &lt;div class=&#34;swiper-slide&#34;&gt;
+        &lt;div class=&#34;gallery-title&#34;&gt;Slide 07&lt;/div&gt;
+        &lt;img src=&#34;https://picsum.photos/seed/slide7/600/300&#34; alt=&#34;Slide 07&#34; /&gt;
+      &lt;/div&gt;
+      &lt;div class=&#34;swiper-slide&#34;&gt;
+        &lt;div class=&#34;gallery-title&#34;&gt;Slide 08&lt;/div&gt;
+        &lt;img src=&#34;https://picsum.photos/seed/slide8/600/300&#34; alt=&#34;Slide 08&#34; /&gt;
+      &lt;/div&gt;
+      &lt;div class=&#34;swiper-slide&#34;&gt;
+        &lt;div class=&#34;gallery-title&#34;&gt;Slide 09&lt;/div&gt;
+        &lt;img src=&#34;https://picsum.photos/seed/slide9/600/300&#34; alt=&#34;Slide 09&#34; /&gt;
+      &lt;/div&gt;
+      &lt;div class=&#34;swiper-slide&#34;&gt;
+        &lt;div class=&#34;gallery-title&#34;&gt;Slide 10&lt;/div&gt;
+        &lt;img src=&#34;https://picsum.photos/seed/slide10/600/300&#34; alt=&#34;Slide 10&#34; /&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;swiper-button-prev&#34;&gt;&lt;/div&gt;
+    &lt;div class=&#34;swiper-button-next&#34;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;swiper-container gallery-thumbs&#34;&gt;
+    &lt;div class=&#34;swiper-wrapper&#34;&gt;
+      &lt;div class=&#34;swiper-slide&#34;&gt;
+        &lt;img src=&#34;https://picsum.photos/seed/slide1/115/100&#34; alt=&#34;Slide 01&#34; /&gt;
+      &lt;/div&gt;
+      &lt;div class=&#34;swiper-slide&#34;&gt;
+        &lt;img src=&#34;https://picsum.photos/seed/slide2/115/100&#34; alt=&#34;Slide 02&#34; /&gt;
+      &lt;/div&gt;
+      &lt;div class=&#34;swiper-slide&#34;&gt;
+        &lt;img src=&#34;https://picsum.photos/seed/slide3/115/100&#34; alt=&#34;Slide 03&#34; /&gt;
+      &lt;/div&gt;
+      &lt;div class=&#34;swiper-slide&#34;&gt;
+        &lt;img src=&#34;https://picsum.photos/seed/slide4/115/100&#34; alt=&#34;Slide 04&#34; /&gt;
+      &lt;/div&gt;
+      &lt;div class=&#34;swiper-slide&#34;&gt;
+        &lt;img src=&#34;https://picsum.photos/seed/slide5/115/100&#34; alt=&#34;Slide 05&#34; /&gt;
+      &lt;/div&gt;
+      &lt;div class=&#34;swiper-slide&#34;&gt;
+        &lt;img src=&#34;https://picsum.photos/seed/slide6/115/100&#34; alt=&#34;Slide 06&#34; /&gt;
+      &lt;/div&gt;
+      &lt;div class=&#34;swiper-slide&#34;&gt;
+        &lt;img src=&#34;https://picsum.photos/seed/slide7/115/100&#34; alt=&#34;Slide 07&#34; /&gt;
+      &lt;/div&gt;
+      &lt;div class=&#34;swiper-slide&#34;&gt;
+        &lt;img src=&#34;https://picsum.photos/seed/slide8/115/100&#34; alt=&#34;Slide 08&#34; /&gt;
+      &lt;/div&gt;
+      &lt;div class=&#34;swiper-slide&#34;&gt;
+        &lt;img src=&#34;https://picsum.photos/seed/slide9/115/100&#34; alt=&#34;Slide 09&#34; /&gt;
+      &lt;/div&gt;
+      &lt;div class=&#34;swiper-slide&#34;&gt;
+        &lt;img src=&#34;https://picsum.photos/seed/slide10/115/100&#34; alt=&#34;Slide 10&#34; /&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</textarea>
+        </div>
+        <div class="code__wrapper_top-css">
+          <div class="title">CSS</div>
+          <textarea id="cssCode">#iframe__wrapper {
+  display: grid;
+  place-items: center;
+}
+
+.gallery-container {
+  position: relative;
+  width: 730px;
+  display: flex;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.gallery-main {
+  width: 600px;
+  height: 300px;
+  box-shadow: 0 50px 75px 50px rgba(#1e1e1e, 0.18);
+  border: 1px solid #e9e9e9;
+
+  .swiper-button {
+    &amp;-prev,
+    &amp;-next {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      top: auto;
+      left: auto;
+      height: 75px;
+      width: 40px;
+      color: #e9e9e9;
+      background: #1e1e1e;
+
+      &amp;::after {
+        font-size: 12px;
+      }
+    }
+
+    &amp;-prev {
+      right: 40px;
+      border-right: 1px solid #e9e9e9;
+    }
+  }
+}
+
+.gallery-title {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-family: &#34;Epilogue&#34;, sans-serif;
+  font-size: 50px;
+  font-weight: 700;
+  text-align: right;
+  text-transform: uppercase;
+  text-shadow: 0 0 20px rgba(#000, 0.3);
+  color: #ffffff;
+
+  .swiper-slide-active &amp; {
+    animation: slide-in 0.3s ease-in both;
+  }
+}
+
+.gallery-thumbs {
+  order: -1;
+  width: 100px;
+  height: 300px;
+  margin-right: 15px;
+  padding-left: 15px;
+
+  .swiper-slide {
+    img {
+      transition: 0.3s;
+    }
+
+    &amp;-active {
+      opacity: 0.9;
+    }
+
+    &amp;-thumb-active {
+      opacity: 1;
+
+      img {
+        margin-left: -15px;
+      }
+    }
+  }
+}
+
+/**
+ * Optionnal
+ */
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    right: -50%;
+  }
+}</textarea>
+        </div>
+        <div class="code__wrapper_top-js">
+          <div class="title">JAVASCRIPT</div>
+          <textarea id="jsCode">var galleryThumbs = new Swiper(&#34;.gallery-thumbs&#34;, {
+  centeredSlides: true,
+  centeredSlidesBounds: true,
+  slidesPerView: 3,
+  watchOverflow: true,
+  watchSlidesVisibility: true,
+  watchSlidesProgress: true,
+  direction: &#34;vertical&#34;,
+});
+
+var galleryMain = new Swiper(&#34;.gallery-main&#34;, {
+  watchOverflow: true,
+  watchSlidesVisibility: true,
+  watchSlidesProgress: true,
+  preventInteractionOnTransition: true,
+  navigation: {
+    nextEl: &#34;.swiper-button-next&#34;,
+    prevEl: &#34;.swiper-button-prev&#34;,
+  },
+  effect: &#34;fade&#34;,
+  fadeEffect: {
+    crossFade: true,
+  },
+  thumbs: {
+    swiper: galleryThumbs,
+  },
+});
+
+galleryMain.on(&#34;slideChangeTransitionStart&#34;, function () {
+  galleryThumbs.slideTo(galleryMain.activeIndex);
+});
+
+galleryThumbs.on(&#34;transitionStart&#34;, function () {
+  galleryMain.slideTo(galleryThumbs.activeIndex);
+});</textarea>
+        </div>
+      </div>
+      <div class="code__wrapper_bottom">
+        <div class="code__wrapper_top-preview">
+          <div class="fs__icon"></div>
+          
+          <iframe
+            id="live-preview"
+            src="assets/templates/template-iframe.html"
+            width="100%"
+            height="100%"
+            allow="accelerometer *; camera *; encrypted-media *; display-capture *; geolocation *; gyroscope *; microphone *; midi *; clipboard-read *; clipboard-write *; web-share *; serial *; xr-spatial-tracking *"
+            allowfullscreen="true"
+            allowpaymentrequest="true"
+            allowtransparency="true"
+            sandbox="allow-forms allow-modals allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation allow-downloads allow-presentation"
+            class="result-iframe iframe-visual-update"
+            name="codeShow"
+            loading="lazy"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+    <script src="assets/lib/jquery-3.7.1.min.js"></script>
+    <script src="assets/lib/sass.sync.min.js"></script>
+    <link rel="stylesheet" href="assets/codemirror5/lib/codemirror.css" />
+    <link rel="stylesheet" href="assets/codemirror5/addon/hint/show-hint.css" />
+    <script src="assets/codemirror5/lib/codemirror.js"></script>
+    <script src="assets/codemirror5/addon/hint/show-hint.js"></script>
+    <script src="assets/codemirror5/addon/hint/xml-hint.js"></script>
+    <script src="assets/codemirror5/addon/hint/html-hint.js"></script>
+    <script src="assets/codemirror5/mode/xml/xml.js"></script>
+    <script src="assets/codemirror5/mode/javascript/javascript.js"></script>
+    <script src="assets/codemirror5/mode/css/css.js"></script>
+    <script src="assets/codemirror5/mode/htmlmixed/htmlmixed.js"></script>
+    <script src="assets/codemirror5/addon/hint/css-hint.js"></script>
+    <script src="assets/js/common.js"></script>
+  </body>
+</html>
