@@ -1,10 +1,7 @@
 const fs = require("fs");
 const path = require("path");
-const { execSync } = require('child_process');
-// const files = fs.readdirSync("./md");
-
+const { execSync } = require("child_process");
 let userName = "YinHao";
-
 try {
   userName = execSync("git config user.name", { encoding: "utf-8" }).trim();
 } catch (err) {
@@ -12,10 +9,7 @@ try {
 }
 
 function time() {
-  // 创建一个新的 Date 对象，表示当前时间
   const currentDate = new Date();
-
-  // 获取当前时间的年、月、日、小时、分钟和秒
   const year = currentDate.getFullYear();
   const month = String(currentDate.getMonth() + 1).padStart(2, "0");
   const day = String(currentDate.getDate()).padStart(2, "0");
@@ -35,6 +29,9 @@ function time() {
 const fileContent =
   '---\ntitle: ""\ndate: ' +
   time() +
+  '\ntype: "' +
+  "pc" +
+  '"' +
   '\ncreate: "' +
   userName +
   '"' +
