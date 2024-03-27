@@ -489,7 +489,7 @@ ul {
   position: relative;
 }
 
-.home__list li span {
+.home__list li span, .creatorName {
   display: block;
   font-size: 10px;
   position: absolute;
@@ -501,7 +501,19 @@ ul {
   padding: 10px 10px;
   padding-right: 15px;
   /* border-top-right-radius: 20px; */
-  border-bottom-right-radius: 40px;
+  border-bottom-right-radius: 20px;
+}
+
+.creatorName {
+  left: unset;
+  top: unset;
+  bottom: 0;
+  right: 0;
+  border-radius: 0;
+  border-top-left-radius: 20px;
+  background-color: #211951;
+  color: #fff;
+  font-size: 12px;
 }
 
 .home__list li:hover {

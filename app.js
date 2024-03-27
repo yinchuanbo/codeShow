@@ -80,14 +80,16 @@ for (let i = filesList.length - 1; i >= 0; i--) {
     }
   });
 
-  let title, date, type;
+  let title, date, type, creator;
 
   const titleMatch = h2Content.match(/title:\s*"([^"]+)"/);
   const dateMatch = h2Content.match(/date:\s*([^\s]+)/);
   const typeMatch = h2Content.match(/type:\s*([^\s]+)/);
+  const creatorMatch = h2Content.match(/creator:\s*([^\s]+)/);
   title = titleMatch ? titleMatch[1] : null;
   date = dateMatch ? dateMatch[1] : null;
   type = typeMatch ? typeMatch[1] : null;
+  creator = creatorMatch ? creatorMatch[1] : null;
   const templateContent = fs.readFileSync("./template-editor.html", "utf-8");
   const compiledHtml = ejs.render(templateContent, {
     title: (title || "").trim(),
@@ -103,9 +105,18 @@ for (let i = filesList.length - 1; i >= 0; i--) {
   if (i < 6) {
     str = "";
   }
-  listHTML += `<li onclick="location.href='/${params}.html'" ${str}><div class="li__cover"><img src="assets/images/${file}.png" /></div><a href="javascript:;">${title}</a><span>${newDate(
-    date
-  )}</span></li>`;
+  creator = (creator || '').trim();
+  creator = creator.replace(/^"|"$/g, '');
+  creator ||= "YinHao"
+
+  const creatorDom = !creator ? '' : "<i class=\"creatorName\">" + creator + "</i>";
+  listHTML += `
+    <li onclick="location.href='/${params}.html'" ${str}>
+      <div class="li__cover"><img src="assets/images/${file}.png" /></div>
+      <a href="javascript:;">${title}</a>
+      <span>${newDate(date)}</span>
+      ${ creatorDom }
+    </li>`;
 }
 
 function newDate(dateString = "") {
