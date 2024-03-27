@@ -32,7 +32,7 @@
         /&gt;
       &lt;/div&gt;
       &lt;h2 class=&#34;product__name&#34;&gt;Lorem ipsum 1&lt;/h2&gt;
-      &lt;p class=&#34;product__description&#34;&gt;lorem ipsum dol&lt;/p&gt;
+      &lt;!-- &lt;p class=&#34;product__description&#34;&gt;lorem ipsum dol&lt;/p&gt; --&gt;
     &lt;/div&gt;
     &lt;div class=&#34;swiper-slide&#34;&gt;
       &lt;div class=&#34;product&#34;&gt;
@@ -43,7 +43,7 @@
         /&gt;
       &lt;/div&gt;
       &lt;h2 class=&#34;product__name&#34;&gt;Lorem ipsum 2&lt;/h2&gt;
-      &lt;p class=&#34;product__description&#34;&gt;lorem ipsum dol&lt;/p&gt;
+      &lt;!-- &lt;p class=&#34;product__description&#34;&gt;lorem ipsum dol&lt;/p&gt; --&gt;
     &lt;/div&gt;
     &lt;div class=&#34;swiper-slide&#34;&gt;
       &lt;div class=&#34;product&#34;&gt;
@@ -54,7 +54,7 @@
         /&gt;
       &lt;/div&gt;
       &lt;h2 class=&#34;product__name&#34;&gt;Lorem ipsum 3&lt;/h2&gt;
-      &lt;p class=&#34;product__description&#34;&gt;lorem ipsum dol&lt;/p&gt;
+      &lt;!-- &lt;p class=&#34;product__description&#34;&gt;lorem ipsum dol&lt;/p&gt; --&gt;
     &lt;/div&gt;
     &lt;div class=&#34;swiper-slide&#34;&gt;
       &lt;div class=&#34;product&#34;&gt;
@@ -65,7 +65,7 @@
         /&gt;
       &lt;/div&gt;
       &lt;h2 class=&#34;product__name&#34;&gt;Lorem ipsum 4&lt;/h2&gt;
-      &lt;p class=&#34;product__description&#34;&gt;lorem ipsum dol&lt;/p&gt;
+      &lt;!-- &lt;p class=&#34;product__description&#34;&gt;lorem ipsum dol&lt;/p&gt; --&gt;
     &lt;/div&gt;
     &lt;div class=&#34;swiper-slide&#34;&gt;
       &lt;div class=&#34;product&#34;&gt;
@@ -76,7 +76,7 @@
         /&gt;
       &lt;/div&gt;
       &lt;h2 class=&#34;product__name&#34;&gt;Lorem ipsum 5&lt;/h2&gt;
-      &lt;p class=&#34;product__description&#34;&gt;lorem ipsum dol&lt;/p&gt;
+      &lt;!-- &lt;p class=&#34;product__description&#34;&gt;lorem ipsum dol&lt;/p&gt; --&gt;
     &lt;/div&gt;
     &lt;div class=&#34;swiper-slide&#34;&gt;
       &lt;div class=&#34;product&#34;&gt;
@@ -87,7 +87,7 @@
         /&gt;
       &lt;/div&gt;
       &lt;h2 class=&#34;product__name&#34;&gt;Lorem ipsum 6&lt;/h2&gt;
-      &lt;p class=&#34;product__description&#34;&gt;lorem ipsum dol&lt;/p&gt;
+      &lt;!-- &lt;p class=&#34;product__description&#34;&gt;lorem ipsum dol&lt;/p&gt; --&gt;
     &lt;/div&gt;
     &lt;div class=&#34;swiper-slide&#34;&gt;
       &lt;div class=&#34;product&#34;&gt;
@@ -98,7 +98,7 @@
         /&gt;
       &lt;/div&gt;
       &lt;h2 class=&#34;product__name&#34;&gt;Lorem ipsum 7&lt;/h2&gt;
-      &lt;p class=&#34;product__description&#34;&gt;lorem ipsum dol&lt;/p&gt;
+      &lt;!-- &lt;p class=&#34;product__description&#34;&gt;lorem ipsum dol&lt;/p&gt; --&gt;
     &lt;/div&gt;
   &lt;/div&gt;
   &lt;div class=&#34;swiper-pagination&#34;&gt;&lt;/div&gt;
@@ -108,7 +108,9 @@
         </div>
         <div class="code__wrapper_top-css">
           <div class="title">CSS</div>
-          <textarea id="cssCode">@function pxToVw($px) {
+          <textarea id="cssCode">@import url(&#39;https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap&#39;);
+
+@function pxToVw($px) {
   @return ($px / 750) * 100vw;
 }
 #iframe__wrapper {
@@ -147,10 +149,26 @@
       width: 100%;
       height: 195px;
     }
+    .product__name {
+      font-family: &#34;Poppins&#34;
+    }
     .photograph {
       width: 100%;
       height: 195px;
       object-fit: cover;
+    }
+  }
+}
+@media (min-width: 1200px) {
+  .swiper-container {
+    .swiper-slide {
+      cursor: pointer;
+      .product__name {
+        color: #000000;
+        font-size: 16px;
+        font-weight: 300;
+        line-height: 25px;
+      }
     }
   }
 }
@@ -159,6 +177,12 @@
     .swiper-slide {
       width: pxToVw(502) !important;
       height: pxToVw(510);
+      .product__name {
+        color: #000000;
+        font-size: pxToVw(32);
+        font-weight: 300;
+        line-height: pxToVw(55);
+      }
       .product,
       .photograph {
         height: pxToVw(256);
