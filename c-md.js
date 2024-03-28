@@ -32,7 +32,7 @@ const fileContent =
   '\ntype: "' +
   "pc" +
   '"' +
-  '\ncreate: "' +
+  '\ncreator: "' +
   userName +
   '"' +
   "\n---\n\n" +
