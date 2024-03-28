@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="assets/css/common.css" />
   </head>
   <body>
-    <div class="home__search" style="display: none;">
-      <input type="text" id="searchInput">
+    <div class="home__search" style="display: none">
+      <input type="text" id="searchInput" />
       <button type="button" id="searchButton">搜索</button>
       <div class="home__search_close"></div>
     </div>
@@ -29,6 +29,10 @@
         <i class="toBack">还原</i>
       </div>
       <%- content %>
+      <div class="no-list">
+        <img src="assets/images/no-result.svg" alt="" />
+        暂无搜索结果...
+      </div>
       <div class="home__pages">
         <button id="prev__page" style="display: none">上一页</button>
         <button id="next__page">下一页</button>

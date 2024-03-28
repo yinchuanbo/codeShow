@@ -1,5 +1,7 @@
 const prevPage = document.querySelector("#prev__page");
 const homeSearch = document.querySelector(".home__search");
+const noList = document.querySelector(".no-list");
+const listNum = document.querySelector(".article__list b");
 const search = document.querySelector(".search");
 const toBack = document.querySelector(".toBack");
 const searchButton = document.querySelector("#searchButton");
@@ -90,6 +92,8 @@ function changeListShow(type = "none", curLists = []) {
     nextPage.style.display = "none";
     seeAll.style.display = "none";
     toBack.style.display = "block";
+    listNum.innerHTML = `(0)`;
+    noList.style.display = "flex";
   } else if (curLists?.length) {
     hideAll();
     for (let i = 0; i < curLists.length; i++) {
@@ -100,10 +104,14 @@ function changeListShow(type = "none", curLists = []) {
     nextPage.style.display = "none";
     seeAll.style.display = "none";
     toBack.style.display = "block";
+    listNum.innerHTML = `(${curLists.length})`;
+    noList.style.display = "none";
   } else if (type === "all") {
     changePage();
     seeAll.style.display = "block";
     toBack.style.display = "none";
+    listNum.innerHTML = `(${lisLens})`;
+    noList.style.display = "none";
   }
 }
 
@@ -149,6 +157,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const val = (searchInput.value || "").trim();
     searchRes(val);
     homeSearch.style.display = "none";
+    searchInput.value = "";
   };
   seeAll.onclick = () => {
     seeStatus = !seeStatus;
