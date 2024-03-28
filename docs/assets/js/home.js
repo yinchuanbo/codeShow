@@ -1,6 +1,7 @@
 const prevPage = document.querySelector("#prev__page");
 const homeSearch = document.querySelector(".home__search");
 const search = document.querySelector(".search");
+const toBack = document.querySelector(".toBack");
 const searchButton = document.querySelector("#searchButton");
 const searchInput = document.querySelector("#searchInput");
 const searchClose = document.querySelector(".home__search_close");
@@ -88,6 +89,7 @@ function changeListShow(type = "none", curLists = []) {
     prevPage.style.display = "none";
     nextPage.style.display = "none";
     seeAll.style.display = "none";
+    toBack.style.display = "block";
   } else if (curLists?.length) {
     hideAll();
     for (let i = 0; i < curLists.length; i++) {
@@ -97,9 +99,11 @@ function changeListShow(type = "none", curLists = []) {
     prevPage.style.display = "none";
     nextPage.style.display = "none";
     seeAll.style.display = "none";
+    toBack.style.display = "block";
   } else if (type === "all") {
     changePage();
     seeAll.style.display = "block";
+    toBack.style.display = "none";
   }
 }
 
@@ -136,6 +140,9 @@ document.addEventListener("DOMContentLoaded", () => {
   };
   searchClose.onclick = () => {
     homeSearch.style.display = "none";
+  };
+  toBack.onclick = () => {
+    changeListShow("all");
   };
   searchButton.onclick = () => {
     homeSearch.style.display = "none";

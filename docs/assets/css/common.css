@@ -453,6 +453,23 @@ ul {
   transition: all 0.5s;
 }
 
+.article__list i {
+  color: #999;
+  font-size: 14px;
+  margin-left: auto;
+  cursor: pointer;
+  font-style: normal;
+  transition: all 0.5s;
+  display: none;
+}
+
+.article__list i:hover {
+  text-decoration: line-through;
+  color: #0c1021;
+  transition: all 0.5s;
+}
+
+
 .article__list span:hover {
   text-decoration: line-through;
   color: #0c1021;
