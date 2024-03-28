@@ -683,10 +683,11 @@ ul {
   width: 300px;
   height: 40px;
   text-indent: 10px;
-  font-size: 16px;
+  font-size: 14px;
   margin-right: 10px;
   outline: none;
   border: 0;
+  border-radius: 30px;
 }
 
 .home__search button {
