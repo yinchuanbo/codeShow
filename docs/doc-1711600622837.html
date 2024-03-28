@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>codeShow</title>
+    <link rel="icon" sizes="any" mask href="assets/images/ico.svg" />
+    <link rel="stylesheet" href="assets/codemirror5/theme/blackboard.css" />
+    <link rel="stylesheet" href="assets/css/common.css" />
+    <link rel="stylesheet" href="assets/lib/wenk.min.css" />
+  </head>
+  <body>
+    <div class="code__wrapper">
+      <div class="close__fs"></div>
+      <div class="code__wrapper_header">
+        <div class="code__wrapper_header_title">Flip Card animation</div>
+        <div class="tools">
+          <div class="home__icon" onclick="window.location.href = '/'"></div>
+        </div>
+      </div>
+      <div class="code__wrapper_top">
+        <div class="code__wrapper_top-html">
+          <div class="title">HTML</div>
+          <textarea id="htmlCode">&lt;div class=&#34;card&#34;&gt;
+  &lt;div class=&#34;flip-card&#34;&gt;
+    &lt;div class=&#34;flip-front&#34;&gt;
+      &lt;!-- front side of the card --&gt;
+      &lt;h1&gt;Elpeeda&lt;/h1&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;flip-back&#34;&gt;
+      &lt;!-- back side of the card --&gt;
+      &lt;p&gt;Let&#39;s create something awesome with HTML, CSS, and React ...&lt;/p&gt;
+      &lt;a href=&#34;https://www.youtube.com/@elpeedanet/featured&#34; target=&#34;_blank&#34;
+        &gt;Follow&lt;/a
+      &gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</textarea>
+        </div>
+        <div class="code__wrapper_top-css">
+          <div class="title">CSS</div>
+          <textarea id="cssCode">#iframe__wrapper {
+  background: #111;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.card {
+  width: 200px;
+  height: 200px;
+  perspective: 1000px; /* It is used to create a 3D effect */
+}
+.flip-card {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+.card:hover .flip-card {
+  transform: rotateY(180deg);
+}
+.flip-front,
+.flip-back {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  backface-visibility: hidden;
+  border-radius: 10px;
+}
+.flip-front {
+  background: linear-gradient(to right, #a6a6a6, #fff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.flip-back {
+  background: linear-gradient(to right, #b00, #032146);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transform: rotateY(180deg);
+  color: #fff;
+  font: 1rem sans-serif;
+}
+.flip-back p {
+  padding: 1rem;
+}
+.flip-back a {
+  padding: 8px 16px;
+  background-color: #fbbf24;
+  color: #000;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+}</textarea>
+        </div>
+        <div class="code__wrapper_top-js">
+          <div class="title">JAVASCRIPT</div>
+          <textarea id="jsCode"></textarea>
+        </div>
+      </div>
+      <div class="code__wrapper_bottom">
+        <div class="code__wrapper_top-preview">
+          <div class="fs__icon"></div>
+          
+          <iframe
+            id="live-preview"
+            src="assets/templates/template-iframe.html"
+            width="100%"
+            height="100%"
+            allow="accelerometer *; camera *; encrypted-media *; display-capture *; geolocation *; gyroscope *; microphone *; midi *; clipboard-read *; clipboard-write *; web-share *; serial *; xr-spatial-tracking *"
+            allowfullscreen="true"
+            allowpaymentrequest="true"
+            allowtransparency="true"
+            sandbox="allow-forms allow-modals allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation allow-downloads allow-presentation"
+            class="result-iframe iframe-visual-update"
+            name="codeShow"
+            loading="lazy"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+    <script src="assets/lib/jquery-3.7.1.min.js"></script>
+    <script src="assets/lib/sass.sync.min.js"></script>
+    <link rel="stylesheet" href="assets/codemirror5/lib/codemirror.css" />
+    <link rel="stylesheet" href="assets/codemirror5/addon/hint/show-hint.css" />
+    <script src="assets/codemirror5/lib/codemirror.js"></script>
+    <script src="assets/codemirror5/addon/hint/show-hint.js"></script>
+    <script src="assets/codemirror5/addon/hint/xml-hint.js"></script>
+    <script src="assets/codemirror5/addon/hint/html-hint.js"></script>
+    <script src="assets/codemirror5/mode/xml/xml.js"></script>
+    <script src="assets/codemirror5/mode/javascript/javascript.js"></script>
+    <script src="assets/codemirror5/mode/css/css.js"></script>
+    <script src="assets/codemirror5/mode/htmlmixed/htmlmixed.js"></script>
+    <script src="assets/codemirror5/addon/hint/css-hint.js"></script>
+    <script src="assets/js/common.js"></script>
+  </body>
+</html>
