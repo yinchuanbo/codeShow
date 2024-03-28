@@ -44,6 +44,18 @@ let listHTML = `<ul class="home__list">`;
 
 filesList = filesList.sort((a, b) => Number(a) - Number(b));
 
+let getRandomColor = function () {
+  return (
+    "#" +
+    (function (color) {
+      return (color += "0123456789abcdef"[Math.floor(Math.random() * 16)]) &&
+        color.length == 6
+        ? color
+        : arguments.callee(color);
+    })("")
+  );
+};
+
 for (let i = filesList.length - 1; i >= 0; i--) {
   const file = filesList[i];
   const markdownContent = fs.readFileSync(`./md/${file}.md`, "utf-8");
@@ -100,13 +112,20 @@ for (let i = filesList.length - 1; i >= 0; i--) {
   creator = creator.replace(/^"|"$/g, "");
   creator ||= "YinHao";
 
+  const colorVal = getRandomColor();
+
   const creatorDom = !creator
     ? ""
-    : '<i class="creatorName">' + creator + "</i>";
+    : '<i class="creatorName" style="background-color: ' +
+      colorVal +
+      '">' +
+      creator +
+      "</i>";
 
-  const isMobile = type && type.includes("mobile")
-    ? '<img src="assets/images/mobile-2.svg" />'
-    : "";
+  const isMobile =
+    type && type.includes("mobile")
+      ? '<img src="assets/images/mobile-2.svg" />'
+      : "";
 
   listHTML += `
     <li onclick="location.href='/${params}.html'" ${str}>
@@ -118,7 +137,7 @@ for (let i = filesList.length - 1; i >= 0; i--) {
         </div>
       </div>
       <a href="javascript:;">${title}</a>
-      <span>${newDate(date)}</span>
+      <span style="background-color: ${colorVal}">${newDate(date)}</span>
       ${creatorDom}
     </li>`;
 }
