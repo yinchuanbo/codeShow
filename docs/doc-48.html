@@ -21,29 +21,29 @@
       <div class="code__wrapper_top">
         <div class="code__wrapper_top-html">
           <div class="title">HTML</div>
-          <textarea id="htmlCode">&lt;p&gt;外 box-shadow 前四个参数：x 偏移值、y 偏移值 、模糊半径、扩张半径。&lt;/p&gt;
-&lt;p&gt;
-  单侧投影的核心是第四个参数：扩张半径。这个参数会根据你指定的值去扩大或缩小投影尺寸，如果我们用一个负的扩张半径，而他的值刚好等于模糊半径，那么投影的尺寸就会与投影所属的元素尺寸完全一致，除非使用偏移量来移动他，否则我们将看不到任何投影。
-&lt;/p&gt;
+          <textarea id="htmlCode">&lt;div class=&#34;left&#34;&gt;左&lt;/div&gt;
+&lt;p&gt;box-shadow: -7px 0 5px -5px #333&lt;/p&gt;
 
-&lt;div class=&#34;left&#34;&gt;左&lt;/div&gt;
 &lt;div class=&#34;right&#34;&gt;右&lt;/div&gt;
+&lt;p&gt;box-shadow: 7px 0 5px -5px #333&lt;/p&gt;
+
 &lt;div class=&#34;top&#34;&gt;上&lt;/div&gt;
+&lt;p&gt;box-shadow: 0 -7px 5px -5px #333&lt;/p&gt;
+
 &lt;div class=&#34;bottom&#34;&gt;下&lt;/div&gt;
-&lt;div class=&#34;position&#34;&gt;
-  &lt;p&gt;box-shadow: -7px 0 5px -5px #333&lt;/p&gt;
-  &lt;p&gt;box-shadow: 7px 0 5px -5px #333&lt;/p&gt;
-  &lt;p&gt;box-shadow: 0 -7px 5px -5px #333&lt;/p&gt;
-  &lt;p&gt;box-shadow: 0 7px 5px -5px #333&lt;/p&gt;
-&lt;/div&gt;</textarea>
+&lt;p&gt;box-shadow: 0 7px 5px -5px #333&lt;/p&gt;</textarea>
         </div>
         <div class="code__wrapper_top-css">
           <div class="title">CSS</div>
           <textarea id="cssCode">body {
-  line-height: 24px;
-  color: #fff;
-  padding-top: 40px;
-  box-sizing: border-box;
+  background: #f2f2f2;
+}
+
+#iframe__wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .left,
@@ -54,24 +54,24 @@
   width: 50px;
   height: 50px;
   line-height: 50px;
-  border: 1px solid #fff;
+  border: 1px solid #000;
   text-align: center;
 }
 
 .left {
-  box-shadow: -7px 0 5px -5px #fff;
+  box-shadow: -7px 0 5px -5px #000;
 }
 
 .right {
-  box-shadow: 7px 0 5px -5px #fff;
+  box-shadow: 7px 0 5px -5px #000;
 }
 
 .top {
-  box-shadow: 0 -7px 5px -5px #fff;
+  box-shadow: 0 -7px 5px -5px #000;
 }
 
 .bottom {
-  box-shadow: 0 7px 5px -5px #fff;
+  box-shadow: 0 7px 5px -5px #000;
 }
 
 /**忽略下面的css代码**/

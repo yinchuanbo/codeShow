@@ -27,7 +27,6 @@ function cropImages(imgP, name) {
       const originalWidth = metadata.width;
       const originalHeight = metadata.height;
       let newWidth, newHeight;
-
       if (originalWidth / originalHeight > aspectRatio) {
         newWidth = Math.ceil(originalHeight * aspectRatio);
         newHeight = originalHeight;
@@ -35,15 +34,11 @@ function cropImages(imgP, name) {
         newWidth = originalWidth;
         newHeight = Math.ceil(originalWidth / aspectRatio);
       }
-
-      // 创建临时文件路径
       const tempPath = path.join(path.dirname(imgP), `temp_${name}`);
-
       return sharp(imgP)
         .resize({ width: newWidth, height: newHeight, fit: "cover" })
         .toFile(tempPath)
         .then(() => {
-          // 将临时文件移动到原始文件的位置
           fs.rename(tempPath, imgP, (err) => {
             if (err) {
               console.error("Error moving file:", err);

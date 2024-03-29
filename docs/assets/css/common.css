@@ -194,10 +194,15 @@ body {
   display: block;
 }
 
-.code__wrapper_top,
+.code__wrapper_top {
+  width: 100%;
+  height: calc((100% - 50px) * 0.4);
+  display: flex;
+}
+
 .code__wrapper_bottom {
   width: 100%;
-  height: calc((100% - 50px) / 2);
+  height: calc((100% - 50px) * 0.6);
   display: flex;
 }
 
@@ -311,12 +316,12 @@ body {
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  border-radius: 3px;
+  /* border-radius: 3px; */
   background: rgba(0, 0, 0, 0.06);
   -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.08);
 }
 ::-webkit-scrollbar-thumb {
-  border-radius: 3px;
+  /* border-radius: 3px; */
   background: rgba(255, 255, 255, 0.3);
   -webkit-box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.3);
 }
@@ -683,26 +688,28 @@ ul {
 
 .home__search input {
   width: 300px;
-  height: 40px;
+  height: 50px;
   text-indent: 10px;
-  font-size: 14px;
+  font-size: 16px;
   margin-right: 10px;
   outline: none;
   border: 0;
-  border-radius: 30px;
+  border-radius: 10px;
+  font-family: myfont;
 }
 
 .home__search button {
   width: 100px;
-  height: 40px;
+  height: 50px;
   font-size: 16px;
   margin-right: 10px;
   outline: none;
   border: 0;
   cursor: pointer;
-  border-radius: 30px;
+  border-radius: 10px;
   background-color: #ff0000;
   color: #fff;
+  font-family: myfont;
 }
 
 .home__search button:hover {
