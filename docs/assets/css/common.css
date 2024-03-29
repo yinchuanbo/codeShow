@@ -586,19 +586,20 @@ ul {
   transition: all 0.5s;
 }
 
-.home__list li:hover .li__cover > img {
+/* .home__list li:hover .li__cover > img {
   transform: scale(1.2);
   transition: all 0.5s;
-}
+} */
 
 .li__cover {
   width: 100%;
   height: 320px;
-  background-color: rgb(12, 16, 33);
+  background-color: #fff;
   overflow: hidden;
   display: flex;
   align-items: center;
   position: relative;
+  padding: 10px 10px 0 10px;
 }
 
 .support-dev {
@@ -614,9 +615,10 @@ ul {
 
 .li__cover > img {
   width: 100%;
-  height: 320px;
+  height: 310px;
   object-fit: contain;
   transition: all 0.5s;
+  display: block;
 }
 
 .li__cover + a {

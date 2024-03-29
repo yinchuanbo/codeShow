@@ -112,13 +112,9 @@ for (let i = filesList.length - 1; i >= 0; i--) {
   creator = creator.replace(/^"|"$/g, "");
   creator ||= "YinHao";
 
-  const colorVal = getRandomColor();
-
   const creatorDom = !creator
     ? ""
-    : '<i class="creatorName" style="background-color: ' +
-      colorVal +
-      '">' +
+    : '<i class="creatorName">' +
       creator +
       "</i>";
 
@@ -130,14 +126,14 @@ for (let i = filesList.length - 1; i >= 0; i--) {
   listHTML += `
     <li onclick="location.href='/${params}.html'" ${str}>
       <div class="li__cover">
-        <img src="assets/images/${file}.png" />
+        <img src="assets/images/cover/${file}.png" />
         <div class="support-dev">
           <img src="assets/images/pc-2.svg" />
           ${isMobile}
         </div>
       </div>
       <a href="javascript:;">${title}</a>
-      <span style="background-color: ${colorVal}">${newDate(date)}</span>
+      <span>${newDate(date)}</span>
       ${creatorDom}
     </li>`;
 }

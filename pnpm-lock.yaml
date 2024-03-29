@@ -26,6 +26,9 @@ devDependencies:
   node-sass:
     specifier: ^9.0.0
     version: registry.npmmirror.com/node-sass@9.0.0
+  sharp:
+    specifier: ^0.33.3
+    version: registry.npmmirror.com/sharp@0.33.3
 
 packages:
 
@@ -58,11 +61,259 @@ packages:
       picocolors: registry.npmmirror.com/picocolors@1.0.0
     dev: true
 
+  registry.npmmirror.com/@emnapi/runtime@1.1.0:
+    resolution: {integrity: sha512-gCGlE0fJGWalfy+wbFApjhKn6uoSVvopru77IPyxNKkjkaiSx2HxDS7eOYSmo9dcMIhmmIvoxiC3N9TM1c3EaA==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@emnapi/runtime/-/runtime-1.1.0.tgz}
+    name: '@emnapi/runtime'
+    version: 1.1.0
+    requiresBuild: true
+    dependencies:
+      tslib: registry.npmmirror.com/tslib@2.6.2
+    dev: true
+    optional: true
+
   registry.npmmirror.com/@gar/promisify@1.1.3:
     resolution: {integrity: sha512-k2Ty1JcVojjJFwrg/ThKi2ujJ7XNLYaFGNB/bWT9wGR+oSMJHMa5w+CUq6p/pVrKeNNgA7pCqEcjSnHVoqJQFw==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@gar/promisify/-/promisify-1.1.3.tgz}
     name: '@gar/promisify'
     version: 1.1.3
     dev: true
+
+  registry.npmmirror.com/@img/sharp-darwin-arm64@0.33.3:
+    resolution: {integrity: sha512-FaNiGX1MrOuJ3hxuNzWgsT/mg5OHG/Izh59WW2mk1UwYHUwtfbhk5QNKYZgxf0pLOhx9ctGiGa2OykD71vOnSw==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@img/sharp-darwin-arm64/-/sharp-darwin-arm64-0.33.3.tgz}
+    name: '@img/sharp-darwin-arm64'
+    version: 0.33.3
+    engines: {glibc: '>=2.26', node: ^18.17.0 || ^20.3.0 || >=21.0.0, npm: '>=9.6.5', pnpm: '>=7.1.0', yarn: '>=3.2.0'}
+    cpu: [arm64]
+    os: [darwin]
+    requiresBuild: true
+    optionalDependencies:
+      '@img/sharp-libvips-darwin-arm64': registry.npmmirror.com/@img/sharp-libvips-darwin-arm64@1.0.2
+    dev: true
+    optional: true
+
+  registry.npmmirror.com/@img/sharp-darwin-x64@0.33.3:
+    resolution: {integrity: sha512-2QeSl7QDK9ru//YBT4sQkoq7L0EAJZA3rtV+v9p8xTKl4U1bUqTIaCnoC7Ctx2kCjQgwFXDasOtPTCT8eCTXvw==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@img/sharp-darwin-x64/-/sharp-darwin-x64-0.33.3.tgz}
+    name: '@img/sharp-darwin-x64'
+    version: 0.33.3
+    engines: {glibc: '>=2.26', node: ^18.17.0 || ^20.3.0 || >=21.0.0, npm: '>=9.6.5', pnpm: '>=7.1.0', yarn: '>=3.2.0'}
+    cpu: [x64]
+    os: [darwin]
+    requiresBuild: true
+    optionalDependencies:
+      '@img/sharp-libvips-darwin-x64': registry.npmmirror.com/@img/sharp-libvips-darwin-x64@1.0.2
+    dev: true
+    optional: true
+
+  registry.npmmirror.com/@img/sharp-libvips-darwin-arm64@1.0.2:
+    resolution: {integrity: sha512-tcK/41Rq8IKlSaKRCCAuuY3lDJjQnYIW1UXU1kxcEKrfL8WR7N6+rzNoOxoQRJWTAECuKwgAHnPvqXGN8XfkHA==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@img/sharp-libvips-darwin-arm64/-/sharp-libvips-darwin-arm64-1.0.2.tgz}
+    name: '@img/sharp-libvips-darwin-arm64'
+    version: 1.0.2
+    engines: {macos: '>=11', npm: '>=9.6.5', pnpm: '>=7.1.0', yarn: '>=3.2.0'}
+    cpu: [arm64]
+    os: [darwin]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  registry.npmmirror.com/@img/sharp-libvips-darwin-x64@1.0.2:
+    resolution: {integrity: sha512-Ofw+7oaWa0HiiMiKWqqaZbaYV3/UGL2wAPeLuJTx+9cXpCRdvQhCLG0IH8YGwM0yGWGLpsF4Su9vM1o6aer+Fw==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@img/sharp-libvips-darwin-x64/-/sharp-libvips-darwin-x64-1.0.2.tgz}
+    name: '@img/sharp-libvips-darwin-x64'
+    version: 1.0.2
+    engines: {macos: '>=10.13', npm: '>=9.6.5', pnpm: '>=7.1.0', yarn: '>=3.2.0'}
+    cpu: [x64]
+    os: [darwin]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  registry.npmmirror.com/@img/sharp-libvips-linux-arm64@1.0.2:
+    resolution: {integrity: sha512-x7kCt3N00ofFmmkkdshwj3vGPCnmiDh7Gwnd4nUwZln2YjqPxV1NlTyZOvoDWdKQVDL911487HOueBvrpflagw==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@img/sharp-libvips-linux-arm64/-/sharp-libvips-linux-arm64-1.0.2.tgz}
+    name: '@img/sharp-libvips-linux-arm64'
+    version: 1.0.2
+    engines: {glibc: '>=2.26', npm: '>=9.6.5', pnpm: '>=7.1.0', yarn: '>=3.2.0'}
+    cpu: [arm64]
+    os: [linux]
+    libc: [glibc]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  registry.npmmirror.com/@img/sharp-libvips-linux-arm@1.0.2:
+    resolution: {integrity: sha512-iLWCvrKgeFoglQxdEwzu1eQV04o8YeYGFXtfWU26Zr2wWT3q3MTzC+QTCO3ZQfWd3doKHT4Pm2kRmLbupT+sZw==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@img/sharp-libvips-linux-arm/-/sharp-libvips-linux-arm-1.0.2.tgz}
+    name: '@img/sharp-libvips-linux-arm'
+    version: 1.0.2
+    engines: {glibc: '>=2.28', npm: '>=9.6.5', pnpm: '>=7.1.0', yarn: '>=3.2.0'}
+    cpu: [arm]
+    os: [linux]
+    libc: [glibc]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  registry.npmmirror.com/@img/sharp-libvips-linux-s390x@1.0.2:
+    resolution: {integrity: sha512-cmhQ1J4qVhfmS6szYW7RT+gLJq9dH2i4maq+qyXayUSn9/3iY2ZeWpbAgSpSVbV2E1JUL2Gg7pwnYQ1h8rQIog==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@img/sharp-libvips-linux-s390x/-/sharp-libvips-linux-s390x-1.0.2.tgz}
+    name: '@img/sharp-libvips-linux-s390x'
+    version: 1.0.2
+    engines: {glibc: '>=2.28', npm: '>=9.6.5', pnpm: '>=7.1.0', yarn: '>=3.2.0'}
+    cpu: [s390x]
+    os: [linux]
+    libc: [glibc]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  registry.npmmirror.com/@img/sharp-libvips-linux-x64@1.0.2:
+    resolution: {integrity: sha512-E441q4Qdb+7yuyiADVi5J+44x8ctlrqn8XgkDTwr4qPJzWkaHwD489iZ4nGDgcuya4iMN3ULV6NwbhRZJ9Z7SQ==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@img/sharp-libvips-linux-x64/-/sharp-libvips-linux-x64-1.0.2.tgz}
+    name: '@img/sharp-libvips-linux-x64'
+    version: 1.0.2
+    engines: {glibc: '>=2.26', npm: '>=9.6.5', pnpm: '>=7.1.0', yarn: '>=3.2.0'}
+    cpu: [x64]
+    os: [linux]
+    libc: [glibc]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  registry.npmmirror.com/@img/sharp-libvips-linuxmusl-arm64@1.0.2:
+    resolution: {integrity: sha512-3CAkndNpYUrlDqkCM5qhksfE+qSIREVpyoeHIU6jd48SJZViAmznoQQLAv4hVXF7xyUB9zf+G++e2v1ABjCbEQ==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@img/sharp-libvips-linuxmusl-arm64/-/sharp-libvips-linuxmusl-arm64-1.0.2.tgz}
+    name: '@img/sharp-libvips-linuxmusl-arm64'
+    version: 1.0.2
+    engines: {musl: '>=1.2.2', npm: '>=9.6.5', pnpm: '>=7.1.0', yarn: '>=3.2.0'}
+    cpu: [arm64]
+    os: [linux]
+    libc: [musl]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  registry.npmmirror.com/@img/sharp-libvips-linuxmusl-x64@1.0.2:
+    resolution: {integrity: sha512-VI94Q6khIHqHWNOh6LLdm9s2Ry4zdjWJwH56WoiJU7NTeDwyApdZZ8c+SADC8OH98KWNQXnE01UdJ9CSfZvwZw==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@img/sharp-libvips-linuxmusl-x64/-/sharp-libvips-linuxmusl-x64-1.0.2.tgz}
+    name: '@img/sharp-libvips-linuxmusl-x64'
+    version: 1.0.2
+    engines: {musl: '>=1.2.2', npm: '>=9.6.5', pnpm: '>=7.1.0', yarn: '>=3.2.0'}
+    cpu: [x64]
+    os: [linux]
+    libc: [musl]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  registry.npmmirror.com/@img/sharp-linux-arm64@0.33.3:
+    resolution: {integrity: sha512-Zf+sF1jHZJKA6Gor9hoYG2ljr4wo9cY4twaxgFDvlG0Xz9V7sinsPp8pFd1XtlhTzYo0IhDbl3rK7P6MzHpnYA==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@img/sharp-linux-arm64/-/sharp-linux-arm64-0.33.3.tgz}
+    name: '@img/sharp-linux-arm64'
+    version: 0.33.3
+    engines: {glibc: '>=2.26', node: ^18.17.0 || ^20.3.0 || >=21.0.0, npm: '>=9.6.5', pnpm: '>=7.1.0', yarn: '>=3.2.0'}
+    cpu: [arm64]
+    os: [linux]
+    libc: [glibc]
+    requiresBuild: true
+    optionalDependencies:
+      '@img/sharp-libvips-linux-arm64': registry.npmmirror.com/@img/sharp-libvips-linux-arm64@1.0.2
+    dev: true
+    optional: true
+
+  registry.npmmirror.com/@img/sharp-linux-arm@0.33.3:
+    resolution: {integrity: sha512-Q7Ee3fFSC9P7vUSqVEF0zccJsZ8GiiCJYGWDdhEjdlOeS9/jdkyJ6sUSPj+bL8VuOYFSbofrW0t/86ceVhx32w==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@img/sharp-linux-arm/-/sharp-linux-arm-0.33.3.tgz}
+    name: '@img/sharp-linux-arm'
+    version: 0.33.3
+    engines: {glibc: '>=2.28', node: ^18.17.0 || ^20.3.0 || >=21.0.0, npm: '>=9.6.5', pnpm: '>=7.1.0', yarn: '>=3.2.0'}
+    cpu: [arm]
+    os: [linux]
+    libc: [glibc]
+    requiresBuild: true
+    optionalDependencies:
+      '@img/sharp-libvips-linux-arm': registry.npmmirror.com/@img/sharp-libvips-linux-arm@1.0.2
+    dev: true
+    optional: true
+
+  registry.npmmirror.com/@img/sharp-linux-s390x@0.33.3:
+    resolution: {integrity: sha512-vFk441DKRFepjhTEH20oBlFrHcLjPfI8B0pMIxGm3+yilKyYeHEVvrZhYFdqIseSclIqbQ3SnZMwEMWonY5XFA==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@img/sharp-linux-s390x/-/sharp-linux-s390x-0.33.3.tgz}
+    name: '@img/sharp-linux-s390x'
+    version: 0.33.3
+    engines: {glibc: '>=2.28', node: ^18.17.0 || ^20.3.0 || >=21.0.0, npm: '>=9.6.5', pnpm: '>=7.1.0', yarn: '>=3.2.0'}
+    cpu: [s390x]
+    os: [linux]
+    libc: [glibc]
+    requiresBuild: true
+    optionalDependencies:
+      '@img/sharp-libvips-linux-s390x': registry.npmmirror.com/@img/sharp-libvips-linux-s390x@1.0.2
+    dev: true
+    optional: true
+
+  registry.npmmirror.com/@img/sharp-linux-x64@0.33.3:
+    resolution: {integrity: sha512-Q4I++herIJxJi+qmbySd072oDPRkCg/SClLEIDh5IL9h1zjhqjv82H0Seupd+q2m0yOfD+/fJnjSoDFtKiHu2g==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@img/sharp-linux-x64/-/sharp-linux-x64-0.33.3.tgz}
+    name: '@img/sharp-linux-x64'
+    version: 0.33.3
+    engines: {glibc: '>=2.26', node: ^18.17.0 || ^20.3.0 || >=21.0.0, npm: '>=9.6.5', pnpm: '>=7.1.0', yarn: '>=3.2.0'}
+    cpu: [x64]
+    os: [linux]
+    libc: [glibc]
+    requiresBuild: true
+    optionalDependencies:
+      '@img/sharp-libvips-linux-x64': registry.npmmirror.com/@img/sharp-libvips-linux-x64@1.0.2
+    dev: true
+    optional: true
+
+  registry.npmmirror.com/@img/sharp-linuxmusl-arm64@0.33.3:
+    resolution: {integrity: sha512-qnDccehRDXadhM9PM5hLvcPRYqyFCBN31kq+ErBSZtZlsAc1U4Z85xf/RXv1qolkdu+ibw64fUDaRdktxTNP9A==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@img/sharp-linuxmusl-arm64/-/sharp-linuxmusl-arm64-0.33.3.tgz}
+    name: '@img/sharp-linuxmusl-arm64'
+    version: 0.33.3
+    engines: {musl: '>=1.2.2', node: ^18.17.0 || ^20.3.0 || >=21.0.0, npm: '>=9.6.5', pnpm: '>=7.1.0', yarn: '>=3.2.0'}
+    cpu: [arm64]
+    os: [linux]
+    libc: [musl]
+    requiresBuild: true
+    optionalDependencies:
+      '@img/sharp-libvips-linuxmusl-arm64': registry.npmmirror.com/@img/sharp-libvips-linuxmusl-arm64@1.0.2
+    dev: true
+    optional: true
+
+  registry.npmmirror.com/@img/sharp-linuxmusl-x64@0.33.3:
+    resolution: {integrity: sha512-Jhchim8kHWIU/GZ+9poHMWRcefeaxFIs9EBqf9KtcC14Ojk6qua7ghKiPs0sbeLbLj/2IGBtDcxHyjCdYWkk2w==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@img/sharp-linuxmusl-x64/-/sharp-linuxmusl-x64-0.33.3.tgz}
+    name: '@img/sharp-linuxmusl-x64'
+    version: 0.33.3
+    engines: {musl: '>=1.2.2', node: ^18.17.0 || ^20.3.0 || >=21.0.0, npm: '>=9.6.5', pnpm: '>=7.1.0', yarn: '>=3.2.0'}
+    cpu: [x64]
+    os: [linux]
+    libc: [musl]
+    requiresBuild: true
+    optionalDependencies:
+      '@img/sharp-libvips-linuxmusl-x64': registry.npmmirror.com/@img/sharp-libvips-linuxmusl-x64@1.0.2
+    dev: true
+    optional: true
+
+  registry.npmmirror.com/@img/sharp-wasm32@0.33.3:
+    resolution: {integrity: sha512-68zivsdJ0koE96stdUfM+gmyaK/NcoSZK5dV5CAjES0FUXS9lchYt8LAB5rTbM7nlWtxaU/2GON0HVN6/ZYJAQ==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@img/sharp-wasm32/-/sharp-wasm32-0.33.3.tgz}
+    name: '@img/sharp-wasm32'
+    version: 0.33.3
+    engines: {node: ^18.17.0 || ^20.3.0 || >=21.0.0, npm: '>=9.6.5', pnpm: '>=7.1.0', yarn: '>=3.2.0'}
+    cpu: [wasm32]
+    requiresBuild: true
+    dependencies:
+      '@emnapi/runtime': registry.npmmirror.com/@emnapi/runtime@1.1.0
+    dev: true
+    optional: true
+
+  registry.npmmirror.com/@img/sharp-win32-ia32@0.33.3:
+    resolution: {integrity: sha512-CyimAduT2whQD8ER4Ux7exKrtfoaUiVr7HG0zZvO0XTFn2idUWljjxv58GxNTkFb8/J9Ub9AqITGkJD6ZginxQ==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@img/sharp-win32-ia32/-/sharp-win32-ia32-0.33.3.tgz}
+    name: '@img/sharp-win32-ia32'
+    version: 0.33.3
+    engines: {node: ^18.17.0 || ^20.3.0 || >=21.0.0, npm: '>=9.6.5', pnpm: '>=7.1.0', yarn: '>=3.2.0'}
+    cpu: [ia32]
+    os: [win32]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  registry.npmmirror.com/@img/sharp-win32-x64@0.33.3:
+    resolution: {integrity: sha512-viT4fUIDKnli3IfOephGnolMzhz5VaTvDRkYqtZxOMIoMQ4MrAziO7pT1nVnOt2FAm7qW5aa+CCc13aEY6Le0g==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@img/sharp-win32-x64/-/sharp-win32-x64-0.33.3.tgz}
+    name: '@img/sharp-win32-x64'
+    version: 0.33.3
+    engines: {node: ^18.17.0 || ^20.3.0 || >=21.0.0, npm: '>=9.6.5', pnpm: '>=7.1.0', yarn: '>=3.2.0'}
+    cpu: [x64]
+    os: [win32]
+    requiresBuild: true
+    dev: true
+    optional: true
 
   registry.npmmirror.com/@npmcli/fs@1.1.1:
     resolution: {integrity: sha512-8KG5RD0GVP4ydEzRn/I4BNDuxDtqVbOdm8675T49OIG/NGhaK0pjPX7ZcDlvKYbA+ulvVK3ztfcF4uBdOxuJbQ==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@npmcli/fs/-/fs-1.1.1.tgz}
@@ -463,11 +714,30 @@ packages:
     version: 1.1.4
     dev: true
 
+  registry.npmmirror.com/color-string@1.9.1:
+    resolution: {integrity: sha512-shrVawQFojnZv6xM40anx4CkoDP+fZsw/ZerEMsW/pyzsRbElpsL/DBVW7q3ExxwusdNXI3lXpuhEZkzs8p5Eg==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/color-string/-/color-string-1.9.1.tgz}
+    name: color-string
+    version: 1.9.1
+    dependencies:
+      color-name: registry.npmmirror.com/color-name@1.1.4
+      simple-swizzle: registry.npmmirror.com/simple-swizzle@0.2.2
+    dev: true
+
   registry.npmmirror.com/color-support@1.1.3:
     resolution: {integrity: sha512-qiBjkpbMLO/HL68y+lh4q0/O1MZFj2RX6X/KmMa3+gJD3z+WwI1ZzDHysvqHGS3mP6mznPckpXmw1nI9cJjyRg==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/color-support/-/color-support-1.1.3.tgz}
     name: color-support
     version: 1.1.3
     hasBin: true
+    dev: true
+
+  registry.npmmirror.com/color@4.2.3:
+    resolution: {integrity: sha512-1rXeuUUiGGrykh+CeBdu5Ie7OJwinCgQY0bc7GCRxy5xVHy+moaqkpL/jqQq0MtQOeYcrqEz4abc5f0KtU7W4A==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/color/-/color-4.2.3.tgz}
+    name: color
+    version: 4.2.3
+    engines: {node: '>=12.5.0'}
+    dependencies:
+      color-convert: registry.npmmirror.com/color-convert@2.0.1
+      color-string: registry.npmmirror.com/color-string@1.9.1
     dev: true
 
   registry.npmmirror.com/concat-map@0.0.1:
@@ -601,6 +871,13 @@ packages:
     name: destroy
     version: 1.2.0
     engines: {node: '>= 0.8', npm: 1.2.8000 || >= 1.4.16}
+    dev: true
+
+  registry.npmmirror.com/detect-libc@2.0.3:
+    resolution: {integrity: sha512-bwy0MGW55bG41VqxxypOsdSdGqLwXPI/focwgTYCFMbdUiBAxLg9CFzG08sz2aqzknwiX7Hkl0bQENjg8iLByw==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/detect-libc/-/detect-libc-2.0.3.tgz}
+    name: detect-libc
+    version: 2.0.3
+    engines: {node: '>=8'}
     dev: true
 
   registry.npmmirror.com/ee-first@1.1.1:
@@ -1154,6 +1431,12 @@ packages:
     resolution: {integrity: sha512-zz06S8t0ozoDXMG+ube26zeCTNXcKIPJZJi8hBrF4idCLms4CG9QtK7qBl1boi5ODzFpjswb5JPmHCbMpjaYzg==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/is-arrayish/-/is-arrayish-0.2.1.tgz}
     name: is-arrayish
     version: 0.2.1
+    dev: true
+
+  registry.npmmirror.com/is-arrayish@0.3.2:
+    resolution: {integrity: sha512-eVRqCvVlZbuw3GrM63ovNSNAeA1K16kaR/LRY/92w0zxQ5/1YzwblUX652i4Xs9RwAGjW9d9y6X88t8OaAJfWQ==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/is-arrayish/-/is-arrayish-0.3.2.tgz}
+    name: is-arrayish
+    version: 0.3.2
     dev: true
 
   registry.npmmirror.com/is-core-module@2.13.1:
@@ -2125,6 +2408,38 @@ packages:
     version: 1.2.0
     dev: true
 
+  registry.npmmirror.com/sharp@0.33.3:
+    resolution: {integrity: sha512-vHUeXJU1UvlO/BNwTpT0x/r53WkLUVxrmb5JTgW92fdFCFk0ispLMAeu/jPO2vjkXM1fYUi3K7/qcLF47pwM1A==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/sharp/-/sharp-0.33.3.tgz}
+    name: sharp
+    version: 0.33.3
+    engines: {libvips: '>=8.15.2', node: ^18.17.0 || ^20.3.0 || >=21.0.0}
+    requiresBuild: true
+    dependencies:
+      color: registry.npmmirror.com/color@4.2.3
+      detect-libc: registry.npmmirror.com/detect-libc@2.0.3
+      semver: registry.npmmirror.com/semver@7.6.0
+    optionalDependencies:
+      '@img/sharp-darwin-arm64': registry.npmmirror.com/@img/sharp-darwin-arm64@0.33.3
+      '@img/sharp-darwin-x64': registry.npmmirror.com/@img/sharp-darwin-x64@0.33.3
+      '@img/sharp-libvips-darwin-arm64': registry.npmmirror.com/@img/sharp-libvips-darwin-arm64@1.0.2
+      '@img/sharp-libvips-darwin-x64': registry.npmmirror.com/@img/sharp-libvips-darwin-x64@1.0.2
+      '@img/sharp-libvips-linux-arm': registry.npmmirror.com/@img/sharp-libvips-linux-arm@1.0.2
+      '@img/sharp-libvips-linux-arm64': registry.npmmirror.com/@img/sharp-libvips-linux-arm64@1.0.2
+      '@img/sharp-libvips-linux-s390x': registry.npmmirror.com/@img/sharp-libvips-linux-s390x@1.0.2
+      '@img/sharp-libvips-linux-x64': registry.npmmirror.com/@img/sharp-libvips-linux-x64@1.0.2
+      '@img/sharp-libvips-linuxmusl-arm64': registry.npmmirror.com/@img/sharp-libvips-linuxmusl-arm64@1.0.2
+      '@img/sharp-libvips-linuxmusl-x64': registry.npmmirror.com/@img/sharp-libvips-linuxmusl-x64@1.0.2
+      '@img/sharp-linux-arm': registry.npmmirror.com/@img/sharp-linux-arm@0.33.3
+      '@img/sharp-linux-arm64': registry.npmmirror.com/@img/sharp-linux-arm64@0.33.3
+      '@img/sharp-linux-s390x': registry.npmmirror.com/@img/sharp-linux-s390x@0.33.3
+      '@img/sharp-linux-x64': registry.npmmirror.com/@img/sharp-linux-x64@0.33.3
+      '@img/sharp-linuxmusl-arm64': registry.npmmirror.com/@img/sharp-linuxmusl-arm64@0.33.3
+      '@img/sharp-linuxmusl-x64': registry.npmmirror.com/@img/sharp-linuxmusl-x64@0.33.3
+      '@img/sharp-wasm32': registry.npmmirror.com/@img/sharp-wasm32@0.33.3
+      '@img/sharp-win32-ia32': registry.npmmirror.com/@img/sharp-win32-ia32@0.33.3
+      '@img/sharp-win32-x64': registry.npmmirror.com/@img/sharp-win32-x64@0.33.3
+    dev: true
+
   registry.npmmirror.com/shebang-command@2.0.0:
     resolution: {integrity: sha512-kHxr2zZpYtdmrN1qDjrrX/Z1rR1kG8Dx+gkpK1G4eXmvXswmcE1hTWBWYUzlraYw1/yZp6YuDY77YtvbN0dmDA==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/shebang-command/-/shebang-command-2.0.0.tgz}
     name: shebang-command
@@ -2157,6 +2472,14 @@ packages:
     resolution: {integrity: sha512-wnD2ZE+l+SPC/uoS0vXeE9L1+0wuaMqKlfz9AMUo38JsyLSBWSFcHR1Rri62LZc12vLr1gb3jl7iwQhgwpAbGQ==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/signal-exit/-/signal-exit-3.0.7.tgz}
     name: signal-exit
     version: 3.0.7
+    dev: true
+
+  registry.npmmirror.com/simple-swizzle@0.2.2:
+    resolution: {integrity: sha512-JA//kQgZtbuY83m+xT+tXJkmJncGMTFT+C+g2h2R9uxkYIrE2yy9sgmcLhCnw57/WSD+Eh3J97FPEDFnbXnDUg==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/simple-swizzle/-/simple-swizzle-0.2.2.tgz}
+    name: simple-swizzle
+    version: 0.2.2
+    dependencies:
+      is-arrayish: registry.npmmirror.com/is-arrayish@0.3.2
     dev: true
 
   registry.npmmirror.com/smart-buffer@4.2.0:
@@ -2381,6 +2704,14 @@ packages:
     name: true-case-path
     version: 2.2.1
     dev: true
+
+  registry.npmmirror.com/tslib@2.6.2:
+    resolution: {integrity: sha512-AEYxH93jGFPn/a2iVAwW87VuUIkR1FVUKB77NwMF7nBTDkDrrT/Hpt/IrCJ0QXhW27jTBDcf5ZY7w6RiqTMw2Q==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/tslib/-/tslib-2.6.2.tgz}
+    name: tslib
+    version: 2.6.2
+    requiresBuild: true
+    dev: true
+    optional: true
 
   registry.npmmirror.com/type-fest@0.18.1:
     resolution: {integrity: sha512-OIAYXk8+ISY+qTOwkHtKqzAuxchoMiD9Udx+FSGQDuiRR+PJKJHc2NJAXlbhkGwTt/4/nKZxELY1w3ReWOL8mw==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/type-fest/-/type-fest-0.18.1.tgz}
