@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+      integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" sizes="any" mask href="../../assets/images/ico.svg" />
+    <title>JS Compile</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <textarea
+        id="jsonInput"
+        placeholder="请输入要编译和压缩的 js 内容"
+      ></textarea>
+      <div class="buttons">
+        <button id="jsCompile">Js Compile</button>
+      </div>
+      <div id="jsonViewer"></div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/terser/dist/bundle.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
