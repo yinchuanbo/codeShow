@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>codeShow</title>
+    <link rel="icon" sizes="any" mask href="assets/images/ico.svg" />
+    <link rel="stylesheet" href="assets/codemirror5/theme/blackboard.css" />
+    <link rel="stylesheet" href="assets/css/common.css" />
+    <link rel="stylesheet" href="assets/lib/wenk.min.css" />
+  </head>
+  <body>
+    <div class="code__wrapper">
+      <div class="close__fs"></div>
+      <div class="code__wrapper_header">
+        <div class="code__wrapper_header_title">15种CSS鼠标滑过图片遮罩层动画效果</div>
+        <div class="tools">
+          <div class="home__icon" onclick="window.location.href = '/'"></div>
+        </div>
+      </div>
+      <div class="code__wrapper_top">
+        <div class="code__wrapper_top-html">
+          <div class="title">HTML</div>
+          <textarea id="htmlCode">&lt;div class=&#34;container&#34;&gt;
+  &lt;div class=&#34;bg-items&#34;&gt;
+    &lt;div
+      class=&#34;items&#34;
+      style=&#34;background-image : url(&#39;https://picsum.photos/240/160/?image=1082&#39;);&#34;
+    &gt;
+      &lt;div class=&#34;one&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;details&#34;&gt;
+        &lt;h3&gt;#1&lt;/h3&gt;
+        &lt;p&gt;this is a description for your photo in your gallery.&lt;/p&gt;
+        &lt;h6&gt;time &amp;amp; date&lt;/h6&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;bg-items&#34;&gt;
+    &lt;div
+      class=&#34;items&#34;
+      style=&#34;background-image : url(&#39;https://picsum.photos/240/160/?image=1069&#39;);&#34;
+    &gt;
+      &lt;div class=&#34;two&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;details&#34;&gt;
+        &lt;h3&gt;#2&lt;/h3&gt;
+        &lt;p&gt;this is a description for your photo in your gallery.&lt;/p&gt;
+        &lt;h6&gt;time &amp;amp; date&lt;/h6&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;bg-items&#34;&gt;
+    &lt;div
+      class=&#34;items&#34;
+      style=&#34;background-image : url(&#39;https://picsum.photos/240/160/?image=1070&#39;);&#34;
+    &gt;
+      &lt;div class=&#34;three&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;details&#34;&gt;
+        &lt;h3&gt;#3&lt;/h3&gt;
+        &lt;p&gt;this is a description for your photo in your gallery.&lt;/p&gt;
+        &lt;h6&gt;time &amp;amp; date&lt;/h6&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;bg-items&#34;&gt;
+    &lt;div
+      class=&#34;items&#34;
+      style=&#34;background-image : url(&#39;https://picsum.photos/240/160/?image=1043&#39;);&#34;
+    &gt;
+      &lt;div class=&#34;four&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;details&#34;&gt;
+        &lt;h3&gt;#4&lt;/h3&gt;
+        &lt;p&gt;this is a description for your photo in your gallery.&lt;/p&gt;
+        &lt;h6&gt;time &amp;amp; date&lt;/h6&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;bg-items&#34;&gt;
+    &lt;div
+      class=&#34;items&#34;
+      style=&#34;background-image : url(&#39;https://picsum.photos/240/160/?image=1027&#39;);&#34;
+    &gt;
+      &lt;div class=&#34;tl5&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;br5&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;details&#34;&gt;
+        &lt;h3&gt;#5&lt;/h3&gt;
+        &lt;p&gt;this is a description for your photo in your gallery.&lt;/p&gt;
+        &lt;h6&gt;time &amp;amp; date&lt;/h6&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;bg-items&#34;&gt;
+    &lt;div
+      class=&#34;items&#34;
+      style=&#34;background-image : url(&#39;https://picsum.photos/240/160/?image=1025&#39;);&#34;
+    &gt;
+      &lt;div class=&#34;tl6&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;tr6&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;bl6&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;br6&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;details&#34;&gt;
+        &lt;h3&gt;#6&lt;/h3&gt;
+        &lt;p&gt;this is a description for your photo in your gallery.&lt;/p&gt;
+        &lt;h6&gt;time &amp;amp; date&lt;/h6&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;bg-items&#34;&gt;
+    &lt;div
+      class=&#34;items&#34;
+      style=&#34;background-image : url(&#39;https://picsum.photos/240/160/?image=1016&#39;);&#34;
+    &gt;
+      &lt;div class=&#34;seven&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;details&#34;&gt;
+        &lt;h3&gt;#7&lt;/h3&gt;
+        &lt;p&gt;this is a description for your photo in your gallery.&lt;/p&gt;
+        &lt;h6&gt;time &amp;amp; date&lt;/h6&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;bg-items&#34;&gt;
+    &lt;div
+      class=&#34;items&#34;
+      style=&#34;background-image : url(&#39;https://picsum.photos/240/160/?image=1015&#39;);&#34;
+    &gt;
+      &lt;div class=&#34;eight&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;details&#34;&gt;
+        &lt;h3&gt;#8&lt;/h3&gt;
+        &lt;p&gt;this is a description for your photo in your gallery.&lt;/p&gt;
+        &lt;h6&gt;time &amp;amp; date&lt;/h6&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;bg-items&#34;&gt;
+    &lt;div
+      class=&#34;items&#34;
+      style=&#34;background-image : url(&#39;https://picsum.photos/240/160/?image=998&#39;);&#34;
+    &gt;
+      &lt;div class=&#34;nine&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;details&#34;&gt;
+        &lt;h3&gt;#9&lt;/h3&gt;
+        &lt;p&gt;this is a description for your photo in your gallery.&lt;/p&gt;
+        &lt;h6&gt;time &amp;amp; date&lt;/h6&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;bg-items&#34;&gt;
+    &lt;div
+      class=&#34;items&#34;
+      style=&#34;background-image : url(&#39;https://picsum.photos/240/160/?image=1011&#39;);&#34;
+    &gt;
+      &lt;div class=&#34;ten i&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;ten ii&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;ten iii&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;ten iv&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;details&#34;&gt;
+        &lt;h3&gt;#10&lt;/h3&gt;
+        &lt;p&gt;this is a description for your photo in your gallery.&lt;/p&gt;
+        &lt;h6&gt;time &amp;amp; date&lt;/h6&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;bg-items&#34;&gt;
+    &lt;div
+      class=&#34;items&#34;
+      style=&#34;background-image : url(&#39;https://picsum.photos/240/160/?image=999&#39;);&#34;
+    &gt;
+      &lt;div class=&#34;eleven i&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;eleven ii&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;eleven iii&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;eleven iv&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;details&#34;&gt;
+        &lt;h3&gt;#11&lt;/h3&gt;
+        &lt;p&gt;this is a description for your photo in your gallery.&lt;/p&gt;
+        &lt;h6&gt;time &amp;amp; date&lt;/h6&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;bg-items&#34;&gt;
+    &lt;div
+      class=&#34;items&#34;
+      style=&#34;background-image : url(&#39;https://picsum.photos/240/160/?image=976&#39;);&#34;
+    &gt;
+      &lt;div class=&#34;twelve i&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;twelve ii&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;twelve iii&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;twelve iv&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;details&#34;&gt;
+        &lt;h3&gt;#12&lt;/h3&gt;
+        &lt;p&gt;this is a description for your photo in your gallery.&lt;/p&gt;
+        &lt;h6&gt;time &amp;amp; date&lt;/h6&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;bg-items&#34;&gt;
+    &lt;div
+      class=&#34;items&#34;
+      style=&#34;background-image : url(&#39;https://picsum.photos/240/160/?image=950&#39;);&#34;
+    &gt;
+      &lt;div class=&#34;thirteen-l&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;thirteen-r&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;details&#34;&gt;
+        &lt;h3&gt;#13&lt;/h3&gt;
+        &lt;p&gt;this is a description for your photo in your gallery.&lt;/p&gt;
+        &lt;h6&gt;time &amp;amp; date&lt;/h6&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;bg-items&#34;&gt;
+    &lt;div
+      class=&#34;items&#34;
+      style=&#34;background-image : url(&#39;https://picsum.photos/240/160/?image=947&#39;);&#34;
+    &gt;
+      &lt;div class=&#34;fourteen-l&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;fourteen-r&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;details&#34;&gt;
+        &lt;h3&gt;#14&lt;/h3&gt;
+        &lt;p&gt;this is a description for your photo in your gallery.&lt;/p&gt;
+        &lt;h6&gt;time &amp;amp; date&lt;/h6&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;bg-items&#34;&gt;
+    &lt;div
+      class=&#34;items&#34;
+      style=&#34;background-image : url(&#39;https://picsum.photos/240/160/?image=941&#39;);&#34;
+    &gt;
+      &lt;div class=&#34;t&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;r&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;b&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;l&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;details&#34;&gt;
+        &lt;h3&gt;#15&lt;/h3&gt;
+        &lt;p&gt;this is a description for your photo in your gallery.&lt;/p&gt;
+        &lt;h6&gt;time &amp;amp; date&lt;/h6&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</textarea>
+        </div>
+        <div class="code__wrapper_top-css">
+          <div class="title">CSS</div>
+          <textarea id="cssCode">body {
+  background-color: #e43;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.container {
+  width: 960px;
+  margin: 0 auto;
+}
+
+.container:after {
+  clear: both;
+  display: table;
+  content: &#34;&#34;;
+}
+
+.bg-items {
+  padding: 20px;
+  width: 240px;
+  height: 160px;
+  margin: 20px;
+  background-color: white;
+  float: left;
+  cursor: pointer;
+  box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.5);
+}
+
+.items {
+  width: 240px;
+  height: 160px;
+  position: relative;
+  overflow: hidden;
+  background-color: #102b46;
+}
+
+.details {
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 220px;
+  height: 140px;
+  padding: 10px;
+  top: 0;
+  left: 0;
+  font-family: georgia;
+  color: #fff;
+  opacity: 0;
+  transition: opacity 0.8s;
+}
+
+.details h3 {
+  margin-bottom: 20px;
+}
+
+.details h6 {
+  text-align: right;
+  margin-top: 40px;
+}
+
+.details p {
+  font-size: 14px;
+  font-style: italic;
+  text-align: center;
+  line-height: 20px;
+}
+
+.items:hover .details {
+  opacity: 1;
+  transition: opacity 0.2s 0.3s;
+}
+
+.items div {
+  position: absolute;
+}
+
+/* one */
+
+.one {
+  left: 100%;
+  bottom: 100%;
+  width: inherit;
+  height: inherit;
+  background-color: #e43;
+  transition: all 0.3s;
+}
+
+.items:hover .one {
+  transition: all 0.3s;
+  left: 0;
+  bottom: 0;
+}
+
+/* two */
+
+.two {
+  width: inherit;
+  height: inherit;
+  background-color: #e43;
+  transition: all 0.3s;
+  left: 0;
+  bottom: 100%;
+}
+
+.items:hover .two {
+  transform: rotate(180deg);
+  left: 0;
+  bottom: 0;
+  transition: all 0.3s;
+}
+
+/* three */
+
+.three {
+  left: 0;
+  top: 0;
+  width: inherit;
+  height: inherit;
+  background-color: #e43;
+  transition: all 0.3s;
+  transform: scale(0, 0);
+}
+
+.items:hover .three {
+  left: 0;
+  top: 0;
+  transform: scale(1, 1);
+  transition: all 0.3s;
+}
+
+/* four */
+
+.four {
+  width: inherit;
+  height: inherit;
+  background-color: #e43;
+  transition: all 0.3s;
+  left: 0;
+  top: 0;
+  transform: scale(0, 0) rotate(0deg);
+}
+
+.items:hover .four {
+  left: 0;
+  top: 0;
+  transform: scale(1, 1) rotate(1080deg);
+  transition: all 0.3s;
+}
+
+/* five */
+
+.tl5 {
+  border-top: 161px solid #e43;
+  border-right: 241px solid transparent;
+  top: -160px;
+  left: -240px;
+  transition: all 0.3s;
+}
+
+.br5 {
+  border-bottom: 161px solid #e43;
+  border-left: 241px solid transparent;
+  bottom: -160px;
+  right: -240px;
+  transition: all 0.3s;
+}
+
+.items:hover .tl5 {
+  top: 0;
+  left: 0;
+  transition: all 0.3s;
+}
+
+.items:hover .br5 {
+  bottom: 0;
+  right: 0;
+  transition: all 0.3s;
+}
+
+/* six */
+
+.tl6 {
+  width: 120px;
+  height: 80px;
+  background-color: #e43;
+  top: -80px;
+  left: -240px;
+  transition: all 0.3s;
+}
+
+.tr6 {
+  width: 120px;
+  height: 80px;
+  background-color: #e43;
+  top: -80px;
+  right: -240px;
+  transition: all 0.3s;
+}
+
+.br6 {
+  width: 120px;
+  height: 80px;
+  background-color: #e43;
+  bottom: -80px;
+  right: -240px;
+  transition: all 0.3s;
+}
+
+.bl6 {
+  width: 120px;
+  height: 80px;
+  background-color: #e43;
+  bottom: -80px;
+  left: -240px;
+  transition: all 0.3s;
+}
+
+.items:hover .tl6 {
+  top: 0;
+  left: 0;
+  transition: all 0.3s;
+}
+
+.items:hover .tr6 {
+  top: 0;
+  right: 0;
+  transition: all 0.3s;
+}
+
+.items:hover .br6 {
+  bottom: 0;
+  right: 0;
+  transition: all 0.3s;
+}
+
+.items:hover .bl6 {
+  bottom: 0;
+  left: 0;
+  transition: all 0.3s;
+}
+
+/* seven */
+
+.seven {
+  width: 240px;
+  height: 160px;
+  background-color: #e43;
+  opacity: 0;
+  transition: all 0.3s;
+}
+
+.items:hover .seven {
+  opacity: 1;
+  transition: all 0.3s;
+}
+
+/* eight */
+
+.eight {
+  top: 30%;
+  left: 10%;
+  border-right: 100px solid transparent;
+  border-bottom: 70px solid #e43;
+  border-left: 100px solid transparent;
+  transform: rotate(35deg) scale(0, 0);
+  transition: all 0.6s;
+}
+
+.eight:before {
+  border-bottom: 80px solid #e43;
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent;
+  position: absolute;
+  height: 0;
+  width: 0;
+  top: -45px;
+  left: -65px;
+  display: block;
+  content: &#34;&#34;;
+  transform: rotate(-35deg);
+}
+
+.eight:after {
+  position: absolute;
+  display: block;
+  color: #e43;
+  top: 3px;
+  left: -105px;
+  width: 0px;
+  height: 0px;
+  border-right: 100px solid transparent;
+  border-bottom: 70px solid #e43;
+  border-left: 100px solid transparent;
+  transform: rotate(-70deg);
+  content: &#34;&#34;;
+}
+
+.items:hover .eight {
+  transform: rotate(35deg) scale(3.5, 3.5);
+  transition: all 0.6s;
+}
+
+/* nine */
+
+.nine {
+  width: 0;
+  height: 0;
+  top: 50%;
+  left: 50%;
+  background-color: #e43;
+  border-radius: 50%;
+  transition: all 0.3s;
+}
+
+.items:hover .nine {
+  width: 340px;
+  height: 260px;
+  top: -50px;
+  left: -50px;
+  transition: all 0.6s;
+}
+
+/* ten */
+
+.ten {
+  width: inherit;
+  height: 40px;
+  background-color: #e43;
+  left: 100%;
+}
+
+.ten.i {
+  top: 0;
+  transition: all 0.2s;
+}
+
+.ten.ii {
+  top: 40px;
+  transition: all 0.4s;
+}
+
+.ten.iii {
+  top: 80px;
+  transition: all 0.6s;
+}
+
+.ten.iv {
+  top: 120px;
+  transition: all 0.8s;
+}
+
+.items:hover .i {
+  left: 0;
+  transition: all 0.2s;
+}
+
+.items:hover .ii {
+  left: 0;
+  transition: all 0.4s;
+}
+
+.items:hover .iii {
+  left: 0;
+  transition: all 0.6s;
+}
+
+.items:hover .iv {
+  left: 0;
+  transition: all 0.8s;
+}
+
+/* eleven */
+
+.eleven {
+  width: inherit;
+  height: 40px;
+  background-color: #e43;
+  transition: all 0.3s;
+}
+
+.eleven.i {
+  top: 0;
+  left: -100%;
+}
+
+.eleven.ii {
+  top: 40px;
+  left: 100%;
+}
+
+.eleven.iii {
+  top: 80px;
+  left: -100%;
+}
+
+.eleven.iv {
+  left: 100%;
+  top: 120px;
+}
+
+.items:hover .eleven {
+  left: 0;
+  transition: all 0.4s;
+}
+
+/* twelve */
+
+.twelve {
+  width: inherit;
+  height: 40px;
+  background-color: #e43;
+  transition: all 0.3s;
+  top: -40px;
+}
+
+.twelve.iv {
+  transition: all 0.1s;
+}
+
+.twelve.iii {
+  transition: all 0.1s 0.1s;
+}
+
+.twelve.ii {
+  transition: all 0.1s 0.2s;
+}
+
+.twelve.i {
+  transition: all 0.1s 0.3s;
+}
+
+.items:hover .twelve.i {
+  top: 120px;
+  transition: all 0.2s;
+}
+
+.items:hover .twelve.ii {
+  top: 80px;
+  transition: all 0.2s 0.2s;
+}
+
+.items:hover .twelve.iii {
+  top: 40px;
+  transition: all 0.2s 0.4s;
+}
+
+.items:hover .twelve.iv {
+  top: 0px;
+  transition: all 0.2s 0.6s;
+}
+
+/* thirteen */
+
+.thirteen-r,
+.thirteen-l {
+  width: 120px;
+  height: inherit;
+  background-color: #e43;
+  top: 0;
+  transition: all 0.3s;
+}
+
+.thirteen-r {
+  left: 100%;
+}
+
+.thirteen-l {
+  right: 100%;
+}
+
+.items:hover .thirteen-r {
+  transition: all 0.3s;
+  left: 0;
+}
+
+.items:hover .thirteen-l {
+  transition: all 0.3s;
+  right: 0;
+}
+
+/* fourteen */
+
+.fourteen-r,
+.fourteen-l {
+  width: 120px;
+  height: inherit;
+  background-color: #e43;
+  top: 0;
+  transition: all 0.3s;
+}
+
+.fourteen-r {
+  left: 100%;
+}
+
+.fourteen-l {
+  right: 100%;
+}
+
+.items:hover .fourteen-r {
+  transition: all 0.3s;
+  left: 50%;
+}
+
+.items:hover .fourteen-l {
+  transition: all 0.3s;
+  right: 50%;
+}
+
+/* fifteen */
+
+.t {
+  border-style: solid;
+  border-width: 80px 120px 0 120px;
+  border-color: #e43 transparent transparent transparent;
+  transition: all 0.3s;
+  top: -80px;
+}
+
+.r {
+  border-style: solid;
+  border-width: 80px 120px 80px 0;
+  border-color: transparent #e43 transparent transparent;
+  right: -120px;
+  transition: all 0.3s;
+}
+
+.b {
+  border-style: solid;
+  border-width: 0 120px 80px 120px;
+  border-color: transparent transparent #e43 transparent;
+  bottom: -80px;
+  transition: all 0.3s;
+}
+
+.l {
+  border-style: solid;
+  border-width: 80px 0 80px 120px;
+  border-color: transparent transparent transparent #e43;
+  left: -120px;
+  transition: all 0.3s;
+}
+
+.items:hover .t {
+  top: 0px;
+  transition: all 0.3s;
+}
+
+.items:hover .r {
+  right: 0px;
+  transition: all 0.3s;
+}
+
+.items:hover .b {
+  bottom: 0px;
+  transition: all 0.3s;
+}
+
+.items:hover .l {
+  left: 0px;
+  transition: all 0.3s;
+}</textarea>
+        </div>
+        <div class="code__wrapper_top-js">
+          <div class="title">JAVASCRIPT</div>
+          <textarea id="jsCode"></textarea>
+        </div>
+      </div>
+      <div class="code__wrapper_bottom">
+        <div class="code__wrapper_top-preview">
+          <div class="fs__icon"></div>
+          
+          <iframe
+            id="live-preview"
+            src="assets/templates/template-iframe.html"
+            width="100%"
+            height="100%"
+            allow="accelerometer *; camera *; encrypted-media *; display-capture *; geolocation *; gyroscope *; microphone *; midi *; clipboard-read *; clipboard-write *; web-share *; serial *; xr-spatial-tracking *"
+            allowfullscreen="true"
+            allowpaymentrequest="true"
+            allowtransparency="true"
+            sandbox="allow-forms allow-modals allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation allow-downloads allow-presentation"
+            class="result-iframe iframe-visual-update"
+            name="codeShow"
+            loading="lazy"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+    <script src="assets/lib/jquery-3.7.1.min.js"></script>
+    <script src="assets/lib/sass.sync.min.js"></script>
+    <link rel="stylesheet" href="assets/codemirror5/lib/codemirror.css" />
+    <link rel="stylesheet" href="assets/codemirror5/addon/hint/show-hint.css" />
+    <script src="assets/codemirror5/lib/codemirror.js"></script>
+    <script src="assets/codemirror5/addon/hint/show-hint.js"></script>
+    <script src="assets/codemirror5/addon/hint/xml-hint.js"></script>
+    <script src="assets/codemirror5/addon/hint/html-hint.js"></script>
+    <script src="assets/codemirror5/mode/xml/xml.js"></script>
+    <script src="assets/codemirror5/mode/javascript/javascript.js"></script>
+    <script src="assets/codemirror5/mode/css/css.js"></script>
+    <script src="assets/codemirror5/mode/htmlmixed/htmlmixed.js"></script>
+    <script src="assets/codemirror5/addon/hint/css-hint.js"></script>
+    <script src="assets/js/common.js"></script>
+  </body>
+</html>
