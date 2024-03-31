@@ -1,0 +1,126 @@
+@import url("https://cdn.jsdelivr.net/npm/hack-font@3/build/web/hack.css");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  text-transform: initial !important;
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: hack;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  max-width: 100%;
+}
+
+.popup {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+}
+
+.popup textarea {
+  width: 82%;
+  height: 50%;
+  background-color: #fff;
+  outline: none;
+  padding: 32px 25px;
+  box-sizing: border-box;
+  font-size: 14px;
+  transition: all 0.3s;
+  font-family: hack;
+  border: none;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  resize: none;
+  margin-bottom: 20px;
+  border-radius: 32px;
+  border: 5px dashed #ddd;
+}
+
+.popup span {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 32px;
+  height: 32px;
+  background-color: #fff;
+  border-radius: 100%;
+  font-size: 25px;
+  text-align: center;
+  line-height: 32px;
+  cursor: pointer;
+}
+
+.popup span:active {
+  opacity: 0.5;
+}
+
+.container a {
+  border-radius: 54px;
+  font-size: 16px;
+}
+
+.container a + a {
+  margin-top: 20px;
+}
+
+#clearBtn {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+#copyBtn {
+  position: absolute;
+  top: 70px;
+  left: 20px;
+}
+
+#setBtn {
+  position: absolute;
+  top: 140px;
+  left: 20px;
+}
+
+#getBall {
+  position: absolute;
+  top: 70px;
+  left: 20px;
+}
+
+.waves-effect {
+  background-color: #ff0000;
+  color: #ffffff;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.waves-effect:hover {
+  background-color: #ff0000;
+  transform: rotate(-10deg) scale(1.1);
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+}

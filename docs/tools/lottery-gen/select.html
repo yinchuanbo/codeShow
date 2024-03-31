@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>select ball</title>
+    <link rel="stylesheet" href="../../tools/lottery-generator/materialize/materialize.min.css" />
+    <link rel="stylesheet" href="../../tools/lottery-generator/css/check-xuanhao.css" />
+  </head>
+  <body>
+    <div class="container__xunhao">
+      <div class="select_num">
+        <div class="select_num_name">random:</div>
+        <div class="input-field inline">
+          <input id="randomNumber" type="text" class="validate" value="5" />
+        </div>
+      </div>
+      <div class="select_num">
+        <div class="select_num_name">create:</div>
+        <div class="input-field inline">
+          <input id="createNumber" type="text" class="validate" value="5" />
+        </div>
+      </div>
+      <div class="btns">
+        <a class="waves-effect waves-light btn" id="create">Generate</a>
+        <a class="waves-effect waves-light btn" id="clearTextarea" style="background-color: #ee6e73;">Clear</a>
+      </div>
+      <div class="code">
+        <textarea id="result"></textarea>
+      </div>
+      <div class="copy">
+        <a class="waves-effect waves-light btn" id="ssqExc">Create</a>
+      </div>
+    </div>
+    <script src="../../tools/lottery-generator/materialize/materialize.min.js"></script>
+    <script src="../../tools/lottery-generator/js/check-xuanhao.js"></script>
+  </body>
+</html>
