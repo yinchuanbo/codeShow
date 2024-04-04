@@ -84,7 +84,7 @@ body {
   }
 }
 .article__content {
-  max-width: 65%;
+  max-width: 1000px;
   margin: 0 auto;
   min-height: 100%;
   background-color: #fff;
