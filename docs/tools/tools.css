@@ -23,7 +23,7 @@ body {
   background-color: #f2f2f2;
   display: grid;
   grid-template-columns: 250px 250px 250px 250px;
-  grid-gap: 20px 30px;
+  grid-gap: 20px;
   grid-template-rows: 60px;
   place-content: center;
 }
@@ -32,7 +32,7 @@ body {
   height: 60px;
   font-size: 16px;
   border: none;
-  border-radius: 50px;
+  /* border-radius: 50px; */
   background-color: #ff0000;
   color: #ffffff;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);

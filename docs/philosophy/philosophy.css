@@ -32,16 +32,16 @@ body {
   height: 100%;
   background-color: #f2f2f2;
   display: grid;
-  grid-template-columns: 500px 500px;
-  grid-gap: 30px;
+  grid-template-columns: 450px 450px;
+  grid-gap: 20px;
   place-content: center;
 }
 
 .article__wrapper_item {
-  height: 80px;
+  height: 70px;
   font-size: 18px;
   border: none;
-  border-radius: 50px;
+  /* border-radius: 50px; */
   background-color: #ff0000;
   color: #ffffff;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
