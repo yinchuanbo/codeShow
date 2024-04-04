@@ -105,5 +105,8 @@ body {
   .article__content {
     max-width: 90%;
     font-size: 1em;
+    padding: 0;
+    border-radius: 0;
+    background-color: transparent;
   }
 }
