@@ -17,9 +17,9 @@
       <div class="home__banner">
         <div class="logo">灏天阁</div>
         <ul>
-          <li>
+          <!-- <li>
             <a href="https://yinhao.vercel.app" target="_blank">技术集</a>
-          </li>
+          </li> -->
           <li>
             <a href="/tools" target="_blank">工具集</a>
           </li>
@@ -28,12 +28,12 @@
           </li>
         </ul>
       </div>
-      <div class="article__list">
+      <!-- <div class="article__list">
         <div class="search"></div>
         文章列表<b>(<%- len %>)</b>
         <span>查看所有文章</span>
         <i class="toBack">还原</i>
-      </div>
+      </div> -->
       <%- content %>
       <div class="no-list">
         <img src="assets/images/no-result.svg" alt="" />
@@ -42,6 +42,32 @@
       <div class="home__pages">
         <button id="prev__page" style="display: none">上一页</button>
         <button id="next__page">下一页</button>
+      </div>
+      <!-- 导航 -->
+      <div class="navbar">
+        <div class="tags"><%- len %></div>
+        <ul class="menu">
+          <li title="工具箱">
+            <a href="/tools" target="_blank">
+              <img src="assets/images/ico3.svg" alt="" />
+            </a>
+          </li>
+          <li title="哲学人生">
+            <a href="/philosophy" target="_blank">
+              <img src="assets/images/ico2.svg" alt="" />
+            </a>
+          </li>
+          <li title="搜索" class="search">
+            <a href="javascript:;">
+              <img src="assets/images/search.svg" alt="" />
+            </a>
+          </li>
+          <li title="切换" class="change">
+            <a href="javascript:;">
+              <img src="assets/images/change.svg" alt="" />
+            </a>
+          </li>
+        </ul>
       </div>
     </div>
     <script src="assets/js/home.js"></script>

@@ -364,14 +364,15 @@ ul {
 
 .home__wrapper {
   /* background-color: #f2f2f2; */
-  /* padding-top: 30px; */
-  padding-bottom: 30px;
+  padding-top: 30px;
+  /* padding-bottom: 30px; */
   width: 100%;
   height: fit-content;
   min-height: 100%;
   /* background-image: linear-gradient(rgba(0, 0, 255, 0.5), rgba(255, 255, 0, 0.5)) */
   /* padding-top: 30px; */
   background: #f2f2f2;
+  position: relative;
 }
 
 .home__list {
@@ -380,7 +381,7 @@ ul {
   grid-gap: 30px;
   width: fit-content;
   margin: 0 auto;
-  margin-bottom: 30px;
+  /* margin-bottom: 30px; */
 }
 
 .home__banner {
@@ -394,7 +395,7 @@ ul {
   align-items: center;
   justify-content: flex-start;
   border-bottom: 3px solid #0c1021;
-  /* display: none; */
+  display: none;
 }
 
 .home__banner .logo {
@@ -426,6 +427,7 @@ ul {
 .article__list {
   display: flex;
   align-items: center;
+  display: none;
 }
 
 .article__list b {
@@ -494,6 +496,11 @@ ul {
   overflow: hidden;
 }
 
+.home__pages {
+  padding: 40px;
+  width: 1220px;
+}
+
 .article__list {
   font-family: myfont;
   font-size: 20px;
@@ -513,7 +520,7 @@ ul {
   border: 0;
   outline: none;
   padding: 12px 30px;
-  border-radius: 50px;
+  border-radius: 0;
   cursor: pointer;
   font-size: 16px;
   font-family: myfont;
@@ -521,13 +528,21 @@ ul {
   background-color: #fff;
   /* border: 1px solid #ddd; */
   color: #0c1021;
+  /* border-radius: 10px; */
 }
 
 #prev__page:hover,
 #next__page:hover {
-  background-color: #0c1021;
+  /* background-color: #0c1021;
   color: #fff;
+  transition: all 0.5s; */
+  box-shadow: rgba(0, 0, 0, 0.17) 0 -23px 25px inset,
+    rgba(0, 0, 0, 0.15) 0 -36px 30px inset,
+    rgba(0, 0, 0, 0.1) 0 -79px 40px inset, rgba(0, 0, 0, 6%) 0 2px 1px,
+    rgba(0, 0, 0, 9%) 0 4px 2px, rgba(0, 0, 0, 9%) 0 8px 4px,
+    rgba(0, 0, 0, 9%) 0 16px 8px, rgba(0, 0, 0, 9%) 0 32px 16px;
   transition: all 0.5s;
+  border-radius: 10px;
 }
 
 .home__banner:hover img {
@@ -570,21 +585,33 @@ ul {
   transition: all 0.5s;
 }
 
+.home__list li span {
+  top: 10px;
+  left: 10px;
+}
+
 .creatorName {
   left: unset;
   top: unset;
-  bottom: 0;
-  right: 0;
+  bottom: 108px;
+  right: 10px;
   border-radius: 0;
   border-top-left-radius: 20px;
   font-size: 12px;
 }
 
 .home__list li:hover {
-  box-shadow: rgba(12, 16, 33, 0.4) 0px 5px, rgba(12, 16, 33, 0.3) 0px 10px,
+  /* box-shadow: rgba(12, 16, 33, 0.4) 0px 5px, rgba(12, 16, 33, 0.3) 0px 10px,
     rgba(12, 16, 33, 0.2) 0px 15px, rgba(12, 16, 33, 0.1) 0px 20px,
-    rgba(12, 16, 33, 0.05) 0px 25px;
+    rgba(12, 16, 33, 0.05) 0px 25px; */
+
+  box-shadow: rgba(0, 0, 0, 0.17) 0 -23px 25px inset,
+    rgba(0, 0, 0, 0.15) 0 -36px 30px inset,
+    rgba(0, 0, 0, 0.1) 0 -79px 40px inset, rgba(0, 0, 0, 6%) 0 2px 1px,
+    rgba(0, 0, 0, 9%) 0 4px 2px, rgba(0, 0, 0, 9%) 0 8px 4px,
+    rgba(0, 0, 0, 9%) 0 16px 8px, rgba(0, 0, 0, 9%) 0 32px 16px;
   transition: all 0.5s;
+  border-radius: 10px;
 }
 
 .home__list li:hover a {
@@ -600,7 +627,7 @@ ul {
 .li__cover {
   width: 100%;
   height: 320px;
-  background-color: #fff;
+  /* background-color: #fff; */
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -719,4 +746,65 @@ ul {
 
 .home__search button:active {
   opacity: 0.7;
+}
+
+.navbar {
+  position: fixed;
+  bottom: 100px;
+  left: 50px;
+  background-color: #fff;
+  transition: all 0.5s;
+}
+
+.navbar:hover {
+  border-radius: 10px;
+  /* overflow: hidden; */
+  box-shadow: rgba(0, 0, 0, 17%) 0 -23px 25px inset,
+    rgba(0, 0, 0, 15%) 0 -36px 30px inset, rgba(0, 0, 0, 10%) 0 -79px 40px inset,
+    rgba(0, 0, 0, 6%) 0 2px 1px, rgba(0, 0, 0, 9%) 0 4px 2px,
+    rgba(0, 0, 0, 9%) 0 8px 4px, rgba(0, 0, 0, 9%) 0 16px 8px,
+    rgba(0, 0, 0, 9%) 0 32px 16px;
+  transition: all 0.5s;
+}
+
+.tags {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background-color: #ff0000;
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+  font-family: MyFont;
+  color: #fff;
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar .menu li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar .menu li a {
+  text-decoration: none;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.5s;
+}
+
+.navbar .menu li a img {
+  width: 30px;
+  transition: all 0.5s;
+}
+
+.navbar .menu li:hover img {
+  transform: scale(1.2);
+  transition: all 0.5s;
 }

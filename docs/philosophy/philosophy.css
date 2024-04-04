@@ -32,7 +32,7 @@ body {
   height: 100%;
   background-color: #f2f2f2;
   display: grid;
-  grid-template-columns: 450px 450px;
+  grid-template-columns: 420px 420px;
   grid-gap: 20px;
   place-content: center;
 }
