@@ -1,7 +1,8 @@
-const express = require("express");
-const path = require("path");
-const app = express();
-
-app.use(express.static(path.join(__dirname, "./docs")));
-
-app.listen(5656);
+var liveServer = require("live-server");
+var params = {
+	port: 5656,
+	host: "0.0.0.0", 
+	root: "./docs",
+	open: true,
+};
+liveServer.start(params);
