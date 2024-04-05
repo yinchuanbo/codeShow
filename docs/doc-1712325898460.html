@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>codeShow</title>
+    <link rel="icon" sizes="any" mask href="assets/images/ico.svg" />
+    <link rel="stylesheet" href="assets/codemirror5/theme/blackboard.css" />
+    <link rel="stylesheet" href="assets/css/common.css" />
+    <link rel="stylesheet" href="assets/lib/wenk.min.css" />
+  </head>
+  <body>
+    <div class="code__wrapper">
+      <div class="close__fs"></div>
+      <div class="code__wrapper_header">
+        <div class="code__wrapper_header_title">全屏范围滑块</div>
+        <div class="tools">
+          <div class="home__icon" onclick="window.location.href = '/'"></div>
+        </div>
+      </div>
+      <div class="code__wrapper_top">
+        <div class="code__wrapper_top-html">
+          <div class="title">HTML</div>
+          <textarea id="htmlCode">&lt;div class=&#34;container&#34;&gt;
+  &lt;div class=&#34;fill-area&#34;&gt;&lt;/div&gt;
+  &lt;label for=&#34;range&#34; id=&#34;range-value&#34;&gt;0&lt;/label&gt;
+  &lt;input
+    type=&#34;range&#34;
+    id=&#34;range&#34;
+    name=&#34;range&#34;
+    value=&#34;0&#34;
+    min=&#34;0&#34;
+    max=&#34;100&#34;
+    onmousemove=&#34;handleMouseMove(this.value)&#34;
+    onchange=&#34;handleMouseMove(this.value)&#34;
+  /&gt;
+&lt;/div&gt;</textarea>
+        </div>
+        <div class="code__wrapper_top-css">
+          <div class="title">CSS</div>
+          <textarea id="cssCode">/* 引入谷歌字体 */
+@import url(&#34;https://fonts.googleapis.com/css2?family=Monoton&amp;display=swap&#34;);
+
+* {
+  /* 初始化 */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/* 渐变容器 */
+.container {
+  /* 满屏 */
+  width: 100vw;
+  height: 100vh;
+  /* 弹性布局 水平+垂直居中 垂直排列 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  /* 渐变背景 */
+  background: linear-gradient(to right, #ff5c5c, #ffa860, #e3dc44, #57b02a);
+}
+/* 黑色背景（遮住渐变背景） */
+.fill-area {
+  width: 100vw;
+  height: 100vh;
+  background: #333838;
+  /* 绝对定位 */
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 0;
+  /* 内阴影 */
+  box-shadow: inset 3px 3px 5px -1px #111;
+  /* 设置元素不对指针事件做出反应 */
+  pointer-events: none;
+}
+/* 滑动数值 */
+label {
+  font-family: &#34;Monoton&#34;;
+  font-size: 8rem;
+  position: static;
+  z-index: 1;
+  color: #ec7474;
+  margin: -5rem 0 2rem;
+}
+label::after {
+  content: &#34;%&#34;;
+}
+/* 滑动条 */
+input[type=&#34;range&#34;] {
+  position: static;
+  z-index: 2;
+  width: 50vw;
+  height: 1rem;
+  background: rgba(88, 36, 36, 0.8);
+  /* 去除滑动条的外貌 */
+  appearance: none;
+  border: none;
+  outline: none;
+  border-radius: 0.5rem;
+  /* 内阴影 */
+  box-shadow: inset 3px 3px 5px -1px #000;
+}
+/* 滑块 */
+input[type=&#34;range&#34;]::-webkit-slider-thumb {
+  width: 4vw;
+  height: 4vw;
+  background: #eee;
+  /* 去除滑块的外貌 */
+  appearance: none;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 5px 5px 8px -1px #000;
+  /* 阴影过渡效果 */
+  transition: box-shadow 0.3s ease-in-out;
+}
+/* 滑动条悬停时滑块的样式变化 */
+input[type=&#34;range&#34;]:hover::-webkit-slider-thumb {
+  background: #fff;
+  box-shadow: 3px 3px 5px -1px #000;
+}</textarea>
+        </div>
+        <div class="code__wrapper_top-js">
+          <div class="title">JAVASCRIPT</div>
+          <textarea id="jsCode">// 要操作的元素
+const rangeValue = document.querySelector(&#34;#range-value&#34;);
+const range = document.querySelector(&#39;input[type=&#34;range&#34;]&#39;);
+const fillArea = document.querySelector(&#34;.fill-area&#34;);
+
+// 滑块滑动函数
+function handleMouseMove(value) {
+  // hue-rotate是CSS中的颜色滤镜，可以设置不同的度数来改变颜色
+  const hueRotate = &#34;hue-rotate(&#34; + value + &#34;deg)&#34;;
+  // 设置进度数值
+  rangeValue.textContent = value;
+  // 设置颜色滤镜
+  rangeValue.style.filter = hueRotate;
+  // 设置滑动条的颜色滤镜
+  range.style.filter = hueRotate;
+  // 显示渐变背景，改变黑色背景的宽度及位置
+  fillArea.style.left = value + &#34;vw&#34;;
+  fillArea.style.width = 100 - value + &#34;vw&#34;;
+  fillArea.style.filter = hueRotate;
+}</textarea>
+        </div>
+      </div>
+      <div class="code__wrapper_bottom">
+        <div class="code__wrapper_top-preview">
+          <div class="fs__icon"></div>
+          
+          <iframe
+            id="live-preview"
+            src="assets/templates/template-iframe.html"
+            width="100%"
+            height="100%"
+            allow="accelerometer *; camera *; encrypted-media *; display-capture *; geolocation *; gyroscope *; microphone *; midi *; clipboard-read *; clipboard-write *; web-share *; serial *; xr-spatial-tracking *"
+            allowfullscreen="true"
+            allowpaymentrequest="true"
+            allowtransparency="true"
+            sandbox="allow-forms allow-modals allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation allow-downloads allow-presentation"
+            class="result-iframe iframe-visual-update"
+            name="codeShow"
+            loading="lazy"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+    <script src="assets/lib/jquery-3.7.1.min.js"></script>
+    <script src="assets/lib/sass.sync.min.js"></script>
+    <link rel="stylesheet" href="assets/codemirror5/lib/codemirror.css" />
+    <link rel="stylesheet" href="assets/codemirror5/addon/hint/show-hint.css" />
+    <script src="assets/codemirror5/lib/codemirror.js"></script>
+    <script src="assets/codemirror5/addon/hint/show-hint.js"></script>
+    <script src="assets/codemirror5/addon/hint/xml-hint.js"></script>
+    <script src="assets/codemirror5/addon/hint/html-hint.js"></script>
+    <script src="assets/codemirror5/mode/xml/xml.js"></script>
+    <script src="assets/codemirror5/mode/javascript/javascript.js"></script>
+    <script src="assets/codemirror5/mode/css/css.js"></script>
+    <script src="assets/codemirror5/mode/htmlmixed/htmlmixed.js"></script>
+    <script src="assets/codemirror5/addon/hint/css-hint.js"></script>
+    <script src="assets/js/common.js"></script>
+  </body>
+</html>

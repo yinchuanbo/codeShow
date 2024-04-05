@@ -1,0 +1,82 @@
+@import url("https://fonts.googleapis.com/css2?&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap");
+
+@font-face {
+  font-family: "MyFont";
+  src: url("../assets/fonts/myfont.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "MyFont2";
+  src: url("../assets/fonts/myfont2.ttf") format("truetype");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: MyFont2;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+.tools__wrapper {
+  width: 100%;
+  background-color: #f2f2f2;
+  display: grid;
+  grid-template-columns: 300px 300px 300px;
+  grid-gap: 20px;
+  place-content: center;
+  overflow: auto;
+  padding: 50px 0;
+  min-height: 100%;
+}
+
+.tools__wrapper_item {
+  height: 70px;
+  font-size: 18px;
+  border: none;
+  /* border-radius: 50px; */
+  background-color: #ff0000;
+  color: #ffffff;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0 10px;
+}
+
+.tools__wrapper_item:nth-child(3n-2) {
+  border-top-left-radius: 50px;
+  border-bottom-left-radius: 50px;
+}
+
+.tools__wrapper_item:nth-child(3n) {
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
+}
+
+@media (min-width: 769px) {
+  .tools__wrapper_item:hover {
+    transform: rotate(-10deg) scale(1.1);
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+  }
+}
+
+@media (max-width: 768px) {
+  .tools__wrapper {
+    grid-template-columns: 90%;
+    grid-gap: 20px 0;
+    padding: 20px 0;
+  }
+  .tools__wrapper_item {
+    font-size: 1em;
+    height: 60px;
+    border-radius: 0 !important;
+  }
+}
