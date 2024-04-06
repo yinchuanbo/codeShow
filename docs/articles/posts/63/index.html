@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+  class="not-ready text-sm lg:text-base"
+  style="--bg: "
+  lang="en"
+>
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  
+  <title>CSS功能特性 - 灏天阁</title>
+
+  
+  <meta name="theme-color" />
+  
+  <meta name="description" content="01 clamp() clamp() 函数的作用是把一个值限制在一个上限和下限之间，当这个值超过最小值和最大值的范围时，在最小值和最大值之间选择一个值使用。它接收三个参数：最小值、首选值、最大值。
+.box { width: clamp(220px, 55%, 300px); } h1 { letter-spacing: 2px; font-size: clamp(1.8rem, 2.5vw, 2.8rem); } 02 smooth 平滑滚动。
+&lt;div class=&#34;top&#34;&gt; &lt;a href=&#34;#bottom&#34;&gt;TOP&lt;/a&gt; &lt;/div&gt; &lt;div class=&#34;bottom&#34; id=&#34;bottom&#34;&gt;BOTTOM&lt;/div&gt; html { scroll-behavior: smooth; } .top, .bottom { height: 100vh; } 03 scroll snap 允许开发者在用户完成滚动后将视窗锁定在特定的元素或位置；设置了在有滚动容器的情形下吸附至吸附点的严格程度。
+语法：
+#不吸附 scroll-snap-type: none; #表示吸附轴的关键字 scroll-snap-type: x; scroll-snap-type: y; scroll-snap-type: block; scroll-snap-type: inline; scroll-snap-type: both; #表示吸附程度的可选关键字 #mandatory 或 proximity scroll-snap-type: x mandatory; scroll-snap-type: y proximity; scroll-snap-type: both mandatory; #全局值 scroll-snap-type: inherit; scroll-snap-type: initial; scroll-snap-type: revert; scroll-snap-type: revert-layer; scroll-snap-type: unset; &lt;div class=&#34;holster&#34;&gt; &lt;div class=&#34;container x mandatory-scroll-snapping&#34; dir=&#34;ltr&#34;&gt; &lt;div&gt;x 轴强制、从左往右&lt;/div&gt; &lt;div&gt;2&lt;/div&gt; &lt;div&gt;3&lt;/div&gt; &lt;div&gt;4&lt;/div&gt; &lt;div&gt;5&lt;/div&gt; &lt;/div&gt; &lt;div class=&#34;container x proximity-scroll-snapping&#34; dir=&#34;ltr&#34;&gt; &lt;div&gt;x 轴靠近、从左往右&lt;/div&gt; &lt;div&gt;2&lt;/div&gt; &lt;div&gt;3&lt;/div&gt; &lt;div&gt;4&lt;/div&gt; &lt;div&gt;5&lt;/div&gt; &lt;/div&gt; &lt;div class=&#34;container y mandatory-scroll-snapping&#34; dir=&#34;ltr&#34;&gt; &lt;div&gt;y 轴强制、从左往右&lt;/div&gt; &lt;div&gt;2&lt;/div&gt; &lt;div&gt;3&lt;/div&gt; &lt;div&gt;4&lt;/div&gt; &lt;div&gt;5&lt;/div&gt; &lt;/div&gt; &lt;div class=&#34;container y proximity-scroll-snapping&#34; dir=&#34;ltr&#34;&gt; &lt;div&gt;y 轴靠近、从左往右&lt;/div&gt; &lt;div&gt;2&lt;/div&gt; &lt;div&gt;3&lt;/div&gt; &lt;div&gt;4&lt;/div&gt; &lt;div&gt;5&lt;/div&gt; &lt;/div&gt; &lt;div class=&#34;container x mandatory-scroll-snapping&#34; dir=&#34;rtl&#34;&gt; &lt;div&gt;x 轴强制、从右往左&lt;/div&gt; &lt;div&gt;2&lt;/div&gt; &lt;div&gt;3&lt;/div&gt; &lt;div&gt;4&lt;/div&gt; &lt;div&gt;5&lt;/div&gt; &lt;/div&gt; &lt;div class=&#34;container x proximity-scroll-snapping&#34; dir=&#34;rtl&#34;&gt; &lt;div&gt;x 轴靠近、从右往左&lt;/div&gt; &lt;div&gt;2&lt;/div&gt; &lt;div&gt;3&lt;/div&gt; &lt;div&gt;4&lt;/div&gt; &lt;div&gt;5&lt;/div&gt; &lt;/div&gt; &lt;div class=&#34;container y mandatory-scroll-snapping&#34; dir=&#34;rtl&#34;&gt; &lt;div&gt;y 轴强制、从右往左&lt;/div&gt; &lt;div&gt;2&lt;/div&gt; &lt;div&gt;3&lt;/div&gt; &lt;div&gt;4&lt;/div&gt; &lt;div&gt;5&lt;/div&gt; &lt;/div&gt; &lt;div class=&#34;container y proximity-scroll-snapping&#34; dir=&#34;rtl&#34;&gt; &lt;div&gt;y 轴靠近、从右往左&lt;/div&gt; &lt;div&gt;2&lt;/div&gt; &lt;div&gt;3&lt;/div&gt; &lt;div&gt;4&lt;/div&gt; &lt;div&gt;5&lt;/div&gt; &lt;/div&gt; &lt;/div&gt; /* 滚动吸附 */ ." />
+  <meta name="author" content="" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="/articles/main.min.css" />
+
+  
+
+  
+  
+  
+    
+  
+  <link
+    rel="preload"
+    as="image"
+    href="/articles/theme.png"
+  />
+
+  
+  
+  
+  <link rel="preload" as="image" href="/imgs/logo.png" />
+  
+  
+
+  
+
+  
+  <link rel="icon" href="/img/ico.ico" />
+  <link rel="apple-touch-icon" href="/articles/apple-touch-icon.png" />
+  
+  <meta name="generator" content="Hugo 0.108.0">
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="CSS功能特性" />
+<meta property="og:description" content="01 clamp() clamp() 函数的作用是把一个值限制在一个上限和下限之间，当这个值超过最小值和最大值的范围时，在最小值和最大值之间选择一个值使用。它接收三个参数：最小值、首选值、最大值。
+.box { width: clamp(220px, 55%, 300px); } h1 { letter-spacing: 2px; font-size: clamp(1.8rem, 2.5vw, 2.8rem); } 02 smooth 平滑滚动。
+&lt;div class=&#34;top&#34;&gt; &lt;a href=&#34;#bottom&#34;&gt;TOP&lt;/a&gt; &lt;/div&gt; &lt;div class=&#34;bottom&#34; id=&#34;bottom&#34;&gt;BOTTOM&lt;/div&gt; html { scroll-behavior: smooth; } .top, .bottom { height: 100vh; } 03 scroll snap 允许开发者在用户完成滚动后将视窗锁定在特定的元素或位置；设置了在有滚动容器的情形下吸附至吸附点的严格程度。
+语法：
+#不吸附 scroll-snap-type: none; #表示吸附轴的关键字 scroll-snap-type: x; scroll-snap-type: y; scroll-snap-type: block; scroll-snap-type: inline; scroll-snap-type: both; #表示吸附程度的可选关键字 #mandatory 或 proximity scroll-snap-type: x mandatory; scroll-snap-type: y proximity; scroll-snap-type: both mandatory; #全局值 scroll-snap-type: inherit; scroll-snap-type: initial; scroll-snap-type: revert; scroll-snap-type: revert-layer; scroll-snap-type: unset; &lt;div class=&#34;holster&#34;&gt; &lt;div class=&#34;container x mandatory-scroll-snapping&#34; dir=&#34;ltr&#34;&gt; &lt;div&gt;x 轴强制、从左往右&lt;/div&gt; &lt;div&gt;2&lt;/div&gt; &lt;div&gt;3&lt;/div&gt; &lt;div&gt;4&lt;/div&gt; &lt;div&gt;5&lt;/div&gt; &lt;/div&gt; &lt;div class=&#34;container x proximity-scroll-snapping&#34; dir=&#34;ltr&#34;&gt; &lt;div&gt;x 轴靠近、从左往右&lt;/div&gt; &lt;div&gt;2&lt;/div&gt; &lt;div&gt;3&lt;/div&gt; &lt;div&gt;4&lt;/div&gt; &lt;div&gt;5&lt;/div&gt; &lt;/div&gt; &lt;div class=&#34;container y mandatory-scroll-snapping&#34; dir=&#34;ltr&#34;&gt; &lt;div&gt;y 轴强制、从左往右&lt;/div&gt; &lt;div&gt;2&lt;/div&gt; &lt;div&gt;3&lt;/div&gt; &lt;div&gt;4&lt;/div&gt; &lt;div&gt;5&lt;/div&gt; &lt;/div&gt; &lt;div class=&#34;container y proximity-scroll-snapping&#34; dir=&#34;ltr&#34;&gt; &lt;div&gt;y 轴靠近、从左往右&lt;/div&gt; &lt;div&gt;2&lt;/div&gt; &lt;div&gt;3&lt;/div&gt; &lt;div&gt;4&lt;/div&gt; &lt;div&gt;5&lt;/div&gt; &lt;/div&gt; &lt;div class=&#34;container x mandatory-scroll-snapping&#34; dir=&#34;rtl&#34;&gt; &lt;div&gt;x 轴强制、从右往左&lt;/div&gt; &lt;div&gt;2&lt;/div&gt; &lt;div&gt;3&lt;/div&gt; &lt;div&gt;4&lt;/div&gt; &lt;div&gt;5&lt;/div&gt; &lt;/div&gt; &lt;div class=&#34;container x proximity-scroll-snapping&#34; dir=&#34;rtl&#34;&gt; &lt;div&gt;x 轴靠近、从右往左&lt;/div&gt; &lt;div&gt;2&lt;/div&gt; &lt;div&gt;3&lt;/div&gt; &lt;div&gt;4&lt;/div&gt; &lt;div&gt;5&lt;/div&gt; &lt;/div&gt; &lt;div class=&#34;container y mandatory-scroll-snapping&#34; dir=&#34;rtl&#34;&gt; &lt;div&gt;y 轴强制、从右往左&lt;/div&gt; &lt;div&gt;2&lt;/div&gt; &lt;div&gt;3&lt;/div&gt; &lt;div&gt;4&lt;/div&gt; &lt;div&gt;5&lt;/div&gt; &lt;/div&gt; &lt;div class=&#34;container y proximity-scroll-snapping&#34; dir=&#34;rtl&#34;&gt; &lt;div&gt;y 轴靠近、从右往左&lt;/div&gt; &lt;div&gt;2&lt;/div&gt; &lt;div&gt;3&lt;/div&gt; &lt;div&gt;4&lt;/div&gt; &lt;div&gt;5&lt;/div&gt; &lt;/div&gt; &lt;/div&gt; /* 滚动吸附 */ ." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/articles/posts/63/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-10-04T22:07:00+08:00" />
+<meta property="article:modified_time" content="2023-10-04T22:07:00+08:00" />
+
+  
+  <meta itemprop="name" content="CSS功能特性">
+<meta itemprop="description" content="01 clamp() clamp() 函数的作用是把一个值限制在一个上限和下限之间，当这个值超过最小值和最大值的范围时，在最小值和最大值之间选择一个值使用。它接收三个参数：最小值、首选值、最大值。
+.box { width: clamp(220px, 55%, 300px); } h1 { letter-spacing: 2px; font-size: clamp(1.8rem, 2.5vw, 2.8rem); } 02 smooth 平滑滚动。
+&lt;div class=&#34;top&#34;&gt; &lt;a href=&#34;#bottom&#34;&gt;TOP&lt;/a&gt; &lt;/div&gt; &lt;div class=&#34;bottom&#34; id=&#34;bottom&#34;&gt;BOTTOM&lt;/div&gt; html { scroll-behavior: smooth; } .top, .bottom { height: 100vh; } 03 scroll snap 允许开发者在用户完成滚动后将视窗锁定在特定的元素或位置；设置了在有滚动容器的情形下吸附至吸附点的严格程度。
+语法：
+#不吸附 scroll-snap-type: none; #表示吸附轴的关键字 scroll-snap-type: x; scroll-snap-type: y; scroll-snap-type: block; scroll-snap-type: inline; scroll-snap-type: both; #表示吸附程度的可选关键字 #mandatory 或 proximity scroll-snap-type: x mandatory; scroll-snap-type: y proximity; scroll-snap-type: both mandatory; #全局值 scroll-snap-type: inherit; scroll-snap-type: initial; scroll-snap-type: revert; scroll-snap-type: revert-layer; scroll-snap-type: unset; &lt;div class=&#34;holster&#34;&gt; &lt;div class=&#34;container x mandatory-scroll-snapping&#34; dir=&#34;ltr&#34;&gt; &lt;div&gt;x 轴强制、从左往右&lt;/div&gt; &lt;div&gt;2&lt;/div&gt; &lt;div&gt;3&lt;/div&gt; &lt;div&gt;4&lt;/div&gt; &lt;div&gt;5&lt;/div&gt; &lt;/div&gt; &lt;div class=&#34;container x proximity-scroll-snapping&#34; dir=&#34;ltr&#34;&gt; &lt;div&gt;x 轴靠近、从左往右&lt;/div&gt; &lt;div&gt;2&lt;/div&gt; &lt;div&gt;3&lt;/div&gt; &lt;div&gt;4&lt;/div&gt; &lt;div&gt;5&lt;/div&gt; &lt;/div&gt; &lt;div class=&#34;container y mandatory-scroll-snapping&#34; dir=&#34;ltr&#34;&gt; &lt;div&gt;y 轴强制、从左往右&lt;/div&gt; &lt;div&gt;2&lt;/div&gt; &lt;div&gt;3&lt;/div&gt; &lt;div&gt;4&lt;/div&gt; &lt;div&gt;5&lt;/div&gt; &lt;/div&gt; &lt;div class=&#34;container y proximity-scroll-snapping&#34; dir=&#34;ltr&#34;&gt; &lt;div&gt;y 轴靠近、从左往右&lt;/div&gt; &lt;div&gt;2&lt;/div&gt; &lt;div&gt;3&lt;/div&gt; &lt;div&gt;4&lt;/div&gt; &lt;div&gt;5&lt;/div&gt; &lt;/div&gt; &lt;div class=&#34;container x mandatory-scroll-snapping&#34; dir=&#34;rtl&#34;&gt; &lt;div&gt;x 轴强制、从右往左&lt;/div&gt; &lt;div&gt;2&lt;/div&gt; &lt;div&gt;3&lt;/div&gt; &lt;div&gt;4&lt;/div&gt; &lt;div&gt;5&lt;/div&gt; &lt;/div&gt; &lt;div class=&#34;container x proximity-scroll-snapping&#34; dir=&#34;rtl&#34;&gt; &lt;div&gt;x 轴靠近、从右往左&lt;/div&gt; &lt;div&gt;2&lt;/div&gt; &lt;div&gt;3&lt;/div&gt; &lt;div&gt;4&lt;/div&gt; &lt;div&gt;5&lt;/div&gt; &lt;/div&gt; &lt;div class=&#34;container y mandatory-scroll-snapping&#34; dir=&#34;rtl&#34;&gt; &lt;div&gt;y 轴强制、从右往左&lt;/div&gt; &lt;div&gt;2&lt;/div&gt; &lt;div&gt;3&lt;/div&gt; &lt;div&gt;4&lt;/div&gt; &lt;div&gt;5&lt;/div&gt; &lt;/div&gt; &lt;div class=&#34;container y proximity-scroll-snapping&#34; dir=&#34;rtl&#34;&gt; &lt;div&gt;y 轴靠近、从右往左&lt;/div&gt; &lt;div&gt;2&lt;/div&gt; &lt;div&gt;3&lt;/div&gt; &lt;div&gt;4&lt;/div&gt; &lt;div&gt;5&lt;/div&gt; &lt;/div&gt; &lt;/div&gt; /* 滚动吸附 */ ."><meta itemprop="datePublished" content="2023-10-04T22:07:00+08:00" />
+<meta itemprop="dateModified" content="2023-10-04T22:07:00+08:00" />
+<meta itemprop="wordCount" content="1692">
+<meta itemprop="keywords" content="" />
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="CSS功能特性"/>
+<meta name="twitter:description" content="01 clamp() clamp() 函数的作用是把一个值限制在一个上限和下限之间，当这个值超过最小值和最大值的范围时，在最小值和最大值之间选择一个值使用。它接收三个参数：最小值、首选值、最大值。
+.box { width: clamp(220px, 55%, 300px); } h1 { letter-spacing: 2px; font-size: clamp(1.8rem, 2.5vw, 2.8rem); } 02 smooth 平滑滚动。
+&lt;div class=&#34;top&#34;&gt; &lt;a href=&#34;#bottom&#34;&gt;TOP&lt;/a&gt; &lt;/div&gt; &lt;div class=&#34;bottom&#34; id=&#34;bottom&#34;&gt;BOTTOM&lt;/div&gt; html { scroll-behavior: smooth; } .top, .bottom { height: 100vh; } 03 scroll snap 允许开发者在用户完成滚动后将视窗锁定在特定的元素或位置；设置了在有滚动容器的情形下吸附至吸附点的严格程度。
+语法：
+#不吸附 scroll-snap-type: none; #表示吸附轴的关键字 scroll-snap-type: x; scroll-snap-type: y; scroll-snap-type: block; scroll-snap-type: inline; scroll-snap-type: both; #表示吸附程度的可选关键字 #mandatory 或 proximity scroll-snap-type: x mandatory; scroll-snap-type: y proximity; scroll-snap-type: both mandatory; #全局值 scroll-snap-type: inherit; scroll-snap-type: initial; scroll-snap-type: revert; scroll-snap-type: revert-layer; scroll-snap-type: unset; &lt;div class=&#34;holster&#34;&gt; &lt;div class=&#34;container x mandatory-scroll-snapping&#34; dir=&#34;ltr&#34;&gt; &lt;div&gt;x 轴强制、从左往右&lt;/div&gt; &lt;div&gt;2&lt;/div&gt; &lt;div&gt;3&lt;/div&gt; &lt;div&gt;4&lt;/div&gt; &lt;div&gt;5&lt;/div&gt; &lt;/div&gt; &lt;div class=&#34;container x proximity-scroll-snapping&#34; dir=&#34;ltr&#34;&gt; &lt;div&gt;x 轴靠近、从左往右&lt;/div&gt; &lt;div&gt;2&lt;/div&gt; &lt;div&gt;3&lt;/div&gt; &lt;div&gt;4&lt;/div&gt; &lt;div&gt;5&lt;/div&gt; &lt;/div&gt; &lt;div class=&#34;container y mandatory-scroll-snapping&#34; dir=&#34;ltr&#34;&gt; &lt;div&gt;y 轴强制、从左往右&lt;/div&gt; &lt;div&gt;2&lt;/div&gt; &lt;div&gt;3&lt;/div&gt; &lt;div&gt;4&lt;/div&gt; &lt;div&gt;5&lt;/div&gt; &lt;/div&gt; &lt;div class=&#34;container y proximity-scroll-snapping&#34; dir=&#34;ltr&#34;&gt; &lt;div&gt;y 轴靠近、从左往右&lt;/div&gt; &lt;div&gt;2&lt;/div&gt; &lt;div&gt;3&lt;/div&gt; &lt;div&gt;4&lt;/div&gt; &lt;div&gt;5&lt;/div&gt; &lt;/div&gt; &lt;div class=&#34;container x mandatory-scroll-snapping&#34; dir=&#34;rtl&#34;&gt; &lt;div&gt;x 轴强制、从右往左&lt;/div&gt; &lt;div&gt;2&lt;/div&gt; &lt;div&gt;3&lt;/div&gt; &lt;div&gt;4&lt;/div&gt; &lt;div&gt;5&lt;/div&gt; &lt;/div&gt; &lt;div class=&#34;container x proximity-scroll-snapping&#34; dir=&#34;rtl&#34;&gt; &lt;div&gt;x 轴靠近、从右往左&lt;/div&gt; &lt;div&gt;2&lt;/div&gt; &lt;div&gt;3&lt;/div&gt; &lt;div&gt;4&lt;/div&gt; &lt;div&gt;5&lt;/div&gt; &lt;/div&gt; &lt;div class=&#34;container y mandatory-scroll-snapping&#34; dir=&#34;rtl&#34;&gt; &lt;div&gt;y 轴强制、从右往左&lt;/div&gt; &lt;div&gt;2&lt;/div&gt; &lt;div&gt;3&lt;/div&gt; &lt;div&gt;4&lt;/div&gt; &lt;div&gt;5&lt;/div&gt; &lt;/div&gt; &lt;div class=&#34;container y proximity-scroll-snapping&#34; dir=&#34;rtl&#34;&gt; &lt;div&gt;y 轴靠近、从右往左&lt;/div&gt; &lt;div&gt;2&lt;/div&gt; &lt;div&gt;3&lt;/div&gt; &lt;div&gt;4&lt;/div&gt; &lt;div&gt;5&lt;/div&gt; &lt;/div&gt; &lt;/div&gt; /* 滚动吸附 */ ."/>
+
+  
+  
+</head>
+  <body class="text-black duration-200 ease-out dark:text-white">
+    
+    
+
+    
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100%-10rem)] max-w-3xl px-8 pt-20 dark:prose-invert"
+      id="main"
+    >
+      
+
+<article>
+  <header class="mb-10">
+    <h1 class="!my-0 pb-2.5">
+      CSS功能特性
+    </h1>
+
+    
+    <div class="text-sm opacity-60">
+      
+      <time>Oct 4, 2023</time>
+      
+      
+      <span class="mx-1">&middot;</span>
+      <span>Yin灏</span>
+    </div>
+    
+  </header>
+
+  <section><h3 id="01-clamp">01 clamp()</h3>
+<blockquote>
+<p>clamp() 函数的作用是把一个值限制在一个上限和下限之间，当这个值超过最小值和最大值的范围时，在最小值和最大值之间选择一个值使用。它接收三个参数：最小值、首选值、最大值。</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">box</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">width</span>: <span style="color:#a6e22e">clamp</span>(<span style="color:#ae81ff">220</span><span style="color:#66d9ef">px</span>, <span style="color:#ae81ff">55</span><span style="color:#66d9ef">%</span>, <span style="color:#ae81ff">300</span><span style="color:#66d9ef">px</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#f92672">h1</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">letter-spacing</span>: <span style="color:#ae81ff">2</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">font-size</span>: <span style="color:#a6e22e">clamp</span>(<span style="color:#ae81ff">1.8</span><span style="color:#66d9ef">rem</span>, <span style="color:#ae81ff">2.5</span><span style="color:#66d9ef">vw</span>, <span style="color:#ae81ff">2.8</span><span style="color:#66d9ef">rem</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="02-smooth">02 smooth</h3>
+<blockquote>
+<p>平滑滚动。</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;top&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;#bottom&#34;</span>&gt;TOP&lt;/<span style="color:#f92672">a</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;bottom&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;bottom&#34;</span>&gt;BOTTOM&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">html</span> {
+</span></span><span style="display:flex;"><span>  scroll-behavior: <span style="color:#66d9ef">smooth</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">top</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">bottom</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">height</span>: <span style="color:#ae81ff">100</span><span style="color:#66d9ef">vh</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="03-scroll-snap">03 scroll snap</h3>
+<blockquote>
+<p>允许开发者在用户完成滚动后将视窗锁定在特定的元素或位置；设置了在有滚动容器的情形下吸附至吸附点的严格程度。</p>
+</blockquote>
+<p><strong>语法：</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#75715e">#不吸附</span>
+</span></span><span style="display:flex;"><span>scroll-snap-type: none;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#表示吸附轴的关键字</span>
+</span></span><span style="display:flex;"><span>scroll-snap-type: x;
+</span></span><span style="display:flex;"><span>scroll-snap-type: y;
+</span></span><span style="display:flex;"><span>scroll-snap-type: block;
+</span></span><span style="display:flex;"><span>scroll-snap-type: inline;
+</span></span><span style="display:flex;"><span>scroll-snap-type: both;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#表示吸附程度的可选关键字</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#mandatory 或 proximity</span>
+</span></span><span style="display:flex;"><span>scroll-snap-type: x mandatory;
+</span></span><span style="display:flex;"><span>scroll-snap-type: y proximity;
+</span></span><span style="display:flex;"><span>scroll-snap-type: both mandatory;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#全局值</span>
+</span></span><span style="display:flex;"><span>scroll-snap-type: inherit;
+</span></span><span style="display:flex;"><span>scroll-snap-type: initial;
+</span></span><span style="display:flex;"><span>scroll-snap-type: revert;
+</span></span><span style="display:flex;"><span>scroll-snap-type: revert-layer;
+</span></span><span style="display:flex;"><span>scroll-snap-type: unset;
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;holster&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;container x mandatory-scroll-snapping&#34;</span> <span style="color:#a6e22e">dir</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;ltr&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">div</span>&gt;x 轴强制、从左往右&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">div</span>&gt;2&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">div</span>&gt;3&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">div</span>&gt;4&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">div</span>&gt;5&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;container x proximity-scroll-snapping&#34;</span> <span style="color:#a6e22e">dir</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;ltr&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">div</span>&gt;x 轴靠近、从左往右&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">div</span>&gt;2&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">div</span>&gt;3&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">div</span>&gt;4&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">div</span>&gt;5&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;container y mandatory-scroll-snapping&#34;</span> <span style="color:#a6e22e">dir</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;ltr&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">div</span>&gt;y 轴强制、从左往右&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">div</span>&gt;2&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">div</span>&gt;3&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">div</span>&gt;4&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">div</span>&gt;5&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;container y proximity-scroll-snapping&#34;</span> <span style="color:#a6e22e">dir</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;ltr&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">div</span>&gt;y 轴靠近、从左往右&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">div</span>&gt;2&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">div</span>&gt;3&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">div</span>&gt;4&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">div</span>&gt;5&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;container x mandatory-scroll-snapping&#34;</span> <span style="color:#a6e22e">dir</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;rtl&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">div</span>&gt;x 轴强制、从右往左&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">div</span>&gt;2&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">div</span>&gt;3&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">div</span>&gt;4&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">div</span>&gt;5&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;container x proximity-scroll-snapping&#34;</span> <span style="color:#a6e22e">dir</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;rtl&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">div</span>&gt;x 轴靠近、从右往左&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">div</span>&gt;2&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">div</span>&gt;3&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">div</span>&gt;4&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">div</span>&gt;5&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;container y mandatory-scroll-snapping&#34;</span> <span style="color:#a6e22e">dir</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;rtl&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">div</span>&gt;y 轴强制、从右往左&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">div</span>&gt;2&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">div</span>&gt;3&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">div</span>&gt;4&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">div</span>&gt;5&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;container y proximity-scroll-snapping&#34;</span> <span style="color:#a6e22e">dir</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;rtl&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">div</span>&gt;y 轴靠近、从右往左&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">div</span>&gt;2&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">div</span>&gt;3&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">div</span>&gt;4&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">div</span>&gt;5&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#75715e">/* 滚动吸附 */</span>
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">x</span>.<span style="color:#a6e22e">mandatory-scroll-snapping</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">scroll-snap-type</span>: x <span style="color:#66d9ef">mandatory</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">y</span>.<span style="color:#a6e22e">mandatory-scroll-snapping</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">scroll-snap-type</span>: y <span style="color:#66d9ef">mandatory</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">x</span>.<span style="color:#a6e22e">proximity-scroll-snapping</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">scroll-snap-type</span>: x <span style="color:#66d9ef">proximity</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">y</span>.<span style="color:#a6e22e">proximity-scroll-snapping</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">scroll-snap-type</span>: y <span style="color:#66d9ef">proximity</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">container</span> <span style="color:#f92672">&gt;</span> <span style="color:#f92672">div</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">text-align</span>: <span style="color:#66d9ef">center</span>;
+</span></span><span style="display:flex;"><span>  scroll-snap-align: <span style="color:#66d9ef">center</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">flex</span>: <span style="color:#66d9ef">none</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="04-inset">04 inset</h3>
+<blockquote>
+<p>属性 inset 为简写属性，对应于 top、right、bottom 和 left 属性。其与 margin 简写属性具有相同的多值语法。</p>
+</blockquote>
+<p><strong>语法：</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#75715e">#长度值</span>
+</span></span><span style="display:flex;"><span>inset: 10px; <span style="color:#75715e">#应用于所有边</span>
+</span></span><span style="display:flex;"><span>inset: 4px 8px; <span style="color:#75715e">#上下 | 左右</span>
+</span></span><span style="display:flex;"><span>inset: 5px 15px 10px; <span style="color:#75715e">#上 | 左右 | 下</span>
+</span></span><span style="display:flex;"><span>inset: 2.4em 3em 3em 3em; <span style="color:#75715e">#上 | 右 | 下 | 左</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#包含块的宽度（左或右）或高度（上或下）的百分比</span>
+</span></span><span style="display:flex;"><span>inset: 10% 5% 5% 5%;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#关键词值</span>
+</span></span><span style="display:flex;"><span>inset: auto;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#全局值</span>
+</span></span><span style="display:flex;"><span>inset: inherit;
+</span></span><span style="display:flex;"><span>inset: initial;
+</span></span><span style="display:flex;"><span>inset: revert;
+</span></span><span style="display:flex;"><span>inset: revert-layer;
+</span></span><span style="display:flex;"><span>inset: unset;
+</span></span></code></pre></div><h3 id="05-inlineblock">05 inline、block</h3>
+<p><strong>padding-inline</strong></p>
+<ul>
+<li>兼容性良好</li>
+</ul>
+<blockquote>
+<p>定义了元素的逻辑行首和行末内边距，并根据元素的书写模式、行内方向和文本朝向对应至实体内边距。</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">box</span> {
+</span></span><span style="display:flex;"><span>  padding-inline: <span style="color:#ae81ff">5</span><span style="color:#66d9ef">%</span> <span style="color:#ae81ff">10</span><span style="color:#66d9ef">%</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">writing-mode</span>: <span style="color:#66d9ef">horizontal</span><span style="color:#f92672">-</span>tb;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><img src="/img/63/06.png" />
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">box</span> {
+</span></span><span style="display:flex;"><span>  padding-inline: <span style="color:#ae81ff">15</span><span style="color:#66d9ef">px</span> <span style="color:#ae81ff">40</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">writing-mode</span>: <span style="color:#66d9ef">vertical</span><span style="color:#f92672">-</span>rl;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><img src="/img/63/07.png" />
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">box</span> {
+</span></span><span style="display:flex;"><span>  padding-inline: <span style="color:#ae81ff">5</span><span style="color:#66d9ef">%</span> <span style="color:#ae81ff">20</span><span style="color:#66d9ef">%</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">writing-mode</span>: <span style="color:#66d9ef">horizontal</span><span style="color:#f92672">-</span>tb;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">direction</span>: <span style="color:#66d9ef">rtl</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><img src="/img/63/08.png" />
+<ul>
+<li>
+<p>属性构成</p>
+<ul>
+<li>padding-inline-end</li>
+<li>padding-inline-start</li>
+</ul>
+</li>
+<li>
+<p>语法</p>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#75715e">#&lt;length&gt; 值</span>
+</span></span><span style="display:flex;"><span>padding-inline: 10px 20px; <span style="color:#75715e">#绝对长度</span>
+</span></span><span style="display:flex;"><span>padding-inline: 1em 2em; <span style="color:#75715e">#相对于文本尺寸</span>
+</span></span><span style="display:flex;"><span>padding-inline: 10px; <span style="color:#75715e">#同时设置行首和行末值</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#&lt;percentage&gt; 值</span>
+</span></span><span style="display:flex;"><span>padding-inline: 5% 2%; <span style="color:#75715e">#相对于最近包含区块的宽度</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#全局值</span>
+</span></span><span style="display:flex;"><span>padding-inline: inherit;
+</span></span><span style="display:flex;"><span>padding-inline: initial;
+</span></span><span style="display:flex;"><span>padding-inline: revert;
+</span></span><span style="display:flex;"><span>padding-inline: revert-layer;
+</span></span><span style="display:flex;"><span>padding-inline: unset;
+</span></span></code></pre></div><p><code>padding-inline</code> 属性可用一个或两个值指定。若给一值，则此值同时用于 <code>padding-inline-start</code> 和 <code>padding-inline-end</code>。若给两值，则第一个用于 <code>padding-inline-start</code> 而第二个用于 <code>padding-inline-end</code>。</p>
+<ul>
+<li>为竖排文本设置行向内边距</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">p</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;exampleText&#34;</span>&gt;示例文本&lt;/<span style="color:#f92672">p</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">div</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">background-color</span>: <span style="color:#66d9ef">yellow</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">width</span>: <span style="color:#ae81ff">120</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">height</span>: <span style="color:#ae81ff">120</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">exampleText</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">writing-mode</span>: <span style="color:#66d9ef">vertical</span><span style="color:#f92672">-</span>rl;
+</span></span><span style="display:flex;"><span>  padding-inline: <span style="color:#ae81ff">20</span><span style="color:#66d9ef">px</span> <span style="color:#ae81ff">40</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">background-color</span>: <span style="color:#ae81ff">#c8c800</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><img src="/img/63/09.png" />
+<p><strong>padding-block</strong></p>
+<ul>
+<li>兼容性良好</li>
+</ul>
+<blockquote>
+<p>定义了元素的逻辑块首和块末内边距，并根据元素的书写模式、行内方向和文本朝向对应至实体内边距。</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">box</span> {
+</span></span><span style="display:flex;"><span>  padding-block: <span style="color:#ae81ff">10</span><span style="color:#66d9ef">px</span> <span style="color:#ae81ff">20</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">writing-mode</span>: <span style="color:#66d9ef">horizontal</span><span style="color:#f92672">-</span>tb;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><img src="/img/63/10.png" />
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">box</span> {
+</span></span><span style="display:flex;"><span>  padding-block: <span style="color:#ae81ff">20</span><span style="color:#66d9ef">px</span> <span style="color:#ae81ff">40</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">writing-mode</span>: <span style="color:#66d9ef">vertical</span><span style="color:#f92672">-</span>rl;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><img src="/img/63/11.png" />
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">box</span> {
+</span></span><span style="display:flex;"><span>  padding-block: <span style="color:#ae81ff">5</span><span style="color:#66d9ef">%</span> <span style="color:#ae81ff">10</span><span style="color:#66d9ef">%</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">writing-mode</span>: <span style="color:#66d9ef">horizontal</span><span style="color:#f92672">-</span>tb;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><img src="/img/63/12.png" />
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">box</span> {
+</span></span><span style="display:flex;"><span>  padding-block: <span style="color:#ae81ff">2</span><span style="color:#66d9ef">em</span> <span style="color:#ae81ff">4</span><span style="color:#66d9ef">em</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">writing-mode</span>: <span style="color:#66d9ef">vertical</span><span style="color:#f92672">-</span>lr;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><img src="/img/63/13.png" />
+<ul>
+<li>
+<p>属性构成</p>
+<ul>
+<li>padding-block-end</li>
+<li>padding-block-start</li>
+</ul>
+</li>
+<li>
+<p>语法</p>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#75715e"># &lt;length&gt; 值</span>
+</span></span><span style="display:flex;"><span>padding-block: 10px 20px; <span style="color:#75715e"># 绝对长度</span>
+</span></span><span style="display:flex;"><span>padding-block: 1em 2em; <span style="color:#75715e"># 相对于文本尺寸</span>
+</span></span><span style="display:flex;"><span>padding-block: 10px; <span style="color:#75715e"># 同时设置块首和块末值</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># &lt;percentage&gt; 值</span>
+</span></span><span style="display:flex;"><span>padding-block: 5% 2%; <span style="color:#75715e"># 相对于最近包含区块的宽度</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 全局值</span>
+</span></span><span style="display:flex;"><span>padding-block: inherit;
+</span></span><span style="display:flex;"><span>padding-block: initial;
+</span></span><span style="display:flex;"><span>padding-block: revert;
+</span></span><span style="display:flex;"><span>padding-block: revert-layer;
+</span></span><span style="display:flex;"><span>padding-block: unset;
+</span></span></code></pre></div><p><code>padding-block</code> 属性可用一个或两个值指定。若给一值，则此值同时用于 <code>padding-block-start</code> 和<code> padding-block-end</code>。若给两值，则第一个用于 <code>padding-block-start</code> 而第二个用于 <code>padding-block-end</code>。</p>
+<ul>
+<li>为竖排文本设置块向内边距</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">p</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;exampleText&#34;</span>&gt;示例文本&lt;/<span style="color:#f92672">p</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">div</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">background-color</span>: <span style="color:#66d9ef">yellow</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">width</span>: <span style="color:#ae81ff">120</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">height</span>: <span style="color:#ae81ff">120</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">exampleText</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">writing-mode</span>: <span style="color:#66d9ef">vertical</span><span style="color:#f92672">-</span>rl;
+</span></span><span style="display:flex;"><span>  padding-block: <span style="color:#ae81ff">20</span><span style="color:#66d9ef">px</span> <span style="color:#ae81ff">40</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">background-color</span>: <span style="color:#ae81ff">#c8c800</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><img src="/img/63/14.png" />
+<p><strong>margin-inline</strong></p>
+<ul>
+<li>兼容性良好</li>
+</ul>
+<blockquote>
+<p>定义了元素的逻辑行首和行末外边距，并根据元素的书写模式、行内方向和文本朝向对应至实体外边距。</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">box</span> {
+</span></span><span style="display:flex;"><span>  margin-inline: <span style="color:#ae81ff">5</span><span style="color:#66d9ef">%</span> <span style="color:#ae81ff">10</span><span style="color:#66d9ef">%</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">writing-mode</span>: <span style="color:#66d9ef">horizontal</span><span style="color:#f92672">-</span>tb;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><img src="/img/63/15.png" />
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">box</span> {
+</span></span><span style="display:flex;"><span>  margin-inline: <span style="color:#ae81ff">10</span><span style="color:#66d9ef">px</span> <span style="color:#ae81ff">40</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">writing-mode</span>: <span style="color:#66d9ef">vertical</span><span style="color:#f92672">-</span>rl;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><img src="/img/63/16.png" />
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">box</span> {
+</span></span><span style="display:flex;"><span>  margin-inline: <span style="color:#ae81ff">5</span><span style="color:#66d9ef">%</span> <span style="color:#ae81ff">10</span><span style="color:#66d9ef">%</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">writing-mode</span>: <span style="color:#66d9ef">horizontal</span><span style="color:#f92672">-</span>tb;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">direction</span>: <span style="color:#66d9ef">rtl</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><img src="/img/63/17.png" />
+<ul>
+<li>
+<p>属性构成</p>
+<ul>
+<li>margin-inline-start</li>
+<li>margin-inline-end</li>
+</ul>
+</li>
+<li>
+<p>语法</p>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#75715e">#&lt;length&gt; 值</span>
+</span></span><span style="display:flex;"><span>margin-inline: 10px 20px; <span style="color:#75715e">#绝对长度</span>
+</span></span><span style="display:flex;"><span>margin-inline: 1em 2em; <span style="color:#75715e">#相对于文本尺寸</span>
+</span></span><span style="display:flex;"><span>margin-inline: 5% 2%; <span style="color:#75715e">#相对于最近区块容器的宽度</span>
+</span></span><span style="display:flex;"><span>margin-inline: 10px; <span style="color:#75715e">#同时设置行首和行末值</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#关键词值</span>
+</span></span><span style="display:flex;"><span>margin-inline: auto;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#全局值</span>
+</span></span><span style="display:flex;"><span>margin-inline: inherit;
+</span></span><span style="display:flex;"><span>margin-inline: initial;
+</span></span><span style="display:flex;"><span>margin-inline: revert;
+</span></span><span style="display:flex;"><span>margin-inline: revert-layer;
+</span></span><span style="display:flex;"><span>margin-inline: unset;
+</span></span></code></pre></div><p>根据 <code>writing-mode</code>、<code>direction</code> 和 <code>text-orientation</code> 所定义的值，此属性对应于 <code>margin-top </code>和 <code>margin-bottom</code>，或者 <code>margin-right</code> 和 <code>margin-left</code> 属性。</p>
+<p><code>margin-inline</code> 属性可用一个或两个值指定。</p>
+<ul>
+<li>
+<p>用一个值指定时，行首和行末应用同样的外边距。</p>
+</li>
+<li>
+<p>用两个值指定时，第一个外边距应用于行首，第二个应用于行末。</p>
+</li>
+<li>
+<p>设置行首和行末外边距</p>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">div</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">background-color</span>: <span style="color:#66d9ef">yellow</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">width</span>: <span style="color:#ae81ff">120</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">height</span>: <span style="color:#66d9ef">auto</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">border</span>: <span style="color:#ae81ff">1</span><span style="color:#66d9ef">px</span> <span style="color:#66d9ef">solid</span> <span style="color:#66d9ef">green</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">p</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">margin</span>: <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>  margin-inline: <span style="color:#ae81ff">20</span><span style="color:#66d9ef">px</span> <span style="color:#ae81ff">40</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">background-color</span>: <span style="color:#66d9ef">tan</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">verticalExample</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">writing-mode</span>: <span style="color:#66d9ef">vertical</span><span style="color:#f92672">-</span>rl;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">p</span>&gt;示例文本&lt;/<span style="color:#f92672">p</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;verticalExample&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">p</span>&gt;示例文本&lt;/<span style="color:#f92672">p</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span></code></pre></div><img src="/img/63/18.png" />
+<p><strong>margin-block</strong></p>
+<ul>
+<li>兼容性良好</li>
+</ul>
+<blockquote>
+<p>定义了元素的逻辑块首和块末外边距，并根据元素的书写模式、行内方向和文本朝向对应至实体外边距。</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">box</span> {
+</span></span><span style="display:flex;"><span>  margin-block: <span style="color:#ae81ff">10</span><span style="color:#66d9ef">px</span> <span style="color:#ae81ff">20</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">writing-mode</span>: <span style="color:#66d9ef">horizontal</span><span style="color:#f92672">-</span>tb;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><img src="/img/63/19.png" />
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">box</span> {
+</span></span><span style="display:flex;"><span>  margin-block: <span style="color:#ae81ff">20</span><span style="color:#66d9ef">px</span> <span style="color:#ae81ff">40</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">writing-mode</span>: <span style="color:#66d9ef">vertical</span><span style="color:#f92672">-</span>rl;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><img src="/img/63/20.png" />
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">box</span> {
+</span></span><span style="display:flex;"><span>  margin-block: <span style="color:#ae81ff">5</span><span style="color:#66d9ef">%</span> <span style="color:#ae81ff">20</span><span style="color:#66d9ef">%</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">writing-mode</span>: <span style="color:#66d9ef">horizontal</span><span style="color:#f92672">-</span>tb;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><img src="/img/63/21.png" />
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">box</span> {
+</span></span><span style="display:flex;"><span>  margin-block: <span style="color:#ae81ff">1</span><span style="color:#66d9ef">rem</span> <span style="color:#66d9ef">auto</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">writing-mode</span>: <span style="color:#66d9ef">vertical</span><span style="color:#f92672">-</span>lr;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><img src="/img/63/22.png" />
+<ul>
+<li>
+<p>属性构成</p>
+<ul>
+<li>margin-block-start</li>
+<li>margin-block-end</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#75715e">#&lt;length&gt; 值</span>
+</span></span><span style="display:flex;"><span>margin-block: 10px 20px; <span style="color:#75715e">#绝对长度</span>
+</span></span><span style="display:flex;"><span>margin-block: 1em 2em; <span style="color:#75715e">#相对于文本尺寸</span>
+</span></span><span style="display:flex;"><span>margin-block: 5% 2%; <span style="color:#75715e">#相对于最近区块容器的宽度</span>
+</span></span><span style="display:flex;"><span>margin-block: 10px; <span style="color:#75715e">#同时设置块首和块末值</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#关键词值</span>
+</span></span><span style="display:flex;"><span>margin-block: auto;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#全局值</span>
+</span></span><span style="display:flex;"><span>margin-block: inherit;
+</span></span><span style="display:flex;"><span>margin-block: initial;
+</span></span><span style="display:flex;"><span>margin-block: revert;
+</span></span><span style="display:flex;"><span>margin-block: revert-layer;
+</span></span><span style="display:flex;"><span>margin-block: unset;
+</span></span></code></pre></div><p>根据 writing-mode、direction 和 text-orientation 所定义的值，此属性对应于 margin-top 和 margin-bottom，或者 margin-right 和 margin-left 属性。</p>
+<p><code>margin-block</code> 属性可用一个或两个值指定。</p>
+<ol>
+<li>用<strong>一个</strong>值指定时，<strong>块首和块末</strong>应用同样的外边距。</li>
+<li>用<strong>两个</strong>值指定时，第一个外边距应用于<strong>块首</strong>，第二个应用于<strong>块末</strong>。</li>
+</ol>
+<ul>
+<li>设置块首和块末外边距</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">p</span>&gt;示例文本&lt;/<span style="color:#f92672">p</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;verticalExample&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">p</span>&gt;示例文本&lt;/<span style="color:#f92672">p</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">div</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">background-color</span>: <span style="color:#66d9ef">yellow</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">width</span>: <span style="color:#ae81ff">120</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">height</span>: <span style="color:#66d9ef">auto</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">border</span>: <span style="color:#ae81ff">1</span><span style="color:#66d9ef">px</span> <span style="color:#66d9ef">solid</span> <span style="color:#66d9ef">green</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">p</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">margin</span>: <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>  margin-block: <span style="color:#ae81ff">20</span><span style="color:#66d9ef">px</span> <span style="color:#ae81ff">40</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">background-color</span>: <span style="color:#66d9ef">tan</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">verticalExample</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">writing-mode</span>: <span style="color:#66d9ef">vertical</span><span style="color:#f92672">-</span>rl;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><img src="/img/63/23.png" />
+<p><strong>border-inline</strong></p>
+<ul>
+<li>兼容性良好</li>
+</ul>
+<blockquote>
+<p>用于在样式表中的某处同时设置逻辑行向边框的各属性值。</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">box</span> {
+</span></span><span style="display:flex;"><span>  border-inline: <span style="color:#66d9ef">solid</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">writing-mode</span>: <span style="color:#66d9ef">horizontal</span><span style="color:#f92672">-</span>tb;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><img src="/img/63/24.png" />
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">box</span> {
+</span></span><span style="display:flex;"><span>  border-inline: <span style="color:#66d9ef">dashed</span> <span style="color:#66d9ef">red</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">writing-mode</span>: <span style="color:#66d9ef">vertical</span><span style="color:#f92672">-</span>rl;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><img src="/img/63/25.png" />
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">box</span> {
+</span></span><span style="display:flex;"><span>  border-inline: <span style="color:#ae81ff">1</span><span style="color:#66d9ef">rem</span> <span style="color:#66d9ef">solid</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">writing-mode</span>: <span style="color:#66d9ef">horizontal</span><span style="color:#f92672">-</span>tb;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">direction</span>: <span style="color:#66d9ef">rtl</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><img src="/img/63/26.png" />
+<p><code>border-inline</code> 所对应的实体边框取决于元素的书写模式、行内方向和文本朝向。根据 <code>writing-mode</code>、<code>direction</code> 和 <code>text-orientation</code> 所定义的值，此属性对应于 <code>border-top</code> 和 <code>border-bottom</code>，或者 <code>border-right</code> 和 <code>border-left</code> 属性。</p>
+<p>另一方向的边框可用 <code>border-block</code> 设置，此属性会设置 <code>border-block-start</code> 和 <code>border-block-end</code>。</p>
+<ul>
+<li>语法</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>border-inline: 1px;
+</span></span><span style="display:flex;"><span>border-inline: 2px dotted;
+</span></span><span style="display:flex;"><span>border-inline: medium dashed blue;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 全局值</span>
+</span></span><span style="display:flex;"><span>border-inline: inherit;
+</span></span><span style="display:flex;"><span>border-inline: initial;
+</span></span><span style="display:flex;"><span>border-inline: revert;
+</span></span><span style="display:flex;"><span>border-inline: revert-layer;
+</span></span><span style="display:flex;"><span>border-inline: unset;
+</span></span></code></pre></div><ul>
+<li>竖排文本的边框</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">p</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;exampleText&#34;</span>&gt;示例文本&lt;/<span style="color:#f92672">p</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">div</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">background-color</span>: <span style="color:#66d9ef">yellow</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">width</span>: <span style="color:#ae81ff">120</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">height</span>: <span style="color:#ae81ff">120</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">exampleText</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">writing-mode</span>: <span style="color:#66d9ef">vertical</span><span style="color:#f92672">-</span>rl;
+</span></span><span style="display:flex;"><span>  border-inline: <span style="color:#ae81ff">5</span><span style="color:#66d9ef">px</span> <span style="color:#66d9ef">dashed</span> <span style="color:#66d9ef">blue</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><img src="/img/63/27.png" />
+<h3 id="06-minmax">06 min()、max()</h3>
+<ol>
+<li>min()</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>width: min<span style="color:#f92672">(</span>1vw, 4em, 80px<span style="color:#f92672">)</span>;
+</span></span></code></pre></div><p>在上面的例子中，宽度最多是 80px。如果视口的宽度小于 800px，或者一个 em 的宽度小于 20px，则会更窄。换句话说，最大宽度是 80px，</p>
+<p><strong>示例</strong></p>
+<p><code>min()</code> 让我们在设置图像的最大宽度时更简单。在下面这个例子中，在小型设备上宽度拉伸为 window 的一半，但在大型设备上，不超过 300px，不使用媒体查询：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">logo</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">width</span>: <span style="color:#a6e22e">min</span>(<span style="color:#ae81ff">50</span><span style="color:#66d9ef">vw</span>, <span style="color:#ae81ff">300</span><span style="color:#66d9ef">px</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">img</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://developer.mozilla.org/static/img/web-docs-sprite.svg&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">alt</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;MDN Web Docs&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;logo&#34;</span>
+</span></span><span style="display:flex;"><span>/&gt;
+</span></span></code></pre></div><p>在这个例子中，除非视口比 600px 更窄，否则 logo 的宽会被设置为 300px，到时候，它会随着视口的缩小而缩小，而且总是视口宽度的 50%。</p>
+<p><strong>给 label 和 input 设置最大值</strong></p>
+<p>CSS 方法的另一个用途时设置响应式组件（form）的最大尺寸：让 label 和 input 的宽度随着组件的缩小而缩小。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">form</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">label</span>&gt;Type something:&lt;/<span style="color:#f92672">label</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text&#34;</span> /&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">form</span>&gt;
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">input</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">label</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">padding</span>: <span style="color:#ae81ff">2</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">box-sizing</span>: <span style="color:#66d9ef">border-box</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">display</span>: <span style="color:#66d9ef">inline-block</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">width</span>: <span style="color:#a6e22e">min</span>(<span style="color:#ae81ff">40</span><span style="color:#66d9ef">%</span>, <span style="color:#ae81ff">400</span><span style="color:#66d9ef">px</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">background-color</span>: <span style="color:#66d9ef">pink</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">form</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">margin</span>: <span style="color:#ae81ff">4</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">border</span>: <span style="color:#ae81ff">1</span><span style="color:#66d9ef">px</span> <span style="color:#66d9ef">solid</span> <span style="color:#66d9ef">black</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">padding</span>: <span style="color:#ae81ff">4</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>这里，form 的 margin，border，padding 总是它父元素的宽度的 100%。我们声明 input 和 label 的宽度比 form 的 40% 还小或者 400px 宽，只要取决于哪一个最小。换句话说，input 和 label 的最大宽度就是 400px，最窄就是 form 的 40%。因此看起来会显得很小。</p>
+<img src="/img/63/05.png" />
+<p><strong>无障碍问题</strong></p>
+<p>当 min() 用于控制文本大小时，要保证文本足够大以便于阅读。建议把 min() 方法嵌入到 max() 中， relative length unit 这样就可以便于阅读，比如：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">small</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">font-size</span>: <span style="color:#a6e22e">max</span>(<span style="color:#a6e22e">min</span>(<span style="color:#ae81ff">0.5</span><span style="color:#66d9ef">vw</span>, <span style="color:#ae81ff">0.5</span><span style="color:#66d9ef">em</span>), <span style="color:#ae81ff">1</span><span style="color:#66d9ef">rem</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>这用于保证最小值是 1rem，这样在页面缩放时文本也会缩放。</p>
+<ol start="2">
+<li>max()</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>width: max<span style="color:#f92672">(</span>10vw, 4em, 80px<span style="color:#f92672">)</span>;
+</span></span></code></pre></div><p>在上面这个例子中，宽度最小会是 80px，除非视图宽度大于 800px 或者是一个 em 比 20px 宽。简单来说，最小宽度是 80px。你也可以认为 max() 的值提供了一个属性最小可能的值。</p>
+<p><strong>为字体设定一个最小字号</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">h1</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">font-size</span>: <span style="color:#ae81ff">2</span><span style="color:#66d9ef">rem</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#f92672">h1</span>.<span style="color:#a6e22e">responsive</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">font-size</span>: <span style="color:#a6e22e">max</span>(<span style="color:#ae81ff">4</span><span style="color:#66d9ef">vw</span>, <span style="color:#ae81ff">2</span><span style="color:#66d9ef">em</span>, <span style="color:#ae81ff">2</span><span style="color:#66d9ef">rem</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><strong>无障碍</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">small</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">font-size</span>: <span style="color:#a6e22e">max</span>(<span style="color:#a6e22e">min</span>(<span style="color:#ae81ff">0.5</span><span style="color:#66d9ef">vw</span>, <span style="color:#ae81ff">0.5</span><span style="color:#66d9ef">em</span>), <span style="color:#ae81ff">1</span><span style="color:#66d9ef">rem</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="07-line-clamp">07 line-clamp</h3>
+<ul>
+<li>兼容性良好</li>
+</ul>
+<blockquote>
+<p>属性可以把块容器中的内容限制为指定的行数。</p>
+</blockquote>
+<p>它只有在 display 属性设置成 <code>-webkit-box</code> 或者 <code>-webkit-inline-box</code> 并且 <code>box-orient</code> 属性设置成 <code>vertical</code> 时才有效果。</p>
+<p>在大部分情况下，也需要设置 overflow 属性为 hidden，否则，里面的内容不会被裁减，并且在内容显示为指定行数后还会显示省略号。</p>
+<p>当应用于锚（anchor）元素时，截断可以发生在文本中间，而不必在末尾。</p>
+<p><strong>语法</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#75715e">#关键词值</span>
+</span></span><span style="display:flex;"><span>-webkit-line-clamp: none;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#整数值</span>
+</span></span><span style="display:flex;"><span>-webkit-line-clamp: 3;
+</span></span><span style="display:flex;"><span>-webkit-line-clamp: 10;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#全局值</span>
+</span></span><span style="display:flex;"><span>-webkit-line-clamp: inherit;
+</span></span><span style="display:flex;"><span>-webkit-line-clamp: initial;
+</span></span><span style="display:flex;"><span>-webkit-line-clamp: revert;
+</span></span><span style="display:flex;"><span>-webkit-line-clamp: revert-layer;
+</span></span><span style="display:flex;"><span>-webkit-line-clamp: unset;
+</span></span></code></pre></div><p><strong>截断段落</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">p</span>&gt;
+</span></span><span style="display:flex;"><span>  在此示例中，&lt;<span style="color:#f92672">code</span>&gt;-webkit-line-clamp&lt;/<span style="color:#f92672">code</span>&gt; 属性设置为
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">code</span>&gt;2&lt;/<span style="color:#f92672">code</span>&gt;，即文本在超过两行后将被截断。文本截断处将显示省略号。
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">p</span>&gt;
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">p</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">width</span>: <span style="color:#ae81ff">300</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">display</span>: <span style="color:#66d9ef">-webkit-</span>box;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">-webkit-</span>box-orient: <span style="color:#66d9ef">vertical</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">-webkit-</span>line-clamp: <span style="color:#ae81ff">2</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">overflow</span>: <span style="color:#66d9ef">hidden</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><img src="/img/63/04.png" />
+<h3 id="08-has">08 :has()</h3>
+<ul>
+<li>火狐浏览器不支持</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#75715e">/* 当 h1 元素后面紧跟着一个兄弟元素 p 时，会应用以下样式 */</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">h1</span>:<span style="color:#a6e22e">has</span><span style="color:#f92672">(+</span> <span style="color:#f92672">p</span><span style="color:#f92672">)</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">margin-bottom</span>: <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><strong>与兄弟组合器一起使用</strong></p>
+<ul>
+<li>以下示例中的 :has() 样式声明会调整 H1 标题后面的间距，如果它们后面紧跟着 H2 标题。</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">section</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">article</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">h1</span>&gt;Morning Times&lt;/<span style="color:#f92672">h1</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">p</span>&gt;
+</span></span><span style="display:flex;"><span>      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+</span></span><span style="display:flex;"><span>      tempor incididunt ut labore et dolore magna aliqua.
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">p</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#f92672">article</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">article</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">h1</span>&gt;Morning Times&lt;/<span style="color:#f92672">h1</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">h2</span>&gt;Delivering you news every morning&lt;/<span style="color:#f92672">h2</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">p</span>&gt;
+</span></span><span style="display:flex;"><span>      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+</span></span><span style="display:flex;"><span>      tempor incididunt ut labore et dolore magna aliqua.
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">p</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#f92672">article</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">section</span>&gt;
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">h1</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">h2</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">margin</span>: <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">1</span><span style="color:#66d9ef">rem</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#f92672">h1</span>:<span style="color:#a6e22e">has</span><span style="color:#f92672">(+</span> <span style="color:#f92672">h2</span><span style="color:#f92672">)</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">margin</span>: <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0.25</span><span style="color:#66d9ef">rem</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><img src="/img/63/02.png" />
+<p><strong>与 :is() 伪类一起使用</strong></p>
+<ul>
+<li>这个示例建立在前一个示例之上，展示了如何用 :has() 选择多个元素。</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">section</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">article</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">h1</span>&gt;Morning Times&lt;/<span style="color:#f92672">h1</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">h2</span>&gt;Delivering you news every morning&lt;/<span style="color:#f92672">h2</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">p</span>&gt;
+</span></span><span style="display:flex;"><span>      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+</span></span><span style="display:flex;"><span>      tempor incididunt ut labore et dolore magna aliqua.
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">p</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#f92672">article</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">article</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">h1</span>&gt;Morning Times&lt;/<span style="color:#f92672">h1</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">h2</span>&gt;Delivering you news every morning&lt;/<span style="color:#f92672">h2</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">h3</span>&gt;8:00 am&lt;/<span style="color:#f92672">h3</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">p</span>&gt;
+</span></span><span style="display:flex;"><span>      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+</span></span><span style="display:flex;"><span>      tempor incididunt ut labore et dolore magna aliqua.
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">p</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#f92672">article</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">section</span>&gt;
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">h1</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">h2</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">h3</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">margin</span>: <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">1</span><span style="color:#66d9ef">rem</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>:<span style="color:#a6e22e">is</span><span style="color:#f92672">(</span><span style="color:#f92672">h1</span><span style="color:#f92672">,</span> <span style="color:#f92672">h2</span><span style="color:#f92672">,</span> <span style="color:#f92672">h3</span><span style="color:#f92672">)</span>:<span style="color:#a6e22e">has</span><span style="color:#f92672">(+</span> :<span style="color:#a6e22e">is</span><span style="color:#f92672">(</span><span style="color:#f92672">h2</span><span style="color:#f92672">,</span> <span style="color:#f92672">h3</span><span style="color:#f92672">,</span> <span style="color:#f92672">h4</span><span style="color:#f92672">))</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">margin</span>: <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0.25</span><span style="color:#66d9ef">rem</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><img src="/img/63/03.png" />
+<p>这个选择器也可以写作：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>:<span style="color:#a6e22e">is</span><span style="color:#f92672">(</span><span style="color:#f92672">h1</span><span style="color:#f92672">,</span> <span style="color:#f92672">h2</span><span style="color:#f92672">,</span> <span style="color:#f92672">h3</span><span style="color:#f92672">)</span>:<span style="color:#a6e22e">has</span><span style="color:#f92672">(+</span> <span style="color:#f92672">h2</span><span style="color:#f92672">,</span> <span style="color:#f92672">+</span> <span style="color:#f92672">h3</span><span style="color:#f92672">,</span> <span style="color:#f92672">+</span> <span style="color:#f92672">h4</span><span style="color:#f92672">)</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">margin</span>: <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0.25</span><span style="color:#66d9ef">rem</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="09-is">09 :is</h3>
+<ul>
+<li>兼容性良好</li>
+</ul>
+<blockquote>
+<p>以选择器列表作为参数，并选择该列表中任意一个选择器可以选择的元素；这对于以更紧凑的形式编写大型选择器非常有用。</p>
+</blockquote>
+<p><strong>尝试一下：</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">ol</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">li</span>&gt;Saturn&lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">ul</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">li</span>&gt;Mimas&lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">li</span>&gt;Enceladus&lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">ol</span>&gt;
+</span></span><span style="display:flex;"><span>          &lt;<span style="color:#f92672">li</span>&gt;Voyager&lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span>          &lt;<span style="color:#f92672">li</span>&gt;Cassini&lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;/<span style="color:#f92672">ol</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">li</span>&gt;Tethys&lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">ul</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">li</span>&gt;Uranus&lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">ol</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">li</span>&gt;Titania&lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">li</span>&gt;Oberon&lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">ol</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">ol</span>&gt;
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">ol</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">list-style-type</span>: <span style="color:#66d9ef">upper-alpha</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">color</span>: <span style="color:#66d9ef">darkblue</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/* stylelint-disable-next-line selector-pseudo-class-no-unknown */</span>
+</span></span><span style="display:flex;"><span>:<span style="color:#a6e22e">is</span><span style="color:#f92672">(</span><span style="color:#f92672">ol</span><span style="color:#f92672">,</span> <span style="color:#f92672">ul</span><span style="color:#f92672">,</span> <span style="color:#f92672">menu</span>:<span style="color:#a6e22e">unsupported</span><span style="color:#f92672">)</span> :<span style="color:#a6e22e">is</span><span style="color:#f92672">(</span><span style="color:#f92672">ol</span><span style="color:#f92672">,</span> <span style="color:#f92672">ul</span><span style="color:#f92672">)</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">color</span>: <span style="color:#66d9ef">green</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>:<span style="color:#a6e22e">is</span><span style="color:#f92672">(</span><span style="color:#f92672">ol</span><span style="color:#f92672">,</span> <span style="color:#f92672">ul</span><span style="color:#f92672">)</span> :<span style="color:#a6e22e">is</span><span style="color:#f92672">(</span><span style="color:#f92672">ol</span><span style="color:#f92672">,</span> <span style="color:#f92672">ul</span><span style="color:#f92672">)</span> <span style="color:#f92672">ol</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">list-style-type</span>: <span style="color:#66d9ef">lower-greek</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">color</span>: <span style="color:#66d9ef">chocolate</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><img src="/img/63/01.png" />
+<p>在 CSS 中，当使用选择器列表时，如果任何一个选择器无效，则整个列表将被视为无效。使用 :is() 或 :where() 时，如果一个选择器无法解析，整个选择器列表不会被视为无效，而是会忽略不正确或不支持的选择器，并使用其他的选择器。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#75715e">/* 即使在不支持 :unsupported 的浏览器中，仍将正确解析 :valid */</span>
+</span></span><span style="display:flex;"><span>:<span style="color:#a6e22e">is</span><span style="color:#f92672">(</span>:<span style="color:#a6e22e">valid</span><span style="color:#f92672">,</span> :<span style="color:#a6e22e">unsupported</span><span style="color:#f92672">)</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">/* … */</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#75715e">/* 在不支持 :unsupported 浏览器中即使它们支持 :valid，仍将忽略。 */</span>
+</span></span><span style="display:flex;"><span>:<span style="color:#a6e22e">valid</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span>:<span style="color:#a6e22e">unsupported</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">/* … */</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><strong>简化列表选择器</strong></p>
+<p><code>:is()</code> 伪类可以大大简化你的 CSS 选择器。例如，考虑以下 CSS：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#75715e">/* 三层或更深的无序列表使用方形符号。 */</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">ol</span> <span style="color:#f92672">ol</span> <span style="color:#f92672">ul</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">ol</span> <span style="color:#f92672">ul</span> <span style="color:#f92672">ul</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">ol</span> <span style="color:#f92672">menu</span> <span style="color:#f92672">ul</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">ol</span> <span style="color:#f92672">dir</span> <span style="color:#f92672">ul</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">ol</span> <span style="color:#f92672">ol</span> <span style="color:#f92672">menu</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">ol</span> <span style="color:#f92672">ul</span> <span style="color:#f92672">menu</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">ol</span> <span style="color:#f92672">menu</span> <span style="color:#f92672">menu</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">ol</span> <span style="color:#f92672">dir</span> <span style="color:#f92672">menu</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">ol</span> <span style="color:#f92672">ol</span> <span style="color:#f92672">dir</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">ol</span> <span style="color:#f92672">ul</span> <span style="color:#f92672">dir</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">ol</span> <span style="color:#f92672">menu</span> <span style="color:#f92672">dir</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">ol</span> <span style="color:#f92672">dir</span> <span style="color:#f92672">dir</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">ul</span> <span style="color:#f92672">ol</span> <span style="color:#f92672">ul</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">ul</span> <span style="color:#f92672">ul</span> <span style="color:#f92672">ul</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">ul</span> <span style="color:#f92672">menu</span> <span style="color:#f92672">ul</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">ul</span> <span style="color:#f92672">dir</span> <span style="color:#f92672">ul</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">ul</span> <span style="color:#f92672">ol</span> <span style="color:#f92672">menu</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">ul</span> <span style="color:#f92672">ul</span> <span style="color:#f92672">menu</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">ul</span> <span style="color:#f92672">menu</span> <span style="color:#f92672">menu</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">ul</span> <span style="color:#f92672">dir</span> <span style="color:#f92672">menu</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">ul</span> <span style="color:#f92672">ol</span> <span style="color:#f92672">dir</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">ul</span> <span style="color:#f92672">ul</span> <span style="color:#f92672">dir</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">ul</span> <span style="color:#f92672">menu</span> <span style="color:#f92672">dir</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">ul</span> <span style="color:#f92672">dir</span> <span style="color:#f92672">dir</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">menu</span> <span style="color:#f92672">ol</span> <span style="color:#f92672">ul</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">menu</span> <span style="color:#f92672">ul</span> <span style="color:#f92672">ul</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">menu</span> <span style="color:#f92672">menu</span> <span style="color:#f92672">ul</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">menu</span> <span style="color:#f92672">dir</span> <span style="color:#f92672">ul</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">menu</span> <span style="color:#f92672">ol</span> <span style="color:#f92672">menu</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">menu</span> <span style="color:#f92672">ul</span> <span style="color:#f92672">menu</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">menu</span> <span style="color:#f92672">menu</span> <span style="color:#f92672">menu</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">menu</span> <span style="color:#f92672">dir</span> <span style="color:#f92672">menu</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">menu</span> <span style="color:#f92672">ol</span> <span style="color:#f92672">dir</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">menu</span> <span style="color:#f92672">ul</span> <span style="color:#f92672">dir</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">menu</span> <span style="color:#f92672">menu</span> <span style="color:#f92672">dir</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">menu</span> <span style="color:#f92672">dir</span> <span style="color:#f92672">dir</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">dir</span> <span style="color:#f92672">ol</span> <span style="color:#f92672">ul</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">dir</span> <span style="color:#f92672">ul</span> <span style="color:#f92672">ul</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">dir</span> <span style="color:#f92672">menu</span> <span style="color:#f92672">ul</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">dir</span> <span style="color:#f92672">dir</span> <span style="color:#f92672">ul</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">dir</span> <span style="color:#f92672">ol</span> <span style="color:#f92672">menu</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">dir</span> <span style="color:#f92672">ul</span> <span style="color:#f92672">menu</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">dir</span> <span style="color:#f92672">menu</span> <span style="color:#f92672">menu</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">dir</span> <span style="color:#f92672">dir</span> <span style="color:#f92672">menu</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">dir</span> <span style="color:#f92672">ol</span> <span style="color:#f92672">dir</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">dir</span> <span style="color:#f92672">ul</span> <span style="color:#f92672">dir</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">dir</span> <span style="color:#f92672">menu</span> <span style="color:#f92672">dir</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">dir</span> <span style="color:#f92672">dir</span> <span style="color:#f92672">dir</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">list-style-type</span>: <span style="color:#66d9ef">square</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>你可以将其替换为：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#75715e">/* 三层或更深的无序列表使用方形符号。 */</span>
+</span></span><span style="display:flex;"><span>:<span style="color:#a6e22e">is</span><span style="color:#f92672">(</span><span style="color:#f92672">ol</span><span style="color:#f92672">,</span> <span style="color:#f92672">ul</span><span style="color:#f92672">,</span> <span style="color:#f92672">menu</span><span style="color:#f92672">,</span> <span style="color:#f92672">dir</span><span style="color:#f92672">)</span> :<span style="color:#a6e22e">is</span><span style="color:#f92672">(</span><span style="color:#f92672">ol</span><span style="color:#f92672">,</span> <span style="color:#f92672">ul</span><span style="color:#f92672">,</span> <span style="color:#f92672">menu</span><span style="color:#f92672">,</span> <span style="color:#f92672">dir</span><span style="color:#f92672">)</span> :<span style="color:#a6e22e">is</span><span style="color:#f92672">(</span><span style="color:#f92672">ul</span><span style="color:#f92672">,</span> <span style="color:#f92672">menu</span><span style="color:#f92672">,</span> <span style="color:#f92672">dir</span><span style="color:#f92672">)</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">list-style-type</span>: <span style="color:#66d9ef">square</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><strong>简化段落选择器</strong></p>
+<p><code>:is()</code> 伪类在处理段落和标题时特别有用。由于 <code>&lt;section&gt;</code>、<code>&lt;article&gt;</code>、<code>&lt;aside&gt;</code> 和 <code>&lt;nav&gt;</code> 通常嵌套在一起，如果没有 <code>:is()</code>，将它们设置为相互匹配很棘手。</p>
+<p>例如，没有 :is()，在不同的深度对所有 h1 元素进行样式化可能是非常复杂的：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#75715e">/* 0 级 */</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">h1</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">font-size</span>: <span style="color:#ae81ff">30</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/* 1 级 */</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">section</span> <span style="color:#f92672">h1</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">article</span> <span style="color:#f92672">h1</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">aside</span> <span style="color:#f92672">h1</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">nav</span> <span style="color:#f92672">h1</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">font-size</span>: <span style="color:#ae81ff">25</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/* 2 级 */</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">section</span> <span style="color:#f92672">section</span> <span style="color:#f92672">h1</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">section</span> <span style="color:#f92672">article</span> <span style="color:#f92672">h1</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">section</span> <span style="color:#f92672">aside</span> <span style="color:#f92672">h1</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">section</span> <span style="color:#f92672">nav</span> <span style="color:#f92672">h1</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">article</span> <span style="color:#f92672">section</span> <span style="color:#f92672">h1</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">article</span> <span style="color:#f92672">article</span> <span style="color:#f92672">h1</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">article</span> <span style="color:#f92672">aside</span> <span style="color:#f92672">h1</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">article</span> <span style="color:#f92672">nav</span> <span style="color:#f92672">h1</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">aside</span> <span style="color:#f92672">section</span> <span style="color:#f92672">h1</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">aside</span> <span style="color:#f92672">article</span> <span style="color:#f92672">h1</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">aside</span> <span style="color:#f92672">aside</span> <span style="color:#f92672">h1</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">aside</span> <span style="color:#f92672">nav</span> <span style="color:#f92672">h1</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">nav</span> <span style="color:#f92672">section</span> <span style="color:#f92672">h1</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">nav</span> <span style="color:#f92672">article</span> <span style="color:#f92672">h1</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">nav</span> <span style="color:#f92672">aside</span> <span style="color:#f92672">h1</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">nav</span> <span style="color:#f92672">nav</span> <span style="color:#f92672">h1</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">font-size</span>: <span style="color:#ae81ff">20</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/* 3 级 */</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/* 想都别想！ */</span>
+</span></span></code></pre></div><p>然而，使用 <code>:is()</code> 将容易的多：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#75715e">/* 0 级 */</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">h1</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">font-size</span>: <span style="color:#ae81ff">30</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/* 1 级 */</span>
+</span></span><span style="display:flex;"><span>:<span style="color:#a6e22e">is</span><span style="color:#f92672">(</span><span style="color:#f92672">section</span><span style="color:#f92672">,</span> <span style="color:#f92672">article</span><span style="color:#f92672">,</span> <span style="color:#f92672">aside</span><span style="color:#f92672">,</span> <span style="color:#f92672">nav</span><span style="color:#f92672">)</span> <span style="color:#f92672">h1</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">font-size</span>: <span style="color:#ae81ff">25</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/* 2 级 */</span>
+</span></span><span style="display:flex;"><span>:<span style="color:#a6e22e">is</span><span style="color:#f92672">(</span><span style="color:#f92672">section</span><span style="color:#f92672">,</span> <span style="color:#f92672">article</span><span style="color:#f92672">,</span> <span style="color:#f92672">aside</span><span style="color:#f92672">,</span> <span style="color:#f92672">nav</span><span style="color:#f92672">)</span> :<span style="color:#a6e22e">is</span><span style="color:#f92672">(</span><span style="color:#f92672">section</span><span style="color:#f92672">,</span> <span style="color:#f92672">article</span><span style="color:#f92672">,</span> <span style="color:#f92672">aside</span><span style="color:#f92672">,</span> <span style="color:#f92672">nav</span><span style="color:#f92672">)</span> <span style="color:#f92672">h1</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">font-size</span>: <span style="color:#ae81ff">20</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/* 3 级 */</span>
+</span></span><span style="display:flex;"><span>:<span style="color:#a6e22e">is</span><span style="color:#f92672">(</span><span style="color:#f92672">section</span><span style="color:#f92672">,</span> <span style="color:#f92672">article</span><span style="color:#f92672">,</span> <span style="color:#f92672">aside</span><span style="color:#f92672">,</span> <span style="color:#f92672">nav</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>  :<span style="color:#a6e22e">is</span><span style="color:#f92672">(</span><span style="color:#f92672">section</span><span style="color:#f92672">,</span> <span style="color:#f92672">article</span><span style="color:#f92672">,</span> <span style="color:#f92672">aside</span><span style="color:#f92672">,</span> <span style="color:#f92672">nav</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>  :<span style="color:#a6e22e">is</span><span style="color:#f92672">(</span><span style="color:#f92672">section</span><span style="color:#f92672">,</span> <span style="color:#f92672">article</span><span style="color:#f92672">,</span> <span style="color:#f92672">aside</span><span style="color:#f92672">,</span> <span style="color:#f92672">nav</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">h1</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">font-size</span>: <span style="color:#ae81ff">15</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><strong>:is() 不能选择伪元素</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#75715e">/* 错误写法 */</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">some-element</span>:<span style="color:#a6e22e">is</span><span style="color:#f92672">(</span>::<span style="color:#a6e22e">before</span><span style="color:#f92672">,</span> ::<span style="color:#a6e22e">after</span><span style="color:#f92672">)</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">display</span>: <span style="color:#66d9ef">block</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></section>
+
+  
+  
+
+  
+  
+  
+  <nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
+    
+    <a class="flex w-1/2 items-center p-6 pr-3 no-underline" href="/articles/posts/64/"
+      ><span class="mr-1.5">←</span><span>元素检查技巧</span></a
+    >
+    
+    
+    <a
+      class="ml-auto flex w-1/2 items-center justify-end p-6 pl-3 no-underline"
+      href="/articles/posts/62/"
+      ><span>Flexbox</span><span class="ml-1.5">→</span></a
+    >
+    
+  </nav>
+  
+
+  
+  
+</article>
+
+
+    </main>
+
+    <footer
+  class="opaco mx-auto flex h-[5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+  style="position: relative; z-index: 10;display: none;"
+>
+  <div class="mr-auto">
+    &copy; 2024
+    <a class="link" href="/articles/">灏天阁</a>
+  </div>
+  <a class="link" href="https://yinchuanbo.github.io/" rel="noopener" target="_blank"
+    >Powered by YinHao</a
+  >️ ▷
+</footer>
+
+
+    <div class="img__mask" style="display: none;">
+      <img src="" alt="">
+      <span class="close_btn"></span>
+    </div>
+
+    <script>
+      const imgs = document.images;
+      const imgMask = document.querySelector('.img__mask')
+      const closeBtn = document.querySelector('.close_btn')
+      for (let i = 0; i < imgs.length; i++) {
+        const element = imgs[i];
+        element.onclick = () => {
+          const src = element.src;
+          imgMask.style.display = 'flex';
+          imgMask.querySelector('img').src = src;
+        }
+      }
+      closeBtn.onclick = () => {
+        imgMask.style.display = 'none';
+      }
+    </script>
+  </body>
+</html>

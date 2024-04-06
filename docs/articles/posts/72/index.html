@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+  class="not-ready text-sm lg:text-base"
+  style="--bg: "
+  lang="en"
+>
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  
+  <title>Console Utilities API - 灏天阁</title>
+
+  
+  <meta name="theme-color" />
+  
+  <meta name="description" content="monitorEvents 执行 monitorEvents 来监听并打印出元素触发的事件，也可以传入数组来一次性监听多种事件，例如：
+monitorEvents(window, &#34;click&#34;); monitorEvents(window, [&#34;mousedown&#34;, &#34;mouseup&#34;]); 除了能监听特定事件外，还能监听事件类别，例如 monitorEvents(window, &#39;touch&#39;) 来监听所有 touch 类别的事件。
+若要停止监听，则执行 unmonitorEvents(元素, 事件)。
+getEventListeners 执行 getEventListeners(元素) 以打印出所有注册在元素上的事件监听器。
+$0 元素原本并无注册任何事件监听器，执行 monitorEvents($0, &#39;click&#39;) 后，可以看到已注册所有 touch 类别的事件监听器，" />
+  <meta name="author" content="" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="/articles/main.min.css" />
+
+  
+
+  
+  
+  
+    
+  
+  <link
+    rel="preload"
+    as="image"
+    href="/articles/theme.png"
+  />
+
+  
+  
+  
+  <link rel="preload" as="image" href="/imgs/logo.png" />
+  
+  
+
+  
+
+  
+  <link rel="icon" href="/img/ico.ico" />
+  <link rel="apple-touch-icon" href="/articles/apple-touch-icon.png" />
+  
+  <meta name="generator" content="Hugo 0.108.0">
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="Console Utilities API" />
+<meta property="og:description" content="monitorEvents 执行 monitorEvents 来监听并打印出元素触发的事件，也可以传入数组来一次性监听多种事件，例如：
+monitorEvents(window, &#34;click&#34;); monitorEvents(window, [&#34;mousedown&#34;, &#34;mouseup&#34;]); 除了能监听特定事件外，还能监听事件类别，例如 monitorEvents(window, &#39;touch&#39;) 来监听所有 touch 类别的事件。
+若要停止监听，则执行 unmonitorEvents(元素, 事件)。
+getEventListeners 执行 getEventListeners(元素) 以打印出所有注册在元素上的事件监听器。
+$0 元素原本并无注册任何事件监听器，执行 monitorEvents($0, &#39;click&#39;) 后，可以看到已注册所有 touch 类别的事件监听器，" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/articles/posts/72/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-10-10T20:11:05+08:00" />
+<meta property="article:modified_time" content="2023-10-10T20:11:05+08:00" />
+
+  
+  <meta itemprop="name" content="Console Utilities API">
+<meta itemprop="description" content="monitorEvents 执行 monitorEvents 来监听并打印出元素触发的事件，也可以传入数组来一次性监听多种事件，例如：
+monitorEvents(window, &#34;click&#34;); monitorEvents(window, [&#34;mousedown&#34;, &#34;mouseup&#34;]); 除了能监听特定事件外，还能监听事件类别，例如 monitorEvents(window, &#39;touch&#39;) 来监听所有 touch 类别的事件。
+若要停止监听，则执行 unmonitorEvents(元素, 事件)。
+getEventListeners 执行 getEventListeners(元素) 以打印出所有注册在元素上的事件监听器。
+$0 元素原本并无注册任何事件监听器，执行 monitorEvents($0, &#39;click&#39;) 后，可以看到已注册所有 touch 类别的事件监听器，"><meta itemprop="datePublished" content="2023-10-10T20:11:05+08:00" />
+<meta itemprop="dateModified" content="2023-10-10T20:11:05+08:00" />
+<meta itemprop="wordCount" content="29">
+<meta itemprop="keywords" content="" />
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Console Utilities API"/>
+<meta name="twitter:description" content="monitorEvents 执行 monitorEvents 来监听并打印出元素触发的事件，也可以传入数组来一次性监听多种事件，例如：
+monitorEvents(window, &#34;click&#34;); monitorEvents(window, [&#34;mousedown&#34;, &#34;mouseup&#34;]); 除了能监听特定事件外，还能监听事件类别，例如 monitorEvents(window, &#39;touch&#39;) 来监听所有 touch 类别的事件。
+若要停止监听，则执行 unmonitorEvents(元素, 事件)。
+getEventListeners 执行 getEventListeners(元素) 以打印出所有注册在元素上的事件监听器。
+$0 元素原本并无注册任何事件监听器，执行 monitorEvents($0, &#39;click&#39;) 后，可以看到已注册所有 touch 类别的事件监听器，"/>
+
+  
+  
+</head>
+  <body class="text-black duration-200 ease-out dark:text-white">
+    
+    
+
+    
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100%-10rem)] max-w-3xl px-8 pt-20 dark:prose-invert"
+      id="main"
+    >
+      
+
+<article>
+  <header class="mb-10">
+    <h1 class="!my-0 pb-2.5">
+      Console Utilities API
+    </h1>
+
+    
+    <div class="text-sm opacity-60">
+      
+      <time>Oct 10, 2023</time>
+      
+      
+      <span class="mx-1">&middot;</span>
+      <span>Yin灏</span>
+    </div>
+    
+  </header>
+
+  <section><h2 id="monitorevents">monitorEvents</h2>
+<p>执行 monitorEvents 来监听并打印出元素触发的事件，也可以传入数组来一次性监听多种事件，例如：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">monitorEvents</span>(window, <span style="color:#e6db74">&#34;click&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">monitorEvents</span>(window, [<span style="color:#e6db74">&#34;mousedown&#34;</span>, <span style="color:#e6db74">&#34;mouseup&#34;</span>]);
+</span></span></code></pre></div><img src="/img/72/1.png" />
+<p>除了能监听特定事件外，还能监听事件类别，例如 <code>monitorEvents(window, 'touch')</code> 来监听所有 touch 类别的事件。</p>
+<p>若要停止监听，则执行 <code>unmonitorEvents(元素, 事件)</code>。</p>
+<h2 id="geteventlisteners">getEventListeners</h2>
+<p>执行 <code>getEventListeners(元素)</code> 以打印出所有注册在元素上的事件监听器。</p>
+<p><code>$0</code> 元素原本并无注册任何事件监听器，执行 <code>monitorEvents($0, 'click')</code> 后，可以看到已注册所有 touch 类别的事件监听器，</p>
+<img src="/img/72/2.png" />
+</section>
+
+  
+  
+
+  
+  
+  
+  <nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
+    
+    <a class="flex w-1/2 items-center p-6 pr-3 no-underline" href="/articles/posts/73/"
+      ><span class="mr-1.5">←</span><span>URI的编码与反编码</span></a
+    >
+    
+    
+    <a
+      class="ml-auto flex w-1/2 items-center justify-end p-6 pl-3 no-underline"
+      href="/articles/posts/71/"
+      ><span>Console API</span><span class="ml-1.5">→</span></a
+    >
+    
+  </nav>
+  
+
+  
+  
+</article>
+
+
+    </main>
+
+    <footer
+  class="opaco mx-auto flex h-[5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+  style="position: relative; z-index: 10;display: none;"
+>
+  <div class="mr-auto">
+    &copy; 2024
+    <a class="link" href="/articles/">灏天阁</a>
+  </div>
+  <a class="link" href="https://yinchuanbo.github.io/" rel="noopener" target="_blank"
+    >Powered by YinHao</a
+  >️ ▷
+</footer>
+
+
+    <div class="img__mask" style="display: none;">
+      <img src="" alt="">
+      <span class="close_btn"></span>
+    </div>
+
+    <script>
+      const imgs = document.images;
+      const imgMask = document.querySelector('.img__mask')
+      const closeBtn = document.querySelector('.close_btn')
+      for (let i = 0; i < imgs.length; i++) {
+        const element = imgs[i];
+        element.onclick = () => {
+          const src = element.src;
+          imgMask.style.display = 'flex';
+          imgMask.querySelector('img').src = src;
+        }
+      }
+      closeBtn.onclick = () => {
+        imgMask.style.display = 'none';
+      }
+    </script>
+  </body>
+</html>

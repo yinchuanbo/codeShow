@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+  class="not-ready text-sm lg:text-base"
+  style="--bg: "
+  lang="en"
+>
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  
+  <title>普通的文本输入框实现敏感词文字高亮 - 灏天阁</title>
+
+  
+  <meta name="theme-color" />
+  
+  <meta name="description" content="实现思路 实现标红就需要给文字加上 html 标签和样式，但是输入框会将 html 都转为字符串，既然输入框无法实现，那么我们换一种思路，通过 div 代替输入框来显示输入的文本，那我们是不是就可以实现文本标红了？
+&lt;div class=&#34;main&#34;&gt; &lt;div id=&#34;shadowInput&#34; class=&#34;highlight-shadow-input&#34;&gt;&lt;/div&gt; &lt;textarea id=&#34;textarea&#34; cols=&#34;30&#34; rows=&#34;10&#34; class=&#34;highlight-input&#34; &gt;&lt;/textarea&gt; &lt;/div&gt; .main { position: relative; } .highlight-shadow-input { position: absolute; top: 0; left: 0; height: 100%; width: 100%; padding: 8px; border: 1px; box-sizing: border-box; font-size: 12px; font-family: monospace; overflow-y: auto; word-break: break-all; white-space: pre-wrap; } .highlight-input { position: relative; width: 100%; padding: 8px; box-sizing: border-box; font-size: 12px; background: rgba(0, 0, 0, 0); -webkit-text-fill-color: transparent; z-index: 999; word-break: break-all; } 实现这个功能的精髓就在于将输入框的背景和输入的文字设置为透明，然后将其层级设置在 div 之上，这样用户既可以在输入框中输入，而输入的文字又不会展示出来，然后将输入的文本处理后渲染到 div 上。" />
+  <meta name="author" content="" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="/articles/main.min.css" />
+
+  
+
+  
+  
+  
+    
+  
+  <link
+    rel="preload"
+    as="image"
+    href="/articles/theme.png"
+  />
+
+  
+  
+  
+  <link rel="preload" as="image" href="/imgs/logo.png" />
+  
+  
+
+  
+
+  
+  <link rel="icon" href="/img/ico.ico" />
+  <link rel="apple-touch-icon" href="/articles/apple-touch-icon.png" />
+  
+  <meta name="generator" content="Hugo 0.108.0">
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="普通的文本输入框实现敏感词文字高亮" />
+<meta property="og:description" content="实现思路 实现标红就需要给文字加上 html 标签和样式，但是输入框会将 html 都转为字符串，既然输入框无法实现，那么我们换一种思路，通过 div 代替输入框来显示输入的文本，那我们是不是就可以实现文本标红了？
+&lt;div class=&#34;main&#34;&gt; &lt;div id=&#34;shadowInput&#34; class=&#34;highlight-shadow-input&#34;&gt;&lt;/div&gt; &lt;textarea id=&#34;textarea&#34; cols=&#34;30&#34; rows=&#34;10&#34; class=&#34;highlight-input&#34; &gt;&lt;/textarea&gt; &lt;/div&gt; .main { position: relative; } .highlight-shadow-input { position: absolute; top: 0; left: 0; height: 100%; width: 100%; padding: 8px; border: 1px; box-sizing: border-box; font-size: 12px; font-family: monospace; overflow-y: auto; word-break: break-all; white-space: pre-wrap; } .highlight-input { position: relative; width: 100%; padding: 8px; box-sizing: border-box; font-size: 12px; background: rgba(0, 0, 0, 0); -webkit-text-fill-color: transparent; z-index: 999; word-break: break-all; } 实现这个功能的精髓就在于将输入框的背景和输入的文字设置为透明，然后将其层级设置在 div 之上，这样用户既可以在输入框中输入，而输入的文字又不会展示出来，然后将输入的文本处理后渲染到 div 上。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/articles/posts/86/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-12-20T22:47:56+08:00" />
+<meta property="article:modified_time" content="2023-12-20T22:47:56+08:00" />
+
+  
+  <meta itemprop="name" content="普通的文本输入框实现敏感词文字高亮">
+<meta itemprop="description" content="实现思路 实现标红就需要给文字加上 html 标签和样式，但是输入框会将 html 都转为字符串，既然输入框无法实现，那么我们换一种思路，通过 div 代替输入框来显示输入的文本，那我们是不是就可以实现文本标红了？
+&lt;div class=&#34;main&#34;&gt; &lt;div id=&#34;shadowInput&#34; class=&#34;highlight-shadow-input&#34;&gt;&lt;/div&gt; &lt;textarea id=&#34;textarea&#34; cols=&#34;30&#34; rows=&#34;10&#34; class=&#34;highlight-input&#34; &gt;&lt;/textarea&gt; &lt;/div&gt; .main { position: relative; } .highlight-shadow-input { position: absolute; top: 0; left: 0; height: 100%; width: 100%; padding: 8px; border: 1px; box-sizing: border-box; font-size: 12px; font-family: monospace; overflow-y: auto; word-break: break-all; white-space: pre-wrap; } .highlight-input { position: relative; width: 100%; padding: 8px; box-sizing: border-box; font-size: 12px; background: rgba(0, 0, 0, 0); -webkit-text-fill-color: transparent; z-index: 999; word-break: break-all; } 实现这个功能的精髓就在于将输入框的背景和输入的文字设置为透明，然后将其层级设置在 div 之上，这样用户既可以在输入框中输入，而输入的文字又不会展示出来，然后将输入的文本处理后渲染到 div 上。"><meta itemprop="datePublished" content="2023-12-20T22:47:56+08:00" />
+<meta itemprop="dateModified" content="2023-12-20T22:47:56+08:00" />
+<meta itemprop="wordCount" content="160">
+<meta itemprop="keywords" content="" />
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="普通的文本输入框实现敏感词文字高亮"/>
+<meta name="twitter:description" content="实现思路 实现标红就需要给文字加上 html 标签和样式，但是输入框会将 html 都转为字符串，既然输入框无法实现，那么我们换一种思路，通过 div 代替输入框来显示输入的文本，那我们是不是就可以实现文本标红了？
+&lt;div class=&#34;main&#34;&gt; &lt;div id=&#34;shadowInput&#34; class=&#34;highlight-shadow-input&#34;&gt;&lt;/div&gt; &lt;textarea id=&#34;textarea&#34; cols=&#34;30&#34; rows=&#34;10&#34; class=&#34;highlight-input&#34; &gt;&lt;/textarea&gt; &lt;/div&gt; .main { position: relative; } .highlight-shadow-input { position: absolute; top: 0; left: 0; height: 100%; width: 100%; padding: 8px; border: 1px; box-sizing: border-box; font-size: 12px; font-family: monospace; overflow-y: auto; word-break: break-all; white-space: pre-wrap; } .highlight-input { position: relative; width: 100%; padding: 8px; box-sizing: border-box; font-size: 12px; background: rgba(0, 0, 0, 0); -webkit-text-fill-color: transparent; z-index: 999; word-break: break-all; } 实现这个功能的精髓就在于将输入框的背景和输入的文字设置为透明，然后将其层级设置在 div 之上，这样用户既可以在输入框中输入，而输入的文字又不会展示出来，然后将输入的文本处理后渲染到 div 上。"/>
+
+  
+  
+</head>
+  <body class="text-black duration-200 ease-out dark:text-white">
+    
+    
+
+    
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100%-10rem)] max-w-3xl px-8 pt-20 dark:prose-invert"
+      id="main"
+    >
+      
+
+<article>
+  <header class="mb-10">
+    <h1 class="!my-0 pb-2.5">
+      普通的文本输入框实现敏感词文字高亮
+    </h1>
+
+    
+    <div class="text-sm opacity-60">
+      
+      <time>Dec 20, 2023</time>
+      
+      
+      <span class="mx-1">&middot;</span>
+      <span>Yin灏</span>
+    </div>
+    
+  </header>
+
+  <section><h3 id="实现思路">实现思路</h3>
+<blockquote>
+<p>实现标红就需要给文字加上 html 标签和样式，但是输入框会将 html 都转为字符串，既然输入框无法实现，那么我们换一种思路，通过 div 代替输入框来显示输入的文本，那我们是不是就可以实现文本标红了？</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;main&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;shadowInput&#34;</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;highlight-shadow-input&#34;</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">textarea</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;textarea&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">cols</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;30&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">rows</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;10&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;highlight-input&#34;</span>
+</span></span><span style="display:flex;"><span>  &gt;&lt;/<span style="color:#f92672">textarea</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">main</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">position</span>: <span style="color:#66d9ef">relative</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">highlight-shadow-input</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">position</span>: <span style="color:#66d9ef">absolute</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">top</span>: <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">left</span>: <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">height</span>: <span style="color:#ae81ff">100</span><span style="color:#66d9ef">%</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">width</span>: <span style="color:#ae81ff">100</span><span style="color:#66d9ef">%</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">padding</span>: <span style="color:#ae81ff">8</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">border</span>: <span style="color:#ae81ff">1</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">box-sizing</span>: <span style="color:#66d9ef">border-box</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">font-size</span>: <span style="color:#ae81ff">12</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">font-family</span>: <span style="color:#66d9ef">monospace</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">overflow-y</span>: <span style="color:#66d9ef">auto</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">word-break</span>: break-all;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">white-space</span>: <span style="color:#66d9ef">pre-wrap</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">highlight-input</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">position</span>: <span style="color:#66d9ef">relative</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">width</span>: <span style="color:#ae81ff">100</span><span style="color:#66d9ef">%</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">padding</span>: <span style="color:#ae81ff">8</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">box-sizing</span>: <span style="color:#66d9ef">border-box</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">font-size</span>: <span style="color:#ae81ff">12</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">background</span>: rgba(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">-webkit-</span>text-fill-color: <span style="color:#66d9ef">transparent</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">z-index</span>: <span style="color:#ae81ff">999</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">word-break</span>: break-all;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>实现这个功能的精髓就在于将输入框的背景和输入的文字设置为透明，然后将其层级设置在 div 之上，这样用户既可以在输入框中输入，而输入的文字又不会展示出来，然后将输入的文本处理后渲染到 div 上。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">textarea</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#34;textarea&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">shadowInput</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#34;shadowInput&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">sensitive</span> <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;敏感词&#34;</span>, <span style="color:#e6db74">&#34;禁用词&#34;</span>];
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">textarea</span>.<span style="color:#a6e22e">oninput</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">e</span>) =&gt; {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">value</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">target</span>.<span style="color:#a6e22e">value</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">sensitive</span>.<span style="color:#a6e22e">forEach</span>((<span style="color:#a6e22e">word</span>) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">value</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">value</span>
+</span></span><span style="display:flex;"><span>      .<span style="color:#a6e22e">replaceAll</span>(<span style="color:#a6e22e">word</span>, <span style="color:#e6db74">`&lt;span style=&#34;color:#e52e2e&#34;&gt;</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">word</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&lt;/span&gt;`</span>)
+</span></span><span style="display:flex;"><span>      .<span style="color:#a6e22e">replaceAll</span>(<span style="color:#e6db74">&#34;\n&#34;</span>, <span style="color:#e6db74">&#34;&lt;br&gt;&#34;</span>);
+</span></span><span style="display:flex;"><span>  });
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">shadowInput</span>.<span style="color:#a6e22e">innerHTML</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">value</span>;
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>监听输入框 oninput 事件，用 replaceAll 匹配到敏感词并转为 html 后渲染到 shadowInput 上。此外，我们还需要对输入框的滚动进行监听，因为 shadowInput 是固定高度的，如果用户输入的文本出现滚动条，则需要让 shadowInput 也滚动到对应的位置</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;shadowInput&#34;</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;highlight-shadow-input&#34;</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">textarea</span>.<span style="color:#a6e22e">onscroll</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">e</span>) =&gt; {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">shadowInput</span>.<span style="color:#a6e22e">scrollTop</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">target</span>.<span style="color:#a6e22e">scrollTop</span>;
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 此处输入时也需要同步是因为输入触底换行时，div的高度不会自动滚动
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">textarea</span>.<span style="color:#a6e22e">onkeydown</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">e</span>) =&gt; {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">shadowInput</span>.<span style="color:#a6e22e">scrollTop</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">target</span>.<span style="color:#a6e22e">scrollTop</span>;
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h3 id="最终实现效果">最终实现效果</h3>
+<img src="/img/86/01.awebp" />
+</section>
+
+  
+  
+
+  
+  
+  
+  <nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
+    
+    <a class="flex w-1/2 items-center p-6 pr-3 no-underline" href="/articles/posts/87/"
+      ><span class="mr-1.5">←</span><span>梳理一下浏览器中常见Observer</span></a
+    >
+    
+    
+    <a
+      class="ml-auto flex w-1/2 items-center justify-end p-6 pl-3 no-underline"
+      href="/articles/posts/85/"
+      ><span>前端数字格式化展示方法</span><span class="ml-1.5">→</span></a
+    >
+    
+  </nav>
+  
+
+  
+  
+</article>
+
+
+    </main>
+
+    <footer
+  class="opaco mx-auto flex h-[5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+  style="position: relative; z-index: 10;display: none;"
+>
+  <div class="mr-auto">
+    &copy; 2024
+    <a class="link" href="/articles/">灏天阁</a>
+  </div>
+  <a class="link" href="https://yinchuanbo.github.io/" rel="noopener" target="_blank"
+    >Powered by YinHao</a
+  >️ ▷
+</footer>
+
+
+    <div class="img__mask" style="display: none;">
+      <img src="" alt="">
+      <span class="close_btn"></span>
+    </div>
+
+    <script>
+      const imgs = document.images;
+      const imgMask = document.querySelector('.img__mask')
+      const closeBtn = document.querySelector('.close_btn')
+      for (let i = 0; i < imgs.length; i++) {
+        const element = imgs[i];
+        element.onclick = () => {
+          const src = element.src;
+          imgMask.style.display = 'flex';
+          imgMask.querySelector('img').src = src;
+        }
+      }
+      closeBtn.onclick = () => {
+        imgMask.style.display = 'none';
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+  class="not-ready text-sm lg:text-base"
+  style="--bg: "
+  lang="en"
+>
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  
+  <title>高效加载第三方JavaScript - 灏天阁</title>
+
+  
+  <meta name="theme-color" />
+  
+  <meta name="description" content="如果第三方脚本降低您的页面加载速度，您有两个选项可以提高性能：
+如果它没有为您的网站增加明确的价值，请将其删除。 优化加载过程。 本文解释如何使用以下技术优化第三方脚本的加载过程：
+针对 &lt;script&gt; 标记使用 async 或 defer 属性 建立与所需来源的早期连接 延迟加载 优化您使用第三方脚本的方式 使用 async 或 defer 由于同步脚本会延迟 DOM 构建和呈现，因此您应该始终异步加载第三方脚本，除非脚本必须在页面呈现之前运行。
+async 和 defer 属性告诉浏览器其可以在后台加载脚本时继续解析 HTML，然后在加载后执行脚本。这样，脚本下载不会阻止 DOM 构建和页面呈现。这样，用户就可以在所有脚本加载完成之前看到页面。
+&lt;script async src=&#34;script.js&#34;&gt; &lt;script defer src=&#34;script.js&#34;&gt; async 和 defer 之间的区别在于它们何时开始执行脚本。
+async 具有 async 属性的脚本在完成下载后和窗口加载事件之前第一时间执行。这意味着 async 脚本可能（并且很可能）不会按照它们在 HTML 中出现的顺序执行。这也意味着如果它们在解析器仍在工作时完成下载，他们可以中断 DOM 构建。
+defer 具有 defer 属性的脚本在 HTML 解析完全完成之后执行，但在 DOMContentLoaded 事件之前执行。defer 保证脚本将按照它们在 HTML 中出现的顺序执行并且不会阻塞解析器。
+如果在加载过程中更早地运行脚本很重要，请使用 async。 对不太重要的资源使用 defer。例如，低于首屏的视频播放器。 使用这些属性可以显著加快页面加载速度。例如，Telegraph 最近推迟了所有脚本，包括广告和分析，并将广告加载时间平均缩短了四秒。
+分析脚本通常会提前加载，因此您不会错过任何有价值的分析数据。幸运的是，有一些模式可以在保留早期页面加载数据的同时延迟初始化分析。
+建立与所需来源的早期联系 通过与重要的第三方来源建立早期连接，您可以节省 100–500 毫秒。" />
+  <meta name="author" content="" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="/articles/main.min.css" />
+
+  
+
+  
+  
+  
+    
+  
+  <link
+    rel="preload"
+    as="image"
+    href="/articles/theme.png"
+  />
+
+  
+  
+  
+  <link rel="preload" as="image" href="/imgs/logo.png" />
+  
+  
+
+  
+
+  
+  <link rel="icon" href="/img/ico.ico" />
+  <link rel="apple-touch-icon" href="/articles/apple-touch-icon.png" />
+  
+  <meta name="generator" content="Hugo 0.108.0">
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="高效加载第三方JavaScript" />
+<meta property="og:description" content="如果第三方脚本降低您的页面加载速度，您有两个选项可以提高性能：
+如果它没有为您的网站增加明确的价值，请将其删除。 优化加载过程。 本文解释如何使用以下技术优化第三方脚本的加载过程：
+针对 &lt;script&gt; 标记使用 async 或 defer 属性 建立与所需来源的早期连接 延迟加载 优化您使用第三方脚本的方式 使用 async 或 defer 由于同步脚本会延迟 DOM 构建和呈现，因此您应该始终异步加载第三方脚本，除非脚本必须在页面呈现之前运行。
+async 和 defer 属性告诉浏览器其可以在后台加载脚本时继续解析 HTML，然后在加载后执行脚本。这样，脚本下载不会阻止 DOM 构建和页面呈现。这样，用户就可以在所有脚本加载完成之前看到页面。
+&lt;script async src=&#34;script.js&#34;&gt; &lt;script defer src=&#34;script.js&#34;&gt; async 和 defer 之间的区别在于它们何时开始执行脚本。
+async 具有 async 属性的脚本在完成下载后和窗口加载事件之前第一时间执行。这意味着 async 脚本可能（并且很可能）不会按照它们在 HTML 中出现的顺序执行。这也意味着如果它们在解析器仍在工作时完成下载，他们可以中断 DOM 构建。
+defer 具有 defer 属性的脚本在 HTML 解析完全完成之后执行，但在 DOMContentLoaded 事件之前执行。defer 保证脚本将按照它们在 HTML 中出现的顺序执行并且不会阻塞解析器。
+如果在加载过程中更早地运行脚本很重要，请使用 async。 对不太重要的资源使用 defer。例如，低于首屏的视频播放器。 使用这些属性可以显著加快页面加载速度。例如，Telegraph 最近推迟了所有脚本，包括广告和分析，并将广告加载时间平均缩短了四秒。
+分析脚本通常会提前加载，因此您不会错过任何有价值的分析数据。幸运的是，有一些模式可以在保留早期页面加载数据的同时延迟初始化分析。
+建立与所需来源的早期联系 通过与重要的第三方来源建立早期连接，您可以节省 100–500 毫秒。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/articles/posts/11/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-08-29T16:16:21+08:00" />
+<meta property="article:modified_time" content="2023-08-29T16:16:21+08:00" />
+
+  
+  <meta itemprop="name" content="高效加载第三方JavaScript">
+<meta itemprop="description" content="如果第三方脚本降低您的页面加载速度，您有两个选项可以提高性能：
+如果它没有为您的网站增加明确的价值，请将其删除。 优化加载过程。 本文解释如何使用以下技术优化第三方脚本的加载过程：
+针对 &lt;script&gt; 标记使用 async 或 defer 属性 建立与所需来源的早期连接 延迟加载 优化您使用第三方脚本的方式 使用 async 或 defer 由于同步脚本会延迟 DOM 构建和呈现，因此您应该始终异步加载第三方脚本，除非脚本必须在页面呈现之前运行。
+async 和 defer 属性告诉浏览器其可以在后台加载脚本时继续解析 HTML，然后在加载后执行脚本。这样，脚本下载不会阻止 DOM 构建和页面呈现。这样，用户就可以在所有脚本加载完成之前看到页面。
+&lt;script async src=&#34;script.js&#34;&gt; &lt;script defer src=&#34;script.js&#34;&gt; async 和 defer 之间的区别在于它们何时开始执行脚本。
+async 具有 async 属性的脚本在完成下载后和窗口加载事件之前第一时间执行。这意味着 async 脚本可能（并且很可能）不会按照它们在 HTML 中出现的顺序执行。这也意味着如果它们在解析器仍在工作时完成下载，他们可以中断 DOM 构建。
+defer 具有 defer 属性的脚本在 HTML 解析完全完成之后执行，但在 DOMContentLoaded 事件之前执行。defer 保证脚本将按照它们在 HTML 中出现的顺序执行并且不会阻塞解析器。
+如果在加载过程中更早地运行脚本很重要，请使用 async。 对不太重要的资源使用 defer。例如，低于首屏的视频播放器。 使用这些属性可以显著加快页面加载速度。例如，Telegraph 最近推迟了所有脚本，包括广告和分析，并将广告加载时间平均缩短了四秒。
+分析脚本通常会提前加载，因此您不会错过任何有价值的分析数据。幸运的是，有一些模式可以在保留早期页面加载数据的同时延迟初始化分析。
+建立与所需来源的早期联系 通过与重要的第三方来源建立早期连接，您可以节省 100–500 毫秒。"><meta itemprop="datePublished" content="2023-08-29T16:16:21+08:00" />
+<meta itemprop="dateModified" content="2023-08-29T16:16:21+08:00" />
+<meta itemprop="wordCount" content="215">
+<meta itemprop="keywords" content="" />
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="高效加载第三方JavaScript"/>
+<meta name="twitter:description" content="如果第三方脚本降低您的页面加载速度，您有两个选项可以提高性能：
+如果它没有为您的网站增加明确的价值，请将其删除。 优化加载过程。 本文解释如何使用以下技术优化第三方脚本的加载过程：
+针对 &lt;script&gt; 标记使用 async 或 defer 属性 建立与所需来源的早期连接 延迟加载 优化您使用第三方脚本的方式 使用 async 或 defer 由于同步脚本会延迟 DOM 构建和呈现，因此您应该始终异步加载第三方脚本，除非脚本必须在页面呈现之前运行。
+async 和 defer 属性告诉浏览器其可以在后台加载脚本时继续解析 HTML，然后在加载后执行脚本。这样，脚本下载不会阻止 DOM 构建和页面呈现。这样，用户就可以在所有脚本加载完成之前看到页面。
+&lt;script async src=&#34;script.js&#34;&gt; &lt;script defer src=&#34;script.js&#34;&gt; async 和 defer 之间的区别在于它们何时开始执行脚本。
+async 具有 async 属性的脚本在完成下载后和窗口加载事件之前第一时间执行。这意味着 async 脚本可能（并且很可能）不会按照它们在 HTML 中出现的顺序执行。这也意味着如果它们在解析器仍在工作时完成下载，他们可以中断 DOM 构建。
+defer 具有 defer 属性的脚本在 HTML 解析完全完成之后执行，但在 DOMContentLoaded 事件之前执行。defer 保证脚本将按照它们在 HTML 中出现的顺序执行并且不会阻塞解析器。
+如果在加载过程中更早地运行脚本很重要，请使用 async。 对不太重要的资源使用 defer。例如，低于首屏的视频播放器。 使用这些属性可以显著加快页面加载速度。例如，Telegraph 最近推迟了所有脚本，包括广告和分析，并将广告加载时间平均缩短了四秒。
+分析脚本通常会提前加载，因此您不会错过任何有价值的分析数据。幸运的是，有一些模式可以在保留早期页面加载数据的同时延迟初始化分析。
+建立与所需来源的早期联系 通过与重要的第三方来源建立早期连接，您可以节省 100–500 毫秒。"/>
+
+  
+  
+</head>
+  <body class="text-black duration-200 ease-out dark:text-white">
+    
+    
+
+    
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100%-10rem)] max-w-3xl px-8 pt-20 dark:prose-invert"
+      id="main"
+    >
+      
+
+<article>
+  <header class="mb-10">
+    <h1 class="!my-0 pb-2.5">
+      高效加载第三方JavaScript
+    </h1>
+
+    
+    <div class="text-sm opacity-60">
+      
+      <time>Aug 29, 2023</time>
+      
+      
+      <span class="mx-1">&middot;</span>
+      <span>Yin灏</span>
+    </div>
+    
+  </header>
+
+  <section><p>如果第三方脚本<a href="https://web.dev/third-party-javascript/">降低</a>您的页面加载速度，您有两个选项可以提高性能：</p>
+<ul>
+<li>如果它没有为您的网站增加明确的价值，请将其删除。</li>
+<li>优化加载过程。</li>
+</ul>
+<p>本文解释如何使用以下技术优化第三方脚本的加载过程：</p>
+<ol>
+<li>针对 <code>&lt;script&gt;</code> 标记使用 <code>async</code> 或 <code>defer</code> 属性</li>
+<li>建立与所需来源的早期连接</li>
+<li>延迟加载</li>
+<li>优化您使用第三方脚本的方式</li>
+</ol>
+<h2 id="使用-async-或-defer">使用 <code>async</code> 或 <code>defer</code></h2>
+<p>由于<a href="https://web.dev/third-party-javascript/">同步脚本</a>会延迟 DOM 构建和呈现，因此您应该始终异步加载第三方脚本，除非脚本必须在页面呈现之前运行。</p>
+<p><code>async</code> 和 <code>defer</code> 属性告诉浏览器其可以在后台加载脚本时继续解析 HTML，然后在加载后执行脚本。这样，脚本下载不会阻止 DOM 构建和页面呈现。这样，用户就可以在所有脚本加载完成之前看到页面。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">async</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;script.js&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">defer</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;script.js&#34;</span>&gt;
+</span></span></code></pre></div><p><code>async</code> 和 <code>defer</code> 之间的区别在于它们何时开始执行脚本。</p>
+<h3 id="async">async</h3>
+<p>具有 <code>async</code> 属性的脚本在完成下载后和窗口<a href="https://developer.mozilla.org/docs/Web/Events/load">加载</a>事件之前第一时间执行。这意味着 <code>async</code> 脚本可能（并且很可能）不会按照它们在 HTML 中出现的顺序执行。这也意味着如果它们在解析器仍在工作时完成下载，他们可以中断 DOM 构建。</p>
+<img src="/img/11/01.avif" />
+<h3 id="defer">defer</h3>
+<p>具有 <code>defer</code> 属性的脚本在 HTML 解析完全完成之后执行，但在 <a href="https://developer.mozilla.org/docs/Web/Events/DOMContentLoaded"><code>DOMContentLoaded</code></a> 事件之前执行。<code>defer</code> 保证脚本将按照它们在 HTML 中出现的顺序执行并且不会阻塞解析器。</p>
+<img src="/img/11/02.avif" />
+<ul>
+<li>如果在加载过程中更早地运行脚本很重要，请使用 <code>async</code>。</li>
+<li>对不太重要的资源使用 <code>defer</code>。例如，低于首屏的视频播放器。</li>
+</ul>
+<p>使用这些属性可以显著加快页面加载速度。例如，<a href="https://medium.com/p/a0a1000be5#4123">Telegraph 最近推迟了所有脚本</a>，包括广告和分析，并将广告加载时间平均缩短了四秒。</p>
+<p>分析脚本通常会提前加载，因此您不会错过任何有价值的分析数据。幸运的是，有一些模式可以在保留早期页面加载数据的同时<a href="https://philipwalton.com/articles/the-google-analytics-setup-i-use-on-every-site-i-build/">延迟初始化分析。</a></p>
+<h2 id="建立与所需来源的早期联系">建立与所需来源的早期联系</h2>
+<p>通过与重要的第三方来源<a href="https://web.dev/preconnect-and-dns-prefetch/">建立早期连接</a>，您可以节省 100–500 毫秒。</p>
+<p>两种 <a href="https://developer.mozilla.org/docs/Web/HTML/Element/link"><code>&lt;link&gt;</code></a> 类型可以在此方面提供帮助：</p>
+<ul>
+<li><code>preconnect</code></li>
+<li><code>dns-prefetch</code></li>
+</ul>
+<h3 id="preconnect">preconnect</h3>
+<p><code>&lt;link rel=&quot;preconnect&quot;&gt;</code> 通知浏览器您的页面打算与另一个源建立连接，并且您希望该过程尽快开始。当从预先连接的源请求资源时，下载立即开始。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">link</span> <span style="color:#a6e22e">rel</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;preconnect&#34;</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://cdn.example.com&#34;</span> /&gt;
+</span></span></code></pre></div><p><strong>小心</strong></p>
+<p>仅预连接到您即将使用的关键域，因为浏览器会关闭所有不会在 10 秒内使用的连接。不必要的预连接会延迟其他重要资源，因此请限制预连接域的数量并<a href="https://andydavies.me/blog/2019/08/07/experimenting-with-link-rel-equals-preconnect-using-custom-script-injection-in-webpagetest/">测试预连接的影响</a>。</p>
+<h3 id="dns-prefetch">dns-prefetch</h3>
+<p><code>&lt;link rel=&quot;dns-prefetch&gt;</code> 处理由 <code>&lt;link rel=&quot;preconnect&quot;&gt;</code> 处理的一小部分内容。建立连接涉及 DNS 查找和 TCP 握手，以及为了安全来源，TLS 协商。<code>dns-prefetch</code> 指示浏览器仅在明确调用之前解析特定域的 DNS。</p>
+<p><code>preconnect</code> 提示最好仅用于最关键的连接；对于不太重要的第三方域，请使用 <code>&lt;link rel=dns-prefetch&gt;</code> 。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">link</span> <span style="color:#a6e22e">rel</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;dns-prefetch&#34;</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;http://example.com&#34;</span> /&gt;
+</span></span></code></pre></div><p><a href="https://caniuse.com/#search=dns-prefetch">浏览器对 <code>dns-prefetch</code></a><a href="https://caniuse.com/#search=preconnect">的支持与 <code>preconnect</code></a> 支持略有不同，因此，<code>dns-prefetch</code> 可以作为不支持 <code>preconnect</code> 的浏览器的后备。使用单独的链接标签来安全地实现这一点：</p>
+<p>Copy code</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">link</span> <span style="color:#a6e22e">rel</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;preconnect&#34;</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;http://example.com&#34;</span> /&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">link</span> <span style="color:#a6e22e">rel</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;dns-prefetch&#34;</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;http://example.com&#34;</span> /&gt;
+</span></span></code></pre></div><h2 id="延迟加载第三方资源">延迟加载第三方资源</h2>
+<p>如果构建不当，嵌入的第三方资源可能是导致页面速度变慢的一个重要因素。如果它们不重要或低于首屏（即，如果用户必须滚动才能查看它们），则延迟加载是提高页面速度和绘制指标的好方法。这样，用户将更快地获得主页内容并拥有更好的体验。</p>
+<img src="/img/11/03.avif" />
+<p>一种有效的方法是在主页内容加载后延迟加载第三方内容。广告是这种方法的一个很好的候选者。</p>
+<p>广告是许多网站的重要收入来源，但用户是为了内容而来。通过延迟加载广告并更快地提供主要内容，您可以提高广告的整体可见度百分比。例如，MediaVine 改用<a href="https://www.mediavine.com/lazy-loading-ads-mediavine-ads-load-200-faster/">延迟加载广告</a>，页面加载速度提高了 200%。DoubleClick 在其<a href="https://support.google.com/dfp_premium/answer/4578089#lazyloading">官方文档</a>中提供了有关如何延迟加载广告的指南。</p>
+<p>另一种方法是仅当用户向下滚动到页面的相应部分时才加载第三方内容。</p>
+<p><a href="https://developer.chrome.com/blog/intersectionobserver/">Intersection Observer</a> 是一种浏览器 API，可高效检测元素何时进入或退出浏览器视口，并可用于实现此技术。<a href="https://web.dev/use-lazysizes-to-lazyload-images/">lazysizes</a> 是一个流行的 JavaScript 库，用于延迟加载图像和 <a href="http://afarkas.github.io/lazysizes/#examples"><code>iframes</code></a> 。它支持 YouTube 嵌入和<a href="https://github.com/aFarkas/lazysizes/tree/gh-pages/plugins/unveilhooks">小部件</a>。它还具有针对 IntersectionObserver 的<a href="https://github.com/aFarkas/lazysizes/blob/097a9878817dd17be3366633e555f3929a7eaaf1/src/lazysizes-intersection.js">可选支持。</a></p>
+<p><strong>小心</strong></p>
+<p>使用 JavaScript 延迟加载资源时要小心。如果 JavaScript 无法加载，可能是由于不稳定的网络条件，您的资源将根本无法加载。</p>
+<p>将 <a href="https://web.dev/browser-level-image-lazy-loading/"><code>loading</code> 属性用于延迟加载图像和 iframe</a> 是 JavaScript 技术的绝佳替代方案，并且最近 Chrome 76 中开始可用！</p>
+<h2 id="优化您服务第三方脚本的方式">优化您服务第三方脚本的方式</h2>
+<h3 id="第三方-cdn-托管">第三方 CDN 托管</h3>
+<p>第三方供应商通常会提供他们托管的 JavaScript 文件的 URL，通常位于<a href="https://en.wikipedia.org/wiki/Content_delivery_network">内容交付网络 (CDN) 上</a>。这种方法的好处是您可以快速开始——只需复制和粘贴 URL——并且没有维护开销。第三方供应商处理服务器配置和脚本更新。</p>
+<p>但是因为它们与您的其他资源不在同一来源，所以从公共 CDN 加载文件会产生网络成本。浏览器需要执行 DNS 查找，建立新的 HTTP 连接，并在安全来源上与供应商的服务器执行 SSL 握手。</p>
+<p>当您使用来自第三方服务器的文件时，您几乎无法控制缓存。依赖其他人的缓存策略可能会导致不必要地频繁从网络重新获取脚本。</p>
+<h3 id="自托管第三方脚本">自托管第三方脚本</h3>
+<p>自托管第三方脚本是一个选项，可让您更好地控制脚本的加载过程。通过自托管，您可以：</p>
+<ul>
+<li>减少 DNS 查找和往返时间。</li>
+<li>改进 <a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching">HTTP 缓存</a>头。</li>
+<li>利用 <a href="https://web.dev/performance-http2/">HTTP/2 服务器推送</a>。</li>
+</ul>
+<p>例如，Casper 通过自托管 A/B 测试脚本设法将负载时间<a href="https://medium.com/caspertechteam/we-shaved-1-7-seconds-off-casper-com-by-self-hosting-optimizely-2704bcbff8ec">缩短了 1.7 秒。</a></p>
+<p>但是，自托管有一个很大的缺点：脚本可能会过时，并且在 API 更改或安全修复时不会自动更新。</p>
+<p><strong>小心</strong></p>
+<p>手动更新脚本会给您的开发过程增加大量开销，您可能会错过重要的更新。如果您没有使用 CDN 托管来提供所有资源，那么您也会错过<a href="https://www.cloudflare.com/learning/cdn/glossary/edge-server/">边缘缓存，</a>并且必须优化服务器的压缩。</p>
+<h3 id="使用服务工作程序缓存来自第三方服务器的脚本">使用服务工作程序缓存来自第三方服务器的脚本</h3>
+<p>自托管的另一种替代方案是<a href="https://developer.chrome.com/docs/workbox/caching-resources-during-runtime/#cross-origin-considerations">使用服务工作程序缓存来自第三方服务器的脚本</a>，这可以让您更好地控制缓存，同时仍能获得第三方 CDN 的好处。这使您可以控制从网络重新获取脚本的频率，并可以创建一种加载策略，以限制对非必要第三方资源的请求，直到页面到达关键用户时刻。在这种情况下使用 <code>preconnect</code> 建立早期连接也可以在一定程度上降低网络成本。</p>
+</section>
+
+  
+  
+
+  
+  
+  
+  <nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
+    
+    <a class="flex w-1/2 items-center p-6 pr-3 no-underline" href="/articles/posts/12/"
+      ><span class="mr-1.5">←</span><span>前端异常处理最佳实践</span></a
+    >
+    
+    
+    <a
+      class="ml-auto flex w-1/2 items-center justify-end p-6 pl-3 no-underline"
+      href="/articles/posts/10/"
+      ><span>ES6到ES12常用新特性</span><span class="ml-1.5">→</span></a
+    >
+    
+  </nav>
+  
+
+  
+  
+</article>
+
+
+    </main>
+
+    <footer
+  class="opaco mx-auto flex h-[5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+  style="position: relative; z-index: 10;display: none;"
+>
+  <div class="mr-auto">
+    &copy; 2024
+    <a class="link" href="/articles/">灏天阁</a>
+  </div>
+  <a class="link" href="https://yinchuanbo.github.io/" rel="noopener" target="_blank"
+    >Powered by YinHao</a
+  >️ ▷
+</footer>
+
+
+    <div class="img__mask" style="display: none;">
+      <img src="" alt="">
+      <span class="close_btn"></span>
+    </div>
+
+    <script>
+      const imgs = document.images;
+      const imgMask = document.querySelector('.img__mask')
+      const closeBtn = document.querySelector('.close_btn')
+      for (let i = 0; i < imgs.length; i++) {
+        const element = imgs[i];
+        element.onclick = () => {
+          const src = element.src;
+          imgMask.style.display = 'flex';
+          imgMask.querySelector('img').src = src;
+        }
+      }
+      closeBtn.onclick = () => {
+        imgMask.style.display = 'none';
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+  class="not-ready text-sm lg:text-base"
+  style="--bg: "
+  lang="en"
+>
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  
+  <title>面向对象编程 - 灏天阁</title>
+
+  
+  <meta name="theme-color" />
+  
+  <meta name="description" content="封装 创建一个类 var Book = function (id, bookname, price) { this.id = id; this.bookname = bookname; this.price = price; }; 也可以通过在类的原型上添加属性和方法 Book.prototype.display = function () { // 展示这本书 }; // 或者 Book.prototype = { display: function () { // 展示这本书 }, }; 实例化使用类 var book = new Book(10, &#34;JavaScript 设计模式&#34;, 50); console.log(book.bookname); 属性与方法封装 var Book = function (id, name, price) { // 私有属性 var num = 1; // 私有方法 function checkId() {} // 特权方法 this." />
+  <meta name="author" content="" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="/articles/main.min.css" />
+
+  
+
+  
+  
+  
+    
+  
+  <link
+    rel="preload"
+    as="image"
+    href="/articles/theme.png"
+  />
+
+  
+  
+  
+  <link rel="preload" as="image" href="/imgs/logo.png" />
+  
+  
+
+  
+
+  
+  <link rel="icon" href="/img/ico.ico" />
+  <link rel="apple-touch-icon" href="/articles/apple-touch-icon.png" />
+  
+  <meta name="generator" content="Hugo 0.108.0">
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="面向对象编程" />
+<meta property="og:description" content="封装 创建一个类 var Book = function (id, bookname, price) { this.id = id; this.bookname = bookname; this.price = price; }; 也可以通过在类的原型上添加属性和方法 Book.prototype.display = function () { // 展示这本书 }; // 或者 Book.prototype = { display: function () { // 展示这本书 }, }; 实例化使用类 var book = new Book(10, &#34;JavaScript 设计模式&#34;, 50); console.log(book.bookname); 属性与方法封装 var Book = function (id, name, price) { // 私有属性 var num = 1; // 私有方法 function checkId() {} // 特权方法 this." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/articles/posts/01/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-08-27T22:28:28+08:00" />
+<meta property="article:modified_time" content="2023-08-27T22:28:28+08:00" />
+
+  
+  <meta itemprop="name" content="面向对象编程">
+<meta itemprop="description" content="封装 创建一个类 var Book = function (id, bookname, price) { this.id = id; this.bookname = bookname; this.price = price; }; 也可以通过在类的原型上添加属性和方法 Book.prototype.display = function () { // 展示这本书 }; // 或者 Book.prototype = { display: function () { // 展示这本书 }, }; 实例化使用类 var book = new Book(10, &#34;JavaScript 设计模式&#34;, 50); console.log(book.bookname); 属性与方法封装 var Book = function (id, name, price) { // 私有属性 var num = 1; // 私有方法 function checkId() {} // 特权方法 this."><meta itemprop="datePublished" content="2023-08-27T22:28:28+08:00" />
+<meta itemprop="dateModified" content="2023-08-27T22:28:28+08:00" />
+<meta itemprop="wordCount" content="1304">
+<meta itemprop="keywords" content="" />
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="面向对象编程"/>
+<meta name="twitter:description" content="封装 创建一个类 var Book = function (id, bookname, price) { this.id = id; this.bookname = bookname; this.price = price; }; 也可以通过在类的原型上添加属性和方法 Book.prototype.display = function () { // 展示这本书 }; // 或者 Book.prototype = { display: function () { // 展示这本书 }, }; 实例化使用类 var book = new Book(10, &#34;JavaScript 设计模式&#34;, 50); console.log(book.bookname); 属性与方法封装 var Book = function (id, name, price) { // 私有属性 var num = 1; // 私有方法 function checkId() {} // 特权方法 this."/>
+
+  
+  
+</head>
+  <body class="text-black duration-200 ease-out dark:text-white">
+    
+    
+
+    
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100%-10rem)] max-w-3xl px-8 pt-20 dark:prose-invert"
+      id="main"
+    >
+      
+
+<article>
+  <header class="mb-10">
+    <h1 class="!my-0 pb-2.5">
+      面向对象编程
+    </h1>
+
+    
+    <div class="text-sm opacity-60">
+      
+      <time>Aug 27, 2023</time>
+      
+      
+      <span class="mx-1">&middot;</span>
+      <span>Yin灏</span>
+    </div>
+    
+  </header>
+
+  <section><h2 id="封装">封装</h2>
+<h3 id="创建一个类">创建一个类</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">Book</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">id</span>, <span style="color:#a6e22e">bookname</span>, <span style="color:#a6e22e">price</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">id</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">id</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">bookname</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">bookname</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">price</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">price</span>;
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><ul>
+<li>也可以通过在类的原型上添加属性和方法</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">Book</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">display</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 展示这本书
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>};
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 或者
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">Book</span>.<span style="color:#a6e22e">prototype</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">display</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 展示这本书
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  },
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><ul>
+<li>实例化使用类</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">book</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Book</span>(<span style="color:#ae81ff">10</span>, <span style="color:#e6db74">&#34;JavaScript 设计模式&#34;</span>, <span style="color:#ae81ff">50</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">book</span>.<span style="color:#a6e22e">bookname</span>);
+</span></span></code></pre></div><h3 id="属性与方法封装">属性与方法封装</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">Book</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">id</span>, <span style="color:#a6e22e">name</span>, <span style="color:#a6e22e">price</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 私有属性
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">num</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 私有方法
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">checkId</span>() {}
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 特权方法
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">getName</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {};
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">getPrice</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {};
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">setName</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {};
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">setPrice</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {};
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 对象公有属性
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">id</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">id</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 对象公有方法
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">copy</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {};
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 构造器
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">setName</span>(<span style="color:#a6e22e">name</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">setPrice</span>(<span style="color:#a6e22e">price</span>);
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><ul>
+<li>添加静态属性和方法</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// 类静态公有属性（对象不能访问）
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">Book</span>.<span style="color:#a6e22e">isChinese</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 类静态公有方法（对象不能访问）
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">Book</span>.<span style="color:#a6e22e">resetTime</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;new Time&#34;</span>);
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Book</span>.<span style="color:#a6e22e">prototype</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 公有属性
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">isJSBook</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 公有方法
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">display</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span> () {},
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><ul>
+<li>new 实例化类</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">b</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Book</span>(<span style="color:#ae81ff">11</span>, <span style="color:#e6db74">&#34;JavaScript 设计模式&#34;</span>, <span style="color:#ae81ff">50</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">b</span>.<span style="color:#a6e22e">num</span>); <span style="color:#75715e">// undefined
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">b</span>.<span style="color:#a6e22e">isJSBook</span>); <span style="color:#75715e">// false
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">b</span>.<span style="color:#a6e22e">id</span>); <span style="color:#75715e">// 11
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">b</span>.<span style="color:#a6e22e">isChinese</span>); <span style="color:#75715e">// undefined
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">Book</span>.<span style="color:#a6e22e">isChinese</span>); <span style="color:#75715e">// true
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">Book</span>.<span style="color:#a6e22e">resetTime</span>(); <span style="color:#75715e">// new Time
+</span></span></span></code></pre></div><h3 id="闭包实现">闭包实现</h3>
+<blockquote>
+<p>将类的静态变量通过闭包来实现</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// 利用闭包实现
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">Book</span> <span style="color:#f92672">=</span> (<span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 静态私有变量
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">bookNum</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 静态私有方法
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">checkBook</span>(<span style="color:#a6e22e">name</span>) {}
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 返回构造函数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">newId</span>, <span style="color:#a6e22e">newName</span>, <span style="color:#a6e22e">newPrice</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 私有变量
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">name</span>, <span style="color:#a6e22e">price</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 私有方法
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">checkID</span>(<span style="color:#a6e22e">id</span>) {}
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 特权方法
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">getName</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {};
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">getPrice</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {};
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">setName</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {};
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">setPrice</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {};
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 公有属性
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">id</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">newId</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 公有方法
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">thi</span>.<span style="color:#a6e22e">copy</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {};
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">bookNum</span><span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">bookNum</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">100</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">&#34;我们仅出版100本书&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 构造器
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">setName</span>(<span style="color:#a6e22e">name</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">setPrice</span>(<span style="color:#a6e22e">price</span>);
+</span></span><span style="display:flex;"><span>  };
+</span></span><span style="display:flex;"><span>})();
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Book</span>.<span style="color:#a6e22e">prototype</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 静态公有属性
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">isJBook</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 静态公有方法
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">display</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span> () {},
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><blockquote>
+<p>闭包是有权访问另外一个函数作用域中变量的函数，即在一个函数内部创建另外一个函数。</p>
+</blockquote>
+<ul>
+<li>但是，在闭包外部添加原型属性和方法看上去像是脱离了闭包这个类，所以，有时候在闭包内部实现一个完整的类后将其返回。</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// 利用闭包实现
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">Book</span> <span style="color:#f92672">=</span> (<span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 静态私有变量
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">bookNum</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 静态私有方法
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">checkBook</span>(<span style="color:#a6e22e">name</span>) {}
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 返回构造函数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">_book</span>(<span style="color:#a6e22e">newId</span>, <span style="color:#a6e22e">newName</span>, <span style="color:#a6e22e">newPrice</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 私有变量
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">name</span>, <span style="color:#a6e22e">price</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 私有方法
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">checkID</span>(<span style="color:#a6e22e">id</span>) {}
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 特权方法
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">getName</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {};
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">getPrice</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {};
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">setName</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {};
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">setPrice</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {};
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 公有属性
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">id</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">newId</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 公有方法
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">thi</span>.<span style="color:#a6e22e">copy</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {};
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">bookNum</span><span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">bookNum</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">100</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">&#34;我们仅出版100本书&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 构造器
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">setName</span>(<span style="color:#a6e22e">name</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">setPrice</span>(<span style="color:#a6e22e">price</span>);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 构造原型
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">_book</span>.<span style="color:#a6e22e">prototype</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 静态公有属性
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">isJBook</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 静态公有方法
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">display</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span> () {},
+</span></span><span style="display:flex;"><span>  };
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">_book</span>;
+</span></span><span style="display:flex;"><span>})();
+</span></span></code></pre></div><h3 id="创建对象的安全模式">创建对象的安全模式</h3>
+<p>如果忘写了 new 关键字就会报错</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">Book</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">title</span>, <span style="color:#a6e22e">time</span>, <span style="color:#a6e22e">type</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">this</span> <span style="color:#66d9ef">instanceof</span> <span style="color:#a6e22e">Book</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">title</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">title</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">time</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">time</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">type</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">type</span>;
+</span></span><span style="display:flex;"><span>  } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Book</span>(<span style="color:#a6e22e">title</span>, <span style="color:#a6e22e">time</span>, <span style="color:#a6e22e">type</span>);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h2 id="继承">继承</h2>
+<h3 id="子类的原型对象---类式继承">子类的原型对象 - 类式继承</h3>
+<ul>
+<li>将第一个类的实例赋值给第二个类的原型</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// 声明父类
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">SuperClass</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">superValue</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 为父类添加共有方法
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">SuperClass</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">getSuperValue</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">superValue</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 声明子类
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">SubClass</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">subValue</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 继承父类
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">SubClass</span>.<span style="color:#a6e22e">prototype</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">SuperClass</span>();
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 为子类添加共有方法
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">SubClass</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">getSubValue</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">subValue</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 使用子类
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">instance</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">SubClass</span>();
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">instance</span>.<span style="color:#a6e22e">getSuperValue</span>()); <span style="color:#75715e">// true
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">instance</span>.<span style="color:#a6e22e">getSubValue</span>()); <span style="color:#75715e">// false
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 测试
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">instance</span> <span style="color:#66d9ef">instanceof</span> <span style="color:#a6e22e">SuperClass</span>); <span style="color:#75715e">// true
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">instance</span> <span style="color:#66d9ef">instanceof</span> <span style="color:#a6e22e">SubClass</span>); <span style="color:#75715e">// true
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">SubClass</span> <span style="color:#66d9ef">instanceof</span> <span style="color:#a6e22e">SuperClass</span>); <span style="color:#75715e">// false
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">SubClass</span>.<span style="color:#a6e22e">prototype</span> <span style="color:#66d9ef">instanceof</span> <span style="color:#a6e22e">SuperClass</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">instance</span> <span style="color:#66d9ef">instanceof</span> Object); <span style="color:#75715e">// true
+</span></span></span></code></pre></div><p>上面类式继承的缺点：</p>
+<p>由于子类通过气原型 prototype 对父类实例化，继承了父类。所以说父类中的共有属性要是引用类型，就会在子类中被所有实例共用，因此一个子类的实例更改子类原型从父类构造函数中继承来的共有属性就会直接影响到其他子类。</p>
+<p>如下代码：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">SuperClass</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">books</span> <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;JavaScript&#34;</span>, <span style="color:#e6db74">&#34;html&#34;</span>, <span style="color:#e6db74">&#34;css&#34;</span>];
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">SubClass</span>() {}
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">SubClass</span>.<span style="color:#a6e22e">prototype</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">SuperClass</span>();
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">instance1</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">SubClass</span>();
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">instance2</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">SubClass</span>();
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">instance2</span>.<span style="color:#a6e22e">books</span>); <span style="color:#75715e">// [&#34;JavaScript&#34;, &#34;html&#34;, &#34;css&#34;]
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">instance1</span>.<span style="color:#a6e22e">books</span>.<span style="color:#a6e22e">push</span>(<span style="color:#e6db74">&#34;设计模式&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">instance1</span>.<span style="color:#a6e22e">books</span>); <span style="color:#75715e">// [&#34;JavaScript&#34;, &#34;html&#34;, &#34;css&#34;, &#34;设计模式&#34;]
+</span></span></span></code></pre></div><p>[注]：如何解决上述问题？</p>
+<h3 id="创建即继承---构造函数继承">创建即继承 - 构造函数继承</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// 构造函数继承
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 声明父类
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">SuperClass</span>(<span style="color:#a6e22e">id</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 引用类型共有属性
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">books</span> <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;JavaScript&#34;</span>, <span style="color:#e6db74">&#34;html&#34;</span>, <span style="color:#e6db74">&#34;css&#34;</span>];
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 值类型共有属性
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">id</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">id</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 父类声明原型方法
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">SuperClass</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">showBooks</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">books</span>);
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 声明子类
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">SubClass</span>(<span style="color:#a6e22e">id</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 继承父类
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">SuperClass</span>.<span style="color:#a6e22e">call</span>(<span style="color:#66d9ef">this</span>, <span style="color:#a6e22e">id</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 创建第一个子类的实例
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">instance1</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">SubClass</span>(<span style="color:#ae81ff">10</span>);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 创建第二个子类的实例
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">instance2</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">SubClass</span>(<span style="color:#ae81ff">11</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">instance1</span>.<span style="color:#a6e22e">books</span>.<span style="color:#a6e22e">push</span>(<span style="color:#e6db74">&#34;设计模式&#34;</span>)<span style="color:#960050;background-color:#1e0010">；</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">instance1</span>); <span style="color:#75715e">// [&#34;JavaScript&#34;, &#34;html&#34;, &#34;css&#34;, &#34;设计模式&#34;]
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">instance1</span>.<span style="color:#a6e22e">id</span>); <span style="color:#75715e">// 10
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">instance2</span>); <span style="color:#75715e">// [&#34;JavaScript&#34;, &#34;html&#34;, &#34;css&#34;]
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">instance2</span>.<span style="color:#a6e22e">id</span>); <span style="color:#75715e">// 11
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">instance1</span>.<span style="color:#a6e22e">showBooks</span>(); <span style="color:#75715e">// TypeError
+</span></span></span></code></pre></div><p>如上，在子类中，对 SuperClass 调用这个方法就是将子类中的变量在父类中执行一遍，由于父类中是给 this 绑定属性的，因此子类自然也就继承了父类的共有属性。由于这种类型的继承没有涉及原型 prototype，所以父类的原型方法自然不会被子类继承。</p>
+<p>为了综合这两种模式的优点，后来有了组合式继承。</p>
+<h3 id="将优点为我所用---组合继承">将优点为我所用 - 组合继承</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// 组合式继承
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 声明父类
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">SuperClass</span>(<span style="color:#a6e22e">name</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 值类型共有属性
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">name</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 引用类型共有属性
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">books</span> <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;JavaScript&#34;</span>, <span style="color:#e6db74">&#34;html&#34;</span>, <span style="color:#e6db74">&#34;css&#34;</span>];
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 父类原型共有方法
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">SuperClass</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">getName</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name</span>);
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 声明子类
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">SubClass</span>(<span style="color:#a6e22e">name</span>, <span style="color:#a6e22e">time</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 构造函数式继承父类 name 属性
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">SuperClass</span>.<span style="color:#a6e22e">call</span>(<span style="color:#66d9ef">this</span>, <span style="color:#a6e22e">name</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 子类中新增共有属性
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">time</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">time</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 类式继承 子类原型继承父类
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">SubClass</span>.<span style="color:#a6e22e">prototype</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">SuperClass</span>();
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 子类原型方法
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">SubClass</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">getTime</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">time</span>);
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 测试代码
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">instance1</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">SubClass</span>(<span style="color:#e6db74">&#34;js book&#34;</span>, <span style="color:#ae81ff">2014</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">instance1</span>.<span style="color:#a6e22e">book</span>.<span style="color:#a6e22e">push</span>(<span style="color:#e6db74">&#34;设计模式&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">instance1</span>.<span style="color:#a6e22e">books</span>); <span style="color:#75715e">// [&#34;JavaScript&#34;, &#34;html&#34;, &#34;css&#34;, &#34;设计模式&#34;];
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">instance1</span>.<span style="color:#a6e22e">getName</span>(); <span style="color:#75715e">// js book
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">instance1</span>.<span style="color:#a6e22e">getTime</span>(); <span style="color:#75715e">// 2014
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">instance2</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">SubClass</span>(<span style="color:#e6db74">&#34;css book&#34;</span>, <span style="color:#ae81ff">2013</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">instance2</span>.<span style="color:#a6e22e">books</span>); <span style="color:#75715e">// [&#34;JavaScript&#34;, &#34;html&#34;, &#34;css&#34;]
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">instance2</span>.<span style="color:#a6e22e">getName</span>(); <span style="color:#75715e">// css book
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">instance2</span>.<span style="color:#a6e22e">getTime</span>(); <span style="color:#75715e">// 2013
+</span></span></span></code></pre></div><p>缺陷：因为我们在使用构造函数继承时执行了一遍父类的构造函数，而在实现子类原型的类式继承时又调用了一遍父类的构造函数，因此父类构造函数调用了两遍，所以这不是最完美的方式。</p>
+<h3 id="洁净的继承者---原型式继承">洁净的继承者 - 原型式继承</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// 原型式继承
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">inheritObject</span>(<span style="color:#a6e22e">o</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 声明一个过渡函数对象
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">F</span>() {}
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 过渡对象的原型继承对象
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">F</span>.<span style="color:#a6e22e">prototype</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">o</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 返回过渡对象的一个实例，该实例的原型继承了付对象
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">F</span>();
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>测试用例</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">book</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;js book&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">alikeBook</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;css book&#34;</span>, <span style="color:#e6db74">&#34;html book&#34;</span>],
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">newBook</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">inheritObject</span>(<span style="color:#a6e22e">book</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">newBook</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ajax book&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">newBook</span>.<span style="color:#a6e22e">alikeBook</span>.<span style="color:#a6e22e">push</span>(<span style="color:#e6db74">&#34;xml book&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">otherBook</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">inheritObject</span>(<span style="color:#a6e22e">book</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">otherBook</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;flash book&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">otherBook</span>.<span style="color:#a6e22e">alikeBook</span>.<span style="color:#a6e22e">push</span>(<span style="color:#e6db74">&#34;as book&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">newBook</span>.<span style="color:#a6e22e">name</span>); <span style="color:#75715e">// ajax book
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">newBook</span>.<span style="color:#a6e22e">alikeBook</span>); <span style="color:#75715e">// [&#34;css book&#34;, &#34;html book&#34;, &#34;xml book&#34;, &#34;as book&#34;],
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">otherBook</span>.<span style="color:#a6e22e">name</span>); <span style="color:#75715e">// flash book
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">otherBook</span>.<span style="color:#a6e22e">alikeBook</span>); <span style="color:#75715e">// [&#34;css book&#34;, &#34;html book&#34;, &#34;xml book&#34;, &#34;as book&#34;],
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">book</span>.<span style="color:#a6e22e">name</span>); <span style="color:#75715e">// js book
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">book</span>.<span style="color:#a6e22e">alikeBook</span>); <span style="color:#75715e">// [&#34;css book&#34;, &#34;html book&#34;, &#34;xml book&#34;, &#34;as book&#34;],
+</span></span></span></code></pre></div><p>跟类式继承一样，父类对象 book 中的值类型的属性被复制，引用类型的属性被共用。</p>
+<h3 id="如虎添翼---寄生式继承">如虎添翼 - 寄生式继承</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// 寄生式继承
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 声明基对象
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">book</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;js book&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">alikeBook</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;css book&#34;</span>, <span style="color:#e6db74">&#34;html book&#34;</span>];
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">createBook</span>(<span style="color:#a6e22e">obj</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 通过原型继承方式创建新对象
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">o</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">inheritObject</span>(<span style="color:#a6e22e">obj</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 拓展新对象
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">o</span>.<span style="color:#a6e22e">getName</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">name</span>);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 返回拓展后的新对象
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">o</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="终极继承者---寄生组合式继承">终极继承者 - 寄生组合式继承</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">inheritPrototype</span>(<span style="color:#a6e22e">subClass</span>, <span style="color:#a6e22e">superClass</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 复制一份父类的原型副本保存在变量中
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">p</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">inheritObject</span>(<span style="color:#a6e22e">superClass</span>.<span style="color:#a6e22e">prototype</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 修正因为重写子类原型导致子类的 contructor 属性被修改
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">p</span>.<span style="color:#a6e22e">constructor</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">subClass</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 设置子类的原型
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">subClass</span>.<span style="color:#a6e22e">prototype</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">p</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 测试用例
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 定义父类
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">SuperClass</span>(<span style="color:#a6e22e">name</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">name</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">colors</span> <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;red&#34;</span>, <span style="color:#e6db74">&#34;blue&#34;</span>, <span style="color:#e6db74">&#34;green&#34;</span>];
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 定义父类的原型方法
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">SuperClass</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">getName</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name</span>);
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 定义子类
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">SubClass</span>(<span style="color:#a6e22e">name</span>, <span style="color:#a6e22e">time</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 构造函数式继承
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">SuperClass</span>.<span style="color:#a6e22e">call</span>(<span style="color:#66d9ef">this</span>, <span style="color:#a6e22e">name</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 子类新增属性
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">time</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">time</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 寄生式继承父类原型
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">inheritPrototype</span>(<span style="color:#a6e22e">SubClass</span>, <span style="color:#a6e22e">SuperClass</span>);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 子类新增原型方法
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">SubClass</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">getTime</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">time</span>);
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 创建两个测试方法
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">instance1</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">SubClass</span>(<span style="color:#e6db74">&#34;js book&#34;</span>, <span style="color:#ae81ff">2014</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">instance2</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">SubClass</span>(<span style="color:#e6db74">&#34;css book&#34;</span>, <span style="color:#ae81ff">2013</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">instance1</span>.<span style="color:#a6e22e">colors</span>.<span style="color:#a6e22e">push</span>(<span style="color:#e6db74">&#34;black&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">instance1</span>.<span style="color:#a6e22e">colors</span>); <span style="color:#75715e">// [&#34;red&#34;, &#34;blue&#34;, &#34;green&#34;, &#34;black&#34;];
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">instance2</span>.<span style="color:#a6e22e">colors</span>); <span style="color:#75715e">// [&#34;red&#34;, &#34;blue&#34;, &#34;green&#34;];
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">instance2</span>.<span style="color:#a6e22e">getName</span>(); <span style="color:#75715e">// css book
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">instance2</span>.<span style="color:#a6e22e">getTime</span>(); <span style="color:#75715e">// 2013
+</span></span></span></code></pre></div><h2 id="老师不止一位---多继承">老师不止一位 - 多继承</h2>
+<h3 id="继承单对象属性的-extend-方法">继承单对象属性的 extend 方法</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// 单继承 属性复制
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">extend</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">target</span>, <span style="color:#a6e22e">source</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 遍历源对象中的属性
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">property</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">source</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">target</span>[<span style="color:#a6e22e">property</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">source</span>[<span style="color:#a6e22e">property</span>];
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>extend 是一个浅复制的过程，他只能复制值类型的属性，对于引用类型无能为力，</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">book</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;JavaScript 设计模式&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">alike</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;css&#34;</span>, <span style="color:#e6db74">&#34;html&#34;</span>, <span style="color:#e6db74">&#34;JavaScript&#34;</span>],
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">anotherBook</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">color</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;blue&#34;</span>,
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">extend</span>(<span style="color:#a6e22e">anotherBook</span>, <span style="color:#a6e22e">book</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">anotherBook</span>.<span style="color:#a6e22e">name</span>); <span style="color:#75715e">// &#34;JavaScript 设计模式&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">anotherBook</span>.<span style="color:#a6e22e">alike</span>); <span style="color:#75715e">// [&#34;css&#34;, &#34;html&#34;, &#34;JavaScript&#34;]
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">anotherBook</span>.<span style="color:#a6e22e">alike</span>.<span style="color:#a6e22e">push</span>(<span style="color:#e6db74">&#34;ajax&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">anotherBook</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;设计模式&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">anotherBook</span>.<span style="color:#a6e22e">name</span>); <span style="color:#75715e">// 设计模式
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">anotherBook</span>.<span style="color:#a6e22e">alike</span>); <span style="color:#75715e">// [&#34;css&#34;, &#34;html&#34;, &#34;JavaScript&#34;, &#34;ajax&#34;]
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">book</span>.<span style="color:#a6e22e">name</span>); <span style="color:#75715e">// JavaScript 设计模式
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">book</span>.<span style="color:#a6e22e">alike</span>); <span style="color:#75715e">//  [&#34;css&#34;, &#34;html&#34;, &#34;JavaScript&#34;, &#34;ajax&#34;]
+</span></span></span></code></pre></div><p>上面的方法实现对一个对象属性的复制继承，那么如果我们传递多个对象呢？</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// 多继承 属性复制
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">mix</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">len</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">arguments</span>.<span style="color:#a6e22e">length</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">target</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">arguments</span>[<span style="color:#ae81ff">0</span>],
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">arg</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 遍历被继承的对象
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">for</span> (; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">len</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 缓存当前对象
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">arg</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">arguments</span>[<span style="color:#a6e22e">i</span>];
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 遍历被继承对象的属性
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">property</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">arg</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">target</span>[<span style="color:#a6e22e">property</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">arg</span>[<span style="color:#a6e22e">property</span>];
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 返回目标对象
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">target</span>;
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>将它绑定到原生 Object 上，这样所有的对象就可以拥有这个方法了。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>Object.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">mix</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">len</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">arguments</span>.<span style="color:#a6e22e">length</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">arg</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">for</span> (; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">len</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">arg</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">arguments</span>[<span style="color:#a6e22e">i</span>];
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">property</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">arg</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">this</span>[<span style="color:#a6e22e">property</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">arg</span>[<span style="color:#a6e22e">property</span>];
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 调用
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">otherBook</span>.<span style="color:#a6e22e">mix</span>(<span style="color:#a6e22e">book1</span>, <span style="color:#a6e22e">book2</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">otherBook</span>);
+</span></span></code></pre></div><h2 id="多种调用方式---多态">多种调用方式 - 多态</h2>
+<blockquote>
+<p>多态：就是同一个方法多种调用方式。在 JS 中也是可以实现的，只不过要对传入的参数做判断以实现多种调用方式。</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// 多态
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">add</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">arg</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">arguments</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">len</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">arg</span>.<span style="color:#a6e22e">length</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">switch</span> (<span style="color:#a6e22e">len</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">case</span> <span style="color:#ae81ff">0</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">10</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">case</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">10</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">arg</span>[<span style="color:#ae81ff">0</span>];
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">case</span> <span style="color:#ae81ff">2</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">arg</span>[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">+</span> <span style="color:#a6e22e">arg</span>[<span style="color:#ae81ff">1</span>];
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 测试用例
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">add</span>()); <span style="color:#75715e">// 10
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">add</span>(<span style="color:#ae81ff">5</span>)); <span style="color:#75715e">// 15
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">add</span>(<span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">7</span>)); <span style="color:#75715e">// 13
+</span></span></span></code></pre></div><p>当然我们还可以让其转化成更易懂的类形式</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">Add</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">zero</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">10</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">one</span>(<span style="color:#a6e22e">num</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">10</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">num</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">two</span>(<span style="color:#a6e22e">num1</span>, <span style="color:#a6e22e">num2</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">num1</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">num2</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">add</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">arg</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">arguments</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">len</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">arg</span>.<span style="color:#a6e22e">length</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">switch</span> (<span style="color:#a6e22e">len</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">case</span> <span style="color:#ae81ff">0</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">zero</span>();
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">case</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">one</span>(<span style="color:#a6e22e">arg</span>[<span style="color:#ae81ff">0</span>]);
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">case</span> <span style="color:#ae81ff">2</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">two</span>(<span style="color:#a6e22e">arg</span>[<span style="color:#ae81ff">0</span>], <span style="color:#a6e22e">arg</span>[<span style="color:#ae81ff">1</span>]);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  };
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">A</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Add</span>();
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 测试
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">A</span>.<span style="color:#a6e22e">add</span>()); <span style="color:#75715e">// 10
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">A</span>.<span style="color:#a6e22e">add</span>(<span style="color:#ae81ff">5</span>)); <span style="color:#75715e">// 15
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">A</span>.<span style="color:#a6e22e">add</span>(<span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">7</span>)); <span style="color:#75715e">// 13
+</span></span></span></code></pre></div></section>
+
+  
+  
+
+  
+  
+  
+  <nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
+    
+    <a class="flex w-1/2 items-center p-6 pr-3 no-underline" href="/articles/posts/02/"
+      ><span class="mr-1.5">←</span><span>简单工厂模式</span></a
+    >
+    
+    
+  </nav>
+  
+
+  
+  
+</article>
+
+
+    </main>
+
+    <footer
+  class="opaco mx-auto flex h-[5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+  style="position: relative; z-index: 10;display: none;"
+>
+  <div class="mr-auto">
+    &copy; 2024
+    <a class="link" href="/articles/">灏天阁</a>
+  </div>
+  <a class="link" href="https://yinchuanbo.github.io/" rel="noopener" target="_blank"
+    >Powered by YinHao</a
+  >️ ▷
+</footer>
+
+
+    <div class="img__mask" style="display: none;">
+      <img src="" alt="">
+      <span class="close_btn"></span>
+    </div>
+
+    <script>
+      const imgs = document.images;
+      const imgMask = document.querySelector('.img__mask')
+      const closeBtn = document.querySelector('.close_btn')
+      for (let i = 0; i < imgs.length; i++) {
+        const element = imgs[i];
+        element.onclick = () => {
+          const src = element.src;
+          imgMask.style.display = 'flex';
+          imgMask.querySelector('img').src = src;
+        }
+      }
+      closeBtn.onclick = () => {
+        imgMask.style.display = 'none';
+      }
+    </script>
+  </body>
+</html>

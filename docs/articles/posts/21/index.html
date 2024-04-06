@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+  class="not-ready text-sm lg:text-base"
+  style="--bg: "
+  lang="en"
+>
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  
+  <title>桥接模式 - 灏天阁</title>
+
+  
+  <meta name="theme-color" />
+  
+  <meta name="description" content="多元化对象 // 多维变量类 // 运动单元 function Speed(x, y) { this.x = x; this.y = y; } Speed.prototype.run = function () { console.log(&#34;运动起来&#34;); }; // 着色单元 function Color(cl) { this.color = cl; } Color.prototype.draw = function () { console.log(&#34;绘制色彩&#34;); }; // 变形单元 function Shape(sp) { this.shape = sp; } Shape.prototype.change = function () { console.log(&#34;改变形状&#34;); }; // 说话单元 function Speek(wd) { this.word = wd; } Speek.prototype.say = function () { console.log(&#34;书写字体&#34;); }; 我们想创建一个球类，并且它可以运动，可以着色。" />
+  <meta name="author" content="" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="/articles/main.min.css" />
+
+  
+
+  
+  
+  
+    
+  
+  <link
+    rel="preload"
+    as="image"
+    href="/articles/theme.png"
+  />
+
+  
+  
+  
+  <link rel="preload" as="image" href="/imgs/logo.png" />
+  
+  
+
+  
+
+  
+  <link rel="icon" href="/img/ico.ico" />
+  <link rel="apple-touch-icon" href="/articles/apple-touch-icon.png" />
+  
+  <meta name="generator" content="Hugo 0.108.0">
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="桥接模式" />
+<meta property="og:description" content="多元化对象 // 多维变量类 // 运动单元 function Speed(x, y) { this.x = x; this.y = y; } Speed.prototype.run = function () { console.log(&#34;运动起来&#34;); }; // 着色单元 function Color(cl) { this.color = cl; } Color.prototype.draw = function () { console.log(&#34;绘制色彩&#34;); }; // 变形单元 function Shape(sp) { this.shape = sp; } Shape.prototype.change = function () { console.log(&#34;改变形状&#34;); }; // 说话单元 function Speek(wd) { this.word = wd; } Speek.prototype.say = function () { console.log(&#34;书写字体&#34;); }; 我们想创建一个球类，并且它可以运动，可以着色。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/articles/posts/21/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-08-30T22:06:48+08:00" />
+<meta property="article:modified_time" content="2023-08-30T22:06:48+08:00" />
+
+  
+  <meta itemprop="name" content="桥接模式">
+<meta itemprop="description" content="多元化对象 // 多维变量类 // 运动单元 function Speed(x, y) { this.x = x; this.y = y; } Speed.prototype.run = function () { console.log(&#34;运动起来&#34;); }; // 着色单元 function Color(cl) { this.color = cl; } Color.prototype.draw = function () { console.log(&#34;绘制色彩&#34;); }; // 变形单元 function Shape(sp) { this.shape = sp; } Shape.prototype.change = function () { console.log(&#34;改变形状&#34;); }; // 说话单元 function Speek(wd) { this.word = wd; } Speek.prototype.say = function () { console.log(&#34;书写字体&#34;); }; 我们想创建一个球类，并且它可以运动，可以着色。"><meta itemprop="datePublished" content="2023-08-30T22:06:48+08:00" />
+<meta itemprop="dateModified" content="2023-08-30T22:06:48+08:00" />
+<meta itemprop="wordCount" content="158">
+<meta itemprop="keywords" content="" />
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="桥接模式"/>
+<meta name="twitter:description" content="多元化对象 // 多维变量类 // 运动单元 function Speed(x, y) { this.x = x; this.y = y; } Speed.prototype.run = function () { console.log(&#34;运动起来&#34;); }; // 着色单元 function Color(cl) { this.color = cl; } Color.prototype.draw = function () { console.log(&#34;绘制色彩&#34;); }; // 变形单元 function Shape(sp) { this.shape = sp; } Shape.prototype.change = function () { console.log(&#34;改变形状&#34;); }; // 说话单元 function Speek(wd) { this.word = wd; } Speek.prototype.say = function () { console.log(&#34;书写字体&#34;); }; 我们想创建一个球类，并且它可以运动，可以着色。"/>
+
+  
+  
+</head>
+  <body class="text-black duration-200 ease-out dark:text-white">
+    
+    
+
+    
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100%-10rem)] max-w-3xl px-8 pt-20 dark:prose-invert"
+      id="main"
+    >
+      
+
+<article>
+  <header class="mb-10">
+    <h1 class="!my-0 pb-2.5">
+      桥接模式
+    </h1>
+
+    
+    <div class="text-sm opacity-60">
+      
+      <time>Aug 30, 2023</time>
+      
+      
+      <span class="mx-1">&middot;</span>
+      <span>Yin灏</span>
+    </div>
+    
+  </header>
+
+  <section><h3 id="多元化对象">多元化对象</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// 多维变量类
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 运动单元
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">Speed</span>(<span style="color:#a6e22e">x</span>, <span style="color:#a6e22e">y</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">x</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">x</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">y</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">y</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Speed</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">run</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;运动起来&#34;</span>);
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 着色单元
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">Color</span>(<span style="color:#a6e22e">cl</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">color</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cl</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Color</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">draw</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;绘制色彩&#34;</span>);
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 变形单元
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">Shape</span>(<span style="color:#a6e22e">sp</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">shape</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">sp</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Shape</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">change</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;改变形状&#34;</span>);
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 说话单元
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">Speek</span>(<span style="color:#a6e22e">wd</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">word</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">wd</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Speek</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">say</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;书写字体&#34;</span>);
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>我们想创建一个球类，并且它可以运动，可以着色。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">Ball</span>(<span style="color:#a6e22e">x</span>, <span style="color:#a6e22e">y</span>, <span style="color:#a6e22e">c</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">speed</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Speed</span>(<span style="color:#a6e22e">x</span>, <span style="color:#a6e22e">y</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">color</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Color</span>(<span style="color:#a6e22e">c</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Ball</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">init</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">speed</span>.<span style="color:#a6e22e">run</span>();
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">color</span>.<span style="color:#a6e22e">draw</span>();
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>同时我们想创建一个人物类，他可以运动以及说话。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">People</span>(<span style="color:#a6e22e">x</span>, <span style="color:#a6e22e">y</span>, <span style="color:#a6e22e">f</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">speed</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Speed</span>(<span style="color:#a6e22e">x</span>, <span style="color:#a6e22e">y</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">font</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Speek</span>(<span style="color:#a6e22e">f</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">People</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">init</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">speed</span>.<span style="color:#a6e22e">run</span>();
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">font</span>.<span style="color:#a6e22e">say</span>();
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>我们也可以创建一个精灵类，让它可以运动可以着色可以改变形状。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">Spirite</span>(<span style="color:#a6e22e">x</span>, <span style="color:#a6e22e">y</span>, <span style="color:#a6e22e">c</span>, <span style="color:#a6e22e">s</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">speed</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Speed</span>(<span style="color:#a6e22e">x</span>, <span style="color:#a6e22e">y</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">color</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Color</span>(<span style="color:#a6e22e">c</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">shape</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Shape</span>(<span style="color:#a6e22e">s</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Spirite</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">init</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">speed</span>.<span style="color:#a6e22e">run</span>();
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">color</span>.<span style="color:#a6e22e">draw</span>();
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">shape</span>.<span style="color:#a6e22e">change</span>();
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>当我们想实现一个人物时，我们直接实例化一个人物对象，这样他就可以有用运动和说话的动作了。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">p</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">People</span>(<span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">16</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">p</span>.<span style="color:#a6e22e">init</span>();
+</span></span></code></pre></div></section>
+
+  
+  
+
+  
+  
+  
+  <nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
+    
+    <a class="flex w-1/2 items-center p-6 pr-3 no-underline" href="/articles/posts/22/"
+      ><span class="mr-1.5">←</span><span>组合模式</span></a
+    >
+    
+    
+    <a
+      class="ml-auto flex w-1/2 items-center justify-end p-6 pl-3 no-underline"
+      href="/articles/posts/20/"
+      ><span>装饰者模式</span><span class="ml-1.5">→</span></a
+    >
+    
+  </nav>
+  
+
+  
+  
+</article>
+
+
+    </main>
+
+    <footer
+  class="opaco mx-auto flex h-[5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+  style="position: relative; z-index: 10;display: none;"
+>
+  <div class="mr-auto">
+    &copy; 2024
+    <a class="link" href="/articles/">灏天阁</a>
+  </div>
+  <a class="link" href="https://yinchuanbo.github.io/" rel="noopener" target="_blank"
+    >Powered by YinHao</a
+  >️ ▷
+</footer>
+
+
+    <div class="img__mask" style="display: none;">
+      <img src="" alt="">
+      <span class="close_btn"></span>
+    </div>
+
+    <script>
+      const imgs = document.images;
+      const imgMask = document.querySelector('.img__mask')
+      const closeBtn = document.querySelector('.close_btn')
+      for (let i = 0; i < imgs.length; i++) {
+        const element = imgs[i];
+        element.onclick = () => {
+          const src = element.src;
+          imgMask.style.display = 'flex';
+          imgMask.querySelector('img').src = src;
+        }
+      }
+      closeBtn.onclick = () => {
+        imgMask.style.display = 'none';
+      }
+    </script>
+  </body>
+</html>

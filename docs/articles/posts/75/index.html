@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+  class="not-ready text-sm lg:text-base"
+  style="--bg: "
+  lang="en"
+>
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  
+  <title>转义符 - 灏天阁</title>
+
+  
+  <meta name="theme-color" />
+  
+  <meta name="description" content="JavaScript 中的字符串转义序列 转义符 含义 \b 退格符 \t 水平制表符 \v 垂直制表符 \n 换行符 \r 回车符 \f 换页符 \\ 反斜线字符 \&#39; 单引号 \&quot; 双引号 除了定义转义符之外，当反斜线字符 \ 位于一行的末尾时，也用于表示 连续 的字符串声明，这在声明大段文本块时很有用。
+var aTextBlock = &#34;\ sfhsvfghsdvfghsvdghfvgshdfvghsf\ \ 123456789\ \ &#43;-*/&#34;; console.log(aTextBlock); // &#39;sfhsvfghsdvfghsvdghfvgshdfvghsf 123456789 &#43;-*/&#39; 比较容易被忽视的是：空字符串与其他字符串一样也可以用作对象成员名
+const obj = { &#34; &#34;: 100, }; console.log(obj[&#34; &#34;]); // 100 数值字面量 如果以 0x 或 0X 开始，则表明是一个 十六进制 数值。
+如果以 0o 或 0O 开始，则表明是一个 八进制 数值。
+如果以 0b 或 0B 开始，则表明是一个 二进制 数值。" />
+  <meta name="author" content="" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="/articles/main.min.css" />
+
+  
+
+  
+  
+  
+    
+  
+  <link
+    rel="preload"
+    as="image"
+    href="/articles/theme.png"
+  />
+
+  
+  
+  
+  <link rel="preload" as="image" href="/imgs/logo.png" />
+  
+  
+
+  
+
+  
+  <link rel="icon" href="/img/ico.ico" />
+  <link rel="apple-touch-icon" href="/articles/apple-touch-icon.png" />
+  
+  <meta name="generator" content="Hugo 0.108.0">
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="转义符" />
+<meta property="og:description" content="JavaScript 中的字符串转义序列 转义符 含义 \b 退格符 \t 水平制表符 \v 垂直制表符 \n 换行符 \r 回车符 \f 换页符 \\ 反斜线字符 \&#39; 单引号 \&quot; 双引号 除了定义转义符之外，当反斜线字符 \ 位于一行的末尾时，也用于表示 连续 的字符串声明，这在声明大段文本块时很有用。
+var aTextBlock = &#34;\ sfhsvfghsdvfghsvdghfvgshdfvghsf\ \ 123456789\ \ &#43;-*/&#34;; console.log(aTextBlock); // &#39;sfhsvfghsdvfghsvdghfvgshdfvghsf 123456789 &#43;-*/&#39; 比较容易被忽视的是：空字符串与其他字符串一样也可以用作对象成员名
+const obj = { &#34; &#34;: 100, }; console.log(obj[&#34; &#34;]); // 100 数值字面量 如果以 0x 或 0X 开始，则表明是一个 十六进制 数值。
+如果以 0o 或 0O 开始，则表明是一个 八进制 数值。
+如果以 0b 或 0B 开始，则表明是一个 二进制 数值。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/articles/posts/75/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-10-18T22:39:43+08:00" />
+<meta property="article:modified_time" content="2023-10-18T22:39:43+08:00" />
+
+  
+  <meta itemprop="name" content="转义符">
+<meta itemprop="description" content="JavaScript 中的字符串转义序列 转义符 含义 \b 退格符 \t 水平制表符 \v 垂直制表符 \n 换行符 \r 回车符 \f 换页符 \\ 反斜线字符 \&#39; 单引号 \&quot; 双引号 除了定义转义符之外，当反斜线字符 \ 位于一行的末尾时，也用于表示 连续 的字符串声明，这在声明大段文本块时很有用。
+var aTextBlock = &#34;\ sfhsvfghsdvfghsvdghfvgshdfvghsf\ \ 123456789\ \ &#43;-*/&#34;; console.log(aTextBlock); // &#39;sfhsvfghsdvfghsvdghfvgshdfvghsf 123456789 &#43;-*/&#39; 比较容易被忽视的是：空字符串与其他字符串一样也可以用作对象成员名
+const obj = { &#34; &#34;: 100, }; console.log(obj[&#34; &#34;]); // 100 数值字面量 如果以 0x 或 0X 开始，则表明是一个 十六进制 数值。
+如果以 0o 或 0O 开始，则表明是一个 八进制 数值。
+如果以 0b 或 0B 开始，则表明是一个 二进制 数值。"><meta itemprop="datePublished" content="2023-10-18T22:39:43+08:00" />
+<meta itemprop="dateModified" content="2023-10-18T22:39:43+08:00" />
+<meta itemprop="wordCount" content="103">
+<meta itemprop="keywords" content="" />
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="转义符"/>
+<meta name="twitter:description" content="JavaScript 中的字符串转义序列 转义符 含义 \b 退格符 \t 水平制表符 \v 垂直制表符 \n 换行符 \r 回车符 \f 换页符 \\ 反斜线字符 \&#39; 单引号 \&quot; 双引号 除了定义转义符之外，当反斜线字符 \ 位于一行的末尾时，也用于表示 连续 的字符串声明，这在声明大段文本块时很有用。
+var aTextBlock = &#34;\ sfhsvfghsdvfghsvdghfvgshdfvghsf\ \ 123456789\ \ &#43;-*/&#34;; console.log(aTextBlock); // &#39;sfhsvfghsdvfghsvdghfvgshdfvghsf 123456789 &#43;-*/&#39; 比较容易被忽视的是：空字符串与其他字符串一样也可以用作对象成员名
+const obj = { &#34; &#34;: 100, }; console.log(obj[&#34; &#34;]); // 100 数值字面量 如果以 0x 或 0X 开始，则表明是一个 十六进制 数值。
+如果以 0o 或 0O 开始，则表明是一个 八进制 数值。
+如果以 0b 或 0B 开始，则表明是一个 二进制 数值。"/>
+
+  
+  
+</head>
+  <body class="text-black duration-200 ease-out dark:text-white">
+    
+    
+
+    
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100%-10rem)] max-w-3xl px-8 pt-20 dark:prose-invert"
+      id="main"
+    >
+      
+
+<article>
+  <header class="mb-10">
+    <h1 class="!my-0 pb-2.5">
+      转义符
+    </h1>
+
+    
+    <div class="text-sm opacity-60">
+      
+      <time>Oct 18, 2023</time>
+      
+      
+      <span class="mx-1">&middot;</span>
+      <span>Yin灏</span>
+    </div>
+    
+  </header>
+
+  <section><h2 id="javascript-中的字符串转义序列">JavaScript 中的字符串转义序列</h2>
+<table>
+<thead>
+<tr>
+<th>转义符</th>
+<th style="text-align:center">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>\b</code></td>
+<td style="text-align:center">退格符</td>
+</tr>
+<tr>
+<td><code>\t</code></td>
+<td style="text-align:center">水平制表符</td>
+</tr>
+<tr>
+<td><code>\v</code></td>
+<td style="text-align:center">垂直制表符</td>
+</tr>
+<tr>
+<td><code>\n</code></td>
+<td style="text-align:center">换行符</td>
+</tr>
+<tr>
+<td><code>\r</code></td>
+<td style="text-align:center">回车符</td>
+</tr>
+<tr>
+<td><code>\f</code></td>
+<td style="text-align:center">换页符</td>
+</tr>
+<tr>
+<td><code>\\</code></td>
+<td style="text-align:center">反斜线字符</td>
+</tr>
+<tr>
+<td><code>\'</code></td>
+<td style="text-align:center">单引号</td>
+</tr>
+<tr>
+<td><code>\&quot;</code></td>
+<td style="text-align:center">双引号</td>
+</tr>
+</tbody>
+</table>
+<p>除了定义转义符之外，当反斜线字符 <code>\</code> 位于一行的末尾时，也用于表示 <strong>连续</strong> 的字符串声明，这在声明大段文本块时很有用。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">aTextBlock</span> <span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;\
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">sfhsvfghsdvfghsvdghfvgshdfvghsf\
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> \
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">123456789\
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> \
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">+-*/&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">aTextBlock</span>); <span style="color:#75715e">// &#39;sfhsvfghsdvfghsvdghfvgshdfvghsf 123456789 +-*/&#39;
+</span></span></span></code></pre></div><p><strong>比较容易被忽视的是：空字符串与其他字符串一样也可以用作对象成员名</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">obj</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34; &#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">100</span>,
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">obj</span>[<span style="color:#e6db74">&#34; &#34;</span>]); <span style="color:#75715e">// 100
+</span></span></span></code></pre></div><h2 id="数值字面量">数值字面量</h2>
+<ul>
+<li>
+<p>如果以 <code>0x</code> 或 <code>0X</code> 开始，则表明是一个 <strong>十六进制</strong> 数值。</p>
+</li>
+<li>
+<p>如果以 <code>0o</code> 或 <code>0O</code> 开始，则表明是一个 <strong>八进制</strong> 数值。</p>
+</li>
+<li>
+<p>如果以 <code>0b</code> 或 <code>0B</code> 开始，则表明是一个 <strong>二进制</strong> 数值。</p>
+</li>
+<li>
+<p>其他情况下，表明是一个十进制整数或浮点数。</p>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-SH" data-lang="SH"><span style="display:flex;"><span>1234; <span style="color:#75715e"># 十进制整数</span>
+</span></span><span style="display:flex;"><span>0x1234; <span style="color:#75715e"># 十六进制整数</span>
+</span></span><span style="display:flex;"><span>0o1234; <span style="color:#75715e"># 八进制整数</span>
+</span></span><span style="display:flex;"><span>0b1101; <span style="color:#75715e"># 二进制整数</span>
+</span></span><span style="display:flex;"><span>-0X1234; <span style="color:#75715e"># 负值的十六进制整数</span>
+</span></span><span style="display:flex;"><span>+100; <span style="color:#75715e"># 正值的十进制整数</span>
+</span></span></code></pre></div><p>当一个字面量被识别为十六进制数值时，该字面量由 <code>0~9</code> 和 <code>A~F</code> 字符构成，</p>
+<p>当被识别为八进制数值时，该字面量由 <code>0~7</code> 字符构成，</p>
+</section>
+
+  
+  
+
+  
+  
+  
+  <nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
+    
+    <a class="flex w-1/2 items-center p-6 pr-3 no-underline" href="/articles/posts/77/"
+      ><span class="mr-1.5">←</span><span>20个JS工具函数助力高效开发</span></a
+    >
+    
+    
+    <a
+      class="ml-auto flex w-1/2 items-center justify-end p-6 pl-3 no-underline"
+      href="/articles/posts/74/"
+      ><span>变量的数据类型</span><span class="ml-1.5">→</span></a
+    >
+    
+  </nav>
+  
+
+  
+  
+</article>
+
+
+    </main>
+
+    <footer
+  class="opaco mx-auto flex h-[5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+  style="position: relative; z-index: 10;display: none;"
+>
+  <div class="mr-auto">
+    &copy; 2024
+    <a class="link" href="/articles/">灏天阁</a>
+  </div>
+  <a class="link" href="https://yinchuanbo.github.io/" rel="noopener" target="_blank"
+    >Powered by YinHao</a
+  >️ ▷
+</footer>
+
+
+    <div class="img__mask" style="display: none;">
+      <img src="" alt="">
+      <span class="close_btn"></span>
+    </div>
+
+    <script>
+      const imgs = document.images;
+      const imgMask = document.querySelector('.img__mask')
+      const closeBtn = document.querySelector('.close_btn')
+      for (let i = 0; i < imgs.length; i++) {
+        const element = imgs[i];
+        element.onclick = () => {
+          const src = element.src;
+          imgMask.style.display = 'flex';
+          imgMask.querySelector('img').src = src;
+        }
+      }
+      closeBtn.onclick = () => {
+        imgMask.style.display = 'none';
+      }
+    </script>
+  </body>
+</html>

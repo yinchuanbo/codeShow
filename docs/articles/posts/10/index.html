@@ -1,0 +1,1821 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+  class="not-ready text-sm lg:text-base"
+  style="--bg: "
+  lang="en"
+>
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  
+  <title>ES6到ES12常用新特性 - 灏天阁</title>
+
+  
+  <meta name="theme-color" />
+  
+  <meta name="description" content="ES 是什么？ ES 是 ECMAScript 的缩写，也就是 JavaScript 的标准化规范。ECMAScript 是一种由 Ecma 国际组织制定的脚本语言标准，它定义了 JavaScript 的语法、类型、操作符、对象和函数等基本组件。ES6（也称为 ES2015）是 ECMAScript 的第六个版本，引入了许多新的语言特性和改进，如箭头函数、模板字面量、解构赋值等。随后的版本（如 ES7、ES8 等）也引入了许多新的功能和语法糖，以进一步改进和扩展 JavaScript。
+各版本特性总结 版本 特性 描述 ES6 let 和 const 关键字 引入了块级作用域声明变量的关键字 let 和常量声明变量的关键字 const ES6 函数参数默认值 允许在函数定义时为参数设置默认值 ES6 箭头函数 使用箭头 (=&gt;) 定义函数，简化了函数的写法，并且自动绑定了当前作用域的 this ES6 模板字符串 使用反引号 (`) 来定义字符串，可以在字符串中插入变量或表达式，并支持多行字符串 ES6 扩展操作符 使用扩展操作符 (&hellip;) 可以将数组或对象展开为单独的元素 ES6 解构赋值 可以从数组或对象中提取值并赋给变量 ES6 对象字面量简化 简化了对象的定义和属性的赋值方式 ES6 类 引入了类和继承的概念，使得 JavaScript 更像面向对象编程语言 ES6 模块化 支持使用 import 和 export 关键字进行模块化开发，可以方便地导入和导出模块 ES6 Promise 提供了一种更优雅的方式来处理异步操作，解决了回调地狱的问题 ES6 Symbol 引入了一种新的原始数据类型 Symbol，可以用来创建唯一的标识符 ES6 Map/WeakMap 和 Set/WeakSet 数据结构 提供了更灵活和高效的数据结构，Map 是一种键值对的集合，Set 是一种无重复值的集合，WeakMap 和 WeakSet 是弱引用版本，可以更好地处理内存和垃圾回收的问题 ES6 迭代器（Iterator）和 for&hellip;of 迭代器提供了一种遍历集合的方式，for&hellip;of 循环可以直接遍历可迭代对象 ES6 生成器（Generator） 可以生成多个值的函数，使用 function* 和 yield 关键字定义，可以暂停和恢复函数的执行 ES6 Proxy 提供了拦截和自定义操作的机制，可以代理对目标对象的访问和修改操作 ES6 Reflect 提供了一组静态方法来操作对象，比如获取对象的属性描述符、动态调用对象的方法等 ES6 数组对象扩展 引入了一些新的方法和属性，比如 Array." />
+  <meta name="author" content="" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="/articles/main.min.css" />
+
+  
+
+  
+  
+  
+    
+  
+  <link
+    rel="preload"
+    as="image"
+    href="/articles/theme.png"
+  />
+
+  
+  
+  
+  <link rel="preload" as="image" href="/imgs/logo.png" />
+  
+  
+
+  
+
+  
+  <link rel="icon" href="/img/ico.ico" />
+  <link rel="apple-touch-icon" href="/articles/apple-touch-icon.png" />
+  
+  <meta name="generator" content="Hugo 0.108.0">
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="ES6到ES12常用新特性" />
+<meta property="og:description" content="ES 是什么？ ES 是 ECMAScript 的缩写，也就是 JavaScript 的标准化规范。ECMAScript 是一种由 Ecma 国际组织制定的脚本语言标准，它定义了 JavaScript 的语法、类型、操作符、对象和函数等基本组件。ES6（也称为 ES2015）是 ECMAScript 的第六个版本，引入了许多新的语言特性和改进，如箭头函数、模板字面量、解构赋值等。随后的版本（如 ES7、ES8 等）也引入了许多新的功能和语法糖，以进一步改进和扩展 JavaScript。
+各版本特性总结 版本 特性 描述 ES6 let 和 const 关键字 引入了块级作用域声明变量的关键字 let 和常量声明变量的关键字 const ES6 函数参数默认值 允许在函数定义时为参数设置默认值 ES6 箭头函数 使用箭头 (=&gt;) 定义函数，简化了函数的写法，并且自动绑定了当前作用域的 this ES6 模板字符串 使用反引号 (`) 来定义字符串，可以在字符串中插入变量或表达式，并支持多行字符串 ES6 扩展操作符 使用扩展操作符 (&hellip;) 可以将数组或对象展开为单独的元素 ES6 解构赋值 可以从数组或对象中提取值并赋给变量 ES6 对象字面量简化 简化了对象的定义和属性的赋值方式 ES6 类 引入了类和继承的概念，使得 JavaScript 更像面向对象编程语言 ES6 模块化 支持使用 import 和 export 关键字进行模块化开发，可以方便地导入和导出模块 ES6 Promise 提供了一种更优雅的方式来处理异步操作，解决了回调地狱的问题 ES6 Symbol 引入了一种新的原始数据类型 Symbol，可以用来创建唯一的标识符 ES6 Map/WeakMap 和 Set/WeakSet 数据结构 提供了更灵活和高效的数据结构，Map 是一种键值对的集合，Set 是一种无重复值的集合，WeakMap 和 WeakSet 是弱引用版本，可以更好地处理内存和垃圾回收的问题 ES6 迭代器（Iterator）和 for&hellip;of 迭代器提供了一种遍历集合的方式，for&hellip;of 循环可以直接遍历可迭代对象 ES6 生成器（Generator） 可以生成多个值的函数，使用 function* 和 yield 关键字定义，可以暂停和恢复函数的执行 ES6 Proxy 提供了拦截和自定义操作的机制，可以代理对目标对象的访问和修改操作 ES6 Reflect 提供了一组静态方法来操作对象，比如获取对象的属性描述符、动态调用对象的方法等 ES6 数组对象扩展 引入了一些新的方法和属性，比如 Array." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/articles/posts/10/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-08-29T10:14:46+08:00" />
+<meta property="article:modified_time" content="2023-08-29T10:14:46+08:00" />
+
+  
+  <meta itemprop="name" content="ES6到ES12常用新特性">
+<meta itemprop="description" content="ES 是什么？ ES 是 ECMAScript 的缩写，也就是 JavaScript 的标准化规范。ECMAScript 是一种由 Ecma 国际组织制定的脚本语言标准，它定义了 JavaScript 的语法、类型、操作符、对象和函数等基本组件。ES6（也称为 ES2015）是 ECMAScript 的第六个版本，引入了许多新的语言特性和改进，如箭头函数、模板字面量、解构赋值等。随后的版本（如 ES7、ES8 等）也引入了许多新的功能和语法糖，以进一步改进和扩展 JavaScript。
+各版本特性总结 版本 特性 描述 ES6 let 和 const 关键字 引入了块级作用域声明变量的关键字 let 和常量声明变量的关键字 const ES6 函数参数默认值 允许在函数定义时为参数设置默认值 ES6 箭头函数 使用箭头 (=&gt;) 定义函数，简化了函数的写法，并且自动绑定了当前作用域的 this ES6 模板字符串 使用反引号 (`) 来定义字符串，可以在字符串中插入变量或表达式，并支持多行字符串 ES6 扩展操作符 使用扩展操作符 (&hellip;) 可以将数组或对象展开为单独的元素 ES6 解构赋值 可以从数组或对象中提取值并赋给变量 ES6 对象字面量简化 简化了对象的定义和属性的赋值方式 ES6 类 引入了类和继承的概念，使得 JavaScript 更像面向对象编程语言 ES6 模块化 支持使用 import 和 export 关键字进行模块化开发，可以方便地导入和导出模块 ES6 Promise 提供了一种更优雅的方式来处理异步操作，解决了回调地狱的问题 ES6 Symbol 引入了一种新的原始数据类型 Symbol，可以用来创建唯一的标识符 ES6 Map/WeakMap 和 Set/WeakSet 数据结构 提供了更灵活和高效的数据结构，Map 是一种键值对的集合，Set 是一种无重复值的集合，WeakMap 和 WeakSet 是弱引用版本，可以更好地处理内存和垃圾回收的问题 ES6 迭代器（Iterator）和 for&hellip;of 迭代器提供了一种遍历集合的方式，for&hellip;of 循环可以直接遍历可迭代对象 ES6 生成器（Generator） 可以生成多个值的函数，使用 function* 和 yield 关键字定义，可以暂停和恢复函数的执行 ES6 Proxy 提供了拦截和自定义操作的机制，可以代理对目标对象的访问和修改操作 ES6 Reflect 提供了一组静态方法来操作对象，比如获取对象的属性描述符、动态调用对象的方法等 ES6 数组对象扩展 引入了一些新的方法和属性，比如 Array."><meta itemprop="datePublished" content="2023-08-29T10:14:46+08:00" />
+<meta itemprop="dateModified" content="2023-08-29T10:14:46+08:00" />
+<meta itemprop="wordCount" content="3811">
+<meta itemprop="keywords" content="" />
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="ES6到ES12常用新特性"/>
+<meta name="twitter:description" content="ES 是什么？ ES 是 ECMAScript 的缩写，也就是 JavaScript 的标准化规范。ECMAScript 是一种由 Ecma 国际组织制定的脚本语言标准，它定义了 JavaScript 的语法、类型、操作符、对象和函数等基本组件。ES6（也称为 ES2015）是 ECMAScript 的第六个版本，引入了许多新的语言特性和改进，如箭头函数、模板字面量、解构赋值等。随后的版本（如 ES7、ES8 等）也引入了许多新的功能和语法糖，以进一步改进和扩展 JavaScript。
+各版本特性总结 版本 特性 描述 ES6 let 和 const 关键字 引入了块级作用域声明变量的关键字 let 和常量声明变量的关键字 const ES6 函数参数默认值 允许在函数定义时为参数设置默认值 ES6 箭头函数 使用箭头 (=&gt;) 定义函数，简化了函数的写法，并且自动绑定了当前作用域的 this ES6 模板字符串 使用反引号 (`) 来定义字符串，可以在字符串中插入变量或表达式，并支持多行字符串 ES6 扩展操作符 使用扩展操作符 (&hellip;) 可以将数组或对象展开为单独的元素 ES6 解构赋值 可以从数组或对象中提取值并赋给变量 ES6 对象字面量简化 简化了对象的定义和属性的赋值方式 ES6 类 引入了类和继承的概念，使得 JavaScript 更像面向对象编程语言 ES6 模块化 支持使用 import 和 export 关键字进行模块化开发，可以方便地导入和导出模块 ES6 Promise 提供了一种更优雅的方式来处理异步操作，解决了回调地狱的问题 ES6 Symbol 引入了一种新的原始数据类型 Symbol，可以用来创建唯一的标识符 ES6 Map/WeakMap 和 Set/WeakSet 数据结构 提供了更灵活和高效的数据结构，Map 是一种键值对的集合，Set 是一种无重复值的集合，WeakMap 和 WeakSet 是弱引用版本，可以更好地处理内存和垃圾回收的问题 ES6 迭代器（Iterator）和 for&hellip;of 迭代器提供了一种遍历集合的方式，for&hellip;of 循环可以直接遍历可迭代对象 ES6 生成器（Generator） 可以生成多个值的函数，使用 function* 和 yield 关键字定义，可以暂停和恢复函数的执行 ES6 Proxy 提供了拦截和自定义操作的机制，可以代理对目标对象的访问和修改操作 ES6 Reflect 提供了一组静态方法来操作对象，比如获取对象的属性描述符、动态调用对象的方法等 ES6 数组对象扩展 引入了一些新的方法和属性，比如 Array."/>
+
+  
+  
+</head>
+  <body class="text-black duration-200 ease-out dark:text-white">
+    
+    
+
+    
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100%-10rem)] max-w-3xl px-8 pt-20 dark:prose-invert"
+      id="main"
+    >
+      
+
+<article>
+  <header class="mb-10">
+    <h1 class="!my-0 pb-2.5">
+      ES6到ES12常用新特性
+    </h1>
+
+    
+    <div class="text-sm opacity-60">
+      
+      <time>Aug 29, 2023</time>
+      
+      
+      <span class="mx-1">&middot;</span>
+      <span>Yin灏</span>
+    </div>
+    
+  </header>
+
+  <section><h1 id="es-是什么">ES 是什么？</h1>
+<blockquote>
+<p>ES 是 ECMAScript 的缩写，也就是 JavaScript 的标准化规范。ECMAScript 是一种由 Ecma 国际组织制定的脚本语言标准，它定义了 JavaScript 的语法、类型、操作符、对象和函数等基本组件。ES6（也称为 ES2015）是 ECMAScript 的第六个版本，引入了许多新的语言特性和改进，如箭头函数、模板字面量、解构赋值等。随后的版本（如 ES7、ES8 等）也引入了许多新的功能和语法糖，以进一步改进和扩展 JavaScript。</p>
+</blockquote>
+<h2 id="各版本特性总结">各版本特性总结</h2>
+<table>
+<thead>
+<tr>
+<th>版本</th>
+<th>特性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ES6</td>
+<td>let 和 const 关键字</td>
+<td>引入了块级作用域声明变量的关键字 let 和常量声明变量的关键字 const</td>
+</tr>
+<tr>
+<td>ES6</td>
+<td>函数参数默认值</td>
+<td>允许在函数定义时为参数设置默认值</td>
+</tr>
+<tr>
+<td>ES6</td>
+<td>箭头函数</td>
+<td>使用箭头 (=&gt;) 定义函数，简化了函数的写法，并且自动绑定了当前作用域的 this</td>
+</tr>
+<tr>
+<td>ES6</td>
+<td>模板字符串</td>
+<td>使用反引号 (`) 来定义字符串，可以在字符串中插入变量或表达式，并支持多行字符串</td>
+</tr>
+<tr>
+<td>ES6</td>
+<td>扩展操作符</td>
+<td>使用扩展操作符 (&hellip;) 可以将数组或对象展开为单独的元素</td>
+</tr>
+<tr>
+<td>ES6</td>
+<td>解构赋值</td>
+<td>可以从数组或对象中提取值并赋给变量</td>
+</tr>
+<tr>
+<td>ES6</td>
+<td>对象字面量简化</td>
+<td>简化了对象的定义和属性的赋值方式</td>
+</tr>
+<tr>
+<td>ES6</td>
+<td>类</td>
+<td>引入了类和继承的概念，使得 JavaScript 更像面向对象编程语言</td>
+</tr>
+<tr>
+<td>ES6</td>
+<td>模块化</td>
+<td>支持使用 import 和 export 关键字进行模块化开发，可以方便地导入和导出模块</td>
+</tr>
+<tr>
+<td>ES6</td>
+<td>Promise</td>
+<td>提供了一种更优雅的方式来处理异步操作，解决了回调地狱的问题</td>
+</tr>
+<tr>
+<td>ES6</td>
+<td>Symbol</td>
+<td>引入了一种新的原始数据类型 Symbol，可以用来创建唯一的标识符</td>
+</tr>
+<tr>
+<td>ES6</td>
+<td>Map/WeakMap 和 Set/WeakSet 数据结构</td>
+<td>提供了更灵活和高效的数据结构，Map 是一种键值对的集合，Set 是一种无重复值的集合，WeakMap 和 WeakSet 是弱引用版本，可以更好地处理内存和垃圾回收的问题</td>
+</tr>
+<tr>
+<td>ES6</td>
+<td>迭代器（Iterator）和 for&hellip;of</td>
+<td>迭代器提供了一种遍历集合的方式，for&hellip;of 循环可以直接遍历可迭代对象</td>
+</tr>
+<tr>
+<td>ES6</td>
+<td>生成器（Generator）</td>
+<td>可以生成多个值的函数，使用 function* 和 yield 关键字定义，可以暂停和恢复函数的执行</td>
+</tr>
+<tr>
+<td>ES6</td>
+<td>Proxy</td>
+<td>提供了拦截和自定义操作的机制，可以代理对目标对象的访问和修改操作</td>
+</tr>
+<tr>
+<td>ES6</td>
+<td>Reflect</td>
+<td>提供了一组静态方法来操作对象，比如获取对象的属性描述符、动态调用对象的方法等</td>
+</tr>
+<tr>
+<td>ES6</td>
+<td>数组对象扩展</td>
+<td>引入了一些新的方法和属性，比如 Array.from()、Array.of()、Array.prototype.includes() 等，方便了数组的创建和操作</td>
+</tr>
+<tr>
+<td>ES6</td>
+<td>字符串对象扩展</td>
+<td>引入了一些新的方法和属性，比如 String.prototype.startsWith()、String.prototype.endsWith()、String.prototype.includes() 等，方便了字符串的处理</td>
+</tr>
+<tr>
+<td>ES6</td>
+<td>Math 对象扩展</td>
+<td>引入了一些新的方法和常量，比如 Math.trunc()、Math.sign()、Math.PI 等，提供了更多的数学计算功能</td>
+</tr>
+<tr>
+<td>ES6</td>
+<td>Object 对象扩展</td>
+<td>引入了一些新的方法，比如 Object.assign()、Object.keys()、Object.values() 等，方便了对象的操作</td>
+</tr>
+<tr>
+<td>ES6</td>
+<td>正则对象扩展</td>
+<td>引入了一些新的方法，比如 RegExp.prototype.flags、RegExp.prototype.sticky 等，增强了正则表达式的功能</td>
+</tr>
+<tr>
+<td>ES7</td>
+<td>Array.prototype.includes()方法</td>
+<td>判断数组中是否包含指定的元素，返回布尔值</td>
+</tr>
+<tr>
+<td>ES7</td>
+<td>指数操作符 **</td>
+<td>计算指数幂的运算符</td>
+</tr>
+<tr>
+<td>ES8</td>
+<td>async/await</td>
+<td>提供了更简洁和可读性更好的异步编程方式</td>
+</tr>
+<tr>
+<td>ES8</td>
+<td>Object.entries()</td>
+<td>返回对象自身可枚举属性的键值对数组</td>
+</tr>
+<tr>
+<td>ES8</td>
+<td>Object.values()</td>
+<td>返回对象自身可枚举属性的值组成的数组</td>
+</tr>
+<tr>
+<td>ES8</td>
+<td>Object.getOwnPropertyDescriptors()</td>
+<td>返回指定对象所有自身属性的描述符</td>
+</tr>
+<tr>
+<td>ES8</td>
+<td>padStart()和 padEnd()</td>
+<td>在字符串的开头或结尾填充指定的字符，使字符串达到指定的长度</td>
+</tr>
+<tr>
+<td>ES8</td>
+<td>ShareArrayBuffer</td>
+<td>一种新的共享内存对象，用于在多个线程之间共享数据，但因安全问题暂时在 Chrome、FireFox、Safari 中被禁用</td>
+</tr>
+<tr>
+<td>ES9</td>
+<td>for await&hellip;of</td>
+<td>遍历异步可迭代对象的每个元素</td>
+</tr>
+<tr>
+<td>ES9</td>
+<td>Rest/Spread 属性</td>
+<td>允许使用&hellip;语法来获取剩余的参数或将数组或对象展开为函数的参数</td>
+</tr>
+<tr>
+<td>ES9</td>
+<td>Promise.finally()</td>
+<td>无论 Promise 对象的状态如何，都会执行的回调函数</td>
+</tr>
+<tr>
+<td>ES9</td>
+<td>正则表达式扩展</td>
+<td>引入了一些新的功能，包括反向断言、命名捕获组、s 修饰符(dotAll 模式)、Unicode 属性转义等</td>
+</tr>
+<tr>
+<td>ES10</td>
+<td>数组扁平化方法</td>
+<td>使用 flat() 方法将多维数组转换为一维数组</td>
+</tr>
+<tr>
+<td>ES10</td>
+<td>字符串去除开头和结尾的空格方法</td>
+<td>使用 trimStart() 和 trimEnd() 方法去除字符串开头和结尾的空格</td>
+</tr>
+<tr>
+<td>ES10</td>
+<td>Object.fromEntries</td>
+<td>将键值对数组转换为对象</td>
+</tr>
+<tr>
+<td>ES10</td>
+<td>Symbol.prototype.description</td>
+<td>获取 Symbol 对象的描述</td>
+</tr>
+<tr>
+<td>ES10</td>
+<td>Function.prototype.toString()</td>
+<td>返回函数的源代码字符串</td>
+</tr>
+<tr>
+<td>ES10</td>
+<td>catch 绑定</td>
+<td>允许不使用参数绑定 catch 语句块中的错误对象</td>
+</tr>
+<tr>
+<td>ES10</td>
+<td>JSON.stringify() 增强</td>
+<td>支持序列化 BigInt 类型的数据</td>
+</tr>
+<tr>
+<td>ES11</td>
+<td>globalThis</td>
+<td>提供了一个标准的方式来获取全局对象，不再依赖于具体的环境</td>
+</tr>
+<tr>
+<td>ES11</td>
+<td>BigInt</td>
+<td>引入了一种新的原始数据类型 BigInt，可以表示任意精度的整数</td>
+</tr>
+<tr>
+<td>ES11</td>
+<td>可选链操作符</td>
+<td>允许在访问对象的属性时，如果属性不存在，不会报错，而是返回 undefined</td>
+</tr>
+<tr>
+<td>ES11</td>
+<td>空值合并操作符</td>
+<td>允许在变量为 null 或 undefined 时，使用默认值</td>
+</tr>
+<tr>
+<td>ES11</td>
+<td>String.prototype.matchAll()</td>
+<td>返回一个迭代器，包含了字符串中与正则表达式匹配的所有结果</td>
+</tr>
+<tr>
+<td>ES11</td>
+<td>import()</td>
+<td>动态导入模块的方法</td>
+</tr>
+<tr>
+<td>ES11</td>
+<td>Promise.allSettled()</td>
+<td>返回一个 Promise，等待所有 Promise 完成，并返回一个包含所有 Promise 结果的数组，不会抛出错误</td>
+</tr>
+<tr>
+<td>ES12</td>
+<td>数值分隔符</td>
+<td>使用下划线 (_) 来分隔数值，提高数值的可读性</td>
+</tr>
+<tr>
+<td>ES12</td>
+<td>逻辑赋值运算符</td>
+<td>引入了逻辑赋值运算符，简化了变量赋值的操作</td>
+</tr>
+<tr>
+<td>ES12</td>
+<td>String.prototype.replaceAll()</td>
+<td>替换字符串中的所有匹配项</td>
+</tr>
+<tr>
+<td>ES12</td>
+<td>Promise.any()</td>
+<td>返回一个 Promise，只要有一个 Promise 成功，就会返回该 Promise 的结果，不会等待其他 Promise 的完成</td>
+</tr>
+</tbody>
+</table>
+<p>以上只列举了每个版本的一些主要特性，还有其他一些较小的更新和改进没有在表格中列出。</p>
+<h1 id="es6">ES6</h1>
+<blockquote>
+<p>ES6 是 ECMAScript 2015 的简称，是 ECMAScript 的第六个版本。它在 2015 年发布，也被称为 ES2015。ES6 引入了许多新的语法和功能，大大改进了 JavaScript 的编程体验和开发效率。一些常见的 ES6 特性包括箭头函数、类和模块的支持、模板字符串、解构赋值、默认参数值、扩展运算符、Promise 等。ES6 的新增特性使得 JavaScript 在语法和功能上更加现代化和强大，成为前端开发中使用最广泛的 ECMAScript 版本之一。</p>
+</blockquote>
+<h2 id="let-和-const-关键字">let 和 const 关键字</h2>
+<ul>
+<li>let 关键字用于声明一个块级作用域的变量。与以前的 var 关键字不同，let 声明的变量只在其所在的块级作用域内有效，而不会被<strong>提升</strong>到函数作用域。这意味着在使用 let 声明的变量之前，必须先进行声明，否则会抛出 ReferenceError 错误。</li>
+<li>const 关键字用于声明一个常量，其值在声明后不能再改变。const 声明的变量也是块级作用域的，与 let 类似，但其值是不可变的。</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">true</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">x</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>; <span style="color:#75715e">// 块级作用域变量
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">y</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">20</span>; <span style="color:#75715e">// 块级作用域常量
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">x</span>); <span style="color:#75715e">// 输出: 10
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">y</span>); <span style="color:#75715e">// 输出: 20
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">y</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>; <span style="color:#75715e">//报错: Assignment to constant variable.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">x</span>); <span style="color:#75715e">// 报错: x is not defined
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">y</span>); <span style="color:#75715e">// 报错: y is not defined
+</span></span></span></code></pre></div><h2 id="函数参数默认值">函数参数默认值</h2>
+<ul>
+<li>在 ES6 中，我们可以在函数参数中设置默认值。这意味着如果调用函数时没有为参数提供值，它们将使用默认值。这对于简化函数调用和处理缺少参数的情况非常有用。</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">greet</span>(<span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;World&#34;</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`Hello, </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">name</span><span style="color:#e6db74">}</span><span style="color:#e6db74">!`</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">greet</span>(); <span style="color:#75715e">// 输出：Hello, World!
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">greet</span>(<span style="color:#e6db74">&#34;hhh&#34;</span>); <span style="color:#75715e">// 输出：Hello, hhh!
+</span></span></span></code></pre></div><h2 id="箭头函数">箭头函数</h2>
+<ul>
+<li>箭头函数具有简洁的语法、清晰的上下文、继承外部作用域的 arguments 等特点，适合简化代码、避免 this 指向问题和明确的参数处理，但不适合用于构造函数和需要自己的 this 值的场景。</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// 箭头函数示例
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">add</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">a</span>, <span style="color:#a6e22e">b</span>) =&gt; <span style="color:#a6e22e">a</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">b</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">add</span>(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>)); <span style="color:#75715e">// 输出: 5
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 函数表达式示例
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">multiply</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">a</span>, <span style="color:#a6e22e">b</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">b</span>;
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">multiply</span>(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>)); <span style="color:#75715e">// 输出: 6
+</span></span></span></code></pre></div><h2 id="模板字符串">模板字符串</h2>
+<ul>
+<li>模板字符串是 ES6 中引入的一种新的字符串语法。它允许在字符串中插入变量或表达式，而不需要使用字符串拼接符号。模板字符串使用反引号``包围，并使用<code>${}</code>语法来插入变量或表达式。</li>
+<li>在<code>${}</code>语法中，我们可以放置任何有效的 JavaScript 表达式，这些表达式的值将被插入到字符串中。</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;world&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`hello </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">name</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>); <span style="color:#75715e">// 输出: hello world
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//插入dom标签
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">parent</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">querySelector</span>(<span style="color:#e6db74">&#34;.parent&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">content</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;这是一个div标签&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">templateString</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`&lt;div&gt;</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">content</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&lt;/div&gt;`</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">parent</span>.<span style="color:#a6e22e">innerHTML</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">templateString</span>;
+</span></span></code></pre></div><h2 id="扩展操作符">扩展操作符</h2>
+<ul>
+<li>扩展操作符用于展开可迭代对象（如数组、字符串等），将其元素逐个展开，以便于在函数调用、数组字面量、对象字面量等地方使用。</li>
+<li>在使用扩展操作符时，你需要在要展开的可迭代对象前面加上三个点（&hellip;）。</li>
+</ul>
+<ol>
+<li>展开数组:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">arr1</span> <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>];
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">arr2</span> <span style="color:#f92672">=</span> [...<span style="color:#a6e22e">arr1</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>]; <span style="color:#75715e">// [1, 2, 3, 4, 5]
+</span></span></span></code></pre></div><ol start="2">
+<li>传递参数给函数：</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">sum</span>(<span style="color:#a6e22e">a</span>, <span style="color:#a6e22e">b</span>, <span style="color:#a6e22e">c</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">b</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">c</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">numbers</span> <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">sum</span>(...<span style="color:#a6e22e">numbers</span>); <span style="color:#75715e">// 6
+</span></span></span></code></pre></div><ol start="3">
+<li>浅拷贝数组或对象：</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">arr1</span> <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>];
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">arr2</span> <span style="color:#f92672">=</span> [...<span style="color:#a6e22e">arr1</span>]; <span style="color:#75715e">// [1, 2, 3]
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">obj1</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Alice&#34;</span>, <span style="color:#a6e22e">age</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">20</span> };
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">obj2</span> <span style="color:#f92672">=</span> { ...<span style="color:#a6e22e">obj1</span> }; <span style="color:#75715e">// {name: &#39;Alice&#39;, age: 20}
+</span></span></span></code></pre></div><h2 id="解构赋值">解构赋值</h2>
+<ul>
+<li>ES6 的解构赋值语法允许我们从数组或对象中提取值，并将它们赋给变量。这使得我们可以更简洁地进行变量赋值操作。</li>
+<li>解构赋值可以用于数组和对象。下面是一些示例：</li>
+</ul>
+<ol>
+<li>数组解构赋值：</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">numbers</span> <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>];
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> [<span style="color:#a6e22e">a</span>, <span style="color:#a6e22e">b</span>, <span style="color:#a6e22e">c</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">numbers</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">a</span>); <span style="color:#75715e">// 输出 1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">b</span>); <span style="color:#75715e">// 输出 2
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">c</span>); <span style="color:#75715e">// 输出 3
+</span></span></span></code></pre></div><ol start="2">
+<li>对象解构赋值：</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">person</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;John&#34;</span>, <span style="color:#a6e22e">age</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">20</span> };
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> { <span style="color:#a6e22e">name</span>, <span style="color:#a6e22e">age</span> } <span style="color:#f92672">=</span> <span style="color:#a6e22e">person</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">name</span>); <span style="color:#75715e">// 输出 &#39;John&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">age</span>); <span style="color:#75715e">// 输出 20
+</span></span></span></code></pre></div><p>除了基本的数组和对象解构赋值外，ES6 的解构赋值还提供了一些其他的操作。</p>
+<ol>
+<li>剩余项（Rest）操作符：可以使用&hellip;语法来捕获剩余的项，并将它们赋给一个数组。这在处理变长参数或动态长度的数组时非常有用。例如：</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">numbers</span> <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>];
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> [<span style="color:#a6e22e">a</span>, <span style="color:#a6e22e">b</span>, ...<span style="color:#a6e22e">rest</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">numbers</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">a</span>); <span style="color:#75715e">// 输出 1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">b</span>); <span style="color:#75715e">// 输出 2
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">rest</span>); <span style="color:#75715e">// 输出 [3, 4, 5]
+</span></span></span></code></pre></div><ol start="2">
+<li>解构赋值还支持默认值，当解构的值为 undefined 时，会使用默认值：</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">person</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;John&#34;</span> };
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> { <span style="color:#a6e22e">name</span>, <span style="color:#a6e22e">age</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">18</span> } <span style="color:#f92672">=</span> <span style="color:#a6e22e">person</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">name</span>); <span style="color:#75715e">// 输出 &#39;John&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">age</span>); <span style="color:#75715e">// 输出 18
+</span></span></span></code></pre></div><ol start="3">
+<li>嵌套解构：可以在解构赋值中嵌套使用数组和对象的解构。例如：</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">numbers</span> <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, [<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>], <span style="color:#ae81ff">4</span>];
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> [<span style="color:#a6e22e">a</span>, [<span style="color:#a6e22e">b</span>, <span style="color:#a6e22e">c</span>], <span style="color:#a6e22e">d</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">numbers</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">a</span>); <span style="color:#75715e">// 输出 1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">b</span>); <span style="color:#75715e">// 输出 2
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">c</span>); <span style="color:#75715e">// 输出 3
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">d</span>); <span style="color:#75715e">// 输出 4
+</span></span></span></code></pre></div><ol start="4">
+<li>对象属性别名：可以为解构赋值的变量设置别名，使用冒号来指定别名。例如：</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">person</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;John&#34;</span>, <span style="color:#a6e22e">age</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">20</span> };
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> { <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">fullName</span>, <span style="color:#a6e22e">age</span> } <span style="color:#f92672">=</span> <span style="color:#a6e22e">person</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">fullName</span>); <span style="color:#75715e">// 输出 &#39;John&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">age</span>); <span style="color:#75715e">// 输出 20
+</span></span></span></code></pre></div><ol start="5">
+<li>解构赋值还可以在函数参数中使用，方便地提取函数参数中的值：</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">greet</span>({ <span style="color:#a6e22e">name</span>, <span style="color:#a6e22e">age</span> }) {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`Hello, </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">name</span><span style="color:#e6db74">}</span><span style="color:#e6db74">! You are </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">age</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> years old.`</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">person</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;John&#34;</span>, <span style="color:#a6e22e">age</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">20</span> };
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">greet</span>(<span style="color:#a6e22e">person</span>); <span style="color:#75715e">// 输出 &#39;Hello, John! You are 20 years old.&#39;
+</span></span></span></code></pre></div><h2 id="对象字面量简化">对象字面量简化</h2>
+<ul>
+<li>ES6 引入了一种更简洁的方式来定义对象字面量，即 ES6 对象字面量语法。它提供了一种更方便的方法来定义和初始化对象属性。它是 ES6 中一个非常方便的特性，可以提高代码的可读性和可维护性。</li>
+<li>在 ES6 之前，我们通常使用以下方式定义对象字面量：</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;hhh&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">age</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">18</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">person</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">name</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">age</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">age</span>,
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><ul>
+<li>在 ES6 中，我们可以使用更简洁的语法来定义对象字面量，还可以直接在对象字面量中定义方法，而不需要使用<code>function</code>关键字：</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;hhh&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">age</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">18</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">person</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">name</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">age</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">fun</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name</span>, <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">age</span>);
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h2 id="类">类</h2>
+<ul>
+<li>在 ES5 中，我们没有类的概念，而是通过构造函数和原型链来实现对象：</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">Book</span>(<span style="color:#a6e22e">title</span>, <span style="color:#a6e22e">author</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">title</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">title</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">author</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">author</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Book</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">getSummary</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;书名：&#34;</span> <span style="color:#f92672">+</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">title</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;，作者：&#34;</span> <span style="color:#f92672">+</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">author</span>;
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 创建Book类的实例
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">book1</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Book</span>(<span style="color:#e6db74">&#34;三体&#34;</span>, <span style="color:#e6db74">&#34;刘慈欣&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">book1</span>.<span style="color:#a6e22e">getSummary</span>()); <span style="color:#75715e">// 书名：三体，作者：刘慈欣
+</span></span></span></code></pre></div><ul>
+<li>ES6 引入了类（class）的概念，使得面向对象的编程变得更加直观和易于理解。类是一种蓝图或模板，用于创建具有相同属性和方法的对象。</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Book</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">constructor</span>(<span style="color:#a6e22e">title</span>, <span style="color:#a6e22e">author</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">title</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">title</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">author</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">author</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">getSummary</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">`书名：</span><span style="color:#e6db74">${</span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">title</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> ,作者：</span><span style="color:#e6db74">${</span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">author</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> `</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 创建Book类的实例
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">book1</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Book</span>(<span style="color:#e6db74">&#34;三体&#34;</span>, <span style="color:#e6db74">&#34;刘慈欣&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">book1</span>.<span style="color:#a6e22e">getSummary</span>()); <span style="color:#75715e">//书名：三体 ,作者：刘慈欣
+</span></span></span></code></pre></div><h2 id="模块化">模块化</h2>
+<ul>
+<li>模块化是一种组织和管理 JavaScript 代码的方法，它将代码拆分为独立的模块，每个模块都有自己的作用域和功能。这种方法有助于提高代码的可维护性、可重用性和可扩展性。</li>
+<li>在 ES6 之前，JavaScript 并没有原生的模块化支持。开发人员通常使用一些第三方库或模式来实现模块化，例如<code>CommonJS</code>和<code>AMD</code>。</li>
+<li>然而，ES6 引入了原生的模块化系统，通过<code>import</code>和<code>export</code>关键字来实现。下面是一个示例：</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// utils.js
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 导出一个常量
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">PI</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">3.14</span>;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 导出一个函数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">area</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">r</span>) =&gt; <span style="color:#a6e22e">PI</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">r</span> <span style="color:#f92672">**</span> <span style="color:#ae81ff">2</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// main.js
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 导入常量和函数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">PI</span>, <span style="color:#a6e22e">area</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;./utils.js&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">PI</span>, <span style="color:#a6e22e">area</span>(<span style="color:#ae81ff">3</span>)); <span style="color:#75715e">//3.14 28.26
+</span></span></span></code></pre></div><h2 id="promise">Promise</h2>
+<ul>
+<li>Promise 是一个表示<strong>异步操作</strong>最终完成或失败的对象。</li>
+<li>它可以有三种状态：
+<ul>
+<li><code>pending</code>（进行中）</li>
+<li><code>resolved</code>（已完成）</li>
+<li><code>rejected</code>（已失败）</li>
+</ul>
+</li>
+<li>创建一个 Promise 对象：<code>new Promise((resolve, reject) =&gt; {})</code>
+<ul>
+<li><strong>resolve</strong>：将状态从<code>进行中</code>变为<code>完成</code>，在异步操作成功时调用，并将异步操作的结果作为参数传递出去</li>
+<li><strong>reject</strong>：将状态从<code>进行中</code>变为<code>失败</code>，在异步操作失败时调用，并将异步操作的错误作为参数传递出去</li>
+</ul>
+</li>
+<li>主要方法：
+<ul>
+<li><strong>then()</strong>：用于处理异步操作成功的情况</li>
+<li><strong>catch()</strong>：用于处理异步操作失败的情况。</li>
+<li><strong>Promise.all()</strong>：接收一个<strong>每个元素都是一个 Promise 对象</strong>的可迭代对象（如数组）作为参数，它会返回一个新的 Promise 对象，该 Promise 对象的状态取决于传入的所有 Promise 对象的状态（其中任何一个 Promise 对象状态为 rejected 状态，返回的 Promise 对象状态会立即变为 rejected），返回的 Promise 对象的结果是有序的，与传入的 Promise 对象的顺序相同。</li>
+<li><strong>Promise.race()</strong>：和<code>Promise.all()</code>方法类似，但只要有一个 Promise 对象的状态变为 resolved 或 rejected，它就会返回该 Promise 对象的结果。</li>
+<li><strong>Promise.resolve()</strong> ：将对象转为状态为<code>resolved</code>的 Promise 对象(等价于<code>new Promise(resolve =&gt; resolve())</code>)</li>
+<li><strong>Promise.reject()</strong> ：将对象转为状态为<code>rejected</code>的 Promise 对象(等价于<code>new Promise((resolve, reject) =&gt; reject())</code>)</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">myPromise</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Promise((<span style="color:#a6e22e">resolve</span>, <span style="color:#a6e22e">reject</span>) =&gt; {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 通过setTimeout模拟了一个耗时1秒的异步操作
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">setTimeout</span>(() =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">randomNumber</span> <span style="color:#f92672">=</span> Math.<span style="color:#a6e22e">random</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">randomNumber</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0.5</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// 操作成功，调用resolve函数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#a6e22e">resolve</span>(<span style="color:#a6e22e">randomNumber</span>);
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// 操作失败，调用reject函数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#a6e22e">reject</span>(<span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">&#34;操作失败&#34;</span>));
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }, <span style="color:#ae81ff">1000</span>);
+</span></span><span style="display:flex;"><span>});
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 使用then方法处理Promise的结果
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">myPromise</span>
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">then</span>((<span style="color:#a6e22e">result</span>) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;操作成功:&#34;</span>, <span style="color:#a6e22e">result</span>);
+</span></span><span style="display:flex;"><span>  })
+</span></span><span style="display:flex;"><span>  .<span style="color:#66d9ef">catch</span>((<span style="color:#a6e22e">error</span>) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;操作失败:&#34;</span>, <span style="color:#a6e22e">error</span>);
+</span></span><span style="display:flex;"><span>  });
+</span></span></code></pre></div><ul>
+<li><code>Promise.all()</code>和<code>Promise.race()</code></li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">promise1</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Promise((<span style="color:#a6e22e">resolve</span>, <span style="color:#a6e22e">reject</span>) =&gt; {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">setTimeout</span>(() =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">resolve</span>(<span style="color:#e6db74">&#34;Promise 1&#34;</span>);
+</span></span><span style="display:flex;"><span>  }, <span style="color:#ae81ff">2000</span>);
+</span></span><span style="display:flex;"><span>});
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">promise2</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Promise((<span style="color:#a6e22e">resolve</span>, <span style="color:#a6e22e">reject</span>) =&gt; {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">setTimeout</span>(() =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">resolve</span>(<span style="color:#e6db74">&#34;Promise 2&#34;</span>);
+</span></span><span style="display:flex;"><span>  }, <span style="color:#ae81ff">1000</span>);
+</span></span><span style="display:flex;"><span>});
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">promise3</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Promise((<span style="color:#a6e22e">resolve</span>, <span style="color:#a6e22e">reject</span>) =&gt; {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">setTimeout</span>(() =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">resolve</span>(<span style="color:#e6db74">&#34;Promise 3&#34;</span>);
+</span></span><span style="display:flex;"><span>  }, <span style="color:#ae81ff">3000</span>);
+</span></span><span style="display:flex;"><span>});
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Promise.<span style="color:#a6e22e">all</span>([<span style="color:#a6e22e">promise1</span>, <span style="color:#a6e22e">promise2</span>, <span style="color:#a6e22e">promise3</span>])
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">then</span>((<span style="color:#a6e22e">results</span>) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">results</span>); <span style="color:#75715e">// [&#39;Promise 1&#39;, &#39;Promise 2&#39;, &#39;Promise 3&#39;]
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  })
+</span></span><span style="display:flex;"><span>  .<span style="color:#66d9ef">catch</span>((<span style="color:#a6e22e">error</span>) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#a6e22e">error</span>);
+</span></span><span style="display:flex;"><span>  });
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Promise.<span style="color:#a6e22e">race</span>([<span style="color:#a6e22e">promise1</span>, <span style="color:#a6e22e">promise2</span>, <span style="color:#a6e22e">promise3</span>])
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">then</span>((<span style="color:#a6e22e">results</span>) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">results</span>); <span style="color:#75715e">// Promise 2
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  })
+</span></span><span style="display:flex;"><span>  .<span style="color:#66d9ef">catch</span>((<span style="color:#a6e22e">error</span>) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#a6e22e">error</span>);
+</span></span><span style="display:flex;"><span>  });
+</span></span></code></pre></div><ul>
+<li><code>Promise.resolve()</code>和<code>Promise.reject()</code></li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// 将一个值转化为 resolved 的 Promise 对象
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">promise1</span> <span style="color:#f92672">=</span> Promise.<span style="color:#a6e22e">resolve</span>(<span style="color:#ae81ff">42</span>);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 将一个值转化为 rejected 的 Promise 对象
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">promise2</span> <span style="color:#f92672">=</span> Promise.<span style="color:#a6e22e">reject</span>(<span style="color:#ae81ff">42</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">promise1</span>.<span style="color:#a6e22e">then</span>((<span style="color:#a6e22e">result</span>) =&gt; {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">result</span>); <span style="color:#75715e">// 输出：42
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>});
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">promise2</span>.<span style="color:#66d9ef">catch</span>((<span style="color:#a6e22e">error</span>) =&gt; {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">error</span>); <span style="color:#75715e">// 输出：42
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>});
+</span></span></code></pre></div><h2 id="symbol">Symbol</h2>
+<ul>
+<li>在 ES6 之前对象属性名都是字符串，这容易造成属性名的冲突。ES6 引入了一种新的原始数据类型<code>Symbol</code>，表示独一无二的值。它属于 JavaScript 语言的原生数据类型之一。</li>
+<li>Symbol 是一种独一无二且不可修改的数据类型，可以用作对象属性的唯一标识符。它被设计用于创建对象属性的私有成员或者用作常量。</li>
+</ul>
+<p>使用<code>Symbol()</code>函数可以创建一个新的 Symbol。每次调用<code>Symbol()</code>函数都会返回一个全新且不相等的 Symbol。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">mySymbol1</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Symbol</span>();
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">mySymbol2</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Symbol</span>(<span style="color:#e6db74">&#34;hhh&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">mySymbol1</span>); <span style="color:#75715e">// symbol
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">mySymbol2</span>.<span style="color:#a6e22e">toString</span>()); <span style="color:#75715e">// Symbol(hhh)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">mySymbol2</span> <span style="color:#f92672">==</span> <span style="color:#a6e22e">Symbol</span>(<span style="color:#e6db74">&#34;hhh&#34;</span>)); <span style="color:#75715e">// false
+</span></span></span></code></pre></div><p>Symbol 可以作为对象的属性名来定义对象的私有成员。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">obj</span> <span style="color:#f92672">=</span> {};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">privateMember</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Symbol</span>();
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">obj</span>[<span style="color:#a6e22e">privateMember</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;私有成员&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">obj</span>[<span style="color:#a6e22e">privateMember</span>]); <span style="color:#75715e">// &#34;私有成员&#34;
+</span></span></span></code></pre></div><p>可以通过<code>Object.getOwnPropertySymbols()</code>方法获取对象的所有 Symbol 属性。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">symbols</span> <span style="color:#f92672">=</span> Object.<span style="color:#a6e22e">getOwnPropertySymbols</span>(<span style="color:#a6e22e">obj</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">symbols</span>); <span style="color:#75715e">// [Symbol()]
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">obj</span>[<span style="color:#a6e22e">symbols</span>[<span style="color:#ae81ff">0</span>]]); <span style="color:#75715e">// &#34;私有成员&#34;
+</span></span></span></code></pre></div><h2 id="mapweakmap-和-setweakset-数据结构">Map/WeakMap 和 Set/WeakSet 数据结构</h2>
+<h3 id="map">Map</h3>
+<ul>
+<li>Map 是一种键值对的集合(<strong>Hash 结构</strong>)，它类似于对象，但有一些不同之处。Map 的键可以是任意类型的值，包括对象和函数，而对象只能使用字符串作为键。此外，Map 的键值对是有序的，插入顺序决定了键值对的顺序。</li>
+<li>方法
+<ul>
+<li><strong>get()</strong> ：返回键值对</li>
+<li><strong>set()</strong> ：添加键值对，返回实例</li>
+<li><strong>delete()</strong> ：删除键值对，返回布尔值</li>
+<li><strong>has()</strong> ：检查键值对，返回布尔值</li>
+<li><strong>clear()</strong> ：清除所有成员</li>
+<li><strong>keys()</strong> ：返回以键为遍历器的对象</li>
+<li><strong>values()</strong> ：返回以值为遍历器的对象</li>
+<li><strong>entries()</strong> ：返回以键和值为遍历器的对象</li>
+<li><strong>forEach()</strong> ：使用回调函数遍历每个成员</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// 创建一个空的Map
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">map</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Map</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 添加键值对
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">map</span>.<span style="color:#a6e22e">set</span>(<span style="color:#e6db74">&#34;name&#34;</span>, <span style="color:#e6db74">&#34;John&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">map</span>.<span style="color:#a6e22e">set</span>(<span style="color:#e6db74">&#34;age&#34;</span>, <span style="color:#ae81ff">30</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 获取值
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">map</span>.<span style="color:#a6e22e">get</span>(<span style="color:#e6db74">&#34;name&#34;</span>)); <span style="color:#75715e">// John
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 检查是否包含某个键
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">map</span>.<span style="color:#a6e22e">has</span>(<span style="color:#e6db74">&#34;age&#34;</span>)); <span style="color:#75715e">// true
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 删除键值对
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">map</span>.<span style="color:#66d9ef">delete</span>(<span style="color:#e6db74">&#34;age&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//返回长度
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">map</span>.<span style="color:#a6e22e">size</span>); <span style="color:#75715e">// 1
+</span></span></span></code></pre></div><h3 id="weakmap">WeakMap</h3>
+<ul>
+<li>WeakMap 也是一种键值对的集合，但是<strong>只接受对象</strong>作为键，不接受其他类型的数据。WeakMap 中的键是弱引用的，这意味着如果键对象没有其他引用，它会被垃圾回收机制回收，并且对应的键值对也会从 WeakMap 中被自动移除。</li>
+<li>应用
+<ul>
+<li><strong>储存 DOM 节点</strong>：DOM 节点被移除时自动释放此成员键，不用担心这些节点从文档移除时会引发内存泄漏</li>
+<li><strong>部署私有属性</strong>：内部属性是实例的弱引用，删除实例时它们也随之消失，不会造成内存泄漏</li>
+</ul>
+</li>
+<li>方法
+<ul>
+<li><strong>get()</strong> ：返回键值对</li>
+<li><strong>set()</strong> ：添加键值对，返回实例</li>
+<li><strong>delete()</strong> ：删除键值对，返回布尔值</li>
+<li><strong>has()</strong> ：检查键值对，返回布尔值</li>
+</ul>
+</li>
+</ul>
+<h3 id="set">Set</h3>
+<ul>
+<li>Set 是一种不重复值的集合，类似于数组，但是它的值是唯一的，不会重复。Set 可以存储任意类型的值，包括原始类型和对象。</li>
+<li>方法
+<ul>
+<li><strong>add()</strong> ：添加值，返回实例</li>
+<li><strong>delete()</strong> ：删除值，返回布尔值</li>
+<li><strong>has()</strong> ：检查值，返回布尔值</li>
+<li><strong>clear()</strong> ：清除所有成员</li>
+<li><strong>keys()</strong> ：返回以属性值为遍历器的对象</li>
+<li><strong>values()</strong> ：返回以属性值为遍历器的对象</li>
+<li><strong>entries()</strong> ：返回以属性值和属性值为遍历器的对象</li>
+<li><strong>forEach()</strong> ：使用回调函数遍历每个成员</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// 创建一个空的Set
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">set</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Set</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 添加值
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">set</span>.<span style="color:#a6e22e">add</span>(<span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">set</span>.<span style="color:#a6e22e">add</span>(<span style="color:#ae81ff">2</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">set</span>.<span style="color:#a6e22e">add</span>(<span style="color:#ae81ff">2</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">set</span>.<span style="color:#a6e22e">add</span>(<span style="color:#ae81ff">3</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 检查是否包含某个值
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">set</span>.<span style="color:#a6e22e">has</span>(<span style="color:#ae81ff">2</span>)); <span style="color:#75715e">// true
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 删除值
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">set</span>.<span style="color:#66d9ef">delete</span>(<span style="color:#ae81ff">3</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//返回实例成员总数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">set</span>.<span style="color:#a6e22e">size</span>); <span style="color:#75715e">// 2
+</span></span></span></code></pre></div><h3 id="weakset">WeakSet</h3>
+<ul>
+<li>WeakSet 是一种弱引用集合，它只能存储对象类型的值，并且这些对象是弱引用的。这意味着如果一个对象在 WeakSet 中没有任何其他引用，那么这个对象将会被垃圾回收。由于 WeakSet 的成员是弱引用，因此无法迭代，也无法获取其中的大小或者清空它。</li>
+<li>应用
+<ul>
+<li><strong>储存 DOM 节点</strong>：DOM 节点被移除时自动释放此成员键，不用担心这些节点从文档移除时会引发内存泄漏</li>
+<li><strong>临时存放一组对象或存放跟对象绑定的信息</strong>：只要这些对象在外部消失，它在<code>WeakSet结构</code>中的引用就会自动被垃圾回收</li>
+</ul>
+</li>
+<li>方法
+<ul>
+<li><strong>add()</strong> ：添加值，返回实例</li>
+<li><strong>delete()</strong> ：删除值，返回布尔值</li>
+<li><strong>has()</strong> ：检查值，返回布尔值</li>
+</ul>
+</li>
+</ul>
+<h2 id="迭代器iterator和-forof">迭代器（Iterator）和 for&hellip;of</h2>
+<h3 id="迭代器iterator">迭代器（Iterator）</h3>
+<ul>
+<li>迭代器（Iterator）是一种迭代的机制，为各种不同的数据结构提供统一的访问机制。任何数据结构只要内部有 Iterator 接口，就可以完成依次迭代操作。</li>
+<li>默认的 Iterator 接口部署在数据结构的<code>Symbol.iterator</code>属性，或者说，一个数据结构只要具有<code>Symbol.iterator</code>属性，就可以认为是“<strong>可遍历的</strong>”。</li>
+<li>原生具备 Iterator 接口的数据结构如下：
+<ul>
+<li>Array</li>
+<li>Map</li>
+<li>Set</li>
+<li>String</li>
+<li>TypedArray</li>
+<li>函数的 arguments 对象</li>
+<li>NodeList 对象</li>
+</ul>
+</li>
+<li>迭代器对象方法：
+<ul>
+<li><strong>next()</strong> ：下一步操作，返回<code>{ value,done }</code>(必须部署)</li>
+<li><strong>return()</strong> ：<code>for-of</code>提前退出调用，返回<code>{ done: true }</code></li>
+<li><strong>throw()</strong> ：不使用，配合<code>Generator函数</code>使用</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">arr</span> <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;a&#34;</span>, <span style="color:#e6db74">&#34;b&#34;</span>, <span style="color:#e6db74">&#34;c&#34;</span>];
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">iter</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">arr</span>[<span style="color:#a6e22e">Symbol</span>.<span style="color:#a6e22e">iterator</span>]();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">iter</span>.<span style="color:#a6e22e">next</span>(); <span style="color:#75715e">// { value: &#39;a&#39;, done: false }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">iter</span>.<span style="color:#a6e22e">next</span>(); <span style="color:#75715e">// { value: &#39;b&#39;, done: false }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">iter</span>.<span style="color:#a6e22e">next</span>(); <span style="color:#75715e">// { value: &#39;c&#39;, done: false }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">iter</span>.<span style="color:#a6e22e">next</span>(); <span style="color:#75715e">// { value: undefined, done: true }
+</span></span></span></code></pre></div><h3 id="forof-循环">for&hellip;of 循环</h3>
+<ul>
+<li><code>for...of</code>循环用于遍历可迭代对象（例如数组、字符串、Set、Map 等），它会迭代对象中的每个元素并执行指定的代码块。</li>
+</ul>
+<p>使用<code>for...of</code>循环遍历数组：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">arr</span> <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">element</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">arr</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">element</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 输出：
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 2
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 3
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 4
+</span></span></span></code></pre></div><p>使用<code>for...of</code>循环遍历字符串：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">str</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Hello&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">let</span> <span style="color:#66d9ef">char</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">str</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">char</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 输出：
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// H
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// e
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// l
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// l
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// o
+</span></span></span></code></pre></div><p><code>for...of</code>循环遍历 Set 和 Map 的元素：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">set</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Set</span>([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>]);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">value</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">set</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">value</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 输出：
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 2
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 3
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">map</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Map</span>([
+</span></span><span style="display:flex;"><span>  [<span style="color:#e6db74">&#34;name&#34;</span>, <span style="color:#e6db74">&#34;John&#34;</span>],
+</span></span><span style="display:flex;"><span>  [<span style="color:#e6db74">&#34;age&#34;</span>, <span style="color:#ae81ff">30</span>],
+</span></span><span style="display:flex;"><span>]);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">let</span> [<span style="color:#a6e22e">key</span>, <span style="color:#a6e22e">value</span>] <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">map</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">key</span>, <span style="color:#a6e22e">value</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 输出：
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// name John
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// age 30
+</span></span></span></code></pre></div><h2 id="生成器generator">生成器（Generator）</h2>
+<ul>
+<li>Generator 函数在语法上，可以把它理解成一个状态机，内部封装了多个内部状态。</li>
+<li>执行 Generator 函数会返回一个遍历器对象，也就是说，Generator 函数除了状态机，还是一个遍历器对象生成函数。返回的遍历器对象，可以依次遍历 Generator 函数内部的每一个状态。</li>
+<li>形式上，Generator 函数是一个普通函数，但是有两个特征：
+<ul>
+<li><code>function</code>关键字与函数名之间有一个星号；</li>
+<li>函数体内部使用<code>yield</code>表达式，定义不同的内部状态</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">function</span><span style="color:#f92672">*</span> <span style="color:#a6e22e">helloWorldGenerator</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">yield</span> <span style="color:#e6db74">&#34;hello&#34;</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">yield</span> <span style="color:#e6db74">&#34;world&#34;</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;ending&#34;</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">hw</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">helloWorldGenerator</span>();
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">hw</span>.<span style="color:#a6e22e">next</span>()); <span style="color:#75715e">// { value: &#39;hello&#39;, done: false }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">hw</span>.<span style="color:#a6e22e">next</span>()); <span style="color:#75715e">// { value: &#39;world&#39;, done: false }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">hw</span>.<span style="color:#a6e22e">next</span>()); <span style="color:#75715e">// { value: &#39;ending&#39;, done: true }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">hw</span>.<span style="color:#a6e22e">next</span>()); <span style="color:#75715e">// { value: undefined, done: true }
+</span></span></span></code></pre></div><h2 id="proxy">Proxy</h2>
+<ul>
+<li><code>Proxy</code> 用于修改某些操作的默认行为，等同于在语言层面做出修改，所以属于一种“<strong>元编程</strong>”（meta programming），即对编程语言进行编程。</li>
+<li><code>Proxy</code> 可以理解成，在目标对象之前架设一层“<strong>拦截</strong>”，外界对该对象的访问，都必须先通过这层拦截，因此提供了一种机制，可以对外界的访问进行过滤和改写。<code>Proxy</code> 这个词的原意是代理，用在这里表示由它来“<strong>代理</strong>”某些操作，可以译为“<strong>代理器</strong>”。</li>
+<li>使用：<code>const proxy = new Proxy(target, handler)</code>其中<strong>target</strong>是拦截的目标对象，<strong>handler</strong>是定制拦截行为</li>
+<li>常见的拦截方式
+<ul>
+<li><strong>get(target, propKey, receiver)</strong> ：用于拦截某个属性的读取操作</li>
+<li><strong>set(target, propKey, value, receiver)</strong> ：用来拦截某个属性的赋值操作，返回布尔值</li>
+<li><strong>has(target, propKey)</strong> ：拦截对象属性检查<code>k in obj</code>，返回布尔值</li>
+<li><strong>deleteProperty(target, propKey)</strong> ：拦截对象属性删除<code>delete obj[k]</code>，返回布尔值</li>
+<li><strong>defineProperty(target, propKey, propDesc)</strong> ：拦截对象属性定义<code>Object.defineProperty()</code>、<code>Object.defineProperties()</code>，返回布尔值</li>
+<li><strong>ownKeys(target)</strong> ：拦截对象属性遍历<code>for-in</code>、<code>Object.keys()</code>、<code>Object.getOwnPropertyNames()</code>、<code>Object.getOwnPropertySymbols()</code>，返回数组</li>
+<li><strong>apply(target, object, args)</strong> ：拦截 Proxy 实例作为函数调用<code>proxy()</code>、<code>proxy.apply()</code>、<code>proxy.call()</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="reflect">Reflect</h2>
+<ul>
+<li>在 ES5 及之前的版本中，对于对象的操作通常是通过<code>Object</code>的方法来完成，比如<code>Object.defineProperty()</code>、<code>Object.create()</code>等。这些方法在使用上存在一些不一致和不直观的地方，比如使用<code>Object.defineProperty()</code>来定义属性时，如果属性已经存在，会抛出错误，而<code>Reflect.defineProperty()</code>则会返回<code>false</code>表示定义失败。</li>
+<li>es6 引入的<code>Reflect</code>是一个内置的对象，它提供了一组静态方法，用于操作对象。<code>Reflect</code>的方法和一些<code>Object</code>的方法具有相似的功能，但是使用<code>Reflect</code>方法可以更加简洁和直观；使用<code>Reflect</code>方法进行操作时，返回值可以告诉我们操作是否成功，而不是通过抛出错误来表示操作失败。</li>
+<li><code>Reflect</code>对象常用方法：
+<ul>
+<li><strong>construct(target, argumentsList)</strong>：用于创建一个类的实例对象。</li>
+<li><strong>get(target, propKey, receiver)</strong>：获取对象的属性值。</li>
+<li><strong>set(target, propKey, value, receiver)</strong>：设置对象的属性值。</li>
+<li><strong>has(target, propKey)</strong>：判断对象是否具有某个属性。</li>
+<li><strong>deleteProperty(target, propKey)</strong>：删除对象的属性。</li>
+<li><strong>apply(function, thisArg, args)</strong>：调用一个函数，并传入指定的参数。</li>
+<li><strong>defineProperty(target, propKey, attributes)</strong>：定义对象的属性。</li>
+</ul>
+</li>
+<li>利用<code>Reflect</code>和<code>Proxy</code>写一个观察者模式</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Observable</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">constructor</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> {}; <span style="color:#75715e">// 存储数据
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">observers</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Set</span>(); <span style="color:#75715e">// 存储观察者
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">addObserver</span>(<span style="color:#a6e22e">observer</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">observers</span>.<span style="color:#a6e22e">add</span>(<span style="color:#a6e22e">observer</span>); <span style="color:#75715e">// 添加观察者到observers集合中
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">removeObserver</span>(<span style="color:#a6e22e">observer</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">observers</span>.<span style="color:#66d9ef">delete</span>(<span style="color:#a6e22e">observer</span>); <span style="color:#75715e">// 从observers集合中删除观察者
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">notifyObservers</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">observer</span> <span style="color:#66d9ef">of</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">observers</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">observer</span>.<span style="color:#a6e22e">update</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">data</span>); <span style="color:#75715e">// 通知观察者更新数据
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">setData</span>(<span style="color:#a6e22e">key</span>, <span style="color:#a6e22e">value</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">Reflect</span>.<span style="color:#a6e22e">set</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">data</span>, <span style="color:#a6e22e">key</span>, <span style="color:#a6e22e">value</span>); <span style="color:#75715e">// 使用Reflect设置数据
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">notifyObservers</span>(); <span style="color:#75715e">// 通知观察者更新数据
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Observer</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">constructor</span>(<span style="color:#a6e22e">name</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">name</span>; <span style="color:#75715e">// 观察者名称
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">update</span>(<span style="color:#a6e22e">data</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> received data:`</span>, <span style="color:#a6e22e">data</span>); <span style="color:#75715e">// 观察者接收到数据并输出
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 创建可观察对象
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">subject</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Observable</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 创建观察者对象
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">observer1</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Observer</span>(<span style="color:#e6db74">&#34;Observer 1&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">observer2</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Observer</span>(<span style="color:#e6db74">&#34;Observer 2&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 将观察者对象添加到主题对象中
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">subject</span>.<span style="color:#a6e22e">addObserver</span>(<span style="color:#a6e22e">observer1</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">subject</span>.<span style="color:#a6e22e">addObserver</span>(<span style="color:#a6e22e">observer2</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 设置数据并通知观察者
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">subject</span>.<span style="color:#a6e22e">setData</span>(<span style="color:#e6db74">&#34;name&#34;</span>, <span style="color:#e6db74">&#34;Jack&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">subject</span>.<span style="color:#a6e22e">setData</span>(<span style="color:#e6db74">&#34;age&#34;</span>, <span style="color:#ae81ff">25</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 输出结果：
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// Observer 1 received data: { name: &#39;Jack&#39; }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// Observer 2 received data: { name: &#39;Jack&#39; }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// Observer 1 received data: { name: &#39;Jack&#39;, age: 25 }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// Observer 2 received data: { name: &#39;Jack&#39;, age: 25 }
+</span></span></span></code></pre></div><h2 id="数组对象扩展">数组对象扩展</h2>
+<ol>
+<li><code>Array.prototype.from()</code>: 将类数组对象或可迭代对象转换为数组。</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">arrayLike</span> <span style="color:#f92672">=</span> { <span style="color:#ae81ff">0</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;a&#34;</span>, <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;b&#34;</span>, <span style="color:#ae81ff">2</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;c&#34;</span>, <span style="color:#a6e22e">length</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">3</span> };
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">array</span> <span style="color:#f92672">=</span> Array.<span style="color:#a6e22e">from</span>(<span style="color:#a6e22e">arrayLike</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">array</span>); <span style="color:#75715e">// [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]
+</span></span></span></code></pre></div><ol start="2">
+<li><code>Array.prototype.of()</code>: 根据传入的参数创建一个新数组。</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">array</span> <span style="color:#f92672">=</span> Array.<span style="color:#66d9ef">of</span>(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">array</span>); <span style="color:#75715e">// [1, 2, 3]
+</span></span></span></code></pre></div><ol start="3">
+<li><code>Array.prototype.find()</code>: 返回数组中满足条件的第一个元素。</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">array</span> <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>];
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">found</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">array</span>.<span style="color:#a6e22e">find</span>((<span style="color:#a6e22e">element</span>) =&gt; <span style="color:#a6e22e">element</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">3</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">found</span>); <span style="color:#75715e">// 4
+</span></span></span></code></pre></div><ol start="4">
+<li><code>Array.prototype.findIndex()</code>: 返回数组中满足条件的第一个元素的索引。</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">array</span> <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>];
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">index</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">array</span>.<span style="color:#a6e22e">findIndex</span>((<span style="color:#a6e22e">element</span>) =&gt; <span style="color:#a6e22e">element</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">3</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">index</span>); <span style="color:#75715e">// 3
+</span></span></span></code></pre></div><ol start="5">
+<li><code>Array.prototype.fill()</code>: 用指定的值填充数组。</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">array</span> <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>];
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">array</span>.<span style="color:#a6e22e">fill</span>(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">array</span>); <span style="color:#75715e">// [1, 0, 0, 4, 5]
+</span></span></span></code></pre></div><ol start="6">
+<li><code>Array.prototype.copyWithin()</code>：用于将数组中的一部分元素复制到指定位置，覆盖原有的元素。</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">arr</span> <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>];
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">arr</span>.<span style="color:#a6e22e">copyWithin</span>(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">3</span>); <span style="color:#75715e">// 将索引为3及其之后的元素复制到索引为0的位置
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">arr</span>); <span style="color:#75715e">// 输出：[4, 5, 3, 4, 5]
+</span></span></span></code></pre></div><ol start="7">
+<li><code>Array.prototype.keys()</code>：返回一个包含数组中每个索引的新 Array Iterator 对象。</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">arr</span> <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;a&#34;</span>, <span style="color:#e6db74">&#34;b&#34;</span>, <span style="color:#e6db74">&#34;c&#34;</span>];
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">iterator</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">arr</span>.<span style="color:#a6e22e">keys</span>();
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">key</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">iterator</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">key</span>); <span style="color:#75715e">// 输出：0, 1, 2
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></code></pre></div><ol start="8">
+<li><code>Array.prototype.values()</code>：该方法返回一个包含数组中每个元素的新 Array Iterator 对象。</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">arr</span> <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;a&#34;</span>, <span style="color:#e6db74">&#34;b&#34;</span>, <span style="color:#e6db74">&#34;c&#34;</span>];
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">iterator</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">arr</span>.<span style="color:#a6e22e">values</span>();
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">value</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">iterator</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">value</span>); <span style="color:#75715e">// 输出：&#39;a&#39;, &#39;b&#39;, &#39;c&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></code></pre></div><ol start="9">
+<li><code>Array.prototype.entries()</code>：返回一个包含数组中每个索引和对应元素的新 Array Iterator 对象。</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">arr</span> <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;a&#34;</span>, <span style="color:#e6db74">&#34;b&#34;</span>, <span style="color:#e6db74">&#34;c&#34;</span>];
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">iterator</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">arr</span>.<span style="color:#a6e22e">entries</span>();
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">index</span>, <span style="color:#a6e22e">value</span>] <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">iterator</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">index</span>, <span style="color:#a6e22e">value</span>); <span style="color:#75715e">// 输出：0 &#39;a&#39;, 1 &#39;b&#39;, 2 &#39;c&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></code></pre></div><ol start="10">
+<li><strong>数组空位</strong>：ES6 中对待数组空位的方式有所改变。空位指的是数组中某个位置没有任何值，例如<code>[1, , 3]</code>中的第二个元素是个空位。在 ES6 之前，对待数组空位的方式是跳过它们，不进行任何操作。但在 ES6 中，空位被视为 undefined 的值。例如，使用 ES6 的数组方法时，空位会被当作 undefined 处理。</li>
+</ol>
+<h2 id="字符串对象扩展">字符串对象扩展</h2>
+<ol>
+<li><code>String.prototype.includes()</code>：判断字符串是否包含指定的字符，返回布尔值。</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">str</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Hello, world!&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">str</span>.<span style="color:#a6e22e">includes</span>(<span style="color:#e6db74">&#34;world&#34;</span>)); <span style="color:#75715e">// 输出：true
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">str</span>.<span style="color:#a6e22e">includes</span>(<span style="color:#e6db74">&#34;foo&#34;</span>)); <span style="color:#75715e">// 输出：false
+</span></span></span></code></pre></div><ol start="2">
+<li><code>String.prototype.startsWith()</code>：判断字符串是否以指定的字符开始，返回布尔值。</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">str</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Hello, world!&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">str</span>.<span style="color:#a6e22e">startsWith</span>(<span style="color:#e6db74">&#34;Hello&#34;</span>)); <span style="color:#75715e">// 输出：true
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">str</span>.<span style="color:#a6e22e">startsWith</span>(<span style="color:#e6db74">&#34;foo&#34;</span>)); <span style="color:#75715e">// 输出：false
+</span></span></span></code></pre></div><ol start="3">
+<li><code>String.prototype.endsWith()</code>：判断字符串是否以指定的字符结束，返回布尔值。</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">str</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Hello, world!&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">str</span>.<span style="color:#a6e22e">endsWith</span>(<span style="color:#e6db74">&#34;world!&#34;</span>)); <span style="color:#75715e">// 输出：true
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">str</span>.<span style="color:#a6e22e">endsWith</span>(<span style="color:#e6db74">&#34;foo&#34;</span>)); <span style="color:#75715e">// 输出：false
+</span></span></span></code></pre></div><ol start="4">
+<li><code>String.prototype.repeat()</code>：将字符串重复指定次数，返回新的字符串。</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">str</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Hello, world!&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">str</span>.<span style="color:#a6e22e">repeat</span>(<span style="color:#ae81ff">3</span>)); <span style="color:#75715e">// 输出：Hello, world!Hello, world!Hello, world!
+</span></span></span></code></pre></div><ol start="5">
+<li><code>String.prototype.fromCodePoint()</code>:根据给定的码点创建一个字符串。它可以将一个或多个码点转换为对应的字符。</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(String.<span style="color:#a6e22e">fromCodePoint</span>(<span style="color:#ae81ff">65</span>)); <span style="color:#75715e">// 输出：A
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(String.<span style="color:#a6e22e">fromCodePoint</span>(<span style="color:#ae81ff">97</span>, <span style="color:#ae81ff">98</span>, <span style="color:#ae81ff">99</span>)); <span style="color:#75715e">// 输出：abc
+</span></span></span></code></pre></div><ol start="6">
+<li><code>String.prototype.raw()</code>:用于获取一个模板字符串的原始字符串形式，忽略其中的转义字符。</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">path</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;C:\\Users\\hhh\\Documents\\file.txt&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(String.<span style="color:#a6e22e">raw</span><span style="color:#e6db74">`The file is located at </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">path</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>); <span style="color:#75715e">// 输出：The file is located at C:\Users\hhh\Documents\file.txt
+</span></span></span></code></pre></div><ol start="7">
+<li><code>String.prototype.codePointAt()</code>:用于返回指定位置的字符的码点。</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">str</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;abc&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">str</span>.<span style="color:#a6e22e">codePointAt</span>(<span style="color:#ae81ff">0</span>)); <span style="color:#75715e">// 输出：97
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">str</span>.<span style="color:#a6e22e">codePointAt</span>(<span style="color:#ae81ff">1</span>)); <span style="color:#75715e">// 输出：98
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">str</span>.<span style="color:#a6e22e">codePointAt</span>(<span style="color:#ae81ff">2</span>)); <span style="color:#75715e">// 输出：99
+</span></span></span></code></pre></div><ol start="8">
+<li><code>String.prototype.normalize()</code>:用于将字符串的 <code>Unicode</code> 标准化形式。它主要用于处理 <code>Unicode</code> 字符串的不同表示方式。</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">str</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;c\u0327&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">str</span>.<span style="color:#a6e22e">normalize</span>()); <span style="color:#75715e">// 输出：ç
+</span></span></span></code></pre></div><h2 id="math-对象扩展">Math 对象扩展</h2>
+<ul>
+<li><code>二进制表示法</code> : <code>0b或0B开头</code>表示二进制(<code>0bXX</code>或<code>0BXX</code>)</li>
+<li><code>二进制表示法</code> : <code>0b或0B开头</code>表示二进制(<code>0bXX</code>或<code>0BXX</code>)</li>
+<li><code>八进制表示法</code> : <code>0o或0O开头</code>表示二进制(<code>0oXX</code>或<code>0OXX</code>)</li>
+<li><code>Number.EPSILON</code> : 数值最小精度</li>
+<li><code>Number.MIN_SAFE_INTEGER</code> : 最小安全数值(<code>-2^53</code>)</li>
+<li><code>Number.MAX_SAFE_INTEGER</code> : 最大安全数值(<code>2^53</code>)</li>
+<li><code>Number.parseInt()</code> : 返回转换值的整数部分</li>
+<li><code>Number.parseFloat()</code> : 返回转换值的浮点数部分</li>
+<li><code>Number.isFinite()</code> : 是否为有限数值</li>
+<li><code>Number.isNaN()</code> : 是否为 NaN</li>
+<li><code>Number.isInteger()</code> : 是否为整数</li>
+<li><code>Number.isSafeInteger()</code> : 是否在数值安全范围内</li>
+<li><code>Math.trunc()</code> : 返回数值整数部分</li>
+<li><code>Math.sign()</code> : 返回数值类型(<code>正数1</code>、<code>负数-1</code>、<code>零0</code>)</li>
+<li><code>Math.cbrt()</code> : 返回数值立方根</li>
+<li><code>Math.clz32()</code> : 返回数值的 32 位无符号整数形式</li>
+<li><code>Math.imul()</code> : 返回两个数值相乘</li>
+<li><code>Math.fround()</code> : 返回数值的 32 位单精度浮点数形式</li>
+<li><code>Math.hypot()</code> : 返回所有数值平方和的平方根</li>
+<li><code>Math.expm1()</code> : 返回<code>e^n - 1</code></li>
+<li><code>Math.log1p()</code> : 返回<code>1 + n</code>的自然对数(<code>Math.log(1 + n)</code>)</li>
+<li><code>Math.log10()</code> : 返回以 10 为底的 n 的对数</li>
+<li><code>Math.log2()</code> : 返回以 2 为底的 n 的对数</li>
+<li><code>Math.sinh()</code> : 返回 n 的双曲正弦</li>
+<li><code>Math.cosh()</code> : 返回 n 的双曲余弦</li>
+<li><code>Math.tanh()</code> : 返回 n 的双曲正切</li>
+<li><code>Math.asinh()</code> : 返回 n 的反双曲正弦</li>
+<li><code>Math.acosh()</code> : 返回 n 的反双曲余弦</li>
+<li><code>Math.atanh()</code> : 返回 n 的反双曲正切</li>
+</ul>
+<h2 id="object-对象扩展">Object 对象扩展</h2>
+<ol>
+<li><code>Object.is(value1, value2)</code>: 用于比较两个值是否相同。与&quot;===&ldquo;操作符的行为类似，但有两个区别：一是 Object.is(NaN, NaN)返回 true，而&rdquo;===&ldquo;操作符返回 false；二是 Object.is(+0, -0)返回 false，而&rdquo;===&ldquo;操作符返回 true。</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(Object.<span style="color:#a6e22e">is</span>(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>)); <span style="color:#75715e">// true
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(Object.<span style="color:#a6e22e">is</span>(<span style="color:#66d9ef">NaN</span>, <span style="color:#66d9ef">NaN</span>)); <span style="color:#75715e">// true
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(Object.<span style="color:#a6e22e">is</span>(<span style="color:#f92672">+</span><span style="color:#ae81ff">0</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">0</span>)); <span style="color:#75715e">// false
+</span></span></span></code></pre></div><ol start="2">
+<li><code>Object.assign(target, ...sources)</code>: 将一个或多个源对象的属性复制到目标对象中。它返回目标对象。如果多个源对象具有相同的属性，则后面的对象的属性将覆盖前面的对象的属性。</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">target</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">a</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span>, <span style="color:#a6e22e">b</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">2</span> };
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">source</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">b</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">3</span>, <span style="color:#a6e22e">c</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">4</span> };
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> Object.<span style="color:#a6e22e">assign</span>(<span style="color:#a6e22e">target</span>, <span style="color:#a6e22e">source</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">result</span>); <span style="color:#75715e">// { a: 1, b: 3, c: 4 }
+</span></span></span></code></pre></div><ol start="3">
+<li><code>Object.getPrototypeOf(obj)</code>: 用于获取对象的原型。它返回指定对象的原型。</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">obj</span> <span style="color:#f92672">=</span> {};
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">prototype</span> <span style="color:#f92672">=</span> Object.<span style="color:#a6e22e">getPrototypeOf</span>(<span style="color:#a6e22e">obj</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">prototype</span>); <span style="color:#75715e">// {}
+</span></span></span></code></pre></div><ol start="4">
+<li><code>Object.setPrototypeOf(obj, prototype)</code>: 用于设置对象的原型。它将指定对象的原型设置为另一个对象或 null。</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">obj</span> <span style="color:#f92672">=</span> {};
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">prototype</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">a</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span> };
+</span></span><span style="display:flex;"><span>Object.<span style="color:#a6e22e">setPrototypeOf</span>(<span style="color:#a6e22e">obj</span>, <span style="color:#a6e22e">prototype</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">obj</span>.<span style="color:#a6e22e">a</span>); <span style="color:#75715e">// 1
+</span></span></span></code></pre></div><ol start="5">
+<li><code>__proto__方法</code>：用于获取或设置对象的原型。</li>
+</ol>
+<h2 id="正则对象扩展">正则对象扩展</h2>
+<ol>
+<li><code>RegExp构造函数的扩展</code>：在 ES6 之前，RegExp 构造函数不允许使用第二个参数添加修饰符。在 ES6 中，如果<code>RegExp</code>构造函数第一个参数是一个正则对象，那么可以使用第二个参数指定修饰符。而且，返回的正则表达式会忽略原有的正则表达式的修饰符，只使用新指定的修饰符。</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">new</span> RegExp(<span style="color:#e6db74">/abc/gi</span>, <span style="color:#e6db74">&#34;i&#34;</span>).<span style="color:#a6e22e">flags</span>); <span style="color:#75715e">// &#34;i&#34;
+</span></span></span></code></pre></div><ol start="2">
+<li><code>Flags属性</code>：用于返回正则表达式的修饰符。</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">regex</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">/abc/gi</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">regex</span>.<span style="color:#a6e22e">flags</span>); <span style="color:#75715e">// &#34;gi&#34;
+</span></span></span></code></pre></div><ol start="3">
+<li><code>u修饰符</code>：用于处理大于<code>\uFFFF</code>的 Unicode 字符。</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">/^\S$/</span>.<span style="color:#a6e22e">test</span>(<span style="color:#e6db74">&#34;𠮷&#34;</span>)); <span style="color:#75715e">// false
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">/^\S$/u</span>.<span style="color:#a6e22e">test</span>(<span style="color:#e6db74">&#34;𠮷&#34;</span>)); <span style="color:#75715e">// true
+</span></span></span></code></pre></div><ol start="4">
+<li><code>y修饰符</code>：也称为“粘连”修饰符，用于指定只从目标字符串的当前位置开始匹配。</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">regex</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">/abc/y</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">regex</span>.<span style="color:#a6e22e">exec</span>(<span style="color:#e6db74">&#34;abcabc&#34;</span>)); <span style="color:#75715e">// [ &#39;abc&#39;, index: 0, input: &#39;abcabc&#39;, groups: undefined ]
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">regex</span>.<span style="color:#a6e22e">exec</span>(<span style="color:#e6db74">&#34;abcabc&#34;</span>)); <span style="color:#75715e">// [ &#39;abc&#39;, index: 3, input: &#39;abcabc&#39;, groups: undefined ] 因为第二次匹配从上一次匹配的结束位置开始
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">regex</span>.<span style="color:#a6e22e">exec</span>(<span style="color:#e6db74">&#34;abcabc&#34;</span>)); <span style="color:#75715e">// null
+</span></span></span></code></pre></div><ol start="5">
+<li><code>RegExp.prototype.sticky</code>  表示是否有<code>y</code>修饰符</li>
+<li><code>RegExp.prototype.unicode</code>  表示是否有<code>u</code>修饰符</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">/hello\d/y</span>.<span style="color:#a6e22e">sticky</span>); <span style="color:#75715e">//true
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">/hello\d/u</span>.<span style="color:#a6e22e">unicode</span>); <span style="color:#75715e">//true
+</span></span></span></code></pre></div><ol start="7">
+<li><strong>正则方法调用变更</strong>：字符串对象的<code>match()</code>、<code>replace()</code>、<code>search()</code>、<code>split()</code>内部调用转为调用<code>RegExp</code>实例对应的<code>RegExp.prototype[Symbol.方法]</code></li>
+</ol>
+<h1 id="es7">ES7</h1>
+<blockquote>
+<p>ES7，也称为 ECMAScript 2016，是 ECMAScript 的第 7 个版本。它于 2016 年发布，引入了一些新的语言特性和改进。</p>
+</blockquote>
+<h2 id="arrayprototypeincludes方法">Array.prototype.includes()方法</h2>
+<ul>
+<li>includes()方法用于判断一个数组是否包含某个指定的元素，并返回布尔值。</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">arr</span> <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">6</span>];
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">arr</span>.<span style="color:#a6e22e">includes</span>(<span style="color:#ae81ff">5</span>)); <span style="color:#75715e">//false
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">arr</span>.<span style="color:#a6e22e">includes</span>(<span style="color:#ae81ff">6</span>)); <span style="color:#75715e">//true
+</span></span></span></code></pre></div><h2 id="指数操作符">指数操作符</h2>
+<ul>
+<li>ES7 引入了指数运算符，用于计算一个数的指数，<code>**</code>具有与  <code>Math.pow(..)</code>等效的计算结果。</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#ae81ff">2</span> <span style="color:#f92672">**</span> <span style="color:#ae81ff">3</span>); <span style="color:#75715e">//8
+</span></span></span></code></pre></div><h1 id="es8">ES8</h1>
+<blockquote>
+<p>ES8，也称为 ECMAScript 2017，是 ECMAScript（JavaScript）的第八个版本。它于 2017 年 6 月发布，并在 ES6（ES2015）的基础上引入了一些新特性和语法改进。</p>
+</blockquote>
+<h2 id="asyncawait">async/await</h2>
+<ul>
+<li>ES8 引入了<code>async/await</code>语法，它是一种更简洁、更易于理解和编写异步代码的方式。它建立在<code>Promise</code>的基础上，通过使用<code>async</code>关键字来定义一个异步函数，以及使用<code>await</code>关键字来等待一个<code>Promise</code>对象的解决。</li>
+<li>使用<code>async</code>关键字定义的函数会返回一个<code>Promise</code>对象，而在函数体内使用<code>await</code>关键字可以暂停函数的执行，直到等待的<code>Promise</code>对象解决为止。这样可以使得异步代码的执行顺序更加线性，避免了回调地狱。</li>
+<li>当使用<code>Promise</code>时，链式调用太多的话代码通常会变得比较冗长和嵌套：</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// 定义一个延迟函数，接受一个毫秒数作为参数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">delay</span>(<span style="color:#a6e22e">ms</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 返回一个新的Promise对象，该对象在指定的毫秒数后解决
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> Promise((<span style="color:#a6e22e">resolve</span>) =&gt; <span style="color:#a6e22e">setTimeout</span>(<span style="color:#a6e22e">resolve</span>, <span style="color:#a6e22e">ms</span>));
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 延迟1秒后执行的操作
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">delay</span>(<span style="color:#ae81ff">1000</span>)
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">then</span>(() =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;After 1 second&#34;</span>); <span style="color:#75715e">// 输出&#34;After 1 second&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">delay</span>(<span style="color:#ae81ff">2000</span>); <span style="color:#75715e">// 返回一个延迟2秒的Promise对象
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  })
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">then</span>(() =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;After 2 seconds&#34;</span>); <span style="color:#75715e">// 输出&#34;After 2 seconds&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;Finished&#34;</span>; <span style="color:#75715e">// 返回一个字符串&#34;Finished&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  })
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">then</span>((<span style="color:#a6e22e">result</span>) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">result</span>); <span style="color:#75715e">// 输出&#34;Finished&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  })
+</span></span><span style="display:flex;"><span>  .<span style="color:#66d9ef">catch</span>((<span style="color:#a6e22e">error</span>) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#a6e22e">error</span>); <span style="color:#75715e">// 输出捕获到的错误信息（如果有）
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  });
+</span></span></code></pre></div><ul>
+<li>相比之下，使用<code>async/await</code>可以使代码更加线性和易于理解，以一种更接近同步代码的方式编写异步操作：</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// 定义一个延迟函数，接受一个毫秒数作为参数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">delay</span>(<span style="color:#a6e22e">ms</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 返回一个新的Promise对象，该对象在指定的毫秒数后解决
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> Promise((<span style="color:#a6e22e">resolve</span>) =&gt; <span style="color:#a6e22e">setTimeout</span>(<span style="color:#a6e22e">resolve</span>, <span style="color:#a6e22e">ms</span>));
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 定义一个异步函数example
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">example</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Start&#34;</span>); <span style="color:#75715e">// 输出&#34;Start&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">delay</span>(<span style="color:#ae81ff">1000</span>); <span style="color:#75715e">// 等待1秒钟
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;After 1 second&#34;</span>); <span style="color:#75715e">// 输出&#34;After 1 second&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">delay</span>(<span style="color:#ae81ff">2000</span>); <span style="color:#75715e">// 等待2秒钟
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;After 2 seconds&#34;</span>); <span style="color:#75715e">// 输出&#34;After 2 seconds&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;Finished&#34;</span>; <span style="color:#75715e">// 返回一个字符串&#34;Finished&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 定义一个异步函数runExample，用于执行example函数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">runExample</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">example</span>(); <span style="color:#75715e">// 等待example函数完成并获取结果
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">result</span>); <span style="color:#75715e">// 输出example函数的返回值
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  } <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">error</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#a6e22e">error</span>); <span style="color:#75715e">// 输出捕获到的错误信息（如果有）
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">runExample</span>(); <span style="color:#75715e">// 执行runExample函数，开始执行异步操作
+</span></span></span></code></pre></div><h2 id="objectentries">Object.entries()</h2>
+<ul>
+<li><code>Object.entries()</code>方法返回一个给定对象自身可枚举属性的键值对数组</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">obj</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">a</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span>, <span style="color:#a6e22e">b</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">2</span> };
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">let</span> [<span style="color:#a6e22e">key</span>, <span style="color:#a6e22e">value</span>] <span style="color:#66d9ef">of</span> Object.<span style="color:#a6e22e">entries</span>(<span style="color:#a6e22e">obj</span>)) {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">key</span><span style="color:#e6db74">}</span><span style="color:#e6db74">: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">value</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//输出
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// a: 1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// b: 2
+</span></span></span></code></pre></div><h2 id="objectvalues">Object.values()</h2>
+<ul>
+<li><code>Object.values()</code>方法返回一个给定对象自身可枚举属性值的数组</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">obj</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">a</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span>, <span style="color:#a6e22e">b</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">2</span> };
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(Object.<span style="color:#a6e22e">values</span>(<span style="color:#a6e22e">obj</span>)); <span style="color:#75715e">//[ 1, 2 ]
+</span></span></span></code></pre></div><h2 id="objectgetownpropertydescriptors">Object.getOwnPropertyDescriptors()</h2>
+<ul>
+<li><code>Object.getOwnPropertyDescriptors()</code>  方法用来获取一个对象的所有自身属性的描述符</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">obj</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">a</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span>, <span style="color:#a6e22e">b</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">2</span> };
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(Object.<span style="color:#a6e22e">getOwnPropertyDescriptors</span>(<span style="color:#a6e22e">obj</span>));
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//输出
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//     a: { value: 1, writable: true, enumerable: true, configurable: true },
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//     b: { value: 2, writable: true, enumerable: true, configurable: true }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// }
+</span></span></span></code></pre></div><h2 id="padstart和-padend">padStart()和 padEnd()</h2>
+<ul>
+<li><code>padStart()</code>方法可以在字符串的开头添加指定的字符，直到字符串达到指定的长度。如果字符串的长度已经达到或超过了指定的长度，则不会进行任何填充。</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">phoneNumber</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;18912345677&#34;</span>; <span style="color:#75715e">// 电话号码
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">paddedPhoneNumber</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">phoneNumber</span>.<span style="color:#a6e22e">slice</span>(<span style="color:#f92672">-</span><span style="color:#ae81ff">4</span>).<span style="color:#a6e22e">padStart</span>(<span style="color:#ae81ff">11</span>, <span style="color:#e6db74">&#34;*&#34;</span>); <span style="color:#75715e">// 将电话号码填充到11位，使用*进行填充，并且只保留后四位数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">paddedPhoneNumber</span>); <span style="color:#75715e">// *******5677
+</span></span></span></code></pre></div><ul>
+<li><code>padEnd()</code>方法与<code>padStart()</code>方法类似，不同之处在于它在字符串的结尾添加指定的字符，直到字符串达到指定的长度。</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">text</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Hello&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">text</span>.<span style="color:#a6e22e">padEnd</span>(<span style="color:#ae81ff">8</span>, <span style="color:#e6db74">&#34;!&#34;</span>)); <span style="color:#75715e">// 输出：&#39;Hello!!!&#39;
+</span></span></span></code></pre></div><h2 id="sharearraybuffer因安全问题暂时在-chromefirefoxsafari-中被禁用">ShareArrayBuffer（因安全问题，暂时在 Chrome，FireFox，Safari 中被禁用）</h2>
+<ul>
+<li>用来表示一个通用的，固定长度的原始二进制数据缓冲区，类似于 ArrayBuffer 对象，它们都可以用来在共享内存（shared memory）上创建视图。与 ArrayBuffer 不同的是，SharedArrayBuffer 不能被分离。</li>
+</ul>
+<h1 id="es9">ES9</h1>
+<blockquote>
+<p>ES9 是 ECMAScript 的第 9 个版本，也被称为 ES2018。它于 2018 年 6 月发布，引入了一些新的特性和语法改进。</p>
+</blockquote>
+<h2 id="for-awaitof">for await&hellip;of</h2>
+<ul>
+<li><code>for await...of</code>  是 ES9 中引入的一种语法，用于遍历异步迭代器的元素。它的语法类似于传统的  <code>for...of</code>  循环，但可以在异步操作完成后继续迭代下一个元素。</li>
+<li>利用 Generator 函数实现一个异步迭代器对象，然后用<code>for await...of</code>遍历这个异步迭代器的元素：</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">function</span><span style="color:#f92672">*</span> <span style="color:#a6e22e">asyncGenerator</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">yield</span> Promise.<span style="color:#a6e22e">resolve</span>(<span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">yield</span> Promise.<span style="color:#a6e22e">resolve</span>(<span style="color:#ae81ff">2</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">yield</span> Promise.<span style="color:#a6e22e">resolve</span>(<span style="color:#ae81ff">3</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>(<span style="color:#66d9ef">async</span> () =&gt; {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">for</span> <span style="color:#66d9ef">await</span> (<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">num</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">asyncGenerator</span>()) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">num</span>);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>})();
+</span></span></code></pre></div><h2 id="restspread-属性">Rest/Spread 属性</h2>
+<ul>
+<li><code>Rest/Spread</code> 属性语法是对扩展运算符的一种扩展。<code>Rest/Spread</code> 属性允许我们在对象字面量中使用扩展运算符（<code>...</code>）来获取对象的剩余属性或将属性扩展到另一个对象中。</li>
+<li><code>Rest</code> 属性用于从对象中提取剩余的属性，并将它们作为新的对象返回。这样可以方便地从一个对象中提取所需的属性，而不必一个一个地进行赋值。：</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">name</span>, <span style="color:#a6e22e">age</span>, ...<span style="color:#a6e22e">rest</span> } <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;hhh&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">age</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">18</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">sex</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;男&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">city</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;上海&#34;</span>,
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">name</span>); <span style="color:#75715e">// &#34;hhh&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">age</span>); <span style="color:#75715e">// 18
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">rest</span>); <span style="color:#75715e">// { sex: &#39;男&#39;, city: &#39;上海 }
+</span></span></span></code></pre></div><ul>
+<li><code>Spread</code> 属性用于将一个对象的属性扩展到另一个对象中。这样可以方便地合并两个对象的属性，而不必一个一个地进行赋值。</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">obj1</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;hhh&#34;</span>, <span style="color:#a6e22e">age</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">18</span> };
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">obj2</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">sex</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;男&#34;</span>, <span style="color:#a6e22e">city</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;上海&#34;</span> };
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">mergedObj</span> <span style="color:#f92672">=</span> { ...<span style="color:#a6e22e">obj1</span>, ...<span style="color:#a6e22e">obj2</span> };
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">mergedObj</span>); <span style="color:#75715e">// { name: &#39;hhh&#39;, age: 18, sex: &#39;男&#39;, city: &#39;上海&#39; }
+</span></span></span></code></pre></div><h2 id="promisefinally">Promise.finally()</h2>
+<ul>
+<li>在<code>Promise</code>结束的时候，不管是结果是<code>resolved</code>还是<code>rejected</code>，都会调用<code>finally</code>中的方法， <code>finally</code>中的回调函数不接受任何参数</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">promise</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Promise((<span style="color:#a6e22e">resolve</span>, <span style="color:#a6e22e">reject</span>) =&gt; {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 异步操作
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// resolve(value); // 或 reject(reason);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>});
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">promise</span>
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">then</span>((<span style="color:#a6e22e">result</span>) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 处理成功的情况
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  })
+</span></span><span style="display:flex;"><span>  .<span style="color:#66d9ef">catch</span>((<span style="color:#a6e22e">error</span>) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 处理失败的情况
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  })
+</span></span><span style="display:flex;"><span>  .<span style="color:#66d9ef">finally</span>(() =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 无论成功或失败都会执行的回调函数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  });
+</span></span></code></pre></div><h2 id="正则表达式扩展">正则表达式扩展</h2>
+<h3 id="反向断言">反向断言</h3>
+<ul>
+<li>反向断言使用<code>(?&lt;=pattern)</code>的语法来定义，其中<code>pattern</code>是一个子表达式，表示需要存在的模式。它可以用于匹配前面是某种模式的字符串。</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">regex</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">/(?&lt;=\$)\d+/</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">match</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">regex</span>.<span style="color:#a6e22e">exec</span>(<span style="color:#e6db74">&#34;The price is $99&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">match</span>[<span style="color:#ae81ff">0</span>]); <span style="color:#75715e">// 输出：99
+</span></span></span></code></pre></div><ul>
+<li>反向否定断言是一种用于匹配在某种模式之后不存在的字符的方法。它使用<code>(?!pattern)</code>的语法来表示。这个模式会匹配一个位置，这个位置后面的字符不能匹配给定的模式。</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">str</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;a123bbcd667&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">regex</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">/(?&lt;![a-z])\d+/g</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">matches</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">str</span>.<span style="color:#a6e22e">match</span>(<span style="color:#a6e22e">regex</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">matches</span>); <span style="color:#75715e">// 输出: [ &#39;23&#39;, &#39;67&#39; ]
+</span></span></span></code></pre></div><h3 id="命名捕获组">命名捕获组</h3>
+<ul>
+<li>命名捕获组允许我们给正则表达式的子表达式（也称为分组）命名，并且可以通过名称来引用它们的匹配结果。</li>
+<li>命名捕获组可以通过在子表达式前面加上<code>?&lt;name&gt;</code>的语法来实现。</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">regex</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">/(?&lt;year&gt;\d{4})-(?&lt;month&gt;\d{2})-(?&lt;day&gt;\d{2})/</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">match</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">regex</span>.<span style="color:#a6e22e">exec</span>(<span style="color:#e6db74">&#34;2023-08-28&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">match</span>.<span style="color:#a6e22e">groups</span>.<span style="color:#a6e22e">year</span>); <span style="color:#75715e">// 输出：2023
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">match</span>.<span style="color:#a6e22e">groups</span>.<span style="color:#a6e22e">month</span>); <span style="color:#75715e">// 输出：08
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">match</span>.<span style="color:#a6e22e">groups</span>.<span style="color:#a6e22e">day</span>); <span style="color:#75715e">// 输出：28
+</span></span></span></code></pre></div><h3 id="s-修饰符dotall-模式">s 修饰符(dotAll 模式)</h3>
+<ul>
+<li>在默认情况下，正则表达式中的点字符（.）匹配除换行符（\n）之外的任何字符。但是，使用 dotAll 模式后，点字符将匹配包括换行符在内的任何字符。</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">regex</span> <span style="color:#f92672">=</span> <span style="color:#960050;background-color:#1e0010">/a.b/s;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">str</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;a\nb&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">regex</span>.<span style="color:#a6e22e">test</span>(<span style="color:#a6e22e">str</span>)); <span style="color:#75715e">// 输出 true
+</span></span></span></code></pre></div><h3 id="unicode-属性转义">Unicode 属性转义</h3>
+<ul>
+<li>Unicode 属性转义用于匹配具有特定属性的字符。这些转义的形式分别是  <code>\p{...}</code>  和  <code>\P{...}</code>。<code>\p{...}</code>  是一个 Unicode 属性转义，用于匹配具有指定属性的字符。它的语法是  <code>\p{Property=Value}</code>，其中  <code>Property</code>  是 Unicode 属性的名称，<code>Value</code>  是该属性的取值。通过使用这个转义，可以在正则表达式中匹配具有特定属性的字符。</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">reEmoji</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">/\p{Emoji}/u</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">reEmoji</span>.<span style="color:#a6e22e">test</span>(<span style="color:#e6db74">&#34;🥰😊😍&#34;</span>)); <span style="color:#75715e">// 输出 true
+</span></span></span></code></pre></div><h1 id="es10">ES10</h1>
+<blockquote>
+<p>ES10 是 ECMAScript 的第 10 个版本，也被称为 ES2019。它于 2019 年 6 月发布，引入了一些新的特性和语法改进。</p>
+</blockquote>
+<h2 id="数组扁平化方法">数组扁平化方法</h2>
+<ul>
+<li><code>Array.prototype.flat()</code>方法会按照一个可指定的深度遍历递归数组，并将所有元素与遍历到的子数组中的元素合并为一个新数组返回。</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">arr</span> <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>  [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>],
+</span></span><span style="display:flex;"><span>  [<span style="color:#ae81ff">3</span>, [<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>]],
+</span></span><span style="display:flex;"><span>];
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">arr</span>.<span style="color:#a6e22e">flat</span>(<span style="color:#ae81ff">1</span>)); <span style="color:#75715e">// 输出: [1, 2, 3, [4, 5]]
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">deeplyNestedArr</span> <span style="color:#f92672">=</span> [[<span style="color:#ae81ff">1</span>, [<span style="color:#ae81ff">2</span>, [<span style="color:#ae81ff">3</span>, [<span style="color:#ae81ff">4</span>, [<span style="color:#ae81ff">5</span>]]]]]];
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">deeplyNestedArr</span>.<span style="color:#a6e22e">flat</span>(<span style="color:#66d9ef">Infinity</span>)); <span style="color:#75715e">// 输出: [1, 2, 3, 4, 5]
+</span></span></span></code></pre></div><ul>
+<li><code>Array.prototype.flatMap()</code>方法结合了  <code>map()</code>  和  <code>flat()</code>  两个方法的功能。它首先对数组的每个元素执行一个映射函数，然后将结果扁平化为一维数组。</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">arr</span> <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>];
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">arr</span>.<span style="color:#a6e22e">flatMap</span>((<span style="color:#a6e22e">num</span>) =&gt; [<span style="color:#a6e22e">num</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">num</span>])); <span style="color:#75715e">// 输出: [1, 4, 9, 16, 25]
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">words</span> <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;Hello&#34;</span>, <span style="color:#e6db74">&#34;World&#34;</span>];
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">words</span>.<span style="color:#a6e22e">flatMap</span>((<span style="color:#a6e22e">word</span>) =&gt; <span style="color:#a6e22e">word</span>.<span style="color:#a6e22e">split</span>(<span style="color:#e6db74">&#34;&#34;</span>))); <span style="color:#75715e">// 输出: [&#34;H&#34;, &#34;e&#34;, &#34;l&#34;, &#34;l&#34;, &#34;o&#34;, &#34;W&#34;, &#34;o&#34;, &#34;r&#34;, &#34;l&#34;, &#34;d&#34;]
+</span></span></span></code></pre></div><h2 id="字符串去除开头和结尾的空格方法">字符串去除开头和结尾的空格方法</h2>
+<ul>
+<li><code>String.prototype.trimStart()</code>  方法去除字符串开头的空白字符，返回一个新的字符串，原始字符串不受影响。空白字符包括空格、制表符、换行符等。</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">str</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;   Hello, world!   &#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">str</span>.<span style="color:#a6e22e">trimStart</span>()); <span style="color:#75715e">// &#34;Hello, world!   &#34;
+</span></span></span></code></pre></div><ul>
+<li><code>String.prototype.trimEnd()</code>  方法去除字符串结尾的空白字符，返回一个新的字符串，原始字符串不受影响。</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">str</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;   Hello, world!   &#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">str</span>.<span style="color:#a6e22e">trimEnd</span>()); <span style="color:#75715e">// &#34;   Hello, world!&#34;
+</span></span></span></code></pre></div><h2 id="objectfromentries">Object.fromEntries</h2>
+<ul>
+<li><code>Object.fromEntries()</code>用于将一个包含键值对的可迭代对象（如 Array，Map 等对象）转换为一个新的对象。</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">entries</span> <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>  [<span style="color:#e6db74">&#34;name&#34;</span>, <span style="color:#e6db74">&#34;hhh&#34;</span>],
+</span></span><span style="display:flex;"><span>  [<span style="color:#e6db74">&#34;age&#34;</span>, <span style="color:#ae81ff">25</span>],
+</span></span><span style="display:flex;"><span>  [<span style="color:#e6db74">&#34;city&#34;</span>, <span style="color:#e6db74">&#34;上海&#34;</span>],
+</span></span><span style="display:flex;"><span>];
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">obj</span> <span style="color:#f92672">=</span> Object.<span style="color:#a6e22e">fromEntries</span>(<span style="color:#a6e22e">entries</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">obj</span>); <span style="color:#75715e">// { name: &#39;hhh&#39;, age: 25, city: &#39;上海&#39; }
+</span></span></span></code></pre></div><h2 id="symbolprototypedescription">Symbol.prototype.description</h2>
+<ul>
+<li><code>Symbol.prototype.description</code>用于获取 Symbol 的描述信息。</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">Symbol</span>(<span style="color:#e6db74">&#34;myDescription&#34;</span>).<span style="color:#a6e22e">description</span>); <span style="color:#75715e">//myDescription
+</span></span></span></code></pre></div><h2 id="functionprototypetostring">Function.prototype.toString()</h2>
+<ul>
+<li>之前的版本中，该方法来自  <code>Object.prototype.toString()</code>，得到的字符串是去掉空白符号的。</li>
+<li>但在 ES10 中，得到的字符串会保留空格和注释，如果函数是内置方法的，或者是通过  <code>bind()</code>  方法创建的，<code>Function.prototype.toString()</code>  方法将返回一个标记为  <code>[native code]</code>  的字符串。</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">sum</span>(<span style="color:#a6e22e">a</span>, <span style="color:#a6e22e">b</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">b</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">sum</span>.<span style="color:#a6e22e">toString</span>());
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// &#34;function sum(a, b) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 		return a + b;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//  }&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">newSum</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">sum</span>.<span style="color:#a6e22e">bind</span>();
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">newSum</span>.<span style="color:#a6e22e">toString</span>()); <span style="color:#75715e">// &#34;function () { [native code] }&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(Math.<span style="color:#a6e22e">abs</span>.<span style="color:#a6e22e">toString</span>()); <span style="color:#75715e">// &#34;function abs() { [native code] }&#34;
+</span></span></span></code></pre></div><h2 id="catch-绑定">catch 绑定</h2>
+<ul>
+<li>在 ES10 中，允许在 <code>catch</code> 语句中绑定错误对象，而不需要通过 <code>catch</code> 语句的参数来引用它。</li>
+<li>在 ES10 之前，<code>catch</code> 语句通常如下所示：</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 一些可能抛出错误的代码
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>} <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">error</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 处理错误的代码
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></code></pre></div><p>在 ES10 中，可以使用 <code>catch</code> 绑定来进行错误处理，如下所示：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 一些可能抛出错误的代码
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>} <span style="color:#66d9ef">catch</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 处理错误的代码
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></code></pre></div><h2 id="jsonstringify-增强">JSON.stringify()  增强</h2>
+<ul>
+<li>在 ES10 中，<code>JSON.stringify()</code> 方法修复了之前版本中对于一些超出范围的 Unicode 字符的展示错误的问题。</li>
+<li>在修复之前，当遇到超出 U+FFFF 的 Unicode 字符时，<code>JSON.stringify()</code> 方法会将其转义为一个由两个代理字符组成的字符串，而不是正确的 Unicode 字符。</li>
+<li>修复后，<code>JSON.stringify()</code> 方法会正确地展示这些超出范围的 Unicode 字符。这个修复使得对于 Unicode 字符的处理更加准确和方便。</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>(<span style="color:#e6db74">&#34;🥰&#34;</span>)); <span style="color:#75715e">// &#34;🥰&#34;
+</span></span></span></code></pre></div><h1 id="es11">ES11</h1>
+<blockquote>
+<p>ES11 是 ECMAScript 的第 11 个版本，也被称为 ES2020。它于 2020 年 6 月发布，引入了一些新的特性和语法改进。</p>
+</blockquote>
+<h2 id="globalthis">globalThis</h2>
+<ul>
+<li>在之前的 JavaScript 版本中，全局对象的名称是不一致的，比如在浏览器中是  <code>window</code>，在 Node.js 中是  <code>global</code>。这导致了在跨平台开发时需要针对不同的环境使用不同的全局对象。</li>
+<li>为了解决这个问题，ES11 引入了  <code>globalThis</code>，它是一个统一的全局对象。无论在浏览器还是 Node.js 中，都可以使用  <code>globalThis</code>  来访问全局对象。这样，你就不需要根据不同的环境来手动切换全局对象的名称了。</li>
+</ul>
+<h2 id="bigint">BigInt</h2>
+<ul>
+<li>在之前的版本中，整数的范围受到限制，超过 2^53 或小于 -2^53 的整数会丢失精度。而 BigInt 类型通过添加后缀  <code>n</code>  或调用构造函数  <code>BigInt()</code>  来表示超出这个范围的整数，并且可以进行算术运算。</li>
+<li>要注意的是：
+<ul>
+<li><code>BigInt</code>在<code>Math</code>对象中的方法不可用；</li>
+<li><code>BigInt</code>与<code>Number</code>实例不能混合运算，需要转换为相同类型；</li>
+<li><code>BigInt</code>在转换为<code>Number</code>时可能会丢失精度；</li>
+<li>使用<code>BigInt</code>进行带小数的运算会向下取整；</li>
+<li><code>BigInt</code>和<code>Number</code>不是严格相等，但是宽松相等。</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">maxSafeInteger</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">BigInt</span>(Number.<span style="color:#a6e22e">MAX_SAFE_INTEGER</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">bigNumber</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">BigInt</span>(<span style="color:#e6db74">&#34;123456789012345678901234567890&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">maxSafeInteger</span>); <span style="color:#75715e">// 9007199254740991n
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">bigNumber</span>); <span style="color:#75715e">// 123456789012345678901234567890n
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">sum</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">maxSafeInteger</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">bigNumber</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">sum</span>); <span style="color:#75715e">// 123456789012345678901234576981n
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#ae81ff">2</span><span style="color:#a6e22e">n</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span><span style="color:#a6e22e">n</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">1</span>); <span style="color:#75715e">// false true
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#ae81ff">0</span><span style="color:#a6e22e">n</span> <span style="color:#f92672">===</span> <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span><span style="color:#a6e22e">n</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>); <span style="color:#75715e">// false true
+</span></span></span></code></pre></div><h2 id="可选链操作符">可选链操作符</h2>
+<ul>
+<li>可选链操作符（Optional Chaining Operator）用于简化访问嵌套对象属性或方法时的安全性检查。通过<code>?.</code>来判断属性或方法是否存在，如果存在则访问，如果不存在则返回 undefined，避免了在访问链中出现的类型错误或未定义错误。</li>
+<li>在 ES11 之前，如果要访问嵌套对象属性或方法时，我们需要手动进行安全性检查，以避免出现错误：</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// 在ES11之前的代码
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">obj</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">obj</span>.<span style="color:#a6e22e">prop</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">obj</span>.<span style="color:#a6e22e">prop</span>.<span style="color:#a6e22e">method</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 访问obj.prop.method
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></code></pre></div><ul>
+<li>使用可选链操作符，可以简化上述代码，避免了多次的检查和重复的代码。</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// 使用可选链操作符
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">obj</span><span style="color:#f92672">?</span>.<span style="color:#a6e22e">prop</span><span style="color:#f92672">?</span>.<span style="color:#a6e22e">method</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 访问obj.prop.method
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></code></pre></div><h2 id="空值合并操作符">空值合并操作符</h2>
+<ul>
+<li>空值合并操作符（Nullish Coalescing Operator）用于在给定的一组值中选择一个非空（非 null 和非 undefined）的值。</li>
+<li>在以前的版本中，我们通常使用逻辑或运算符（||）来实现类似的功能。但是逻辑或运算符有一个问题，它会将假值（例如空字符串&rsquo;&rsquo;、数字 0、布尔值 false 等）也视为“空”，从而导致错误的结果。</li>
+<li>而空值合并操作符（??）只在左侧的值为 null 或 undefined 时才会选择右侧的值，对于其他的假值不会触发选择右侧的值。</li>
+<li>注意：不可以将  <code>??</code>  与 AND（<code>&amp;&amp;</code>）OR（<code>||</code>）混用，会报错。</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// 在ES11之前的代码
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">value</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">x</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">defaultValue</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 使用空值合并操作符
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">value</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">x</span> <span style="color:#f92672">??</span> <span style="color:#a6e22e">defaultValue</span>;
+</span></span></code></pre></div><h2 id="stringprototypematchall">String.prototype.matchAll()</h2>
+<ul>
+<li><code>String.prototype.matchAll()</code> 返回一个包含所有匹配正则表达式的迭代器对象。迭代器对象可以通过 <code>for...of</code> 循环或者 <code>Array.from()</code> 方法转换为数组，并且每个元素都是一个包含匹配结果的数组。</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">str</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Hello, world!&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">regex</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">/[a-z]/gi</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">matches</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">str</span>.<span style="color:#a6e22e">matchAll</span>(<span style="color:#a6e22e">regex</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">match</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">matches</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">match</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//输出
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// [ &#39;H&#39;, index: 0, input: &#39;Hello, world!&#39;, groups: undefined ]
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// [ &#39;e&#39;, index: 1, input: &#39;Hello, world!&#39;, groups: undefined ]
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// [ &#39;l&#39;, index: 2, input: &#39;Hello, world!&#39;, groups: undefined ]
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// [ &#39;l&#39;, index: 3, input: &#39;Hello, world!&#39;, groups: undefined ]
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// [ &#39;o&#39;, index: 4, input: &#39;Hello, world!&#39;, groups: undefined ]
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// [ &#39;w&#39;, index: 7, input: &#39;Hello, world!&#39;, groups: undefined ]
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// [ &#39;o&#39;, index: 8, input: &#39;Hello, world!&#39;, groups: undefined ]
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// [ &#39;r&#39;, index: 9, input: &#39;Hello, world!&#39;, groups: undefined ]
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// [ &#39;l&#39;, index: 10, input: &#39;Hello, world!&#39;, groups: undefined ]
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// [ &#39;d&#39;, index: 11, input: &#39;Hello, world!&#39;, groups: undefined ]
+</span></span></span></code></pre></div><h2 id="import">import()</h2>
+<ul>
+<li>ES11 中引入了 <code>import()</code> 函数，它是一个动态导入模块的方法。在以前的 ES6 模块系统中，所有的导入语句都必须在代码的头部静态编译，不能根据运行时的条件来导入不同的模块。而 <code>import()</code> 函数允许在代码运行时根据需要动态地加载模块。</li>
+<li><code>import()</code> 函数返回一个<code>Promise</code>，该 <code>Promise</code> 在模块加载完成后被解析为一个包含模块的默认导出的对象。这使得我们可以在需要的时候延迟加载模块，从而提高应用程序的性能和响应速度。</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">import</span>(<span style="color:#e6db74">&#34;./module.js&#34;</span>)
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">then</span>((<span style="color:#a6e22e">module</span>) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 使用模块中的内容
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">module</span>.<span style="color:#66d9ef">default</span>();
+</span></span><span style="display:flex;"><span>  })
+</span></span><span style="display:flex;"><span>  .<span style="color:#66d9ef">catch</span>((<span style="color:#a6e22e">error</span>) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 处理加载模块失败的情况
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#e6db74">&#34;模块加载失败&#34;</span>, <span style="color:#a6e22e">error</span>);
+</span></span><span style="display:flex;"><span>  });
+</span></span></code></pre></div><h2 id="promiseallsettled">Promise.allSettled()</h2>
+<ul>
+<li><code>Promise.allSettled()</code> 方法接收一个由 <code>Promise</code> 对象组成的可迭代对象（比如数组），并返回一个新的 <code>Promise</code> 对象。这个新的 <code>Promise</code> 对象在所有传入的 <code>Promise</code> 对象都已经被解决（<code>settled</code>）后才会被解决。</li>
+<li>与 <code>Promise.all()</code> 不同的是，即使其中的某个 <code>Promise</code> 被拒绝（<code>rejected</code>），<code>Promise.allSettled()</code> 仍会等待所有 <code>Promise</code> 对象都被解决，然后返回一个包含每个 <code>Promise</code> 对象结果的数组。这使得我们能够获取所有 <code>Promise</code> 对象的状态，而不必担心其中某个 <code>Promise</code> 对象的拒绝（<code>rejected</code>）会中断整个操作。</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">promises</span> <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>  Promise.<span style="color:#a6e22e">resolve</span>(<span style="color:#e6db74">&#34;Resolved&#34;</span>),
+</span></span><span style="display:flex;"><span>  Promise.<span style="color:#a6e22e">reject</span>(<span style="color:#e6db74">&#34;Rejected&#34;</span>),
+</span></span><span style="display:flex;"><span>  Promise.<span style="color:#a6e22e">resolve</span>(<span style="color:#e6db74">&#34;Resolved&#34;</span>),
+</span></span><span style="display:flex;"><span>];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Promise.<span style="color:#a6e22e">allSettled</span>(<span style="color:#a6e22e">promises</span>).<span style="color:#a6e22e">then</span>((<span style="color:#a6e22e">results</span>) =&gt; {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">results</span>.<span style="color:#a6e22e">forEach</span>((<span style="color:#a6e22e">result</span>) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">result</span>.<span style="color:#a6e22e">status</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#34;fulfilled&#34;</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`Promise resolved: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">result</span>.<span style="color:#a6e22e">value</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">result</span>.<span style="color:#a6e22e">status</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#34;rejected&#34;</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`Promise rejected: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">result</span>.<span style="color:#a6e22e">reason</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  });
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div><h1 id="es12">ES12</h1>
+<blockquote>
+<p>ES12，也被称为 ES2021，于 2021 年 6 月发布。ES12 引入了一些新的特性和改进，以提升 JavaScript 语言的功能和性能。</p>
+</blockquote>
+<h2 id="数值分隔符">数值分隔符</h2>
+<ul>
+<li>数值分隔符（Numeric Separators）允许在数字中使用下划线 <code>_</code> 进行分隔，以提高数字的可读性。数值分隔符在 JavaScript 中是可选的，它们不会影响数字的值或计算结果。</li>
+<li>使用数值分隔符，可以将长数字分成更易读的部分:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">billion</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1_000_000_000</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">billion</span>); <span style="color:#75715e">// 输出 1000000000
+</span></span></span></code></pre></div><ul>
+<li>数值分隔符可以在整数和浮点数中使用，但不能在数字的开头或结尾使用，也不能在小数点前后使用。</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">number</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1_234</span>.<span style="color:#ae81ff">567_89</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">number</span>); <span style="color:#75715e">// 输出 1234.56789
+</span></span></span></code></pre></div><h2 id="逻辑赋值运算符">逻辑赋值运算符</h2>
+<ul>
+<li>逻辑赋值运算符（Logical Assignment Operators）是一种简化常见逻辑操作和赋值的合并运算符。</li>
+<li>ES12 中引入了三个逻辑赋值运算符：</li>
+</ul>
+<ol>
+<li><code>||=</code>：逻辑或赋值运算符。如果左侧的操作数为假（例如，<code>undefined</code>、<code>null</code>、false 或 0），则将右侧的操作数赋值给左侧的变量。</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">x</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">x</span> <span style="color:#f92672">||=</span> <span style="color:#ae81ff">5</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">x</span>); <span style="color:#75715e">// 输出 5，因为 x 是假值，所以将 5 赋值给 x
+</span></span></span></code></pre></div><ol start="2">
+<li><code>&amp;&amp;=</code>：逻辑与赋值运算符。如果左侧的操作数为真（例如，非空字符串、非零数字或对象），则将右侧的操作数赋值给左侧的变量。</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">y</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">y</span> <span style="color:#f92672">&amp;&amp;=</span> <span style="color:#ae81ff">7</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">y</span>); <span style="color:#75715e">// 输出 7，因为 y 是真值，所以将 7 赋值给 y
+</span></span></span></code></pre></div><ol start="3">
+<li><code>??=</code>：空值合并赋值运算符。如果左侧的操作数为 <code>null</code> 或 <code>undefined</code>，则将右侧的操作数赋值给左侧的变量。</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">z</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">z</span> <span style="color:#f92672">??=</span> <span style="color:#ae81ff">3</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">z</span>); <span style="color:#75715e">// 输出 3，因为 z 是空值，所以将 3 赋值给 z
+</span></span></span></code></pre></div><h2 id="stringprototypereplaceall">String.prototype.replaceAll()</h2>
+<ul>
+<li><code>String.prototype.replaceAll()</code>方法，该方法可以用指定的字符串替换字符串中的所有匹配项。在之前的版本中，我们只能使用正则表达式配合<code>replace()</code>方法来实现替换所有匹配项的操作。</li>
+<li>使用 <code>replaceAll()</code> 方法非常简便，只需要传入两个参数：第一个参数是要替换的字符串或正则表达式(<strong>必须是全局的</strong>)，第二个参数是替换后的字符串。方法会返回一个新的字符串，其中所有匹配项都被替换为指定的字符串。</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Hello, world!&#34;</span>.<span style="color:#a6e22e">replaceAll</span>(<span style="color:#e6db74">&#34;o&#34;</span>, <span style="color:#e6db74">&#34;x&#34;</span>)); <span style="color:#75715e">// &#34;Hellx, wxrld!&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Hello, world!&#34;</span>.<span style="color:#a6e22e">replaceAll</span>(<span style="color:#e6db74">/l/g</span>, <span style="color:#e6db74">&#34;x&#34;</span>)); <span style="color:#75715e">// &#34;Hexxo, worxd!&#34;
+</span></span></span></code></pre></div><h2 id="promiseany">Promise.any()</h2>
+<ul>
+<li><code>Promise.any()</code> 方法接收一个 <code>Promise</code> 对象的可迭代参数（如数组），并返回一个新的 <code>Promise</code> 对象。</li>
+<li>这个新的 <code>Promise</code> 对象将在其中的任何一个 <code>Promise</code> 对象变为 <code>fulfilled</code>（已完成）状态时解析，并以该 <code>Promise</code> 对象的解析值作为其解析值。如果可迭代参数中的所有 <code>Promise</code> 对象都变为 <code>rejected</code>（已拒绝）状态，则返回的 <code>Promise</code> 对象将会被拒绝，并以一个 <code>AggregateError</code> 实例作为拒绝值。</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">promise1</span> <span style="color:#f92672">=</span> Promise.<span style="color:#a6e22e">resolve</span>(<span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">promise2</span> <span style="color:#f92672">=</span> Promise.<span style="color:#a6e22e">reject</span>(<span style="color:#ae81ff">2</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">promise3</span> <span style="color:#f92672">=</span> Promise.<span style="color:#a6e22e">resolve</span>(<span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Promise.<span style="color:#a6e22e">any</span>([<span style="color:#a6e22e">promise1</span>, <span style="color:#a6e22e">promise2</span>, <span style="color:#a6e22e">promise3</span>])
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">then</span>((<span style="color:#a6e22e">value</span>) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">value</span>); <span style="color:#75715e">// 1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  })
+</span></span><span style="display:flex;"><span>  .<span style="color:#66d9ef">catch</span>((<span style="color:#a6e22e">error</span>) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 全部请求失败时才会执行这里的代码
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">error</span>);
+</span></span><span style="display:flex;"><span>  });
+</span></span></code></pre></div></section>
+
+  
+  
+
+  
+  
+  
+  <nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
+    
+    <a class="flex w-1/2 items-center p-6 pr-3 no-underline" href="/articles/posts/11/"
+      ><span class="mr-1.5">←</span><span>高效加载第三方JavaScript</span></a
+    >
+    
+    
+    <a
+      class="ml-auto flex w-1/2 items-center justify-end p-6 pl-3 no-underline"
+      href="/articles/posts/09/"
+      ><span>50个JS高级知识点</span><span class="ml-1.5">→</span></a
+    >
+    
+  </nav>
+  
+
+  
+  
+</article>
+
+
+    </main>
+
+    <footer
+  class="opaco mx-auto flex h-[5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+  style="position: relative; z-index: 10;display: none;"
+>
+  <div class="mr-auto">
+    &copy; 2024
+    <a class="link" href="/articles/">灏天阁</a>
+  </div>
+  <a class="link" href="https://yinchuanbo.github.io/" rel="noopener" target="_blank"
+    >Powered by YinHao</a
+  >️ ▷
+</footer>
+
+
+    <div class="img__mask" style="display: none;">
+      <img src="" alt="">
+      <span class="close_btn"></span>
+    </div>
+
+    <script>
+      const imgs = document.images;
+      const imgMask = document.querySelector('.img__mask')
+      const closeBtn = document.querySelector('.close_btn')
+      for (let i = 0; i < imgs.length; i++) {
+        const element = imgs[i];
+        element.onclick = () => {
+          const src = element.src;
+          imgMask.style.display = 'flex';
+          imgMask.querySelector('img').src = src;
+        }
+      }
+      closeBtn.onclick = () => {
+        imgMask.style.display = 'none';
+      }
+    </script>
+  </body>
+</html>

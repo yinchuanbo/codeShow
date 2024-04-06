@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+  class="not-ready text-sm lg:text-base"
+  style="--bg: "
+  lang="en"
+>
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  
+  <title>JS错误监控篇 - 灏天阁</title>
+
+  
+  <meta name="theme-color" />
+  
+  <meta name="description" content="监控流程：监控并收集错误 -&gt; 存储并上报错误 -&gt; 分析并聚合错误 -&gt; 发送错误报警-&gt; 定位并解决 JS 错误
+一、监控并收集 Javascript 错误 众所周知，我们是有办法去监听前端 Js 错误的，他们分别 window.onerror、window.onunhandledrejection、console.error 方法。
+通过这些方法能够为我们记录下线上的运行时错误，以及详细的堆栈信息。我将 window.onerror(捕获异常)，console.error(自定义异常) 方法收集到的错误信息进行分析统计后的效果如下：
+（1）重写 window.onerror 方法 // 重写 onerror 进行jsError的监听 window.onerror = function (errorMsg, url, lineNumber, columnNumber, errorObj) { var errorStack = errorObj ? errorObj.stack : null; siftAndMakeUpMessage( &#34;on_error&#34;, errorMsg, url, lineNumber, columnNumber, errorStack ); }; window.onerror 方法以及它的参数我就不一一介绍了，我相信大家也已经耳熟能详了；我们记录下错误发生时的行、列号，以及错误堆栈。
+（2）重写 window.onunhandledrejection 方法 window.onunhandledrejection = function (e) { var errorMsg = &#34;&#34;; var errorStack = &#34;&#34;; if (typeof e." />
+  <meta name="author" content="" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="/articles/main.min.css" />
+
+  
+
+  
+  
+  
+    
+  
+  <link
+    rel="preload"
+    as="image"
+    href="/articles/theme.png"
+  />
+
+  
+  
+  
+  <link rel="preload" as="image" href="/imgs/logo.png" />
+  
+  
+
+  
+
+  
+  <link rel="icon" href="/img/ico.ico" />
+  <link rel="apple-touch-icon" href="/articles/apple-touch-icon.png" />
+  
+  <meta name="generator" content="Hugo 0.108.0">
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="JS错误监控篇" />
+<meta property="og:description" content="监控流程：监控并收集错误 -&gt; 存储并上报错误 -&gt; 分析并聚合错误 -&gt; 发送错误报警-&gt; 定位并解决 JS 错误
+一、监控并收集 Javascript 错误 众所周知，我们是有办法去监听前端 Js 错误的，他们分别 window.onerror、window.onunhandledrejection、console.error 方法。
+通过这些方法能够为我们记录下线上的运行时错误，以及详细的堆栈信息。我将 window.onerror(捕获异常)，console.error(自定义异常) 方法收集到的错误信息进行分析统计后的效果如下：
+（1）重写 window.onerror 方法 // 重写 onerror 进行jsError的监听 window.onerror = function (errorMsg, url, lineNumber, columnNumber, errorObj) { var errorStack = errorObj ? errorObj.stack : null; siftAndMakeUpMessage( &#34;on_error&#34;, errorMsg, url, lineNumber, columnNumber, errorStack ); }; window.onerror 方法以及它的参数我就不一一介绍了，我相信大家也已经耳熟能详了；我们记录下错误发生时的行、列号，以及错误堆栈。
+（2）重写 window.onunhandledrejection 方法 window.onunhandledrejection = function (e) { var errorMsg = &#34;&#34;; var errorStack = &#34;&#34;; if (typeof e." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/articles/posts/13/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-08-29T16:59:15+08:00" />
+<meta property="article:modified_time" content="2023-08-29T16:59:15+08:00" />
+
+  
+  <meta itemprop="name" content="JS错误监控篇">
+<meta itemprop="description" content="监控流程：监控并收集错误 -&gt; 存储并上报错误 -&gt; 分析并聚合错误 -&gt; 发送错误报警-&gt; 定位并解决 JS 错误
+一、监控并收集 Javascript 错误 众所周知，我们是有办法去监听前端 Js 错误的，他们分别 window.onerror、window.onunhandledrejection、console.error 方法。
+通过这些方法能够为我们记录下线上的运行时错误，以及详细的堆栈信息。我将 window.onerror(捕获异常)，console.error(自定义异常) 方法收集到的错误信息进行分析统计后的效果如下：
+（1）重写 window.onerror 方法 // 重写 onerror 进行jsError的监听 window.onerror = function (errorMsg, url, lineNumber, columnNumber, errorObj) { var errorStack = errorObj ? errorObj.stack : null; siftAndMakeUpMessage( &#34;on_error&#34;, errorMsg, url, lineNumber, columnNumber, errorStack ); }; window.onerror 方法以及它的参数我就不一一介绍了，我相信大家也已经耳熟能详了；我们记录下错误发生时的行、列号，以及错误堆栈。
+（2）重写 window.onunhandledrejection 方法 window.onunhandledrejection = function (e) { var errorMsg = &#34;&#34;; var errorStack = &#34;&#34;; if (typeof e."><meta itemprop="datePublished" content="2023-08-29T16:59:15+08:00" />
+<meta itemprop="dateModified" content="2023-08-29T16:59:15+08:00" />
+<meta itemprop="wordCount" content="408">
+<meta itemprop="keywords" content="" />
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="JS错误监控篇"/>
+<meta name="twitter:description" content="监控流程：监控并收集错误 -&gt; 存储并上报错误 -&gt; 分析并聚合错误 -&gt; 发送错误报警-&gt; 定位并解决 JS 错误
+一、监控并收集 Javascript 错误 众所周知，我们是有办法去监听前端 Js 错误的，他们分别 window.onerror、window.onunhandledrejection、console.error 方法。
+通过这些方法能够为我们记录下线上的运行时错误，以及详细的堆栈信息。我将 window.onerror(捕获异常)，console.error(自定义异常) 方法收集到的错误信息进行分析统计后的效果如下：
+（1）重写 window.onerror 方法 // 重写 onerror 进行jsError的监听 window.onerror = function (errorMsg, url, lineNumber, columnNumber, errorObj) { var errorStack = errorObj ? errorObj.stack : null; siftAndMakeUpMessage( &#34;on_error&#34;, errorMsg, url, lineNumber, columnNumber, errorStack ); }; window.onerror 方法以及它的参数我就不一一介绍了，我相信大家也已经耳熟能详了；我们记录下错误发生时的行、列号，以及错误堆栈。
+（2）重写 window.onunhandledrejection 方法 window.onunhandledrejection = function (e) { var errorMsg = &#34;&#34;; var errorStack = &#34;&#34;; if (typeof e."/>
+
+  
+  
+</head>
+  <body class="text-black duration-200 ease-out dark:text-white">
+    
+    
+
+    
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100%-10rem)] max-w-3xl px-8 pt-20 dark:prose-invert"
+      id="main"
+    >
+      
+
+<article>
+  <header class="mb-10">
+    <h1 class="!my-0 pb-2.5">
+      JS错误监控篇
+    </h1>
+
+    
+    <div class="text-sm opacity-60">
+      
+      <time>Aug 29, 2023</time>
+      
+      
+      <span class="mx-1">&middot;</span>
+      <span>Yin灏</span>
+    </div>
+    
+  </header>
+
+  <section><p><strong>监控流程：监控并收集错误 -&gt; 存储并上报错误 -&gt; 分析并聚合错误 -&gt; 发送错误报警-&gt; 定位并解决 JS 错误</strong></p>
+<h2 id="一监控并收集-javascript-错误">一、监控并收集 Javascript 错误</h2>
+<p>众所周知，我们是有办法去监听前端 Js 错误的，他们分别 <code>window.onerror、window.onunhandledrejection、console.error</code> 方法。</p>
+<p>通过这些方法能够为我们记录下线上的运行时错误，以及详细的堆栈信息。我将 <code>window.onerror(捕获异常)</code>，<code>console.error(自定义异常)</code> 方法收集到的错误信息进行分析统计后的效果如下：</p>
+<img src="/img/13/01.png" />
+<h3 id="1重写-windowonerror-方法">（1）重写 window.onerror 方法</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// 重写 onerror 进行jsError的监听
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>window.<span style="color:#a6e22e">onerror</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">errorMsg</span>, <span style="color:#a6e22e">url</span>, <span style="color:#a6e22e">lineNumber</span>, <span style="color:#a6e22e">columnNumber</span>, <span style="color:#a6e22e">errorObj</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">errorStack</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">errorObj</span> <span style="color:#f92672">?</span> <span style="color:#a6e22e">errorObj</span>.<span style="color:#a6e22e">stack</span> <span style="color:#f92672">:</span> <span style="color:#66d9ef">null</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">siftAndMakeUpMessage</span>(
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;on_error&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">errorMsg</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">url</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">lineNumber</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">columnNumber</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">errorStack</span>
+</span></span><span style="display:flex;"><span>  );
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p><code>window.onerror</code> 方法以及它的参数我就不一一介绍了，我相信大家也已经耳熟能详了；我们记录下错误发生时的行、列号，以及错误堆栈。</p>
+<h3 id="2重写-windowonunhandledrejection-方法">（2）重写  window.onunhandledrejection 方法</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>window.<span style="color:#a6e22e">onunhandledrejection</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">e</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">errorMsg</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">errorStack</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">reason</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#34;object&#34;</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">errorMsg</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">reason</span>.<span style="color:#a6e22e">message</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">errorStack</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">reason</span>.<span style="color:#a6e22e">stack</span>;
+</span></span><span style="display:flex;"><span>  } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">errorMsg</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">reason</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">errorStack</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 分类解析
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">siftAndMakeUpMessage</span>(
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;on_error&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">errorMsg</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">WEB_LOCATION</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;UncaughtInPromiseError: &#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">errorStack</span>
+</span></span><span style="display:flex;"><span>  );
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p><code>window.onunhandledrejection</code> 能够捕获到 <code>Promise</code> 未处理的 <code>rejection</code> <code>异常，rejection</code> 异常并不会阻断页面运行，容易被很多小伙伴所遗忘，所以我们监控了此类型的错误。</p>
+<h3 id="3重写-consoleerror-方法">（3）重写  console.error 方法</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// 重写console.error, 可以捕获更全面的报错信息
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">oldError</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">tempErrorMsg</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">errorMsg</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">arguments</span>[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">arguments</span>[<span style="color:#ae81ff">0</span>].<span style="color:#a6e22e">message</span>) <span style="color:#f92672">||</span> <span style="color:#a6e22e">tempErrorMsg</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">lineNumber</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">columnNumber</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">errorObj</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">arguments</span>[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">arguments</span>[<span style="color:#ae81ff">0</span>].<span style="color:#a6e22e">stack</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">errorObj</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">errorMsg</span> <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;object&#34;</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">errorMsg</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>(<span style="color:#a6e22e">errorMsg</span>);
+</span></span><span style="display:flex;"><span>      } <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">e</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">errorMsg</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;错误无法解析&#34;</span>;
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">siftAndMakeUpMessage</span>(
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;console_error&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">errorMsg</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">WEB_LOCATION</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">lineNumber</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">columnNumber</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;CustomizeError: &#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">errorMsg</span>
+</span></span><span style="display:flex;"><span>    );
+</span></span><span style="display:flex;"><span>  } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 如果报错中包含错误堆栈，可以认为是JS报错，而非自定义报错
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">siftAndMakeUpMessage</span>(
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;on_error&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">errorMsg</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">WEB_LOCATION</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">lineNumber</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">columnNumber</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">errorObj</span>
+</span></span><span style="display:flex;"><span>    );
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">oldError</span>.<span style="color:#a6e22e">apply</span>(<span style="color:#a6e22e">console</span>, <span style="color:#a6e22e">arguments</span>);
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p><code>console.error</code> 是用来打印警告日志，所以我将其归类为自定义异常。一般像前端框架、引入第三方的插件都会用 <code>console.error</code> 来打印较为严重的警告信息，而我在工作中也会将后台抛出的错误信息（非后台异常）用 <code>console.error</code> 打印出来，上报到监控系统里。这样对排查异常也是有很大作用的（这一点会在行为记录查询中有体现）。</p>
+<h2 id="二存储并上报错误">二、存储并上报错误</h2>
+<p>Javascript 错误产生后，应该存入浏览器的缓存中，然后定时上传，如果实时上传，将会对服务器造成压力。通过接口将 Js 错误信息上传到服务器，由后台 server 对数据进行清洗分类，然后再进行持久化存储。因为我用的是 mysql 来存储日志信息，所以需要以 JS 错误为一个 model，明确定义 Js 错误的每个字段，定义如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// 设置日志对象类的通用属性
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">setCommonProperty</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">wmVersion</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">WM_VERSION</span>; <span style="color:#75715e">// 探针版本号
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">happenTime</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Date().<span style="color:#a6e22e">getTime</span>(); <span style="color:#75715e">// 日志发生时间
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">webMonitorId</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">WEB_MONITOR_ID</span>; <span style="color:#75715e">// 用于区分应用的唯一标识（一个项目对应一个）
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">simpleUrl</span> <span style="color:#f92672">=</span> window.<span style="color:#a6e22e">location</span>.<span style="color:#a6e22e">href</span>.<span style="color:#a6e22e">split</span>(<span style="color:#e6db74">&#34;?&#34;</span>)[<span style="color:#ae81ff">0</span>].<span style="color:#a6e22e">replace</span>(<span style="color:#e6db74">&#34;#&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>); <span style="color:#75715e">// 页面的url
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">completeUrl</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">utils</span>.<span style="color:#a6e22e">b64EncodeUnicode</span>(
+</span></span><span style="display:flex;"><span>    encodeURIComponent(window.<span style="color:#a6e22e">location</span>.<span style="color:#a6e22e">href</span>)
+</span></span><span style="display:flex;"><span>  ); <span style="color:#75715e">// 页面的完整url
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">customerKey</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">utils</span>.<span style="color:#a6e22e">getCustomerKey</span>(); <span style="color:#75715e">// 用于区分用户，所对应唯一的标识，清理本地数据后失效，
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// 用户自定义信息， 由开发者主动传入， 便于对线上问题进行准确定位
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">wmUserInfo</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">lsg</span>.<span style="color:#a6e22e">wmUserInfo</span> <span style="color:#f92672">?</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">parse</span>(<span style="color:#a6e22e">lsg</span>.<span style="color:#a6e22e">wmUserInfo</span>) <span style="color:#f92672">:</span> {};
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">userId</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">wmUserInfo</span>.<span style="color:#a6e22e">userId</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">firstUserParam</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">utils</span>.<span style="color:#a6e22e">b64EncodeUnicode</span>(<span style="color:#a6e22e">wmUserInfo</span>.<span style="color:#a6e22e">firstUserParam</span> <span style="color:#f92672">||</span> <span style="color:#e6db74">&#34;&#34;</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">secondUserParam</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">utils</span>.<span style="color:#a6e22e">b64EncodeUnicode</span>(
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">wmUserInfo</span>.<span style="color:#a6e22e">secondUserParam</span> <span style="color:#f92672">||</span> <span style="color:#e6db74">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>  );
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// JS错误日志，继承于日志基类MonitorBaseInfo
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">JavaScriptErrorInfo</span>(<span style="color:#a6e22e">uploadType</span>, <span style="color:#a6e22e">infoType</span>, <span style="color:#a6e22e">errorMsg</span>, <span style="color:#a6e22e">errorStack</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">setCommonProperty</span>.<span style="color:#a6e22e">apply</span>(<span style="color:#66d9ef">this</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">uploadType</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">uploadType</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">infoType</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">infoType</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">pageKey</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">utils</span>.<span style="color:#a6e22e">getPageKey</span>(); <span style="color:#75715e">// 用于区分页面，所对应唯一的标识，每个新页面对应一个值
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">deviceName</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">DEVICE_INFO</span>.<span style="color:#a6e22e">deviceName</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">os</span> <span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">DEVICE_INFO</span>.<span style="color:#a6e22e">os</span> <span style="color:#f92672">+</span> (<span style="color:#a6e22e">DEVICE_INFO</span>.<span style="color:#a6e22e">osVersion</span> <span style="color:#f92672">?</span> <span style="color:#e6db74">&#34; &#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">DEVICE_INFO</span>.<span style="color:#a6e22e">osVersion</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;&#34;</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">browserName</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">DEVICE_INFO</span>.<span style="color:#a6e22e">browserName</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">browserVersion</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">DEVICE_INFO</span>.<span style="color:#a6e22e">browserVersion</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// TODO 位置信息, 待处理
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">monitorIp</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">utils</span>.<span style="color:#a6e22e">getCookie</span>(<span style="color:#e6db74">&#34;webfunny_ip&#34;</span>); <span style="color:#75715e">// 用户的IP地址
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">country</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;china&#34;</span>; <span style="color:#75715e">// 用户所在国家
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">province</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>; <span style="color:#75715e">// 用户所在省份
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">city</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>; <span style="color:#75715e">// 用户所在城市
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">errorMessage</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">utils</span>.<span style="color:#a6e22e">b64EncodeUnicode</span>(<span style="color:#a6e22e">errorMsg</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">errorStack</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">utils</span>.<span style="color:#a6e22e">b64EncodeUnicode</span>(<span style="color:#a6e22e">errorStack</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">browserInfo</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Js 错误信息需要包含系统版本号、应用版本号、平台信息、页面 Url、错误信息、错误堆栈、发生时间等等，这样才能帮助我们准确定位，至于数据库的字段如何定义，我就不赘述了，可以访问我的 git 项目查看。</p>
+<h2 id="三分析并聚合错误">三、分析并聚合错误</h2>
+<p>如果每天都去盯着前端的报错数据，真的很耗费精力，而且很难看出是今天发生的，还是一直存在的报错。</p>
+<p>其实前端项目每天都会有些报错，比如：<code>script error</code> 。我们既不能控制，也不会影响我们的业务，但它会一直存在。</p>
+<p>只要每天的错误量没有波动太大，报错数据比较平稳，就可以认为线上应用是健康的。所以我选择跟一周前的数据进行比较，如果出现大幅上升，那么就需要对这个项目进行关注了，而不是每天查看具体的报错数据。</p>
+<p>本文上部的健康状况看板图片就是为了表达这种想法，截图上正是前端发了严重的异常，而出现的曲线图。</p>
+<p>那我们来看看如何对这些错误进行聚合，且看下 Webfunny 错误聚合的效果：</p>
+<img src="/img/13/02.png" />
+<p>首先，我们对捕获的异常类型进行了分类（<code>TypeError、ReferenceError、UncaughtInPromiseError</code>），这样错误类型可以一目了然。</p>
+<p>同时我们对发生错误的操作系统（<code>Android、ios、Pc</code>）进行了分类统计，比如截图中的第一个错误，就只会在苹果手机上发生，排查范围也就缩小了很多。</p>
+<p>另外，我们把错误影响的人数也统计出来，就可以知道这个错误影响了多少用户，从而确定修复的优先级。</p>
+<h2 id="四发送错误报警">四、<strong>发送错误报警</strong></h2>
+<p>这一步属于监控的附加功能，主要包括邮箱、钉钉、短信等消息通知，和本次讲得知识点无关，我就不细说了。</p>
+<h2 id="五如何定位并解决-js-错误">五、如何定位并解决 JS 错误</h2>
+<p>针对某一个错误，我们需要分析它发生的平台，影响的人数，系统版本，网络环境等等，同时也需要分析最为重要的一步，就是代码的位置。</p>
+<img src="/img/13/03.png" />
+<p>如图所示</p>
+<p><strong>首先</strong>，我们分析了错误发生的具体时间、发生次数、影响人数、IP 地址、浏览器版本、操作系统等环境因素</p>
+<p><strong>其次</strong>，我们还需统计这个报错发生的时间曲线，如果是大量报错，我们可以很容易定位到错误发生的起始点，针对那个时间点，对报错的原因进行定位</p>
+<img src="/img/13/04.png" />
+<p><strong>还有一个重要的点</strong>，就是对代码代码堆栈的分析。我们默认会根据错误提示的行、列号截取错误位置附近的一段代码，正常情况下，我们已经可以通过这段代码来定位出出错的具体位置了。</p>
+<p>但是有些小伙伴说，我就是看不出来怎么办，没关系，我们还提供了利用 Js 的 SourceMap 文件反向定位源码的功能，让你准确定位到 Js 源码的位置。</p>
+<p>PS：由于 SourceMap 文件反向定位源码的功能较为复杂，我将放到下一个知识分享中进行讲解。</p>
+<p><strong>最后</strong>，我们将 Js 错误结合到用户的行为记录中，这样我们就能够知道用户在发生错误的前后都做了什么，更进一步的了解错误发生原因，错误详情页提供了查看行为轨迹的按钮，我们来看看结果。</p>
+<img src="/img/13/05.png" />
+</section>
+
+  
+  
+
+  
+  
+  
+  <nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
+    
+    <a class="flex w-1/2 items-center p-6 pr-3 no-underline" href="/articles/posts/14/"
+      ><span class="mr-1.5">←</span><span>前端异常监控解决方案研究</span></a
+    >
+    
+    
+    <a
+      class="ml-auto flex w-1/2 items-center justify-end p-6 pl-3 no-underline"
+      href="/articles/posts/12/"
+      ><span>前端异常处理最佳实践</span><span class="ml-1.5">→</span></a
+    >
+    
+  </nav>
+  
+
+  
+  
+</article>
+
+
+    </main>
+
+    <footer
+  class="opaco mx-auto flex h-[5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+  style="position: relative; z-index: 10;display: none;"
+>
+  <div class="mr-auto">
+    &copy; 2024
+    <a class="link" href="/articles/">灏天阁</a>
+  </div>
+  <a class="link" href="https://yinchuanbo.github.io/" rel="noopener" target="_blank"
+    >Powered by YinHao</a
+  >️ ▷
+</footer>
+
+
+    <div class="img__mask" style="display: none;">
+      <img src="" alt="">
+      <span class="close_btn"></span>
+    </div>
+
+    <script>
+      const imgs = document.images;
+      const imgMask = document.querySelector('.img__mask')
+      const closeBtn = document.querySelector('.close_btn')
+      for (let i = 0; i < imgs.length; i++) {
+        const element = imgs[i];
+        element.onclick = () => {
+          const src = element.src;
+          imgMask.style.display = 'flex';
+          imgMask.querySelector('img').src = src;
+        }
+      }
+      closeBtn.onclick = () => {
+        imgMask.style.display = 'none';
+      }
+    </script>
+  </body>
+</html>

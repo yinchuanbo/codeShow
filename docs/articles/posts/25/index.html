@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+  class="not-ready text-sm lg:text-base"
+  style="--bg: "
+  lang="en"
+>
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  
+  <title>现代 CSS 解决方案:CSS 数学函数 - 灏天阁</title>
+
+  
+  <meta name="theme-color" />
+  
+  <meta name="description" content="在 CSS 中，其实存在各种各样的函数。具体分为：
+Transform functions Math functions Filter functions Color functions Image functions Counter functions Font functions Shape functions Reference functions CSS grid functions 本文，将具体介绍其中的 CSS 数学函数（Math functions）中，已经被浏览器大规模支持的 4 个：
+calc() min() max() clamp() 为什么说是被浏览器大规模支持的？因为除了这 4 个目前已经得到大规模支持的数学函数外，其实规范 CSS Values and Units Module Level 4 已经定义了诸如三角函数相关 sin()、cos()、tan() 等，指数函数相关 pow()、sqrt() 等等数学函数，只是目前都处于实验室阶段，还没有浏览器支持它们，需要给时间一点时间。
+Calc() calc() 此 CSS 函数允许在声明 CSS 属性值时执行一些计算。
+语法类似于
+{ width: calc(100% - 80px); } 一些需要注意的点：
+&#43; 和 - 运算符的两边必须要有空白字符。比如，calc(50% -8px) 会被解析成为一个无效的表达式，必须写成calc(8px &#43; -50%) * 和 / 这两个运算符前后不需要空白字符，但如果考虑到统一性，仍然推荐加上空白符 用 0 作除数会使 HTML 解析器抛出异常 涉及自动布局和固定布局的表格中的表列、表列组、表行、表行组和表单元格的宽度和高度百分比的数学表达式，auto 可视为已指定。 calc() 函数支持嵌套，但支持的方式是：把被嵌套的 calc() 函数全当成普通的括号。（所以，函数内直接用括号就好了。） calc() 支持与 CSS 变量混合使用 看一个最常见的例子，页面结构如下：" />
+  <meta name="author" content="" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="/articles/main.min.css" />
+
+  
+
+  
+  
+  
+    
+  
+  <link
+    rel="preload"
+    as="image"
+    href="/articles/theme.png"
+  />
+
+  
+  
+  
+  <link rel="preload" as="image" href="/imgs/logo.png" />
+  
+  
+
+  
+
+  
+  <link rel="icon" href="/img/ico.ico" />
+  <link rel="apple-touch-icon" href="/articles/apple-touch-icon.png" />
+  
+  <meta name="generator" content="Hugo 0.108.0">
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="现代 CSS 解决方案:CSS 数学函数" />
+<meta property="og:description" content="在 CSS 中，其实存在各种各样的函数。具体分为：
+Transform functions Math functions Filter functions Color functions Image functions Counter functions Font functions Shape functions Reference functions CSS grid functions 本文，将具体介绍其中的 CSS 数学函数（Math functions）中，已经被浏览器大规模支持的 4 个：
+calc() min() max() clamp() 为什么说是被浏览器大规模支持的？因为除了这 4 个目前已经得到大规模支持的数学函数外，其实规范 CSS Values and Units Module Level 4 已经定义了诸如三角函数相关 sin()、cos()、tan() 等，指数函数相关 pow()、sqrt() 等等数学函数，只是目前都处于实验室阶段，还没有浏览器支持它们，需要给时间一点时间。
+Calc() calc() 此 CSS 函数允许在声明 CSS 属性值时执行一些计算。
+语法类似于
+{ width: calc(100% - 80px); } 一些需要注意的点：
+&#43; 和 - 运算符的两边必须要有空白字符。比如，calc(50% -8px) 会被解析成为一个无效的表达式，必须写成calc(8px &#43; -50%) * 和 / 这两个运算符前后不需要空白字符，但如果考虑到统一性，仍然推荐加上空白符 用 0 作除数会使 HTML 解析器抛出异常 涉及自动布局和固定布局的表格中的表列、表列组、表行、表行组和表单元格的宽度和高度百分比的数学表达式，auto 可视为已指定。 calc() 函数支持嵌套，但支持的方式是：把被嵌套的 calc() 函数全当成普通的括号。（所以，函数内直接用括号就好了。） calc() 支持与 CSS 变量混合使用 看一个最常见的例子，页面结构如下：" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/articles/posts/25/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-09-02T11:41:00+08:00" />
+<meta property="article:modified_time" content="2023-09-02T11:41:00+08:00" />
+
+  
+  <meta itemprop="name" content="现代 CSS 解决方案:CSS 数学函数">
+<meta itemprop="description" content="在 CSS 中，其实存在各种各样的函数。具体分为：
+Transform functions Math functions Filter functions Color functions Image functions Counter functions Font functions Shape functions Reference functions CSS grid functions 本文，将具体介绍其中的 CSS 数学函数（Math functions）中，已经被浏览器大规模支持的 4 个：
+calc() min() max() clamp() 为什么说是被浏览器大规模支持的？因为除了这 4 个目前已经得到大规模支持的数学函数外，其实规范 CSS Values and Units Module Level 4 已经定义了诸如三角函数相关 sin()、cos()、tan() 等，指数函数相关 pow()、sqrt() 等等数学函数，只是目前都处于实验室阶段，还没有浏览器支持它们，需要给时间一点时间。
+Calc() calc() 此 CSS 函数允许在声明 CSS 属性值时执行一些计算。
+语法类似于
+{ width: calc(100% - 80px); } 一些需要注意的点：
+&#43; 和 - 运算符的两边必须要有空白字符。比如，calc(50% -8px) 会被解析成为一个无效的表达式，必须写成calc(8px &#43; -50%) * 和 / 这两个运算符前后不需要空白字符，但如果考虑到统一性，仍然推荐加上空白符 用 0 作除数会使 HTML 解析器抛出异常 涉及自动布局和固定布局的表格中的表列、表列组、表行、表行组和表单元格的宽度和高度百分比的数学表达式，auto 可视为已指定。 calc() 函数支持嵌套，但支持的方式是：把被嵌套的 calc() 函数全当成普通的括号。（所以，函数内直接用括号就好了。） calc() 支持与 CSS 变量混合使用 看一个最常见的例子，页面结构如下："><meta itemprop="datePublished" content="2023-09-02T11:41:00+08:00" />
+<meta itemprop="dateModified" content="2023-09-02T11:41:00+08:00" />
+<meta itemprop="wordCount" content="1052">
+<meta itemprop="keywords" content="" />
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="现代 CSS 解决方案:CSS 数学函数"/>
+<meta name="twitter:description" content="在 CSS 中，其实存在各种各样的函数。具体分为：
+Transform functions Math functions Filter functions Color functions Image functions Counter functions Font functions Shape functions Reference functions CSS grid functions 本文，将具体介绍其中的 CSS 数学函数（Math functions）中，已经被浏览器大规模支持的 4 个：
+calc() min() max() clamp() 为什么说是被浏览器大规模支持的？因为除了这 4 个目前已经得到大规模支持的数学函数外，其实规范 CSS Values and Units Module Level 4 已经定义了诸如三角函数相关 sin()、cos()、tan() 等，指数函数相关 pow()、sqrt() 等等数学函数，只是目前都处于实验室阶段，还没有浏览器支持它们，需要给时间一点时间。
+Calc() calc() 此 CSS 函数允许在声明 CSS 属性值时执行一些计算。
+语法类似于
+{ width: calc(100% - 80px); } 一些需要注意的点：
+&#43; 和 - 运算符的两边必须要有空白字符。比如，calc(50% -8px) 会被解析成为一个无效的表达式，必须写成calc(8px &#43; -50%) * 和 / 这两个运算符前后不需要空白字符，但如果考虑到统一性，仍然推荐加上空白符 用 0 作除数会使 HTML 解析器抛出异常 涉及自动布局和固定布局的表格中的表列、表列组、表行、表行组和表单元格的宽度和高度百分比的数学表达式，auto 可视为已指定。 calc() 函数支持嵌套，但支持的方式是：把被嵌套的 calc() 函数全当成普通的括号。（所以，函数内直接用括号就好了。） calc() 支持与 CSS 变量混合使用 看一个最常见的例子，页面结构如下："/>
+
+  
+  
+</head>
+  <body class="text-black duration-200 ease-out dark:text-white">
+    
+    
+
+    
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100%-10rem)] max-w-3xl px-8 pt-20 dark:prose-invert"
+      id="main"
+    >
+      
+
+<article>
+  <header class="mb-10">
+    <h1 class="!my-0 pb-2.5">
+      现代 CSS 解决方案:CSS 数学函数
+    </h1>
+
+    
+    <div class="text-sm opacity-60">
+      
+      <time>Sep 2, 2023</time>
+      
+      
+      <span class="mx-1">&middot;</span>
+      <span>Yin灏</span>
+    </div>
+    
+  </header>
+
+  <section><p>在 CSS 中，其实存在各种各样的函数。具体分为：</p>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Functions#transform_functions">Transform functions</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Functions#math_functions">Math functions</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Functions#filter_functions">Filter functions</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Functions#color_functions">Color functions</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Functions#image_functions">Image functions</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Functions#counter_functions">Counter functions</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Functions#font_functions">Font functions</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Functions#shape_functions">Shape functions</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Functions#reference_functions">Reference functions</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Functions#css_grid_functions">CSS grid functions</a></li>
+</ul>
+<p>本文，将具体介绍其中的 CSS 数学函数（Math functions）中，已经被浏览器大规模支持的 4 个：</p>
+<ul>
+<li>calc()</li>
+<li>min()</li>
+<li>max()</li>
+<li>clamp()</li>
+</ul>
+<p>为什么说是被浏览器大规模支持的？因为除了这 4 个目前已经得到大规模支持的数学函数外，其实规范 <a href="https://drafts.csswg.org/css-values/#math">CSS Values and Units Module Level 4</a> 已经定义了诸如三角函数相关 <code>sin()</code>、<code>cos()</code>、<code>tan()</code> 等，指数函数相关 <code>pow()</code>、<code>sqrt()</code> 等等数学函数，只是目前都处于实验室阶段，还没有浏览器支持它们，需要给时间一点时间。</p>
+<h2 id="calc">Calc()</h2>
+<p>calc() 此 <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS">CSS</a> 函数允许在声明 CSS 属性值时执行一些计算。</p>
+<p>语法类似于</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">width</span>: calc(<span style="color:#ae81ff">100</span><span style="color:#66d9ef">%</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">80</span><span style="color:#66d9ef">px</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>一些需要注意的点：</p>
+<ul>
+<li><code>+</code> 和 <code>-</code> 运算符的两边必须要有空白字符。比如，<code>calc(50% -8px)</code> 会被解析成为一个无效的表达式，必须写成<code>calc(8px + -50%)</code></li>
+<li><code>*</code> 和 <code>/</code> 这两个运算符前后不需要空白字符，但如果考虑到统一性，仍然推荐加上空白符</li>
+<li>用 0 作除数会使 HTML 解析器抛出异常</li>
+<li>涉及自动布局和固定布局的表格中的表列、表列组、表行、表行组和表单元格的宽度和高度百分比的数学表达式，auto 可视为已指定。</li>
+<li>calc() 函数支持嵌套，但支持的方式是：把被嵌套的 calc() 函数全当成普通的括号。（所以，函数内直接用括号就好了。）</li>
+<li>calc() 支持与 CSS 变量混合使用</li>
+</ul>
+<p>看一个最常见的例子，页面结构如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;g-container&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;g-content&#34;</span>&gt;Content&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;g-footer&#34;</span>&gt;Footer&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span></code></pre></div><p>页面的 <code>g-footer</code> 高为 80px，我们希望不管页面多长，<code>g-content</code> 部分都可以占满剩余空间，像是这样：</p>
+<img src="/img/25/01.png">
+<p>这种布局使用 flex 的弹性布局可以轻松实现，当然，也可以使用 <code>calc()</code> 实现：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">g-container</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">height</span>: <span style="color:#ae81ff">100</span><span style="color:#66d9ef">vh</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">g-content</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">height</span>: calc(<span style="color:#ae81ff">100</span><span style="color:#66d9ef">vh</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">80</span><span style="color:#66d9ef">px</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">g-footer</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">height</span>: <span style="color:#ae81ff">80</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>下面罗列一些 Calc() 的进阶技巧。</p>
+<h3 id="calc-中的加减法与乘除法的差异">Calc 中的加减法与乘除法的差异</h3>
+<p>注意，calc() 中的加减法与乘除法的差异：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">font-size</span>: calc(<span style="color:#ae81ff">1</span><span style="color:#66d9ef">rem</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">10</span><span style="color:#66d9ef">px</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">width</span>: calc(<span style="color:#ae81ff">100</span><span style="color:#66d9ef">px</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">10</span><span style="color:#66d9ef">%</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>可以看到，加减法两边的操作数都是需要单位的，而乘除法，需要一个无单位数，仅仅表示一个倍率：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">width</span>: calc(<span style="color:#ae81ff">100</span><span style="color:#66d9ef">%</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">7</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">animation-delay</span>: calc(<span style="color:#ae81ff">1</span><span style="color:#66d9ef">s</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">3</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="calc-的嵌套">Calc 的嵌套</h3>
+<p>calc() 函数是可以嵌套使用的，像是这样：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">width</span>: calc(<span style="color:#ae81ff">100</span><span style="color:#66d9ef">vw</span> <span style="color:#f92672">-</span> calc(<span style="color:#ae81ff">100</span><span style="color:#66d9ef">%</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">64</span><span style="color:#66d9ef">px</span>));
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>此时，内部的 calc() 函数可以退化写成一个括号即可 ()，所以上述代码等价于：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">width</span>: calc(<span style="color:#ae81ff">100</span><span style="color:#66d9ef">vw</span> <span style="color:#f92672">-</span> (<span style="color:#ae81ff">100</span><span style="color:#66d9ef">%</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">64</span><span style="color:#66d9ef">px</span>));
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><strong>也就是嵌套内的 calc()，calc 几个函数字符可以省略</strong>。</p>
+<h3 id="calc-内不同单位的混合运算">Calc 内不同单位的混合运算</h3>
+<p>calc() 支持不同单位的混合运算，对于长度，只要是属于长度相关的单位都可以进行混合运算，包含这些：</p>
+<ul>
+<li>px</li>
+<li>%</li>
+<li>em</li>
+<li>rem</li>
+<li>in</li>
+<li>mm</li>
+<li>cm</li>
+<li>pt</li>
+<li>pc</li>
+<li>ex</li>
+<li>ch</li>
+<li>vh</li>
+<li>vw</li>
+<li>vmin</li>
+<li>vmax</li>
+</ul>
+<p>这里有一个有意思的点，运算肯定是消耗性能的，早年间，有这样一段 CSS 代码，可以直接让 Chrome 浏览器崩溃 Crash：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">div</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span></code></pre></div><p>CSS 样式如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">div</span> {
+</span></span><span style="display:flex;"><span>  --initial-level-0: calc(<span style="color:#ae81ff">1</span><span style="color:#66d9ef">vh</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span><span style="color:#66d9ef">%</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span><span style="color:#66d9ef">px</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span><span style="color:#66d9ef">em</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span><span style="color:#66d9ef">vw</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span><span style="color:#66d9ef">cm</span>);
+</span></span><span style="display:flex;"><span>  --level-1: calc(<span style="color:#a6e22e">var</span>(<span style="color:#f92672">--</span><span style="color:#66d9ef">initial</span><span style="color:#f92672">-</span><span style="color:#66d9ef">level</span><span style="color:#ae81ff">-0</span>) <span style="color:#f92672">+</span> <span style="color:#a6e22e">var</span>(<span style="color:#f92672">--</span><span style="color:#66d9ef">initial</span><span style="color:#f92672">-</span><span style="color:#66d9ef">level</span><span style="color:#ae81ff">-0</span>));
+</span></span><span style="display:flex;"><span>  --level-2: calc(<span style="color:#a6e22e">var</span>(<span style="color:#f92672">--</span><span style="color:#66d9ef">level</span><span style="color:#ae81ff">-1</span>) <span style="color:#f92672">+</span> <span style="color:#a6e22e">var</span>(<span style="color:#f92672">--</span><span style="color:#66d9ef">level</span><span style="color:#ae81ff">-1</span>));
+</span></span><span style="display:flex;"><span>  --level-3: calc(<span style="color:#a6e22e">var</span>(<span style="color:#f92672">--</span><span style="color:#66d9ef">level</span><span style="color:#ae81ff">-2</span>) <span style="color:#f92672">+</span> <span style="color:#a6e22e">var</span>(<span style="color:#f92672">--</span><span style="color:#66d9ef">level</span><span style="color:#ae81ff">-2</span>));
+</span></span><span style="display:flex;"><span>  --level-4: calc(<span style="color:#a6e22e">var</span>(<span style="color:#f92672">--</span><span style="color:#66d9ef">level</span><span style="color:#ae81ff">-3</span>) <span style="color:#f92672">+</span> <span style="color:#a6e22e">var</span>(<span style="color:#f92672">--</span><span style="color:#66d9ef">level</span><span style="color:#ae81ff">-3</span>));
+</span></span><span style="display:flex;"><span>  --level-5: calc(<span style="color:#a6e22e">var</span>(<span style="color:#f92672">--</span><span style="color:#66d9ef">level</span><span style="color:#ae81ff">-4</span>) <span style="color:#f92672">+</span> <span style="color:#a6e22e">var</span>(<span style="color:#f92672">--</span><span style="color:#66d9ef">level</span><span style="color:#ae81ff">-4</span>));
+</span></span><span style="display:flex;"><span>  --level-6: calc(<span style="color:#a6e22e">var</span>(<span style="color:#f92672">--</span><span style="color:#66d9ef">level</span><span style="color:#ae81ff">-5</span>) <span style="color:#f92672">+</span> <span style="color:#a6e22e">var</span>(<span style="color:#f92672">--</span><span style="color:#66d9ef">level</span><span style="color:#ae81ff">-5</span>));
+</span></span><span style="display:flex;"><span>  --level-7: calc(<span style="color:#a6e22e">var</span>(<span style="color:#f92672">--</span><span style="color:#66d9ef">level</span><span style="color:#ae81ff">-6</span>) <span style="color:#f92672">+</span> <span style="color:#a6e22e">var</span>(<span style="color:#f92672">--</span><span style="color:#66d9ef">level</span><span style="color:#ae81ff">-6</span>));
+</span></span><span style="display:flex;"><span>  --level-8: calc(<span style="color:#a6e22e">var</span>(<span style="color:#f92672">--</span><span style="color:#66d9ef">level</span><span style="color:#ae81ff">-7</span>) <span style="color:#f92672">+</span> <span style="color:#a6e22e">var</span>(<span style="color:#f92672">--</span><span style="color:#66d9ef">level</span><span style="color:#ae81ff">-7</span>));
+</span></span><span style="display:flex;"><span>  --level-9: calc(<span style="color:#a6e22e">var</span>(<span style="color:#f92672">--</span><span style="color:#66d9ef">level</span><span style="color:#ae81ff">-8</span>) <span style="color:#f92672">+</span> <span style="color:#a6e22e">var</span>(<span style="color:#f92672">--</span><span style="color:#66d9ef">level</span><span style="color:#ae81ff">-8</span>));
+</span></span><span style="display:flex;"><span>  --level-10: calc(<span style="color:#a6e22e">var</span>(<span style="color:#f92672">--</span><span style="color:#66d9ef">level</span><span style="color:#ae81ff">-9</span>) <span style="color:#f92672">+</span> <span style="color:#a6e22e">var</span>(<span style="color:#f92672">--</span><span style="color:#66d9ef">level</span><span style="color:#ae81ff">-9</span>));
+</span></span><span style="display:flex;"><span>  --level-11: calc(<span style="color:#a6e22e">var</span>(<span style="color:#f92672">--</span><span style="color:#66d9ef">level</span><span style="color:#ae81ff">-10</span>) <span style="color:#f92672">+</span> <span style="color:#a6e22e">var</span>(<span style="color:#f92672">--</span><span style="color:#66d9ef">level</span><span style="color:#ae81ff">-10</span>));
+</span></span><span style="display:flex;"><span>  --level-12: calc(<span style="color:#a6e22e">var</span>(<span style="color:#f92672">--</span><span style="color:#66d9ef">level</span><span style="color:#ae81ff">-11</span>) <span style="color:#f92672">+</span> <span style="color:#a6e22e">var</span>(<span style="color:#f92672">--</span><span style="color:#66d9ef">level</span><span style="color:#ae81ff">-11</span>));
+</span></span><span style="display:flex;"><span>  --level-13: calc(<span style="color:#a6e22e">var</span>(<span style="color:#f92672">--</span><span style="color:#66d9ef">level</span><span style="color:#ae81ff">-12</span>) <span style="color:#f92672">+</span> <span style="color:#a6e22e">var</span>(<span style="color:#f92672">--</span><span style="color:#66d9ef">level</span><span style="color:#ae81ff">-12</span>));
+</span></span><span style="display:flex;"><span>  --level-14: calc(<span style="color:#a6e22e">var</span>(<span style="color:#f92672">--</span><span style="color:#66d9ef">level</span><span style="color:#ae81ff">-13</span>) <span style="color:#f92672">+</span> <span style="color:#a6e22e">var</span>(<span style="color:#f92672">--</span><span style="color:#66d9ef">level</span><span style="color:#ae81ff">-13</span>));
+</span></span><span style="display:flex;"><span>  --level-15: calc(<span style="color:#a6e22e">var</span>(<span style="color:#f92672">--</span><span style="color:#66d9ef">level</span><span style="color:#ae81ff">-14</span>) <span style="color:#f92672">+</span> <span style="color:#a6e22e">var</span>(<span style="color:#f92672">--</span><span style="color:#66d9ef">level</span><span style="color:#ae81ff">-14</span>));
+</span></span><span style="display:flex;"><span>  --level-16: calc(<span style="color:#a6e22e">var</span>(<span style="color:#f92672">--</span><span style="color:#66d9ef">level</span><span style="color:#ae81ff">-15</span>) <span style="color:#f92672">+</span> <span style="color:#a6e22e">var</span>(<span style="color:#f92672">--</span><span style="color:#66d9ef">level</span><span style="color:#ae81ff">-15</span>));
+</span></span><span style="display:flex;"><span>  --level-17: calc(<span style="color:#a6e22e">var</span>(<span style="color:#f92672">--</span><span style="color:#66d9ef">level</span><span style="color:#ae81ff">-16</span>) <span style="color:#f92672">+</span> <span style="color:#a6e22e">var</span>(<span style="color:#f92672">--</span><span style="color:#66d9ef">level</span><span style="color:#ae81ff">-16</span>));
+</span></span><span style="display:flex;"><span>  --level-18: calc(<span style="color:#a6e22e">var</span>(<span style="color:#f92672">--</span><span style="color:#66d9ef">level</span><span style="color:#ae81ff">-17</span>) <span style="color:#f92672">+</span> <span style="color:#a6e22e">var</span>(<span style="color:#f92672">--</span><span style="color:#66d9ef">level</span><span style="color:#ae81ff">-17</span>));
+</span></span><span style="display:flex;"><span>  --level-19: calc(<span style="color:#a6e22e">var</span>(<span style="color:#f92672">--</span><span style="color:#66d9ef">level</span><span style="color:#ae81ff">-18</span>) <span style="color:#f92672">+</span> <span style="color:#a6e22e">var</span>(<span style="color:#f92672">--</span><span style="color:#66d9ef">level</span><span style="color:#ae81ff">-18</span>));
+</span></span><span style="display:flex;"><span>  --level-20: calc(<span style="color:#a6e22e">var</span>(<span style="color:#f92672">--</span><span style="color:#66d9ef">level</span><span style="color:#ae81ff">-19</span>) <span style="color:#f92672">+</span> <span style="color:#a6e22e">var</span>(<span style="color:#f92672">--</span><span style="color:#66d9ef">level</span><span style="color:#ae81ff">-19</span>));
+</span></span><span style="display:flex;"><span>  --level-21: calc(<span style="color:#a6e22e">var</span>(<span style="color:#f92672">--</span><span style="color:#66d9ef">level</span><span style="color:#ae81ff">-20</span>) <span style="color:#f92672">+</span> <span style="color:#a6e22e">var</span>(<span style="color:#f92672">--</span><span style="color:#66d9ef">level</span><span style="color:#ae81ff">-20</span>));
+</span></span><span style="display:flex;"><span>  --level-22: calc(<span style="color:#a6e22e">var</span>(<span style="color:#f92672">--</span><span style="color:#66d9ef">level</span><span style="color:#ae81ff">-21</span>) <span style="color:#f92672">+</span> <span style="color:#a6e22e">var</span>(<span style="color:#f92672">--</span><span style="color:#66d9ef">level</span><span style="color:#ae81ff">-21</span>));
+</span></span><span style="display:flex;"><span>  --level-23: calc(<span style="color:#a6e22e">var</span>(<span style="color:#f92672">--</span><span style="color:#66d9ef">level</span><span style="color:#ae81ff">-22</span>) <span style="color:#f92672">+</span> <span style="color:#a6e22e">var</span>(<span style="color:#f92672">--</span><span style="color:#66d9ef">level</span><span style="color:#ae81ff">-22</span>));
+</span></span><span style="display:flex;"><span>  --level-24: calc(<span style="color:#a6e22e">var</span>(<span style="color:#f92672">--</span><span style="color:#66d9ef">level</span><span style="color:#ae81ff">-23</span>) <span style="color:#f92672">+</span> <span style="color:#a6e22e">var</span>(<span style="color:#f92672">--</span><span style="color:#66d9ef">level</span><span style="color:#ae81ff">-23</span>));
+</span></span><span style="display:flex;"><span>  --level-25: calc(<span style="color:#a6e22e">var</span>(<span style="color:#f92672">--</span><span style="color:#66d9ef">level</span><span style="color:#ae81ff">-24</span>) <span style="color:#f92672">+</span> <span style="color:#a6e22e">var</span>(<span style="color:#f92672">--</span><span style="color:#66d9ef">level</span><span style="color:#ae81ff">-24</span>));
+</span></span><span style="display:flex;"><span>  --level-26: calc(<span style="color:#a6e22e">var</span>(<span style="color:#f92672">--</span><span style="color:#66d9ef">level</span><span style="color:#ae81ff">-25</span>) <span style="color:#f92672">+</span> <span style="color:#a6e22e">var</span>(<span style="color:#f92672">--</span><span style="color:#66d9ef">level</span><span style="color:#ae81ff">-25</span>));
+</span></span><span style="display:flex;"><span>  --level-27: calc(<span style="color:#a6e22e">var</span>(<span style="color:#f92672">--</span><span style="color:#66d9ef">level</span><span style="color:#ae81ff">-26</span>) <span style="color:#f92672">+</span> <span style="color:#a6e22e">var</span>(<span style="color:#f92672">--</span><span style="color:#66d9ef">level</span><span style="color:#ae81ff">-26</span>));
+</span></span><span style="display:flex;"><span>  --level-28: calc(<span style="color:#a6e22e">var</span>(<span style="color:#f92672">--</span><span style="color:#66d9ef">level</span><span style="color:#ae81ff">-27</span>) <span style="color:#f92672">+</span> <span style="color:#a6e22e">var</span>(<span style="color:#f92672">--</span><span style="color:#66d9ef">level</span><span style="color:#ae81ff">-27</span>));
+</span></span><span style="display:flex;"><span>  --level-29: calc(<span style="color:#a6e22e">var</span>(<span style="color:#f92672">--</span><span style="color:#66d9ef">level</span><span style="color:#ae81ff">-28</span>) <span style="color:#f92672">+</span> <span style="color:#a6e22e">var</span>(<span style="color:#f92672">--</span><span style="color:#66d9ef">level</span><span style="color:#ae81ff">-28</span>));
+</span></span><span style="display:flex;"><span>  --level-30: calc(<span style="color:#a6e22e">var</span>(<span style="color:#f92672">--</span><span style="color:#66d9ef">level</span><span style="color:#ae81ff">-29</span>) <span style="color:#f92672">+</span> <span style="color:#a6e22e">var</span>(<span style="color:#f92672">--</span><span style="color:#66d9ef">level</span><span style="color:#ae81ff">-29</span>));
+</span></span><span style="display:flex;"><span>  --level-final: calc(<span style="color:#a6e22e">var</span>(<span style="color:#f92672">--</span><span style="color:#66d9ef">level</span><span style="color:#ae81ff">-30</span>) <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span><span style="color:#66d9ef">px</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">border-width</span>: <span style="color:#a6e22e">var</span>(<span style="color:#f92672">--</span><span style="color:#66d9ef">level</span><span style="color:#f92672">-</span>final);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">border-style</span>: <span style="color:#66d9ef">solid</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>可以看到，从 <code>--level-1</code> 到 <code>--level-30</code>，每次的运算量都是成倍的增长，最终到 <code>--level-final</code> 变量，展开将有 2^30 = <strong>1073741824</strong> 个 <code>--initial-level-0</code> 表达式的内容。</p>
+<p>并且，每个 <code>--initial-level-0</code> 表达式的内容 &ndash; <code>calc(1vh + 1% + 1px + 1em + 1vw + 1cm)</code>，在浏览器解析的时候，也已经足够复杂。</p>
+<p>混合在一起，就导致了浏览器的 BOOM（Chrome 70 之前的版本），为了能看到效果，我们将上述样式赋给某个元素被 hover 的时候，得到如下效果：</p>
+<img src="/img/25/01.gif">
+<p>当然，这个 BUG 目前已经被修复了，我们也可以通过这个小 DEMO 了解到，一是 calc 是可以进行不同单位的混合运算的，另外一个就是注意具体使用的时候如果计算量巨大，可能会导致性能上较大的消耗。</p>
+<p>当然，<strong>不要</strong>将长度单位和非长度单位混合使用，像是这样：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">animation-delay</span>: calc(<span style="color:#ae81ff">1</span><span style="color:#66d9ef">s</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span><span style="color:#66d9ef">px</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="calc-搭配-css-自定义变量使用">Calc 搭配 CSS 自定义变量使用</h3>
+<p>calc() 函数非常重要的一个特性就是能够搭配 CSS 自定义以及 CSS <a href="https://github.com/Property">@Property</a> 变量一起使用。</p>
+<p>最简单的一个 DEMO：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>:<span style="color:#a6e22e">root</span> {
+</span></span><span style="display:flex;"><span>  --width: <span style="color:#ae81ff">10</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#f92672">div</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">width</span>: calc(<span style="color:#a6e22e">var</span>(<span style="color:#f92672">--</span>width));
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>当然，这样看上去，根本看不出这样的写法的作用，好像没有什么意义。实际应用场景中，会比上述的 DEMO 要稍微复杂一些。</p>
+<p>假设我们要实现这样一个 loading 动画效果，一开始只有 3 个球：</p>
+<img src="/img/25/02.gif">
+<p>可能的写法是这样，我们给 3 个球都添加同一个旋转动画，然后分别控制他们的 <code>animation-delay</code>：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;g-container&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;g-item&#34;</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;g-item&#34;</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;g-item&#34;</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">item</span>:<span style="color:#a6e22e">nth-child</span><span style="color:#f92672">(</span><span style="color:#f92672">1</span><span style="color:#f92672">)</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">animation</span>: rotate <span style="color:#ae81ff">3</span><span style="color:#66d9ef">s</span> <span style="color:#66d9ef">infinite</span> <span style="color:#66d9ef">linear</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">item</span>:<span style="color:#a6e22e">nth-child</span><span style="color:#f92672">(</span><span style="color:#f92672">2</span><span style="color:#f92672">)</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">animation</span>: rotate <span style="color:#ae81ff">3</span><span style="color:#66d9ef">s</span> <span style="color:#66d9ef">infinite</span> <span style="color:#ae81ff">-1</span><span style="color:#66d9ef">s</span> <span style="color:#66d9ef">linear</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">item</span>:<span style="color:#a6e22e">nth-child</span><span style="color:#f92672">(</span><span style="color:#f92672">3</span><span style="color:#f92672">)</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">animation</span>: rotate <span style="color:#ae81ff">3</span><span style="color:#66d9ef">s</span> <span style="color:#66d9ef">infinite</span> <span style="color:#ae81ff">-2</span><span style="color:#66d9ef">s</span> <span style="color:#66d9ef">linear</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>如果有一天，这个动画需要扩展成 5 个球的话，像是这样：</p>
+<img src="/img/25/03.gif">
+<p>我们就不得已，得去既添加 HTML，又修改 CSS。而如果借助 Calc 和 CSS 变量，这个场景就可以稍微简化一下。</p>
+<p>假设只有 3 个球：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;g-container&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;g-item&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;--delay: 0&#34;</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;g-item&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;--delay: 1&#34;</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;g-item&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;--delay: 2&#34;</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span></code></pre></div><p>我们通过 HTML 的 Style 标签，传入 <code>--delay</code> 变量，在 CSS 中直接使用它们：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">g-item</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">animation</span>: rotate <span style="color:#ae81ff">3</span><span style="color:#66d9ef">s</span> <span style="color:#66d9ef">infinite</span> <span style="color:#66d9ef">linear</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">animation-delay</span>: calc(<span style="color:#a6e22e">var</span>(<span style="color:#f92672">--</span>delay) <span style="color:#f92672">*</span> <span style="color:#ae81ff">-1</span><span style="color:#66d9ef">s</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>@<span style="color:#66d9ef">keyframes</span> <span style="color:#f92672">rotate</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">to</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">transform</span>: rotate(<span style="color:#ae81ff">360</span><span style="color:#66d9ef">deg</span>);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>而当动画修改成 5 个球时，我们就不需要修改 CSS，直接修改 HTML 即可，像是这样：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;g-container&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;g-item&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;--delay: 0&#34;</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;g-item&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;--delay: 0.6&#34;</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;g-item&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;--delay: 1.2&#34;</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;g-item&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;--delay: 1.8&#34;</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;g-item&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;--delay: 2.4&#34;</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span></code></pre></div><p>核心的 CSS 还是这一句，不需要做任何修改：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">animation-delay</span>: calc(<span style="color:#a6e22e">var</span>(<span style="color:#f92672">--</span>delay) <span style="color:#f92672">*</span> <span style="color:#ae81ff">-1</span><span style="color:#66d9ef">s</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>完整的 DEMO，你可以戳这里：<a href="https://codepen.io/Chokcoco/pen/OJzarJL">CodePen Demo &ndash; Calc &amp; CSS Variable Demo</a></p>
+<h3 id="calc-搭配自定义变量时候的默认值">calc 搭配自定义变量时候的默认值</h3>
+<p>还是上述的 Loading 动画效果，如果我的 HTML 标签中，有一个标签忘记填充 <code>--delay</code> 的值了，那会发生什么？</p>
+<p>像是这样：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;g-container&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;g-item&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;--delay: 0&#34;</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;g-item&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;--delay: 0.6&#34;</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;g-item&#34;</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;g-item&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;--delay: 1.8&#34;</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;g-item&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;--delay: 2.4&#34;</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">animation-delay</span>: calc(<span style="color:#a6e22e">var</span>(<span style="color:#f92672">--</span>delay) <span style="color:#f92672">*</span> <span style="color:#ae81ff">-1</span><span style="color:#66d9ef">s</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>由于 HTML 标签没有传入 <code>--delay</code> 的值，并且在 CSS 中向上查找也没找到对应的值，此时，<code>animation-delay: calc(var(--delay) * -1s)</code> 这一句其实是无效的，相当于 <code>animation-delay: 0</code>，效果也就是少了个球的效果：</p>
+<img src="/img/25/02.png">
+<p>所以，基于这种情况，可以利用 CSS 自定义变量 <code>var()</code> 的 fallback 机制：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">/* (--delay, 1) 中的 1 是个容错机制 */</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">animation-delay</span>: calc(<span style="color:#a6e22e">var</span>(<span style="color:#f92672">--</span>delay, <span style="color:#ae81ff">1</span>) <span style="color:#f92672">*</span> <span style="color:#ae81ff">-1</span><span style="color:#66d9ef">s</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>此时，如果没有读取到任何 <code>--delay</code> 值，就会使用默认的 1 与 <code>-1s</code> 进行运算。</p>
+<h3 id="calc-字符串拼接">Calc 字符串拼接</h3>
+<p>很多人在使用 CSS 的时候，会尝试字符串的拼接，像是这样：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;--url: &#39;bsBD1I.png&#39;&#34;</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>:<span style="color:#a6e22e">root</span> {
+</span></span><span style="display:flex;"><span>  --urlA: <span style="color:#e6db74">&#34;url(https://s1.ax1x.com/2022/03/07/&#34;</span>;
+</span></span><span style="display:flex;"><span>  --urlB: <span style="color:#e6db74">&#34;)&#34;</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#f92672">div</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">width</span>: <span style="color:#ae81ff">400</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">height</span>: <span style="color:#ae81ff">400</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">background-image</span>: calc(<span style="color:#a6e22e">var</span>(<span style="color:#f92672">--</span>urlA) <span style="color:#f92672">+</span> <span style="color:#a6e22e">var</span>(<span style="color:#f92672">--</span>url) <span style="color:#f92672">+</span> <span style="color:#a6e22e">var</span>(<span style="color:#f92672">--</span>urlB));
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>这里想利用 <code>calc(var(--urlA) + var(--url) + var(--urlB))</code> 拼出完整的在 <code>background-image</code> 中可使用的 URL <code>url(https://s1.ax1x.com/2022/03/07/bsBD1I.png)</code>。</p>
+<p>然而，这是不被允许的（无法实现的）。<strong>calc 的没有字符串拼接的能力</strong>。</p>
+<p>唯一可能完成字符串拼接的是在元素的伪元素的 <code>content</code> 属性中。但是也不是利用 calc。</p>
+<p>来看这样一个例子，这是<strong>错误</strong>的：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>:<span style="color:#a6e22e">root</span> {
+</span></span><span style="display:flex;"><span>  --stringA: <span style="color:#e6db74">&#34;123&#34;</span>;
+</span></span><span style="display:flex;"><span>  --stringB: <span style="color:#e6db74">&#34;456&#34;</span>;
+</span></span><span style="display:flex;"><span>  --stringC: <span style="color:#e6db74">&#34;789&#34;</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">div</span>::<span style="color:#a6e22e">before</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">content</span>: calc(<span style="color:#a6e22e">var</span>(<span style="color:#f92672">--</span>stringA) <span style="color:#f92672">+</span> <span style="color:#a6e22e">var</span>(<span style="color:#f92672">--</span>stringB) <span style="color:#f92672">+</span> <span style="color:#a6e22e">var</span>(<span style="color:#f92672">--</span>stringC));
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>此时，不需要 calc，直接使用自定义变量相加即可。</p>
+<p>因此，<strong>正确</strong>的写法：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>:<span style="color:#a6e22e">root</span> {
+</span></span><span style="display:flex;"><span>  --stringA: <span style="color:#e6db74">&#34;123&#34;</span>;
+</span></span><span style="display:flex;"><span>  --stringB: <span style="color:#e6db74">&#34;456&#34;</span>;
+</span></span><span style="display:flex;"><span>  --stringC: <span style="color:#e6db74">&#34;789&#34;</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#f92672">div</span>::<span style="color:#a6e22e">before</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">content</span>: <span style="color:#a6e22e">var</span>(<span style="color:#f92672">--</span>stringA) <span style="color:#f92672">+</span> <span style="color:#a6e22e">var</span>(<span style="color:#f92672">--</span>stringB) <span style="color:#f92672">+</span> <span style="color:#a6e22e">var</span>(<span style="color:#f92672">--</span>stringC);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><blockquote>
+<p><code>content: var(--stringA) + var(--stringB) + var(--stringC)</code> 中的加号可以省略。</p>
+</blockquote>
+<p>此时，内容可以正常展示：</p>
+<img src="/img/25/03.png">
+<p>再强调一下，<strong>calc 的没有字符串拼接的能力</strong>，如下的使用方式都是无法被识别的错误语法：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">el</span>::<span style="color:#a6e22e">before</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">/* 不支持字符串拼接 */</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">content</span>: calc(<span style="color:#e6db74">&#34;My &#34;</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;counter&#34;</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">el</span>::<span style="color:#a6e22e">before</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">/* 更不支持字符串乘法 */</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">content</span>: calc(<span style="color:#e6db74">&#34;String Repeat 3 times&#34;</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">3</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="minmaxclamp">min()、max()、clamp()</h2>
+<p>min()、max()、clamp() 适合放在一起讲。它们的作用彼此之间有所关联。</p>
+<ul>
+<li>max()：从一个逗号分隔的表达式列表中选择最大（正方向）的值作为属性的值</li>
+<li>min()：从一个逗号分隔的表达式列表中选择最小的值作为属性的值</li>
+<li>clamp()：把一个值限制在一个上限和下限之间，当这个值超过最小值和最大值的范围时，在最小值和最大值之间选择一个值使用</li>
+</ul>
+<p>由于在现实中，有非常多元素的的属性不是一成不变的，而是会根据上下文、环境的变化而变化。</p>
+<p>譬如这样一个布局：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;container&#34;</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">container</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">height</span>: <span style="color:#ae81ff">100</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">background</span>: <span style="color:#ae81ff">#000</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>效果如下，<code>.container</code> 块它会随着屏幕的增大而增大，始终占据整个屏幕：</p>
+<img src="/img/25/04.png">
+<p>对于一个响应式的项目，我们肯定不希望它的宽度会一直变大，而是当达到一定的阈值时，宽度从相对单位变成了绝对单位，这种情况就适用于 <code>min()</code>，简单改造下代码：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">container</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">width</span>: <span style="color:#a6e22e">min</span>(<span style="color:#ae81ff">100</span><span style="color:#66d9ef">%</span>, <span style="color:#ae81ff">500</span><span style="color:#66d9ef">px</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">height</span>: <span style="color:#ae81ff">100</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">background</span>: <span style="color:#ae81ff">#000</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>容器的宽度值会在 <code>width: 100%</code> 与 <code>width: 500px</code> 之间做选择，选取相对小的那个。</p>
+<p>在屏幕宽度不足 500px 时候，也就表现为 <code>width: 100%</code>，反之，则表现为 <code>width: 500px</code>：</p>
+<img src="/img/25/04.gif">
+<p>同理，在类似的场景，我们也可以使用 <code>max()</code> 从多个值中，选取相对更大的值。</p>
+<h3 id="minmax-支持多个值的列表">min()、max() 支持多个值的列表</h3>
+<p>min()、max() 支持多个值的列表，譬如 <code>width: max(1px, 2px, 3px, 50px)</code>。</p>
+<p>当然，对于上述表达：</p>
+<p><code>width: max(1px, 2px, 3px, 50px)</code> 其实等于 <code>width: 50px</code>。因此，对于 min()、max() 的具体使用而言，最多应该只包含一个具体的绝对单位。否则，这样的像上述这种代码，虽然语法支持，但是任何情况下，计算值都是确定的，其实没有意义。</p>
+<h3 id="配合-calc">配合 calc</h3>
+<p>min()、max()、clamp() 都可以配合 calc 一起使用。</p>
+<p>譬如：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">div</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">width</span>: <span style="color:#a6e22e">max</span>(<span style="color:#ae81ff">50</span><span style="color:#66d9ef">vw</span>, calc(<span style="color:#ae81ff">300</span><span style="color:#66d9ef">px</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">10</span><span style="color:#66d9ef">%</span>));
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>在这种情况下，calc 和相应包裹的括号可以省略，因此，上述代码又可以写成：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">div</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">width</span>: <span style="color:#a6e22e">max</span>(<span style="color:#ae81ff">50</span><span style="color:#66d9ef">vw</span>, <span style="color:#ae81ff">300</span><span style="color:#66d9ef">px</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">10</span><span style="color:#66d9ef">%</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="基于-maxmin-模拟-clamp">基于 max、min 模拟 clamp</h3>
+<p>现在，有这样一种场景，如果，我们又需要限制最大值，也需要限制最小值，怎么办呢？</p>
+<p>像是这样一个场景，**字体的大小，最小是 12px，随着屏幕的变大，逐渐变大，但是为了避免老人机现象（随着屏幕变大，无限制变大），我们还需要限制一个最大值 20px。</p>
+<p>我们可以利用 vw 来实现给字体赋动态值，假设在移动端，设备宽度的 CSS 像素为 320px 时，页面的字体宽度最小为 12px，换算成 vw 即是 <code>320 / 100 = 3.2</code>，也就是 1vw 在 屏幕宽度为 320px 时候，表现为 3.2px，12px 约等于 3.75 vw。</p>
+<p>同时，我们需要限制最大字体值为 20px，对应的 CSS 如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">p</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">font-size</span>: <span style="color:#a6e22e">max</span>(<span style="color:#ae81ff">12</span><span style="color:#66d9ef">px</span>, <span style="color:#a6e22e">min</span>(<span style="color:#ae81ff">3.75</span><span style="color:#66d9ef">vw</span>, <span style="color:#ae81ff">20</span><span style="color:#66d9ef">px</span>));
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>看看效果：</p>
+<img src="/img/25/05.png">
+<p>通过 <code>max()</code>、<code>min()</code> 的配合使用，以及搭配一个相对单位 vw，我们成功的给字体设置了上下限，而在这个上下限之间实现了动态变化。</p>
+<p>当然，上面核心的这一段 <code>max(12px, min(3.75vw, 20px))</code> 看上去有点绕，因此，CSS 推出了 <code>clamp()</code> 简化这个语法，下面两个写法是等价的：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">p</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">font-size</span>: <span style="color:#a6e22e">max</span>(<span style="color:#ae81ff">12</span><span style="color:#66d9ef">px</span>, <span style="color:#a6e22e">min</span>(<span style="color:#ae81ff">3.75</span><span style="color:#66d9ef">vw</span>, <span style="color:#ae81ff">20</span><span style="color:#66d9ef">px</span>));
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">/* 等价于 */</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">font-size</span>: <span style="color:#a6e22e">clamp</span>(<span style="color:#ae81ff">12</span><span style="color:#66d9ef">px</span>, <span style="color:#ae81ff">3.75</span><span style="color:#66d9ef">vw</span>, <span style="color:#ae81ff">20</span><span style="color:#66d9ef">px</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="clamp">clamp()</h3>
+<p><code>clamp()</code> 函数的作用是把一个值限制在一个上限和下限之间，当这个值超过最小值和最大值的范围时，在最小值和最大值之间选择一个值使用。它接收三个参数：最小值、首选值、最大值。</p>
+<p>有意思的是，<code>clamp(MIN, VAL, MAX)</code> 其实就是表示 <code>max(MIN, min(VAL, MAX))</code>。</p>
+<h2 id="使用-vw-配合-clamp-实现响应式布局">使用 vw 配合 clamp 实现响应式布局</h2>
+<p>我们继续上面的话题。</p>
+<p>在不久的过去，移动端的适配方面，使用更多的 rem 适配方案，可能会借助一些现成的库，类似于 flexible.js、hotcss.js 等库。rem 方案比较大的一个问题在于需要一段 JavaScript 响应视口变化，重设根元素的 <code>font-size</code>，并且，使用 rem 多少有点 hack 的感觉。</p>
+<p>在现在，在移动端适配，我们更为推崇的是 vw 纯 CSS 方案，与 rem 方案类似，它的本质也是页面的等比例缩放。它的一个问题在于，如果仅仅使用 vw，随着屏幕的不断变大或者缩小，内容元素将会一直变大变小下去，这也导致了在大屏幕下，许多元素看着实在太大了！</p>
+<p>因此，我们需要一种能够控制最大、最小阈值的方式，像是这样：</p>
+<img src="/img/25/05.png">
+<p>此时，clamp 就能非常好的派上用场，还是我们上述的例子，这一段代码 <code>font-size: clamp(12px, 3.75vw, 20px)</code>，就能将字体限制在 <code>12px - 20px</code> 的范围内。</p>
+<p><strong>因此，对于移动端页面而言，所有涉及长度的单位，我们都可以使用 vw 进行设置。而诸如字体、内外边距、宽度等不应该完全等比例缩放的，采用 <code>clamp()</code> 控制最大最小阈值</strong>。</p>
+<p>在 <a href="https://www.smashingmagazine.com/2022/01/modern-fluid-typography-css-clamp/">Modern Fluid Typography Using CSS Clamp</a> 一文中，对使用 clamp() 进行流式响应式布局还有更为深入的探讨，感兴趣的可以深入阅读。</p>
+<p>总结一下，对于移动端页面，我们可以以 vw 配合 clamp() 的方式，​ 完成整个移动端布局的适配。它的优势在于：</p>
+<ul>
+<li><strong>没有额外 JavaScript 代码的引入，纯 CSS 解决方案</strong></li>
+<li><strong>能够很好地控制边界阈值，合理的进行缩放展示</strong></li>
+</ul>
+<h3 id="反向响应式变化">反向响应式变化</h3>
+<p>还有一个技巧，利用 <code>clamp()</code> 配合负值，我们也可以反向操作，得到一种屏幕越大，字体越小的反向响应式效果：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">p</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">font-size</span>: <span style="color:#a6e22e">clamp</span>(<span style="color:#ae81ff">20</span><span style="color:#66d9ef">px</span>, <span style="color:#ae81ff">-5</span><span style="color:#66d9ef">vw</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">96</span><span style="color:#66d9ef">px</span>, <span style="color:#ae81ff">60</span><span style="color:#66d9ef">px</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>看看效果：</p>
+<img src="/img/25/06.gif">
+<p>这个技巧挺有意思的，由于 <code>-5vw + 96px</code> 的计算值会随着屏幕的变小而增大，实现了一种反向的字体响应式变化。</p>
+<h3 id="总结">总结</h3>
+<p>总结一下，合理运用 min()、max()、clamp()，是构建现代响应式布局的重点，我们可以告别传统的需要 JavaScript 辅助的一些方案，基于 CSS 这些数学函数即可完成所有的诉求。</p>
+<p>一些进阶阅读非常好的文章：</p>
+<ul>
+<li><a href="https://blog.logrocket.com/min-max-clamp-css-functions/">A guide to the min(), max(), and clamp() CSS functions</a></li>
+<li><a href="https://www.smashingmagazine.com/2022/01/modern-fluid-typography-css-clamp/">Modern Fluid Typography Using CSS Clamp</a></li>
+</ul>
+</section>
+
+  
+  
+
+  
+  
+  
+  <nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
+    
+    <a class="flex w-1/2 items-center p-6 pr-3 no-underline" href="/articles/posts/26/"
+      ><span class="mr-1.5">←</span><span>reset.css 知多少</span></a
+    >
+    
+    
+    <a
+      class="ml-auto flex w-1/2 items-center justify-end p-6 pl-3 no-underline"
+      href="/articles/posts/24/"
+      ><span>21条CSS高级技巧</span><span class="ml-1.5">→</span></a
+    >
+    
+  </nav>
+  
+
+  
+  
+</article>
+
+
+    </main>
+
+    <footer
+  class="opaco mx-auto flex h-[5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+  style="position: relative; z-index: 10;display: none;"
+>
+  <div class="mr-auto">
+    &copy; 2024
+    <a class="link" href="/articles/">灏天阁</a>
+  </div>
+  <a class="link" href="https://yinchuanbo.github.io/" rel="noopener" target="_blank"
+    >Powered by YinHao</a
+  >️ ▷
+</footer>
+
+
+    <div class="img__mask" style="display: none;">
+      <img src="" alt="">
+      <span class="close_btn"></span>
+    </div>
+
+    <script>
+      const imgs = document.images;
+      const imgMask = document.querySelector('.img__mask')
+      const closeBtn = document.querySelector('.close_btn')
+      for (let i = 0; i < imgs.length; i++) {
+        const element = imgs[i];
+        element.onclick = () => {
+          const src = element.src;
+          imgMask.style.display = 'flex';
+          imgMask.querySelector('img').src = src;
+        }
+      }
+      closeBtn.onclick = () => {
+        imgMask.style.display = 'none';
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+  class="not-ready text-sm lg:text-base"
+  style="--bg: "
+  lang="en"
+>
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  
+  <title>使用 JavaScript 加载字体 - 灏天阁</title>
+
+  
+  <meta name="theme-color" />
+  
+  <meta name="description" content="有一个库，叫 Web Font Loader，这个库体积很小，在浏览器支持的情况下，他会使用原生的字体加载 API；在浏览器不支持的情况下，它会模拟相同的功能。这个库内置了一些 web 字体服务，比如 Typekit、Google Fonts 和 Fonts.com，同时也支持自托管的字体。
+可以下载这个库，也可以从 Google 的服务器上加载它，地址是：https://developers.google.com/speed/libraries/#web-font-loader
+Web Font Loader 提供了很多有用的功能，其中最有用的就是确保字体加载的跨浏览器一致性。
+Web Font Loader 为以下事件提供了接入点：
+loading: 开始加载字体 active: 字体加载完成 inactive: 字体加载失败 需要把 @font-face 块中的所有代码转移到一个独立的样式表 alegreya-vollkorn.css，同时把它放在一个子文件夹 css 中，然后，需要在页面头部添加一个小段 Js 代码：
+&lt;script&gt; WebFontConfig = { custom: { families: [&#34;AlegreyaSans:n4,i4&#34;, &#34;Vollkorn:n6,n5,n7&#34;], urls: [&#34;css/alegreya-vollkorn.css&#34;], }, }; (function () { var wf = document.createElement(&#34;script&#34;); wf.src = &#34;https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js&#34;; wf.type = &#34;text/javascript&#34;; wf.async = &#34;true&#34;; var s = document.getElementsByTagName(&#34;script&#34;)[0]; s." />
+  <meta name="author" content="" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="/articles/main.min.css" />
+
+  
+
+  
+  
+  
+    
+  
+  <link
+    rel="preload"
+    as="image"
+    href="/articles/theme.png"
+  />
+
+  
+  
+  
+  <link rel="preload" as="image" href="/imgs/logo.png" />
+  
+  
+
+  
+
+  
+  <link rel="icon" href="/img/ico.ico" />
+  <link rel="apple-touch-icon" href="/articles/apple-touch-icon.png" />
+  
+  <meta name="generator" content="Hugo 0.108.0">
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="使用 JavaScript 加载字体" />
+<meta property="og:description" content="有一个库，叫 Web Font Loader，这个库体积很小，在浏览器支持的情况下，他会使用原生的字体加载 API；在浏览器不支持的情况下，它会模拟相同的功能。这个库内置了一些 web 字体服务，比如 Typekit、Google Fonts 和 Fonts.com，同时也支持自托管的字体。
+可以下载这个库，也可以从 Google 的服务器上加载它，地址是：https://developers.google.com/speed/libraries/#web-font-loader
+Web Font Loader 提供了很多有用的功能，其中最有用的就是确保字体加载的跨浏览器一致性。
+Web Font Loader 为以下事件提供了接入点：
+loading: 开始加载字体 active: 字体加载完成 inactive: 字体加载失败 需要把 @font-face 块中的所有代码转移到一个独立的样式表 alegreya-vollkorn.css，同时把它放在一个子文件夹 css 中，然后，需要在页面头部添加一个小段 Js 代码：
+&lt;script&gt; WebFontConfig = { custom: { families: [&#34;AlegreyaSans:n4,i4&#34;, &#34;Vollkorn:n6,n5,n7&#34;], urls: [&#34;css/alegreya-vollkorn.css&#34;], }, }; (function () { var wf = document.createElement(&#34;script&#34;); wf.src = &#34;https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js&#34;; wf.type = &#34;text/javascript&#34;; wf.async = &#34;true&#34;; var s = document.getElementsByTagName(&#34;script&#34;)[0]; s." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/articles/posts/55/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-09-22T21:15:51+08:00" />
+<meta property="article:modified_time" content="2023-09-22T21:15:51+08:00" />
+
+  
+  <meta itemprop="name" content="使用 JavaScript 加载字体">
+<meta itemprop="description" content="有一个库，叫 Web Font Loader，这个库体积很小，在浏览器支持的情况下，他会使用原生的字体加载 API；在浏览器不支持的情况下，它会模拟相同的功能。这个库内置了一些 web 字体服务，比如 Typekit、Google Fonts 和 Fonts.com，同时也支持自托管的字体。
+可以下载这个库，也可以从 Google 的服务器上加载它，地址是：https://developers.google.com/speed/libraries/#web-font-loader
+Web Font Loader 提供了很多有用的功能，其中最有用的就是确保字体加载的跨浏览器一致性。
+Web Font Loader 为以下事件提供了接入点：
+loading: 开始加载字体 active: 字体加载完成 inactive: 字体加载失败 需要把 @font-face 块中的所有代码转移到一个独立的样式表 alegreya-vollkorn.css，同时把它放在一个子文件夹 css 中，然后，需要在页面头部添加一个小段 Js 代码：
+&lt;script&gt; WebFontConfig = { custom: { families: [&#34;AlegreyaSans:n4,i4&#34;, &#34;Vollkorn:n6,n5,n7&#34;], urls: [&#34;css/alegreya-vollkorn.css&#34;], }, }; (function () { var wf = document.createElement(&#34;script&#34;); wf.src = &#34;https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js&#34;; wf.type = &#34;text/javascript&#34;; wf.async = &#34;true&#34;; var s = document.getElementsByTagName(&#34;script&#34;)[0]; s."><meta itemprop="datePublished" content="2023-09-22T21:15:51+08:00" />
+<meta itemprop="dateModified" content="2023-09-22T21:15:51+08:00" />
+<meta itemprop="wordCount" content="158">
+<meta itemprop="keywords" content="" />
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="使用 JavaScript 加载字体"/>
+<meta name="twitter:description" content="有一个库，叫 Web Font Loader，这个库体积很小，在浏览器支持的情况下，他会使用原生的字体加载 API；在浏览器不支持的情况下，它会模拟相同的功能。这个库内置了一些 web 字体服务，比如 Typekit、Google Fonts 和 Fonts.com，同时也支持自托管的字体。
+可以下载这个库，也可以从 Google 的服务器上加载它，地址是：https://developers.google.com/speed/libraries/#web-font-loader
+Web Font Loader 提供了很多有用的功能，其中最有用的就是确保字体加载的跨浏览器一致性。
+Web Font Loader 为以下事件提供了接入点：
+loading: 开始加载字体 active: 字体加载完成 inactive: 字体加载失败 需要把 @font-face 块中的所有代码转移到一个独立的样式表 alegreya-vollkorn.css，同时把它放在一个子文件夹 css 中，然后，需要在页面头部添加一个小段 Js 代码：
+&lt;script&gt; WebFontConfig = { custom: { families: [&#34;AlegreyaSans:n4,i4&#34;, &#34;Vollkorn:n6,n5,n7&#34;], urls: [&#34;css/alegreya-vollkorn.css&#34;], }, }; (function () { var wf = document.createElement(&#34;script&#34;); wf.src = &#34;https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js&#34;; wf.type = &#34;text/javascript&#34;; wf.async = &#34;true&#34;; var s = document.getElementsByTagName(&#34;script&#34;)[0]; s."/>
+
+  
+  
+</head>
+  <body class="text-black duration-200 ease-out dark:text-white">
+    
+    
+
+    
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100%-10rem)] max-w-3xl px-8 pt-20 dark:prose-invert"
+      id="main"
+    >
+      
+
+<article>
+  <header class="mb-10">
+    <h1 class="!my-0 pb-2.5">
+      使用 JavaScript 加载字体
+    </h1>
+
+    
+    <div class="text-sm opacity-60">
+      
+      <time>Sep 22, 2023</time>
+      
+      
+      <span class="mx-1">&middot;</span>
+      <span>Yin灏</span>
+    </div>
+    
+  </header>
+
+  <section><blockquote>
+<p>有一个库，叫 Web Font Loader，这个库体积很小，在浏览器支持的情况下，他会使用原生的字体加载 API；在浏览器不支持的情况下，它会模拟相同的功能。这个库内置了一些 web 字体服务，比如 Typekit、Google Fonts 和 Fonts.com，同时也支持自托管的字体。</p>
+</blockquote>
+<p>可以下载这个库，也可以从 Google 的服务器上加载它，地址是：<code>https://developers.google.com/speed/libraries/#web-font-loader</code></p>
+<p><strong>Web Font Loader</strong> 提供了很多有用的功能，其中最有用的就是确保字体加载的跨浏览器一致性。</p>
+<p><strong>Web Font Loader 为以下事件提供了接入点：</strong></p>
+<ul>
+<li>loading: 开始加载字体</li>
+<li>active: 字体加载完成</li>
+<li>inactive: 字体加载失败</li>
+</ul>
+<p>需要把 <code>@font-face</code> 块中的所有代码转移到一个独立的样式表 <code>alegreya-vollkorn.css</code>，同时把它放在一个子文件夹 css 中，然后，需要在页面头部添加一个小段 Js 代码：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">script</span>&gt;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">WebFontConfig</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">custom</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">families</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;AlegreyaSans:n4,i4&#34;</span>, <span style="color:#e6db74">&#34;Vollkorn:n6,n5,n7&#34;</span>],
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">urls</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;css/alegreya-vollkorn.css&#34;</span>],
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>  };
+</span></span><span style="display:flex;"><span>  (<span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">wf</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">createElement</span>(<span style="color:#e6db74">&#34;script&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">wf</span>.<span style="color:#a6e22e">src</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js&#34;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">wf</span>.<span style="color:#a6e22e">type</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;text/javascript&#34;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">wf</span>.<span style="color:#66d9ef">async</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;true&#34;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">s</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">getElementsByTagName</span>(<span style="color:#e6db74">&#34;script&#34;</span>)[<span style="color:#ae81ff">0</span>];
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">parentNode</span>.<span style="color:#a6e22e">insertBefore</span>(<span style="color:#a6e22e">wf</span>, <span style="color:#a6e22e">s</span>);
+</span></span><span style="display:flex;"><span>  })();
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">script</span>&gt;
+</span></span></code></pre></div><p>这段代码既负责加载 Web Font Loader 脚本，又负责配置后面要使用的字体变体，描述变体的代码中 font-family 名称后面，比如 n4 表示 “normal 样式，400 粗细”，依次类推，在这个样式表中的字体加载后，脚本会自动给 html 元素添加生成的类名。这样，我们就可以在 CSS 中提前编写加载新字体的规则。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">body</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">font-family</span>: Helvetica, arial, <span style="color:#66d9ef">sans-serif</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">wf-alegreya-n4-active</span> <span style="color:#f92672">body</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">font-family</span>: Alegreya, Helvetica, arial, <span style="color:#66d9ef">sans-serif</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>这两条 CSS 规则的含义是，在 Alegreya 字体加载前，使用准备好的后备字体。而在 Alegreya 字体加载后，脚本会给 html 元素添加 <code>wf-alegreya-n4-active</code> 类，于是浏览器马上启用新下载的字体。这样不仅能保证浏览器加载字体的一致性，还让我们有机会为后备字体和 Web 字体分别调整版式。</p>
+<h3 id="匹配后备字体大小">匹配后备字体大小</h3>
+<p>通过在字体加载期间应用类似的规则，可以控制因 Web 字体与后备字体大小不同带来的版本抖动，</p>
+<p>在我们的例子中，Alegreya 字体的 x 高度明显小于 Helvetica 和 Arial。通过微调 font-size 和 line-height，可以让它们的高度尽量接近。同理，还可以通过 word-spacing 来微调字符宽度。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">wf-alegreyasans-n4-loading</span> <span style="color:#f92672">p</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">font-size</span>: <span style="color:#ae81ff">0.905</span><span style="color:#66d9ef">em</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">word-spacing</span>: <span style="color:#ae81ff">-0.11</span><span style="color:#66d9ef">em</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">line-height</span>: <span style="color:#ae81ff">1.72</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">font-size-adjust</span>: <span style="color:#66d9ef">auto</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><strong>font-size-adjust</strong> 这个属性用于指定 x 高度与 font-size 的比率，在某个字形缺少合适字体的情况下，后备字体会被调整为该比率。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">wf-alegreyasans-n4-active</span> <span style="color:#f92672">body</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">font-size-adjust</span>: <span style="color:#66d9ef">auto</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></section>
+
+  
+  
+
+  
+  
+  
+  <nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
+    
+    <a class="flex w-1/2 items-center p-6 pr-3 no-underline" href="/articles/posts/56/"
+      ><span class="mr-1.5">←</span><span>使用 JavaScript 提升排版品质</span></a
+    >
+    
+    
+    <a
+      class="ml-auto flex w-1/2 items-center justify-end p-6 pl-3 no-underline"
+      href="/articles/posts/54/"
+      ><span>scrollIntoview</span><span class="ml-1.5">→</span></a
+    >
+    
+  </nav>
+  
+
+  
+  
+</article>
+
+
+    </main>
+
+    <footer
+  class="opaco mx-auto flex h-[5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+  style="position: relative; z-index: 10;display: none;"
+>
+  <div class="mr-auto">
+    &copy; 2024
+    <a class="link" href="/articles/">灏天阁</a>
+  </div>
+  <a class="link" href="https://yinchuanbo.github.io/" rel="noopener" target="_blank"
+    >Powered by YinHao</a
+  >️ ▷
+</footer>
+
+
+    <div class="img__mask" style="display: none;">
+      <img src="" alt="">
+      <span class="close_btn"></span>
+    </div>
+
+    <script>
+      const imgs = document.images;
+      const imgMask = document.querySelector('.img__mask')
+      const closeBtn = document.querySelector('.close_btn')
+      for (let i = 0; i < imgs.length; i++) {
+        const element = imgs[i];
+        element.onclick = () => {
+          const src = element.src;
+          imgMask.style.display = 'flex';
+          imgMask.querySelector('img').src = src;
+        }
+      }
+      closeBtn.onclick = () => {
+        imgMask.style.display = 'none';
+      }
+    </script>
+  </body>
+</html>

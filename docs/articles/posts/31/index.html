@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+  class="not-ready text-sm lg:text-base"
+  style="--bg: "
+  lang="en"
+>
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  
+  <title>策略模式 - 灏天阁</title>
+
+  
+  <meta name="theme-color" />
+  
+  <meta name="description" content="将定义的一组算法封装起来，使其相互之间可以替换。封装的算法具有一定的独立性，不会随客户端变化而变化。
+策略对象 // 价格策略 var PriceStrategy = (function () { // 内部算法对象 var strategy = { return30: function (price) { // &#43;price 转化为数字类型 return &#43;price &#43; parseInt(price / 100) * 30; }, return50: function (price) { return &#43;price &#43; parseInt(price / 100) * 50; }, percent90: function (price) { // js 处理小数乘法有 bug return (price * 100 * 90) / 10000; }, percent80: function (price) { return (price * 100 * 80) / 10000; }, percent50: function (price) { return (price * 100 * 50) / 10000; }, }; // 策略算法调用接口 return function (algorithm, price) { return strategy[algorithm] &amp;&amp; strategy[algorithm](price); }; })(); // 使用 var price = PriceStrategy(&#34;return50&#34;, &#34;314." />
+  <meta name="author" content="" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="/articles/main.min.css" />
+
+  
+
+  
+  
+  
+    
+  
+  <link
+    rel="preload"
+    as="image"
+    href="/articles/theme.png"
+  />
+
+  
+  
+  
+  <link rel="preload" as="image" href="/imgs/logo.png" />
+  
+  
+
+  
+
+  
+  <link rel="icon" href="/img/ico.ico" />
+  <link rel="apple-touch-icon" href="/articles/apple-touch-icon.png" />
+  
+  <meta name="generator" content="Hugo 0.108.0">
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="策略模式" />
+<meta property="og:description" content="将定义的一组算法封装起来，使其相互之间可以替换。封装的算法具有一定的独立性，不会随客户端变化而变化。
+策略对象 // 价格策略 var PriceStrategy = (function () { // 内部算法对象 var strategy = { return30: function (price) { // &#43;price 转化为数字类型 return &#43;price &#43; parseInt(price / 100) * 30; }, return50: function (price) { return &#43;price &#43; parseInt(price / 100) * 50; }, percent90: function (price) { // js 处理小数乘法有 bug return (price * 100 * 90) / 10000; }, percent80: function (price) { return (price * 100 * 80) / 10000; }, percent50: function (price) { return (price * 100 * 50) / 10000; }, }; // 策略算法调用接口 return function (algorithm, price) { return strategy[algorithm] &amp;&amp; strategy[algorithm](price); }; })(); // 使用 var price = PriceStrategy(&#34;return50&#34;, &#34;314." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/articles/posts/31/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-09-05T11:58:20+08:00" />
+<meta property="article:modified_time" content="2023-09-05T11:58:20+08:00" />
+
+  
+  <meta itemprop="name" content="策略模式">
+<meta itemprop="description" content="将定义的一组算法封装起来，使其相互之间可以替换。封装的算法具有一定的独立性，不会随客户端变化而变化。
+策略对象 // 价格策略 var PriceStrategy = (function () { // 内部算法对象 var strategy = { return30: function (price) { // &#43;price 转化为数字类型 return &#43;price &#43; parseInt(price / 100) * 30; }, return50: function (price) { return &#43;price &#43; parseInt(price / 100) * 50; }, percent90: function (price) { // js 处理小数乘法有 bug return (price * 100 * 90) / 10000; }, percent80: function (price) { return (price * 100 * 80) / 10000; }, percent50: function (price) { return (price * 100 * 50) / 10000; }, }; // 策略算法调用接口 return function (algorithm, price) { return strategy[algorithm] &amp;&amp; strategy[algorithm](price); }; })(); // 使用 var price = PriceStrategy(&#34;return50&#34;, &#34;314."><meta itemprop="datePublished" content="2023-09-05T11:58:20+08:00" />
+<meta itemprop="dateModified" content="2023-09-05T11:58:20+08:00" />
+<meta itemprop="wordCount" content="215">
+<meta itemprop="keywords" content="" />
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="策略模式"/>
+<meta name="twitter:description" content="将定义的一组算法封装起来，使其相互之间可以替换。封装的算法具有一定的独立性，不会随客户端变化而变化。
+策略对象 // 价格策略 var PriceStrategy = (function () { // 内部算法对象 var strategy = { return30: function (price) { // &#43;price 转化为数字类型 return &#43;price &#43; parseInt(price / 100) * 30; }, return50: function (price) { return &#43;price &#43; parseInt(price / 100) * 50; }, percent90: function (price) { // js 处理小数乘法有 bug return (price * 100 * 90) / 10000; }, percent80: function (price) { return (price * 100 * 80) / 10000; }, percent50: function (price) { return (price * 100 * 50) / 10000; }, }; // 策略算法调用接口 return function (algorithm, price) { return strategy[algorithm] &amp;&amp; strategy[algorithm](price); }; })(); // 使用 var price = PriceStrategy(&#34;return50&#34;, &#34;314."/>
+
+  
+  
+</head>
+  <body class="text-black duration-200 ease-out dark:text-white">
+    
+    
+
+    
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100%-10rem)] max-w-3xl px-8 pt-20 dark:prose-invert"
+      id="main"
+    >
+      
+
+<article>
+  <header class="mb-10">
+    <h1 class="!my-0 pb-2.5">
+      策略模式
+    </h1>
+
+    
+    <div class="text-sm opacity-60">
+      
+      <time>Sep 5, 2023</time>
+      
+      
+      <span class="mx-1">&middot;</span>
+      <span>Yin灏</span>
+    </div>
+    
+  </header>
+
+  <section><blockquote>
+<p>将定义的一组算法封装起来，使其相互之间可以替换。封装的算法具有一定的独立性，不会随客户端变化而变化。</p>
+</blockquote>
+<h3 id="策略对象">策略对象</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// 价格策略
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">PriceStrategy</span> <span style="color:#f92672">=</span> (<span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 内部算法对象
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">strategy</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">return30</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">price</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// +price 转化为数字类型
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#66d9ef">return</span> <span style="color:#f92672">+</span><span style="color:#a6e22e">price</span> <span style="color:#f92672">+</span> parseInt(<span style="color:#a6e22e">price</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">100</span>) <span style="color:#f92672">*</span> <span style="color:#ae81ff">30</span>;
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">return50</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">price</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> <span style="color:#f92672">+</span><span style="color:#a6e22e">price</span> <span style="color:#f92672">+</span> parseInt(<span style="color:#a6e22e">price</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">100</span>) <span style="color:#f92672">*</span> <span style="color:#ae81ff">50</span>;
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">percent90</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">price</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// js 处理小数乘法有 bug
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#66d9ef">return</span> (<span style="color:#a6e22e">price</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">100</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">90</span>) <span style="color:#f92672">/</span> <span style="color:#ae81ff">10000</span>;
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">percent80</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">price</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> (<span style="color:#a6e22e">price</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">100</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">80</span>) <span style="color:#f92672">/</span> <span style="color:#ae81ff">10000</span>;
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">percent50</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">price</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> (<span style="color:#a6e22e">price</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">100</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">50</span>) <span style="color:#f92672">/</span> <span style="color:#ae81ff">10000</span>;
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>  };
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 策略算法调用接口
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">algorithm</span>, <span style="color:#a6e22e">price</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">strategy</span>[<span style="color:#a6e22e">algorithm</span>] <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">strategy</span>[<span style="color:#a6e22e">algorithm</span>](<span style="color:#a6e22e">price</span>);
+</span></span><span style="display:flex;"><span>  };
+</span></span><span style="display:flex;"><span>})();
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 使用
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">price</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">PriceStrategy</span>(<span style="color:#e6db74">&#34;return50&#34;</span>, <span style="color:#e6db74">&#34;314.67&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">price</span>); <span style="color:#75715e">// 464.67
+</span></span></span></code></pre></div><h3 id="表单验证">表单验证</h3>
+<blockquote>
+<p>还有很多地方可以用到策略模式，</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// 表单正则验证策略对象
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">InputStrategy</span> <span style="color:#f92672">=</span> (<span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">strategy</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 是否为空
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">notNull</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">value</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> <span style="color:#e6db74">/\s+/</span>.<span style="color:#a6e22e">test</span>(<span style="color:#a6e22e">value</span>) <span style="color:#f92672">?</span> <span style="color:#e6db74">&#34;请输入内容&#34;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;&#34;</span>;
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 是否是一个数字
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">number</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">value</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> <span style="color:#e6db74">/^[0-9]+(\.[0-9]+)?/</span>.<span style="color:#a6e22e">test</span>(<span style="color:#a6e22e">value</span>) <span style="color:#f92672">?</span> <span style="color:#e6db74">&#34;&#34;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;请输入数字&#34;</span>;
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 是否是本地电话
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">phone</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">value</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> <span style="color:#e6db74">/^\d{3}\-\d{8}$|^\d{4}\-\d{7}$/</span>.<span style="color:#a6e22e">test</span>(<span style="color:#a6e22e">value</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">?</span> <span style="color:#e6db74">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;请输入正确的电话号码格式，如 010-12345678 或 04818-1234567&#34;</span>;
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>  };
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">check</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">type</span>, <span style="color:#a6e22e">value</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">value</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">value</span>.<span style="color:#a6e22e">replace</span>(<span style="color:#e6db74">/^\s+|\s+$/g</span>, <span style="color:#e6db74">&#34;&#34;</span>);
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">strategy</span>[<span style="color:#a6e22e">type</span>] <span style="color:#f92672">?</span> <span style="color:#a6e22e">strategy</span>[<span style="color:#a6e22e">type</span>](<span style="color:#a6e22e">value</span>) <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;没有改类型的检测方法&#34;</span>;
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 添加策略
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">addStrategy</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">type</span>, <span style="color:#a6e22e">fn</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">strategy</span>[<span style="color:#a6e22e">type</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">fn</span>;
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>  };
+</span></span><span style="display:flex;"><span>})();
+</span></span></code></pre></div><h3 id="算法拓展">算法拓展</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">InputStrategy</span>.<span style="color:#a6e22e">addStrategy</span>(<span style="color:#e6db74">&#34;nickname&#34;</span>, <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">value</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#e6db74">/^[a-zA-Z]\w{3, 7}$/</span>.<span style="color:#a6e22e">test</span>(<span style="color:#a6e22e">value</span>) <span style="color:#f92672">?</span> <span style="color:#e6db74">&#34;&#34;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;请输入 4-8 位昵称&#34;</span>;
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div></section>
+
+  
+  
+
+  
+  
+  
+  <nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
+    
+    <a class="flex w-1/2 items-center p-6 pr-3 no-underline" href="/articles/posts/32/"
+      ><span class="mr-1.5">←</span><span>职责链模式</span></a
+    >
+    
+    
+    <a
+      class="ml-auto flex w-1/2 items-center justify-end p-6 pl-3 no-underline"
+      href="/articles/posts/30/"
+      ><span>状态模式</span><span class="ml-1.5">→</span></a
+    >
+    
+  </nav>
+  
+
+  
+  
+</article>
+
+
+    </main>
+
+    <footer
+  class="opaco mx-auto flex h-[5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+  style="position: relative; z-index: 10;display: none;"
+>
+  <div class="mr-auto">
+    &copy; 2024
+    <a class="link" href="/articles/">灏天阁</a>
+  </div>
+  <a class="link" href="https://yinchuanbo.github.io/" rel="noopener" target="_blank"
+    >Powered by YinHao</a
+  >️ ▷
+</footer>
+
+
+    <div class="img__mask" style="display: none;">
+      <img src="" alt="">
+      <span class="close_btn"></span>
+    </div>
+
+    <script>
+      const imgs = document.images;
+      const imgMask = document.querySelector('.img__mask')
+      const closeBtn = document.querySelector('.close_btn')
+      for (let i = 0; i < imgs.length; i++) {
+        const element = imgs[i];
+        element.onclick = () => {
+          const src = element.src;
+          imgMask.style.display = 'flex';
+          imgMask.querySelector('img').src = src;
+        }
+      }
+      closeBtn.onclick = () => {
+        imgMask.style.display = 'none';
+      }
+    </script>
+  </body>
+</html>

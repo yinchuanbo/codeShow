@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+  class="not-ready text-sm lg:text-base"
+  style="--bg: "
+  lang="en"
+>
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  
+  <title>链模式 - 灏天阁</title>
+
+  
+  <meta name="theme-color" />
+  
+  <meta name="description" content="通过在对象方法中将当前对象返回，实现对同一个对象多个方法的链式调用。
+找位助手 var A = function () { return A.fn(); }; A.fn = A.prototype = {}; 获取元素 var A = function (selector) { return A.fn.init(selector); }; A.fn = A.prototype = { init: function (selector) { return document.getElementById(selector); }, length: 2, size: function () { return this.length; }, }; console.log(A(&#34;demo&#34;)); 一个大问题 现在，我还想让 A 对象返回的结果还能够拥有 A.fn 中的方法，如 size 等，现在的设计是办不到的，
+var A = function (selector) { return A.fn.init(selector); }; A.fn = A.prototype = { init: function (selector) { // this === A." />
+  <meta name="author" content="" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="/articles/main.min.css" />
+
+  
+
+  
+  
+  
+    
+  
+  <link
+    rel="preload"
+    as="image"
+    href="/articles/theme.png"
+  />
+
+  
+  
+  
+  <link rel="preload" as="image" href="/imgs/logo.png" />
+  
+  
+
+  
+
+  
+  <link rel="icon" href="/img/ico.ico" />
+  <link rel="apple-touch-icon" href="/articles/apple-touch-icon.png" />
+  
+  <meta name="generator" content="Hugo 0.108.0">
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="链模式" />
+<meta property="og:description" content="通过在对象方法中将当前对象返回，实现对同一个对象多个方法的链式调用。
+找位助手 var A = function () { return A.fn(); }; A.fn = A.prototype = {}; 获取元素 var A = function (selector) { return A.fn.init(selector); }; A.fn = A.prototype = { init: function (selector) { return document.getElementById(selector); }, length: 2, size: function () { return this.length; }, }; console.log(A(&#34;demo&#34;)); 一个大问题 现在，我还想让 A 对象返回的结果还能够拥有 A.fn 中的方法，如 size 等，现在的设计是办不到的，
+var A = function (selector) { return A.fn.init(selector); }; A.fn = A.prototype = { init: function (selector) { // this === A." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/articles/posts/38/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-09-11T11:06:14+08:00" />
+<meta property="article:modified_time" content="2023-09-11T11:06:14+08:00" />
+
+  
+  <meta itemprop="name" content="链模式">
+<meta itemprop="description" content="通过在对象方法中将当前对象返回，实现对同一个对象多个方法的链式调用。
+找位助手 var A = function () { return A.fn(); }; A.fn = A.prototype = {}; 获取元素 var A = function (selector) { return A.fn.init(selector); }; A.fn = A.prototype = { init: function (selector) { return document.getElementById(selector); }, length: 2, size: function () { return this.length; }, }; console.log(A(&#34;demo&#34;)); 一个大问题 现在，我还想让 A 对象返回的结果还能够拥有 A.fn 中的方法，如 size 等，现在的设计是办不到的，
+var A = function (selector) { return A.fn.init(selector); }; A.fn = A.prototype = { init: function (selector) { // this === A."><meta itemprop="datePublished" content="2023-09-11T11:06:14+08:00" />
+<meta itemprop="dateModified" content="2023-09-11T11:06:14+08:00" />
+<meta itemprop="wordCount" content="958">
+<meta itemprop="keywords" content="" />
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="链模式"/>
+<meta name="twitter:description" content="通过在对象方法中将当前对象返回，实现对同一个对象多个方法的链式调用。
+找位助手 var A = function () { return A.fn(); }; A.fn = A.prototype = {}; 获取元素 var A = function (selector) { return A.fn.init(selector); }; A.fn = A.prototype = { init: function (selector) { return document.getElementById(selector); }, length: 2, size: function () { return this.length; }, }; console.log(A(&#34;demo&#34;)); 一个大问题 现在，我还想让 A 对象返回的结果还能够拥有 A.fn 中的方法，如 size 等，现在的设计是办不到的，
+var A = function (selector) { return A.fn.init(selector); }; A.fn = A.prototype = { init: function (selector) { // this === A."/>
+
+  
+  
+</head>
+  <body class="text-black duration-200 ease-out dark:text-white">
+    
+    
+
+    
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100%-10rem)] max-w-3xl px-8 pt-20 dark:prose-invert"
+      id="main"
+    >
+      
+
+<article>
+  <header class="mb-10">
+    <h1 class="!my-0 pb-2.5">
+      链模式
+    </h1>
+
+    
+    <div class="text-sm opacity-60">
+      
+      <time>Sep 11, 2023</time>
+      
+      
+      <span class="mx-1">&middot;</span>
+      <span>Yin灏</span>
+    </div>
+    
+  </header>
+
+  <section><blockquote>
+<p>通过在对象方法中将当前对象返回，实现对同一个对象多个方法的链式调用。</p>
+</blockquote>
+<h3 id="找位助手">找位助手</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">A</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">A</span>.<span style="color:#a6e22e">fn</span>();
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">A</span>.<span style="color:#a6e22e">fn</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">A</span>.<span style="color:#a6e22e">prototype</span> <span style="color:#f92672">=</span> {};
+</span></span></code></pre></div><h3 id="获取元素">获取元素</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">A</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">selector</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">A</span>.<span style="color:#a6e22e">fn</span>.<span style="color:#a6e22e">init</span>(<span style="color:#a6e22e">selector</span>);
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">A</span>.<span style="color:#a6e22e">fn</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">A</span>.<span style="color:#a6e22e">prototype</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">init</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">selector</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#a6e22e">selector</span>);
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">length</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">2</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">size</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">length</span>;
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">A</span>(<span style="color:#e6db74">&#34;demo&#34;</span>));
+</span></span></code></pre></div><h3 id="一个大问题">一个大问题</h3>
+<p>现在，我还想让 A 对象返回的结果还能够拥有 A.fn 中的方法，如 size 等，现在的设计是办不到的，</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">A</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">selector</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">A</span>.<span style="color:#a6e22e">fn</span>.<span style="color:#a6e22e">init</span>(<span style="color:#a6e22e">selector</span>);
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">A</span>.<span style="color:#a6e22e">fn</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">A</span>.<span style="color:#a6e22e">prototype</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">init</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">selector</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// this === A.fn
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// 作为当前对象的属性值保存
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">this</span>[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#a6e22e">selector</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; <span style="color:#75715e">// 矫正 length
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>;
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">length</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">2</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">size</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">length</span>;
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 使用
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">demo</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">A</span>(<span style="color:#e6db74">&#34;demo&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">demo</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">A</span>(<span style="color:#e6db74">&#34;demo&#34;</span>).<span style="color:#a6e22e">size</span>()); <span style="color:#75715e">// 1
+</span></span></span></code></pre></div><p>奇怪现象：后获取的 test 元素将先获取的 demo 元素覆盖了</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">test</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">A</span>(<span style="color:#e6db74">&#34;test&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">test</span>);
+</span></span></code></pre></div><h3 id="覆盖获取">覆盖获取</h3>
+<p>要解决这个问题，直接使用 new 关键字复制创建即可，不过此时调用 size 方法就会报错。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">A</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">selector</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">A</span>.<span style="color:#a6e22e">fn</span>.<span style="color:#a6e22e">init</span>(<span style="color:#a6e22e">selector</span>);
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">A</span>(<span style="color:#e6db74">&#34;demo&#34;</span>));
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">A</span>(<span style="color:#e6db74">&#34;test&#34;</span>));
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">A</span>(<span style="color:#e6db74">&#34;demo&#34;</span>).<span style="color:#a6e22e">size</span>()); <span style="color:#75715e">// TypeError
+</span></span></span></code></pre></div><p>上面的问题是由于 this 指向的改变造成的，加了 new 之后，this 指向 A.fn.A.init 函数。</p>
+<p><strong>A.fn.A.init 如何得到的？</strong></p>
+<p>如何表示 <code>new A.fn.init(selector)</code> 的构造函数呢？可以有以下两种方式：01 <code>A.fn.init</code> 或 02 <code>A.init</code>，将 <code>A.init</code> 带入到 <code>A.fn.init</code> 中的 init，可以得到 <code>A.fn.A.init</code>。</p>
+<h3 id="对比-jquery">对比 jQuery</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">A</span>(<span style="color:#e6db74">&#34;demo&#34;</span>));
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">$</span>(<span style="color:#e6db74">&#34;#demo&#34;</span>));
+</span></span></code></pre></div><p>发现他们的原型有些不同：</p>
+<img src="/img/38/01.jpg">
+<p>第一个 <code>__proto__</code> 为 <code>A.fn.A.init</code></p>
+<p>第二个 <code>__proto__</code> 为 <code>jQuery[0]</code></p>
+<p>解决这个问题的方式很简单也很巧妙，只要将构造函数的原型指向一个已存在的对象即可。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">A</span>.<span style="color:#a6e22e">fn</span>.<span style="color:#a6e22e">init</span>.<span style="color:#a6e22e">prototype</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">A</span>.<span style="color:#a6e22e">fn</span>;
+</span></span></code></pre></div><img src="/img/38/02.jpg">
+<p>果然是 Object 了，不过 jQuery 中确实是 jQuery 啊？？</p>
+<p>这是因为实例化的对象是在构造函数执行时创建的，所以 constructor 指向的就是 <code>A.fn.A.init</code> 构造函数，但是这个对象在执行完毕之后就 ‘不存在’ 了，所以我们为了加强 constructor，想像 jQuery 一样，为了让 <code>__proto__</code> 指向 A 对象，可以这么做：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">A</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">selector</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">A</span>.<span style="color:#a6e22e">fn</span>.<span style="color:#a6e22e">init</span>(<span style="color:#a6e22e">selector</span>);
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">A</span>.<span style="color:#a6e22e">fn</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">A</span>.<span style="color:#a6e22e">prototype</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 强化构造器
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">constructor</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">A</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">init</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">selector</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">constructor</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">      输出结果：
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">      function (selector) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">        return new A.fn.init(selector);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">      }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    */</span>
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">//...
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>};
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">A</span>.<span style="color:#a6e22e">fn</span>.<span style="color:#a6e22e">init</span>.<span style="color:#a6e22e">prototype</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">A</span>.<span style="color:#a6e22e">fn</span>;
+</span></span></code></pre></div><img src="/img/38/03.jpg">
+<p>此时，我们 A 框架的 <code>__proto__</code> 为 A 了，并且 size 方法也可以正常使用了</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">A</span>(<span style="color:#e6db74">&#34;demo&#34;</span>).<span style="color:#a6e22e">size</span>());
+</span></span></code></pre></div><h3 id="丰富元素的获取">丰富元素的获取</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">A</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">selector</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">A</span>.<span style="color:#a6e22e">fn</span>.<span style="color:#a6e22e">init</span>(<span style="color:#a6e22e">selector</span>);
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">A</span>.<span style="color:#a6e22e">fn</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">A</span>.<span style="color:#a6e22e">prototype</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 强化构造器
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">constructor</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">A</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">init</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">selector</span>, <span style="color:#a6e22e">context</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 获取元素的长度
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">lenth</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 默认获取元素的上下文为 document
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">context</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">context</span> <span style="color:#f92672">||</span> document;
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 如果是 id 的选择符，按位非将 -1 转化为 0，~-1 === 0
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> (<span style="color:#f92672">~</span><span style="color:#a6e22e">selector</span>.<span style="color:#a6e22e">indexOf</span>(<span style="color:#e6db74">&#34;#&#34;</span>)) {
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// 截取 id 并选择
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#66d9ef">this</span>[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#a6e22e">selector</span>.<span style="color:#a6e22e">slice</span>(<span style="color:#ae81ff">1</span>));
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// 如果是元素名称
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">doms</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">context</span>.<span style="color:#a6e22e">getElementsByTagName</span>(<span style="color:#a6e22e">selector</span>),
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">len</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">doms</span>.<span style="color:#a6e22e">length</span>;
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">for</span> (; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">len</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>[<span style="color:#a6e22e">i</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">doms</span>[<span style="color:#a6e22e">i</span>];
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// 校正长度
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">len</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 保存上下文
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">context</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">context</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 保存选择符
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">selector</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">selector</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 返回对象
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>;
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">//...
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>};
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">A</span>.<span style="color:#a6e22e">fn</span>.<span style="color:#a6e22e">init</span>.<span style="color:#a6e22e">prototype</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">A</span>.<span style="color:#a6e22e">fn</span>;
+</span></span></code></pre></div><h3 id="数组与对象">数组与对象</h3>
+<p>测试的时候发现控制台：jQuery 获取的元素更像一个数组，而 A 框架返回的更像是一个对象。</p>
+<img src="/img/38/04.jpg">
+<p>由于 js 是弱类型的语言，并且数组、对象、函数都被看成是对象的实例，所以 js 中并没有一个纯粹的数组类型。而且 js 引擎的视线也没有做严格的校验，也是基于对象实现的。一些浏览器解析引擎在判断对象是否是数组的时候不仅仅判断其有没有 length 属性，可否通过 ‘[索引值]’ 方式访问元素，还会判断其是否具有数组方法来确定是否要用数组的形式展现，所以我们只需要在 A.fn 中添加几个数组常用的方法来增强数组特性就可以解决问题了。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">A</span>.<span style="color:#a6e22e">fn</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">A</span>.<span style="color:#a6e22e">prototype</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">//...
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// 增强数组
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">push</span><span style="color:#f92672">:</span> [].<span style="color:#a6e22e">push</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">sort</span><span style="color:#f92672">:</span> [].<span style="color:#a6e22e">sort</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">splice</span><span style="color:#f92672">:</span> [].<span style="color:#a6e22e">splice</span>,
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>测试结果：</p>
+<img src="/img/38/05.jpg">
+<h3 id="方法拓展">方法拓展</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// 对象拓展
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">A</span>.<span style="color:#a6e22e">extend</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">A</span>.<span style="color:#a6e22e">fn</span>.<span style="color:#a6e22e">extend</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">len</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">arguments</span>.<span style="color:#a6e22e">length</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">target</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">arguments</span>[<span style="color:#ae81ff">0</span>],
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">j</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 如果只传一个参数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">i</span> <span style="color:#f92672">===</span> <span style="color:#a6e22e">len</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 源对象为当前对象
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">target</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// i 从 0 开始计数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">i</span><span style="color:#f92672">--</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 遍历参数中的拓展对象
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">for</span> (; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">len</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#a6e22e">j</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">arguments</span>[<span style="color:#a6e22e">i</span>]) {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">target</span>[<span style="color:#a6e22e">j</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">arguments</span>[<span style="color:#a6e22e">i</span>][<span style="color:#a6e22e">j</span>];
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 返回源对象
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">target</span>;
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><ul>
+<li>测试用例</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// 拓展一个对象
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">demo</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">A</span>.<span style="color:#a6e22e">extend</span>(
+</span></span><span style="display:flex;"><span>  {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">first</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span>,
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>  {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">second</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">2</span>,
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>  {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">third</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">3</span>,
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">demo</span>); <span style="color:#75715e">// { first: 1, second: 2, third: 3 }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 拓展 A.fn 方式一
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">A</span>.<span style="color:#a6e22e">extend</span>(<span style="color:#a6e22e">A</span>.<span style="color:#a6e22e">fn</span>, { <span style="color:#a6e22e">version</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;1.0&#34;</span> });
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">A</span>(<span style="color:#e6db74">&#34;demo&#34;</span>).<span style="color:#a6e22e">version</span>); <span style="color:#75715e">// 1.0
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 拓展 A.fn 方式二
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">A</span>.<span style="color:#a6e22e">fn</span>.<span style="color:#a6e22e">extend</span>({
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">getVersion</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">version</span>;
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>});
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">A</span>(<span style="color:#e6db74">&#34;demo&#34;</span>).<span style="color:#a6e22e">getVersion</span>()); <span style="color:#75715e">// 1.0
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 拓展 A 方式一
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">A</span>.<span style="color:#a6e22e">extend</span>(<span style="color:#a6e22e">A</span>, {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">author</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;yinhao&#34;</span>,
+</span></span><span style="display:flex;"><span>});
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">A</span>.<span style="color:#a6e22e">author</span>); <span style="color:#75715e">// yinhao
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 拓展 A 方式二
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">A</span>.<span style="color:#a6e22e">extend</span>({
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">nickname</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;雨夜清河&#34;</span>,
+</span></span><span style="display:flex;"><span>});
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">A</span>.<span style="color:#a6e22e">nickname</span>); <span style="color:#75715e">// 雨夜清河
+</span></span></span></code></pre></div><h3 id="添加方法">添加方法</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">A</span>.<span style="color:#a6e22e">fn</span>.<span style="color:#a6e22e">extend</span>({
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 添加事件
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">on</span><span style="color:#f92672">:</span> (<span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (document.<span style="color:#a6e22e">addEventListener</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">type</span>, <span style="color:#a6e22e">fn</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">--</span>) {
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">this</span>[<span style="color:#a6e22e">i</span>].<span style="color:#a6e22e">addEventListener</span>(<span style="color:#a6e22e">type</span>, <span style="color:#a6e22e">fn</span>, <span style="color:#66d9ef">false</span>);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>;
+</span></span><span style="display:flex;"><span>      };
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (document.<span style="color:#a6e22e">attchEvent</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">type</span>, <span style="color:#a6e22e">fn</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">--</span>) {
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">this</span>[<span style="color:#a6e22e">i</span>].<span style="color:#a6e22e">addEvent</span>(<span style="color:#e6db74">&#34;on&#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">type</span>, <span style="color:#a6e22e">fn</span>);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>;
+</span></span><span style="display:flex;"><span>      };
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">type</span>, <span style="color:#a6e22e">fn</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">--</span>) {
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">this</span>[<span style="color:#a6e22e">i</span>][<span style="color:#e6db74">&#34;on&#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">type</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">fn</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>;
+</span></span><span style="display:flex;"><span>      };
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  })(),
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">A</span>.<span style="color:#a6e22e">extend</span>({
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 将 ‘-’ 分割线转化为驼峰式，如 border-color =&gt; borderColor
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">camelCase</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">str</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">str</span>.<span style="color:#a6e22e">replace</span>(<span style="color:#e6db74">/\-(\w)/g</span>, <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">all</span>, <span style="color:#a6e22e">letter</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">letter</span>.<span style="color:#a6e22e">toUpperCase</span>();
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">A</span>.<span style="color:#a6e22e">extend</span>({
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 设置 css 样式
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">css</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">arg</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">arguments</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">len</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">arg</span>.<span style="color:#a6e22e">length</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">1</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 只有一个参数时
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">len</span> <span style="color:#f92672">===</span> <span style="color:#ae81ff">1</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// 如果是字符串则为获取第一个元素的 css 样式
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">arg</span>[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">===</span> <span style="color:#e6db74">&#34;string&#34;</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// IE
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">this</span>[<span style="color:#ae81ff">0</span>].<span style="color:#a6e22e">currentStyle</span>) {
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>[<span style="color:#ae81ff">0</span>].<span style="color:#a6e22e">currentStyle</span>[<span style="color:#a6e22e">name</span>];
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">getComputedStyle</span>(<span style="color:#66d9ef">this</span>[<span style="color:#ae81ff">0</span>], <span style="color:#66d9ef">false</span>)[<span style="color:#a6e22e">name</span>];
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>      } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">arg</span>[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">===</span> <span style="color:#e6db74">&#34;object&#34;</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 为对象时则设置多个样式
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">i</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">arg</span>[<span style="color:#ae81ff">0</span>]) {
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">j</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>; <span style="color:#a6e22e">j</span> <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">j</span><span style="color:#f92672">--</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">this</span>[<span style="color:#a6e22e">j</span>].<span style="color:#a6e22e">style</span>[<span style="color:#a6e22e">A</span>.<span style="color:#a6e22e">camelCase</span>(<span style="color:#a6e22e">i</span>)] <span style="color:#f92672">=</span> <span style="color:#a6e22e">arg</span>[<span style="color:#ae81ff">0</span>][<span style="color:#a6e22e">i</span>];
+</span></span><span style="display:flex;"><span>          }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">len</span> <span style="color:#f92672">===</span> <span style="color:#ae81ff">2</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// 两个参数则设置一个样式
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">j</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>; <span style="color:#a6e22e">j</span> <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">j</span><span style="color:#f92672">--</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>[<span style="color:#a6e22e">j</span>].<span style="color:#a6e22e">style</span>[<span style="color:#a6e22e">A</span>.<span style="color:#a6e22e">camelCase</span>(<span style="color:#ae81ff">0</span>)] <span style="color:#f92672">=</span> <span style="color:#a6e22e">arg</span>[<span style="color:#a6e22e">i</span>];
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>;
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// 设置属性
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">A</span>.<span style="color:#a6e22e">fn</span>.<span style="color:#a6e22e">extend</span>({
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">attr</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">arg</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">arguments</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">len</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">arg</span>.<span style="color:#a6e22e">length</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">1</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 如果一个参数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">len</span> <span style="color:#f92672">===</span> <span style="color:#ae81ff">1</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// 为字符串则获取第一个元素属性
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">arg</span>[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">===</span> <span style="color:#e6db74">&#34;string&#34;</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>[<span style="color:#ae81ff">0</span>].<span style="color:#a6e22e">getAttribute</span>(<span style="color:#a6e22e">arg</span>[<span style="color:#ae81ff">0</span>]);
+</span></span><span style="display:flex;"><span>      } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">arg</span>[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">===</span> <span style="color:#e6db74">&#34;object&#34;</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">i</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">arg</span>[<span style="color:#ae81ff">0</span>]) {
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">j</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>; <span style="color:#a6e22e">j</span> <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">j</span><span style="color:#f92672">--</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">this</span>[<span style="color:#a6e22e">j</span>].<span style="color:#a6e22e">setAttribute</span>(<span style="color:#a6e22e">i</span>, <span style="color:#a6e22e">arg</span>[<span style="color:#ae81ff">0</span>][<span style="color:#a6e22e">i</span>]);
+</span></span><span style="display:flex;"><span>          }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">len</span> <span style="color:#f92672">===</span> <span style="color:#ae81ff">2</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">j</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>; <span style="color:#a6e22e">j</span> <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">j</span><span style="color:#f92672">--</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>[<span style="color:#a6e22e">j</span>].<span style="color:#a6e22e">setAttribute</span>(<span style="color:#a6e22e">arg</span>[<span style="color:#ae81ff">0</span>], <span style="color:#a6e22e">arg</span>[<span style="color:#ae81ff">1</span>]);
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>;
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">A</span>.<span style="color:#a6e22e">fn</span>.<span style="color:#a6e22e">extend</span>({
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">html</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">arg</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">arguments</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">len</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">arg</span>.<span style="color:#a6e22e">length</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 无参数则获取第一个元素的内容
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">len</span> <span style="color:#f92672">===</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">&amp;&amp;</span> <span style="color:#66d9ef">this</span>[<span style="color:#ae81ff">0</span>].<span style="color:#a6e22e">innerHTML</span>;
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// 一个参数则设置每一个元素的内容
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">--</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>[<span style="color:#a6e22e">i</span>].<span style="color:#a6e22e">innerHTML</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">arg</span>[<span style="color:#ae81ff">0</span>];
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>;
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div><h3 id="大功告成">大功告成</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">A</span>(<span style="color:#e6db74">&#34;div&#34;</span>)
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">css</span>({
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">height</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;30px&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">border</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;1px solid red&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;background-color&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;red&#34;</span>,
+</span></span><span style="display:flex;"><span>  })
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#34;class&#34;</span>, <span style="color:#e6db74">&#34;demo&#34;</span>)
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">html</span>(<span style="color:#e6db74">&#34;add demo text&#34;</span>)
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">on</span>(<span style="color:#e6db74">&#34;click&#34;</span>, <span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;clicked&#34;</span>);
+</span></span><span style="display:flex;"><span>  });
+</span></span></code></pre></div></section>
+
+  
+  
+
+  
+  
+  
+  <nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
+    
+    <a class="flex w-1/2 items-center p-6 pr-3 no-underline" href="/articles/posts/39/"
+      ><span class="mr-1.5">←</span><span>当你的网站有新内容，如何立即通知你的用户呢？</span></a
+    >
+    
+    
+    <a
+      class="ml-auto flex w-1/2 items-center justify-end p-6 pl-3 no-underline"
+      href="/articles/posts/37/"
+      ><span>惰性模式</span><span class="ml-1.5">→</span></a
+    >
+    
+  </nav>
+  
+
+  
+  
+</article>
+
+
+    </main>
+
+    <footer
+  class="opaco mx-auto flex h-[5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+  style="position: relative; z-index: 10;display: none;"
+>
+  <div class="mr-auto">
+    &copy; 2024
+    <a class="link" href="/articles/">灏天阁</a>
+  </div>
+  <a class="link" href="https://yinchuanbo.github.io/" rel="noopener" target="_blank"
+    >Powered by YinHao</a
+  >️ ▷
+</footer>
+
+
+    <div class="img__mask" style="display: none;">
+      <img src="" alt="">
+      <span class="close_btn"></span>
+    </div>
+
+    <script>
+      const imgs = document.images;
+      const imgMask = document.querySelector('.img__mask')
+      const closeBtn = document.querySelector('.close_btn')
+      for (let i = 0; i < imgs.length; i++) {
+        const element = imgs[i];
+        element.onclick = () => {
+          const src = element.src;
+          imgMask.style.display = 'flex';
+          imgMask.querySelector('img').src = src;
+        }
+      }
+      closeBtn.onclick = () => {
+        imgMask.style.display = 'none';
+      }
+    </script>
+  </body>
+</html>

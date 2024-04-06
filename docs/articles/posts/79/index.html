@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+  class="not-ready text-sm lg:text-base"
+  style="--bg: "
+  lang="en"
+>
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  
+  <title>如何使用 Promise 去控制并发请求？ - 灏天阁</title>
+
+  
+  <meta name="theme-color" />
+  
+  <meta name="description" content="明确概念 并发：并发是多个任务同时交替的执行（因为 cpu 执行指令的速度非常之快，它可以不必按顺序一段代码一段代码的执行，这样效率反而更加低下），这样看起来就是一起执行的，所以叫并行。
+并行：可以理解为多个物理 cpu 或者有分布式系统，是真正的&rsquo;同时&rsquo;执行
+并发控制：意思是多个并发的任务，一旦有任务完成，就立刻开启下一个任务
+切片控制：将并发任务切片的分配出来，比如 10 个任务，切成 2 个片，每片有 5 个任务，当前一片的任务执行完毕，再开始下一个片的任务，这样明显效率没并发控制那么高了微信搜索公众号：架构师指南，回复：架构师 领取资料
+实现 定义常量和函数 function sendRequest(requestList, limits, callback) { // 定义执行队列，表示所有待执行的任务 const promises = requestList.slice(); // 定义开始时能执行的并发数 const concurrentNum = Math.min(limits, requestList.length); let concurrentCount = 0; // 当前并发数 // 启动初次能执行的任务 const runTaskNeeded = () =&gt; { let i = 0; while (i &lt; concurrentNum) { runTask(); } }; // 取出任务并推送到执行器 const runTask = () =&gt; {}; // 执行器，这里去执行任务 const runner = () =&gt; {}; // 捞起下一个任务 const picker = () =&gt; {}; // 开始执行！ runTaskNeeded(); } 实现对应的函数 function sendRequest(requestList, limits, callback) { const promises = requestList; // 取得请求list // 得到开始时，能执行的并发数 const concurrentNum = Math." />
+  <meta name="author" content="" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="/articles/main.min.css" />
+
+  
+
+  
+  
+  
+    
+  
+  <link
+    rel="preload"
+    as="image"
+    href="/articles/theme.png"
+  />
+
+  
+  
+  
+  <link rel="preload" as="image" href="/imgs/logo.png" />
+  
+  
+
+  
+
+  
+  <link rel="icon" href="/img/ico.ico" />
+  <link rel="apple-touch-icon" href="/articles/apple-touch-icon.png" />
+  
+  <meta name="generator" content="Hugo 0.108.0">
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="如何使用 Promise 去控制并发请求？" />
+<meta property="og:description" content="明确概念 并发：并发是多个任务同时交替的执行（因为 cpu 执行指令的速度非常之快，它可以不必按顺序一段代码一段代码的执行，这样效率反而更加低下），这样看起来就是一起执行的，所以叫并行。
+并行：可以理解为多个物理 cpu 或者有分布式系统，是真正的&rsquo;同时&rsquo;执行
+并发控制：意思是多个并发的任务，一旦有任务完成，就立刻开启下一个任务
+切片控制：将并发任务切片的分配出来，比如 10 个任务，切成 2 个片，每片有 5 个任务，当前一片的任务执行完毕，再开始下一个片的任务，这样明显效率没并发控制那么高了微信搜索公众号：架构师指南，回复：架构师 领取资料
+实现 定义常量和函数 function sendRequest(requestList, limits, callback) { // 定义执行队列，表示所有待执行的任务 const promises = requestList.slice(); // 定义开始时能执行的并发数 const concurrentNum = Math.min(limits, requestList.length); let concurrentCount = 0; // 当前并发数 // 启动初次能执行的任务 const runTaskNeeded = () =&gt; { let i = 0; while (i &lt; concurrentNum) { runTask(); } }; // 取出任务并推送到执行器 const runTask = () =&gt; {}; // 执行器，这里去执行任务 const runner = () =&gt; {}; // 捞起下一个任务 const picker = () =&gt; {}; // 开始执行！ runTaskNeeded(); } 实现对应的函数 function sendRequest(requestList, limits, callback) { const promises = requestList; // 取得请求list // 得到开始时，能执行的并发数 const concurrentNum = Math." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/articles/posts/79/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-10-24T11:00:58+08:00" />
+<meta property="article:modified_time" content="2023-10-24T11:00:58+08:00" />
+
+  
+  <meta itemprop="name" content="如何使用 Promise 去控制并发请求？">
+<meta itemprop="description" content="明确概念 并发：并发是多个任务同时交替的执行（因为 cpu 执行指令的速度非常之快，它可以不必按顺序一段代码一段代码的执行，这样效率反而更加低下），这样看起来就是一起执行的，所以叫并行。
+并行：可以理解为多个物理 cpu 或者有分布式系统，是真正的&rsquo;同时&rsquo;执行
+并发控制：意思是多个并发的任务，一旦有任务完成，就立刻开启下一个任务
+切片控制：将并发任务切片的分配出来，比如 10 个任务，切成 2 个片，每片有 5 个任务，当前一片的任务执行完毕，再开始下一个片的任务，这样明显效率没并发控制那么高了微信搜索公众号：架构师指南，回复：架构师 领取资料
+实现 定义常量和函数 function sendRequest(requestList, limits, callback) { // 定义执行队列，表示所有待执行的任务 const promises = requestList.slice(); // 定义开始时能执行的并发数 const concurrentNum = Math.min(limits, requestList.length); let concurrentCount = 0; // 当前并发数 // 启动初次能执行的任务 const runTaskNeeded = () =&gt; { let i = 0; while (i &lt; concurrentNum) { runTask(); } }; // 取出任务并推送到执行器 const runTask = () =&gt; {}; // 执行器，这里去执行任务 const runner = () =&gt; {}; // 捞起下一个任务 const picker = () =&gt; {}; // 开始执行！ runTaskNeeded(); } 实现对应的函数 function sendRequest(requestList, limits, callback) { const promises = requestList; // 取得请求list // 得到开始时，能执行的并发数 const concurrentNum = Math."><meta itemprop="datePublished" content="2023-10-24T11:00:58+08:00" />
+<meta itemprop="dateModified" content="2023-10-24T11:00:58+08:00" />
+<meta itemprop="wordCount" content="380">
+<meta itemprop="keywords" content="" />
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="如何使用 Promise 去控制并发请求？"/>
+<meta name="twitter:description" content="明确概念 并发：并发是多个任务同时交替的执行（因为 cpu 执行指令的速度非常之快，它可以不必按顺序一段代码一段代码的执行，这样效率反而更加低下），这样看起来就是一起执行的，所以叫并行。
+并行：可以理解为多个物理 cpu 或者有分布式系统，是真正的&rsquo;同时&rsquo;执行
+并发控制：意思是多个并发的任务，一旦有任务完成，就立刻开启下一个任务
+切片控制：将并发任务切片的分配出来，比如 10 个任务，切成 2 个片，每片有 5 个任务，当前一片的任务执行完毕，再开始下一个片的任务，这样明显效率没并发控制那么高了微信搜索公众号：架构师指南，回复：架构师 领取资料
+实现 定义常量和函数 function sendRequest(requestList, limits, callback) { // 定义执行队列，表示所有待执行的任务 const promises = requestList.slice(); // 定义开始时能执行的并发数 const concurrentNum = Math.min(limits, requestList.length); let concurrentCount = 0; // 当前并发数 // 启动初次能执行的任务 const runTaskNeeded = () =&gt; { let i = 0; while (i &lt; concurrentNum) { runTask(); } }; // 取出任务并推送到执行器 const runTask = () =&gt; {}; // 执行器，这里去执行任务 const runner = () =&gt; {}; // 捞起下一个任务 const picker = () =&gt; {}; // 开始执行！ runTaskNeeded(); } 实现对应的函数 function sendRequest(requestList, limits, callback) { const promises = requestList; // 取得请求list // 得到开始时，能执行的并发数 const concurrentNum = Math."/>
+
+  
+  
+</head>
+  <body class="text-black duration-200 ease-out dark:text-white">
+    
+    
+
+    
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100%-10rem)] max-w-3xl px-8 pt-20 dark:prose-invert"
+      id="main"
+    >
+      
+
+<article>
+  <header class="mb-10">
+    <h1 class="!my-0 pb-2.5">
+      如何使用 Promise 去控制并发请求？
+    </h1>
+
+    
+    <div class="text-sm opacity-60">
+      
+      <time>Oct 24, 2023</time>
+      
+      
+      <span class="mx-1">&middot;</span>
+      <span>Yin灏</span>
+    </div>
+    
+  </header>
+
+  <section><h3 id="明确概念">明确概念</h3>
+<ul>
+<li>
+<p>并发：并发是多个任务同时交替的执行（因为 cpu 执行指令的速度非常之快，它可以不必按顺序一段代码一段代码的执行，这样效率反而更加低下），这样看起来就是一起执行的，所以叫并行。</p>
+</li>
+<li>
+<p>并行：可以理解为多个物理 cpu 或者有分布式系统，是真正的&rsquo;同时&rsquo;执行</p>
+</li>
+<li>
+<p>并发控制：意思是多个并发的任务，一旦有任务完成，就立刻开启下一个任务</p>
+</li>
+<li>
+<p>切片控制：将并发任务切片的分配出来，比如 10 个任务，切成 2 个片，每片有 5 个任务，当前一片的任务执行完毕，再开始下一个片的任务，这样明显效率没并发控制那么高了微信搜索公众号：架构师指南，回复：架构师 领取资料</p>
+</li>
+</ul>
+<h3 id="实现">实现</h3>
+<ol>
+<li>定义常量和函数</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">sendRequest</span>(<span style="color:#a6e22e">requestList</span>, <span style="color:#a6e22e">limits</span>, <span style="color:#a6e22e">callback</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 定义执行队列，表示所有待执行的任务
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">promises</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">requestList</span>.<span style="color:#a6e22e">slice</span>();
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 定义开始时能执行的并发数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">concurrentNum</span> <span style="color:#f92672">=</span> Math.<span style="color:#a6e22e">min</span>(<span style="color:#a6e22e">limits</span>, <span style="color:#a6e22e">requestList</span>.<span style="color:#a6e22e">length</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">concurrentCount</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#75715e">// 当前并发数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// 启动初次能执行的任务
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">runTaskNeeded</span> <span style="color:#f92672">=</span> () =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> (<span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">concurrentNum</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">runTask</span>();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  };
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 取出任务并推送到执行器
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">runTask</span> <span style="color:#f92672">=</span> () =&gt; {};
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 执行器，这里去执行任务
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">runner</span> <span style="color:#f92672">=</span> () =&gt; {};
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 捞起下一个任务
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">picker</span> <span style="color:#f92672">=</span> () =&gt; {};
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 开始执行！
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">runTaskNeeded</span>();
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ol start="2">
+<li>实现对应的函数</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">sendRequest</span>(<span style="color:#a6e22e">requestList</span>, <span style="color:#a6e22e">limits</span>, <span style="color:#a6e22e">callback</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">promises</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">requestList</span>; <span style="color:#75715e">// 取得请求list
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// 得到开始时，能执行的并发数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">concurrentNum</span> <span style="color:#f92672">=</span> Math.<span style="color:#a6e22e">min</span>(<span style="color:#a6e22e">limits</span>, <span style="color:#a6e22e">requestList</span>.<span style="color:#a6e22e">length</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">concurrentCount</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#75715e">// 当前并发数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// 第一次先跑起可以并发的任务
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">runTaskNeeded</span> <span style="color:#f92672">=</span> () =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 启动当前能执行的任务
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">while</span> (<span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">concurrentNum</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">runTask</span>();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  };
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 取出任务并且执行任务
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">runTask</span> <span style="color:#f92672">=</span> () =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">task</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">promises</span>.<span style="color:#a6e22e">shift</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">task</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">runner</span>(<span style="color:#a6e22e">task</span>);
+</span></span><span style="display:flex;"><span>  };
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 执行器
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// 执行任务，同时更新当前并发数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">runner</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">async</span> (<span style="color:#a6e22e">task</span>) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">concurrentCount</span><span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">task</span>();
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">error</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#a6e22e">error</span>);
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">finally</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// 并发数--
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#a6e22e">concurrentCount</span><span style="color:#f92672">--</span>;
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// 捞起下一个任务
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#a6e22e">picker</span>();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  };
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 捞起下一个任务
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">picker</span> <span style="color:#f92672">=</span> () =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 任务队列里还有任务并且此时还有剩余并发数的时候 执行
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">concurrentCount</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">limits</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">promises</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// 继续执行任务
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#a6e22e">runTask</span>();
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// 队列为空的时候，并且请求池清空了，就可以执行最后的回调函数了
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">promises</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">concurrentCount</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// 执行结束
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#a6e22e">callback</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">callback</span>();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  };
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 入口执行
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">runTaskNeeded</span>();
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="另一种实现">另一种实现</h2>
+<blockquote>
+<p>核心代码是判断是当你 【有任务执行完成】 ，再去判断是否有剩余还有任务可执行。可以先维护一个 pool（代表当前执行的任务），利用 await Promise.race 这个 pool，不就知道是否有任务执行完毕了吗？</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">sendRequest</span>(<span style="color:#a6e22e">requestList</span>, <span style="color:#a6e22e">limits</span>, <span style="color:#a6e22e">callback</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 维护一个promise队列
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">promises</span> <span style="color:#f92672">=</span> [];
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 当前的并发池,用Set结构方便删除
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">pool</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Set</span>(); <span style="color:#75715e">// set也是Iterable&lt;any&gt;[]类型，因此可以放入到race里
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// 开始并发执行所有的任务
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">request</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">requestList</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 开始执行前，先await 判断 当前的并发任务是否超过限制
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">pool</span>.<span style="color:#a6e22e">size</span> <span style="color:#f92672">&gt;=</span> <span style="color:#a6e22e">limits</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// 这里因为没有try catch ，所以要捕获一下错误，不然影响下面微任务的执行
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#66d9ef">await</span> Promise.<span style="color:#a6e22e">race</span>(<span style="color:#a6e22e">pool</span>).<span style="color:#66d9ef">catch</span>((<span style="color:#a6e22e">err</span>) =&gt; <span style="color:#a6e22e">err</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">promise</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">request</span>(); <span style="color:#75715e">// 拿到promise
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// 删除请求结束后，从pool里面移除
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">cb</span> <span style="color:#f92672">=</span> () =&gt; {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">pool</span>.<span style="color:#66d9ef">delete</span>(<span style="color:#a6e22e">promise</span>);
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 注册下then的任务
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">promise</span>.<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">cb</span>, <span style="color:#a6e22e">cb</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">pool</span>.<span style="color:#a6e22e">add</span>(<span style="color:#a6e22e">promise</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">promises</span>.<span style="color:#a6e22e">push</span>(<span style="color:#a6e22e">promise</span>);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 等最后一个for await 结束，这里是属于最后一个 await 后面的 微任务
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// 注意这里其实是在微任务当中了，当前的promises里面是能确保所有的promise都在其中(前提是await那里命中了if)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  Promise.<span style="color:#a6e22e">allSettled</span>(<span style="color:#a6e22e">promises</span>).<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">callback</span>, <span style="color:#a6e22e">callback</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="总结一下要点">总结一下要点：</h2>
+<ol>
+<li>
+<p>利用 race 的特性可以找到 并发任务 里最快结束的请求</p>
+</li>
+<li>
+<p>利用 for await 可以保证 for 结构体下面的代码是最后 await 后的微任务，而在最后一个微任务下，可以保证所有的 promise 已经存入 promises 里（如果没命中任何一个 await，即限制并发数&gt;任务数的时候，虽然不是在微任务当中，也可以保证所有的 promise 都在里面），最后利用 allSettled，等待所有的 promise 状态转变后，调用回调函数</p>
+</li>
+<li>
+<p>并发任务池 用 Set 结构存储，可以通过指针来删除对应的任务，通过闭包引用该指针从而达到 动态控制并发池数目</p>
+</li>
+<li>
+<p>for await 结构体里，其实 await 下面，包括结构体外 都是属于微任务（前提是有一个 await 里面的 if 被命中），至于这个微任务什么时候被加入微任务队列，要看请求的那里的在什么时候开始标记（resolve/reject ）</p>
+</li>
+<li>
+<p>for await 里其实 已经在此轮宏任务当中并发执行了，await 后面的代码被挂起来，等前一个 promise 转变状态&ndash;&gt;移出 pool&ndash;&gt;将下一个 promise 捞起加入 pool 当中 &ndash;&gt;下一个 await 等待最快的 promise，如此往复。</p>
+</li>
+</ol>
+</section>
+
+  
+  
+
+  
+  
+  
+  <nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
+    
+    <a class="flex w-1/2 items-center p-6 pr-3 no-underline" href="/articles/posts/80/"
+      ><span class="mr-1.5">←</span><span>细数那些惊艳一时的 CSS 属性</span></a
+    >
+    
+    
+    <a
+      class="ml-auto flex w-1/2 items-center justify-end p-6 pl-3 no-underline"
+      href="/articles/posts/78/"
+      ><span>比较运算</span><span class="ml-1.5">→</span></a
+    >
+    
+  </nav>
+  
+
+  
+  
+</article>
+
+
+    </main>
+
+    <footer
+  class="opaco mx-auto flex h-[5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+  style="position: relative; z-index: 10;display: none;"
+>
+  <div class="mr-auto">
+    &copy; 2024
+    <a class="link" href="/articles/">灏天阁</a>
+  </div>
+  <a class="link" href="https://yinchuanbo.github.io/" rel="noopener" target="_blank"
+    >Powered by YinHao</a
+  >️ ▷
+</footer>
+
+
+    <div class="img__mask" style="display: none;">
+      <img src="" alt="">
+      <span class="close_btn"></span>
+    </div>
+
+    <script>
+      const imgs = document.images;
+      const imgMask = document.querySelector('.img__mask')
+      const closeBtn = document.querySelector('.close_btn')
+      for (let i = 0; i < imgs.length; i++) {
+        const element = imgs[i];
+        element.onclick = () => {
+          const src = element.src;
+          imgMask.style.display = 'flex';
+          imgMask.querySelector('img').src = src;
+        }
+      }
+      closeBtn.onclick = () => {
+        imgMask.style.display = 'none';
+      }
+    </script>
+  </body>
+</html>

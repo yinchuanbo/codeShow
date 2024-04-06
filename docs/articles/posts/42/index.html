@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+  class="not-ready text-sm lg:text-base"
+  style="--bg: "
+  lang="en"
+>
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  
+  <title>原生的延迟加载支持 - 灏天阁</title>
+
+  
+  <meta name="theme-color" />
+  
+  <meta name="description" content="从 Chrome 75 版本开始，已经可以通过 &lt;img&gt; 和 &lt;iframe&gt; 标签的 loading 属性原生支持延迟加载了，loading 属性包含以下三种取值：
+lazy: 进行延迟加载
+eager: 立即加载
+auto: 浏览器自行决定是否进行延迟加载
+若不指定任何属性，loading 默认取值 auto，
+&lt;!-- 当用户滚动屏幕视窗到该图像元素时，才进行加载 --&gt; &lt;img src=&#34;photo.jpg&#34; loading=&#34;lazy&#34; alt=&#34;&#34; /&gt; &lt;!-- 立刻加载图像元素 --&gt; &lt;img src=&#34;photo.jpg&#34; loading=&#34;eager&#34; alt=&#34;&#34; /&gt; &lt;!-- 浏览器决定是否进行延迟加载 --&gt; &lt;img src=&#34;photo.jpg&#34; loading=&#34;auto&#34; alt=&#34;&#34; /&gt; &lt;!-- 亦可延迟加载 picture 中的图像 --&gt; &lt;picture&gt; &lt;source media=&#34;(min-width: 750px)&#34; srcset=&#34;phone.jpg 1x, phone-hd.jpg 2x&#34; /&gt; &lt;source srcset=&#34;small.jpg 1x, small- hd.jpg 2x&#34; /&gt; &lt;img src=&#34;default.jpg&#34; loading=&#34;lazy&#34; /&gt; &lt;/picture&gt; &lt;!" />
+  <meta name="author" content="" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="/articles/main.min.css" />
+
+  
+
+  
+  
+  
+    
+  
+  <link
+    rel="preload"
+    as="image"
+    href="/articles/theme.png"
+  />
+
+  
+  
+  
+  <link rel="preload" as="image" href="/imgs/logo.png" />
+  
+  
+
+  
+
+  
+  <link rel="icon" href="/img/ico.ico" />
+  <link rel="apple-touch-icon" href="/articles/apple-touch-icon.png" />
+  
+  <meta name="generator" content="Hugo 0.108.0">
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="原生的延迟加载支持" />
+<meta property="og:description" content="从 Chrome 75 版本开始，已经可以通过 &lt;img&gt; 和 &lt;iframe&gt; 标签的 loading 属性原生支持延迟加载了，loading 属性包含以下三种取值：
+lazy: 进行延迟加载
+eager: 立即加载
+auto: 浏览器自行决定是否进行延迟加载
+若不指定任何属性，loading 默认取值 auto，
+&lt;!-- 当用户滚动屏幕视窗到该图像元素时，才进行加载 --&gt; &lt;img src=&#34;photo.jpg&#34; loading=&#34;lazy&#34; alt=&#34;&#34; /&gt; &lt;!-- 立刻加载图像元素 --&gt; &lt;img src=&#34;photo.jpg&#34; loading=&#34;eager&#34; alt=&#34;&#34; /&gt; &lt;!-- 浏览器决定是否进行延迟加载 --&gt; &lt;img src=&#34;photo.jpg&#34; loading=&#34;auto&#34; alt=&#34;&#34; /&gt; &lt;!-- 亦可延迟加载 picture 中的图像 --&gt; &lt;picture&gt; &lt;source media=&#34;(min-width: 750px)&#34; srcset=&#34;phone.jpg 1x, phone-hd.jpg 2x&#34; /&gt; &lt;source srcset=&#34;small.jpg 1x, small- hd.jpg 2x&#34; /&gt; &lt;img src=&#34;default.jpg&#34; loading=&#34;lazy&#34; /&gt; &lt;/picture&gt; &lt;!" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/articles/posts/42/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-09-11T21:55:45+08:00" />
+<meta property="article:modified_time" content="2023-09-11T21:55:45+08:00" />
+
+  
+  <meta itemprop="name" content="原生的延迟加载支持">
+<meta itemprop="description" content="从 Chrome 75 版本开始，已经可以通过 &lt;img&gt; 和 &lt;iframe&gt; 标签的 loading 属性原生支持延迟加载了，loading 属性包含以下三种取值：
+lazy: 进行延迟加载
+eager: 立即加载
+auto: 浏览器自行决定是否进行延迟加载
+若不指定任何属性，loading 默认取值 auto，
+&lt;!-- 当用户滚动屏幕视窗到该图像元素时，才进行加载 --&gt; &lt;img src=&#34;photo.jpg&#34; loading=&#34;lazy&#34; alt=&#34;&#34; /&gt; &lt;!-- 立刻加载图像元素 --&gt; &lt;img src=&#34;photo.jpg&#34; loading=&#34;eager&#34; alt=&#34;&#34; /&gt; &lt;!-- 浏览器决定是否进行延迟加载 --&gt; &lt;img src=&#34;photo.jpg&#34; loading=&#34;auto&#34; alt=&#34;&#34; /&gt; &lt;!-- 亦可延迟加载 picture 中的图像 --&gt; &lt;picture&gt; &lt;source media=&#34;(min-width: 750px)&#34; srcset=&#34;phone.jpg 1x, phone-hd.jpg 2x&#34; /&gt; &lt;source srcset=&#34;small.jpg 1x, small- hd.jpg 2x&#34; /&gt; &lt;img src=&#34;default.jpg&#34; loading=&#34;lazy&#34; /&gt; &lt;/picture&gt; &lt;!"><meta itemprop="datePublished" content="2023-09-11T21:55:45+08:00" />
+<meta itemprop="dateModified" content="2023-09-11T21:55:45+08:00" />
+<meta itemprop="wordCount" content="106">
+<meta itemprop="keywords" content="" />
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="原生的延迟加载支持"/>
+<meta name="twitter:description" content="从 Chrome 75 版本开始，已经可以通过 &lt;img&gt; 和 &lt;iframe&gt; 标签的 loading 属性原生支持延迟加载了，loading 属性包含以下三种取值：
+lazy: 进行延迟加载
+eager: 立即加载
+auto: 浏览器自行决定是否进行延迟加载
+若不指定任何属性，loading 默认取值 auto，
+&lt;!-- 当用户滚动屏幕视窗到该图像元素时，才进行加载 --&gt; &lt;img src=&#34;photo.jpg&#34; loading=&#34;lazy&#34; alt=&#34;&#34; /&gt; &lt;!-- 立刻加载图像元素 --&gt; &lt;img src=&#34;photo.jpg&#34; loading=&#34;eager&#34; alt=&#34;&#34; /&gt; &lt;!-- 浏览器决定是否进行延迟加载 --&gt; &lt;img src=&#34;photo.jpg&#34; loading=&#34;auto&#34; alt=&#34;&#34; /&gt; &lt;!-- 亦可延迟加载 picture 中的图像 --&gt; &lt;picture&gt; &lt;source media=&#34;(min-width: 750px)&#34; srcset=&#34;phone.jpg 1x, phone-hd.jpg 2x&#34; /&gt; &lt;source srcset=&#34;small.jpg 1x, small- hd.jpg 2x&#34; /&gt; &lt;img src=&#34;default.jpg&#34; loading=&#34;lazy&#34; /&gt; &lt;/picture&gt; &lt;!"/>
+
+  
+  
+</head>
+  <body class="text-black duration-200 ease-out dark:text-white">
+    
+    
+
+    
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100%-10rem)] max-w-3xl px-8 pt-20 dark:prose-invert"
+      id="main"
+    >
+      
+
+<article>
+  <header class="mb-10">
+    <h1 class="!my-0 pb-2.5">
+      原生的延迟加载支持
+    </h1>
+
+    
+    <div class="text-sm opacity-60">
+      
+      <time>Sep 11, 2023</time>
+      
+      
+      <span class="mx-1">&middot;</span>
+      <span>Yin灏</span>
+    </div>
+    
+  </header>
+
+  <section><p>从 Chrome 75 版本开始，已经可以通过 <code>&lt;img&gt;</code> 和 <code>&lt;iframe&gt;</code> 标签的 loading 属性原生支持延迟加载了，loading 属性包含以下三种取值：</p>
+<ol>
+<li>
+<p>lazy: 进行延迟加载</p>
+</li>
+<li>
+<p>eager: 立即加载</p>
+</li>
+<li>
+<p>auto: 浏览器自行决定是否进行延迟加载</p>
+</li>
+</ol>
+<p>若不指定任何属性，loading 默认取值 auto，</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span><span style="color:#75715e">&lt;!-- 当用户滚动屏幕视窗到该图像元素时，才进行加载 --&gt;</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">img</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;photo.jpg&#34;</span> <span style="color:#a6e22e">loading</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;lazy&#34;</span> <span style="color:#a6e22e">alt</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span> /&gt;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!-- 立刻加载图像元素 --&gt;</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">img</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;photo.jpg&#34;</span> <span style="color:#a6e22e">loading</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;eager&#34;</span> <span style="color:#a6e22e">alt</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span> /&gt;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!-- 浏览器决定是否进行延迟加载 --&gt;</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">img</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;photo.jpg&#34;</span> <span style="color:#a6e22e">loading</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;auto&#34;</span> <span style="color:#a6e22e">alt</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span> /&gt;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!-- 亦可延迟加载 picture 中的图像 --&gt;</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">picture</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">source</span> <span style="color:#a6e22e">media</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;(min-width: 750px)&#34;</span> <span style="color:#a6e22e">srcset</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;phone.jpg 1x, phone-hd.jpg 2x&#34;</span> /&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">source</span> <span style="color:#a6e22e">srcset</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;small.jpg 1x, small- hd.jpg 2x&#34;</span> /&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">img</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;default.jpg&#34;</span> <span style="color:#a6e22e">loading</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;lazy&#34;</span> /&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">picture</span>&gt;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!-- 当用户滚动屏幕视窗到该 iframe 时的延迟加载 --&gt;</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">iframe</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;video.html&#34;</span> <span style="color:#a6e22e">loading</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;lazy&#34;</span>&gt;&lt;/<span style="color:#f92672">iframe</span>&gt;
+</span></span></code></pre></div><p>【注意】触发机制都是当目标图片文件经页面滚动出现在屏幕视窗中时，触发对图片资源的请求，但从体验上考虑，这样处理并不完美，因为当图像标签出现在屏幕视窗中时，还只是占位符图像。</p>
+<p>如果网络存在延迟或图像资源过大，那么它的请求加载过程是可以被用户感知的。更好的做法是在图像即将滚动出现在屏幕视窗之前一段距离，就开始请求加载图像或 iframe 中的内容，这样能很好的缩短用户的等待加载时长。</p>
+<p><strong>兼容处理</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (<span style="color:#e6db74">&#34;loading&#34;</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">HTMLImageElement</span>.<span style="color:#a6e22e">prototype</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 浏览器支持 loading=&#39;lazy&#39; 的延迟加载方式
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>} <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 获取其他 js 库来实现延迟加载
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">img</span> <span style="color:#a6e22e">data-src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;photo.jpg&#34;</span> <span style="color:#a6e22e">loading</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;lazy&#34;</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;lazyload&#34;</span> <span style="color:#a6e22e">alt</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span> /&gt;
+</span></span></code></pre></div></section>
+
+  
+  
+
+  
+  
+  
+  <nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
+    
+    <a class="flex w-1/2 items-center p-6 pr-3 no-underline" href="/articles/posts/43/"
+      ><span class="mr-1.5">←</span><span>视频加载</span></a
+    >
+    
+    
+    <a
+      class="ml-auto flex w-1/2 items-center justify-end p-6 pl-3 no-underline"
+      href="/articles/posts/41/"
+      ><span>属性的 getter 和 setter</span><span class="ml-1.5">→</span></a
+    >
+    
+  </nav>
+  
+
+  
+  
+</article>
+
+
+    </main>
+
+    <footer
+  class="opaco mx-auto flex h-[5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+  style="position: relative; z-index: 10;display: none;"
+>
+  <div class="mr-auto">
+    &copy; 2024
+    <a class="link" href="/articles/">灏天阁</a>
+  </div>
+  <a class="link" href="https://yinchuanbo.github.io/" rel="noopener" target="_blank"
+    >Powered by YinHao</a
+  >️ ▷
+</footer>
+
+
+    <div class="img__mask" style="display: none;">
+      <img src="" alt="">
+      <span class="close_btn"></span>
+    </div>
+
+    <script>
+      const imgs = document.images;
+      const imgMask = document.querySelector('.img__mask')
+      const closeBtn = document.querySelector('.close_btn')
+      for (let i = 0; i < imgs.length; i++) {
+        const element = imgs[i];
+        element.onclick = () => {
+          const src = element.src;
+          imgMask.style.display = 'flex';
+          imgMask.querySelector('img').src = src;
+        }
+      }
+      closeBtn.onclick = () => {
+        imgMask.style.display = 'none';
+      }
+    </script>
+  </body>
+</html>

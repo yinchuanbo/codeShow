@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+  class="not-ready text-sm lg:text-base"
+  style="--bg: "
+  lang="en"
+>
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  
+  <title> 一些 css 语法解释 - 灏天阁</title>
+
+  
+  <meta name="theme-color" />
+  
+  <meta name="description" content="filter: invert(1) 是一种 CSS 滤镜效果，它用于将元素的颜色进行反转，即将亮色变为暗色，暗色变为亮色。具体而言，它将元素的亮度值进行反转，使得黑色变为白色，白色变为黑色，其他颜色也会相应地进行反转。这个滤镜效果常用于创建黑暗主题、反色效果或者增强视觉对比度。
+-webkit-autofill .contac__input: -webkit-autofill { transition: background-color 6000s, color 6000s; } 这段代码是用于自动填充表单输入框的样式设置。 -webkit-autofill 是一个 Webkit 浏览器的伪类选择器，用于匹配自动填充的表单字段。
+transition: background-color 6000s, color 6000s; 是一个过渡效果的设置，它定义了在 6000 秒内发生的过渡效果。具体来说，它定义了在自动填充表单字段时，背景颜色和文字颜色的过渡效果。
+这段代码的作用是为自动填充表单字段提供过渡效果，使得填充的背景颜色和文字颜色能够平滑地改变，提升用户体验。
+placeholder-shown .contact__input:not(:placeholder-shown).contact__input:not(:focus) &#43; .contact__label { opacity: 1; top: -16px; } 这段代码是用于在表单输入框中输入内容时，控制相邻标签的样式变化。具体来说：
+.contact__input:not(:placeholder-shown).contact__input:not(:focus) 选择器表示选中没有占位符文本且没有获得焦点的输入框。
+&#43; .contact__label 表示选中与上述选择器相邻的类名为 .contact__label 的元素。
+opacity: 1; 设置透明度为 1，即完全不透明。
+top: -16px 将元素的位置向上移动 16 像素。
+这段代码的作用是在用户在输入框中输入内容时，将相邻的标签元素显示出来，并将其位置向上移动 16 像素。通常用于实现输入框中的占位标签在输入内容时的动态效果，提升用户体验。
+margin-inline .contact__data { margin-inline: auto; } 这段代码设置了类名为 .contact__data 的元素的水平居中对齐。具体来说：
+margin-inline: auto; 是一个 CSS 属性，用于设置元素的水平外边距。 auto 值表示自动计算外边距，使元素在水平方向上居中对齐。" />
+  <meta name="author" content="" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="/articles/main.min.css" />
+
+  
+
+  
+  
+  
+    
+  
+  <link
+    rel="preload"
+    as="image"
+    href="/articles/theme.png"
+  />
+
+  
+  
+  
+  <link rel="preload" as="image" href="/imgs/logo.png" />
+  
+  
+
+  
+
+  
+  <link rel="icon" href="/img/ico.ico" />
+  <link rel="apple-touch-icon" href="/articles/apple-touch-icon.png" />
+  
+  <meta name="generator" content="Hugo 0.108.0">
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content=" 一些 css 语法解释" />
+<meta property="og:description" content="filter: invert(1) 是一种 CSS 滤镜效果，它用于将元素的颜色进行反转，即将亮色变为暗色，暗色变为亮色。具体而言，它将元素的亮度值进行反转，使得黑色变为白色，白色变为黑色，其他颜色也会相应地进行反转。这个滤镜效果常用于创建黑暗主题、反色效果或者增强视觉对比度。
+-webkit-autofill .contac__input: -webkit-autofill { transition: background-color 6000s, color 6000s; } 这段代码是用于自动填充表单输入框的样式设置。 -webkit-autofill 是一个 Webkit 浏览器的伪类选择器，用于匹配自动填充的表单字段。
+transition: background-color 6000s, color 6000s; 是一个过渡效果的设置，它定义了在 6000 秒内发生的过渡效果。具体来说，它定义了在自动填充表单字段时，背景颜色和文字颜色的过渡效果。
+这段代码的作用是为自动填充表单字段提供过渡效果，使得填充的背景颜色和文字颜色能够平滑地改变，提升用户体验。
+placeholder-shown .contact__input:not(:placeholder-shown).contact__input:not(:focus) &#43; .contact__label { opacity: 1; top: -16px; } 这段代码是用于在表单输入框中输入内容时，控制相邻标签的样式变化。具体来说：
+.contact__input:not(:placeholder-shown).contact__input:not(:focus) 选择器表示选中没有占位符文本且没有获得焦点的输入框。
+&#43; .contact__label 表示选中与上述选择器相邻的类名为 .contact__label 的元素。
+opacity: 1; 设置透明度为 1，即完全不透明。
+top: -16px 将元素的位置向上移动 16 像素。
+这段代码的作用是在用户在输入框中输入内容时，将相邻的标签元素显示出来，并将其位置向上移动 16 像素。通常用于实现输入框中的占位标签在输入内容时的动态效果，提升用户体验。
+margin-inline .contact__data { margin-inline: auto; } 这段代码设置了类名为 .contact__data 的元素的水平居中对齐。具体来说：
+margin-inline: auto; 是一个 CSS 属性，用于设置元素的水平外边距。 auto 值表示自动计算外边距，使元素在水平方向上居中对齐。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/articles/posts/52/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-09-17T21:58:31+08:00" />
+<meta property="article:modified_time" content="2023-09-17T21:58:31+08:00" />
+
+  
+  <meta itemprop="name" content=" 一些 css 语法解释">
+<meta itemprop="description" content="filter: invert(1) 是一种 CSS 滤镜效果，它用于将元素的颜色进行反转，即将亮色变为暗色，暗色变为亮色。具体而言，它将元素的亮度值进行反转，使得黑色变为白色，白色变为黑色，其他颜色也会相应地进行反转。这个滤镜效果常用于创建黑暗主题、反色效果或者增强视觉对比度。
+-webkit-autofill .contac__input: -webkit-autofill { transition: background-color 6000s, color 6000s; } 这段代码是用于自动填充表单输入框的样式设置。 -webkit-autofill 是一个 Webkit 浏览器的伪类选择器，用于匹配自动填充的表单字段。
+transition: background-color 6000s, color 6000s; 是一个过渡效果的设置，它定义了在 6000 秒内发生的过渡效果。具体来说，它定义了在自动填充表单字段时，背景颜色和文字颜色的过渡效果。
+这段代码的作用是为自动填充表单字段提供过渡效果，使得填充的背景颜色和文字颜色能够平滑地改变，提升用户体验。
+placeholder-shown .contact__input:not(:placeholder-shown).contact__input:not(:focus) &#43; .contact__label { opacity: 1; top: -16px; } 这段代码是用于在表单输入框中输入内容时，控制相邻标签的样式变化。具体来说：
+.contact__input:not(:placeholder-shown).contact__input:not(:focus) 选择器表示选中没有占位符文本且没有获得焦点的输入框。
+&#43; .contact__label 表示选中与上述选择器相邻的类名为 .contact__label 的元素。
+opacity: 1; 设置透明度为 1，即完全不透明。
+top: -16px 将元素的位置向上移动 16 像素。
+这段代码的作用是在用户在输入框中输入内容时，将相邻的标签元素显示出来，并将其位置向上移动 16 像素。通常用于实现输入框中的占位标签在输入内容时的动态效果，提升用户体验。
+margin-inline .contact__data { margin-inline: auto; } 这段代码设置了类名为 .contact__data 的元素的水平居中对齐。具体来说：
+margin-inline: auto; 是一个 CSS 属性，用于设置元素的水平外边距。 auto 值表示自动计算外边距，使元素在水平方向上居中对齐。"><meta itemprop="datePublished" content="2023-09-17T21:58:31+08:00" />
+<meta itemprop="dateModified" content="2023-09-17T21:58:31+08:00" />
+<meta itemprop="wordCount" content="138">
+<meta itemprop="keywords" content="" />
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=" 一些 css 语法解释"/>
+<meta name="twitter:description" content="filter: invert(1) 是一种 CSS 滤镜效果，它用于将元素的颜色进行反转，即将亮色变为暗色，暗色变为亮色。具体而言，它将元素的亮度值进行反转，使得黑色变为白色，白色变为黑色，其他颜色也会相应地进行反转。这个滤镜效果常用于创建黑暗主题、反色效果或者增强视觉对比度。
+-webkit-autofill .contac__input: -webkit-autofill { transition: background-color 6000s, color 6000s; } 这段代码是用于自动填充表单输入框的样式设置。 -webkit-autofill 是一个 Webkit 浏览器的伪类选择器，用于匹配自动填充的表单字段。
+transition: background-color 6000s, color 6000s; 是一个过渡效果的设置，它定义了在 6000 秒内发生的过渡效果。具体来说，它定义了在自动填充表单字段时，背景颜色和文字颜色的过渡效果。
+这段代码的作用是为自动填充表单字段提供过渡效果，使得填充的背景颜色和文字颜色能够平滑地改变，提升用户体验。
+placeholder-shown .contact__input:not(:placeholder-shown).contact__input:not(:focus) &#43; .contact__label { opacity: 1; top: -16px; } 这段代码是用于在表单输入框中输入内容时，控制相邻标签的样式变化。具体来说：
+.contact__input:not(:placeholder-shown).contact__input:not(:focus) 选择器表示选中没有占位符文本且没有获得焦点的输入框。
+&#43; .contact__label 表示选中与上述选择器相邻的类名为 .contact__label 的元素。
+opacity: 1; 设置透明度为 1，即完全不透明。
+top: -16px 将元素的位置向上移动 16 像素。
+这段代码的作用是在用户在输入框中输入内容时，将相邻的标签元素显示出来，并将其位置向上移动 16 像素。通常用于实现输入框中的占位标签在输入内容时的动态效果，提升用户体验。
+margin-inline .contact__data { margin-inline: auto; } 这段代码设置了类名为 .contact__data 的元素的水平居中对齐。具体来说：
+margin-inline: auto; 是一个 CSS 属性，用于设置元素的水平外边距。 auto 值表示自动计算外边距，使元素在水平方向上居中对齐。"/>
+
+  
+  
+</head>
+  <body class="text-black duration-200 ease-out dark:text-white">
+    
+    
+
+    
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100%-10rem)] max-w-3xl px-8 pt-20 dark:prose-invert"
+      id="main"
+    >
+      
+
+<article>
+  <header class="mb-10">
+    <h1 class="!my-0 pb-2.5">
+       一些 css 语法解释
+    </h1>
+
+    
+    <div class="text-sm opacity-60">
+      
+      <time>Sep 17, 2023</time>
+      
+      
+      <span class="mx-1">&middot;</span>
+      <span>Yin灏</span>
+    </div>
+    
+  </header>
+
+  <section><ol>
+<li><strong>filter: invert(1)</strong></li>
+</ol>
+<p>是一种 CSS 滤镜效果，它用于将元素的颜色进行反转，即将亮色变为暗色，暗色变为亮色。具体而言，它将元素的亮度值进行反转，使得黑色变为白色，白色变为黑色，其他颜色也会相应地进行反转。这个滤镜效果常用于创建黑暗主题、反色效果或者增强视觉对比度。</p>
+<ol start="2">
+<li><strong>-webkit-autofill</strong></li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">contac__input</span><span style="color:#f92672">:</span> <span style="color:#f92672">-webkit-autofill</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">transition</span>: <span style="color:#66d9ef">background-color</span> <span style="color:#ae81ff">6000</span><span style="color:#66d9ef">s</span>, <span style="color:#66d9ef">color</span> <span style="color:#ae81ff">6000</span><span style="color:#66d9ef">s</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>这段代码是用于自动填充表单输入框的样式设置。 <code>-webkit-autofill</code> 是一个 Webkit 浏览器的伪类选择器，用于匹配自动填充的表单字段。</p>
+<p><code>transition: background-color 6000s, color 6000s;</code> 是一个过渡效果的设置，它定义了在 6000 秒内发生的过渡效果。具体来说，它定义了在自动填充表单字段时，背景颜色和文字颜色的过渡效果。</p>
+<p>这段代码的作用是为自动填充表单字段提供过渡效果，使得填充的背景颜色和文字颜色能够平滑地改变，提升用户体验。</p>
+<ol start="3">
+<li><strong>placeholder-shown</strong></li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">contact__input</span>:<span style="color:#a6e22e">not</span><span style="color:#f92672">(</span>:<span style="color:#a6e22e">placeholder-shown</span><span style="color:#f92672">)</span>.<span style="color:#a6e22e">contact__input</span>:<span style="color:#a6e22e">not</span><span style="color:#f92672">(</span>:<span style="color:#a6e22e">focus</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">+</span> .<span style="color:#a6e22e">contact__label</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">opacity</span>: <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">top</span>: <span style="color:#ae81ff">-16</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>这段代码是用于在表单输入框中输入内容时，控制相邻标签的样式变化。具体来说：</p>
+<p><code>.contact__input:not(:placeholder-shown).contact__input:not(:focus)</code> 选择器表示选中没有占位符文本且没有获得焦点的输入框。</p>
+<p><code>+ .contact__label</code> 表示选中与上述选择器相邻的类名为 <code>.contact__label</code> 的元素。</p>
+<p><code>opacity: 1;</code> 设置透明度为 1，即完全不透明。</p>
+<p><code>top: -16px</code> 将元素的位置向上移动 16 像素。</p>
+<p>这段代码的作用是在用户在输入框中输入内容时，将相邻的标签元素显示出来，并将其位置向上移动 16 像素。通常用于实现输入框中的占位标签在输入内容时的动态效果，提升用户体验。</p>
+<ol start="4">
+<li><strong>margin-inline</strong></li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">contact__data</span> {
+</span></span><span style="display:flex;"><span>  margin-inline: <span style="color:#66d9ef">auto</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>这段代码设置了类名为 <code>.contact__data</code> 的元素的水平居中对齐。具体来说：</p>
+<p><code>margin-inline: auto;</code> 是一个 CSS 属性，用于设置元素的水平外边距。 <code>auto</code> 值表示自动计算外边距，使元素在水平方向上居中对齐。</p>
+<p>这段代码的作用是将类名为 <code>.contact__data</code> 的元素在水平方向上居中对齐。通常用于在布局中使元素水平居中，以提升页面的美观性和可读性。</p>
+<ol start="5">
+<li><strong>padding-block</strong></li>
+</ol>
+<p><code>padding-block: 5.5rem</code> 是一个 CSS 属性，用于设置元素的内边距（padding）。具体来说：</p>
+<p><code>padding-block</code> 是一个逻辑属性，它根据文本方向自动映射到 <code>padding-top</code> 和 <code>padding-bottom</code> 属性。</p>
+<p><code>5.5rem</code> 是一个长度值，表示以根元素的字体尺寸（root em）为单位的内边距大小。</p>
+<p>这段代码的作用是设置元素的上下内边距为 5.5 倍根元素字体尺寸的大小。通过调整元素的内边距，可以控制元素与其内容之间的间距，从而影响元素的布局和外观。</p>
+<ol start="6">
+<li><strong>inset: 0</strong></li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">nav</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">width</span>: <span style="color:#ae81ff">72</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">height</span>: max-content;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">position</span>: <span style="color:#66d9ef">fixed</span>;
+</span></span><span style="display:flex;"><span>  inset: <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">margin</span>: <span style="color:#66d9ef">auto</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><code>inset: 0;</code> 是一个 CSS 属性，用于设置元素的定位偏移量。具体来说：</p>
+<p><code>inset</code> 是一个逻辑属性，它可以同时设置 <code>top</code> 、 <code>right</code> 、 <code>bottom</code> 和 <code>left</code> 四个方向的偏移量。</p>
+<p><code>0</code> 表示将元素的上、右、下和左四个方向的偏移量都设置为 0。</p>
+<p>这段代码的作用是将类名为 <code>.nav</code> 的元素固定定位于父容器中，并将其上、右、下和左四个方向的偏移量都设置为 0，即紧贴父容器的上、右、下和左边缘。</p>
+<p>通过使用 <code>inset: 0;</code> ，可以实现将元素完全填充到父容器中，使其充满整个容器的效果。这在创建全屏导航菜单等布局中非常有用。</p>
+</section>
+
+  
+  
+
+  
+  
+  
+  <nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
+    
+    <a class="flex w-1/2 items-center p-6 pr-3 no-underline" href="/articles/posts/53/"
+      ><span class="mr-1.5">←</span><span>CSS网格布局</span></a
+    >
+    
+    
+    <a
+      class="ml-auto flex w-1/2 items-center justify-end p-6 pl-3 no-underline"
+      href="/articles/posts/51/"
+      ><span>创建带有曲线的侧边栏菜单</span><span class="ml-1.5">→</span></a
+    >
+    
+  </nav>
+  
+
+  
+  
+</article>
+
+
+    </main>
+
+    <footer
+  class="opaco mx-auto flex h-[5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+  style="position: relative; z-index: 10;display: none;"
+>
+  <div class="mr-auto">
+    &copy; 2024
+    <a class="link" href="/articles/">灏天阁</a>
+  </div>
+  <a class="link" href="https://yinchuanbo.github.io/" rel="noopener" target="_blank"
+    >Powered by YinHao</a
+  >️ ▷
+</footer>
+
+
+    <div class="img__mask" style="display: none;">
+      <img src="" alt="">
+      <span class="close_btn"></span>
+    </div>
+
+    <script>
+      const imgs = document.images;
+      const imgMask = document.querySelector('.img__mask')
+      const closeBtn = document.querySelector('.close_btn')
+      for (let i = 0; i < imgs.length; i++) {
+        const element = imgs[i];
+        element.onclick = () => {
+          const src = element.src;
+          imgMask.style.display = 'flex';
+          imgMask.querySelector('img').src = src;
+        }
+      }
+      closeBtn.onclick = () => {
+        imgMask.style.display = 'none';
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+  class="not-ready text-sm lg:text-base"
+  style="--bg: "
+  lang="en"
+>
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  
+  <title>PageSpy:支持远程调试的 vConsole - 灏天阁</title>
+
+  
+  <meta name="theme-color" />
+  
+  <meta name="description" content="PageSpy Page Spy 是由货拉拉大前端开源的一款用于调试 H5 、或者远程 Web 项目的工具。基于对原生 API 的封装，它将调用原生方法时的参数进行过滤、转化，整理成格式规范的消息供调试端消费；调试端收到消息数据，提供类控制台可交互式的功能界面将数据呈现出来。
+PageSpy 是一个强大的开源前端远程调试平台，它可以显著提高我们在面对前端问题时的效率。以下是 PageSpy 的一些主要特点：
+一眼查看客户端信息 PageSpy 会对客户端的运行环境进行识别，其中系统识别支持 Mac / iOS / Window / Linux / Android，浏览器识别支持谷歌、火狐、Safari、Edge、微信、UC、百度、QQ； 实时查看输出： PageSpy 可以实时捕获并显示程序输出，包括 Console、Network、Storage 和 Element。这使开发人员能够直观地了解页面的外观和行为，无需依赖用户的描述或截图。 网络请求监控： PageSpy 还可以捕获和显示页面的网络请求，有助于开发人员更好的查看与后端的交互。 远程控制台： PageSpy 支持远程调试 JavaScript 代码，允许开发人员执行 JavaScript 代码在用户的浏览器上运行。这对于排查特定问题或测试代码修复非常有帮助。 跨浏览器兼容性： SDK 可以在各种主流浏览器中运行，确保你可以检查和调试不同浏览器上的问题。 用户体验提升： 通过快速识别和解决前端问题，PageSpy 可以显著提升用户体验，减少用户因前端问题而受到的不便。 使用 PageSpy 进行远程调试 使用 PageSpy 进行远程调试是相对简单的。以下是一些基本步骤：
+部署 PageSpy： 首先，PageSpy 提供了 Docker、Node 和 Release 的一键部署方案，点击查看； 实例化 SDK： PageSpy 成功部署后，你可以在项目中引入对应的 SDK 文件并进行实例化，它提供了多场景类型的参数，以便于用户对它的行为进行定制。 实时监控页面： 之后，你可以实时查看页面的各种数据，这有助于你直观地理解页面的问题。 监控网络请求： 你还可以查看所有的网络请求，包括请求的 URL、响应代码和响应时间。这可以帮助你识别与后端通信相关的问题。 解决问题： 借助 PageSpy 提供的信息和工具，你可以更快速地定位和解决前端问题，从而提高用户体验。 " />
+  <meta name="author" content="" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="/articles/main.min.css" />
+
+  
+
+  
+  
+  
+    
+  
+  <link
+    rel="preload"
+    as="image"
+    href="/articles/theme.png"
+  />
+
+  
+  
+  
+  <link rel="preload" as="image" href="/imgs/logo.png" />
+  
+  
+
+  
+
+  
+  <link rel="icon" href="/img/ico.ico" />
+  <link rel="apple-touch-icon" href="/articles/apple-touch-icon.png" />
+  
+  <meta name="generator" content="Hugo 0.108.0">
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="PageSpy:支持远程调试的 vConsole" />
+<meta property="og:description" content="PageSpy Page Spy 是由货拉拉大前端开源的一款用于调试 H5 、或者远程 Web 项目的工具。基于对原生 API 的封装，它将调用原生方法时的参数进行过滤、转化，整理成格式规范的消息供调试端消费；调试端收到消息数据，提供类控制台可交互式的功能界面将数据呈现出来。
+PageSpy 是一个强大的开源前端远程调试平台，它可以显著提高我们在面对前端问题时的效率。以下是 PageSpy 的一些主要特点：
+一眼查看客户端信息 PageSpy 会对客户端的运行环境进行识别，其中系统识别支持 Mac / iOS / Window / Linux / Android，浏览器识别支持谷歌、火狐、Safari、Edge、微信、UC、百度、QQ； 实时查看输出： PageSpy 可以实时捕获并显示程序输出，包括 Console、Network、Storage 和 Element。这使开发人员能够直观地了解页面的外观和行为，无需依赖用户的描述或截图。 网络请求监控： PageSpy 还可以捕获和显示页面的网络请求，有助于开发人员更好的查看与后端的交互。 远程控制台： PageSpy 支持远程调试 JavaScript 代码，允许开发人员执行 JavaScript 代码在用户的浏览器上运行。这对于排查特定问题或测试代码修复非常有帮助。 跨浏览器兼容性： SDK 可以在各种主流浏览器中运行，确保你可以检查和调试不同浏览器上的问题。 用户体验提升： 通过快速识别和解决前端问题，PageSpy 可以显著提升用户体验，减少用户因前端问题而受到的不便。 使用 PageSpy 进行远程调试 使用 PageSpy 进行远程调试是相对简单的。以下是一些基本步骤：
+部署 PageSpy： 首先，PageSpy 提供了 Docker、Node 和 Release 的一键部署方案，点击查看； 实例化 SDK： PageSpy 成功部署后，你可以在项目中引入对应的 SDK 文件并进行实例化，它提供了多场景类型的参数，以便于用户对它的行为进行定制。 实时监控页面： 之后，你可以实时查看页面的各种数据，这有助于你直观地理解页面的问题。 监控网络请求： 你还可以查看所有的网络请求，包括请求的 URL、响应代码和响应时间。这可以帮助你识别与后端通信相关的问题。 解决问题： 借助 PageSpy 提供的信息和工具，你可以更快速地定位和解决前端问题，从而提高用户体验。 " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/articles/posts/96/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-12-26T22:25:44+08:00" />
+<meta property="article:modified_time" content="2023-12-26T22:25:44+08:00" />
+
+  
+  <meta itemprop="name" content="PageSpy:支持远程调试的 vConsole">
+<meta itemprop="description" content="PageSpy Page Spy 是由货拉拉大前端开源的一款用于调试 H5 、或者远程 Web 项目的工具。基于对原生 API 的封装，它将调用原生方法时的参数进行过滤、转化，整理成格式规范的消息供调试端消费；调试端收到消息数据，提供类控制台可交互式的功能界面将数据呈现出来。
+PageSpy 是一个强大的开源前端远程调试平台，它可以显著提高我们在面对前端问题时的效率。以下是 PageSpy 的一些主要特点：
+一眼查看客户端信息 PageSpy 会对客户端的运行环境进行识别，其中系统识别支持 Mac / iOS / Window / Linux / Android，浏览器识别支持谷歌、火狐、Safari、Edge、微信、UC、百度、QQ； 实时查看输出： PageSpy 可以实时捕获并显示程序输出，包括 Console、Network、Storage 和 Element。这使开发人员能够直观地了解页面的外观和行为，无需依赖用户的描述或截图。 网络请求监控： PageSpy 还可以捕获和显示页面的网络请求，有助于开发人员更好的查看与后端的交互。 远程控制台： PageSpy 支持远程调试 JavaScript 代码，允许开发人员执行 JavaScript 代码在用户的浏览器上运行。这对于排查特定问题或测试代码修复非常有帮助。 跨浏览器兼容性： SDK 可以在各种主流浏览器中运行，确保你可以检查和调试不同浏览器上的问题。 用户体验提升： 通过快速识别和解决前端问题，PageSpy 可以显著提升用户体验，减少用户因前端问题而受到的不便。 使用 PageSpy 进行远程调试 使用 PageSpy 进行远程调试是相对简单的。以下是一些基本步骤：
+部署 PageSpy： 首先，PageSpy 提供了 Docker、Node 和 Release 的一键部署方案，点击查看； 实例化 SDK： PageSpy 成功部署后，你可以在项目中引入对应的 SDK 文件并进行实例化，它提供了多场景类型的参数，以便于用户对它的行为进行定制。 实时监控页面： 之后，你可以实时查看页面的各种数据，这有助于你直观地理解页面的问题。 监控网络请求： 你还可以查看所有的网络请求，包括请求的 URL、响应代码和响应时间。这可以帮助你识别与后端通信相关的问题。 解决问题： 借助 PageSpy 提供的信息和工具，你可以更快速地定位和解决前端问题，从而提高用户体验。 "><meta itemprop="datePublished" content="2023-12-26T22:25:44+08:00" />
+<meta itemprop="dateModified" content="2023-12-26T22:25:44+08:00" />
+<meta itemprop="wordCount" content="77">
+<meta itemprop="keywords" content="" />
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="PageSpy:支持远程调试的 vConsole"/>
+<meta name="twitter:description" content="PageSpy Page Spy 是由货拉拉大前端开源的一款用于调试 H5 、或者远程 Web 项目的工具。基于对原生 API 的封装，它将调用原生方法时的参数进行过滤、转化，整理成格式规范的消息供调试端消费；调试端收到消息数据，提供类控制台可交互式的功能界面将数据呈现出来。
+PageSpy 是一个强大的开源前端远程调试平台，它可以显著提高我们在面对前端问题时的效率。以下是 PageSpy 的一些主要特点：
+一眼查看客户端信息 PageSpy 会对客户端的运行环境进行识别，其中系统识别支持 Mac / iOS / Window / Linux / Android，浏览器识别支持谷歌、火狐、Safari、Edge、微信、UC、百度、QQ； 实时查看输出： PageSpy 可以实时捕获并显示程序输出，包括 Console、Network、Storage 和 Element。这使开发人员能够直观地了解页面的外观和行为，无需依赖用户的描述或截图。 网络请求监控： PageSpy 还可以捕获和显示页面的网络请求，有助于开发人员更好的查看与后端的交互。 远程控制台： PageSpy 支持远程调试 JavaScript 代码，允许开发人员执行 JavaScript 代码在用户的浏览器上运行。这对于排查特定问题或测试代码修复非常有帮助。 跨浏览器兼容性： SDK 可以在各种主流浏览器中运行，确保你可以检查和调试不同浏览器上的问题。 用户体验提升： 通过快速识别和解决前端问题，PageSpy 可以显著提升用户体验，减少用户因前端问题而受到的不便。 使用 PageSpy 进行远程调试 使用 PageSpy 进行远程调试是相对简单的。以下是一些基本步骤：
+部署 PageSpy： 首先，PageSpy 提供了 Docker、Node 和 Release 的一键部署方案，点击查看； 实例化 SDK： PageSpy 成功部署后，你可以在项目中引入对应的 SDK 文件并进行实例化，它提供了多场景类型的参数，以便于用户对它的行为进行定制。 实时监控页面： 之后，你可以实时查看页面的各种数据，这有助于你直观地理解页面的问题。 监控网络请求： 你还可以查看所有的网络请求，包括请求的 URL、响应代码和响应时间。这可以帮助你识别与后端通信相关的问题。 解决问题： 借助 PageSpy 提供的信息和工具，你可以更快速地定位和解决前端问题，从而提高用户体验。 "/>
+
+  
+  
+</head>
+  <body class="text-black duration-200 ease-out dark:text-white">
+    
+    
+
+    
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100%-10rem)] max-w-3xl px-8 pt-20 dark:prose-invert"
+      id="main"
+    >
+      
+
+<article>
+  <header class="mb-10">
+    <h1 class="!my-0 pb-2.5">
+      PageSpy:支持远程调试的 vConsole
+    </h1>
+
+    
+    <div class="text-sm opacity-60">
+      
+      <time>Dec 26, 2023</time>
+      
+      
+      <span class="mx-1">&middot;</span>
+      <span>Yin灏</span>
+    </div>
+    
+  </header>
+
+  <section><h2 id="pagespy">PageSpy</h2>
+<p><a href="https://github.com/HuolalaTech/page-spy-web">Page Spy</a> 是由货拉拉大前端开源的一款用于调试 H5 、或者远程 Web 项目的工具。基于对原生 API 的封装，它将调用原生方法时的参数进行过滤、转化，整理成格式规范的消息供调试端消费；调试端收到消息数据，提供类控制台可交互式的功能界面将数据呈现出来。</p>
+<p>PageSpy 是一个强大的开源前端远程调试平台，它可以显著提高我们在面对前端问题时的效率。以下是 PageSpy 的一些主要特点：</p>
+<ul>
+<li><strong>一眼查看客户端信息</strong> PageSpy 会对客户端的运行环境进行识别，其中系统识别支持 Mac / iOS / Window / Linux / Android，浏览器识别支持谷歌、火狐、Safari、Edge、微信、UC、百度、QQ；</li>
+<li><strong>实时查看输出：</strong> PageSpy 可以实时捕获并显示程序输出，包括 Console、Network、Storage 和 Element。这使开发人员能够直观地了解页面的外观和行为，无需依赖用户的描述或截图。</li>
+<li><strong>网络请求监控：</strong> PageSpy 还可以捕获和显示页面的网络请求，有助于开发人员更好的查看与后端的交互。</li>
+<li><strong>远程控制台：</strong> PageSpy 支持远程调试 JavaScript 代码，允许开发人员执行 JavaScript 代码在用户的浏览器上运行。这对于排查特定问题或测试代码修复非常有帮助。</li>
+<li><strong>跨浏览器兼容性：</strong> SDK 可以在各种主流浏览器中运行，确保你可以检查和调试不同浏览器上的问题。</li>
+<li><strong>用户体验提升：</strong> 通过快速识别和解决前端问题，PageSpy 可以显著提升用户体验，减少用户因前端问题而受到的不便。</li>
+</ul>
+<h2 id="使用-pagespy-进行远程调试">使用 PageSpy 进行远程调试</h2>
+<p>使用 PageSpy 进行远程调试是相对简单的。以下是一些基本步骤：</p>
+<ul>
+<li><strong>部署 PageSpy：</strong> 首先，PageSpy 提供了 Docker、Node 和 Release 的一键部署方案，<a href="https://github.com/HuolalaTech/page-spy-web/blob/main/README_CN.md#%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8">点击查看</a>；</li>
+<li><strong>实例化 SDK：</strong> PageSpy 成功部署后，你可以在项目中引入对应的 SDK 文件并进行实例化，它提供了多场景类型的参数，以便于用户对它的行为进行定制。</li>
+<li><strong>实时监控页面：</strong> 之后，你可以实时查看页面的各种数据，这有助于你直观地理解页面的问题。</li>
+<li><strong>监控网络请求：</strong> 你还可以查看所有的网络请求，包括请求的 URL、响应代码和响应时间。这可以帮助你识别与后端通信相关的问题。</li>
+<li><strong>解决问题：</strong> 借助 PageSpy 提供的信息和工具，你可以更快速地定位和解决前端问题，从而提高用户体验。</li>
+</ul>
+<img src="/img/96/01.awebp" />
+<img src="/img/96/02.awebp" />
+<img src="/img/96/03.awebp" />
+<img src="/img/96/04.awebp" /></section>
+
+  
+  
+
+  
+  
+  
+  <nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
+    
+    <a class="flex w-1/2 items-center p-6 pr-3 no-underline" href="/articles/posts/97/"
+      ><span class="mr-1.5">←</span><span>CSS属性 appearance</span></a
+    >
+    
+    
+    <a
+      class="ml-auto flex w-1/2 items-center justify-end p-6 pl-3 no-underline"
+      href="/articles/posts/95/"
+      ><span>IntersectionObserver：实现滚动动画、懒加载、虚拟列表...</span><span class="ml-1.5">→</span></a
+    >
+    
+  </nav>
+  
+
+  
+  
+</article>
+
+
+    </main>
+
+    <footer
+  class="opaco mx-auto flex h-[5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+  style="position: relative; z-index: 10;display: none;"
+>
+  <div class="mr-auto">
+    &copy; 2024
+    <a class="link" href="/articles/">灏天阁</a>
+  </div>
+  <a class="link" href="https://yinchuanbo.github.io/" rel="noopener" target="_blank"
+    >Powered by YinHao</a
+  >️ ▷
+</footer>
+
+
+    <div class="img__mask" style="display: none;">
+      <img src="" alt="">
+      <span class="close_btn"></span>
+    </div>
+
+    <script>
+      const imgs = document.images;
+      const imgMask = document.querySelector('.img__mask')
+      const closeBtn = document.querySelector('.close_btn')
+      for (let i = 0; i < imgs.length; i++) {
+        const element = imgs[i];
+        element.onclick = () => {
+          const src = element.src;
+          imgMask.style.display = 'flex';
+          imgMask.querySelector('img').src = src;
+        }
+      }
+      closeBtn.onclick = () => {
+        imgMask.style.display = 'none';
+      }
+    </script>
+  </body>
+</html>

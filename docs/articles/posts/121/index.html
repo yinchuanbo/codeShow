@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+  class="not-ready text-sm lg:text-base"
+  style="--bg: "
+  lang="en"
+>
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  
+  <title>语句和程序结构 - 灏天阁</title>
+
+  
+  <meta name="theme-color" />
+  
+  <meta name="description" content="流程控制 break 语句 break 语句能够结束当前 for、for/in、while、do/while 或者 switch 语句的执行；同时 break 也可以接受一个可选的标签名，来决定跳出的结构语句。语法格式如下：
+break label; 下面示例设计在客户端查找 document 的 bgColor 属性，如果完全遍历 document 对象，会浪费时间，因此设计一个条件，判断所枚举的属性名是都等于 “bgColor”，如果相等，则使用 break 语句跳出循环。
+for (i in document) { if (i.toString() == &#34;bgColor&#34;) { document.write(&#34;document.&#34; &#43; i &#43; &#34;=&#34; &#43; document[i] &#43; &#34;&lt;br /&gt;&#34;); break; } } 在下面嵌套结构中，break 语句并没有跳出 for/in 结构，仅仅退出 switch 结构。
+for (i in document) { switch (i.toString()) { case &#34;bgColor&#34;: document.write(&#34;document.&#34; &#43; i &#43; &#34;=&#34; &#43; document[i] &#43; &#34;&lt;br /&gt;&#34;); break; default: document." />
+  <meta name="author" content="" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="/articles/main.min.css" />
+
+  
+
+  
+  
+  
+    
+  
+  <link
+    rel="preload"
+    as="image"
+    href="/articles/theme.png"
+  />
+
+  
+  
+  
+  <link rel="preload" as="image" href="/imgs/logo.png" />
+  
+  
+
+  
+
+  
+  <link rel="icon" href="/img/ico.ico" />
+  <link rel="apple-touch-icon" href="/articles/apple-touch-icon.png" />
+  
+  <meta name="generator" content="Hugo 0.108.0">
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="语句和程序结构" />
+<meta property="og:description" content="流程控制 break 语句 break 语句能够结束当前 for、for/in、while、do/while 或者 switch 语句的执行；同时 break 也可以接受一个可选的标签名，来决定跳出的结构语句。语法格式如下：
+break label; 下面示例设计在客户端查找 document 的 bgColor 属性，如果完全遍历 document 对象，会浪费时间，因此设计一个条件，判断所枚举的属性名是都等于 “bgColor”，如果相等，则使用 break 语句跳出循环。
+for (i in document) { if (i.toString() == &#34;bgColor&#34;) { document.write(&#34;document.&#34; &#43; i &#43; &#34;=&#34; &#43; document[i] &#43; &#34;&lt;br /&gt;&#34;); break; } } 在下面嵌套结构中，break 语句并没有跳出 for/in 结构，仅仅退出 switch 结构。
+for (i in document) { switch (i.toString()) { case &#34;bgColor&#34;: document.write(&#34;document.&#34; &#43; i &#43; &#34;=&#34; &#43; document[i] &#43; &#34;&lt;br /&gt;&#34;); break; default: document." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/articles/posts/121/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-02-29T21:07:48+08:00" />
+<meta property="article:modified_time" content="2024-02-29T21:07:48+08:00" />
+
+  
+  <meta itemprop="name" content="语句和程序结构">
+<meta itemprop="description" content="流程控制 break 语句 break 语句能够结束当前 for、for/in、while、do/while 或者 switch 语句的执行；同时 break 也可以接受一个可选的标签名，来决定跳出的结构语句。语法格式如下：
+break label; 下面示例设计在客户端查找 document 的 bgColor 属性，如果完全遍历 document 对象，会浪费时间，因此设计一个条件，判断所枚举的属性名是都等于 “bgColor”，如果相等，则使用 break 语句跳出循环。
+for (i in document) { if (i.toString() == &#34;bgColor&#34;) { document.write(&#34;document.&#34; &#43; i &#43; &#34;=&#34; &#43; document[i] &#43; &#34;&lt;br /&gt;&#34;); break; } } 在下面嵌套结构中，break 语句并没有跳出 for/in 结构，仅仅退出 switch 结构。
+for (i in document) { switch (i.toString()) { case &#34;bgColor&#34;: document.write(&#34;document.&#34; &#43; i &#43; &#34;=&#34; &#43; document[i] &#43; &#34;&lt;br /&gt;&#34;); break; default: document."><meta itemprop="datePublished" content="2024-02-29T21:07:48+08:00" />
+<meta itemprop="dateModified" content="2024-02-29T21:07:48+08:00" />
+<meta itemprop="wordCount" content="359">
+<meta itemprop="keywords" content="" />
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="语句和程序结构"/>
+<meta name="twitter:description" content="流程控制 break 语句 break 语句能够结束当前 for、for/in、while、do/while 或者 switch 语句的执行；同时 break 也可以接受一个可选的标签名，来决定跳出的结构语句。语法格式如下：
+break label; 下面示例设计在客户端查找 document 的 bgColor 属性，如果完全遍历 document 对象，会浪费时间，因此设计一个条件，判断所枚举的属性名是都等于 “bgColor”，如果相等，则使用 break 语句跳出循环。
+for (i in document) { if (i.toString() == &#34;bgColor&#34;) { document.write(&#34;document.&#34; &#43; i &#43; &#34;=&#34; &#43; document[i] &#43; &#34;&lt;br /&gt;&#34;); break; } } 在下面嵌套结构中，break 语句并没有跳出 for/in 结构，仅仅退出 switch 结构。
+for (i in document) { switch (i.toString()) { case &#34;bgColor&#34;: document.write(&#34;document.&#34; &#43; i &#43; &#34;=&#34; &#43; document[i] &#43; &#34;&lt;br /&gt;&#34;); break; default: document."/>
+
+  
+  
+</head>
+  <body class="text-black duration-200 ease-out dark:text-white">
+    
+    
+
+    
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100%-10rem)] max-w-3xl px-8 pt-20 dark:prose-invert"
+      id="main"
+    >
+      
+
+<article>
+  <header class="mb-10">
+    <h1 class="!my-0 pb-2.5">
+      语句和程序结构
+    </h1>
+
+    
+    <div class="text-sm opacity-60">
+      
+      <time>Feb 29, 2024</time>
+      
+      
+      <span class="mx-1">&middot;</span>
+      <span>Yin灏</span>
+    </div>
+    
+  </header>
+
+  <section><h2 id="流程控制">流程控制</h2>
+<h3 id="break-语句">break 语句</h3>
+<p>break 语句能够结束当前 for、for/in、while、do/while 或者 switch 语句的执行；同时 break 也可以接受一个可选的标签名，来决定跳出的结构语句。语法格式如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">break</span> <span style="color:#a6e22e">label</span>;
+</span></span></code></pre></div><p>下面示例设计在客户端查找 document 的 bgColor 属性，如果完全遍历 document 对象，会浪费时间，因此设计一个条件，判断所枚举的属性名是都等于 “bgColor”，如果相等，则使用 break 语句跳出循环。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (<span style="color:#a6e22e">i</span> <span style="color:#66d9ef">in</span> document) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">i</span>.<span style="color:#a6e22e">toString</span>() <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;bgColor&#34;</span>) {
+</span></span><span style="display:flex;"><span>    document.<span style="color:#a6e22e">write</span>(<span style="color:#e6db74">&#34;document.&#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;=&#34;</span> <span style="color:#f92672">+</span> document[<span style="color:#a6e22e">i</span>] <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;&lt;br /&gt;&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>在下面嵌套结构中，break 语句并没有跳出 <code>for/in</code> 结构，仅仅退出 <code>switch</code> 结构。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (<span style="color:#a6e22e">i</span> <span style="color:#66d9ef">in</span> document) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">switch</span> (<span style="color:#a6e22e">i</span>.<span style="color:#a6e22e">toString</span>()) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#34;bgColor&#34;</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>      document.<span style="color:#a6e22e">write</span>(<span style="color:#e6db74">&#34;document.&#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;=&#34;</span> <span style="color:#f92672">+</span> document[<span style="color:#a6e22e">i</span>] <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;&lt;br /&gt;&#34;</span>);
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">default</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>      document.<span style="color:#a6e22e">write</span>(<span style="color:#e6db74">&#34;没有找到&#34;</span>);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>可以为 <code>for/in</code> 语句定义一个标签 outloop，然后再最内层的 break 语句中设置该标签名，这样当条件满足时就可以跳出最外层的 <code>for/in</code> 循环结构。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">outloop</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">for</span> (<span style="color:#a6e22e">i</span> <span style="color:#66d9ef">in</span> document) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">switch</span> (<span style="color:#a6e22e">i</span>.<span style="color:#a6e22e">toString</span>()) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#34;bgColor&#34;</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>      document.<span style="color:#a6e22e">write</span>(<span style="color:#e6db74">&#34;document.&#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;=&#34;</span> <span style="color:#f92672">+</span> document[<span style="color:#a6e22e">i</span>] <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;&lt;br /&gt;&#34;</span>);
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">break</span> <span style="color:#a6e22e">outloop</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">default</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>      document.<span style="color:#a6e22e">write</span>(<span style="color:#e6db74">&#34;没有找到&#34;</span>);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="continue-语句">continue 语句</h3>
+<p>continue 语句用在循环结构内，用于跳过本次循环中剩余的代码，并在表达式的值为真时，继续执行下一次循环。它可以接受一个可选的标签名，来决定跳出的循环语句，</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">continue</span> <span style="color:#a6e22e">label</span>;
+</span></span></code></pre></div><p>下面示例使用 continue 语句过滤数组中的字符串值</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;hi&#34;</span>, <span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#34;good&#34;</span>, <span style="color:#e6db74">&#34;4&#34;</span>, , <span style="color:#e6db74">&#34;&#34;</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>],
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">b</span> <span style="color:#f92672">=</span> [],
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">j</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">i</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">a</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">a</span>[<span style="color:#a6e22e">i</span>] <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;string&#34;</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 如果为字符串，则返回继续下一次循环
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">continue</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">b</span>[<span style="color:#a6e22e">j</span><span style="color:#f92672">++</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">a</span>[<span style="color:#a6e22e">i</span>]; <span style="color:#75715e">// 把数字寄存在数组 b
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>document.<span style="color:#a6e22e">write</span>(<span style="color:#a6e22e">b</span>);
+</span></span></code></pre></div><blockquote>
+<p>continue 语句只能用在 while、do/while、for、for/in 语句中，对于不同的循环结构，其执行顺序略有不同。</p>
+</blockquote>
+<h2 id="异常处理">异常处理</h2>
+<p>ECMA-262 规范了 7 中错误类型，具体说明如下，其中 Error 是基类，其他 6 种错误类型是子类，都继承 Error 基类。</p>
+<ul>
+<li>
+<p>Error: 普通异常，与 throw 语句和 <code>try/catch</code> 语句一起使用，属性 name 可以读写异常类型，message 属性可以读写详细错误信息。</p>
+</li>
+<li>
+<p>EvalError: 不正确地使用 eval() 方法时抛出。</p>
+</li>
+<li>
+<p>SyntaxError: 出现语法错误时抛出。</p>
+</li>
+<li>
+<p>RangeError: 数字超出合法范围时抛出。</p>
+</li>
+<li>
+<p>ReferenceError: 读取不存在的变量时抛出。</p>
+</li>
+<li>
+<p>TypeError: 值的类型发生错误时抛出。</p>
+</li>
+<li>
+<p>URIError: URI 编码和解码错误时抛出。</p>
+</li>
+</ul>
+<h3 id="trycatchfinally-语句">try/catch/finally 语句</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">//..
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>} <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">e</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 捕获异常，并进行异常处理的代码块
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>} <span style="color:#66d9ef">finally</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 后期清理代码块
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></code></pre></div><p>在正常情况下，Js 按顺序执行 try 子句中的代码，如果没有发生异常，将会忽略 catch 子句，跳转到 finally 子句中继续执行。</p>
+<p>如果 try 子句运行时发生错误，或者使用 throw 语句主动抛出异常，则执行 catch 子句中的代码，同时传入一个参数，引用 Error 对象。</p>
+<blockquote>
+<p>不管 try 语句是否完全执行，finally 语句最后都必须要执行，即使使用了跳转语句跳出了异常处理结构，也必须在跳出之前先执行 finally 子句。</p>
+</blockquote>
+<p>下面示例在函数体内设计一个异常处理结构，为每个子句添加一个 return 语句，调用函数后，实际返回是 “finally”，而不是 “try”，因为 finally 子句必须最后执行，把 finally 子句去掉，函数才会返回 “try”。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">test</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;try&#34;</span>;
+</span></span><span style="display:flex;"><span>  } <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">error</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;catch&#34;</span>;
+</span></span><span style="display:flex;"><span>  } <span style="color:#66d9ef">finally</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;finally&#34;</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">test</span>()); <span style="color:#75715e">// &#34;finally
+</span></span></span></code></pre></div><p><code>try/catch/finally</code> 语句允许嵌套使用，嵌套的层数不限，同时形成一条词法作用域链。Js 会停止程序的正常执行，并跳转到层级最近的 catch 子句（异常处理器），如果没有找到异常处理器，则会沿着作用域链，检查上一级的 catch 子句，以此类推，直到找到一个异常处理器。如果没有在程序中没有找到任何异常处理器，将会显示错误。</p>
+<p>下面代码就是一个多层嵌套的异常结构，在处理一系列的异常时，内层的 catch 子句通过将异常抛出，就可以将异常抛给外层 catch 子句来处理。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">test</span>();
+</span></span><span style="display:flex;"><span>  } <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">error</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">error</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#34;ReferenceError&#34;</span>) <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;错误参考&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">throw</span> <span style="color:#a6e22e">error</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">error</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;内层 try/catch 不能处理这个错误&#34;</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="throw-语句">throw 语句</h3>
+<p>throw 语句能够主动抛出一个异常，语法格式如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>throw expression
+</span></span></code></pre></div><p>expression 是任意类型的表达式，一般为 Error 对象，或者 Error 子类实例。</p>
+<p>当执行 throw 语句时，程序会立即停止执行，只有当使用 <code>try/catch</code> 语句捕获到被抛出的值时，程序才会继续执行。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">10</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">i</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">5</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">&#34;循环变量的值大于 5 了&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">i</span>);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">error</span>) {}
+</span></span></code></pre></div></section>
+
+  
+  
+
+  
+  
+  
+  <nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
+    
+    <a class="flex w-1/2 items-center p-6 pr-3 no-underline" href="/articles/posts/122/"
+      ><span class="mr-1.5">←</span><span>Js 技巧</span></a
+    >
+    
+    
+    <a
+      class="ml-auto flex w-1/2 items-center justify-end p-6 pl-3 no-underline"
+      href="/articles/posts/120/"
+      ><span>运算符和表达式</span><span class="ml-1.5">→</span></a
+    >
+    
+  </nav>
+  
+
+  
+  
+</article>
+
+
+    </main>
+
+    <footer
+  class="opaco mx-auto flex h-[5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+  style="position: relative; z-index: 10;display: none;"
+>
+  <div class="mr-auto">
+    &copy; 2024
+    <a class="link" href="/articles/">灏天阁</a>
+  </div>
+  <a class="link" href="https://yinchuanbo.github.io/" rel="noopener" target="_blank"
+    >Powered by YinHao</a
+  >️ ▷
+</footer>
+
+
+    <div class="img__mask" style="display: none;">
+      <img src="" alt="">
+      <span class="close_btn"></span>
+    </div>
+
+    <script>
+      const imgs = document.images;
+      const imgMask = document.querySelector('.img__mask')
+      const closeBtn = document.querySelector('.close_btn')
+      for (let i = 0; i < imgs.length; i++) {
+        const element = imgs[i];
+        element.onclick = () => {
+          const src = element.src;
+          imgMask.style.display = 'flex';
+          imgMask.querySelector('img').src = src;
+        }
+      }
+      closeBtn.onclick = () => {
+        imgMask.style.display = 'none';
+      }
+    </script>
+  </body>
+</html>

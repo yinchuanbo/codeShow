@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+  class="not-ready text-sm lg:text-base"
+  style="--bg: "
+  lang="en"
+>
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  
+  <title>21条CSS高级技巧 - 灏天阁</title>
+
+  
+  <meta name="theme-color" />
+  
+  <meta name="description" content="使用 CSS 复位 CSS 复位可以在不同的浏览器上保持一致的样式风格。您可以使用 CSS reset 库Normalize等，也可以使用一个更简化的复位方法：
+* { box-sizing: border-box; margin: 0; padding: 0; } 现在元素的 margin 和 padding 已为 0，box-sizing可以管理您的 CSS 盒模型布局。 演示 注意：如果你遵循接下来继承 box-sizing讲解的这个技巧, 你不需要在以上代码中添加 box-sizing 属性。
+继承 box-sizing 从 html 元素继承 box-sizing ：
+html { box-sizing: border-box; } *, *:before, *:after { box-sizing: inherit; } 如此在插件或其它组件里改变 box-sizing 变得简单。
+使用 :not() 选择器来决定表单是否显示边框 先为元素添加边框
+/* 添加边框 */ .nav li { border-right: 1px solid #666; } 为最后一个元素去除边框
+/* 去掉边框 */ ." />
+  <meta name="author" content="" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="/articles/main.min.css" />
+
+  
+
+  
+  
+  
+    
+  
+  <link
+    rel="preload"
+    as="image"
+    href="/articles/theme.png"
+  />
+
+  
+  
+  
+  <link rel="preload" as="image" href="/imgs/logo.png" />
+  
+  
+
+  
+
+  
+  <link rel="icon" href="/img/ico.ico" />
+  <link rel="apple-touch-icon" href="/articles/apple-touch-icon.png" />
+  
+  <meta name="generator" content="Hugo 0.108.0">
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="21条CSS高级技巧" />
+<meta property="og:description" content="使用 CSS 复位 CSS 复位可以在不同的浏览器上保持一致的样式风格。您可以使用 CSS reset 库Normalize等，也可以使用一个更简化的复位方法：
+* { box-sizing: border-box; margin: 0; padding: 0; } 现在元素的 margin 和 padding 已为 0，box-sizing可以管理您的 CSS 盒模型布局。 演示 注意：如果你遵循接下来继承 box-sizing讲解的这个技巧, 你不需要在以上代码中添加 box-sizing 属性。
+继承 box-sizing 从 html 元素继承 box-sizing ：
+html { box-sizing: border-box; } *, *:before, *:after { box-sizing: inherit; } 如此在插件或其它组件里改变 box-sizing 变得简单。
+使用 :not() 选择器来决定表单是否显示边框 先为元素添加边框
+/* 添加边框 */ .nav li { border-right: 1px solid #666; } 为最后一个元素去除边框
+/* 去掉边框 */ ." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/articles/posts/24/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-09-02T10:59:54+08:00" />
+<meta property="article:modified_time" content="2023-09-02T10:59:54+08:00" />
+
+  
+  <meta itemprop="name" content="21条CSS高级技巧">
+<meta itemprop="description" content="使用 CSS 复位 CSS 复位可以在不同的浏览器上保持一致的样式风格。您可以使用 CSS reset 库Normalize等，也可以使用一个更简化的复位方法：
+* { box-sizing: border-box; margin: 0; padding: 0; } 现在元素的 margin 和 padding 已为 0，box-sizing可以管理您的 CSS 盒模型布局。 演示 注意：如果你遵循接下来继承 box-sizing讲解的这个技巧, 你不需要在以上代码中添加 box-sizing 属性。
+继承 box-sizing 从 html 元素继承 box-sizing ：
+html { box-sizing: border-box; } *, *:before, *:after { box-sizing: inherit; } 如此在插件或其它组件里改变 box-sizing 变得简单。
+使用 :not() 选择器来决定表单是否显示边框 先为元素添加边框
+/* 添加边框 */ .nav li { border-right: 1px solid #666; } 为最后一个元素去除边框
+/* 去掉边框 */ ."><meta itemprop="datePublished" content="2023-09-02T10:59:54+08:00" />
+<meta itemprop="dateModified" content="2023-09-02T10:59:54+08:00" />
+<meta itemprop="wordCount" content="576">
+<meta itemprop="keywords" content="" />
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="21条CSS高级技巧"/>
+<meta name="twitter:description" content="使用 CSS 复位 CSS 复位可以在不同的浏览器上保持一致的样式风格。您可以使用 CSS reset 库Normalize等，也可以使用一个更简化的复位方法：
+* { box-sizing: border-box; margin: 0; padding: 0; } 现在元素的 margin 和 padding 已为 0，box-sizing可以管理您的 CSS 盒模型布局。 演示 注意：如果你遵循接下来继承 box-sizing讲解的这个技巧, 你不需要在以上代码中添加 box-sizing 属性。
+继承 box-sizing 从 html 元素继承 box-sizing ：
+html { box-sizing: border-box; } *, *:before, *:after { box-sizing: inherit; } 如此在插件或其它组件里改变 box-sizing 变得简单。
+使用 :not() 选择器来决定表单是否显示边框 先为元素添加边框
+/* 添加边框 */ .nav li { border-right: 1px solid #666; } 为最后一个元素去除边框
+/* 去掉边框 */ ."/>
+
+  
+  
+</head>
+  <body class="text-black duration-200 ease-out dark:text-white">
+    
+    
+
+    
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100%-10rem)] max-w-3xl px-8 pt-20 dark:prose-invert"
+      id="main"
+    >
+      
+
+<article>
+  <header class="mb-10">
+    <h1 class="!my-0 pb-2.5">
+      21条CSS高级技巧
+    </h1>
+
+    
+    <div class="text-sm opacity-60">
+      
+      <time>Sep 2, 2023</time>
+      
+      
+      <span class="mx-1">&middot;</span>
+      <span>Yin灏</span>
+    </div>
+    
+  </header>
+
+  <section><h3 id="使用-css-复位">使用 CSS 复位</h3>
+<p>CSS 复位可以在不同的浏览器上保持一致的样式风格。您可以使用 CSS reset 库<a href="http://necolas.github.io/normalize.css/">Normalize</a>等，也可以使用一个更简化的复位方法：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">*</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">box-sizing</span>: <span style="color:#66d9ef">border-box</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">margin</span>: <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">padding</span>: <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>现在元素的 margin 和 padding 已为 0，<code>box-sizing</code>可以管理您的 CSS 盒模型布局。 <a href="http://codepen.io/AllThingsSmitty/pen/kkrkLL">演示</a> 注意：如果你遵循接下来继承 <code>box-sizing</code>讲解的这个技巧, 你不需要在以上代码中添加 <code>box-sizing</code> 属性。</p>
+<h3 id="继承-box-sizing">继承 <code>box-sizing</code></h3>
+<p>从 <code>html</code> 元素继承 <code>box-sizing</code> ：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">html</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">box-sizing</span>: <span style="color:#66d9ef">border-box</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">*,</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">*</span>:<span style="color:#a6e22e">before</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">*</span>:<span style="color:#a6e22e">after</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">box-sizing</span>: <span style="color:#66d9ef">inherit</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>如此在插件或其它组件里改变 <code>box-sizing</code> 变得简单。</p>
+<h3 id="使用-not-选择器来决定表单是否显示边框">使用 <code>:not()</code> 选择器来决定表单是否显示边框</h3>
+<p>先为元素添加边框</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#75715e">/* 添加边框 */</span>
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">nav</span> <span style="color:#f92672">li</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">border-right</span>: <span style="color:#ae81ff">1</span><span style="color:#66d9ef">px</span> <span style="color:#66d9ef">solid</span> <span style="color:#ae81ff">#666</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>为最后一个元素去除边框</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#75715e">/* 去掉边框 */</span>
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">nav</span> <span style="color:#f92672">li</span>:<span style="color:#a6e22e">last-child</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">border-right</span>: <span style="color:#66d9ef">none</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>不过不要这么做，使用 <code>:not()</code> 伪类来达到同样的效果：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">nav</span> <span style="color:#f92672">li</span>:<span style="color:#a6e22e">not</span><span style="color:#f92672">(</span>:<span style="color:#a6e22e">last-child</span><span style="color:#f92672">)</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">border-right</span>: <span style="color:#ae81ff">1</span><span style="color:#66d9ef">px</span> <span style="color:#66d9ef">solid</span> <span style="color:#ae81ff">#666</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>当然，你也可以使用 <code>.nav li + li</code> 或者 <code>.nav li:first-child ~ li</code> ，但是 <code>:not()</code> 更加清晰，具有可读性。 <a href="http://codepen.io/AllThingsSmitty/pen/LkymvO">演示</a></p>
+<h3 id="为-body-元素添加行高">为 <code>body</code> 元素添加行高</h3>
+<p>不必为每一个 <code>&lt;p&gt;</code>，<code>&lt;h*&gt;</code> 元素逐一添加 <code>line-height</code>，直接添加到 <code>body</code> 元素：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">body</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">line-height</span>: <span style="color:#ae81ff">1.5</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>文本元素可以很容易地继承 <code>body</code> 的样式。 <a href="http://codepen.io/AllThingsSmitty/pen/VjbdYd">演示</a></p>
+<h3 id="垂直居中任何元素">垂直居中任何元素</h3>
+<p>不！这绝不是黑魔法，真的可以垂直居中任何元素：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">html</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">body</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">height</span>: <span style="color:#ae81ff">100</span><span style="color:#66d9ef">%</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">margin</span>: <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">body</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">-webkit-</span><span style="color:#66d9ef">align-items</span>: <span style="color:#66d9ef">center</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">-ms-</span>flex-align: <span style="color:#66d9ef">center</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">align-items</span>: <span style="color:#66d9ef">center</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">display</span>: <span style="color:#66d9ef">-webkit-</span><span style="color:#66d9ef">flex</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">display</span>: <span style="color:#66d9ef">flex</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>这还不够？垂直方向，水平方向？任何元素，任何时间，任何地点？CSS-Tricks <a href="https://css-tricks.com/centering-css-complete-guide/">有篇好文</a> 讲到了各种居中的技巧。 <strong>注意：</strong> IE11 对 flexbox 的支持<a href="https://github.com/philipwalton/flexbugs#3-min-height-on-a-flex-container-wont-apply-to-its-flex-items">有点 bug</a>。 <a href="http://codepen.io/AllThingsSmitty/pen/GqmGqZ">演示</a></p>
+<h3 id="逗号分隔列表">逗号分隔列表</h3>
+<p>使列表的每项都由逗号分隔：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">ul</span> <span style="color:#f92672">&gt;</span> <span style="color:#f92672">li</span>:<span style="color:#a6e22e">not</span><span style="color:#f92672">(</span>:<span style="color:#a6e22e">last-child</span><span style="color:#f92672">)</span>::<span style="color:#a6e22e">after</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">content</span>: <span style="color:#e6db74">&#34;,&#34;</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>因最后一项不加逗号，可以使用 <code>:not()</code> 伪类。 **注意：**这一技巧对于无障碍，特别是屏幕阅读器而言并不理想。而且复制粘贴并不会带走 CSS 生成的内容,需要注意。</p>
+<h3 id="使用负的-nth-child-来选择元素">使用负的 <code>nth-child</code> 来选择元素</h3>
+<p>使用负的 <code>nth-child</code> 可以选择 1 至 n 个元素。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">li</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">display</span>: <span style="color:#66d9ef">none</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/* 选择第 1 至第 3 个元素并显示出来 */</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">li</span>:<span style="color:#a6e22e">nth-child</span><span style="color:#f92672">(</span><span style="color:#f92672">-n</span> <span style="color:#f92672">+</span> <span style="color:#f92672">3</span><span style="color:#f92672">)</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">display</span>: <span style="color:#66d9ef">block</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>或许你已经掌握了如何使用 <code>:not()</code>这个技巧，试下这个：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#75715e">/* 选择第 1 至第 3 个元素并显示出来 */</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">li</span>:<span style="color:#a6e22e">not</span><span style="color:#f92672">(</span>:<span style="color:#a6e22e">nth-child</span><span style="color:#f92672">(</span><span style="color:#f92672">-n</span> <span style="color:#f92672">+</span> <span style="color:#f92672">3</span><span style="color:#f92672">))</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">display</span>: <span style="color:#66d9ef">none</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>如此简单！ <a href="http://codepen.io/AllThingsSmitty/pen/WxjKZp">演示</a></p>
+<h3 id="使用-svg-图标">使用 SVG 图标</h3>
+<p>没有理由不使用 SVG 图标：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">logo</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">background</span>: url(<span style="color:#e6db74">&#34;logo.svg&#34;</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>SVG 在所有分辨率下都可以良好缩放，并且支持所有 IE9 以后的浏览器，丢掉你的 .png, .jpg, 或 .gif-jif-whatev 文件吧。 <strong>注意：</strong> 针对仅有图标的按钮，如果 SVG 没有加载成功的话，以下样式对无障碍有所帮助：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">no-svg</span> .<span style="color:#a6e22e">icon-only</span>:<span style="color:#a6e22e">after</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">content</span>: attr(aria<span style="color:#f92672">-</span>label);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="使用-形似猫头鹰-的选择器">使用 “形似猫头鹰” 的选择器</h3>
+<p>这个名字可能比较陌生，不过通用选择器 (<code>*</code>) 和 相邻兄弟选择器 (<code>+</code>) 一起使用，效果非凡：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">*</span> <span style="color:#f92672">+</span> <span style="color:#f92672">*</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">margin-top</span>: <span style="color:#ae81ff">1.5</span><span style="color:#66d9ef">em</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>在此示例中，文档流中的所有的相邻兄弟元素将都将设置 <code>margin-top: 1.5em</code> 的样式。 更多 “形似猫头鹰” 的选择器，可参考 <em>A List Apart</em> 上面 <a href="http://alistapart.com/article/axiomatic-css-and-lobotomized-owls">Heydon Pickering 的文章</a> <a href="http://codepen.io/AllThingsSmitty/pen/grRvWq">演示</a></p>
+<h3 id="使用-max-height-来建立纯-css-的滑块">使用 <code>max-height</code> 来建立纯 CSS 的滑块</h3>
+<p><code>max-height</code> 与 overflow hidden 一起来建立纯 CSS 的滑块：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">slider</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">max-height</span>: <span style="color:#ae81ff">200</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">overflow-y</span>: <span style="color:#66d9ef">hidden</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">width</span>: <span style="color:#ae81ff">300</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">slider</span>:<span style="color:#a6e22e">hover</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">max-height</span>: <span style="color:#ae81ff">600</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">overflow-y</span>: <span style="color:#66d9ef">scroll</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>鼠标移入滑块元素时增大它的 <code>max-height</code> 值，便可以显示溢出部分。</p>
+<h3 id="创造格子等宽的表格">创造格子等宽的表格</h3>
+<p><code>table-layout: fixed</code> 可以让每个格子保持等宽：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">calendar</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">table-layout</span>: <span style="color:#66d9ef">fixed</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>无痛的 table 布局。 <a href="http://codepen.io/AllThingsSmitty/pen/jALALm">演示</a></p>
+<h3 id="利用-flexbox-去除多余的外边距">利用 Flexbox 去除多余的外边距</h3>
+<p>与其使用 <code>nth-</code>， <code>first-</code>， 和 <code>last-child</code> 去除列之间多余的间隙，不如使用 flexbox 的 <code>space-between</code> 属性：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">list</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">display</span>: <span style="color:#66d9ef">flex</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">justify-content</span>: <span style="color:#66d9ef">space-between</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">list</span> .<span style="color:#a6e22e">person</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">flex-basis</span>: <span style="color:#ae81ff">23</span><span style="color:#66d9ef">%</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>列之间的间隙总是均匀相等。</p>
+<h3 id="利用属性选择器来选择空链接">利用属性选择器来选择空链接</h3>
+<p>当 <code>&lt;a&gt;</code> 元素没有文本内容，但有 <code>href</code> 属性的时候，显示它的 <code>href</code> 属性：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">a</span><span style="color:#f92672">[</span><span style="color:#f92672">href</span><span style="color:#f92672">^=</span><span style="color:#e6db74">&#34;http&#34;</span><span style="color:#f92672">]</span>:<span style="color:#a6e22e">empty</span>::<span style="color:#a6e22e">before</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">content</span>: attr(href);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>相当简便。 <a href="http://codepen.io/AllThingsSmitty/pen/zBzXRx">演示</a></p>
+<h3 id="给-默认-链接定义样式">给 “默认” 链接定义样式</h3>
+<p>给 “默认” 链接定义样式：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">a</span><span style="color:#f92672">[</span><span style="color:#f92672">href</span><span style="color:#f92672">]</span>:<span style="color:#a6e22e">not</span><span style="color:#f92672">([</span><span style="color:#f92672">class</span><span style="color:#f92672">])</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">color</span>: <span style="color:#ae81ff">#008000</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">text-decoration</span>: <span style="color:#66d9ef">underline</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>通过 CMS 系统插入的链接，通常没有 <code>class</code> 属性，以上样式可以甄别它们，而且不会影响其它样式。</p>
+<h3 id="一致垂直节奏">一致垂直节奏</h3>
+<p>通用选择器 (<code>*</code>) 跟元素一起使用，可以保持一致的垂直节奏：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">intro</span> <span style="color:#f92672">&gt;</span> <span style="color:#f92672">*</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">margin-bottom</span>: <span style="color:#ae81ff">1.25</span><span style="color:#66d9ef">rem</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>一致的垂直节奏可以提供视觉美感，增强内容的可读性。</p>
+<h3 id="固定比例盒子">固定比例盒子</h3>
+<p>要创建具有固定比例的一个盒子，所有你需要做的就是给 div 设置一个 padding：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">container</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">height</span>: <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">padding-bottom</span>: <span style="color:#ae81ff">20</span><span style="color:#66d9ef">%</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">position</span>: <span style="color:#66d9ef">relative</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">container</span> <span style="color:#f92672">div</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">border</span>: <span style="color:#ae81ff">2</span><span style="color:#66d9ef">px</span> <span style="color:#66d9ef">dashed</span> <span style="color:#ae81ff">#ddd</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">height</span>: <span style="color:#ae81ff">100</span><span style="color:#66d9ef">%</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">left</span>: <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">position</span>: <span style="color:#66d9ef">absolute</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">top</span>: <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">width</span>: <span style="color:#ae81ff">100</span><span style="color:#66d9ef">%</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>使用 20％的 padding-bottom 使得框等于其宽度的 20％的高度。与视口宽度无关，子元素的 div 将保持其宽高比（100％/ 20％= 5:1）。 <a href="http://codepen.io/AllThingsSmitty/pen/jALZvE">演示</a></p>
+<h3 id="为破碎图象定义样式">为破碎图象定义样式</h3>
+<p>只要一点 CSS 就可以美化破碎的图象：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">img</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">display</span>: <span style="color:#66d9ef">block</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">font-family</span>: Helvetica, Arial, <span style="color:#66d9ef">sans-serif</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">font-weight</span>: <span style="color:#ae81ff">300</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">height</span>: <span style="color:#66d9ef">auto</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">line-height</span>: <span style="color:#ae81ff">2</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">position</span>: <span style="color:#66d9ef">relative</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">text-align</span>: <span style="color:#66d9ef">center</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">width</span>: <span style="color:#ae81ff">100</span><span style="color:#66d9ef">%</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>以添加伪元素的法则来显示用户信息和 URL 的引用：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">img</span>:<span style="color:#a6e22e">before</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">content</span>: <span style="color:#e6db74">&#34;We&#39;re sorry, the image below is broken :(&#34;</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">display</span>: <span style="color:#66d9ef">block</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">margin-bottom</span>: <span style="color:#ae81ff">10</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">img</span>:<span style="color:#a6e22e">after</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">content</span>: <span style="color:#e6db74">&#34;(url: &#34;</span> attr(src) <span style="color:#e6db74">&#34;)&#34;</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">display</span>: <span style="color:#66d9ef">block</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">font-size</span>: <span style="color:#ae81ff">12</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>了解更多关于这类样式的技巧 <a href="https://github.com/ireade/">Ire Aderinokun</a>的 <a href="http://bitsofco.de/styling-broken-images/">原帖</a>.</p>
+<h3 id="用-rem-来调整全局大小用-em-来调整局部大小">用 <code>rem</code> 来调整全局大小；用 <code>em</code> 来调整局部大小</h3>
+<p>在根元素设置基本字体大小后 (<code>html { font-size: 100%; }</code>), 使用 <code>em</code> 设置文本元素的字体大小:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">h2</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">font-size</span>: <span style="color:#ae81ff">2</span><span style="color:#66d9ef">em</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">p</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">font-size</span>: <span style="color:#ae81ff">1</span><span style="color:#66d9ef">em</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>然后设置模块的字体大小为 <code>rem</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">article</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">font-size</span>: <span style="color:#ae81ff">1.25</span><span style="color:#66d9ef">rem</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">aside</span> .<span style="color:#a6e22e">module</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">font-size</span>: <span style="color:#ae81ff">0.9</span><span style="color:#66d9ef">rem</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>现在，每个模块变得独立，更容易、灵活的样式便于维护。</p>
+<h3 id="隐藏没有静音自动播放的影片">隐藏没有静音、自动播放的影片</h3>
+<p>这是一个自定义用户样式表的不错的技巧。避免在加载页面时自动播放。如果没有静音，则不显示视频：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">video</span><span style="color:#f92672">[</span><span style="color:#f92672">autoplay</span><span style="color:#f92672">]</span>:<span style="color:#a6e22e">not</span><span style="color:#f92672">([</span><span style="color:#f92672">muted</span><span style="color:#f92672">])</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">display</span>: <span style="color:#66d9ef">none</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>再次，我们利用了 <code>:not()</code> 的优点。</p>
+<h3 id="使用选择器root来控制字体弹性">使用选择器<code>:root</code>来控制字体弹性</h3>
+<p>在响应式布局中，字体大小应需要根据不同的视口进行调整。你可以计算字体大小根据视口高度的字体大小和宽度，这时需要用到<code>:root</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>:<span style="color:#a6e22e">root</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">font-size</span>: calc(<span style="color:#ae81ff">1</span><span style="color:#66d9ef">vw</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span><span style="color:#66d9ef">vh</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">0.5</span><span style="color:#66d9ef">vmin</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>现在，您可以使用 <code>root em</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">body</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">font</span>: <span style="color:#ae81ff">1</span><span style="color:#66d9ef">rem</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1.6</span> <span style="color:#66d9ef">sans-serif</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><a href="http://codepen.io/AllThingsSmitty/pen/XKgOkR">演示</a></p>
+<h3 id="为更好的移动体验为表单元素设置字体大小">为更好的移动体验，为表单元素设置字体大小</h3>
+<p>当触发<code>&lt;select&gt;</code>的下拉列表时，为了避免表单元素在移动浏览器（IOS Safari 等等）上的缩放，加上<code>font-size</code>：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">input</span><span style="color:#f92672">[</span><span style="color:#f92672">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text&#34;</span><span style="color:#f92672">],</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">input</span><span style="color:#f92672">[</span><span style="color:#f92672">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;number&#34;</span><span style="color:#f92672">],</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">select</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">textarea</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">font-size</span>: <span style="color:#ae81ff">16</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></section>
+
+  
+  
+
+  
+  
+  
+  <nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
+    
+    <a class="flex w-1/2 items-center p-6 pr-3 no-underline" href="/articles/posts/25/"
+      ><span class="mr-1.5">←</span><span>现代 CSS 解决方案:CSS 数学函数</span></a
+    >
+    
+    
+    <a
+      class="ml-auto flex w-1/2 items-center justify-end p-6 pl-3 no-underline"
+      href="/articles/posts/23/"
+      ><span>享元模式</span><span class="ml-1.5">→</span></a
+    >
+    
+  </nav>
+  
+
+  
+  
+</article>
+
+
+    </main>
+
+    <footer
+  class="opaco mx-auto flex h-[5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+  style="position: relative; z-index: 10;display: none;"
+>
+  <div class="mr-auto">
+    &copy; 2024
+    <a class="link" href="/articles/">灏天阁</a>
+  </div>
+  <a class="link" href="https://yinchuanbo.github.io/" rel="noopener" target="_blank"
+    >Powered by YinHao</a
+  >️ ▷
+</footer>
+
+
+    <div class="img__mask" style="display: none;">
+      <img src="" alt="">
+      <span class="close_btn"></span>
+    </div>
+
+    <script>
+      const imgs = document.images;
+      const imgMask = document.querySelector('.img__mask')
+      const closeBtn = document.querySelector('.close_btn')
+      for (let i = 0; i < imgs.length; i++) {
+        const element = imgs[i];
+        element.onclick = () => {
+          const src = element.src;
+          imgMask.style.display = 'flex';
+          imgMask.querySelector('img').src = src;
+        }
+      }
+      closeBtn.onclick = () => {
+        imgMask.style.display = 'none';
+      }
+    </script>
+  </body>
+</html>

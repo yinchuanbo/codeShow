@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+  class="not-ready text-sm lg:text-base"
+  style="--bg: "
+  lang="en"
+>
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  
+  <title>Set 和 WeakSet 的用法和区别 - 灏天阁</title>
+
+  
+  <meta name="theme-color" />
+  
+  <meta name="description" content="Set 和 WeakSet 是 ES6 中新增的两种数据结构，它们都用于存储一组不重复的值。但是它们之间有一些区别，下面我会简要介绍它们的用法和区别，以及相应的应用场景。
+Set 的用法和特点： Set 是一个类似数组的数据结构，它的成员值都是唯一的，不会重复。 你可以向 Set 中添加值，并且它会自动去重。 Set 中的值可以是任何类型的数据，包括原始类型和对象引用。
+下面是 Set 常见的操作方法：
+add(value) : 向 Set 中添加一个新的值。 delete(value) : 从 Set 中删除一个值。 has(value) : 判断 Set 中是否包含某个值。 size : 返回 Set 中值的数量。 clear() : 清空 Set 中的所有值。 示例代码：
+const set = new Set(); set.add(1); set.add(2); set.add(2); // 这个值不会被重复添加 set.has(1); // true set.size; // 2 set.delete(2); set.clear(); 下面是一些常见的 Set 的应用场景：
+1. 数组去重：
+Set 的去重功能非常有用，可以方便地从数组中去除重复的值。可以通过将数组转换为 Set，然后将 Set 转回数组来实现去重。" />
+  <meta name="author" content="" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="/articles/main.min.css" />
+
+  
+
+  
+  
+  
+    
+  
+  <link
+    rel="preload"
+    as="image"
+    href="/articles/theme.png"
+  />
+
+  
+  
+  
+  <link rel="preload" as="image" href="/imgs/logo.png" />
+  
+  
+
+  
+
+  
+  <link rel="icon" href="/img/ico.ico" />
+  <link rel="apple-touch-icon" href="/articles/apple-touch-icon.png" />
+  
+  <meta name="generator" content="Hugo 0.108.0">
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="Set 和 WeakSet 的用法和区别" />
+<meta property="og:description" content="Set 和 WeakSet 是 ES6 中新增的两种数据结构，它们都用于存储一组不重复的值。但是它们之间有一些区别，下面我会简要介绍它们的用法和区别，以及相应的应用场景。
+Set 的用法和特点： Set 是一个类似数组的数据结构，它的成员值都是唯一的，不会重复。 你可以向 Set 中添加值，并且它会自动去重。 Set 中的值可以是任何类型的数据，包括原始类型和对象引用。
+下面是 Set 常见的操作方法：
+add(value) : 向 Set 中添加一个新的值。 delete(value) : 从 Set 中删除一个值。 has(value) : 判断 Set 中是否包含某个值。 size : 返回 Set 中值的数量。 clear() : 清空 Set 中的所有值。 示例代码：
+const set = new Set(); set.add(1); set.add(2); set.add(2); // 这个值不会被重复添加 set.has(1); // true set.size; // 2 set.delete(2); set.clear(); 下面是一些常见的 Set 的应用场景：
+1. 数组去重：
+Set 的去重功能非常有用，可以方便地从数组中去除重复的值。可以通过将数组转换为 Set，然后将 Set 转回数组来实现去重。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/articles/posts/100/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-01-01T11:40:54+08:00" />
+<meta property="article:modified_time" content="2024-01-01T11:40:54+08:00" />
+
+  
+  <meta itemprop="name" content="Set 和 WeakSet 的用法和区别">
+<meta itemprop="description" content="Set 和 WeakSet 是 ES6 中新增的两种数据结构，它们都用于存储一组不重复的值。但是它们之间有一些区别，下面我会简要介绍它们的用法和区别，以及相应的应用场景。
+Set 的用法和特点： Set 是一个类似数组的数据结构，它的成员值都是唯一的，不会重复。 你可以向 Set 中添加值，并且它会自动去重。 Set 中的值可以是任何类型的数据，包括原始类型和对象引用。
+下面是 Set 常见的操作方法：
+add(value) : 向 Set 中添加一个新的值。 delete(value) : 从 Set 中删除一个值。 has(value) : 判断 Set 中是否包含某个值。 size : 返回 Set 中值的数量。 clear() : 清空 Set 中的所有值。 示例代码：
+const set = new Set(); set.add(1); set.add(2); set.add(2); // 这个值不会被重复添加 set.has(1); // true set.size; // 2 set.delete(2); set.clear(); 下面是一些常见的 Set 的应用场景：
+1. 数组去重：
+Set 的去重功能非常有用，可以方便地从数组中去除重复的值。可以通过将数组转换为 Set，然后将 Set 转回数组来实现去重。"><meta itemprop="datePublished" content="2024-01-01T11:40:54+08:00" />
+<meta itemprop="dateModified" content="2024-01-01T11:40:54+08:00" />
+<meta itemprop="wordCount" content="434">
+<meta itemprop="keywords" content="" />
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Set 和 WeakSet 的用法和区别"/>
+<meta name="twitter:description" content="Set 和 WeakSet 是 ES6 中新增的两种数据结构，它们都用于存储一组不重复的值。但是它们之间有一些区别，下面我会简要介绍它们的用法和区别，以及相应的应用场景。
+Set 的用法和特点： Set 是一个类似数组的数据结构，它的成员值都是唯一的，不会重复。 你可以向 Set 中添加值，并且它会自动去重。 Set 中的值可以是任何类型的数据，包括原始类型和对象引用。
+下面是 Set 常见的操作方法：
+add(value) : 向 Set 中添加一个新的值。 delete(value) : 从 Set 中删除一个值。 has(value) : 判断 Set 中是否包含某个值。 size : 返回 Set 中值的数量。 clear() : 清空 Set 中的所有值。 示例代码：
+const set = new Set(); set.add(1); set.add(2); set.add(2); // 这个值不会被重复添加 set.has(1); // true set.size; // 2 set.delete(2); set.clear(); 下面是一些常见的 Set 的应用场景：
+1. 数组去重：
+Set 的去重功能非常有用，可以方便地从数组中去除重复的值。可以通过将数组转换为 Set，然后将 Set 转回数组来实现去重。"/>
+
+  
+  
+</head>
+  <body class="text-black duration-200 ease-out dark:text-white">
+    
+    
+
+    
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100%-10rem)] max-w-3xl px-8 pt-20 dark:prose-invert"
+      id="main"
+    >
+      
+
+<article>
+  <header class="mb-10">
+    <h1 class="!my-0 pb-2.5">
+      Set 和 WeakSet 的用法和区别
+    </h1>
+
+    
+    <div class="text-sm opacity-60">
+      
+      <time>Jan 1, 2024</time>
+      
+      
+      <span class="mx-1">&middot;</span>
+      <span>Yin灏</span>
+    </div>
+    
+  </header>
+
+  <section><p>Set 和 WeakSet 是 ES6 中新增的两种数据结构，它们都用于存储一组不重复的值。但是它们之间有一些区别，下面我会简要介绍它们的用法和区别，以及相应的应用场景。</p>
+<h2 id="set-的用法和特点">Set 的用法和特点：</h2>
+<p>Set 是一个类似数组的数据结构，它的成员值都是唯一的，不会重复。 你可以向 Set 中添加值，并且它会自动去重。 Set 中的值可以是任何类型的数据，包括原始类型和对象引用。</p>
+<p>下面是 Set 常见的操作方法：</p>
+<ul>
+<li>add(value) : 向 Set 中添加一个新的值。</li>
+<li>delete(value) : 从 Set 中删除一个值。</li>
+<li>has(value) : 判断 Set 中是否包含某个值。</li>
+<li>size : 返回 Set 中值的数量。</li>
+<li>clear() : 清空 Set 中的所有值。</li>
+</ul>
+<p>示例代码：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">set</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Set</span>();
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">set</span>.<span style="color:#a6e22e">add</span>(<span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">set</span>.<span style="color:#a6e22e">add</span>(<span style="color:#ae81ff">2</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">set</span>.<span style="color:#a6e22e">add</span>(<span style="color:#ae81ff">2</span>); <span style="color:#75715e">// 这个值不会被重复添加
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">set</span>.<span style="color:#a6e22e">has</span>(<span style="color:#ae81ff">1</span>); <span style="color:#75715e">// true
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">set</span>.<span style="color:#a6e22e">size</span>; <span style="color:#75715e">// 2
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">set</span>.<span style="color:#66d9ef">delete</span>(<span style="color:#ae81ff">2</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">set</span>.<span style="color:#a6e22e">clear</span>();
+</span></span></code></pre></div><p>下面是一些常见的  Set  的应用场景：</p>
+<p>1.  数组去重：</p>
+<p>Set  的去重功能非常有用，可以方便地从数组中去除重复的值。可以通过将数组转换为  Set，然后将 Set  转回数组来实现去重。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">arr</span> <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>];
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//展开解构，将 Set 转回数组
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">res</span> <span style="color:#f92672">=</span> [...<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Set</span>(<span style="color:#a6e22e">arr</span>)];
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//或者也可以使用Array.from()方法将类数组Set转回数组
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">res2</span> <span style="color:#f92672">=</span> Array.<span style="color:#a6e22e">from</span>(<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Set</span>(<span style="color:#a6e22e">arr</span>));
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">res</span>); <span style="color:#75715e">//[ 1, 2, 3, 4, 5 ]
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">res2</span>); <span style="color:#75715e">//[ 1, 2, 3, 4, 5 ]
+</span></span></span></code></pre></div><p>2.  数据统计和计数：</p>
+<p>Set  可以用来快速统计某个数据集合中不同元素的个数。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">arr</span> <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>];
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">res</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Set</span>(<span style="color:#a6e22e">arr</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">size</span>); <span style="color:#75715e">// 5
+</span></span></span></code></pre></div><p>3.  数据交集和并集：</p>
+<p>Set  也可以通过配合数组的方法，用来求两个数据集合的交集、并集和差集。 （注：如果对 filter 方法还不熟悉的小伙伴可以看我之前的文章，有常用数组方法汇总）</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">set1</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Set</span>([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>]);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">set2</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Set</span>([<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>]);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 求交集
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">res</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Set</span>([...<span style="color:#a6e22e">set1</span>].<span style="color:#a6e22e">filter</span>((<span style="color:#a6e22e">item</span>) =&gt; <span style="color:#a6e22e">set2</span>.<span style="color:#a6e22e">has</span>(<span style="color:#a6e22e">item</span>))); <span style="color:#75715e">//返回共有的元素
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>([...<span style="color:#a6e22e">res</span>]); <span style="color:#75715e">// [2, 3]
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 求并集
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">res2</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Set</span>([...<span style="color:#a6e22e">set1</span>, ...<span style="color:#a6e22e">set2</span>]);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>([...<span style="color:#a6e22e">res2</span>]); <span style="color:#75715e">// [1, 2, 3, 4]
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 求差集
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">res3</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Set</span>([...<span style="color:#a6e22e">set1</span>].<span style="color:#a6e22e">filter</span>((<span style="color:#a6e22e">item</span>) =&gt; <span style="color:#f92672">!</span><span style="color:#a6e22e">set2</span>.<span style="color:#a6e22e">has</span>(<span style="color:#a6e22e">item</span>)));
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>([...<span style="color:#a6e22e">res3</span>]); <span style="color:#75715e">// [1]
+</span></span></span></code></pre></div><p>4.  去除文本中的重复单词：</p>
+<p>Set  可以用来去除文本中的重复单词，可以将文本按照单词分割，然后将单词添加到  Set  中，最后将  Set  转回文本。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">text</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;I have have a dog. My dog&#39;s name name is Lucky.&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">words</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">text</span>.<span style="color:#a6e22e">split</span>(<span style="color:#e6db74">&#34; &#34;</span>); <span style="color:#75715e">//将文本以空格作为分隔符，即将每个单词切割出来
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">arrWords</span> <span style="color:#f92672">=</span> [...<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Set</span>(<span style="color:#a6e22e">words</span>)]; <span style="color:#75715e">//将 Set 转回数组
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">res</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">arrWords</span>.<span style="color:#a6e22e">join</span>(<span style="color:#e6db74">&#34; &#34;</span>); <span style="color:#75715e">//重新将单词进行拼接成句子
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">res</span>); <span style="color:#75715e">// I have a dog. My dog&#39;s name is Lucky.
+</span></span></span></code></pre></div><h2 id="weakset-的用法和特点">WeakSet 的用法和特点：</h2>
+<p>WeakSet 是一种弱引用的集合（只能存储对象引用），它持有的对象都是被弱引用的，不会阻止垃圾回收器对这些对象的回收。也就是说，一个对象被 weakSet 所引用，在垃圾回收机制的眼中，该对象是没有被引用的，那么只要垃圾回收机制一生效，该对象所占据的内存空间会被销毁。</p>
+<p>WeakSet 中的对象是无序且不可迭代的，因此没有提供类似于 size 和 forEach 等方法。 WeakSet 中的值不能被枚举，也不能被遍历。</p>
+<p>WeakSet 的主要用途是存储临时对象的引用，在某些场景下非常有用，比如需要在对象被销毁时执行一些特定的操作或者需要跟踪对象的存活状态，这些对象在不再需要时会被自动回收。可以帮助我们避免内存泄漏的问题，并且使垃圾回收更加高效。下面是一些使用 WeakSet 的示例代码来展示其应用场景以及和 Set 的区别：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// 1. 使用 WeakSet 跟踪对象的存活状态
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">weakset</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">WeakSet</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">obj1</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;小米&#34;</span> };
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">obj2</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;小露&#34;</span> };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">weakset</span>.<span style="color:#a6e22e">add</span>(<span style="color:#a6e22e">obj1</span>); <span style="color:#75715e">//添加对象1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">weakset</span>.<span style="color:#a6e22e">add</span>(<span style="color:#a6e22e">obj2</span>); <span style="color:#75715e">//添加对象2
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">weakset</span>.<span style="color:#a6e22e">has</span>(<span style="color:#a6e22e">obj1</span>)); <span style="color:#75715e">// true
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">weakset</span>.<span style="color:#66d9ef">delete</span>(<span style="color:#a6e22e">obj1</span>); <span style="color:#75715e">// 执行一些清理操作
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">weakset</span>.<span style="color:#a6e22e">has</span>(<span style="color:#a6e22e">obj1</span>)); <span style="color:#75715e">// false
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//使用Set 与 WeakSet进行结果对比
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">set</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Set</span>();
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">set</span>.<span style="color:#a6e22e">add</span>(<span style="color:#a6e22e">obj1</span>); <span style="color:#75715e">//添加对象1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">set</span>.<span style="color:#a6e22e">add</span>(<span style="color:#a6e22e">obj2</span>); <span style="color:#75715e">//添加对象2
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">set</span>.<span style="color:#a6e22e">has</span>(<span style="color:#a6e22e">obj1</span>)); <span style="color:#75715e">// true
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">weakset</span>.<span style="color:#66d9ef">delete</span>(<span style="color:#a6e22e">obj1</span>); <span style="color:#75715e">// 执行一些清理操作
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">set</span>.<span style="color:#a6e22e">has</span>(<span style="color:#a6e22e">obj1</span>)); <span style="color:#75715e">// true
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span><span style="color:#75715e">&lt;!-- 2. 需要在对象被销毁时执行一些特定的操作，避免内存泄漏 --&gt;</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;wrap&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;btn&#34;</span>&gt;确认&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">script</span>&gt;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">wrap</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#34;wrap&#34;</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">btn</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#34;btn&#34;</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">//给btn打上标签
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">disableElements</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">weakSet</span>(); <span style="color:#75715e">//若使用new Set(),会造成内存泄漏
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">disableElements</span>.<span style="color:#a6e22e">add</span>(<span style="color:#a6e22e">btn</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">btn</span>.<span style="color:#a6e22e">addEventListener</span>(<span style="color:#e6db74">&#34;click&#34;</span>, () =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//给按钮添加点击事件
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">wrap</span>.<span style="color:#a6e22e">removeChild</span>(<span style="color:#a6e22e">btn</span>); <span style="color:#75715e">//按钮点击完成后将其销毁
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">disableElements</span>); <span style="color:#75715e">//理论上认为为{}
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  });
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">script</span>&gt;
+</span></span></code></pre></div><p>在第一个示例中，我们使用 WeakSet 跟踪对象的存活状态。通过调用 WeakSet 的 add 方法将对象添加到 weakset 实例中，然后可以使用 has 方法来检查对象是否仍然存活。在调用 WeakSet 的 delete 方法时，我们从 weakset 实例中删除对象，并执行了一些清理操作。会发现当使用 WeakSet 存储对象时，如果一个对象被清除了，再调用 has 方法去查找该对象结果会返回 false，而当使用 Set 存储对象时，对象被清除了再查找结果还是 true。所以我们可以使用 WeakSet 来跟踪对象的存活状态。</p>
+<p>在第二个示例中，我们展示了使用 WeakSet 来避免内存泄漏。我们在 body 里面创建了一个 button 按钮元素，并且向 button 按钮绑定了一个点击监听事件，然后用了一个弱引用容器 disableElements 存放按钮标签，在我们点击 button 按钮时，会触发监听事件，将 button 按钮从页面中移除。由于  disableElements  中存储的是弱引用，所以当 button 按钮被移除页面后，垃圾回收器会自动回收内存，避免了内存泄漏的问题。而如果我们的 disableElements 是用 Set 创建的容器，那么当执行按钮点击事件后，按钮被移除页面后，则会因为 button 对象被 disableElements 所引用依旧保留在内存中，不会被垃圾回收器自动回收内存，造成内存泄漏。所以，在这种应用场景下使用 WeakSet 容器，就解决了内存泄漏的问题。</p>
+<h2 id="总结">总结：</h2>
+<p>Set 和 WeakSet 都是用于存储一组不重复的值，但它们的用法和特点有所不同。Set 可以存储任何类型的值且自动去重，适用于数据去重和快速查找。WeakSet 是一种弱引用的集合，只能存储对象引用，并且不会阻止对象被垃圾回收器回收，适用于需要跟踪对象存活状态或执行一些特定操作的场景。 上面两个示例展示了 WeakSet 的使用场景，即跟踪对象的存活状态和避免内存泄漏。使用 WeakSet 可以更加高效和安全地管理对象引用，确保对象的生命周期和内存资源的正确管理。</p>
+</section>
+
+  
+  
+
+  
+  
+  
+  <nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
+    
+    <a class="flex w-1/2 items-center p-6 pr-3 no-underline" href="/articles/posts/101/"
+      ><span class="mr-1.5">←</span><span>获取上传进度的几种方式</span></a
+    >
+    
+    
+    <a
+      class="ml-auto flex w-1/2 items-center justify-end p-6 pl-3 no-underline"
+      href="/articles/posts/99/"
+      ><span>前端代码重复度检测</span><span class="ml-1.5">→</span></a
+    >
+    
+  </nav>
+  
+
+  
+  
+</article>
+
+
+    </main>
+
+    <footer
+  class="opaco mx-auto flex h-[5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+  style="position: relative; z-index: 10;display: none;"
+>
+  <div class="mr-auto">
+    &copy; 2024
+    <a class="link" href="/articles/">灏天阁</a>
+  </div>
+  <a class="link" href="https://yinchuanbo.github.io/" rel="noopener" target="_blank"
+    >Powered by YinHao</a
+  >️ ▷
+</footer>
+
+
+    <div class="img__mask" style="display: none;">
+      <img src="" alt="">
+      <span class="close_btn"></span>
+    </div>
+
+    <script>
+      const imgs = document.images;
+      const imgMask = document.querySelector('.img__mask')
+      const closeBtn = document.querySelector('.close_btn')
+      for (let i = 0; i < imgs.length; i++) {
+        const element = imgs[i];
+        element.onclick = () => {
+          const src = element.src;
+          imgMask.style.display = 'flex';
+          imgMask.querySelector('img').src = src;
+        }
+      }
+      closeBtn.onclick = () => {
+        imgMask.style.display = 'none';
+      }
+    </script>
+  </body>
+</html>

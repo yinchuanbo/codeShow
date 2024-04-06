@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+  class="not-ready text-sm lg:text-base"
+  style="--bg: "
+  lang="en"
+>
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  
+  <title>构建优化 - 灏天阁</title>
+
+  
+  <meta name="theme-color" />
+  
+  <meta name="description" content="压缩与合并 资源压缩和合并的优点:
+减少 http 的请求数量
+减少 http 请求的资源大小
+HTML 压缩 HTML 压缩的三种方式：
+在线网站提供 HTML 压缩服务
+基于 nodejs 的工具：html-minifier
+const fs = require(&#34;fs&#34;); const { minify } = require(&#34;html-minifier&#34;); fs.readFile(&#34;./test.html&#34;, &#34;utf8&#34;, (err, data) =&gt; { if (err) throw err; fs.writeFile( &#34;./test_mini.html&#34;, minify( data, { removeComments: true, // 去掉注释 collapseWhitespace: true, // 去除空格 minifyJS: true, // 压缩 HTML 中的 JavaScript minifyCSS: true, // 压缩 HTML 中的 css }, () =&gt; console.log(&#34;success&#34;) ) ); }); 服务端模板引擎的渲染压缩 CSS 压缩 CSS 代码也能进行压缩，而且很有必要去压缩。" />
+  <meta name="author" content="" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="/articles/main.min.css" />
+
+  
+
+  
+  
+  
+    
+  
+  <link
+    rel="preload"
+    as="image"
+    href="/articles/theme.png"
+  />
+
+  
+  
+  
+  <link rel="preload" as="image" href="/imgs/logo.png" />
+  
+  
+
+  
+
+  
+  <link rel="icon" href="/img/ico.ico" />
+  <link rel="apple-touch-icon" href="/articles/apple-touch-icon.png" />
+  
+  <meta name="generator" content="Hugo 0.108.0">
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="构建优化" />
+<meta property="og:description" content="压缩与合并 资源压缩和合并的优点:
+减少 http 的请求数量
+减少 http 请求的资源大小
+HTML 压缩 HTML 压缩的三种方式：
+在线网站提供 HTML 压缩服务
+基于 nodejs 的工具：html-minifier
+const fs = require(&#34;fs&#34;); const { minify } = require(&#34;html-minifier&#34;); fs.readFile(&#34;./test.html&#34;, &#34;utf8&#34;, (err, data) =&gt; { if (err) throw err; fs.writeFile( &#34;./test_mini.html&#34;, minify( data, { removeComments: true, // 去掉注释 collapseWhitespace: true, // 去除空格 minifyJS: true, // 压缩 HTML 中的 JavaScript minifyCSS: true, // 压缩 HTML 中的 css }, () =&gt; console.log(&#34;success&#34;) ) ); }); 服务端模板引擎的渲染压缩 CSS 压缩 CSS 代码也能进行压缩，而且很有必要去压缩。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/articles/posts/48/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-09-14T07:06:22+08:00" />
+<meta property="article:modified_time" content="2023-09-14T07:06:22+08:00" />
+
+  
+  <meta itemprop="name" content="构建优化">
+<meta itemprop="description" content="压缩与合并 资源压缩和合并的优点:
+减少 http 的请求数量
+减少 http 请求的资源大小
+HTML 压缩 HTML 压缩的三种方式：
+在线网站提供 HTML 压缩服务
+基于 nodejs 的工具：html-minifier
+const fs = require(&#34;fs&#34;); const { minify } = require(&#34;html-minifier&#34;); fs.readFile(&#34;./test.html&#34;, &#34;utf8&#34;, (err, data) =&gt; { if (err) throw err; fs.writeFile( &#34;./test_mini.html&#34;, minify( data, { removeComments: true, // 去掉注释 collapseWhitespace: true, // 去除空格 minifyJS: true, // 压缩 HTML 中的 JavaScript minifyCSS: true, // 压缩 HTML 中的 css }, () =&gt; console.log(&#34;success&#34;) ) ); }); 服务端模板引擎的渲染压缩 CSS 压缩 CSS 代码也能进行压缩，而且很有必要去压缩。"><meta itemprop="datePublished" content="2023-09-14T07:06:22+08:00" />
+<meta itemprop="dateModified" content="2023-09-14T07:06:22+08:00" />
+<meta itemprop="wordCount" content="876">
+<meta itemprop="keywords" content="" />
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="构建优化"/>
+<meta name="twitter:description" content="压缩与合并 资源压缩和合并的优点:
+减少 http 的请求数量
+减少 http 请求的资源大小
+HTML 压缩 HTML 压缩的三种方式：
+在线网站提供 HTML 压缩服务
+基于 nodejs 的工具：html-minifier
+const fs = require(&#34;fs&#34;); const { minify } = require(&#34;html-minifier&#34;); fs.readFile(&#34;./test.html&#34;, &#34;utf8&#34;, (err, data) =&gt; { if (err) throw err; fs.writeFile( &#34;./test_mini.html&#34;, minify( data, { removeComments: true, // 去掉注释 collapseWhitespace: true, // 去除空格 minifyJS: true, // 压缩 HTML 中的 JavaScript minifyCSS: true, // 压缩 HTML 中的 css }, () =&gt; console.log(&#34;success&#34;) ) ); }); 服务端模板引擎的渲染压缩 CSS 压缩 CSS 代码也能进行压缩，而且很有必要去压缩。"/>
+
+  
+  
+</head>
+  <body class="text-black duration-200 ease-out dark:text-white">
+    
+    
+
+    
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100%-10rem)] max-w-3xl px-8 pt-20 dark:prose-invert"
+      id="main"
+    >
+      
+
+<article>
+  <header class="mb-10">
+    <h1 class="!my-0 pb-2.5">
+      构建优化
+    </h1>
+
+    
+    <div class="text-sm opacity-60">
+      
+      <time>Sep 14, 2023</time>
+      
+      
+      <span class="mx-1">&middot;</span>
+      <span>Yin灏</span>
+    </div>
+    
+  </header>
+
+  <section><h3 id="压缩与合并">压缩与合并</h3>
+<p><strong>资源压缩和合并的优点:</strong></p>
+<ul>
+<li>
+<p>减少 http 的请求数量</p>
+</li>
+<li>
+<p>减少 http 请求的资源大小</p>
+</li>
+</ul>
+<ol>
+<li>HTML 压缩</li>
+</ol>
+<p><strong>HTML 压缩的三种方式：</strong></p>
+<ul>
+<li>
+<p>在线网站提供 HTML 压缩服务</p>
+</li>
+<li>
+<p>基于 nodejs 的工具：html-minifier</p>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">fs</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#34;fs&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">minify</span> } <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#34;html-minifier&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">fs</span>.<span style="color:#a6e22e">readFile</span>(<span style="color:#e6db74">&#34;./test.html&#34;</span>, <span style="color:#e6db74">&#34;utf8&#34;</span>, (<span style="color:#a6e22e">err</span>, <span style="color:#a6e22e">data</span>) =&gt; {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">err</span>) <span style="color:#66d9ef">throw</span> <span style="color:#a6e22e">err</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">fs</span>.<span style="color:#a6e22e">writeFile</span>(
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;./test_mini.html&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">minify</span>(
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">data</span>,
+</span></span><span style="display:flex;"><span>      {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">removeComments</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>, <span style="color:#75715e">// 去掉注释
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">collapseWhitespace</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>, <span style="color:#75715e">// 去除空格
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">minifyJS</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>, <span style="color:#75715e">// 压缩 HTML 中的 JavaScript
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">minifyCSS</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>, <span style="color:#75715e">// 压缩 HTML 中的 css
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      },
+</span></span><span style="display:flex;"><span>      () =&gt; <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;success&#34;</span>)
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>  );
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div><ul>
+<li>服务端模板引擎的渲染压缩</li>
+</ul>
+<ol start="2">
+<li>CSS 压缩</li>
+</ol>
+<p>CSS 代码也能进行压缩，而且很有必要去压缩。</p>
+<p>也可以用 html-minifier 针对 HTML 中的 CSS 进行压缩。</p>
+<p>还可以使用 clean-css 进行 CSS 压缩。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">CleanCSS</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#34;clean-css&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">input</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;a { font-weight: bold }&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">options</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 配置项
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>};
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 压缩并输出结果
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">output</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">CleanCSS</span>(<span style="color:#a6e22e">options</span>).<span style="color:#a6e22e">minify</span>(<span style="color:#a6e22e">input</span>);
+</span></span></code></pre></div><ol start="3">
+<li>JavaScript 压缩和混淆</li>
+</ol>
+<p><strong>代码语义缩减和优化</strong></p>
+<p>通过对 JavaScript 的压缩可以将一些变量的长度进行缩短，比如说原本一个很长的变量名经过压缩后，可以用很短的像 a、b 来代替，这样能进一步有效的压缩 JavaScript 的代码量，同样还可以针对一些重复代码进行优化，比如去除重复的变量赋值，将一些无效的代码进行缩减与合并的优化。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 又进行了多余的赋值操作
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">a</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 经过优化后，仅保留 let a = 2 的赋值
+</span></span></span></code></pre></div><p><strong>代码混淆保护</strong></p>
+<p>混淆变量与方法的命名。</p>
+<p>对于公司而言，HTML 压缩可有可无，但是 CSS 与 JavaScript 压缩确是必要进行的。</p>
+<p><strong>如何压缩</strong></p>
+<p>JavaScript 压缩处理也有类似的第三方库可供使用：uglifyJS2，</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">UglifyJS</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#34;uglify-js&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">jsCode</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;function add(first, second) { return first + second }&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">options</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 配置项
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>};
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">UglifyJS</span>.<span style="color:#a6e22e">minify</span>(<span style="color:#a6e22e">code</span>, <span style="color:#a6e22e">options</span>);
+</span></span></code></pre></div><h3 id="使用-webpack-进行前端构建">使用 webpack 进行前端构建</h3>
+<ol>
+<li>模块打包工具</li>
+</ol>
+<p>随着前端功能越来越复杂，显然不可能将所有 JavaScript 代码都写在一个文件里，因为这样不仅可读性差而且也不具有维护性，所以需要将一些功能相对独立的模块拆出来，写在单独的文件中，而原本的 index.js 仅作为整个系统的入口文件，负责引入其他模块。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// index.js
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">Main</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;./main.js&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">SubModule</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;./sub-module.js&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 执行入口程序
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Main</span>();
+</span></span></code></pre></div><p><strong>模块定义方式：</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">Main</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">//...
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> <span style="color:#a6e22e">Main</span>;
+</span></span></code></pre></div><ol start="2">
+<li>安装建议</li>
+</ol>
+<p>推荐的做法是局部安装，然后在使用时通过 <strong>npx</strong> 的方式，调用项目内部的 webpack 进行打包构建。</p>
+<ol start="3">
+<li>配置文件</li>
+</ol>
+<p>该配置文件需要定义在 webpack 打包构建的根目录下，其文件名为 <code>webpack.config.js</code>，</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">path</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#34;path&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">entry</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">main</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;./src/index.js&#34;</span>,
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">output</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">filename</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;bundle.js&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">path</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">path</span>.<span style="color:#a6e22e">resolve</span>(<span style="color:#a6e22e">__dirname</span>, <span style="color:#e6db74">&#34;dist&#34;</span>),
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h3 id="webpack-的优化性能">webpack 的优化性能</h3>
+<p><strong>webpack 的优化瓶颈主要体现在两方面：</strong></p>
+<ul>
+<li>
+<p>打包构建过程太浪费时间</p>
+</li>
+<li>
+<p>打包结果体积太大</p>
+</li>
+</ul>
+<p>对大部分前端项目来说，每次的修改调试都有可能需要全部或部分的代码进行打包构建，可想而知如果这个过程十分耗时，将会非常影响前端工程师的开发效率，</p>
+<p>并且如果打包结果过大，必然也让 HTTP 的单次请求花费过长时间。</p>
+<ol>
+<li>尽量与时俱进</li>
+</ol>
+<p>项目中尽可能使用最新稳定版本的 <code>webpack、nodejs、npm或yarn</code> 能有效地提升打包构建的效率。</p>
+<ol start="2">
+<li>减少 Loader 的执行</li>
+</ol>
+<p>根据具体情况使用 include 或 exclude，在尽可能少的模块上执行 Loader，webpack 配置如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">path</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#34;path&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">entry</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">main</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;./src/index.js&#34;</span>,
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">module</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">rules</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// 对 js 文件的打包规则
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">test</span><span style="color:#f92672">:</span> <span style="color:#e6db74">/\.js$/</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">exclude</span><span style="color:#f92672">:</span> <span style="color:#e6db74">/node_modules/</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">use</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>          {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">loader</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;babel-loader&#34;</span>,
+</span></span><span style="display:flex;"><span>          },
+</span></span><span style="display:flex;"><span>        ],
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>      {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 对于图片文件的打包规则
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">test</span><span style="color:#f92672">:</span> <span style="color:#e6db74">/\.(jpg|png|gif)$/</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">use</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">loader</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;url-loader&#34;</span>,
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">options</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;[name]_[hash].[text]&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">outputPath</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;images/&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">limit</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">10240</span>,
+</span></span><span style="display:flex;"><span>          },
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">output</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">filename</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;bundle.js&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">path</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">path</span>.<span style="color:#a6e22e">resolve</span>(<span style="color:#a6e22e">__dirname</span>, <span style="color:#e6db74">&#34;dist&#34;</span>),
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>对于图片文件则没有必要通过 include 或 exclude 来降低 loader 的执行频率，因为无论哪里引入的图片，最后打包都需要通过 url-loader 对其进行处理，所以 include 或 exclude 的语法并不适用所有 loader 类型，而根据具体的情况而定。</p>
+<p>使用 include 或 exclude 可以帮助我们规避对庞大的第三方库文件的处理，但仅通过限定文件处理范围所带来的性能提升其实是有限的。</p>
+<p>此外，如果开启缓存将构建结果缓存在文件系统中，则可让 babel-loader 的工作效率得到成倍的增加，处理方式也很简单，只需为 loader 增加相应的参数即可。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>loader: <span style="color:#e6db74">&#34;babel-loader?cacheDirectory=true&#34;</span>
+</span></span></code></pre></div><ol start="3">
+<li>确保插件的精简和可靠</li>
+</ol>
+<p>通常我们会根据前端代码的执行环境是线上环境还是开发环境来规定不同的 webpack 配置内容，</p>
+<p>比如线上环境中，我们希望打包的代码尺寸尽可能小，用户加载的速度尽可能快，所以需要对代码进行压缩，下面的配置项声明使用 OptimizeCSSAssetsPlugin 插件来压缩 CSS 资源文件。</p>
+<p>如果在开发环境下，由于不需要考虑代码对用户的加载速度，并且压缩了反而会降低代码的可读性，增加开发成本，所以在开发环境下不用引入代码的压缩插件。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">entry</span><span style="color:#f92672">:</span> {},
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">module</span><span style="color:#f92672">:</span> {},
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">optimization</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">minimizer</span><span style="color:#f92672">:</span> [<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">OptimizeCSSAssetsPlugin</span>({})],
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">output</span><span style="color:#f92672">:</span> {},
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>建议使用官方推荐的插件。</p>
+<ol start="4">
+<li>合理配置 resolve 参数</li>
+</ol>
+<p>配置 resolve 参数可以带来很多便利，比如：</p>
+<ul>
+<li>
+<p>使用 extensions 省略引入 Js 文件的后缀名</p>
+</li>
+<li>
+<p>使用 alias 减少书写所引入模块的多目录层级</p>
+</li>
+<li>
+<p>&hellip;</p>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">resolve</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">extensions</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;js&#34;</span>, <span style="color:#e6db74">&#34;jsx&#34;</span>, <span style="color:#e6db74">&#34;ts&#34;</span>],
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">alias</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">cpn</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">path</span>.<span style="color:#a6e22e">resolve</span>(<span style="color:#a6e22e">__dirname</span>, <span style="color:#e6db74">&#34;src/component&#34;</span>),
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><ol start="5">
+<li>使用 Dllplugin</li>
+</ol>
+<p>前端项目中经常会用到庞大的第三方库，</p>
+<p>而每当发生修改需要重新进行打包时，webpack 会默认去分析所有引用的第三方库，最后将其打包进我们的项目代码中。</p>
+<p>通常，第三方组件包的代码是稳定的，不更换所引用的版本其代码是不会发生修改，所以这里给出一个优化的思路。</p>
+<p>我们仅需要在<code>第一次</code>打包时去分析这些第三方库，只有当依赖自身发生版本变化时才会重新进行打包。</p>
+<p>这便会用到 <strong>Dllplugin</strong></p>
+<p>该插件会把第三方库单独打包到一个文件中，作为一个单纯的依赖库，它不会和我们的项目代码一起参与重新打包，只有当依赖自身发生版本变化时才会重新进行打包。</p>
+<p>使用 <strong>Dllplugin</strong> 处理文件的过程可分为两步:</p>
+<ul>
+<li>
+<p>首先基于动态链接库专属的配置文件打包 dll 库文件</p>
+</li>
+<li>
+<p>然后再基于 webpack 的构建文件打包项目代码</p>
+</li>
+</ul>
+<p><strong>实例：</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">React</span>, { <span style="color:#a6e22e">Component</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;react&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">ReactDom</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;react-dom&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">_</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;lodash&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">App</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">Component</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">render</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> (
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">div</span>&gt;{<span style="color:#a6e22e">_</span>.<span style="color:#a6e22e">join</span>([<span style="color:#e6db74">&#34;hello&#34;</span>, <span style="color:#e6db74">&#34;world&#34;</span>], <span style="color:#e6db74">&#34; &#34;</span>)}&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>    );
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>这里引入三个 React 项目经常会遇到的第三方库 <code>react、react-dom、lodash</code>，如果我们不进行任何处理，每当修改该文件后进行重新打包，则会引起 webpack 去分析它们，若打包次数频繁，显然会浪费许多时间。</p>
+<p>接下来进行优化，具体分为两步：</p>
+<ul>
+<li>
+<p>首先将所依赖的第三方库打包成 <code>dll</code> 文件</p>
+</li>
+<li>
+<p>然后检查第三方库的版本是否在其后的迭代中发生了变化，若无变化就都使用之前的打包结果</p>
+</li>
+</ul>
+<p><strong>这里可以为第三方库创建单独的配置文件：</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// 可定义文件名为 webpack.dll.js 区别于主配置文件
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">mode</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;production&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">enrty</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 所引用的第三方包
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">vendors</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;react&#34;</span>, <span style="color:#e6db74">&#34;react-dom&#34;</span>, <span style="color:#e6db74">&#34;lodash&#34;</span>],
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">output</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">filename</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;[name].dll.js&#34;</span>, <span style="color:#75715e">// 输出文件名，即为 vendors.dll.js
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">path</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">path</span>.<span style="color:#a6e22e">resolve</span>(<span style="color:#a6e22e">__dirname</span>, <span style="color:#e6db74">&#34;../dll&#34;</span>), <span style="color:#75715e">// 打包后的输出路径
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">library</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;[name]&#34;</span>, <span style="color:#75715e">// 第三方包导出的全局变量名
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  },
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 分析并输出第三方包的映射关系
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">plugins</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">webpack</span>.<span style="color:#a6e22e">DllPlugin</span>({
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;[name]&#34;</span>, <span style="color:#75715e">// 所要分析的包名
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#75715e">// 映射关系输出地址
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#a6e22e">path</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">path</span>.<span style="color:#a6e22e">resolve</span>(<span style="color:#a6e22e">__dirname</span>, <span style="color:#e6db74">&#34;../dll/[name].manifest.json&#34;</span>),
+</span></span><span style="display:flex;"><span>    }),
+</span></span><span style="display:flex;"><span>  ],
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>该配置文件中将 react、react-dom、lodash 三个包的包名存储在数组中，并赋值给 vendors，其含义是经过打包后，这三个包归于一个名为 vendors 的包。</p>
+<p>output 中声明了该包的文件名及输出路径，library 字段表示该第三方包对外暴露的引用名，即在其他地方可以使用该字段引用包中的内容。</p>
+<p>最后使用 webpack 中的 DllPlugin 插件对该包中的映射关系进行分析，并将结果输出到指定路径下的 json 文件。</p>
+<p>然后我们需要在 webpack 主配置文件中，声明对上述打包好的第三方包的使用规则：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// 此为 webpack 主配置文件，
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">plugins</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 引入打包的第三方包
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">AddAssetHtmlWebpackPlugin</span>({
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">filepath</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">path</span>.<span style="color:#a6e22e">resolve</span>(<span style="color:#a6e22e">__dirname</span>, <span style="color:#e6db74">&#34;../dll/vendors.dll.js&#34;</span>),
+</span></span><span style="display:flex;"><span>    }),
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 引入第三方包的映射关系
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">webpack</span>.<span style="color:#a6e22e">DllReferencePlugin</span>({
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">manifest</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">path</span>.<span style="color:#a6e22e">resolve</span>(<span style="color:#a6e22e">__dirname</span>, <span style="color:#e6db74">&#34;../dll/vendors.manifest.json&#34;</span>),
+</span></span><span style="display:flex;"><span>    }),
+</span></span><span style="display:flex;"><span>  ],
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>这样配置的意思是首先引入第三方包的打包结果路径，其次引入第三方包的映射关系，</p>
+<p>当发生重新打包构建时，webpack 会首先查看引用的第三方包是否包含在已建立的映射关系文件 vendors.manifest.json 中，若存在便通过所声明的全局变量 vendors 去使用，若不存在便去 node_modules 中获取所需的模块，动态的进行打包操作。</p>
+<p>上述方式虽然能够降低重复打包构建的时间，但将项目中的所有第三方包都打包进一个文件中，势必会导致其体积过大。</p>
+<p>所以在实际项目中，我们也应根据各个第三方包的大小进行拆分，</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// webpack.dll.js
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">entry</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">vendors</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;lodash&#34;</span>],
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">react</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;react&#34;</span>, <span style="color:#e6db74">&#34;react-dom&#34;</span>],
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>如此执行，webpack 构建后会生成 4 个文件：<code>vendors.dll.js | vendors.manifest.json</code>、<code>react.dll.js | react.manifest.json</code></p>
+<p>同时对应的主配置的文件也需要进行相应的修改，</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">plugins</span> <span style="color:#f92672">=</span> [];
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 读取 /dll 路径下的所有打包文件
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">files</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">fs</span>.<span style="color:#a6e22e">readdirSync</span>(<span style="color:#a6e22e">path</span>.<span style="color:#a6e22e">resolve</span>(<span style="color:#a6e22e">__dirname</span>, <span style="color:#e6db74">&#34;../dll&#34;</span>));
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 使用循环方式引入相应的代码文件和映射文件
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">files</span>.<span style="color:#a6e22e">forEach</span>((<span style="color:#a6e22e">file</span>) =&gt; {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 通过正则过滤目标文件
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">if</span> (<span style="color:#e6db74">/.*\.dll.js/</span>.<span style="color:#a6e22e">test</span>(<span style="color:#a6e22e">file</span>)) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">plugins</span>.<span style="color:#a6e22e">push</span>(
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">AddAssetHtmlWebpackPlugin</span>({
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">filepath</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">path</span>.<span style="color:#a6e22e">resolve</span>(<span style="color:#a6e22e">__dirname</span>, <span style="color:#e6db74">&#34;../dll&#34;</span>, <span style="color:#a6e22e">file</span>),
+</span></span><span style="display:flex;"><span>      })
+</span></span><span style="display:flex;"><span>    );
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#e6db74">/.*\.manifest.json/</span>.<span style="color:#a6e22e">test</span>(<span style="color:#a6e22e">file</span>)) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">plugins</span>.<span style="color:#a6e22e">push</span>(
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">webpack</span>.<span style="color:#a6e22e">DllReferencePlugin</span>({
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">manifest</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">path</span>.<span style="color:#a6e22e">resolve</span>(<span style="color:#a6e22e">__dirname</span>, <span style="color:#e6db74">&#34;../dll&#34;</span>, <span style="color:#a6e22e">file</span>),
+</span></span><span style="display:flex;"><span>      })
+</span></span><span style="display:flex;"><span>    );
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>});
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">plugins</span>,
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><ol start="6">
+<li>将单线程转化为多线程</li>
+</ol>
+<p>webpack 是单进程的，就算有多个任务同时存在的，它们只能一个一个排队依次进行，这是 nodejs 的限制。</p>
+<p>但大多数 CPU 已经都是多核的，我们可以使用 happypack 充分释放 CPU 在多核并发方面的优势，帮助我们把打包构建任务分解为多个子任务并发执行，这将大大提高打包的效率，</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// 引入 happypack
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">Happypack</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#34;happypack&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 创建进程池
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">happyThreadPool</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Happypack</span>.<span style="color:#a6e22e">ThreadPool</span>({
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">size</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">os</span>.<span style="color:#a6e22e">cpus</span>().<span style="color:#a6e22e">length</span>,
+</span></span><span style="display:flex;"><span>});
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">modules</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">rules</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">//...
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">test</span><span style="color:#f92672">:</span> <span style="color:#e6db74">/\.js$/</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">loader</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;happypack/loader?id=happyBabel&#34;</span>,
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">plugins</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Happypack</span>({
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">id</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;happyBabel&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">threadPool</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">happyThreadPool</span>, <span style="color:#75715e">// 指定线程池
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#a6e22e">loader</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;babel-loader?cacheDirectory&#34;</span>],
+</span></span><span style="display:flex;"><span>    }),
+</span></span><span style="display:flex;"><span>  ],
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><ol start="7">
+<li>压缩打包结果的体积</li>
+</ol>
+<p><strong>删除冗余代码</strong></p>
+<p>使用 <strong>Tree-shaking</strong>，它能根据 import、export 的模块导入导出语法，</p>
+<p>在构建编译过程中分析每个模块是否被真实使用，对于没有用到的代码，会在最后的打包结果中删除。</p>
+<p>容易看出 <strong>Tree-shaking</strong> 对处理模块级的代码冗余比价擅长，但对更细粒度的代码冗余，比如 console 语句，注释等，可能就需要在 CSS 和 JavaScript 压缩过程中进行处理了，</p>
+<p>常用的方式是通过 <code>uglifyjs-webpack-plugin</code> 来实现，具体配置方式如下:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">UglifyJsPlugin</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#34;uglifyjs-webpack-plugin&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">plugins</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">UglifyJsPlugin</span>({
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">cache</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>, <span style="color:#75715e">// 开启缓存
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#a6e22e">parallel</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>, <span style="color:#75715e">// 允许并发执行
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#a6e22e">compress</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">drop_console</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>, <span style="color:#75715e">// 删除代码中所有的 console 语句
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">reduce_vars</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>, <span style="color:#75715e">// 把代码中使用多次的静态值定义成变量
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      },
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">output</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">comment</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>, <span style="color:#75715e">// 删除代码中的所有注释
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">beautify</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>, <span style="color:#75715e">// 删除多余空格，让最后输出的代码尽量紧凑
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      },
+</span></span><span style="display:flex;"><span>    }),
+</span></span><span style="display:flex;"><span>  ],
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p><strong>代码拆分按需加载</strong></p>
+<p>如果不进行代码拆分按需加载，则也会降低首屏性能体验。</p>
+<p>项目源代码也需要拆分，可以根据路由来划分打包文件，当访问到不同路由时再触发相应回调请求打包文件，对于 webpack 的打包输出的配置如下:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">output</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">path</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">path</span>.<span style="color:#a6e22e">join</span>(<span style="color:#a6e22e">__dirname</span>, <span style="color:#e6db74">&#34;/../dist&#34;</span>),
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">filename</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;app.js&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">publicPath</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">defaultSettings</span>.<span style="color:#a6e22e">publicPath</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">chunkFilename</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;[name].[chunkhash:5].chunk.js&#34;</span>,
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>以 React 项目为例，在配置路由时还需要添加如下内容:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">getComponent</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">location</span>, <span style="color:#a6e22e">callback</span>) =&gt; {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">require</span>.<span style="color:#a6e22e">ensure</span>(
+</span></span><span style="display:flex;"><span>    [],
+</span></span><span style="display:flex;"><span>    (<span style="color:#a6e22e">require</span>) =&gt; <span style="color:#a6e22e">callback</span>(<span style="color:#66d9ef">null</span>, <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#34;../pages/MyComponent&#34;</span>).<span style="color:#a6e22e">defualt</span>),
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;mine&#34;</span>
+</span></span><span style="display:flex;"><span>  );
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//...
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">Route</span> <span style="color:#a6e22e">path</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/mine&#34;</span> <span style="color:#a6e22e">getComponent</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">getComponent</span>}<span style="color:#f92672">&gt;</span>
+</span></span></code></pre></div><p>此处的关键方法就是 require.ensure 这个异步方法，webpack 会将我们这里定义的组件单独打包成一个文件，仅当路由跳转到 mine 时，才会触发回调去获取 MyComponent 组件的内容。</p>
+<p><strong>可视化分析</strong></p>
+<ul>
+<li>webpack-bundle-analyzer</li>
+</ul>
+<img src="/img/47/03.png" />
+<p>该工具使用起来也很方便:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">BundleAnalyzerPlugin</span> <span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#34;webpack-bundle-analyzer&#34;</span>).<span style="color:#a6e22e">BundleAnalyzerPlugin</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">plugins</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">BundleAnalyzerPlugin</span>({
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">analyzerMode</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;server&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">analyzerHost</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;127.0.0.1&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">analyzerPort</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">8888</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">reportFilename</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;report.html&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">openAnalyzer</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">generateStatsFile</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">statsOptions</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">null</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">logLevel</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;info&#34;</span>,
+</span></span><span style="display:flex;"><span>    }),
+</span></span><span style="display:flex;"><span>  ],
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div></section>
+
+  
+  
+
+  
+  
+  
+  <nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
+    
+    <a class="flex w-1/2 items-center p-6 pr-3 no-underline" href="/articles/posts/49/"
+      ><span class="mr-1.5">←</span><span>Object.create()</span></a
+    >
+    
+    
+    <a
+      class="ml-auto flex w-1/2 items-center justify-end p-6 pl-3 no-underline"
+      href="/articles/posts/47/"
+      ><span>书写高性能的代码</span><span class="ml-1.5">→</span></a
+    >
+    
+  </nav>
+  
+
+  
+  
+</article>
+
+
+    </main>
+
+    <footer
+  class="opaco mx-auto flex h-[5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+  style="position: relative; z-index: 10;display: none;"
+>
+  <div class="mr-auto">
+    &copy; 2024
+    <a class="link" href="/articles/">灏天阁</a>
+  </div>
+  <a class="link" href="https://yinchuanbo.github.io/" rel="noopener" target="_blank"
+    >Powered by YinHao</a
+  >️ ▷
+</footer>
+
+
+    <div class="img__mask" style="display: none;">
+      <img src="" alt="">
+      <span class="close_btn"></span>
+    </div>
+
+    <script>
+      const imgs = document.images;
+      const imgMask = document.querySelector('.img__mask')
+      const closeBtn = document.querySelector('.close_btn')
+      for (let i = 0; i < imgs.length; i++) {
+        const element = imgs[i];
+        element.onclick = () => {
+          const src = element.src;
+          imgMask.style.display = 'flex';
+          imgMask.querySelector('img').src = src;
+        }
+      }
+      closeBtn.onclick = () => {
+        imgMask.style.display = 'none';
+      }
+    </script>
+  </body>
+</html>

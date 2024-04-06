@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+  class="not-ready text-sm lg:text-base"
+  style="--bg: "
+  lang="en"
+>
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  
+  <title>Git开发工作流程 - 灏天阁</title>
+
+  
+  <meta name="theme-color" />
+  
+  <meta name="description" content="一、开发分支模型分类 目前部门使用的主要是四种：dev(开发)、test(测试)、uat(预发布)、release(生产)
+二、开发主体流程 需求评审
+开发排期
+编码开发
+冒烟测试（自检查）
+冒烟通过，提交测试，合并代码到测试分支，部署测试环境
+测试环境测试，开发修 bug
+测试完成，提交预发布环境，合并代码到预发布分支，部署到预发布环境
+预发布环境测试，开发修 bug
+测试完成，产品验收
+验收完成，提交生产，合并代码到生产分支，部署生产环境
+生产运营（客户）验收
+验收完成，结项
+具体操作 1. 拉取代码 一般会在本地默认创建一个 master 分支
+git clone https://code.xxx.com/xxx/xxx.git 2. 初次开发需求前，要先拉取生成/预发布分支，然后基于这个分支之上，创建自己的特性分支进行开发 git fetch origin release:release git checkout release git checkout -b feat-0131-jie 此时，在你本地已经有一个 release 分支对应着远程仓库 release 分支，还有一个内容基于 release 分支的特性分支，之后便可以在这个特性分支上进行需求开发，
+如果不是初次开发，本地已经有生产/预发布分支，则需要重新拉取远程的最新代码，然后再创建
+# tips: 输入已有的分支名时，可以只输入前几个字符，然后按 tab 自动补充 git checkout release git pull origin release git checkout -b feat-0229-jie 注意1: 分支名称是有规范和含义的，不能乱取
+推荐格式：分支责任-需求日期/需求号-开发人姓名，一般按部门规范来，常见的有以下几种：
+feat: 新功能
+fix: 修补 bug" />
+  <meta name="author" content="" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="/articles/main.min.css" />
+
+  
+
+  
+  
+  
+    
+  
+  <link
+    rel="preload"
+    as="image"
+    href="/articles/theme.png"
+  />
+
+  
+  
+  
+  <link rel="preload" as="image" href="/imgs/logo.png" />
+  
+  
+
+  
+
+  
+  <link rel="icon" href="/img/ico.ico" />
+  <link rel="apple-touch-icon" href="/articles/apple-touch-icon.png" />
+  
+  <meta name="generator" content="Hugo 0.108.0">
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="Git开发工作流程" />
+<meta property="og:description" content="一、开发分支模型分类 目前部门使用的主要是四种：dev(开发)、test(测试)、uat(预发布)、release(生产)
+二、开发主体流程 需求评审
+开发排期
+编码开发
+冒烟测试（自检查）
+冒烟通过，提交测试，合并代码到测试分支，部署测试环境
+测试环境测试，开发修 bug
+测试完成，提交预发布环境，合并代码到预发布分支，部署到预发布环境
+预发布环境测试，开发修 bug
+测试完成，产品验收
+验收完成，提交生产，合并代码到生产分支，部署生产环境
+生产运营（客户）验收
+验收完成，结项
+具体操作 1. 拉取代码 一般会在本地默认创建一个 master 分支
+git clone https://code.xxx.com/xxx/xxx.git 2. 初次开发需求前，要先拉取生成/预发布分支，然后基于这个分支之上，创建自己的特性分支进行开发 git fetch origin release:release git checkout release git checkout -b feat-0131-jie 此时，在你本地已经有一个 release 分支对应着远程仓库 release 分支，还有一个内容基于 release 分支的特性分支，之后便可以在这个特性分支上进行需求开发，
+如果不是初次开发，本地已经有生产/预发布分支，则需要重新拉取远程的最新代码，然后再创建
+# tips: 输入已有的分支名时，可以只输入前几个字符，然后按 tab 自动补充 git checkout release git pull origin release git checkout -b feat-0229-jie 注意1: 分支名称是有规范和含义的，不能乱取
+推荐格式：分支责任-需求日期/需求号-开发人姓名，一般按部门规范来，常见的有以下几种：
+feat: 新功能
+fix: 修补 bug" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/articles/posts/123/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-03-02T10:11:57+08:00" />
+<meta property="article:modified_time" content="2024-03-02T10:11:57+08:00" />
+
+  
+  <meta itemprop="name" content="Git开发工作流程">
+<meta itemprop="description" content="一、开发分支模型分类 目前部门使用的主要是四种：dev(开发)、test(测试)、uat(预发布)、release(生产)
+二、开发主体流程 需求评审
+开发排期
+编码开发
+冒烟测试（自检查）
+冒烟通过，提交测试，合并代码到测试分支，部署测试环境
+测试环境测试，开发修 bug
+测试完成，提交预发布环境，合并代码到预发布分支，部署到预发布环境
+预发布环境测试，开发修 bug
+测试完成，产品验收
+验收完成，提交生产，合并代码到生产分支，部署生产环境
+生产运营（客户）验收
+验收完成，结项
+具体操作 1. 拉取代码 一般会在本地默认创建一个 master 分支
+git clone https://code.xxx.com/xxx/xxx.git 2. 初次开发需求前，要先拉取生成/预发布分支，然后基于这个分支之上，创建自己的特性分支进行开发 git fetch origin release:release git checkout release git checkout -b feat-0131-jie 此时，在你本地已经有一个 release 分支对应着远程仓库 release 分支，还有一个内容基于 release 分支的特性分支，之后便可以在这个特性分支上进行需求开发，
+如果不是初次开发，本地已经有生产/预发布分支，则需要重新拉取远程的最新代码，然后再创建
+# tips: 输入已有的分支名时，可以只输入前几个字符，然后按 tab 自动补充 git checkout release git pull origin release git checkout -b feat-0229-jie 注意1: 分支名称是有规范和含义的，不能乱取
+推荐格式：分支责任-需求日期/需求号-开发人姓名，一般按部门规范来，常见的有以下几种：
+feat: 新功能
+fix: 修补 bug"><meta itemprop="datePublished" content="2024-03-02T10:11:57+08:00" />
+<meta itemprop="dateModified" content="2024-03-02T10:11:57+08:00" />
+<meta itemprop="wordCount" content="146">
+<meta itemprop="keywords" content="" />
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Git开发工作流程"/>
+<meta name="twitter:description" content="一、开发分支模型分类 目前部门使用的主要是四种：dev(开发)、test(测试)、uat(预发布)、release(生产)
+二、开发主体流程 需求评审
+开发排期
+编码开发
+冒烟测试（自检查）
+冒烟通过，提交测试，合并代码到测试分支，部署测试环境
+测试环境测试，开发修 bug
+测试完成，提交预发布环境，合并代码到预发布分支，部署到预发布环境
+预发布环境测试，开发修 bug
+测试完成，产品验收
+验收完成，提交生产，合并代码到生产分支，部署生产环境
+生产运营（客户）验收
+验收完成，结项
+具体操作 1. 拉取代码 一般会在本地默认创建一个 master 分支
+git clone https://code.xxx.com/xxx/xxx.git 2. 初次开发需求前，要先拉取生成/预发布分支，然后基于这个分支之上，创建自己的特性分支进行开发 git fetch origin release:release git checkout release git checkout -b feat-0131-jie 此时，在你本地已经有一个 release 分支对应着远程仓库 release 分支，还有一个内容基于 release 分支的特性分支，之后便可以在这个特性分支上进行需求开发，
+如果不是初次开发，本地已经有生产/预发布分支，则需要重新拉取远程的最新代码，然后再创建
+# tips: 输入已有的分支名时，可以只输入前几个字符，然后按 tab 自动补充 git checkout release git pull origin release git checkout -b feat-0229-jie 注意1: 分支名称是有规范和含义的，不能乱取
+推荐格式：分支责任-需求日期/需求号-开发人姓名，一般按部门规范来，常见的有以下几种：
+feat: 新功能
+fix: 修补 bug"/>
+
+  
+  
+</head>
+  <body class="text-black duration-200 ease-out dark:text-white">
+    
+    
+
+    
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100%-10rem)] max-w-3xl px-8 pt-20 dark:prose-invert"
+      id="main"
+    >
+      
+
+<article>
+  <header class="mb-10">
+    <h1 class="!my-0 pb-2.5">
+      Git开发工作流程
+    </h1>
+
+    
+    <div class="text-sm opacity-60">
+      
+      <time>Mar 2, 2024</time>
+      
+      
+      <span class="mx-1">&middot;</span>
+      <span>Yin灏</span>
+    </div>
+    
+  </header>
+
+  <section><h2 id="一开发分支模型分类">一、开发分支模型分类</h2>
+<p>目前部门使用的主要是四种：dev(开发)、test(测试)、uat(预发布)、release(生产)</p>
+<h2 id="二开发主体流程">二、开发主体流程</h2>
+<ol>
+<li>
+<p>需求评审</p>
+</li>
+<li>
+<p>开发排期</p>
+</li>
+<li>
+<p>编码开发</p>
+</li>
+<li>
+<p>冒烟测试（自检查）</p>
+</li>
+<li>
+<p>冒烟通过，提交测试，合并代码到测试分支，部署测试环境</p>
+</li>
+<li>
+<p>测试环境测试，开发修 bug</p>
+</li>
+<li>
+<p>测试完成，提交预发布环境，合并代码到预发布分支，部署到预发布环境</p>
+</li>
+<li>
+<p>预发布环境测试，开发修 bug</p>
+</li>
+<li>
+<p>测试完成，产品验收</p>
+</li>
+<li>
+<p>验收完成，提交生产，合并代码到生产分支，部署生产环境</p>
+</li>
+<li>
+<p>生产运营（客户）验收</p>
+</li>
+<li>
+<p>验收完成，结项</p>
+</li>
+</ol>
+<h2 id="具体操作">具体操作</h2>
+<h3 id="1-拉取代码">1. 拉取代码</h3>
+<p>一般会在本地默认创建一个 master 分支</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>git clone https://code.xxx.com/xxx/xxx.git
+</span></span></code></pre></div><h3 id="2-初次开发需求前要先拉取生成预发布分支然后基于这个分支之上创建自己的特性分支进行开发">2. 初次开发需求前，要先拉取生成/预发布分支，然后基于这个分支之上，创建自己的特性分支进行开发</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>git fetch origin release:release
+</span></span><span style="display:flex;"><span>git checkout release
+</span></span><span style="display:flex;"><span>git checkout -b feat-0131-jie
+</span></span></code></pre></div><p>此时，在你本地已经有一个 release 分支对应着远程仓库 release 分支，还有一个内容基于 release 分支的特性分支，之后便可以在这个特性分支上进行需求开发，</p>
+<p>如果不是初次开发，本地已经有生产/预发布分支，则需要重新拉取远程的最新代码，然后再创建</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#75715e"># tips: 输入已有的分支名时，可以只输入前几个字符，然后按 tab 自动补充</span>
+</span></span><span style="display:flex;"><span>git checkout release
+</span></span><span style="display:flex;"><span>git pull origin release
+</span></span><span style="display:flex;"><span>git checkout -b feat-0229-jie
+</span></span></code></pre></div><p><strong>注意1: 分支名称是有规范和含义的，不能乱取</strong></p>
+<p>推荐格式：分支责任-需求日期/需求号-开发人姓名，一般按部门规范来，常见的有以下几种：</p>
+<ul>
+<li>
+<p>feat: 新功能</p>
+</li>
+<li>
+<p>fix: 修补 bug</p>
+</li>
+<li>
+<p>doc: 文档</p>
+</li>
+<li>
+<p>refactor: 重构（既不是新增功能，也不是修改 bug 的代码变动）</p>
+</li>
+<li>
+<p>test: 测试</p>
+</li>
+<li>
+<p>chore: 构建过程或辅助工具的变动</p>
+</li>
+</ul>
+<p><strong>2. 为啥拉取的是生产/预发布分支</strong></p>
+<p>之所以要拉取 <code>release/uat</code> 分支而不是拉取 <code>dev/test</code>，是因为后者可能包含着一些其他成员还未上线或者可能有 bug 的需求代码，这些代码没有通过验证，如果被你给拉取了，然后又基于此进行新的需求开发，那当你需求开发完成，而其他成员的需求还没上线，你将会把这些未验证的代码一起发送到 <code>uat/release</code> 上，导致一些列问题。</p>
+<h3 id="3-需求开发完成提交和合并代码">3. 需求开发完成，提交和合并代码</h3>
+<p>首先先在本地把新的改动提交，提交描述的格式可以参考着分支名的格式</p>
+<ul>
+<li>
+<p>如果是新需求的提交，可以写成 <code>&quot;feat: 需求0131-新增账期&quot;</code></p>
+</li>
+<li>
+<p>如果是 bug 修复，可以写成 <code>&quot;fix: 禅道3387-重复请求&quot;</code></p>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>git add .
+</span></span><span style="display:flex;"><span>git commit -m <span style="color:#e6db74">&#34;提交描述&#34;</span>
+</span></span></code></pre></div><p>此时，本地当前分支已经记录了你的提交记录，接下来进行代码合并了。</p>
+<p>在代码合并之前，我们先要梳理以下我们应该如何对分支进行管理（非常重要！！！）</p>
+<ol>
+<li>
+<p>首先，我们需要认知到的是，每一个分支应该只对应一个功能，例如，当我们开发需求 01 时，那么就创建一个 <code>feat-01-jie</code> 分支进行开发；开发需求 02 时，就另外创建一个 <code>feat-02-jie</code> 分支进行开发，修改生产环境的某个 bug 时，就创建 <code>fix-jie-3378</code> 进行开发，等等。</p>
+</li>
+<li>
+<p>其次，在合并代码时，我们要将四种分支模型（dev、test、uat、release）作为参照物，而不是把关注点放在自己的分支上，比如我们要在 dev 上调试，那就需要把自己的分支合并到 dev 分支上，如果我们需要提测，则把自己的分支合并到 test 分支上，以此类推。</p>
+</li>
+</ol>
+<p>即，我们要关注到，这四个环境的分支上，会有什么内容，会新增什么内容，<strong>[ 切记不能反过来将除了 release 之外的三个分支合并到自己的代码上！！！ ]</strong> 如果其他成员将自己的代码也提交到 dev 分支上，但是这个代码是没有通过验证的，此时你将 dev 往自己的分支上合，那之后的提测、上预发布、生产则很大概率会出问题。<strong>[ 所以一定要保持自己的分支是干净的 ]</strong> 而 release 分支对应的是生成环境，一般是最稳定的版本，所以合并到自己的分支以获取最新的更改是没有问题的。</p>
+</section>
+
+  
+  
+
+  
+  
+  
+  <nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
+    
+    <a class="flex w-1/2 items-center p-6 pr-3 no-underline" href="/articles/posts/124/"
+      ><span class="mr-1.5">←</span><span>SCSS</span></a
+    >
+    
+    
+    <a
+      class="ml-auto flex w-1/2 items-center justify-end p-6 pl-3 no-underline"
+      href="/articles/posts/122/"
+      ><span>Js 技巧</span><span class="ml-1.5">→</span></a
+    >
+    
+  </nav>
+  
+
+  
+  
+</article>
+
+
+    </main>
+
+    <footer
+  class="opaco mx-auto flex h-[5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+  style="position: relative; z-index: 10;display: none;"
+>
+  <div class="mr-auto">
+    &copy; 2024
+    <a class="link" href="/articles/">灏天阁</a>
+  </div>
+  <a class="link" href="https://yinchuanbo.github.io/" rel="noopener" target="_blank"
+    >Powered by YinHao</a
+  >️ ▷
+</footer>
+
+
+    <div class="img__mask" style="display: none;">
+      <img src="" alt="">
+      <span class="close_btn"></span>
+    </div>
+
+    <script>
+      const imgs = document.images;
+      const imgMask = document.querySelector('.img__mask')
+      const closeBtn = document.querySelector('.close_btn')
+      for (let i = 0; i < imgs.length; i++) {
+        const element = imgs[i];
+        element.onclick = () => {
+          const src = element.src;
+          imgMask.style.display = 'flex';
+          imgMask.querySelector('img').src = src;
+        }
+      }
+      closeBtn.onclick = () => {
+        imgMask.style.display = 'none';
+      }
+    </script>
+  </body>
+</html>

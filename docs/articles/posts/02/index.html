@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+  class="not-ready text-sm lg:text-base"
+  style="--bg: "
+  lang="en"
+>
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  
+  <title>简单工厂模式 - 灏天阁</title>
+
+  
+  <meta name="theme-color" />
+  
+  <meta name="description" content="又叫静态工厂方法，由一个工厂对象决定创建某一种产品对象类的实例，主要用来创建用一类对象。
+工作中的一次需求 var LoginAlert = function (text) { this.content = text; }; LoginAlert.prototype.show = function () { // 显示警示框 }; var userNameAlert = new LoginAlert(&#34;用户名不能多于 16 个字母或数字&#34;); userNameAlert.show(); 上面的类，如果对于多种场景，就不那么适用了；可能要需要定义多个类。
+如果类太多，那么提供一个 // 篮球基类 var Basketball = function () { this.intro = &#34;篮球盛行于美国&#34;; }; Basketball.prototype = { getMember: function () { console.log(&#34;每个队伍需要5名队员&#34;); }, getBallSize: function () { console.log(&#34;篮球很大&#34;); }, }; // 足球基类 var Football = function () { this.intro = &#34;足球在世界范围内很流行&#34;; }; Football." />
+  <meta name="author" content="" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="/articles/main.min.css" />
+
+  
+
+  
+  
+  
+    
+  
+  <link
+    rel="preload"
+    as="image"
+    href="/articles/theme.png"
+  />
+
+  
+  
+  
+  <link rel="preload" as="image" href="/imgs/logo.png" />
+  
+  
+
+  
+
+  
+  <link rel="icon" href="/img/ico.ico" />
+  <link rel="apple-touch-icon" href="/articles/apple-touch-icon.png" />
+  
+  <meta name="generator" content="Hugo 0.108.0">
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="简单工厂模式" />
+<meta property="og:description" content="又叫静态工厂方法，由一个工厂对象决定创建某一种产品对象类的实例，主要用来创建用一类对象。
+工作中的一次需求 var LoginAlert = function (text) { this.content = text; }; LoginAlert.prototype.show = function () { // 显示警示框 }; var userNameAlert = new LoginAlert(&#34;用户名不能多于 16 个字母或数字&#34;); userNameAlert.show(); 上面的类，如果对于多种场景，就不那么适用了；可能要需要定义多个类。
+如果类太多，那么提供一个 // 篮球基类 var Basketball = function () { this.intro = &#34;篮球盛行于美国&#34;; }; Basketball.prototype = { getMember: function () { console.log(&#34;每个队伍需要5名队员&#34;); }, getBallSize: function () { console.log(&#34;篮球很大&#34;); }, }; // 足球基类 var Football = function () { this.intro = &#34;足球在世界范围内很流行&#34;; }; Football." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/articles/posts/02/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-08-27T22:28:30+08:00" />
+<meta property="article:modified_time" content="2023-08-27T22:28:30+08:00" />
+
+  
+  <meta itemprop="name" content="简单工厂模式">
+<meta itemprop="description" content="又叫静态工厂方法，由一个工厂对象决定创建某一种产品对象类的实例，主要用来创建用一类对象。
+工作中的一次需求 var LoginAlert = function (text) { this.content = text; }; LoginAlert.prototype.show = function () { // 显示警示框 }; var userNameAlert = new LoginAlert(&#34;用户名不能多于 16 个字母或数字&#34;); userNameAlert.show(); 上面的类，如果对于多种场景，就不那么适用了；可能要需要定义多个类。
+如果类太多，那么提供一个 // 篮球基类 var Basketball = function () { this.intro = &#34;篮球盛行于美国&#34;; }; Basketball.prototype = { getMember: function () { console.log(&#34;每个队伍需要5名队员&#34;); }, getBallSize: function () { console.log(&#34;篮球很大&#34;); }, }; // 足球基类 var Football = function () { this.intro = &#34;足球在世界范围内很流行&#34;; }; Football."><meta itemprop="datePublished" content="2023-08-27T22:28:30+08:00" />
+<meta itemprop="dateModified" content="2023-08-27T22:28:30+08:00" />
+<meta itemprop="wordCount" content="261">
+<meta itemprop="keywords" content="" />
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="简单工厂模式"/>
+<meta name="twitter:description" content="又叫静态工厂方法，由一个工厂对象决定创建某一种产品对象类的实例，主要用来创建用一类对象。
+工作中的一次需求 var LoginAlert = function (text) { this.content = text; }; LoginAlert.prototype.show = function () { // 显示警示框 }; var userNameAlert = new LoginAlert(&#34;用户名不能多于 16 个字母或数字&#34;); userNameAlert.show(); 上面的类，如果对于多种场景，就不那么适用了；可能要需要定义多个类。
+如果类太多，那么提供一个 // 篮球基类 var Basketball = function () { this.intro = &#34;篮球盛行于美国&#34;; }; Basketball.prototype = { getMember: function () { console.log(&#34;每个队伍需要5名队员&#34;); }, getBallSize: function () { console.log(&#34;篮球很大&#34;); }, }; // 足球基类 var Football = function () { this.intro = &#34;足球在世界范围内很流行&#34;; }; Football."/>
+
+  
+  
+</head>
+  <body class="text-black duration-200 ease-out dark:text-white">
+    
+    
+
+    
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100%-10rem)] max-w-3xl px-8 pt-20 dark:prose-invert"
+      id="main"
+    >
+      
+
+<article>
+  <header class="mb-10">
+    <h1 class="!my-0 pb-2.5">
+      简单工厂模式
+    </h1>
+
+    
+    <div class="text-sm opacity-60">
+      
+      <time>Aug 27, 2023</time>
+      
+      
+      <span class="mx-1">&middot;</span>
+      <span>Yin灏</span>
+    </div>
+    
+  </header>
+
+  <section><blockquote>
+<p>又叫静态工厂方法，由一个工厂对象决定创建某一种产品对象类的实例，主要用来创建用一类对象。</p>
+</blockquote>
+<h3 id="工作中的一次需求">工作中的一次需求</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">LoginAlert</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">text</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">content</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">text</span>;
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">LoginAlert</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">show</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 显示警示框
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>};
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">userNameAlert</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">LoginAlert</span>(<span style="color:#e6db74">&#34;用户名不能多于 16 个字母或数字&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">userNameAlert</span>.<span style="color:#a6e22e">show</span>();
+</span></span></code></pre></div><p>上面的类，如果对于多种场景，就不那么适用了；可能要需要定义多个类。</p>
+<h3 id="如果类太多那么提供一个">如果类太多，那么提供一个</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// 篮球基类
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">Basketball</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">intro</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;篮球盛行于美国&#34;</span>;
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Basketball</span>.<span style="color:#a6e22e">prototype</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">getMember</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;每个队伍需要5名队员&#34;</span>);
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">getBallSize</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;篮球很大&#34;</span>);
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 足球基类
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">Football</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">intro</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;足球在世界范围内很流行&#34;</span>;
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Football</span>.<span style="color:#a6e22e">prototype</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">getMember</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;每个队伍需要11名队员&#34;</span>);
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">getBallSize</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;足球很大&#34;</span>);
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 网球基类
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">Tennis</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">intro</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;每年有很多网球系列赛&#34;</span>;
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Tennis</span>.<span style="color:#a6e22e">prototype</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">getMember</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;每个队伍需要1名队员&#34;</span>);
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">getBallSize</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;网球很小&#34;</span>);
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 运动工厂
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">SportsFactory</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">name</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">switch</span> (<span style="color:#a6e22e">name</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#34;NBA&#34;</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Basketball</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#34;wordCup&#34;</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Football</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#34;FrenchOpen&#34;</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Tennis</span>();
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 使用
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">football</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">SportsFactory</span>(<span style="color:#e6db74">&#34;wordCup&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">football</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">football</span>.<span style="color:#a6e22e">intro</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">football</span>.<span style="color:#a6e22e">getMember</span>();
+</span></span></code></pre></div><h3 id="一个对象有时也可以代替许多类">一个对象有时也可以代替许多类</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// 工厂模式
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">createBook</span>(<span style="color:#a6e22e">name</span>, <span style="color:#a6e22e">time</span>, <span style="color:#a6e22e">type</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 创建一个对象，并对对象拓展属性和方法
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">o</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Object();
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">o</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">name</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">o</span>.<span style="color:#a6e22e">time</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">time</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">o</span>.<span style="color:#a6e22e">type</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">type</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">o</span>.<span style="color:#a6e22e">getName</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name</span>);
+</span></span><span style="display:flex;"><span>  };
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">o</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">book1</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">createBook</span>(<span style="color:#e6db74">&#34;js book&#34;</span>, <span style="color:#ae81ff">2014</span>, <span style="color:#e6db74">&#34;js&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">book2</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">createBook</span>(<span style="color:#e6db74">&#34;css book&#34;</span>, <span style="color:#ae81ff">2013</span>, <span style="color:#e6db74">&#34;css&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">book1</span>.<span style="color:#a6e22e">getName</span>();
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">book2</span>.<span style="color:#a6e22e">getName</span>();
+</span></span></code></pre></div><p>将多个类改造为一个工厂模式，首先抽出他们相同点，比如共有属性 this.content, 原型共有方法 show，也有不同点，比如确认框与提示框的确定按钮等。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">createPop</span>(<span style="color:#a6e22e">type</span>, <span style="color:#a6e22e">text</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">o</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Object();
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">o</span>.<span style="color:#a6e22e">content</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">text</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">o</span>.<span style="color:#a6e22e">show</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 显示方法
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  };
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">type</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#34;alert&#34;</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 警示框差异部分
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">type</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#34;prompt&#34;</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 提示框差异部分
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">type</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#34;confirm&#34;</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 确认框差异部分
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">o</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 创建警示框
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">userNameAlert</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">createPop</span>(<span style="color:#e6db74">&#34;alert&#34;</span>, <span style="color:#e6db74">&#34;用户名只能是 26 个字母和数字&#34;</span>);
+</span></span></code></pre></div></section>
+
+  
+  
+
+  
+  
+  
+  <nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
+    
+    <a class="flex w-1/2 items-center p-6 pr-3 no-underline" href="/articles/posts/03/"
+      ><span class="mr-1.5">←</span><span>工厂方法模式</span></a
+    >
+    
+    
+    <a
+      class="ml-auto flex w-1/2 items-center justify-end p-6 pl-3 no-underline"
+      href="/articles/posts/01/"
+      ><span>面向对象编程</span><span class="ml-1.5">→</span></a
+    >
+    
+  </nav>
+  
+
+  
+  
+</article>
+
+
+    </main>
+
+    <footer
+  class="opaco mx-auto flex h-[5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+  style="position: relative; z-index: 10;display: none;"
+>
+  <div class="mr-auto">
+    &copy; 2024
+    <a class="link" href="/articles/">灏天阁</a>
+  </div>
+  <a class="link" href="https://yinchuanbo.github.io/" rel="noopener" target="_blank"
+    >Powered by YinHao</a
+  >️ ▷
+</footer>
+
+
+    <div class="img__mask" style="display: none;">
+      <img src="" alt="">
+      <span class="close_btn"></span>
+    </div>
+
+    <script>
+      const imgs = document.images;
+      const imgMask = document.querySelector('.img__mask')
+      const closeBtn = document.querySelector('.close_btn')
+      for (let i = 0; i < imgs.length; i++) {
+        const element = imgs[i];
+        element.onclick = () => {
+          const src = element.src;
+          imgMask.style.display = 'flex';
+          imgMask.querySelector('img').src = src;
+        }
+      }
+      closeBtn.onclick = () => {
+        imgMask.style.display = 'none';
+      }
+    </script>
+  </body>
+</html>

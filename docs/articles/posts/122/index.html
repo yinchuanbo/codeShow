@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+  class="not-ready text-sm lg:text-base"
+  style="--bg: "
+  lang="en"
+>
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  
+  <title>Js 技巧 - 灏天阁</title>
+
+  
+  <meta name="theme-color" />
+  
+  <meta name="description" content="动态对象键 const dynamicKey = &#34;dynamicProperty&#34;; const obj = { [dynamicKey]: &#34;这是一个动态的属性&#34;, }; console.log(obj.dynamicProperty); // 这是一个动态的属性 私有字段 现在，Js 类支持使用 # 符号的私有字段，私有字段不能从类外部访问，从而提供封装和信息隐藏。
+class Counter { #count = 0; increment() { this.#count&#43;&#43;; } getCount() { return this.#count; } } const counter = new Counter(); counter.increment(); console.log(counter.getCount()); // 1 Promise.allSettled() 这个方法返回一个 Promise，该 Promise 在所有给定的 Promise 已经 resolve 或 reject 后 resolve，提供每个 Promise 的结果数组，
+const promises = [Promise.resolve(&#34;Resolved&#34;), Promise.reject(&#34;Rejected&#34;)]; Promise.allSettled(promises).then((results) =&gt; { console.log(results); }); flatMap flatMap 方法将 map() 和 flat() 的效果结合到一个方法中。" />
+  <meta name="author" content="" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="/articles/main.min.css" />
+
+  
+
+  
+  
+  
+    
+  
+  <link
+    rel="preload"
+    as="image"
+    href="/articles/theme.png"
+  />
+
+  
+  
+  
+  <link rel="preload" as="image" href="/imgs/logo.png" />
+  
+  
+
+  
+
+  
+  <link rel="icon" href="/img/ico.ico" />
+  <link rel="apple-touch-icon" href="/articles/apple-touch-icon.png" />
+  
+  <meta name="generator" content="Hugo 0.108.0">
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="Js 技巧" />
+<meta property="og:description" content="动态对象键 const dynamicKey = &#34;dynamicProperty&#34;; const obj = { [dynamicKey]: &#34;这是一个动态的属性&#34;, }; console.log(obj.dynamicProperty); // 这是一个动态的属性 私有字段 现在，Js 类支持使用 # 符号的私有字段，私有字段不能从类外部访问，从而提供封装和信息隐藏。
+class Counter { #count = 0; increment() { this.#count&#43;&#43;; } getCount() { return this.#count; } } const counter = new Counter(); counter.increment(); console.log(counter.getCount()); // 1 Promise.allSettled() 这个方法返回一个 Promise，该 Promise 在所有给定的 Promise 已经 resolve 或 reject 后 resolve，提供每个 Promise 的结果数组，
+const promises = [Promise.resolve(&#34;Resolved&#34;), Promise.reject(&#34;Rejected&#34;)]; Promise.allSettled(promises).then((results) =&gt; { console.log(results); }); flatMap flatMap 方法将 map() 和 flat() 的效果结合到一个方法中。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/articles/posts/122/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-03-02T09:55:06+08:00" />
+<meta property="article:modified_time" content="2024-03-02T09:55:06+08:00" />
+
+  
+  <meta itemprop="name" content="Js 技巧">
+<meta itemprop="description" content="动态对象键 const dynamicKey = &#34;dynamicProperty&#34;; const obj = { [dynamicKey]: &#34;这是一个动态的属性&#34;, }; console.log(obj.dynamicProperty); // 这是一个动态的属性 私有字段 现在，Js 类支持使用 # 符号的私有字段，私有字段不能从类外部访问，从而提供封装和信息隐藏。
+class Counter { #count = 0; increment() { this.#count&#43;&#43;; } getCount() { return this.#count; } } const counter = new Counter(); counter.increment(); console.log(counter.getCount()); // 1 Promise.allSettled() 这个方法返回一个 Promise，该 Promise 在所有给定的 Promise 已经 resolve 或 reject 后 resolve，提供每个 Promise 的结果数组，
+const promises = [Promise.resolve(&#34;Resolved&#34;), Promise.reject(&#34;Rejected&#34;)]; Promise.allSettled(promises).then((results) =&gt; { console.log(results); }); flatMap flatMap 方法将 map() 和 flat() 的效果结合到一个方法中。"><meta itemprop="datePublished" content="2024-03-02T09:55:06+08:00" />
+<meta itemprop="dateModified" content="2024-03-02T09:55:06+08:00" />
+<meta itemprop="wordCount" content="106">
+<meta itemprop="keywords" content="" />
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Js 技巧"/>
+<meta name="twitter:description" content="动态对象键 const dynamicKey = &#34;dynamicProperty&#34;; const obj = { [dynamicKey]: &#34;这是一个动态的属性&#34;, }; console.log(obj.dynamicProperty); // 这是一个动态的属性 私有字段 现在，Js 类支持使用 # 符号的私有字段，私有字段不能从类外部访问，从而提供封装和信息隐藏。
+class Counter { #count = 0; increment() { this.#count&#43;&#43;; } getCount() { return this.#count; } } const counter = new Counter(); counter.increment(); console.log(counter.getCount()); // 1 Promise.allSettled() 这个方法返回一个 Promise，该 Promise 在所有给定的 Promise 已经 resolve 或 reject 后 resolve，提供每个 Promise 的结果数组，
+const promises = [Promise.resolve(&#34;Resolved&#34;), Promise.reject(&#34;Rejected&#34;)]; Promise.allSettled(promises).then((results) =&gt; { console.log(results); }); flatMap flatMap 方法将 map() 和 flat() 的效果结合到一个方法中。"/>
+
+  
+  
+</head>
+  <body class="text-black duration-200 ease-out dark:text-white">
+    
+    
+
+    
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100%-10rem)] max-w-3xl px-8 pt-20 dark:prose-invert"
+      id="main"
+    >
+      
+
+<article>
+  <header class="mb-10">
+    <h1 class="!my-0 pb-2.5">
+      Js 技巧
+    </h1>
+
+    
+    <div class="text-sm opacity-60">
+      
+      <time>Mar 2, 2024</time>
+      
+      
+      <span class="mx-1">&middot;</span>
+      <span>Yin灏</span>
+    </div>
+    
+  </header>
+
+  <section><h3 id="动态对象键">动态对象键</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">dynamicKey</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;dynamicProperty&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">obj</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  [<span style="color:#a6e22e">dynamicKey</span>]<span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;这是一个动态的属性&#34;</span>,
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">obj</span>.<span style="color:#a6e22e">dynamicProperty</span>); <span style="color:#75715e">// 这是一个动态的属性
+</span></span></span></code></pre></div><h3 id="私有字段">私有字段</h3>
+<p>现在，Js 类支持使用 <code>#</code> 符号的私有字段，私有字段不能从类外部访问，从而提供封装和信息隐藏。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Counter</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">#</span><span style="color:#a6e22e">count</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">increment</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span>.<span style="color:#960050;background-color:#1e0010">#</span><span style="color:#a6e22e">count</span><span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">getCount</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#960050;background-color:#1e0010">#</span><span style="color:#a6e22e">count</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">counter</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Counter</span>();
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">counter</span>.<span style="color:#a6e22e">increment</span>();
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">counter</span>.<span style="color:#a6e22e">getCount</span>()); <span style="color:#75715e">// 1
+</span></span></span></code></pre></div><h3 id="promiseallsettled">Promise.allSettled()</h3>
+<p>这个方法返回一个 Promise，该 Promise 在所有给定的 Promise 已经 resolve 或 reject 后 resolve，提供每个 Promise 的结果数组，</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">promises</span> <span style="color:#f92672">=</span> [Promise.<span style="color:#a6e22e">resolve</span>(<span style="color:#e6db74">&#34;Resolved&#34;</span>), Promise.<span style="color:#a6e22e">reject</span>(<span style="color:#e6db74">&#34;Rejected&#34;</span>)];
+</span></span><span style="display:flex;"><span>Promise.<span style="color:#a6e22e">allSettled</span>(<span style="color:#a6e22e">promises</span>).<span style="color:#a6e22e">then</span>((<span style="color:#a6e22e">results</span>) =&gt; {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">results</span>);
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div><h3 id="flatmap">flatMap</h3>
+<p>flatMap 方法将 map() 和 flat() 的效果结合到一个方法中。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">numbers</span> <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>];
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">res</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">numbers</span>.<span style="color:#a6e22e">flatMap</span>((<span style="color:#a6e22e">num</span>) =&gt; [<span style="color:#a6e22e">num</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span>]);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">res</span>); <span style="color:#75715e">// [2,4,6]
+</span></span></span></code></pre></div><h3 id="逻辑赋值运算符">逻辑赋值运算符</h3>
+<p>Js 引入了逻辑赋值运算符（&amp;&amp;=、||=、??==），以简洁的方式将逻辑操作与赋值结合起来。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">x</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">x</span> <span style="color:#f92672">||=</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">x</span>); <span style="color:#75715e">// true.
+</span></span></span></code></pre></div></section>
+
+  
+  
+
+  
+  
+  
+  <nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
+    
+    <a class="flex w-1/2 items-center p-6 pr-3 no-underline" href="/articles/posts/123/"
+      ><span class="mr-1.5">←</span><span>Git开发工作流程</span></a
+    >
+    
+    
+    <a
+      class="ml-auto flex w-1/2 items-center justify-end p-6 pl-3 no-underline"
+      href="/articles/posts/121/"
+      ><span>语句和程序结构</span><span class="ml-1.5">→</span></a
+    >
+    
+  </nav>
+  
+
+  
+  
+</article>
+
+
+    </main>
+
+    <footer
+  class="opaco mx-auto flex h-[5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+  style="position: relative; z-index: 10;display: none;"
+>
+  <div class="mr-auto">
+    &copy; 2024
+    <a class="link" href="/articles/">灏天阁</a>
+  </div>
+  <a class="link" href="https://yinchuanbo.github.io/" rel="noopener" target="_blank"
+    >Powered by YinHao</a
+  >️ ▷
+</footer>
+
+
+    <div class="img__mask" style="display: none;">
+      <img src="" alt="">
+      <span class="close_btn"></span>
+    </div>
+
+    <script>
+      const imgs = document.images;
+      const imgMask = document.querySelector('.img__mask')
+      const closeBtn = document.querySelector('.close_btn')
+      for (let i = 0; i < imgs.length; i++) {
+        const element = imgs[i];
+        element.onclick = () => {
+          const src = element.src;
+          imgMask.style.display = 'flex';
+          imgMask.querySelector('img').src = src;
+        }
+      }
+      closeBtn.onclick = () => {
+        imgMask.style.display = 'none';
+      }
+    </script>
+  </body>
+</html>

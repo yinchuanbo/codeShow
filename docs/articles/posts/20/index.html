@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+  class="not-ready text-sm lg:text-base"
+  style="--bg: "
+  lang="en"
+>
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  
+  <title>装饰者模式 - 灏天阁</title>
+
+  
+  <meta name="theme-color" />
+  
+  <meta name="description" content=" 在不改变原对象的基础上，通过对其进行包装拓展使原有对象可以满足用户的更复杂需求。
+// 装饰者 var decorator = function (input, fn) { var input = document.getElementById(input); if (typeof input.onclick === &#34;function&#34;) { var oldClickFn = input.onclick; input.onclick = function () { oldClickFn(); fn(); }; } else { input.onclick = fn; } }; // 使用 decorator(&#34;tel_input&#34;, function () { document.getElementById(&#34;tel_demo_text&#34;).style.display = &#34;none&#34;; }); decorator(&#34;name_input&#34;, function () { document.getElementById(&#34;name_demo_text&#34;).style.display = &#34;none&#34;; }); decorator(&#34;address_input&#34;, function () { document.getElementById(&#34;address_demo_text&#34;).style.display = &#34;none&#34;; }); " />
+  <meta name="author" content="" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="/articles/main.min.css" />
+
+  
+
+  
+  
+  
+    
+  
+  <link
+    rel="preload"
+    as="image"
+    href="/articles/theme.png"
+  />
+
+  
+  
+  
+  <link rel="preload" as="image" href="/imgs/logo.png" />
+  
+  
+
+  
+
+  
+  <link rel="icon" href="/img/ico.ico" />
+  <link rel="apple-touch-icon" href="/articles/apple-touch-icon.png" />
+  
+  <meta name="generator" content="Hugo 0.108.0">
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="装饰者模式" />
+<meta property="og:description" content=" 在不改变原对象的基础上，通过对其进行包装拓展使原有对象可以满足用户的更复杂需求。
+// 装饰者 var decorator = function (input, fn) { var input = document.getElementById(input); if (typeof input.onclick === &#34;function&#34;) { var oldClickFn = input.onclick; input.onclick = function () { oldClickFn(); fn(); }; } else { input.onclick = fn; } }; // 使用 decorator(&#34;tel_input&#34;, function () { document.getElementById(&#34;tel_demo_text&#34;).style.display = &#34;none&#34;; }); decorator(&#34;name_input&#34;, function () { document.getElementById(&#34;name_demo_text&#34;).style.display = &#34;none&#34;; }); decorator(&#34;address_input&#34;, function () { document.getElementById(&#34;address_demo_text&#34;).style.display = &#34;none&#34;; }); " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/articles/posts/20/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-08-30T21:55:19+08:00" />
+<meta property="article:modified_time" content="2023-08-30T21:55:19+08:00" />
+
+  
+  <meta itemprop="name" content="装饰者模式">
+<meta itemprop="description" content=" 在不改变原对象的基础上，通过对其进行包装拓展使原有对象可以满足用户的更复杂需求。
+// 装饰者 var decorator = function (input, fn) { var input = document.getElementById(input); if (typeof input.onclick === &#34;function&#34;) { var oldClickFn = input.onclick; input.onclick = function () { oldClickFn(); fn(); }; } else { input.onclick = fn; } }; // 使用 decorator(&#34;tel_input&#34;, function () { document.getElementById(&#34;tel_demo_text&#34;).style.display = &#34;none&#34;; }); decorator(&#34;name_input&#34;, function () { document.getElementById(&#34;name_demo_text&#34;).style.display = &#34;none&#34;; }); decorator(&#34;address_input&#34;, function () { document.getElementById(&#34;address_demo_text&#34;).style.display = &#34;none&#34;; }); "><meta itemprop="datePublished" content="2023-08-30T21:55:19+08:00" />
+<meta itemprop="dateModified" content="2023-08-30T21:55:19+08:00" />
+<meta itemprop="wordCount" content="66">
+<meta itemprop="keywords" content="" />
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="装饰者模式"/>
+<meta name="twitter:description" content=" 在不改变原对象的基础上，通过对其进行包装拓展使原有对象可以满足用户的更复杂需求。
+// 装饰者 var decorator = function (input, fn) { var input = document.getElementById(input); if (typeof input.onclick === &#34;function&#34;) { var oldClickFn = input.onclick; input.onclick = function () { oldClickFn(); fn(); }; } else { input.onclick = fn; } }; // 使用 decorator(&#34;tel_input&#34;, function () { document.getElementById(&#34;tel_demo_text&#34;).style.display = &#34;none&#34;; }); decorator(&#34;name_input&#34;, function () { document.getElementById(&#34;name_demo_text&#34;).style.display = &#34;none&#34;; }); decorator(&#34;address_input&#34;, function () { document.getElementById(&#34;address_demo_text&#34;).style.display = &#34;none&#34;; }); "/>
+
+  
+  
+</head>
+  <body class="text-black duration-200 ease-out dark:text-white">
+    
+    
+
+    
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100%-10rem)] max-w-3xl px-8 pt-20 dark:prose-invert"
+      id="main"
+    >
+      
+
+<article>
+  <header class="mb-10">
+    <h1 class="!my-0 pb-2.5">
+      装饰者模式
+    </h1>
+
+    
+    <div class="text-sm opacity-60">
+      
+      <time>Aug 30, 2023</time>
+      
+      
+      <span class="mx-1">&middot;</span>
+      <span>Yin灏</span>
+    </div>
+    
+  </header>
+
+  <section><blockquote>
+<p>在不改变原对象的基础上，通过对其进行包装拓展使原有对象可以满足用户的更复杂需求。</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// 装饰者
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">decorator</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">input</span>, <span style="color:#a6e22e">fn</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">input</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#a6e22e">input</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">input</span>.<span style="color:#a6e22e">onclick</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#34;function&#34;</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">oldClickFn</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">input</span>.<span style="color:#a6e22e">onclick</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">input</span>.<span style="color:#a6e22e">onclick</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">oldClickFn</span>();
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">fn</span>();
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>  } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">input</span>.<span style="color:#a6e22e">onclick</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">fn</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// 使用
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">decorator</span>(<span style="color:#e6db74">&#34;tel_input&#34;</span>, <span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>  document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#34;tel_demo_text&#34;</span>).<span style="color:#a6e22e">style</span>.<span style="color:#a6e22e">display</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;none&#34;</span>;
+</span></span><span style="display:flex;"><span>});
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">decorator</span>(<span style="color:#e6db74">&#34;name_input&#34;</span>, <span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>  document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#34;name_demo_text&#34;</span>).<span style="color:#a6e22e">style</span>.<span style="color:#a6e22e">display</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;none&#34;</span>;
+</span></span><span style="display:flex;"><span>});
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">decorator</span>(<span style="color:#e6db74">&#34;address_input&#34;</span>, <span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>  document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#34;address_demo_text&#34;</span>).<span style="color:#a6e22e">style</span>.<span style="color:#a6e22e">display</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;none&#34;</span>;
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div></section>
+
+  
+  
+
+  
+  
+  
+  <nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
+    
+    <a class="flex w-1/2 items-center p-6 pr-3 no-underline" href="/articles/posts/21/"
+      ><span class="mr-1.5">←</span><span>桥接模式</span></a
+    >
+    
+    
+    <a
+      class="ml-auto flex w-1/2 items-center justify-end p-6 pl-3 no-underline"
+      href="/articles/posts/19/"
+      ><span>适配器模式</span><span class="ml-1.5">→</span></a
+    >
+    
+  </nav>
+  
+
+  
+  
+</article>
+
+
+    </main>
+
+    <footer
+  class="opaco mx-auto flex h-[5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+  style="position: relative; z-index: 10;display: none;"
+>
+  <div class="mr-auto">
+    &copy; 2024
+    <a class="link" href="/articles/">灏天阁</a>
+  </div>
+  <a class="link" href="https://yinchuanbo.github.io/" rel="noopener" target="_blank"
+    >Powered by YinHao</a
+  >️ ▷
+</footer>
+
+
+    <div class="img__mask" style="display: none;">
+      <img src="" alt="">
+      <span class="close_btn"></span>
+    </div>
+
+    <script>
+      const imgs = document.images;
+      const imgMask = document.querySelector('.img__mask')
+      const closeBtn = document.querySelector('.close_btn')
+      for (let i = 0; i < imgs.length; i++) {
+        const element = imgs[i];
+        element.onclick = () => {
+          const src = element.src;
+          imgMask.style.display = 'flex';
+          imgMask.querySelector('img').src = src;
+        }
+      }
+      closeBtn.onclick = () => {
+        imgMask.style.display = 'none';
+      }
+    </script>
+  </body>
+</html>

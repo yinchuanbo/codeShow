@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+  class="not-ready text-sm lg:text-base"
+  style="--bg: "
+  lang="en"
+>
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  
+  <title>为嵌入图片和元素添加样式 - 灏天阁</title>
+
+  
+  <meta name="theme-color" />
+  
+  <meta name="description" content="可伸缩的图片模式 img { width: auto; max-width: 100%; height: auto; } 控制对象大小的新方法 img { width: 200px; height: 200px; } img.contain { object-fit: contain; } img.cover { object-fit: cover; } img.none { object-fit: none; } img.scaledown { object-fit: scale-down; } object-fit 属性的默认值为 fill，意味着图片内容会在必要时拉伸以填满容器，因此可能破坏宽高比，
+cover 和 contain 则与 background-size 属性中对应的关键字作用相同。none 会采用图片固有大小，不管容器有多大。最后，scale-down 会自动从 none 和 contain 中选一个，哪个结果尺寸小就用哪一个。最终图片会居中，但可以通过 object-position 重新设置，与定位背景图片时类似。
+可保持宽高比的容器 对于具有固定宽高比的位图，把高度设置为 auto，只改变宽度，或者把宽度设置为 auto，只改变高度，都是可以的，
+但如果是没有固定宽高比的元素呢？如果使其在可伸缩的同时保持固定宽高比？
+iframe 和 object 元素就属于这种情形，某些情况下的 SVG 内容也是。常见的例子是在页面中通过 iframe 嵌入一段视频：
+&lt;iframe width=&#34;420&#34; height=&#34;315&#34; src=&#34;xxx&#34; frameborder=&#34;0&#34; allowfullscreen &gt;&lt;/iframe&gt; 如果像这样给他设置一个可伸缩的宽度：" />
+  <meta name="author" content="" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="/articles/main.min.css" />
+
+  
+
+  
+  
+  
+    
+  
+  <link
+    rel="preload"
+    as="image"
+    href="/articles/theme.png"
+  />
+
+  
+  
+  
+  <link rel="preload" as="image" href="/imgs/logo.png" />
+  
+  
+
+  
+
+  
+  <link rel="icon" href="/img/ico.ico" />
+  <link rel="apple-touch-icon" href="/articles/apple-touch-icon.png" />
+  
+  <meta name="generator" content="Hugo 0.108.0">
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="为嵌入图片和元素添加样式" />
+<meta property="og:description" content="可伸缩的图片模式 img { width: auto; max-width: 100%; height: auto; } 控制对象大小的新方法 img { width: 200px; height: 200px; } img.contain { object-fit: contain; } img.cover { object-fit: cover; } img.none { object-fit: none; } img.scaledown { object-fit: scale-down; } object-fit 属性的默认值为 fill，意味着图片内容会在必要时拉伸以填满容器，因此可能破坏宽高比，
+cover 和 contain 则与 background-size 属性中对应的关键字作用相同。none 会采用图片固有大小，不管容器有多大。最后，scale-down 会自动从 none 和 contain 中选一个，哪个结果尺寸小就用哪一个。最终图片会居中，但可以通过 object-position 重新设置，与定位背景图片时类似。
+可保持宽高比的容器 对于具有固定宽高比的位图，把高度设置为 auto，只改变宽度，或者把宽度设置为 auto，只改变高度，都是可以的，
+但如果是没有固定宽高比的元素呢？如果使其在可伸缩的同时保持固定宽高比？
+iframe 和 object 元素就属于这种情形，某些情况下的 SVG 内容也是。常见的例子是在页面中通过 iframe 嵌入一段视频：
+&lt;iframe width=&#34;420&#34; height=&#34;315&#34; src=&#34;xxx&#34; frameborder=&#34;0&#34; allowfullscreen &gt;&lt;/iframe&gt; 如果像这样给他设置一个可伸缩的宽度：" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/articles/posts/60/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-09-24T16:37:08+08:00" />
+<meta property="article:modified_time" content="2023-09-24T16:37:08+08:00" />
+
+  
+  <meta itemprop="name" content="为嵌入图片和元素添加样式">
+<meta itemprop="description" content="可伸缩的图片模式 img { width: auto; max-width: 100%; height: auto; } 控制对象大小的新方法 img { width: 200px; height: 200px; } img.contain { object-fit: contain; } img.cover { object-fit: cover; } img.none { object-fit: none; } img.scaledown { object-fit: scale-down; } object-fit 属性的默认值为 fill，意味着图片内容会在必要时拉伸以填满容器，因此可能破坏宽高比，
+cover 和 contain 则与 background-size 属性中对应的关键字作用相同。none 会采用图片固有大小，不管容器有多大。最后，scale-down 会自动从 none 和 contain 中选一个，哪个结果尺寸小就用哪一个。最终图片会居中，但可以通过 object-position 重新设置，与定位背景图片时类似。
+可保持宽高比的容器 对于具有固定宽高比的位图，把高度设置为 auto，只改变宽度，或者把宽度设置为 auto，只改变高度，都是可以的，
+但如果是没有固定宽高比的元素呢？如果使其在可伸缩的同时保持固定宽高比？
+iframe 和 object 元素就属于这种情形，某些情况下的 SVG 内容也是。常见的例子是在页面中通过 iframe 嵌入一段视频：
+&lt;iframe width=&#34;420&#34; height=&#34;315&#34; src=&#34;xxx&#34; frameborder=&#34;0&#34; allowfullscreen &gt;&lt;/iframe&gt; 如果像这样给他设置一个可伸缩的宽度："><meta itemprop="datePublished" content="2023-09-24T16:37:08+08:00" />
+<meta itemprop="dateModified" content="2023-09-24T16:37:08+08:00" />
+<meta itemprop="wordCount" content="169">
+<meta itemprop="keywords" content="" />
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="为嵌入图片和元素添加样式"/>
+<meta name="twitter:description" content="可伸缩的图片模式 img { width: auto; max-width: 100%; height: auto; } 控制对象大小的新方法 img { width: 200px; height: 200px; } img.contain { object-fit: contain; } img.cover { object-fit: cover; } img.none { object-fit: none; } img.scaledown { object-fit: scale-down; } object-fit 属性的默认值为 fill，意味着图片内容会在必要时拉伸以填满容器，因此可能破坏宽高比，
+cover 和 contain 则与 background-size 属性中对应的关键字作用相同。none 会采用图片固有大小，不管容器有多大。最后，scale-down 会自动从 none 和 contain 中选一个，哪个结果尺寸小就用哪一个。最终图片会居中，但可以通过 object-position 重新设置，与定位背景图片时类似。
+可保持宽高比的容器 对于具有固定宽高比的位图，把高度设置为 auto，只改变宽度，或者把宽度设置为 auto，只改变高度，都是可以的，
+但如果是没有固定宽高比的元素呢？如果使其在可伸缩的同时保持固定宽高比？
+iframe 和 object 元素就属于这种情形，某些情况下的 SVG 内容也是。常见的例子是在页面中通过 iframe 嵌入一段视频：
+&lt;iframe width=&#34;420&#34; height=&#34;315&#34; src=&#34;xxx&#34; frameborder=&#34;0&#34; allowfullscreen &gt;&lt;/iframe&gt; 如果像这样给他设置一个可伸缩的宽度："/>
+
+  
+  
+</head>
+  <body class="text-black duration-200 ease-out dark:text-white">
+    
+    
+
+    
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100%-10rem)] max-w-3xl px-8 pt-20 dark:prose-invert"
+      id="main"
+    >
+      
+
+<article>
+  <header class="mb-10">
+    <h1 class="!my-0 pb-2.5">
+      为嵌入图片和元素添加样式
+    </h1>
+
+    
+    <div class="text-sm opacity-60">
+      
+      <time>Sep 24, 2023</time>
+      
+      
+      <span class="mx-1">&middot;</span>
+      <span>Yin灏</span>
+    </div>
+    
+  </header>
+
+  <section><h3 id="可伸缩的图片模式">可伸缩的图片模式</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">img</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">width</span>: <span style="color:#66d9ef">auto</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">max-width</span>: <span style="color:#ae81ff">100</span><span style="color:#66d9ef">%</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">height</span>: <span style="color:#66d9ef">auto</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="控制对象大小的新方法">控制对象大小的新方法</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">img</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">width</span>: <span style="color:#ae81ff">200</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">height</span>: <span style="color:#ae81ff">200</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#f92672">img</span>.<span style="color:#a6e22e">contain</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">object-fit</span>: <span style="color:#66d9ef">contain</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#f92672">img</span>.<span style="color:#a6e22e">cover</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">object-fit</span>: <span style="color:#66d9ef">cover</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#f92672">img</span>.<span style="color:#a6e22e">none</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">object-fit</span>: <span style="color:#66d9ef">none</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#f92672">img</span>.<span style="color:#a6e22e">scaledown</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">object-fit</span>: <span style="color:#66d9ef">scale-down</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><img src="/img/60/01.png" />
+<p><code>object-fit</code> 属性的默认值为 fill，意味着图片内容会在必要时拉伸以填满容器，因此可能破坏宽高比，</p>
+<p>cover 和 contain 则与 background-size 属性中对应的关键字作用相同。none 会采用图片固有大小，不管容器有多大。最后，scale-down 会自动从 none 和 contain 中选一个，哪个结果尺寸小就用哪一个。最终图片会居中，但可以通过 <code>object-position</code> 重新设置，与定位背景图片时类似。</p>
+<h3 id="可保持宽高比的容器">可保持宽高比的容器</h3>
+<p>对于具有固定宽高比的位图，把高度设置为 auto，只改变宽度，或者把宽度设置为 auto，只改变高度，都是可以的，</p>
+<p>但如果是没有固定宽高比的元素呢？如果使其在可伸缩的同时保持固定宽高比？</p>
+<p>iframe 和 object 元素就属于这种情形，某些情况下的 SVG 内容也是。常见的例子是在页面中通过 iframe 嵌入一段视频：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">iframe</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">width</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;420&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">height</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;315&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;xxx&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">frameborder</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">allowfullscreen</span>
+</span></span><span style="display:flex;"><span>&gt;&lt;/<span style="color:#f92672">iframe</span>&gt;
+</span></span></code></pre></div><p>如果像这样给他设置一个可伸缩的宽度：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">iframe</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">width</span>: <span style="color:#ae81ff">100</span><span style="color:#66d9ef">%</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>就会导致 iframe 宽度为 100%，而高度始终是 315px，因为视频本身也有宽高比，所以我们希望这里的高度也可以自适应。</p>
+<p>此时无论把 iframe 的高度设置为 auto 还是删除 height 属性都不管用，因为 iframe 本身没有固定的宽高比。此外，这样做很可能导致 iframe 的高度变成 150px。为什么是 150px？CSS 规范支出，对于没有指定大小的可替代内容（如 iframe、img、object），最终的默认大小为 300px 宽或 150px 高，听上去不可思议，但这是真的。</p>
+<p>要解决这个问题，需要借助一些巧妙的 CSS 技术，首先，把 iframe 包在一个元素里：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;object-wrapper&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">iframe</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">width</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;420&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">height</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;315&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;xxx&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">frameborder</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">allowfullscreen</span>
+</span></span><span style="display:flex;"><span>  &gt;&lt;/<span style="color:#f92672">iframe</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span></code></pre></div><p>然后，让这个包装元素的尺寸与要嵌入的对象具有相同的宽高比，简单计算一下，用原始高度 315px 除以原始宽度 420px，结果是 0.75，换句话说，高度是宽度的 75%。</p>
+<p>接下来，将包装元素的高度设置为 0，但把 padding-bottom 设置以为 75%。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">object-wrapper</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">width</span>: <span style="color:#ae81ff">100</span><span style="color:#66d9ef">%</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">height</span>: <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">padding-bottom</span>: <span style="color:#ae81ff">75</span><span style="color:#66d9ef">%</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>最后，在这个包装元素中绝对定位嵌入对象，尽管包装元素的高度是 0，仍然可以通过绝对定位嵌入对象放到一个 “可保持宽高比” 的内边距盒子里：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">object-wrapper</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">width</span>: <span style="color:#ae81ff">100</span><span style="color:#66d9ef">%</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">height</span>: <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">padding-bottom</span>: <span style="color:#ae81ff">75</span><span style="color:#66d9ef">%</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">position</span>: <span style="color:#66d9ef">relative</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">object-wrapper</span> <span style="color:#f92672">iframe</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">position</span>: <span style="color:#66d9ef">absolute</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">top</span>: <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">left</span>: <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">width</span>: <span style="color:#ae81ff">100</span><span style="color:#66d9ef">%</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">height</span>: <span style="color:#ae81ff">100</span><span style="color:#66d9ef">%</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></section>
+
+  
+  
+
+  
+  
+  
+  <nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
+    
+    <a class="flex w-1/2 items-center p-6 pr-3 no-underline" href="/articles/posts/61/"
+      ><span class="mr-1.5">←</span><span>使用表格显示属性实现布局</span></a
+    >
+    
+    
+    <a
+      class="ml-auto flex w-1/2 items-center justify-end p-6 pl-3 no-underline"
+      href="/articles/posts/59/"
+      ><span>渐变</span><span class="ml-1.5">→</span></a
+    >
+    
+  </nav>
+  
+
+  
+  
+</article>
+
+
+    </main>
+
+    <footer
+  class="opaco mx-auto flex h-[5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+  style="position: relative; z-index: 10;display: none;"
+>
+  <div class="mr-auto">
+    &copy; 2024
+    <a class="link" href="/articles/">灏天阁</a>
+  </div>
+  <a class="link" href="https://yinchuanbo.github.io/" rel="noopener" target="_blank"
+    >Powered by YinHao</a
+  >️ ▷
+</footer>
+
+
+    <div class="img__mask" style="display: none;">
+      <img src="" alt="">
+      <span class="close_btn"></span>
+    </div>
+
+    <script>
+      const imgs = document.images;
+      const imgMask = document.querySelector('.img__mask')
+      const closeBtn = document.querySelector('.close_btn')
+      for (let i = 0; i < imgs.length; i++) {
+        const element = imgs[i];
+        element.onclick = () => {
+          const src = element.src;
+          imgMask.style.display = 'flex';
+          imgMask.querySelector('img').src = src;
+        }
+      }
+      closeBtn.onclick = () => {
+        imgMask.style.display = 'none';
+      }
+    </script>
+  </body>
+</html>

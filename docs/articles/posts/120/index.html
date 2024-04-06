@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+  class="not-ready text-sm lg:text-base"
+  style="--bg: "
+  lang="en"
+>
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  
+  <title>运算符和表达式 - 灏天阁</title>
+
+  
+  <meta name="theme-color" />
+  
+  <meta name="description" content="运算符 左值、赋值及其副作用 var a = 0; a&#43;&#43;; console.log(a); // 1 var a = 1; a = (a&#43;&#43;) &#43; (&#43;&#43;a) - (a&#43;&#43;) - (&#43;&#43;a); console.log(a) 拆解表达式：
+var a = 1; // 初始值为 1 var b = a&#43;&#43;; // a 先赋值给 b，在递加变为 2 var c = &#43;&#43;a; // a 先递加变为 3，再赋 3 给 c var d = a&#43;&#43;; // a 赋 3 给 d，在递加变为 4 var e = &#43;&#43;a; // a 先递加变为 5，在赋 5 给 e console." />
+  <meta name="author" content="" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="/articles/main.min.css" />
+
+  
+
+  
+  
+  
+    
+  
+  <link
+    rel="preload"
+    as="image"
+    href="/articles/theme.png"
+  />
+
+  
+  
+  
+  <link rel="preload" as="image" href="/imgs/logo.png" />
+  
+  
+
+  
+
+  
+  <link rel="icon" href="/img/ico.ico" />
+  <link rel="apple-touch-icon" href="/articles/apple-touch-icon.png" />
+  
+  <meta name="generator" content="Hugo 0.108.0">
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="运算符和表达式" />
+<meta property="og:description" content="运算符 左值、赋值及其副作用 var a = 0; a&#43;&#43;; console.log(a); // 1 var a = 1; a = (a&#43;&#43;) &#43; (&#43;&#43;a) - (a&#43;&#43;) - (&#43;&#43;a); console.log(a) 拆解表达式：
+var a = 1; // 初始值为 1 var b = a&#43;&#43;; // a 先赋值给 b，在递加变为 2 var c = &#43;&#43;a; // a 先递加变为 3，再赋 3 给 c var d = a&#43;&#43;; // a 赋 3 给 d，在递加变为 4 var e = &#43;&#43;a; // a 先递加变为 5，在赋 5 给 e console." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/articles/posts/120/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-02-25T09:51:47+08:00" />
+<meta property="article:modified_time" content="2024-02-25T09:51:47+08:00" />
+
+  
+  <meta itemprop="name" content="运算符和表达式">
+<meta itemprop="description" content="运算符 左值、赋值及其副作用 var a = 0; a&#43;&#43;; console.log(a); // 1 var a = 1; a = (a&#43;&#43;) &#43; (&#43;&#43;a) - (a&#43;&#43;) - (&#43;&#43;a); console.log(a) 拆解表达式：
+var a = 1; // 初始值为 1 var b = a&#43;&#43;; // a 先赋值给 b，在递加变为 2 var c = &#43;&#43;a; // a 先递加变为 3，再赋 3 给 c var d = a&#43;&#43;; // a 赋 3 给 d，在递加变为 4 var e = &#43;&#43;a; // a 先递加变为 5，在赋 5 给 e console."><meta itemprop="datePublished" content="2024-02-25T09:51:47+08:00" />
+<meta itemprop="dateModified" content="2024-02-25T09:51:47+08:00" />
+<meta itemprop="wordCount" content="1407">
+<meta itemprop="keywords" content="" />
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="运算符和表达式"/>
+<meta name="twitter:description" content="运算符 左值、赋值及其副作用 var a = 0; a&#43;&#43;; console.log(a); // 1 var a = 1; a = (a&#43;&#43;) &#43; (&#43;&#43;a) - (a&#43;&#43;) - (&#43;&#43;a); console.log(a) 拆解表达式：
+var a = 1; // 初始值为 1 var b = a&#43;&#43;; // a 先赋值给 b，在递加变为 2 var c = &#43;&#43;a; // a 先递加变为 3，再赋 3 给 c var d = a&#43;&#43;; // a 赋 3 给 d，在递加变为 4 var e = &#43;&#43;a; // a 先递加变为 5，在赋 5 给 e console."/>
+
+  
+  
+</head>
+  <body class="text-black duration-200 ease-out dark:text-white">
+    
+    
+
+    
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100%-10rem)] max-w-3xl px-8 pt-20 dark:prose-invert"
+      id="main"
+    >
+      
+
+<article>
+  <header class="mb-10">
+    <h1 class="!my-0 pb-2.5">
+      运算符和表达式
+    </h1>
+
+    
+    <div class="text-sm opacity-60">
+      
+      <time>Feb 25, 2024</time>
+      
+      
+      <span class="mx-1">&middot;</span>
+      <span>Yin灏</span>
+    </div>
+    
+  </header>
+
+  <section><h2 id="运算符">运算符</h2>
+<h3 id="左值赋值及其副作用">左值、赋值及其副作用</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">a</span><span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">a</span>); <span style="color:#75715e">// 1
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">a</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">a</span><span style="color:#f92672">++</span>) <span style="color:#f92672">+</span> (<span style="color:#f92672">++</span><span style="color:#a6e22e">a</span>) <span style="color:#f92672">-</span> (<span style="color:#a6e22e">a</span><span style="color:#f92672">++</span>) <span style="color:#f92672">-</span> (<span style="color:#f92672">++</span><span style="color:#a6e22e">a</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">a</span>)
+</span></span></code></pre></div><p>拆解表达式：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; <span style="color:#75715e">// 初始值为 1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">b</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">a</span><span style="color:#f92672">++</span>; <span style="color:#75715e">// a 先赋值给 b，在递加变为 2
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">c</span> <span style="color:#f92672">=</span> <span style="color:#f92672">++</span><span style="color:#a6e22e">a</span>; <span style="color:#75715e">// a 先递加变为 3，再赋 3 给 c
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">d</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">a</span><span style="color:#f92672">++</span>; <span style="color:#75715e">// a 赋 3 给 d，在递加变为 4
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">e</span> <span style="color:#f92672">=</span> <span style="color:#f92672">++</span><span style="color:#a6e22e">a</span>; <span style="color:#75715e">// a 先递加变为 5，在赋 5 给 e
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">b</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">c</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">d</span> <span style="color:#f92672">-</span><span style="color:#a6e22e">e</span>); <span style="color:#75715e">// -4
+</span></span></span></code></pre></div><h2 id="算术运算">算术运算</h2>
+<h3 id="加法运算">加法运算</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">n</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">NaN</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">n</span>); <span style="color:#75715e">// NaN 与任意操作数相加，结果都是 NaN
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">Infinity</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">n</span>); <span style="color:#75715e">// Infinity 与任意操作数相加，结果都是 Infinity
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">Infinity</span> <span style="color:#f92672">+</span> <span style="color:#66d9ef">Infinity</span>); <span style="color:#75715e">// Infinity 与 Infinity 相加，结果是 Infinity
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>((<span style="color:#f92672">-</span><span style="color:#66d9ef">Infinity</span>) <span style="color:#f92672">+</span> (<span style="color:#f92672">-</span><span style="color:#66d9ef">Infinity</span>)); <span style="color:#75715e">// 负 -Infinity 相加，结果是负 Infinity
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>((<span style="color:#f92672">-</span><span style="color:#66d9ef">Infinity</span>) <span style="color:#f92672">+</span> <span style="color:#66d9ef">Infinity</span>); <span style="color:#75715e">// 正负 Infinity 相加，结果 NaN
+</span></span></span></code></pre></div><p>加运算符能够根据操作数的数据类型，决定是相加操作，还是相连操作</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>); <span style="color:#75715e">// 2
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;1&#34;</span>); <span style="color:#75715e">// &#34;11&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#ae81ff">3.0</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">4.3</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;&#34;</span>); <span style="color:#75715e">// &#34;7.3&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#ae81ff">3.0</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;&#34;</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">4.3</span>); <span style="color:#75715e">// &#34;34.3&#34; 3.0 转换为字符串 3
+</span></span></span></code></pre></div><h3 id="减法运算">减法运算</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">n</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">NaN</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">n</span>); <span style="color:#75715e">// NaN 与任意操作数相减，结果都是 NaN
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">Infinity</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">n</span>); <span style="color:#75715e">// Infinity 与任意操作数相减，结果都是 Infinity
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">Infinity</span> <span style="color:#f92672">-</span> <span style="color:#66d9ef">Infinity</span>); <span style="color:#75715e">// Infinity 与 Infinity 相减，结果 NaN
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>((<span style="color:#f92672">-</span><span style="color:#66d9ef">Infinity</span>) <span style="color:#f92672">-</span> (<span style="color:#f92672">-</span><span style="color:#66d9ef">Infinity</span>)); <span style="color:#75715e">// 负 Infinity 相减，结果是 NaN
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>((<span style="color:#f92672">-</span><span style="color:#66d9ef">Infinity</span>) <span style="color:#f92672">-</span> <span style="color:#66d9ef">Infinity</span>); <span style="color:#75715e">// 正负 Infinity 相减，结果是 -Infinity
+</span></span></span></code></pre></div><p>在减法运算中，如果操作数为字符串，先尝试把它转换为数值，再进行运算，如果有一个操作数不是数字，则返回 NaN。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#ae81ff">2</span> <span style="color:#f92672">-</span> <span style="color:#e6db74">&#34;1&#34;</span>); <span style="color:#75715e">// 1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#ae81ff">2</span> <span style="color:#f92672">-</span> <span style="color:#e6db74">&#34;a&#34;</span>); <span style="color:#75715e">// NaN
+</span></span></span></code></pre></div><p>技巧：</p>
+<p>使用值减去 0，可以快速把值转换为数字。这与调用 parseFloat() 方法的结果相同，但减法更高效、快捷。</p>
+<p>减法运算符的隐性转换如果失败，则返回 NaN，这与使用 parseFloat() 方法执行转换时的返回值是不同的。</p>
+<p>例如，对于字符串 &ldquo;100aaa&rdquo; 而言，parseFloat() 方法能够解析出前面几个数字，而对于减法运算符来说，则必须是完整的数字，才可以进行转换。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(parseFloat(<span style="color:#e6db74">&#34;100aa&#34;</span>)); <span style="color:#75715e">// 100
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;100aaa&#34;</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">0</span>); <span style="color:#75715e">// NaN
+</span></span></span></code></pre></div><p>对于布尔值来说，parseFloat() 方法能够把 true 转换为 1，把 false 转换为 0，而减法运算符视其为 NaN。</p>
+<p>对于对象来说，parseFloat() 方法会尝试调用对象的 toString() 方法进行转换，而减法运算符先尝试调用对象的 valueOf() 方法进行转换，失败之后再调用 toString() 进行转换。</p>
+<h3 id="乘法运算">乘法运算</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">n</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">NaN</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">n</span>); <span style="color:#75715e">// NaN 与任意操作数相乘，结果都是 NaN
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">Infinity</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">n</span>); <span style="color:#75715e">// Infinity 与任意非零正数相乘，结果都是 Infinity
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">Infinity</span> <span style="color:#f92672">*</span> (<span style="color:#f92672">-</span><span style="color:#a6e22e">n</span>)); <span style="color:#75715e">// Infinity 与任意非零负数相乘，结果都是 -Infinity
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">Infinity</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">0</span>); <span style="color:#75715e">// Infinity 与 0 相乘，结果都是 NaN
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">Infinity</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">Infinity</span>); <span style="color:#75715e">// Infinity 与 Infinity 相乘，结果是 Infinity
+</span></span></span></code></pre></div><h3 id="除法运算">除法运算</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">n</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">NaN</span> <span style="color:#f92672">/</span> <span style="color:#a6e22e">n</span>); <span style="color:#75715e">// 如果一个操作数是 NaN，结果都是 NaN
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">Infinity</span> <span style="color:#f92672">/</span> <span style="color:#a6e22e">n</span>); <span style="color:#75715e">// Infinity 被任意数字除，结果是 Infinity 或 -Infinity
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">Infinity</span> <span style="color:#f92672">/</span> <span style="color:#66d9ef">Infinity</span>); <span style="color:#75715e">// 返回 NaN
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">n</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">0</span>); <span style="color:#75715e">// 0 除一个非无穷大的数字，结果是 Infinity 或 -Infinity，符号由第二个操作数的符号决定
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">n</span> <span style="color:#f92672">/</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">0</span>); <span style="color:#75715e">// 返回 -Infinity，解释同上
+</span></span></span></code></pre></div><h3 id="求余运算">求余运算</h3>
+<p>求余运算也称模运算，例如：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#ae81ff">3</span> <span style="color:#f92672">%</span> <span style="color:#ae81ff">2</span>); <span style="color:#75715e">// 返回余数 1
+</span></span></span></code></pre></div><p>模运算主要针对整数进行操作，也适用于浮点数，例如：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#ae81ff">3.1</span> <span style="color:#f92672">%</span> <span style="color:#ae81ff">2.3</span>); <span style="color:#75715e">// 返回余数 0.8000000000000003
+</span></span></span></code></pre></div><p>注意特殊操作数的求余运算</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">n</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">Infinity</span> <span style="color:#f92672">%</span> <span style="color:#a6e22e">n</span>); <span style="color:#75715e">// NaN
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">Infinity</span> <span style="color:#f92672">%</span> <span style="color:#66d9ef">Infinity</span>); <span style="color:#75715e">// NaN
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">n</span> <span style="color:#f92672">%</span> <span style="color:#66d9ef">Infinity</span>); <span style="color:#75715e">// 5
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#ae81ff">0</span> <span style="color:#f92672">%</span> <span style="color:#a6e22e">n</span>); <span style="color:#75715e">// 0
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#ae81ff">0</span> <span style="color:#f92672">%</span> <span style="color:#66d9ef">Infinity</span>); <span style="color:#75715e">// 0
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">n</span> <span style="color:#f92672">%</span> <span style="color:#ae81ff">0</span>); <span style="color:#75715e">// NaN
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">Infinity</span> <span style="color:#f92672">%</span> <span style="color:#ae81ff">0</span>); <span style="color:#75715e">// NaN
+</span></span></span></code></pre></div><h3 id="取反运算">取反运算</h3>
+<p>取反运算符是一元运算符，也称一元减法运算符</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#f92672">-</span><span style="color:#ae81ff">5</span>); <span style="color:#75715e">// -5，正常数值取负数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#f92672">-</span><span style="color:#e6db74">&#34;5&#34;</span>); <span style="color:#75715e">// -5 &#34;number&#34;，先转换字符串数字为数值类型
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#f92672">-</span><span style="color:#e6db74">&#34;a&#34;</span>); <span style="color:#75715e">// 返回 NaN，无法完全匹配运算，返回 NaN
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#f92672">-</span><span style="color:#66d9ef">Infinity</span>); <span style="color:#75715e">// 返回 -Infinity
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#f92672">-</span>(<span style="color:#f92672">-</span><span style="color:#66d9ef">Infinity</span>)); <span style="color:#75715e">// 返回 Infinity
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#f92672">-</span><span style="color:#66d9ef">NaN</span>); <span style="color:#75715e">// 返回 NaN
+</span></span></span></code></pre></div><h3 id="递增和递减">递增和递减</h3>
+<p>递增（++）和递减（&ndash;）运算就是通过不断地加 1 或 减 1，然后把结果赋值给左侧操作数，以实现改变自身结果的一种简洁方法。</p>
+<p>运算方式可以分为 4 种：</p>
+<ul>
+<li>
+<p>前置递增（++n）: 先递增，再赋值</p>
+</li>
+<li>
+<p>前置递减（&ndash;n）: 先递减，再赋值</p>
+</li>
+<li>
+<p>后置递增（n++）: 先赋值，再递减</p>
+</li>
+<li>
+<p>后置递减（n&ndash;）: 先赋值，再递减</p>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">a</span><span style="color:#f92672">=</span><span style="color:#a6e22e">b</span><span style="color:#f92672">=</span><span style="color:#a6e22e">c</span><span style="color:#f92672">=</span><span style="color:#ae81ff">4</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">a</span><span style="color:#f92672">++</span>); <span style="color:#75715e">// 4，先赋值，再递增，运算结果不变
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#f92672">++</span><span style="color:#a6e22e">b</span>); <span style="color:#75715e">// 5，先递增，再赋值，运算结果加 1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">c</span><span style="color:#f92672">++</span>); <span style="color:#75715e">// 4，先赋值，再递增，运算结果不变
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">c</span>); <span style="color:#75715e">// 5，变量的值加 1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#f92672">++</span><span style="color:#a6e22e">c</span>); <span style="color:#75715e">// 6，先递增，再赋值，运算结果加 1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">c</span>); <span style="color:#75715e">// 6，变量的值也加 1
+</span></span></span></code></pre></div><h2 id="逻辑运算">逻辑运算</h2>
+<h3 id="逻辑与运算">逻辑与运算</h3>
+<p>逻辑与是一种短路逻辑，如果左侧表达式为 false，则直接短路返回结果，不再运算右侧表达式，运算逻辑如下：</p>
+<p>第 1 步：计算第一个操作数（左侧表达式）的值</p>
+<p>第 2 步：检测第一个操作数的值。如果左侧表达式的值可转换为 false（如 null、undefined、NaN、0、&quot;&quot;、false），那么就会结束运算，直接返回第一个操作数的值。</p>
+<p>第 3 步：如果第一个操作数可以转换为 true，则计算第二个操作数（右侧表达式）的值。</p>
+<p>第 4 步：返回第二个操作数的值。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">user</span>;
+</span></span><span style="display:flex;"><span>(<span style="color:#f92672">!</span><span style="color:#a6e22e">user</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;没有赋值&#34;</span>)); <span style="color:#75715e">// &#34;没有赋值&#34;
+</span></span></span></code></pre></div><p>使用逻辑与运算符可以代替设计多重分支结构</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">n</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>;
+</span></span><span style="display:flex;"><span>(<span style="color:#a6e22e">n</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>(<span style="color:#a6e22e">n</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">2</span>) <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#ae81ff">2</span>);
+</span></span><span style="display:flex;"><span>(<span style="color:#a6e22e">n</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">3</span>) <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#ae81ff">3</span>);
+</span></span><span style="display:flex;"><span>(<span style="color:#f92672">!</span><span style="color:#a6e22e">n</span>) <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;null&#34;</span>);
+</span></span></code></pre></div><p>上面的代码等效于下面多重分支结构</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">n</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">switch</span>(<span style="color:#a6e22e">n</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">case</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">case</span> <span style="color:#ae81ff">2</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#ae81ff">2</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">case</span> <span style="color:#ae81ff">3</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#ae81ff">3</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>对象被转换为布尔值时为 true，例如，一个空对象与一个布尔值进行逻辑与运算。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">typeof</span>({} <span style="color:#f92672">&amp;&amp;</span> <span style="color:#66d9ef">true</span>)); <span style="color:#75715e">// 返回第二个操作数的值 true 的类型：布尔值
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">typeof</span>(<span style="color:#66d9ef">true</span> <span style="color:#f92672">&amp;&amp;</span> {})); <span style="color:#75715e">// 返回第二个操作数的值 {} 的类型：对象
+</span></span></span></code></pre></div><p>如果操作数中包含 null，则返回值总是 null，不管位置如何，返回的总是 null。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">typeof</span>(<span style="color:#e6db74">&#34;null&#34;</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#66d9ef">null</span>)); <span style="color:#75715e">// 返回 null 类型：对象
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">typeof</span>(<span style="color:#66d9ef">null</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#e6db74">&#34;null&#34;</span>)); <span style="color:#75715e">// 返回 null 类型：对象
+</span></span></span></code></pre></div><p>如果操作数中包含 NaN，则返回值总是 NaN，</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">typeof</span>(<span style="color:#e6db74">&#34;NaN&#34;</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#66d9ef">NaN</span>)); <span style="color:#75715e">// 返回 NaN 的类型：数值
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">typeof</span>(<span style="color:#66d9ef">NaN</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#e6db74">&#34;NaN&#34;</span>)); <span style="color:#75715e">// 返回 NaN 的类型：数值
+</span></span></span></code></pre></div><p>对于 Infinity 来说，将被转换为 true，与普通数值一样参与逻辑与运算。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">typeof</span>(<span style="color:#e6db74">&#34;Infinity&#34;</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#66d9ef">Infinity</span>)); <span style="color:#75715e">// 返回第二个操作数 Infinity 类型：数值
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">typeof</span>(<span style="color:#66d9ef">Infinity</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#e6db74">&#34;Infinity&#34;</span>)); <span style="color:#75715e">// 返回第二个操作数 &#34;Infinity&#34; 的类型：字符串
+</span></span></span></code></pre></div><p>如果操作数中包含 undefined，则返回 undefined。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">typeof</span>(<span style="color:#e6db74">&#34;undefined&#34;</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#66d9ef">undefined</span>)); <span style="color:#75715e">// undefined
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">typeof</span>(<span style="color:#66d9ef">undefined</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#e6db74">&#34;undefined&#34;</span>)); <span style="color:#75715e">// undefined
+</span></span></span></code></pre></div><h3 id="逻辑或运算">逻辑或运算</h3>
+<p>逻辑解析：</p>
+<p>逻辑或也是一种短路逻辑，如果左侧表达式为 true，则直接短路返回结果，不再运算右侧表达式。</p>
+<p>第 1 步：计算第一个操作数（左侧表达式）的值</p>
+<p>第 2 步：检测第一个操作数的值，如果左侧表达式的值可以转换为 true，那就会结束运算，直接返回第一个操作数的值。</p>
+<p>第 3 步：如果第一个操作数可以转换为 false，则计算第二个操作数的值。</p>
+<p>第 4 步：返回第二个操作数的值。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">n</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>;
+</span></span><span style="display:flex;"><span>(<span style="color:#a6e22e">n</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>(<span style="color:#a6e22e">n</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">2</span>) <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#ae81ff">2</span>);
+</span></span><span style="display:flex;"><span>(<span style="color:#a6e22e">n</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">3</span>) <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#ae81ff">3</span>);
+</span></span><span style="display:flex;"><span>(<span style="color:#f92672">!</span><span style="color:#a6e22e">n</span>) <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;null&#34;</span>)
+</span></span></code></pre></div><p>可以使用逻辑或对其进行合并</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">n</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>;
+</span></span><span style="display:flex;"><span>(<span style="color:#a6e22e">n</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#ae81ff">1</span>) <span style="color:#f92672">||</span> 
+</span></span><span style="display:flex;"><span>(<span style="color:#a6e22e">n</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">2</span>) <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#ae81ff">2</span>) <span style="color:#f92672">||</span> 
+</span></span><span style="display:flex;"><span>(<span style="color:#a6e22e">n</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">3</span>) <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#ae81ff">3</span>) <span style="color:#f92672">||</span> 
+</span></span><span style="display:flex;"><span>(<span style="color:#f92672">!</span><span style="color:#a6e22e">n</span>) <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;null&#34;</span>)
+</span></span></code></pre></div><p>由于 &ldquo;&amp;&amp;&rdquo; 运算符的优先级高于 &ldquo;||&rdquo; 运算符的优先级，所以不必使用小括号进行分组，不过使用小括号分组后，代码更容易阅读。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">n</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>;
+</span></span><span style="display:flex;"><span>((<span style="color:#a6e22e">n</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#ae81ff">1</span>)) <span style="color:#f92672">||</span> 
+</span></span><span style="display:flex;"><span>((<span style="color:#a6e22e">n</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">2</span>) <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#ae81ff">2</span>)) <span style="color:#f92672">||</span> 
+</span></span><span style="display:flex;"><span>((<span style="color:#a6e22e">n</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">3</span>) <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#ae81ff">3</span>)) <span style="color:#f92672">||</span> 
+</span></span><span style="display:flex;"><span>((<span style="color:#f92672">!</span><span style="color:#a6e22e">n</span>) <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;null&#34;</span>))
+</span></span></code></pre></div><p>在下面条件分支中，由于 a = &ldquo;string&rdquo; 操作数可以转换为 true，则逻辑或运算就不再执行右侧的定义对象表达式。最后 console.log(b.a); 语句抛出异常。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">a</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;string&#34;</span> <span style="color:#f92672">||</span> (<span style="color:#a6e22e">b</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">a</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;string&#34;</span>
+</span></span><span style="display:flex;"><span>})) <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">b</span>.<span style="color:#a6e22e">a</span>)
+</span></span></code></pre></div><p>如果使用逻辑与运算，就可以避免上述问题</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">a</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;string&#34;</span> <span style="color:#f92672">&amp;&amp;</span> (<span style="color:#a6e22e">b</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">a</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;string&#34;</span>
+</span></span><span style="display:flex;"><span>})) <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">b</span>.<span style="color:#a6e22e">a</span>)
+</span></span></code></pre></div><p>下面代码设计一个复杂的嵌套结构，根据变量 a 决定是否执行下一个循环。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">b</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">a</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">while</span>(<span style="color:#a6e22e">b</span><span style="color:#f92672">++</span> <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">10</span>) <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">b</span><span style="color:#f92672">++</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>使用逻辑与和逻辑或运算符进行简化：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">b</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">while</span>(<span style="color:#a6e22e">a</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">b</span><span style="color:#f92672">++</span> <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">10</span>) <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">b</span><span style="color:#f92672">++</span>);
+</span></span></code></pre></div><p>如果转换为如下嵌套结构就不能够继续使用上述表达式进行简化，因为下面的代码是先执行循环体，后执行条件检测。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">while</span>(<span style="color:#a6e22e">b</span><span style="color:#f92672">++</span> <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">10</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">a</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">b</span><span style="color:#f92672">++</span>);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="逻辑非运算">逻辑非运算</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#f92672">!</span>{}); <span style="color:#75715e">// false
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#f92672">!</span><span style="color:#ae81ff">0</span>); <span style="color:#75715e">// true
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#f92672">!</span>(<span style="color:#a6e22e">n</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>)); <span style="color:#75715e">// false，n = 5
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#f92672">!</span><span style="color:#66d9ef">null</span>); <span style="color:#75715e">// true
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#f92672">!</span><span style="color:#66d9ef">NaN</span>); <span style="color:#75715e">// true
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#f92672">!</span><span style="color:#66d9ef">Infinity</span>); <span style="color:#75715e">// false
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#f92672">!</span>(<span style="color:#f92672">-</span><span style="color:#66d9ef">Infinity</span>)); <span style="color:#75715e">// false
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#f92672">!</span><span style="color:#66d9ef">undefined</span>); <span style="color:#75715e">// true
+</span></span></span></code></pre></div><p>如果对操作数执行两次逻辑非运算操作，就相当于把操作数转换为布尔值。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#f92672">!</span><span style="color:#ae81ff">0</span>); <span style="color:#75715e">// true
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#f92672">!!</span><span style="color:#ae81ff">0</span>); <span style="color:#75715e">// false
+</span></span></span></code></pre></div><h2 id="关系运算">关系运算</h2>
+<h3 id="大小比较">大小比较</h3>
+<ul>
+<li>
+<p>&ldquo;&lt;&rdquo;</p>
+</li>
+<li>
+<p>&ldquo;&lt;=&rdquo;</p>
+</li>
+<li>
+<p>&ldquo;&gt;=&rdquo;</p>
+</li>
+<li>
+<p>&ldquo;&gt;&rdquo;</p>
+</li>
+</ul>
+<p>比较运算中的操作数可以是任意类型的值，但是在执行运算时，会被转换为数字或字符串，然后再进行比较。</p>
+<p>如果是数字，则比较大小；如果是字符串，则根据字符编码表中的编号值，从左到右逐个进行比较。</p>
+<p>如果两个操作数都是数字，或者一个是数值，另一个可以被转换成数字，则将根据数字大小进行比较。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#ae81ff">4</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">3</span>); <span style="color:#75715e">// true
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;4&#34;</span> <span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">Infinity</span>); <span style="color:#75715e">// false，无穷大比任何数字都大
+</span></span></span></code></pre></div><p>如果两个操作数都是字符串，则执行字符串比较。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;4&#34;</span> <span style="color:#f92672">&gt;</span> <span style="color:#e6db74">&#34;3&#34;</span>); <span style="color:#75715e">// true，根据字符编码表的编号比较
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;a&#34;</span> <span style="color:#f92672">&gt;</span> <span style="color:#e6db74">&#34;b&#34;</span>); <span style="color:#75715e">// false，a 编码为 61，b 编码为 62
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;ab&#34;</span> <span style="color:#f92672">&gt;</span> <span style="color:#e6db74">&#34;cb&#34;</span>); <span style="color:#75715e">// false，c 编码为 63
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;abd&#34;</span> <span style="color:#f92672">&gt;</span> <span style="color:#e6db74">&#34;abc&#34;</span>); <span style="color:#75715e">// true，d 编码为 64
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 如果前面相同，则比较下一个字符，以此类推
+</span></span></span></code></pre></div><p>字符比较是区分大小写的，一般小写字符大于大写字符。</p>
+<p>如果一个操作数是数字，或者被转换为数字，另一个是字符串，或者被转换为字符串，则使用 parseInt() 将字符串转换为数字。（对于非数字字符串，将被转换为 NaN），最后以数字方式进行比较。</p>
+<p>如果一个操作数为 NaN，或者被转换为 NaN，则始终返回 false。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;a&#34;</span> <span style="color:#f92672">&gt;</span> <span style="color:#e6db74">&#34;3&#34;</span>); <span style="color:#75715e">// 返回 true，字符 a 编码为 61，字符 3 编码为 33
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;a&#34;</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">3</span>); <span style="color:#75715e">// false，字符 a 被强制转换为 NaN
+</span></span></span></code></pre></div><p>如果一个操作数是对象，则先使用 valueOf() 取其值，再进行比较，如果没有 valueOf() 方法，则使用 toString() 取其字符串表示，再进行比较。</p>
+<p>如果一个操作数是布尔值，则先转换为数值，再进行比较。</p>
+<p>如果操作数都无法转换为数字或字符串，则比较结果为 false。</p>
+<h3 id="相等和全等">相等和全等</h3>
+<ul>
+<li>
+<p>“==” 相等：比较两个操作数的值是否相等。</p>
+</li>
+<li>
+<p>“!=” 不相等：比较两个操作数的值是否不相等。</p>
+</li>
+<li>
+<p>“===” 全等：比较两个操作数的值是否相等，同时检测它们的类型是否相同。</p>
+</li>
+<li>
+<p>“!==” 不全等：比较两个操作数的值是否不相等，同时检测它们的类型是否不相同。</p>
+</li>
+</ul>
+<p>如果操作数是布尔值，则先转换为数值，其中 false 转为 0，true 转换为 1。</p>
+<p>如果一个操作数是字符串，另一个操作数是数字，则先尝试把字符串转换为数字。</p>
+<p>如果一个操作数是字符串，另一个操作数是对象，则先尝试把对象转换为字符串。</p>
+<p>如果一个操作数是数字，另一个操作数是对象，则先尝试把对象转换为数字。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;1&#34;</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>); <span style="color:#75715e">// true，字符串被转换为数字
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">true</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>); <span style="color:#75715e">// true，true 被转换为 1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">false</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>); <span style="color:#75715e">// true，false 被转换为 0
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">null</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>); <span style="color:#75715e">// false，
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">undefined</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>); <span style="color:#75715e">// false，
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">undefined</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span>); <span style="color:#75715e">// true
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">NaN</span> <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;NaN&#34;</span>); <span style="color:#75715e">// false
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">NaN</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>); <span style="color:#75715e">// false
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">NaN</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">NaN</span>); <span style="color:#75715e">// false
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">NaN</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">NaN</span>); <span style="color:#75715e">// true
+</span></span></span></code></pre></div><p>注意：</p>
+<p>NaN 与任何值都不相等，包括它自己。</p>
+<p>null 与 undefined 值相等，但是它们是不同类型的数据。</p>
+<p>在相等比较中，null 和 undefined 不允许被转换为其他类型的值。</p>
+<p>下面两个变量的值是相等的：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;abc&#34;</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;d&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">b</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;a&#34;</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;bcd&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">a</span> <span style="color:#f92672">==</span> <span style="color:#a6e22e">b</span>); <span style="color:#75715e">// true
+</span></span></span></code></pre></div><p>提示：</p>
+<p>数值和布尔值的相等比较运算效率比较高，而字符串需要逐个字符进行比较，相等比较运算效率比较低。</p>
+<p>在全等运算中，需要注意以下几个问题：</p>
+<p>如果两个操作数都是简单的值，则只要值相等，类型相同，就全等。</p>
+<p>如果一个操作数是简单的值，另一个操作数是复合型对象，则不全等。</p>
+<p>如果两个操作数都是复合型对象，则比较引用地址是否相同。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">null</span> <span style="color:#f92672">===</span> <span style="color:#66d9ef">undefined</span>); <span style="color:#75715e">// false
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#ae81ff">0</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#34;0&#34;</span>); <span style="color:#75715e">// false
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#ae81ff">0</span> <span style="color:#f92672">===</span> <span style="color:#66d9ef">false</span>); <span style="color:#75715e">// false
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">=</span> {};
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">b</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">a</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">a</span> <span style="color:#f92672">===</span> <span style="color:#a6e22e">b</span>); <span style="color:#75715e">// true
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">=</span> {};
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">b</span> <span style="color:#f92672">=</span> {};
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">a</span> <span style="color:#f92672">===</span> <span style="color:#a6e22e">b</span>); <span style="color:#75715e">// false
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> String(<span style="color:#e6db74">&#34;abcd&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">b</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> String(<span style="color:#e6db74">&#34;abcd&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">a</span> <span style="color:#f92672">===</span> <span style="color:#a6e22e">b</span>); <span style="color:#75715e">// false
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">a</span> <span style="color:#f92672">==</span> <span style="color:#a6e22e">b</span>); <span style="color:#75715e">// false
+</span></span></span></code></pre></div><p>对于简单值，只要类型相同、值相等，他们就全等</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;1&#34;</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">b</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;11&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">a</span> <span style="color:#f92672">===</span> <span style="color:#a6e22e">b</span>); <span style="color:#75715e">// true
+</span></span></span></code></pre></div><h2 id="对象操作运算">对象操作运算</h2>
+<h3 id="归属检测">归属检测</h3>
+<p>in 运算符能够检测左侧操作数是否为右侧操作数的成员。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">o</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">a</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">b</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span>() {}
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;a&#34;</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">o</span>); <span style="color:#75715e">// true
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;b&#34;</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">o</span>); <span style="color:#75715e">// true
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;c&#34;</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">o</span>); <span style="color:#75715e">// false
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;valueOf&#34;</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">o</span>); <span style="color:#75715e">// true，继承 Object 的原型方法
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;constructor&#34;</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">o</span>); <span style="color:#75715e">// true，继承 Object 的原型方法
+</span></span></span></code></pre></div><p>instanceof 运算符能够检测左侧的对象是否为右侧类型实例</p>
+<p>左侧是 <code>实例对象</code>，右侧是 <code>构造函数</code>。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Array();
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">a</span> <span style="color:#66d9ef">instanceof</span> Array); <span style="color:#75715e">// true
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">a</span> <span style="color:#66d9ef">instanceof</span> Object); <span style="color:#75715e">// true，Array 是 Object 的子类
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">a</span> <span style="color:#66d9ef">instanceof</span> Function); <span style="color:#75715e">// false
+</span></span></span></code></pre></div><p>如果左侧操作数不是对象，或者右侧操作数不是类型函数，则返回 false，如果右侧操作数不是复合型，则将返回错误。</p>
+<h3 id="删除属性">删除属性</h3>
+<p>delete 运算符能够删除指定对象的属性、数组元素或变量。如果删除操作成功，则返回 true，否则返回 false。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">x</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">y</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">delete</span> <span style="color:#a6e22e">a</span>.<span style="color:#a6e22e">x</span>); <span style="color:#75715e">// 删除成功，返回 true
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">a</span>.<span style="color:#a6e22e">x</span>); <span style="color:#75715e">// undefined
+</span></span></span></code></pre></div><p>部分 Js 内置成员和客户端成员，以及使用 var 语句声明的变量不允许删除。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">c</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; <span style="color:#75715e">// 初始化变量 c，没有使用 var 语句声明
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">delete</span> <span style="color:#a6e22e">c</span>); <span style="color:#75715e">// true，说明删除成功
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">b</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; <span style="color:#75715e">// 使用 var 语句声明并初始化变量
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">delete</span> <span style="color:#a6e22e">b</span>); <span style="color:#75715e">// false，说明不允许删除
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">delete</span> Object.<span style="color:#a6e22e">constructor</span>); <span style="color:#75715e">// true，说明部分内部成员可以被删除
+</span></span></span></code></pre></div><p>如果删除不存在的对象成员，或者非对象成员、数组元素、变量，则返回 true。因此，使用 delete 运算符时，要注意区分成功删除与无效操作。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">=</span> {};
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">delete</span> <span style="color:#a6e22e">a</span>); <span style="color:#75715e">// false，说明不允许删除
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">delete</span> <span style="color:#a6e22e">a</span>.<span style="color:#a6e22e">z</span>); <span style="color:#75715e">// true，说明不存在该属性
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">delete</span> <span style="color:#a6e22e">b</span>); <span style="color:#75715e">// true，说明不存在该变量
+</span></span></span></code></pre></div><p>下面代码使用 delete 运算符，配合 in 运算符，实现对数组成员执行检测、插入、删除或更新操作。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">=</span> [];
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span>(<span style="color:#e6db74">&#34;x&#34;</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">a</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">delete</span> <span style="color:#a6e22e">a</span>[<span style="color:#e6db74">&#34;x&#34;</span>];
+</span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">a</span>[<span style="color:#e6db74">&#34;x&#34;</span>] <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">a</span>.<span style="color:#a6e22e">x</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span>(<span style="color:#66d9ef">delete</span> <span style="color:#a6e22e">a</span>[<span style="color:#e6db74">&#34;x&#34;</span>]) {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">a</span>[<span style="color:#e6db74">&#34;x&#34;</span>] <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">a</span>.<span style="color:#a6e22e">x</span>);
+</span></span></code></pre></div><h2 id="案例实战">案例实战</h2>
+<h3 id="使用-new">使用 new</h3>
+<p>new 是一个运算符，可以创建对象，初始化实例，其语法格式如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">new</span> <span style="color:#a6e22e">constructor</span>(<span style="color:#a6e22e">arguments</span>);
+</span></span></code></pre></div><p>constructor 必须是一个构造函数表达式，参数 arguments 可有可无，参数之间用逗号分隔。</p>
+<p>下面使用 new 运算符实例化 Array，并演示 3 种不同的使用方法，</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Array; <span style="color:#75715e">// 创建数组，省略小括号
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">b</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Array(); <span style="color:#75715e">// 创建数组
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">c</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Array(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>); <span style="color:#75715e">// 创建数组，并初始化元素值
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">c</span>[<span style="color:#ae81ff">2</span>]); <span style="color:#75715e">// 3
+</span></span></span></code></pre></div><p>new 被执行时，首先会创建一个新对象，然后调用指定的构造函数，并根据传入参数初始化实例；最后把初始化的实例传递给新对象。</p>
+<p>下面代码自定义类，然后使用它创建新的对象</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">x</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">y</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>;
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">b</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">a</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">b</span>.<span style="color:#a6e22e">x</span>); <span style="color:#75715e">// 调用对象属性 x，返回 1
+</span></span></span></code></pre></div><p>下面两种方法都可以读取数组 a 中第二个元素的值，虽然说 <code>a[&quot;1&quot;]</code> 中参数是一个字符串，但是中括号运算符能够把它转化为数字。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;x&#34;</span>, <span style="color:#66d9ef">true</span>, {}]; <span style="color:#75715e">// 定义数组
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">a</span>[<span style="color:#ae81ff">1</span>]); <span style="color:#75715e">// true
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">a</span>[<span style="color:#e6db74">&#34;1&#34;</span>]); <span style="color:#75715e">// true
+</span></span></span></code></pre></div><p>提示：</p>
+<p>如果中括号运算符的第二个操作数为对象，会调用 toString() 方法把对象转换为字符串表示，如果是布尔值 true 和 false，将被转换为字符串 <code>&quot;true&quot;</code> 和 <code>&quot;false</code>，而不是 1 和 0。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;true&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;false&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>} 
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">a</span>[<span style="color:#66d9ef">true</span>]); <span style="color:#75715e">// 1，把布尔值 true 转换为字符串 &#34;true&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">a</span>[<span style="color:#66d9ef">false</span>]); <span style="color:#75715e">// 0，把布尔值 false 转换为字符串 &#34;false&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">a</span>[<span style="color:#66d9ef">false</span>]); <span style="color:#75715e">// 0
+</span></span></span></code></pre></div><p>便利 window 对象：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">if</span>(<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">o</span> <span style="color:#66d9ef">in</span> window) {
+</span></span><span style="display:flex;"><span>  document.<span style="color:#a6e22e">write</span>(<span style="color:#e6db74">&#34;window.&#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">o</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; = &#34;</span> <span style="color:#f92672">+</span> window[<span style="color:#a6e22e">o</span>] <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;&lt;br /&gt;&#34;</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></section>
+
+  
+  
+
+  
+  
+  
+  <nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
+    
+    <a class="flex w-1/2 items-center p-6 pr-3 no-underline" href="/articles/posts/121/"
+      ><span class="mr-1.5">←</span><span>语句和程序结构</span></a
+    >
+    
+    
+    <a
+      class="ml-auto flex w-1/2 items-center justify-end p-6 pl-3 no-underline"
+      href="/articles/posts/119/"
+      ><span>类型转换</span><span class="ml-1.5">→</span></a
+    >
+    
+  </nav>
+  
+
+  
+  
+</article>
+
+
+    </main>
+
+    <footer
+  class="opaco mx-auto flex h-[5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+  style="position: relative; z-index: 10;display: none;"
+>
+  <div class="mr-auto">
+    &copy; 2024
+    <a class="link" href="/articles/">灏天阁</a>
+  </div>
+  <a class="link" href="https://yinchuanbo.github.io/" rel="noopener" target="_blank"
+    >Powered by YinHao</a
+  >️ ▷
+</footer>
+
+
+    <div class="img__mask" style="display: none;">
+      <img src="" alt="">
+      <span class="close_btn"></span>
+    </div>
+
+    <script>
+      const imgs = document.images;
+      const imgMask = document.querySelector('.img__mask')
+      const closeBtn = document.querySelector('.close_btn')
+      for (let i = 0; i < imgs.length; i++) {
+        const element = imgs[i];
+        element.onclick = () => {
+          const src = element.src;
+          imgMask.style.display = 'flex';
+          imgMask.querySelector('img').src = src;
+        }
+      }
+      closeBtn.onclick = () => {
+        imgMask.style.display = 'none';
+      }
+    </script>
+  </body>
+</html>

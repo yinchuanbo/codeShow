@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+  class="not-ready text-sm lg:text-base"
+  style="--bg: "
+  lang="en"
+>
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  
+  <title>SCSS - 灏天阁</title>
+
+  
+  <meta name="theme-color" />
+  
+  <meta name="description" content="继承 @extend 在使用的选择器中插入被继承的选择器样式。
+.icon { color: red; } .error-icon { @extend .icon; } .success-icon { @extend .icon; } 转化后：
+.icon, .error-icon, .success-icon { color: red; } 混入（Mixin） @mixin 定义可重复使用的样式片段，使用 @include，可以将定义的 Mixin 导入。
+@mixin icon-style { color: red; } .error-icon { @include icon-style; } .success-icon { @include icon-style; } 转化后：
+.error-icon { color: red; } .success-icon { color: red; } 在一个混入中也可以引入其他混入。
+@mixin special-icon { @include icon-style; @include special-style; } 在混入中传递变量
+@mixin icon($bg-color: grey) { background-color: $bg-color; } ." />
+  <meta name="author" content="" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="/articles/main.min.css" />
+
+  
+
+  
+  
+  
+    
+  
+  <link
+    rel="preload"
+    as="image"
+    href="/articles/theme.png"
+  />
+
+  
+  
+  
+  <link rel="preload" as="image" href="/imgs/logo.png" />
+  
+  
+
+  
+
+  
+  <link rel="icon" href="/img/ico.ico" />
+  <link rel="apple-touch-icon" href="/articles/apple-touch-icon.png" />
+  
+  <meta name="generator" content="Hugo 0.108.0">
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="SCSS" />
+<meta property="og:description" content="继承 @extend 在使用的选择器中插入被继承的选择器样式。
+.icon { color: red; } .error-icon { @extend .icon; } .success-icon { @extend .icon; } 转化后：
+.icon, .error-icon, .success-icon { color: red; } 混入（Mixin） @mixin 定义可重复使用的样式片段，使用 @include，可以将定义的 Mixin 导入。
+@mixin icon-style { color: red; } .error-icon { @include icon-style; } .success-icon { @include icon-style; } 转化后：
+.error-icon { color: red; } .success-icon { color: red; } 在一个混入中也可以引入其他混入。
+@mixin special-icon { @include icon-style; @include special-style; } 在混入中传递变量
+@mixin icon($bg-color: grey) { background-color: $bg-color; } ." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/articles/posts/124/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-03-02T21:23:27+08:00" />
+<meta property="article:modified_time" content="2024-03-02T21:23:27+08:00" />
+
+  
+  <meta itemprop="name" content="SCSS">
+<meta itemprop="description" content="继承 @extend 在使用的选择器中插入被继承的选择器样式。
+.icon { color: red; } .error-icon { @extend .icon; } .success-icon { @extend .icon; } 转化后：
+.icon, .error-icon, .success-icon { color: red; } 混入（Mixin） @mixin 定义可重复使用的样式片段，使用 @include，可以将定义的 Mixin 导入。
+@mixin icon-style { color: red; } .error-icon { @include icon-style; } .success-icon { @include icon-style; } 转化后：
+.error-icon { color: red; } .success-icon { color: red; } 在一个混入中也可以引入其他混入。
+@mixin special-icon { @include icon-style; @include special-style; } 在混入中传递变量
+@mixin icon($bg-color: grey) { background-color: $bg-color; } ."><meta itemprop="datePublished" content="2024-03-02T21:23:27+08:00" />
+<meta itemprop="dateModified" content="2024-03-02T21:23:27+08:00" />
+<meta itemprop="wordCount" content="374">
+<meta itemprop="keywords" content="" />
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="SCSS"/>
+<meta name="twitter:description" content="继承 @extend 在使用的选择器中插入被继承的选择器样式。
+.icon { color: red; } .error-icon { @extend .icon; } .success-icon { @extend .icon; } 转化后：
+.icon, .error-icon, .success-icon { color: red; } 混入（Mixin） @mixin 定义可重复使用的样式片段，使用 @include，可以将定义的 Mixin 导入。
+@mixin icon-style { color: red; } .error-icon { @include icon-style; } .success-icon { @include icon-style; } 转化后：
+.error-icon { color: red; } .success-icon { color: red; } 在一个混入中也可以引入其他混入。
+@mixin special-icon { @include icon-style; @include special-style; } 在混入中传递变量
+@mixin icon($bg-color: grey) { background-color: $bg-color; } ."/>
+
+  
+  
+</head>
+  <body class="text-black duration-200 ease-out dark:text-white">
+    
+    
+
+    
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100%-10rem)] max-w-3xl px-8 pt-20 dark:prose-invert"
+      id="main"
+    >
+      
+
+<article>
+  <header class="mb-10">
+    <h1 class="!my-0 pb-2.5">
+      SCSS
+    </h1>
+
+    
+    <div class="text-sm opacity-60">
+      
+      <time>Mar 2, 2024</time>
+      
+      
+      <span class="mx-1">&middot;</span>
+      <span>Yin灏</span>
+    </div>
+    
+  </header>
+
+  <section><h3 id="继承">继承</h3>
+<p><code>@extend</code> 在使用的选择器中插入被继承的选择器样式。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scss" data-lang="scss"><span style="display:flex;"><span><span style="color:#a6e22e">.icon</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">color</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">red</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">.error-icon</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">@extend</span> <span style="color:#a6e22e">.icon</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">.success-icon</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">@extend</span> <span style="color:#a6e22e">.icon</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>转化后：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">icon</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">error-icon</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">success-icon</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">color</span>: <span style="color:#66d9ef">red</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="混入mixin">混入（Mixin）</h3>
+<p><code>@mixin</code> 定义可重复使用的样式片段，使用 <code>@include</code>，可以将定义的 <code>Mixin</code> 导入。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scss" data-lang="scss"><span style="display:flex;"><span><span style="color:#66d9ef">@mixin</span><span style="color:#a6e22e"> icon-style</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">color</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">red</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">.error-icon</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">@include</span><span style="color:#a6e22e"> icon-style</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">.success-icon</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">@include</span><span style="color:#a6e22e"> icon-style</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>转化后：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scss" data-lang="scss"><span style="display:flex;"><span><span style="color:#a6e22e">.error-icon</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">color</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">red</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">.success-icon</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">color</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">red</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>在一个<code>混入</code>中也可以引入其他<code>混入</code>。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scss" data-lang="scss"><span style="display:flex;"><span><span style="color:#66d9ef">@mixin</span><span style="color:#a6e22e"> special-icon</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">@include</span><span style="color:#a6e22e"> icon-style</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">@include</span><span style="color:#a6e22e"> special-style</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>在<code>混入</code>中传递变量</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scss" data-lang="scss"><span style="display:flex;"><span><span style="color:#66d9ef">@mixin</span><span style="color:#a6e22e"> icon</span>($bg-color<span style="color:#f92672">:</span> <span style="color:#66d9ef">grey</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">background-color</span><span style="color:#f92672">:</span> $bg-color;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">.success-icon</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">@include</span><span style="color:#a6e22e"> icon</span>(<span style="color:#66d9ef">green</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">.error-icon</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">@include</span><span style="color:#a6e22e"> icon</span>(<span style="color:#66d9ef">red</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="占位符">占位符</h3>
+<p><code>%placeholder</code> 使用表现上是一个类选择器，但是不会在编译之后的 css 文件中输出。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scss" data-lang="scss"><span style="display:flex;"><span><span style="color:#f92672">%</span><span style="color:#a6e22e">icon</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">color</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">red</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">.success-icon</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">@extend</span> <span style="color:#f92672">%</span><span style="color:#a6e22e">icon</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">.error-icon</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">@extend</span> <span style="color:#f92672">%</span><span style="color:#a6e22e">icon</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="选择">选择</h3>
+<p>使用 <code>@if</code>、<code>@else if</code>、<code>@else</code>，控制声明的样式块或选择器。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scss" data-lang="scss"><span style="display:flex;"><span><span style="color:#66d9ef">@mixin</span><span style="color:#a6e22e"> border-color</span>($color<span style="color:#f92672">,</span> $dir) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">@if</span> $dir <span style="color:#f92672">==</span> up {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">border-bottom-color</span><span style="color:#f92672">:</span> $color;
+</span></span><span style="display:flex;"><span>  } <span style="color:#66d9ef">@else if</span> $dir <span style="color:#f92672">==</span> right {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">border-left-color</span><span style="color:#f92672">:</span> $color;
+</span></span><span style="display:flex;"><span>  } <span style="color:#66d9ef">@else if</span> $dir <span style="color:#f92672">==</span> down {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">border-top-color</span><span style="color:#f92672">:</span> $color;
+</span></span><span style="display:flex;"><span>  } <span style="color:#66d9ef">@else if</span> $dir <span style="color:#f92672">==</span> left {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">border-right-color</span><span style="color:#f92672">:</span> $color;
+</span></span><span style="display:flex;"><span>  } <span style="color:#66d9ef">@else</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">@error</span> <span style="color:#e6db74">&#34;unknown direction </span><span style="color:#e6db74">#{</span>$dir<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">.test</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">@include</span><span style="color:#a6e22e"> border-color</span>(<span style="color:#66d9ef">red</span><span style="color:#f92672">,</span> up);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">.test-01</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">@include</span><span style="color:#a6e22e"> border-color</span>(<span style="color:#66d9ef">green</span><span style="color:#f92672">,</span> down);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="循环">循环</h3>
+<p>使用 <code>@for</code> 关键字，进行循环操作</p>
+<p><code>@for</code> 有以下两种使用方式：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scss" data-lang="scss"><span style="display:flex;"><span><span style="color:#75715e">// 方式一
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">@for</span> $i <span style="color:#f92672">from</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">through</span> <span style="color:#ae81ff">3</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">.item-a-</span><span style="color:#e6db74">#{</span>$i<span style="color:#e6db74">}</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">width</span><span style="color:#f92672">:</span> $i <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 方式二
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">@for</span> $i <span style="color:#f92672">from</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">to</span> <span style="color:#ae81ff">3</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">.item-b-</span><span style="color:#e6db74">#{</span>$i<span style="color:#e6db74">}</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">width</span><span style="color:#f92672">:</span> $i <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 编译结果如下，从中可以看出区别
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">.item-a-1</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">width</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">2</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">.item-a-2</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">width</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">4</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">.item-a-3</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">width</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">6</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">.item-b-1</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">width</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">2</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">.item-b-2</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">width</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">4</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>使用 <code>@while</code> 关键字也可以实现循环，但是平时很少使用</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scss" data-lang="scss"><span style="display:flex;"><span>$i<span style="color:#f92672">:</span> <span style="color:#ae81ff">6</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">@while</span> $i <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">.item-</span><span style="color:#e6db74">#{</span>$i<span style="color:#e6db74">}</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">width</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">2</span><span style="color:#66d9ef">em</span> <span style="color:#f92672">*</span> $i;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  $i<span style="color:#f92672">:</span> $i <span style="color:#f92672">-</span> <span style="color:#ae81ff">2</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 编译结果如下：
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">.item-6</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">width</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">12</span><span style="color:#66d9ef">em</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">.item-4</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">width</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">8</span><span style="color:#66d9ef">em</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">.item-2</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">width</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">4</span><span style="color:#66d9ef">em</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="遍历">遍历</h3>
+<p>使用 <code>@each</code> 关键字对列表进行遍历操作，使用方式如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scss" data-lang="scss"><span style="display:flex;"><span><span style="color:#66d9ef">@each</span> $animal <span style="color:#f92672">in</span> puma<span style="color:#f92672">,</span> sea-slug<span style="color:#f92672">,</span> egret<span style="color:#f92672">,</span> salamander {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">.</span><span style="color:#e6db74">#{</span>$animal<span style="color:#e6db74">}</span><span style="color:#a6e22e">-icon</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">background-image</span><span style="color:#f92672">:</span> <span style="color:#e6db74">url(&#34;/images/</span><span style="color:#e6db74">#{</span>$animal<span style="color:#e6db74">}</span><span style="color:#e6db74">.png&#34;)</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">@each</span> $animal<span style="color:#f92672">,</span> $color<span style="color:#f92672">,</span> $cursor <span style="color:#f92672">in</span> (puma<span style="color:#f92672">,</span> <span style="color:#66d9ef">black</span><span style="color:#f92672">,</span> default)<span style="color:#f92672">,</span> (
+</span></span><span style="display:flex;"><span>    sea-slug<span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">blue</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span>    pointer
+</span></span><span style="display:flex;"><span>  )<span style="color:#f92672">,</span> (egret<span style="color:#f92672">,</span> white<span style="color:#f92672">,</span> move)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">.</span><span style="color:#e6db74">#{</span>$animal<span style="color:#e6db74">}</span><span style="color:#a6e22e">-icon</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">background-image</span><span style="color:#f92672">:</span> <span style="color:#e6db74">url(&#34;/images/</span><span style="color:#e6db74">#{</span>$animal<span style="color:#e6db74">}</span><span style="color:#e6db74">.png&#34;)</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">border</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">2</span><span style="color:#66d9ef">px</span> solid $color;
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">cursor</span><span style="color:#f92672">:</span> $cursor;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="scss-内置方法">scss 内置方法</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scss" data-lang="scss"><span style="display:flex;"><span><span style="color:#75715e">// rgba 颜色方法封装
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">rgba</span><span style="color:#f92672">(</span>#800<span style="color:#f92672">,</span> <span style="color:#a6e22e">.2</span><span style="color:#f92672">)</span>; <span style="color:#75715e">// 颜色 #800 再加上 .2 的透明度
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 提高亮度
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">lighten</span><span style="color:#f92672">(</span>#800<span style="color:#f92672">,</span> <span style="color:#f92672">20</span><span style="color:#960050;background-color:#1e0010">%</span><span style="color:#f92672">)</span>;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 降低亮度
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">darken</span><span style="color:#f92672">(</span>#800<span style="color:#f92672">,</span> <span style="color:#f92672">20</span><span style="color:#960050;background-color:#1e0010">%</span><span style="color:#f92672">)</span>;
+</span></span></code></pre></div><h3 id="函数">函数</h3>
+<ul>
+<li>
+<p><code>percentage($value)</code>: 将不带单位的数转换为百分比值。</p>
+</li>
+<li>
+<p><code>round($value)</code>: 将数值四舍五入，转换成一个最接近的整数。</p>
+</li>
+<li>
+<p><code>ceil($value)</code>: 向上取整。</p>
+</li>
+<li>
+<p><code>floor($value)</code>: 向下取整。</p>
+</li>
+<li>
+<p><code>abs($value)</code>: 取数的绝对值。</p>
+</li>
+<li>
+<p><code>min($numbers...)</code>: 找出几个数值之间的最小值。</p>
+</li>
+<li>
+<p><code>max($numbers...)</code>: 找出几个数值之间的最大值。</p>
+</li>
+<li>
+<p><code>random()</code>: 获取随机数。</p>
+</li>
+</ul>
+<h3 id="自定义函数">自定义函数</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scss" data-lang="scss"><span style="display:flex;"><span><span style="color:#66d9ef">@function</span><span style="color:#a6e22e"> double</span>($n) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">@return</span> $n <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>#sidebar {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">width</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">doublie</span>(<span style="color:#ae81ff">5</span><span style="color:#66d9ef">px</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></section>
+
+  
+  
+
+  
+  
+  
+  <nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
+    
+    <a class="flex w-1/2 items-center p-6 pr-3 no-underline" href="/articles/posts/125/"
+      ><span class="mr-1.5">←</span><span>操作字符串</span></a
+    >
+    
+    
+    <a
+      class="ml-auto flex w-1/2 items-center justify-end p-6 pl-3 no-underline"
+      href="/articles/posts/123/"
+      ><span>Git开发工作流程</span><span class="ml-1.5">→</span></a
+    >
+    
+  </nav>
+  
+
+  
+  
+</article>
+
+
+    </main>
+
+    <footer
+  class="opaco mx-auto flex h-[5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+  style="position: relative; z-index: 10;display: none;"
+>
+  <div class="mr-auto">
+    &copy; 2024
+    <a class="link" href="/articles/">灏天阁</a>
+  </div>
+  <a class="link" href="https://yinchuanbo.github.io/" rel="noopener" target="_blank"
+    >Powered by YinHao</a
+  >️ ▷
+</footer>
+
+
+    <div class="img__mask" style="display: none;">
+      <img src="" alt="">
+      <span class="close_btn"></span>
+    </div>
+
+    <script>
+      const imgs = document.images;
+      const imgMask = document.querySelector('.img__mask')
+      const closeBtn = document.querySelector('.close_btn')
+      for (let i = 0; i < imgs.length; i++) {
+        const element = imgs[i];
+        element.onclick = () => {
+          const src = element.src;
+          imgMask.style.display = 'flex';
+          imgMask.querySelector('img').src = src;
+        }
+      }
+      closeBtn.onclick = () => {
+        imgMask.style.display = 'none';
+      }
+    </script>
+  </body>
+</html>

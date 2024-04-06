@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+  class="not-ready text-sm lg:text-base"
+  style="--bg: "
+  lang="en"
+>
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  
+  <title>适配器模式 - 灏天阁</title>
+
+  
+  <meta name="theme-color" />
+  
+  <meta name="description" content="将一个类（对象）的接口（方法或属性）转化成另外一个接口，以满足用户需求，使类（对象）之间接口的不兼容问题通过适配器得以解决。
+以前所写的功能代码 A(function () { A(&#34;button&#34;).on(&#34;click&#34;, function (e) { //... }); }); jQuery 适配器 公司 A 框架代码书写格式是不是与 jQuery 代码书写格式很像，所以需要在加载完 jQuery 框架后写一个适配器，将我们已有的功能适配到 jQuery。适配器主要的任务是适配两种代码库中不兼容的代码，所以首当其冲的就是全局对象 A 与 jQuery 了，所以可以像下面这样轻松的实现。
+window.A = A = jQuery; 适配异类框架 公司的整个轻量级 A 框架太像 jQuery 了，我们可以将两种框架看成是相似框架，但是如果一个框架与 jQuery 血缘远一点，那么对于这种异类框架适配情况就复杂多了，举个例子:
+// 定义框架 var A = A || {}; A.g = function (id) { return document.getElementById(id); }; // 为元素绑定事件 A.on = function (id, type, fn) { var dom = typeof id === &#34;string&#34; ?" />
+  <meta name="author" content="" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="/articles/main.min.css" />
+
+  
+
+  
+  
+  
+    
+  
+  <link
+    rel="preload"
+    as="image"
+    href="/articles/theme.png"
+  />
+
+  
+  
+  
+  <link rel="preload" as="image" href="/imgs/logo.png" />
+  
+  
+
+  
+
+  
+  <link rel="icon" href="/img/ico.ico" />
+  <link rel="apple-touch-icon" href="/articles/apple-touch-icon.png" />
+  
+  <meta name="generator" content="Hugo 0.108.0">
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="适配器模式" />
+<meta property="og:description" content="将一个类（对象）的接口（方法或属性）转化成另外一个接口，以满足用户需求，使类（对象）之间接口的不兼容问题通过适配器得以解决。
+以前所写的功能代码 A(function () { A(&#34;button&#34;).on(&#34;click&#34;, function (e) { //... }); }); jQuery 适配器 公司 A 框架代码书写格式是不是与 jQuery 代码书写格式很像，所以需要在加载完 jQuery 框架后写一个适配器，将我们已有的功能适配到 jQuery。适配器主要的任务是适配两种代码库中不兼容的代码，所以首当其冲的就是全局对象 A 与 jQuery 了，所以可以像下面这样轻松的实现。
+window.A = A = jQuery; 适配异类框架 公司的整个轻量级 A 框架太像 jQuery 了，我们可以将两种框架看成是相似框架，但是如果一个框架与 jQuery 血缘远一点，那么对于这种异类框架适配情况就复杂多了，举个例子:
+// 定义框架 var A = A || {}; A.g = function (id) { return document.getElementById(id); }; // 为元素绑定事件 A.on = function (id, type, fn) { var dom = typeof id === &#34;string&#34; ?" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/articles/posts/19/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-08-30T21:18:21+08:00" />
+<meta property="article:modified_time" content="2023-08-30T21:18:21+08:00" />
+
+  
+  <meta itemprop="name" content="适配器模式">
+<meta itemprop="description" content="将一个类（对象）的接口（方法或属性）转化成另外一个接口，以满足用户需求，使类（对象）之间接口的不兼容问题通过适配器得以解决。
+以前所写的功能代码 A(function () { A(&#34;button&#34;).on(&#34;click&#34;, function (e) { //... }); }); jQuery 适配器 公司 A 框架代码书写格式是不是与 jQuery 代码书写格式很像，所以需要在加载完 jQuery 框架后写一个适配器，将我们已有的功能适配到 jQuery。适配器主要的任务是适配两种代码库中不兼容的代码，所以首当其冲的就是全局对象 A 与 jQuery 了，所以可以像下面这样轻松的实现。
+window.A = A = jQuery; 适配异类框架 公司的整个轻量级 A 框架太像 jQuery 了，我们可以将两种框架看成是相似框架，但是如果一个框架与 jQuery 血缘远一点，那么对于这种异类框架适配情况就复杂多了，举个例子:
+// 定义框架 var A = A || {}; A.g = function (id) { return document.getElementById(id); }; // 为元素绑定事件 A.on = function (id, type, fn) { var dom = typeof id === &#34;string&#34; ?"><meta itemprop="datePublished" content="2023-08-30T21:18:21+08:00" />
+<meta itemprop="dateModified" content="2023-08-30T21:18:21+08:00" />
+<meta itemprop="wordCount" content="248">
+<meta itemprop="keywords" content="" />
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="适配器模式"/>
+<meta name="twitter:description" content="将一个类（对象）的接口（方法或属性）转化成另外一个接口，以满足用户需求，使类（对象）之间接口的不兼容问题通过适配器得以解决。
+以前所写的功能代码 A(function () { A(&#34;button&#34;).on(&#34;click&#34;, function (e) { //... }); }); jQuery 适配器 公司 A 框架代码书写格式是不是与 jQuery 代码书写格式很像，所以需要在加载完 jQuery 框架后写一个适配器，将我们已有的功能适配到 jQuery。适配器主要的任务是适配两种代码库中不兼容的代码，所以首当其冲的就是全局对象 A 与 jQuery 了，所以可以像下面这样轻松的实现。
+window.A = A = jQuery; 适配异类框架 公司的整个轻量级 A 框架太像 jQuery 了，我们可以将两种框架看成是相似框架，但是如果一个框架与 jQuery 血缘远一点，那么对于这种异类框架适配情况就复杂多了，举个例子:
+// 定义框架 var A = A || {}; A.g = function (id) { return document.getElementById(id); }; // 为元素绑定事件 A.on = function (id, type, fn) { var dom = typeof id === &#34;string&#34; ?"/>
+
+  
+  
+</head>
+  <body class="text-black duration-200 ease-out dark:text-white">
+    
+    
+
+    
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100%-10rem)] max-w-3xl px-8 pt-20 dark:prose-invert"
+      id="main"
+    >
+      
+
+<article>
+  <header class="mb-10">
+    <h1 class="!my-0 pb-2.5">
+      适配器模式
+    </h1>
+
+    
+    <div class="text-sm opacity-60">
+      
+      <time>Aug 30, 2023</time>
+      
+      
+      <span class="mx-1">&middot;</span>
+      <span>Yin灏</span>
+    </div>
+    
+  </header>
+
+  <section><blockquote>
+<p>将一个类（对象）的接口（方法或属性）转化成另外一个接口，以满足用户需求，使类（对象）之间接口的不兼容问题通过适配器得以解决。</p>
+</blockquote>
+<h3 id="以前所写的功能代码">以前所写的功能代码</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">A</span>(<span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">A</span>(<span style="color:#e6db74">&#34;button&#34;</span>).<span style="color:#a6e22e">on</span>(<span style="color:#e6db74">&#34;click&#34;</span>, <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">e</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//...
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  });
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div><h3 id="jquery-适配器">jQuery 适配器</h3>
+<blockquote>
+<p>公司 A 框架代码书写格式是不是与 jQuery 代码书写格式很像，所以需要在加载完 jQuery 框架后写一个适配器，将我们已有的功能适配到 jQuery。适配器主要的任务是适配两种代码库中不兼容的代码，所以首当其冲的就是全局对象 A 与 jQuery 了，所以可以像下面这样轻松的实现。</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>window.<span style="color:#a6e22e">A</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">A</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">jQuery</span>;
+</span></span></code></pre></div><h3 id="适配异类框架">适配异类框架</h3>
+<blockquote>
+<p>公司的整个轻量级 A 框架太像 jQuery 了，我们可以将两种框架看成是相似框架，但是如果一个框架与 jQuery 血缘远一点，那么对于这种异类框架适配情况就复杂多了，举个例子:</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// 定义框架
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">A</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">A</span> <span style="color:#f92672">||</span> {};
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">A</span>.<span style="color:#a6e22e">g</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">id</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#a6e22e">id</span>);
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 为元素绑定事件
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">A</span>.<span style="color:#a6e22e">on</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">id</span>, <span style="color:#a6e22e">type</span>, <span style="color:#a6e22e">fn</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">dom</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">id</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#34;string&#34;</span> <span style="color:#f92672">?</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">g</span>(<span style="color:#a6e22e">id</span>) <span style="color:#f92672">:</span> <span style="color:#a6e22e">id</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">dom</span>.<span style="color:#a6e22e">addEventListener</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">dom</span>.<span style="color:#a6e22e">addEventListener</span>(<span style="color:#a6e22e">type</span>, <span style="color:#a6e22e">fn</span>, <span style="color:#66d9ef">false</span>);
+</span></span><span style="display:flex;"><span>  } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">dom</span>.<span style="color:#a6e22e">attachEvent</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">dom</span>.<span style="color:#a6e22e">attachEvent</span>(<span style="color:#e6db74">&#34;on&#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">type</span>, <span style="color:#a6e22e">fn</span>);
+</span></span><span style="display:flex;"><span>  } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">dom</span>[<span style="color:#e6db74">&#34;on&#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">type</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">fn</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 窗口加载完成事件
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">A</span>.<span style="color:#a6e22e">on</span>(window, <span style="color:#e6db74">&#34;load&#34;</span>, <span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">A</span>.<span style="color:#a6e22e">on</span>(<span style="color:#e6db74">&#34;mubutton&#34;</span>, <span style="color:#e6db74">&#34;click&#34;</span>, <span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// do something
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  });
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div><p>如果想引入 jQuery 来换原有的 A 库？</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">A</span>.<span style="color:#a6e22e">g</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">id</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">$</span>(<span style="color:#a6e22e">id</span>).<span style="color:#a6e22e">get</span>(<span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">A</span>.<span style="color:#a6e22e">on</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">id</span>, <span style="color:#a6e22e">type</span>, <span style="color:#a6e22e">fn</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">dom</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">id</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#34;string&#34;</span> <span style="color:#f92672">?</span> <span style="color:#a6e22e">$</span>(<span style="color:#e6db74">&#34;#&#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">id</span>) <span style="color:#f92672">:</span> <span style="color:#a6e22e">$</span>(<span style="color:#a6e22e">id</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">dom</span>.<span style="color:#a6e22e">on</span>(<span style="color:#a6e22e">type</span>, <span style="color:#a6e22e">fn</span>);
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h3 id="参数适配器">参数适配器</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">doSomeThing</span>(<span style="color:#a6e22e">obj</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">_adapter</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;雨夜清荷&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">title</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;设计模式&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">age</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">24</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">color</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;pink&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">size</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">100</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">prize</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">50</span>,
+</span></span><span style="display:flex;"><span>  };
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">i</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">_adapter</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">_adapter</span>[<span style="color:#a6e22e">i</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">obj</span>[<span style="color:#a6e22e">i</span>] <span style="color:#f92672">||</span> <span style="color:#a6e22e">_adapter</span>[<span style="color:#a6e22e">i</span>];
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// do something
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></code></pre></div><h3 id="数据适配">数据适配</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">arr</span> <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;JavaScript&#34;</span>, <span style="color:#e6db74">&#34;book&#34;</span>, <span style="color:#e6db74">&#34;前端编程语言&#34;</span>, <span style="color:#e6db74">&#34;8月1日&#34;</span>];
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// var obj = {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//   name: &#34;&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//   type: &#34;&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//   title: &#34;&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//   time: &#34;&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// };
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">arrToObjectAdapter</span>(<span style="color:#a6e22e">arr</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">arr</span>[<span style="color:#ae81ff">0</span>],
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">type</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">arr</span>[<span style="color:#ae81ff">1</span>],
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">title</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">arr</span>[<span style="color:#ae81ff">2</span>],
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">date</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">arr</span>[<span style="color:#ae81ff">3</span>],
+</span></span><span style="display:flex;"><span>  };
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">adapterData</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">arrToObjectAdapter</span>(<span style="color:#a6e22e">arr</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">adapterData</span>); <span style="color:#75715e">// { name:  &#34;JavaScript&#34;, type: &#34;book&#34;, title: &#34;前端编程语言&#34;, data: &#34;8月1日&#34; }
+</span></span></span></code></pre></div></section>
+
+  
+  
+
+  
+  
+  
+  <nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
+    
+    <a class="flex w-1/2 items-center p-6 pr-3 no-underline" href="/articles/posts/20/"
+      ><span class="mr-1.5">←</span><span>装饰者模式</span></a
+    >
+    
+    
+    <a
+      class="ml-auto flex w-1/2 items-center justify-end p-6 pl-3 no-underline"
+      href="/articles/posts/18/"
+      ><span>外观模式</span><span class="ml-1.5">→</span></a
+    >
+    
+  </nav>
+  
+
+  
+  
+</article>
+
+
+    </main>
+
+    <footer
+  class="opaco mx-auto flex h-[5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+  style="position: relative; z-index: 10;display: none;"
+>
+  <div class="mr-auto">
+    &copy; 2024
+    <a class="link" href="/articles/">灏天阁</a>
+  </div>
+  <a class="link" href="https://yinchuanbo.github.io/" rel="noopener" target="_blank"
+    >Powered by YinHao</a
+  >️ ▷
+</footer>
+
+
+    <div class="img__mask" style="display: none;">
+      <img src="" alt="">
+      <span class="close_btn"></span>
+    </div>
+
+    <script>
+      const imgs = document.images;
+      const imgMask = document.querySelector('.img__mask')
+      const closeBtn = document.querySelector('.close_btn')
+      for (let i = 0; i < imgs.length; i++) {
+        const element = imgs[i];
+        element.onclick = () => {
+          const src = element.src;
+          imgMask.style.display = 'flex';
+          imgMask.querySelector('img').src = src;
+        }
+      }
+      closeBtn.onclick = () => {
+        imgMask.style.display = 'none';
+      }
+    </script>
+  </body>
+</html>

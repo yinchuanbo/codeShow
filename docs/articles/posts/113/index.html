@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+  class="not-ready text-sm lg:text-base"
+  style="--bg: "
+  lang="en"
+>
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  
+  <title>webpack5-高级篇2 - 灏天阁</title>
+
+  
+  <meta name="theme-color" />
+  
+  <meta name="description" content="多页面应用 4.1 entry 配置 单入口
+module.exports = { entry: &#34;./path/to/my/entry/file.js&#34;, }; entry 属性的单个入口语法，参考下面的简写：
+module.exports = { entry: { main: &#34;./path/to/my/entry/file.js&#34;, }, }; 我们也可以将一个文件路径数组传递给 entry 数组，在你想一次注入多个依赖文件，并且将它们的依赖关系绘制在一个 chunk 中时，这种方式就很有用了。
+module.exports = { entry: [&#34;./src/file_1.js&#34;, &#34;./src/file_2.js&#34;], output: { filename: &#34;bundle.js&#34;, }, }; 对象语法
+module.exports = { entry: { app: &#34;./src/app.js&#34;, adminApp: &#34;./src/adminApp.js&#34;, }, }; 描述入口的对象：
+dependOn: 当前入口所依赖的入口，它们必须在该入口被加载前被加载。 filename: 指定要输出的文件名称。 import: 启动时需加载的模块。 library: 指定 library 选项，为当前 entry 构建一个 library。 runtime: 运行时 chunk 的名字，如果设置了，就会创建一个新的运行时 chunk，在 webpack 5." />
+  <meta name="author" content="" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="/articles/main.min.css" />
+
+  
+
+  
+  
+  
+    
+  
+  <link
+    rel="preload"
+    as="image"
+    href="/articles/theme.png"
+  />
+
+  
+  
+  
+  <link rel="preload" as="image" href="/imgs/logo.png" />
+  
+  
+
+  
+
+  
+  <link rel="icon" href="/img/ico.ico" />
+  <link rel="apple-touch-icon" href="/articles/apple-touch-icon.png" />
+  
+  <meta name="generator" content="Hugo 0.108.0">
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="webpack5-高级篇2" />
+<meta property="og:description" content="多页面应用 4.1 entry 配置 单入口
+module.exports = { entry: &#34;./path/to/my/entry/file.js&#34;, }; entry 属性的单个入口语法，参考下面的简写：
+module.exports = { entry: { main: &#34;./path/to/my/entry/file.js&#34;, }, }; 我们也可以将一个文件路径数组传递给 entry 数组，在你想一次注入多个依赖文件，并且将它们的依赖关系绘制在一个 chunk 中时，这种方式就很有用了。
+module.exports = { entry: [&#34;./src/file_1.js&#34;, &#34;./src/file_2.js&#34;], output: { filename: &#34;bundle.js&#34;, }, }; 对象语法
+module.exports = { entry: { app: &#34;./src/app.js&#34;, adminApp: &#34;./src/adminApp.js&#34;, }, }; 描述入口的对象：
+dependOn: 当前入口所依赖的入口，它们必须在该入口被加载前被加载。 filename: 指定要输出的文件名称。 import: 启动时需加载的模块。 library: 指定 library 选项，为当前 entry 构建一个 library。 runtime: 运行时 chunk 的名字，如果设置了，就会创建一个新的运行时 chunk，在 webpack 5." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/articles/posts/113/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-02-19T08:09:02+08:00" />
+<meta property="article:modified_time" content="2024-02-19T08:09:02+08:00" />
+
+  
+  <meta itemprop="name" content="webpack5-高级篇2">
+<meta itemprop="description" content="多页面应用 4.1 entry 配置 单入口
+module.exports = { entry: &#34;./path/to/my/entry/file.js&#34;, }; entry 属性的单个入口语法，参考下面的简写：
+module.exports = { entry: { main: &#34;./path/to/my/entry/file.js&#34;, }, }; 我们也可以将一个文件路径数组传递给 entry 数组，在你想一次注入多个依赖文件，并且将它们的依赖关系绘制在一个 chunk 中时，这种方式就很有用了。
+module.exports = { entry: [&#34;./src/file_1.js&#34;, &#34;./src/file_2.js&#34;], output: { filename: &#34;bundle.js&#34;, }, }; 对象语法
+module.exports = { entry: { app: &#34;./src/app.js&#34;, adminApp: &#34;./src/adminApp.js&#34;, }, }; 描述入口的对象：
+dependOn: 当前入口所依赖的入口，它们必须在该入口被加载前被加载。 filename: 指定要输出的文件名称。 import: 启动时需加载的模块。 library: 指定 library 选项，为当前 entry 构建一个 library。 runtime: 运行时 chunk 的名字，如果设置了，就会创建一个新的运行时 chunk，在 webpack 5."><meta itemprop="datePublished" content="2024-02-19T08:09:02+08:00" />
+<meta itemprop="dateModified" content="2024-02-19T08:09:02+08:00" />
+<meta itemprop="wordCount" content="1353">
+<meta itemprop="keywords" content="" />
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="webpack5-高级篇2"/>
+<meta name="twitter:description" content="多页面应用 4.1 entry 配置 单入口
+module.exports = { entry: &#34;./path/to/my/entry/file.js&#34;, }; entry 属性的单个入口语法，参考下面的简写：
+module.exports = { entry: { main: &#34;./path/to/my/entry/file.js&#34;, }, }; 我们也可以将一个文件路径数组传递给 entry 数组，在你想一次注入多个依赖文件，并且将它们的依赖关系绘制在一个 chunk 中时，这种方式就很有用了。
+module.exports = { entry: [&#34;./src/file_1.js&#34;, &#34;./src/file_2.js&#34;], output: { filename: &#34;bundle.js&#34;, }, }; 对象语法
+module.exports = { entry: { app: &#34;./src/app.js&#34;, adminApp: &#34;./src/adminApp.js&#34;, }, }; 描述入口的对象：
+dependOn: 当前入口所依赖的入口，它们必须在该入口被加载前被加载。 filename: 指定要输出的文件名称。 import: 启动时需加载的模块。 library: 指定 library 选项，为当前 entry 构建一个 library。 runtime: 运行时 chunk 的名字，如果设置了，就会创建一个新的运行时 chunk，在 webpack 5."/>
+
+  
+  
+</head>
+  <body class="text-black duration-200 ease-out dark:text-white">
+    
+    
+
+    
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100%-10rem)] max-w-3xl px-8 pt-20 dark:prose-invert"
+      id="main"
+    >
+      
+
+<article>
+  <header class="mb-10">
+    <h1 class="!my-0 pb-2.5">
+      webpack5-高级篇2
+    </h1>
+
+    
+    <div class="text-sm opacity-60">
+      
+      <time>Feb 19, 2024</time>
+      
+      
+      <span class="mx-1">&middot;</span>
+      <span>Yin灏</span>
+    </div>
+    
+  </header>
+
+  <section><h2 id="多页面应用">多页面应用</h2>
+<h3 id="41-entry-配置">4.1 entry 配置</h3>
+<p><strong>单入口</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">entry</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;./path/to/my/entry/file.js&#34;</span>,
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>entry 属性的单个入口语法，参考下面的简写：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">entry</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">main</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;./path/to/my/entry/file.js&#34;</span>,
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>我们也可以将一个文件路径数组传递给 entry 数组，在你想一次注入多个依赖文件，并且将它们的依赖关系绘制在一个 <code>chunk</code> 中时，这种方式就很有用了。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">entry</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;./src/file_1.js&#34;</span>, <span style="color:#e6db74">&#34;./src/file_2.js&#34;</span>],
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">output</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">filename</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;bundle.js&#34;</span>,
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p><strong>对象语法</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">entry</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">app</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;./src/app.js&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">adminApp</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;./src/adminApp.js&#34;</span>,
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><ul>
+<li>
+<p>描述入口的对象：</p>
+<ul>
+<li>dependOn: 当前入口所依赖的入口，它们必须在该入口被加载前被加载。</li>
+<li>filename: 指定要输出的文件名称。</li>
+<li>import: 启动时需加载的模块。</li>
+<li>library: 指定 library 选项，为当前 entry 构建一个 library。</li>
+<li>runtime: 运行时 chunk 的名字，如果设置了，就会创建一个新的运行时 chunk，在 webpack 5.43.0 之后可以将其设置为 false，以避免一个新的运行时 chunk。</li>
+<li>publicPath: 当该入口的输出文件在浏览器中被引用时，为它们指定一个公共 URL 地址，</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">entry</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">a2</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;dependingfile.js&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">b2</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">dependOn</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;a2&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">import</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;./src/app.js&#34;</span>,
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>runtime 和 dependOn 不应在同一个入口上被同时使用，所以如下配置无效，并且会抛出错误：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">entry</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">a2</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;./a&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">b2</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">runtime</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;x2&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">dependOn</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;a2&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">import</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;./b&#34;</span>,
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>确保 runtime 不能指向一个已存在的入口名称，例如下面配置会抛出一个错误：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">entry</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">a2</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;./a&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">b2</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">runtime</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;a1&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">import</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;./b&#34;</span>,
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p><strong>示例 1. entry 是一个数组</strong></p>
+<p>enrty 数组中可以列出多个入口文件，它们会被打包到同一个 bundle 中。</p>
+<ul>
+<li>示例文件</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">//app1.js
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">cosnole</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;app1&#34;</span>);
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">//app2.js
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">cosnole</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;app2&#34;</span>);
+</span></span></code></pre></div><ul>
+<li>webpack.config.js</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">//...
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">entry</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;./src/app1.js&#34;</span>, <span style="color:#e6db74">&#34;./src/app2.js&#34;</span>],
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><ul>
+<li>结论：</li>
+</ul>
+<ol>
+<li>
+<p>app1.js、app2.js 之间可以没有任何关系。</p>
+</li>
+<li>
+<p>entry 是一个数组的时候，里面列出的模块会被打包到同一个 bundle 中。</p>
+</li>
+<li>
+<p>entry 数组中的多个模块的执行顺序：从头到尾。</p>
+</li>
+</ol>
+<p><strong>示例 2. entry 数组中包含第三方包</strong></p>
+<p>自定义模块和第三方包会被打包到同一个 bundle 中。</p>
+<ul>
+<li>修改配置：</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">//...
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">entry</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;./src/app1.js&#34;</span>, <span style="color:#e6db74">&#34;./src/app2.js&#34;</span>, <span style="color:#e6db74">&#34;lodash&#34;</span>],
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><ul>
+<li>结论：输出的 bundle 中还包含第三方代码。</li>
+</ul>
+<p><strong>示例 3. 单独输出第三方包</strong></p>
+<p>希望自定义模块和第三方包能分开打包，并且输出到不同的 bundle 中去。</p>
+<ul>
+<li>修改配置：</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">//...
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">entry</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">main</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;./src/app1.js&#34;</span>, <span style="color:#e6db74">&#34;./src/app2.js&#34;</span>],
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">lodash</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;lodash&#34;</span>,
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><ul>
+<li>结论：会输出两个 bundle：main.js 和 lodash.js</li>
+</ul>
+<p><strong>示例 4. 重复打包</strong></p>
+<p>如果在 app1.js 中使用了 lodash，打包后 bundle 的体积会如何变化呢？</p>
+<ul>
+<li>修改 app1.js</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">_</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;lodash&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;app1.js&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">_</span>);
+</span></span></code></pre></div><ul>
+<li>打包</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">//...
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">entry</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">main</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;./src/app1.js&#34;</span>, <span style="color:#e6db74">&#34;./src/app2.js&#34;</span>],
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">lodash</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;lodash&#34;</span>,
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><ul>
+<li>结论：会发现 lodash.js 体积没什么变化，而 main.js 的体积却变大很多，几乎和 lodash.js 一样大，说明 lodash 也被打包到 main.js 中去了。</li>
+</ul>
+<p><strong>示例 5. 避免重复打包</strong></p>
+<p>上例子中存在一个问题，打包后的代码存在两份 lodash，导致代码重复冗余，如何解决呢？</p>
+<ul>
+<li>修改配置：</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">//...
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">entry</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">main</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">import</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;./src/app1.js&#34;</span>, <span style="color:#e6db74">&#34;./src/app2.js&#34;</span>],
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">dependOn</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;lodash&#34;</span>,
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">lodash</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;lodash&#34;</span>,
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><ul>
+<li>结论：打包后只会存在一个 lodash，成功解决重复打包问题。</li>
+</ul>
+<p><strong>示例 6. 多 bundle 引用相同的第三方包</strong></p>
+<p>如果多个 bundle 中都引用同一个第三方包，会引起重复打包的问题吗？</p>
+<ul>
+<li>新增 app3.js</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">//app3.js
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">_</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;lodash&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#f92672">-</span>)
+</span></span></code></pre></div><ul>
+<li>修改配置：</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">//...
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">entry</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">main1</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">import</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;./src/app1.js&#34;</span>, <span style="color:#e6db74">&#34;./src/app2.js&#34;</span>],
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">dependOn</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;lodash&#34;</span>,
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">main2</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">import</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;./src/app3.js&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">dependOn</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;lodash&#34;</span>,
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">lodash</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;lodash&#34;</span>,
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><ul>
+<li>结论：第三方包只会打包一份，不会重复打包。</li>
+</ul>
+<h3 id="42-配置-indexhtml-模板">4.2 配置 index.html 模板</h3>
+<p><strong>生成多个 HTML 文件</strong></p>
+<p>要生多个 HTML 文件，请在插件数组中多次声明插件。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">//...
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">entry</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;index.js&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">output</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">path</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">__dirname</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;/dist&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">filename</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;index_bundle.js&#34;</span>,
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">plugins</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">HtmlWebpackPlugin</span>(), <span style="color:#75715e">// Generate default index.html
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">HtmlWebpackPlugin</span>({
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">filename</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;test.html&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">template</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;src/assets/test.html&#34;</span>,
+</span></span><span style="display:flex;"><span>    }),
+</span></span><span style="display:flex;"><span>  ],
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p><strong>编写自己的模板</strong></p>
+<ul>
+<li>webpack.config.js</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">//...
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">plugins</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">HtmlWebpackPlugin</span>({
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">title</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Custom template&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">template</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;index.html&#34;</span>,
+</span></span><span style="display:flex;"><span>    }),
+</span></span><span style="display:flex;"><span>  ],
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><ul>
+<li>index.html</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span><span style="color:#75715e">&lt;!-- index.html --&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!DOCTYPE html&gt;</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">html</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">head</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">title</span>&gt;<span style="color:#960050;background-color:#1e0010">&lt;</span>%= htmlWebpackPlugin.options.title %&gt;&lt;/<span style="color:#f92672">title</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#f92672">head</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">body</span>&gt;&lt;/<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">html</span>&gt;
+</span></span></code></pre></div><p><strong>HtmlWebpackPlugin 插件常用配置项</strong></p>
+<ol>
+<li>
+<p>在 <code>new HtmlWebpackPlugin()</code> 时，可传入一个配置对象，在配置对象中，不仅可以设置内置的属性，还可以自定义属性，在 html 模板中可以通过模板语法 <code>&lt;%= htmlWebpackPlugin.options.xxx %&gt;</code> 来使用这些自定义的属性。title 属性就是一个自定义属性。</p>
+</li>
+<li>
+<p>template：指定 html 模板。</p>
+</li>
+<li>
+<p>inject：指定在哪个位置引入打包后的文件，默认为 “head”，我们也可以修改为 “body”。</p>
+</li>
+<li>
+<p>chunks：指定引入哪些 chunks。默认情况下，htmlWebpackPlugin 插件会自动引入打包后所有的 chunks。</p>
+</li>
+</ol>
+<ul>
+<li>webpack.config.js</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">//...
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">plugins</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">HtmlWebpackPlugin</span>({
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">title</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;多页面应用&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">template</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;./src/index.html&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">inject</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;body&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">chunks</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;main&#34;</span>, <span style="color:#e6db74">&#34;lodash&#34;</span>],
+</span></span><span style="display:flex;"><span>    }),
+</span></span><span style="display:flex;"><span>  ],
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p><strong>示例：HtmlWebpackPlugin 插件常用配置</strong></p>
+<ul>
+<li>webpack.config.js</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">//...
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">entry</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">main1</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">import</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;./src/app1.js&#34;</span>, <span style="color:#e6db74">&#34;./src/app2.js&#34;</span>],
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">dependOn</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;lodash&#34;</span>,
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">main2</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">import</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;./src/app3.js&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">dependOn</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;lodash&#34;</span>,
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">lodash</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;lodash&#34;</span>,
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">output</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">clean</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">mode</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;development&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">devtool</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;cheap-module-source-map&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">devServer</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">static</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">path</span>.<span style="color:#a6e22e">resolve</span>(<span style="color:#a6e22e">__dirname</span>, <span style="color:#e6db74">&#34;./dist&#34;</span>),
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">plugins</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">HtmlWebpackPlugin</span>({
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">title</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;多页面应用&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">template</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;./src/index.html&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">inject</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;body&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">chunks</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;main&#34;</span>, <span style="color:#e6db74">&#34;lodash&#34;</span>],
+</span></span><span style="display:flex;"><span>    }),
+</span></span><span style="display:flex;"><span>  ],
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><ul>
+<li>打包后结果：</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span><span style="color:#75715e">&lt;!-- index.html --&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!DOCTYPE html&gt;</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">html</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">head</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">title</span>&gt;多页面应用&lt;/<span style="color:#f92672">title</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#f92672">head</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">defer</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;main.js&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">defer</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;lodash.js&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">html</span>&gt;
+</span></span></code></pre></div><h3 id="43-多页面应用">4.3 多页面应用</h3>
+<p>搭建多页面应用，需要进行哪些操作？</p>
+<ol>
+<li>
+<p>打包出多个 html 文件，每个 html 文件对应一个单页面应用</p>
+</li>
+<li>
+<p>将每个 html 文件和它里面独有引入的 chunk 存放在同一个目录中，公共的 chunk 也可以放在一个单独的目录中</p>
+</li>
+<li>
+<p>每个 html 文件引入 chunk 不完全相同</p>
+</li>
+</ol>
+<p><strong>配置项说明</strong></p>
+<ol>
+<li>
+<p><code>entry.Chunk.import</code>: 指定当前 chunk 的入口文件，如果有多个，则使用一个数组。</p>
+</li>
+<li>
+<p><code>entry.Chunk.dependOn</code>: 列出当前的 chunk 依赖的第三方包，它会被单独打包，避免将自己的代码和第三方包打包到一个 chunk 中，导致体积过大。</p>
+</li>
+<li>
+<p><code>entry.Chunk.filename</code>: 指定当前 chunk 的输出的名字，还可以指定存放的目录。</p>
+</li>
+<li>
+<p><code>plugins.HtmlWebpackPlugin.filename</code>: 指定生成的 html 的名字，还可以指定存放的目录。</p>
+</li>
+<li>
+<p><code>plugins.HtmlWebpackPlugin.publicPath</code>: 指定域名，如果要将打包输出的 chunk 部署到 cdn 上，就可以使用该 publicPath 选项来指定 cdn 域名。</p>
+</li>
+</ol>
+<p><strong>示例：搭建多页面应用环境</strong></p>
+<ul>
+<li>代码结构如下：</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>├─src
+</span></span><span style="display:flex;"><span>    ├─app.js
+</span></span><span style="display:flex;"><span>    ├─app2.js
+</span></span><span style="display:flex;"><span>    ├─app3.js
+</span></span><span style="display:flex;"><span>    ├─index.html
+</span></span><span style="display:flex;"><span>    ├─index2.html
+</span></span><span style="display:flex;"><span>├─package.json
+</span></span><span style="display:flex;"><span>├─webpack.config.js
+</span></span></code></pre></div><ul>
+<li>app.js</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">_</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;lodash&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;app.js&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">_</span>);
+</span></span></code></pre></div><ul>
+<li>app2.js</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;app2.js&#34;</span>);
+</span></span></code></pre></div><ul>
+<li>app3.js</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">_</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;lodash&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">_</span>);
+</span></span></code></pre></div><ul>
+<li>index.html</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span><span style="color:#75715e">&lt;!-- index.html --&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!DOCTYPE html&gt;</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">html</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">head</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">title</span>&gt;<span style="color:#960050;background-color:#1e0010">&lt;</span>%= htmlWebpackPlugin.options.title %&gt;&lt;/<span style="color:#f92672">title</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#f92672">head</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">p</span>&gt;我是html模板&lt;/<span style="color:#f92672">p</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">html</span>&gt;
+</span></span></code></pre></div><ul>
+<li>index2.html</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span><span style="color:#75715e">&lt;!-- index.html --&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!DOCTYPE html&gt;</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">html</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">head</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">title</span>&gt;<span style="color:#960050;background-color:#1e0010">&lt;</span>%= htmlWebpackPlugin.options.title %&gt;&lt;/<span style="color:#f92672">title</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#f92672">head</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">p</span>&gt;我是html模板2&lt;/<span style="color:#f92672">p</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">html</span>&gt;
+</span></span></code></pre></div><ul>
+<li>配置文件：webpack.config.js</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">path</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#34;path&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">HtmlWebpackPlugin</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#34;html-webpack-plugin&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">entry</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">main</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">import</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;./src/app.js&#34;</span>, <span style="color:#e6db74">&#34;./src/app2.js&#34;</span>],
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">dependOn</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;lodash&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">filename</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;page1/[name].js&#34;</span>,
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">main2</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">import</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;./src/app3.js&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">dependOn</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;lodash&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">filename</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;page2/[name].js&#34;</span>,
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">lodash</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">import</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;lodash&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">filename</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;common/[name].js&#34;</span>,
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">output</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">clean</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">mode</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;development&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">devtool</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;cheap-module-source-map&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">devServer</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">static</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">path</span>.<span style="color:#a6e22e">resolve</span>(<span style="color:#a6e22e">__dirname</span>, <span style="color:#e6db74">&#34;./dist&#34;</span>),
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">plugins</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">HtmlWebpackPlugin</span>({
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">title</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;多页面应用-页面1&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">template</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;./src/index.html&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">inject</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;body&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">filename</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;page1/index.html&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">chunks</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;main&#34;</span>, <span style="color:#e6db74">&#34;lodash&#34;</span>],
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">publicPath</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;http://www.a.com/&#34;</span>,
+</span></span><span style="display:flex;"><span>    }),
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">HtmlWebpackPlugin</span>({
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">title</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;多页面应用-页面2&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">template</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;./src/index2.html&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">inject</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;body&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">filename</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;page2/index.html&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">chunks</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;main2&#34;</span>, <span style="color:#e6db74">&#34;lodash&#34;</span>],
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">publicPath</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;http://www.b.com/&#34;</span>,
+</span></span><span style="display:flex;"><span>    }),
+</span></span><span style="display:flex;"><span>  ],
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><ul>
+<li>打包后结果:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>├─dist
+</span></span><span style="display:flex;"><span>    ├─common
+</span></span><span style="display:flex;"><span>        ├─lodash.js
+</span></span><span style="display:flex;"><span>    ├─page1
+</span></span><span style="display:flex;"><span>        ├─index.html
+</span></span><span style="display:flex;"><span>        ├─main.js
+</span></span><span style="display:flex;"><span>    ├─page2
+</span></span><span style="display:flex;"><span>        ├─index2.html
+</span></span><span style="display:flex;"><span>        ├─main2.js
+</span></span></code></pre></div><h2 id="tree-shaking">Tree shaking</h2>
+<ol>
+<li>
+<p>默认情况下，被 import 导入的模块中的代码，不管是否被使用到，都会被打包到当前模块。</p>
+</li>
+<li>
+<p>如果想去掉未使用的代码，该怎么办呢？</p>
+<ul>
+<li>设置生成模式：<code>mode: &quot;production&quot;</code></li>
+<li>设置 <code>optimization.usedExports</code></li>
+</ul>
+</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">//...
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">optimization</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">usedExports</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><ol start="3">
+<li>webpack5 tree-shaking 功能的特点：</li>
+</ol>
+<ul>
+<li>
+<p>对于自定义模块：如果只导入，而没有调用它，则也被 “摇” 掉</p>
+</li>
+<li>
+<p>对于第三方包：如果只导入，而没有调用它，则也被打包</p>
+</li>
+<li>
+<p>对于 .css 文件：如果只导入，而没有调用它，则也被打包。<code>这是 webpack 智能 tree-shaking 的一个表现，因为样式文件一般只要导入就能够生效，而不需要调用</code></p>
+</li>
+</ul>
+<p><strong>sideEffects</strong></p>
+<p>注意 webpack 不能百分百安全的进行 tree-shaking，有些模块导入，只要被引入，就会对应用程序产生重要的影响。一个很好的例子就是全局样式表，或者设置全局配置的 javascript 文件。</p>
+<p>webpack 认为这样的文件有 “副作用”，具有副作用的文件不应该被 tree-shaking，因为这将破坏整个应用程序。</p>
+<p>webpack 设计者清楚的认识到不知道哪些文件有副作用的情况下打包代码的风险，因此 webpack4 默认的将所有代码视为有副作用。这可以保护比免于删除必要的文件，但这意味着 webpack 的默认行为实际上是不进行 tree-shaking 的，值得注意的是 webpack5 默认会进行 tree-shaking。</p>
+<p>如果告诉 webpack 你的代码无副作用，可以通过 package,json 有一个特殊的属性 sideEffects，就是为此而存在的。</p>
+<p>它可能有三个值：</p>
+<ol>
+<li>
+<p>true: 这意味着所有的文件都有副作用，也就是没有一个文件可以 tree-shaking。</p>
+</li>
+<li>
+<p>false: 告诉 webpack 没有文件有副作用，所有文件都可以 tree-shaking</p>
+</li>
+<li>
+<p>数组：是文件路径数组，它告诉 webpack，除了数组中包含的文件外，你的任何文件都没有副作用，因此，除了指定的文件之外，其他文件都可以安全的进行 tree-shaking。</p>
+</li>
+</ol>
+<p><strong>[注]</strong></p>
+<ol>
+<li>
+<p>sideEffects 是 package.json 的配置项，而不是 webpack.config.js</p>
+</li>
+<li>
+<p>sideEffects 用来告诉 webpack 哪些文件是有 “副作用” 的，不要对它进行 tree-shaking，一律全部打包。</p>
+</li>
+<li>
+<p>webpack 默认认为样式文件是有 “副作用” 的，不会对它进行 tree-shaking，一律全部打包。相当于 <code>sideEffects: [&quot;*.css&quot;]</code></p>
+</li>
+</ol>
+<p><strong>示例：sideEffects 的基本使用</strong></p>
+<ul>
+<li>sytle.css</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">body</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">background-color</span>: <span style="color:#66d9ef">pink</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
+<li>m.global.js</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// 全局 js 文件，即使只导入而未使用，也不希望被 tree-shaking
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;global code&#34;</span>);
+</span></span></code></pre></div><ul>
+<li>app.js</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#34;./sytle.css&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#34;./m.global.js&#34;</span>;
+</span></span></code></pre></div><ul>
+<li>sideEffects 选项：</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;sideEffects&#34;</span>: [<span style="color:#e6db74">&#34;*.css&#34;</span>, <span style="color:#e6db74">&#34;*.global.js&#34;</span>]
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="shimming-预置依赖">shimming 预置依赖</h2>
+<p>webpack compiler 能够识别遵循 ES2015 模块语法、CommonJS 或 AMD 规范编写的模块，然而，一些 third party（第三方库）可能会引用一些全局依赖（例如 jQuery 中的 $）。因此这些 library 也可能会创建一些需要导出的全局变量。</p>
+<p>shim 另外一个及其重要的使用场景就是：当你希望 polyfill 扩展浏览器的能力，来支持更多用户时，在这种情况下，你可能只是想要将这些 polyfills 提供给需要修补的浏览器，也就是实现按需加载。</p>
+<h3 id="71-shimming-预设全局变量">7.1 Shimming 预设全局变量</h3>
+<p>例如，把应用程序中的模块依赖，改为一个全局变量依赖，</p>
+<p>要实现这些，我们需要使用 <code>ProvidePlugin</code> 插件。</p>
+<blockquote>
+<p>ProvidePlugin 不需要安装，是 webpack 内置的。</p>
+</blockquote>
+<p>使用 <code>ProvidePlugin</code> 后，能够在 webpack 编译的每个模块中，通过访问一个变量来获取一个 package。</p>
+<p>如果 webpack 看到模块中用到这个变量，它将在最终 bundle 中引入给定的 package。</p>
+<p>让我们先移除 lodash 的 import 语句，改为通过插件提供它：</p>
+<ul>
+<li>src/index.js</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">_</span>.<span style="color:#a6e22e">join</span>([<span style="color:#e6db74">&#34;hello&#34;</span>, <span style="color:#e6db74">&#34;webpack&#34;</span>], <span style="color:#e6db74">&#34; &#34;</span>));
+</span></span></code></pre></div><ul>
+<li>webpack.config.js</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">//...
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">plugins</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">webpack</span>.<span style="color:#a6e22e">ProvidePlugin</span>({
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">_</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;lodash&#34;</span>,
+</span></span><span style="display:flex;"><span>    }),
+</span></span><span style="display:flex;"><span>  ],
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>还可以使用 <code>ProvidePlugin</code> 暴露出某个模块中单独导出，通过配置一个 “数组路径”（例如：[module, child, &hellip;chindren?]）实现此功能。</p>
+<ul>
+<li>src/index.js</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">join</span>([<span style="color:#e6db74">&#34;hello&#34;</span>, <span style="color:#e6db74">&#34;webpack&#34;</span>], <span style="color:#e6db74">&#34; &#34;</span>));
+</span></span></code></pre></div><ul>
+<li>webpack.config.js</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">//...
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">plugins</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">webpack</span>.<span style="color:#a6e22e">ProvidePlugin</span>({
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">join</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;lodash&#34;</span>, <span style="color:#e6db74">&#34;join&#34;</span>],
+</span></span><span style="display:flex;"><span>    }),
+</span></span><span style="display:flex;"><span>  ],
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p><strong>示例：第三方包 shimming</strong></p>
+<p>一般情况下，我们会在一个模块中先导入 lodash，然后私用它。</p>
+<p>那能不能将 lodash 变成一个全局变量呢？这样在任何模块中，都可以直接使用 lodash，而不需要导入了。</p>
+<p>可以通过将第三方包预设成全局变量来实现，即第三方包的 shimming。</p>
+<ul>
+<li>webpack.config.js</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">//...
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">plugins</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">webpack</span>.<span style="color:#a6e22e">ProvidePlugin</span>({
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">_</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;lodash&#34;</span>,
+</span></span><span style="display:flex;"><span>    }),
+</span></span><span style="display:flex;"><span>  ],
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>注意：不需要手动安装 lodash，执行 <code>npx webpack</code> 打包时，ProvidePlugin 插件会自动帮我们下载 lodash。</p>
+<h3 id="72-细粒度-shimming">7.2 细粒度 Shimming</h3>
+<p>一些遗留模块依赖的 this 指向的是 window 对象，</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">alert</span>(<span style="color:#e6db74">&#34;hello webpack&#34;</span>);
+</span></span></code></pre></div><p>当模块运行在 commonJS 上下文中，这将会变成一个问题，也就是说此时的 this 指向的是 module.exports。在这种情况下，你可以通过使用 <code>imports-loader</code> 覆盖 this 指向。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">//...
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">module</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">rules</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>      {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">test</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">require</span>.<span style="color:#a6e22e">resolve</span>(<span style="color:#e6db74">&#34;./src/index.js&#34;</span>),
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">use</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;imports-loader?wrapper=window&#34;</span>,
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p><strong>示例：imports-loader 基本使用</strong></p>
+<p>如果我们想在模块中使用 this 这个变量，并希望他是指向浏览器的 window 对象的，该怎么办呢？</p>
+<ul>
+<li>安装</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>npm i imports-loader -D
+</span></span></code></pre></div><ul>
+<li>index.js</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">alert</span>(<span style="color:#e6db74">&#34;hello, webpack&#34;</span>);
+</span></span></code></pre></div><ul>
+<li>webpack.config.js</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">//...
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">module</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">rules</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>      {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">test</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">require</span>.<span style="color:#a6e22e">resolve</span>(<span style="color:#e6db74">&#34;./src/index.js&#34;</span>),
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">use</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;imports-loader?wrapper=window&#34;</span>,
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><ul>
+<li>结论：可以通过 imports-loader 来修改 this 的指向。</li>
+</ul>
+<h3 id="74-加载-polyfills">7.4 加载 Polyfills</h3>
+<p>引入 <code>@babel/polyfill</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>npm install @babel/polyfill --save
+</span></span></code></pre></div><p>然后，使用 import 将其引入到我们主 bundle 文件：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#34;@babel/polyfill&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(Array.<span style="color:#a6e22e">from</span>([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>], (<span style="color:#a6e22e">x</span>) =&gt; <span style="color:#a6e22e">x</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">x</span>));
+</span></span></code></pre></div><p>注意，这种方式优先考虑正确性，而不考虑 bundle 体积大小。为了安全和可靠，<code>polyfill/shim</code> 必须运行于所有其他代码之前，而且需要同步加载，或者说，需要在所有 <code>polyfill/shim</code> 加载之后，再去加载所有应用程序代码。</p>
+<p>社区中存在许多误解，即现在浏览器 “不需要 polyfill”，或者 <code>polyfill/shim</code> 仅用于添加缺失功能。</p>
+<p>实际上，它们通常用于 <strong>修复损坏实现</strong>，即使是在最现代的浏览器中，也会出现这种情况。</p>
+<p>因此，最佳实践仍然是，不加选择的和同步的加载所有 <code>polyfill/shim</code>，尽管这会导致额外的 bundle 体积成本。</p>
+<ul>
+<li>为什么要使用 polyfill?</li>
+</ul>
+<p>有些最新的 javascript api 是低版本浏览器不支持的，通过引用 polyfill，可以将这些 api 的实现代码打包到 web 应用中，这样就可以正常使用了。</p>
+<h3 id="75-进一步优化-polyfills">7.5 进一步优化 Polyfills</h3>
+<p>不建议使用 <code>import @babel/polyfill</code>。因为这样做的缺点是会全局引入整个 polyfill 包，比如 <code>Array.from</code> 会全局引入，不但包的体积大，而且还会污染全局环境。</p>
+<p><code>babel-preset-env</code> package 通过 <code>browserslist</code> 来转译那些你浏览器不支持的特性。这个 preset 使用 <code>useBuiltIns</code> 选项，默认是 false，这种方式可以将全局 <code>babel-polyfill</code> 导入，改进为更细粒度的 <code>import</code> 格式：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#34;core-js/modules/es7.string.pad-start&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#34;core-js/modules/es7.string.pad-end&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#34;core-js/modules/web.timers&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#34;core-js/modules/web.immediate&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#34;core-js/modules/web.dom.iterable&#34;</span>;
+</span></span></code></pre></div><ul>
+<li>安装 <code>@babel/preset-env</code> 及相关的包</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>npm i babel-loader @babel/core @babel/preset-env -D
+</span></span></code></pre></div><ul>
+<li>webpack.config.js</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">module</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">rules</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>      {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">test</span><span style="color:#f92672">:</span> <span style="color:#e6db74">/\.js$/</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">exclude</span><span style="color:#f92672">:</span> <span style="color:#e6db74">/node_modules/</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">use</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">loader</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;babel-loader&#34;</span>,
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">options</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">presets</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>              [
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;@babel/preset-env&#34;</span>,
+</span></span><span style="display:flex;"><span>                {
+</span></span><span style="display:flex;"><span>                  <span style="color:#a6e22e">targets</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;last 1 version&#34;</span>, <span style="color:#e6db74">&#34;&gt; 1%&#34;</span>],
+</span></span><span style="display:flex;"><span>                  <span style="color:#a6e22e">useBuiltIns</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;usage&#34;</span>,
+</span></span><span style="display:flex;"><span>                },
+</span></span><span style="display:flex;"><span>              ],
+</span></span><span style="display:flex;"><span>            ],
+</span></span><span style="display:flex;"><span>          },
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>useBuiltIns 参数有 3 个取值：entry、usage、false</p>
+<ul>
+<li>
+<p>entry: 会将文件中 <code>import &quot;@babel/polyfill&quot;</code> 语句结合 targets，转换为一系列引入语句，去掉目标浏览器已支持的 polyfill 模块，不管代码里有没有用到，只要目标浏览器不支持都会引入对应的 pofyfill 模块。</p>
+</li>
+<li>
+<p>usage: 不需要手动在代码中写 <code>import &quot;@babel/polyfill&quot;</code>，打包时会自动根据实际代码的使用情况，结合 targets 引入代码里实际用到部分 polyfill 模块。</p>
+</li>
+<li>
+<p>false: 对 <code>import &quot;@babel/polyfill&quot;</code> 不作任何处理，也不会自动引入 pofyfill 模块。</p>
+</li>
+</ul>
+<blockquote>
+<p>需要注意的是在 webpack 打包文件配置的 entry 中引入 @babel/polyfill 不会根据 useBuiltIns 配置任何转换处理。</p>
+</blockquote>
+<p>由于 <code>@babel/polyfill</code> 在 7.4.0 中被弃用，建议直接添加 corejs 并通过 corejs 选项设置版本。</p>
+<ul>
+<li>执行 <code>npx webpack</code></li>
+</ul>
+<p>提示我们需要安装 <code>core-js</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>npm i core-js@3 -S
+</span></span></code></pre></div><p>此时还需要，添加一个配置：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">module</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">rules</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>      {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">test</span><span style="color:#f92672">:</span> <span style="color:#e6db74">/\.js$/</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">exclude</span><span style="color:#f92672">:</span> <span style="color:#e6db74">/node_modules/</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">use</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">loader</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;babel-loader&#34;</span>,
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">options</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">presets</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>              [
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;@babel/preset-env&#34;</span>,
+</span></span><span style="display:flex;"><span>                {
+</span></span><span style="display:flex;"><span>                  <span style="color:#a6e22e">targets</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;last 1 version&#34;</span>, <span style="color:#e6db74">&#34;&gt; 1%&#34;</span>],
+</span></span><span style="display:flex;"><span>                  <span style="color:#a6e22e">useBuiltIns</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;usage&#34;</span>,
+</span></span><span style="display:flex;"><span>                  <span style="color:#a6e22e">corejs</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">3</span>,
+</span></span><span style="display:flex;"><span>                },
+</span></span><span style="display:flex;"><span>              ],
+</span></span><span style="display:flex;"><span>            ],
+</span></span><span style="display:flex;"><span>          },
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p><strong>示例：优化 polyfill</strong></p>
+<ul>
+<li>安装依赖</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>npm i -D babel-loader @babel/core @babel/preset-env
+</span></span><span style="display:flex;"><span>npm i -D core-js@3
+</span></span></code></pre></div><ul>
+<li>webpack.config.js</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">module</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">rules</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>      {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">test</span><span style="color:#f92672">:</span> <span style="color:#e6db74">/\.js$/</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">exclude</span><span style="color:#f92672">:</span> <span style="color:#e6db74">/node_modules/</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">use</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">loader</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;babel-loader&#34;</span>,
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">options</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">presets</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>              [
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;@babel/preset-env&#34;</span>,
+</span></span><span style="display:flex;"><span>                {
+</span></span><span style="display:flex;"><span>                  <span style="color:#a6e22e">targets</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;last 1 version&#34;</span>, <span style="color:#e6db74">&#34;&gt; 1%&#34;</span>],
+</span></span><span style="display:flex;"><span>                  <span style="color:#a6e22e">useBuiltIns</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;usage&#34;</span>,
+</span></span><span style="display:flex;"><span>                  <span style="color:#a6e22e">corejs</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">3</span>,
+</span></span><span style="display:flex;"><span>                },
+</span></span><span style="display:flex;"><span>              ],
+</span></span><span style="display:flex;"><span>            ],
+</span></span><span style="display:flex;"><span>          },
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><ul>
+<li>不需要手动导入 <code>@babel/polyfill</code></li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// import &#34;@babel/polyfill&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(Array.<span style="color:#a6e22e">from</span>([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>], (<span style="color:#a6e22e">x</span>) =&gt; <span style="color:#a6e22e">x</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">x</span>));
+</span></span></code></pre></div></section>
+
+  
+  
+
+  
+  
+  
+  <nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
+    
+    <a class="flex w-1/2 items-center p-6 pr-3 no-underline" href="/articles/posts/115/"
+      ><span class="mr-1.5">←</span><span>Web Components</span></a
+    >
+    
+    
+    <a
+      class="ml-auto flex w-1/2 items-center justify-end p-6 pl-3 no-underline"
+      href="/articles/posts/112/"
+      ><span>webpack5-高级篇1</span><span class="ml-1.5">→</span></a
+    >
+    
+  </nav>
+  
+
+  
+  
+</article>
+
+
+    </main>
+
+    <footer
+  class="opaco mx-auto flex h-[5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+  style="position: relative; z-index: 10;display: none;"
+>
+  <div class="mr-auto">
+    &copy; 2024
+    <a class="link" href="/articles/">灏天阁</a>
+  </div>
+  <a class="link" href="https://yinchuanbo.github.io/" rel="noopener" target="_blank"
+    >Powered by YinHao</a
+  >️ ▷
+</footer>
+
+
+    <div class="img__mask" style="display: none;">
+      <img src="" alt="">
+      <span class="close_btn"></span>
+    </div>
+
+    <script>
+      const imgs = document.images;
+      const imgMask = document.querySelector('.img__mask')
+      const closeBtn = document.querySelector('.close_btn')
+      for (let i = 0; i < imgs.length; i++) {
+        const element = imgs[i];
+        element.onclick = () => {
+          const src = element.src;
+          imgMask.style.display = 'flex';
+          imgMask.querySelector('img').src = src;
+        }
+      }
+      closeBtn.onclick = () => {
+        imgMask.style.display = 'none';
+      }
+    </script>
+  </body>
+</html>

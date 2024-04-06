@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+  class="not-ready text-sm lg:text-base"
+  style="--bg: "
+  lang="en"
+>
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  
+  <title>数据类型 - 灏天阁</title>
+
+  
+  <meta name="theme-color" />
+  
+  <meta name="description" content="基本类型 JavaScript 的基本数据类型
+null: 控制，表示非对象
+undefined: 未定义的值，表示未赋值的初始化值
+number: 数字
+string: 字符串
+boolean: 布尔值
+object: 对象，表示复合结构的数据集
+使用 typeof 运算符可以检测数据的基本类型。
+console.log(typeof 1); // &#34;number&#34; console.log(typeof &#34;1&#34;); // &#34;string&#34; console.log(typeof true); // &#34;boolean&#34; console.log(typeof {}); // &#34;object&#34; console.log(typeof []); // &#34;object&#34; console.log(typeof function () {}); // &#34;function&#34; console.log(typeof null); // &#34;object&#34; console.log(typeof undefined); // &#34;undefined&#34; 由于 null 值返回类型为 Object，使用下面自定义函数可以避开因为 null 值影响基本类型检测。
+function typeOf(o) { return o === null ? &#34;null&#34; : typeof o; } console." />
+  <meta name="author" content="" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="/articles/main.min.css" />
+
+  
+
+  
+  
+  
+    
+  
+  <link
+    rel="preload"
+    as="image"
+    href="/articles/theme.png"
+  />
+
+  
+  
+  
+  <link rel="preload" as="image" href="/imgs/logo.png" />
+  
+  
+
+  
+
+  
+  <link rel="icon" href="/img/ico.ico" />
+  <link rel="apple-touch-icon" href="/articles/apple-touch-icon.png" />
+  
+  <meta name="generator" content="Hugo 0.108.0">
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="数据类型" />
+<meta property="og:description" content="基本类型 JavaScript 的基本数据类型
+null: 控制，表示非对象
+undefined: 未定义的值，表示未赋值的初始化值
+number: 数字
+string: 字符串
+boolean: 布尔值
+object: 对象，表示复合结构的数据集
+使用 typeof 运算符可以检测数据的基本类型。
+console.log(typeof 1); // &#34;number&#34; console.log(typeof &#34;1&#34;); // &#34;string&#34; console.log(typeof true); // &#34;boolean&#34; console.log(typeof {}); // &#34;object&#34; console.log(typeof []); // &#34;object&#34; console.log(typeof function () {}); // &#34;function&#34; console.log(typeof null); // &#34;object&#34; console.log(typeof undefined); // &#34;undefined&#34; 由于 null 值返回类型为 Object，使用下面自定义函数可以避开因为 null 值影响基本类型检测。
+function typeOf(o) { return o === null ? &#34;null&#34; : typeof o; } console." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/articles/posts/116/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-02-23T20:37:31+08:00" />
+<meta property="article:modified_time" content="2024-02-23T20:37:31+08:00" />
+
+  
+  <meta itemprop="name" content="数据类型">
+<meta itemprop="description" content="基本类型 JavaScript 的基本数据类型
+null: 控制，表示非对象
+undefined: 未定义的值，表示未赋值的初始化值
+number: 数字
+string: 字符串
+boolean: 布尔值
+object: 对象，表示复合结构的数据集
+使用 typeof 运算符可以检测数据的基本类型。
+console.log(typeof 1); // &#34;number&#34; console.log(typeof &#34;1&#34;); // &#34;string&#34; console.log(typeof true); // &#34;boolean&#34; console.log(typeof {}); // &#34;object&#34; console.log(typeof []); // &#34;object&#34; console.log(typeof function () {}); // &#34;function&#34; console.log(typeof null); // &#34;object&#34; console.log(typeof undefined); // &#34;undefined&#34; 由于 null 值返回类型为 Object，使用下面自定义函数可以避开因为 null 值影响基本类型检测。
+function typeOf(o) { return o === null ? &#34;null&#34; : typeof o; } console."><meta itemprop="datePublished" content="2024-02-23T20:37:31+08:00" />
+<meta itemprop="dateModified" content="2024-02-23T20:37:31+08:00" />
+<meta itemprop="wordCount" content="338">
+<meta itemprop="keywords" content="" />
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="数据类型"/>
+<meta name="twitter:description" content="基本类型 JavaScript 的基本数据类型
+null: 控制，表示非对象
+undefined: 未定义的值，表示未赋值的初始化值
+number: 数字
+string: 字符串
+boolean: 布尔值
+object: 对象，表示复合结构的数据集
+使用 typeof 运算符可以检测数据的基本类型。
+console.log(typeof 1); // &#34;number&#34; console.log(typeof &#34;1&#34;); // &#34;string&#34; console.log(typeof true); // &#34;boolean&#34; console.log(typeof {}); // &#34;object&#34; console.log(typeof []); // &#34;object&#34; console.log(typeof function () {}); // &#34;function&#34; console.log(typeof null); // &#34;object&#34; console.log(typeof undefined); // &#34;undefined&#34; 由于 null 值返回类型为 Object，使用下面自定义函数可以避开因为 null 值影响基本类型检测。
+function typeOf(o) { return o === null ? &#34;null&#34; : typeof o; } console."/>
+
+  
+  
+</head>
+  <body class="text-black duration-200 ease-out dark:text-white">
+    
+    
+
+    
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100%-10rem)] max-w-3xl px-8 pt-20 dark:prose-invert"
+      id="main"
+    >
+      
+
+<article>
+  <header class="mb-10">
+    <h1 class="!my-0 pb-2.5">
+      数据类型
+    </h1>
+
+    
+    <div class="text-sm opacity-60">
+      
+      <time>Feb 23, 2024</time>
+      
+      
+      <span class="mx-1">&middot;</span>
+      <span>Yin灏</span>
+    </div>
+    
+  </header>
+
+  <section><h2 id="基本类型">基本类型</h2>
+<p><strong>JavaScript 的基本数据类型</strong></p>
+<ul>
+<li>
+<p>null: 控制，表示非对象</p>
+</li>
+<li>
+<p>undefined: 未定义的值，表示未赋值的初始化值</p>
+</li>
+<li>
+<p>number: 数字</p>
+</li>
+<li>
+<p>string: 字符串</p>
+</li>
+<li>
+<p>boolean: 布尔值</p>
+</li>
+<li>
+<p>object: 对象，表示复合结构的数据集</p>
+</li>
+</ul>
+<p>使用 <code>typeof</code> 运算符可以检测数据的基本类型。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">typeof</span> <span style="color:#ae81ff">1</span>); <span style="color:#75715e">// &#34;number&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">typeof</span> <span style="color:#e6db74">&#34;1&#34;</span>); <span style="color:#75715e">// &#34;string&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">typeof</span> <span style="color:#66d9ef">true</span>); <span style="color:#75715e">// &#34;boolean&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">typeof</span> {}); <span style="color:#75715e">// &#34;object&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">typeof</span> []); <span style="color:#75715e">// &#34;object&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">typeof</span> <span style="color:#66d9ef">function</span> () {}); <span style="color:#75715e">// &#34;function&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">typeof</span> <span style="color:#66d9ef">null</span>); <span style="color:#75715e">// &#34;object&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">typeof</span> <span style="color:#66d9ef">undefined</span>); <span style="color:#75715e">// &#34;undefined&#34;
+</span></span></span></code></pre></div><blockquote>
+<p>由于 null 值返回类型为 Object，使用下面自定义函数可以避开因为 null 值影响基本类型检测。</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">typeOf</span>(<span style="color:#a6e22e">o</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">o</span> <span style="color:#f92672">===</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">?</span> <span style="color:#e6db74">&#34;null&#34;</span> <span style="color:#f92672">:</span> <span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">o</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">typeOf</span>(<span style="color:#66d9ef">null</span>)); <span style="color:#75715e">// &#34;null&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">typeOf</span>({})); <span style="color:#75715e">// &#34;object&#34;
+</span></span></span></code></pre></div><h2 id="数字">数字</h2>
+<p>数值直接量可以细分为 <code>整型直接量</code> 和 <code>浮点型直接量</code>。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#66d9ef">int</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; <span style="color:#75715e">// 整型
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#66d9ef">float</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.0</span><span style="color:#960050;background-color:#1e0010">；</span><span style="color:#75715e">// 浮点型
+</span></span></span></code></pre></div><ul>
+<li>整数一般都是 32 位数值，浮点数一般都是 64 位数值。</li>
+</ul>
+<blockquote>
+<p>Js 中的所有数字都是以 64 位浮点数形式存储的，包括整数。例如：2 与 2.0 是同一个数。</p>
+</blockquote>
+<p><strong>特殊数值</strong></p>
+<p>Js 定义几个特殊的数值常量：</p>
+<ul>
+<li>
+<p>Infinity: 无穷大，</p>
+</li>
+<li>
+<p>NaN: 非数值，不等于任何数值，包括自己，如当 0 除以 0 时会返回这个特殊值</p>
+</li>
+<li>
+<p>Number.MAX_VALUE: 表示最大值</p>
+</li>
+<li>
+<p>Number.MIN_VALUE: 表示最小值，一个接近于 0 的值</p>
+</li>
+<li>
+<p>Number.NaN: 非数值，与 NaN 常量相同</p>
+</li>
+</ul>
+<p><strong>NaN</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">typeof</span> <span style="color:#66d9ef">NaN</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#34;number&#34;</span>); <span style="color:#75715e">// true
+</span></span></span></code></pre></div><p>当试图将非数字形式的字符串转换为数字时，就会生成 <code>NaN</code>。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#f92672">+</span><span style="color:#e6db74">&#34;0&#34;</span>; <span style="color:#75715e">// 0
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">+</span><span style="color:#e6db74">&#34;oops&#34;</span>; <span style="color:#75715e">// NaN
+</span></span></span></code></pre></div><p>当 NaN 参与数学运算时，运算结果也是 NaN，因此，如果表达式的运算值为 NaN，那么可以推断其中至少一个运算数是 NaN。</p>
+<p>typeof 不能分辨数值和 NaN，并且 NaN 不等同于它自己，</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">NaN</span> <span style="color:#f92672">===</span> <span style="color:#66d9ef">NaN</span>; <span style="color:#75715e">// false
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">NaN</span> <span style="color:#f92672">!==</span> <span style="color:#66d9ef">NaN</span>; <span style="color:#75715e">// true
+</span></span></span></code></pre></div><p>使用 isNaN() 全局函数可以判断 NaN</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>isNaN(<span style="color:#66d9ef">NaN</span>); <span style="color:#75715e">// true
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>isNaN(<span style="color:#ae81ff">0</span>); <span style="color:#75715e">// false
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>isNaN(<span style="color:#e6db74">&#34;oops&#34;</span>); <span style="color:#75715e">// true
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>isNaN(<span style="color:#e6db74">&#34;0&#34;</span>); <span style="color:#75715e">// false，会尝试转换为一个数值
+</span></span></span></code></pre></div><blockquote>
+<p>Number.isFinite() 静态方法判断传入值是否是一个有限数——也就是说，它检查给定值是一个数字，且该数字既不是正的 Infinity，也不是负的 Infinity 或 NaN。</p>
+</blockquote>
+<p>isFinite() 会试图把检测到的值转换为一个数字，如果值不是一个数字，那么使用 isFinite() 直接检测就不是有效的方法。</p>
+<p>通过自定义 isNumber 函数可以避免 isFinite 的缺陷。</p>
+<p>下面自定义函数先判断值是否为数值类型，如果是数值类型，再使用 isFinite() 过滤出有效数字。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">isNumber</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">isNumber</span>(<span style="color:#a6e22e">value</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">value</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#34;number&#34;</span> <span style="color:#f92672">&amp;&amp;</span> isFinite(<span style="color:#a6e22e">value</span>);
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h2 id="字符串">字符串</h2>
+<p>JavaScript 字符串就是由零个或多个 Unicode 字符组成的字符序列，零个字符表示空字符串，</p>
+<p><strong>1. 字符串直接量</strong></p>
+<p>字符串允许多行表示，实现方法：在换行结尾处添加反斜杠（\）。反斜杠和换行符不作为字符串直接量的内容。例如：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;字符串\
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">直接量&#34;</span>
+</span></span><span style="display:flex;"><span>); <span style="color:#75715e">// &#34;字符串直接量&#34;
+</span></span></span></code></pre></div><p><strong>2. 转义字符</strong></p>
+<p>一些字符加上反斜杠后会表示特殊字符，而不是原字符本身，这些特殊转义字符被称为转义序列，</p>
+<ul>
+<li>
+<p><code>\b</code>: 退格符</p>
+</li>
+<li>
+<p><code>\n</code>: 换行符</p>
+</li>
+<li>
+<p><code>\r</code>: 回车符</p>
+</li>
+<li>
+<p><code>\&quot;</code>: 双引号</p>
+</li>
+<li>
+<p><code>\'</code>: 单引号</p>
+</li>
+<li>
+<p><code>\\</code>: 反斜杠</p>
+</li>
+</ul>
+<h2 id="布尔型">布尔型</h2>
+<p>在 JavaScript 中，<code>undefined</code>、<code>null</code>、<code>&quot;&quot;</code>、<code>0</code>、<code>NaN</code> 和 <code>false</code>，这 6 个特殊值转换为布尔值时为 fasle。</p>
+<p>除了假值以外，其他任何类型的数据转换为布尔值时都是 true。</p>
+<p><strong>使用 Boolean() 函数可以强制转换值为布尔值</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(Boolean(<span style="color:#ae81ff">0</span>)); <span style="color:#75715e">// false
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(Boolean(<span style="color:#66d9ef">NaN</span>)); <span style="color:#75715e">// false
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(Boolean(<span style="color:#66d9ef">null</span>)); <span style="color:#75715e">// false
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(Boolean(<span style="color:#e6db74">&#34;&#34;</span>)); <span style="color:#75715e">// false
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(Boolean(<span style="color:#66d9ef">undefined</span>)); <span style="color:#75715e">// false
+</span></span></span></code></pre></div><h2 id="null">Null</h2>
+<p>Null 类型只有一个值，即 null，它表示空值，定义一个空对象指针，</p>
+<h2 id="undefined">Undefined</h2>
+<p>undefined 是 Undefined 类型的唯一值，它表示未定义的值，当声明变量未赋值时，或定义属性未设置值时，默认值都为 undefiend。</p>
+<p>undefined 派生自 null，null 和 undefined 都表示空缺的值，转化为布尔值时都是假值，可以相等。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">null</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">undefined</span>); <span style="color:#75715e">// true
+</span></span></span></code></pre></div><p>null 和 undefined 属于两种不同类型，使用全等运算符（===）或 typeof 运算符可以进行检测。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">null</span> <span style="color:#f92672">===</span> <span style="color:#66d9ef">undefined</span>); <span style="color:#75715e">// false
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">typeof</span> <span style="color:#66d9ef">null</span>); <span style="color:#75715e">// &#34;object&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">typeof</span> <span style="color:#66d9ef">undefined</span>); <span style="color:#75715e">// &#34;undefined&#34;
+</span></span></span></code></pre></div><p>检测一个变量是否初始化，可以使用 undefined 快速检测。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">a</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">a</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">a</span> <span style="color:#f92672">==</span> <span style="color:#a6e22e">undefiend</span> <span style="color:#f92672">&amp;&amp;</span> (<span style="color:#a6e22e">a</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>); <span style="color:#75715e">// 检测变量是否初始化，否则为其赋值
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">a</span>); <span style="color:#75715e">// 0
+</span></span></span></code></pre></div><p>也可以使用 typeof 运算符检测变量的类型是否为 undefined。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;undefined&#34;</span> <span style="color:#f92672">&amp;&amp;</span> (<span style="color:#a6e22e">a</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>);
+</span></span></code></pre></div></section>
+
+  
+  
+
+  
+  
+  
+  <nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
+    
+    <a class="flex w-1/2 items-center p-6 pr-3 no-underline" href="/articles/posts/117/"
+      ><span class="mr-1.5">←</span><span>严格模式</span></a
+    >
+    
+    
+    <a
+      class="ml-auto flex w-1/2 items-center justify-end p-6 pl-3 no-underline"
+      href="/articles/posts/114/"
+      ><span>CSS修改滚动条样式 scrollbar</span><span class="ml-1.5">→</span></a
+    >
+    
+  </nav>
+  
+
+  
+  
+</article>
+
+
+    </main>
+
+    <footer
+  class="opaco mx-auto flex h-[5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+  style="position: relative; z-index: 10;display: none;"
+>
+  <div class="mr-auto">
+    &copy; 2024
+    <a class="link" href="/articles/">灏天阁</a>
+  </div>
+  <a class="link" href="https://yinchuanbo.github.io/" rel="noopener" target="_blank"
+    >Powered by YinHao</a
+  >️ ▷
+</footer>
+
+
+    <div class="img__mask" style="display: none;">
+      <img src="" alt="">
+      <span class="close_btn"></span>
+    </div>
+
+    <script>
+      const imgs = document.images;
+      const imgMask = document.querySelector('.img__mask')
+      const closeBtn = document.querySelector('.close_btn')
+      for (let i = 0; i < imgs.length; i++) {
+        const element = imgs[i];
+        element.onclick = () => {
+          const src = element.src;
+          imgMask.style.display = 'flex';
+          imgMask.querySelector('img').src = src;
+        }
+      }
+      closeBtn.onclick = () => {
+        imgMask.style.display = 'none';
+      }
+    </script>
+  </body>
+</html>

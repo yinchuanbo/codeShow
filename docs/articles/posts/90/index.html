@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+  class="not-ready text-sm lg:text-base"
+  style="--bg: "
+  lang="en"
+>
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  
+  <title>token无感知刷新 - 灏天阁</title>
+
+  
+  <meta name="theme-color" />
+  
+  <meta name="description" content="前言 在前后端分离的应用中，使用 token 进行交互验证是一种比较常见的方式。但是，由于 token 的有效期限制，需要不断地刷新 token，否则会导致用户认证失败。
+栗子 可以幻想一下，你在一个应用中，填写了很多个表单，最后提交的时候，401 认证失败，这个时候你心里肯定一万个&hellip;.所以为了解决这个问题，给用户更好的体验，本文介绍无感知刷新 token 的实现。
+token 验证的原理 在 web 应用中，常见的 token 认证方式有基于 token 和基于 cookie 的认证。基于 token 的认证方式是，将认证信息每次放在请求头中，在每次发起请求时，将 token 发给服务端认证，而基于 cookie 的认证方式是，客户端本地存储的 cookie 文件来记录用户的操作状态在随后的访问请求中，客户端浏览器会检索与用户请求资源相匹配的 Cookie，并将其提交给 Web 服务器进行验证。如果 Cookie 合法，则允许用户访问请求的资源，反之则拒绝用户的访问请求。
+什么是无感知刷新 token 无感知刷新 Token 是指在 Token 过期之前，系统自动使用 Refresh Token 获取新的 Access Token，从而实现 Token 的无感知刷新，用户可以无缝继续使用应用。在实现无感知刷新 token 的时候需要考虑以下几点：
+如何判断 token 是否过期? 如何在 token 过期时，自动使用 Refresh Token 获取新的 Access Token? Refresh Token 安全性? 代码实现-第一步 使用 axios 作为客户端请求库" />
+  <meta name="author" content="" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="/articles/main.min.css" />
+
+  
+
+  
+  
+  
+    
+  
+  <link
+    rel="preload"
+    as="image"
+    href="/articles/theme.png"
+  />
+
+  
+  
+  
+  <link rel="preload" as="image" href="/imgs/logo.png" />
+  
+  
+
+  
+
+  
+  <link rel="icon" href="/img/ico.ico" />
+  <link rel="apple-touch-icon" href="/articles/apple-touch-icon.png" />
+  
+  <meta name="generator" content="Hugo 0.108.0">
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="token无感知刷新" />
+<meta property="og:description" content="前言 在前后端分离的应用中，使用 token 进行交互验证是一种比较常见的方式。但是，由于 token 的有效期限制，需要不断地刷新 token，否则会导致用户认证失败。
+栗子 可以幻想一下，你在一个应用中，填写了很多个表单，最后提交的时候，401 认证失败，这个时候你心里肯定一万个&hellip;.所以为了解决这个问题，给用户更好的体验，本文介绍无感知刷新 token 的实现。
+token 验证的原理 在 web 应用中，常见的 token 认证方式有基于 token 和基于 cookie 的认证。基于 token 的认证方式是，将认证信息每次放在请求头中，在每次发起请求时，将 token 发给服务端认证，而基于 cookie 的认证方式是，客户端本地存储的 cookie 文件来记录用户的操作状态在随后的访问请求中，客户端浏览器会检索与用户请求资源相匹配的 Cookie，并将其提交给 Web 服务器进行验证。如果 Cookie 合法，则允许用户访问请求的资源，反之则拒绝用户的访问请求。
+什么是无感知刷新 token 无感知刷新 Token 是指在 Token 过期之前，系统自动使用 Refresh Token 获取新的 Access Token，从而实现 Token 的无感知刷新，用户可以无缝继续使用应用。在实现无感知刷新 token 的时候需要考虑以下几点：
+如何判断 token 是否过期? 如何在 token 过期时，自动使用 Refresh Token 获取新的 Access Token? Refresh Token 安全性? 代码实现-第一步 使用 axios 作为客户端请求库" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/articles/posts/90/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-12-24T21:47:06+08:00" />
+<meta property="article:modified_time" content="2023-12-24T21:47:06+08:00" />
+
+  
+  <meta itemprop="name" content="token无感知刷新">
+<meta itemprop="description" content="前言 在前后端分离的应用中，使用 token 进行交互验证是一种比较常见的方式。但是，由于 token 的有效期限制，需要不断地刷新 token，否则会导致用户认证失败。
+栗子 可以幻想一下，你在一个应用中，填写了很多个表单，最后提交的时候，401 认证失败，这个时候你心里肯定一万个&hellip;.所以为了解决这个问题，给用户更好的体验，本文介绍无感知刷新 token 的实现。
+token 验证的原理 在 web 应用中，常见的 token 认证方式有基于 token 和基于 cookie 的认证。基于 token 的认证方式是，将认证信息每次放在请求头中，在每次发起请求时，将 token 发给服务端认证，而基于 cookie 的认证方式是，客户端本地存储的 cookie 文件来记录用户的操作状态在随后的访问请求中，客户端浏览器会检索与用户请求资源相匹配的 Cookie，并将其提交给 Web 服务器进行验证。如果 Cookie 合法，则允许用户访问请求的资源，反之则拒绝用户的访问请求。
+什么是无感知刷新 token 无感知刷新 Token 是指在 Token 过期之前，系统自动使用 Refresh Token 获取新的 Access Token，从而实现 Token 的无感知刷新，用户可以无缝继续使用应用。在实现无感知刷新 token 的时候需要考虑以下几点：
+如何判断 token 是否过期? 如何在 token 过期时，自动使用 Refresh Token 获取新的 Access Token? Refresh Token 安全性? 代码实现-第一步 使用 axios 作为客户端请求库"><meta itemprop="datePublished" content="2023-12-24T21:47:06+08:00" />
+<meta itemprop="dateModified" content="2023-12-24T21:47:06+08:00" />
+<meta itemprop="wordCount" content="256">
+<meta itemprop="keywords" content="" />
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="token无感知刷新"/>
+<meta name="twitter:description" content="前言 在前后端分离的应用中，使用 token 进行交互验证是一种比较常见的方式。但是，由于 token 的有效期限制，需要不断地刷新 token，否则会导致用户认证失败。
+栗子 可以幻想一下，你在一个应用中，填写了很多个表单，最后提交的时候，401 认证失败，这个时候你心里肯定一万个&hellip;.所以为了解决这个问题，给用户更好的体验，本文介绍无感知刷新 token 的实现。
+token 验证的原理 在 web 应用中，常见的 token 认证方式有基于 token 和基于 cookie 的认证。基于 token 的认证方式是，将认证信息每次放在请求头中，在每次发起请求时，将 token 发给服务端认证，而基于 cookie 的认证方式是，客户端本地存储的 cookie 文件来记录用户的操作状态在随后的访问请求中，客户端浏览器会检索与用户请求资源相匹配的 Cookie，并将其提交给 Web 服务器进行验证。如果 Cookie 合法，则允许用户访问请求的资源，反之则拒绝用户的访问请求。
+什么是无感知刷新 token 无感知刷新 Token 是指在 Token 过期之前，系统自动使用 Refresh Token 获取新的 Access Token，从而实现 Token 的无感知刷新，用户可以无缝继续使用应用。在实现无感知刷新 token 的时候需要考虑以下几点：
+如何判断 token 是否过期? 如何在 token 过期时，自动使用 Refresh Token 获取新的 Access Token? Refresh Token 安全性? 代码实现-第一步 使用 axios 作为客户端请求库"/>
+
+  
+  
+</head>
+  <body class="text-black duration-200 ease-out dark:text-white">
+    
+    
+
+    
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100%-10rem)] max-w-3xl px-8 pt-20 dark:prose-invert"
+      id="main"
+    >
+      
+
+<article>
+  <header class="mb-10">
+    <h1 class="!my-0 pb-2.5">
+      token无感知刷新
+    </h1>
+
+    
+    <div class="text-sm opacity-60">
+      
+      <time>Dec 24, 2023</time>
+      
+      
+      <span class="mx-1">&middot;</span>
+      <span>Yin灏</span>
+    </div>
+    
+  </header>
+
+  <section><h4 id="前言">前言</h4>
+<p>在前后端分离的应用中，使用 token 进行交互验证是一种比较常见的方式。但是，由于 token 的有效期限制，需要不断地刷新 token，否则会导致用户认证失败。</p>
+<h4 id="栗子">栗子</h4>
+<p>可以幻想一下，你在一个应用中，填写了很多个表单，最后提交的时候，401 认证失败，这个时候你心里肯定一万个&hellip;.所以为了解决这个问题，给用户更好的体验，本文介绍无感知刷新 token 的实现。</p>
+<h4 id="token-验证的原理">token 验证的原理</h4>
+<p>在 web 应用中，常见的 token 认证方式有基于 token 和基于 cookie 的认证。基于 token 的认证方式是，<strong>将认证信息每次放在请求头中，在每次发起请求时，将 token 发给服务端认证</strong>，而基于 cookie 的认证方式是，<strong>客户端本地存储的 cookie 文件来记录用户的操作状态在随后的访问请求中，客户端浏览器会检索与用户请求资源相匹配的 Cookie，并将其提交给 Web 服务器进行验证。如果 Cookie 合法，则允许用户访问请求的资源，反之则拒绝用户的访问请求。</strong></p>
+<h4 id="什么是无感知刷新-token">什么是无感知刷新 token</h4>
+<p>无感知刷新 Token 是指在 Token 过期之前，系统自动使用 Refresh Token 获取新的 Access Token，从而实现 Token 的无感知刷新，用户可以无缝继续使用应用。在实现无感知刷新 token 的时候需要考虑以下几点：</p>
+<ol>
+<li>如何判断 token 是否过期?</li>
+<li>如何在 token 过期时，自动使用 Refresh Token 获取新的 Access Token?</li>
+<li>Refresh Token 安全性?</li>
+</ol>
+<h4 id="代码实现-第一步">代码实现-第一步</h4>
+<p>使用 axios 作为客户端请求库</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">axios</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;axios&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 设置 tokens 到 localStorage 或其他持久化存储中
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">setTokens</span>(<span style="color:#a6e22e">data</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">localStorage</span>.<span style="color:#a6e22e">setItem</span>(<span style="color:#e6db74">&#34;access_token&#34;</span>, <span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">access_token</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">localStorage</span>.<span style="color:#a6e22e">setItem</span>(<span style="color:#e6db74">&#34;refresh_token&#34;</span>, <span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">refresh_token</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 假设 login 是用户登录函数，从后端获取 tokens
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">login</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">response</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">axios</span>.<span style="color:#a6e22e">post</span>(<span style="color:#e6db74">&#34;/login&#34;</span>, {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">username</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;USERNAME&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">password</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;PASSWORD&#34;</span>,
+</span></span><span style="display:flex;"><span>  });
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">setTokens</span>(<span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">data</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h4 id="代码实现-第二步">代码实现-第二步</h4>
+<p>设置请求头，添加 token</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">axios</span>.<span style="color:#a6e22e">defaults</span>.<span style="color:#a6e22e">headers</span>.<span style="color:#a6e22e">common</span>[<span style="color:#e6db74">&#34;Authorization&#34;</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">`Bearer </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">accessToken</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>;
+</span></span></code></pre></div><p>有不明白 axios 基本设置的同学，<a href="https://axios-http.cn/">可以查看 axios 官方文档</a></p>
+<h4 id="代码实现-第三步">代码实现-第三步</h4>
+<p>拦截 401 Authorization 状态</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// 当请求失败并返回 401 时，尝试使用 refresh token 获取新的 access token
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">axios</span>.<span style="color:#a6e22e">interceptors</span>.<span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">use</span>(<span style="color:#66d9ef">undefined</span>, (<span style="color:#a6e22e">error</span>) =&gt; {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">error</span>.<span style="color:#a6e22e">response</span> <span style="color:#f92672">&amp;&amp;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">error</span>.<span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">status</span> <span style="color:#f92672">===</span> <span style="color:#ae81ff">401</span> <span style="color:#f92672">&amp;&amp;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">localStorage</span>.<span style="color:#a6e22e">getItem</span>(<span style="color:#e6db74">&#34;refresh_token&#34;</span>)
+</span></span><span style="display:flex;"><span>  ) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">axios</span>
+</span></span><span style="display:flex;"><span>      .<span style="color:#a6e22e">post</span>(<span style="color:#e6db74">&#34;/refresh_token&#34;</span>, {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">refresh_token</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">localStorage</span>.<span style="color:#a6e22e">getItem</span>(<span style="color:#e6db74">&#34;refresh_token&#34;</span>),
+</span></span><span style="display:flex;"><span>      })
+</span></span><span style="display:flex;"><span>      .<span style="color:#a6e22e">then</span>((<span style="color:#a6e22e">response</span>) =&gt; {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">setTokens</span>(<span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">data</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">error</span>.<span style="color:#a6e22e">config</span>.<span style="color:#a6e22e">headers</span>[<span style="color:#e6db74">&#34;Authorization&#34;</span>] <span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#e6db74">&#34;Bearer &#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">access_token</span>; <span style="color:#75715e">// 用新的token发送请求
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">axios</span>(<span style="color:#a6e22e">error</span>.<span style="color:#a6e22e">config</span>); <span style="color:#75715e">// 让请求再次发送
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      });
+</span></span><span style="display:flex;"><span>  } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> Promise.<span style="color:#a6e22e">reject</span>(<span style="color:#a6e22e">error</span>); <span style="color:#75715e">// 否则，返回原始错误信息
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  }
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div><h4 id="代码实现-第四步">代码实现-第四步</h4>
+<p>设置定时刷新 token</p>
+<p>为了避免 Access Token 过期时间太长，可以使用定时器定时刷新 token，在每次刷新后重新设置<code>Access Token</code>和<code>Refresh Token</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">refreshToken</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">refreshToken</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">localStorage</span>.<span style="color:#a6e22e">getItem</span>(<span style="color:#e6db74">&#34;refresh_token&#34;</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">axios</span>
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">post</span>(<span style="color:#e6db74">&#34;/refresh_token&#34;</span>, {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">refresh_token</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">localStorage</span>.<span style="color:#a6e22e">getItem</span>(<span style="color:#e6db74">&#34;refresh_token&#34;</span>),
+</span></span><span style="display:flex;"><span>    })
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">then</span>((<span style="color:#a6e22e">response</span>) =&gt; {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">setTokens</span>(<span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">data</span>);
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">axios</span>.<span style="color:#a6e22e">defaults</span>.<span style="color:#a6e22e">headers</span>.<span style="color:#a6e22e">common</span>[<span style="color:#e6db74">&#34;Authorization&#34;</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">`Bearer </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">access_token</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>;
+</span></span><span style="display:flex;"><span>    })
+</span></span><span style="display:flex;"><span>    .<span style="color:#66d9ef">catch</span>((<span style="color:#a6e22e">error</span>) =&gt; {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#a6e22e">error</span>);
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">setInterval</span>(<span style="color:#a6e22e">refreshToken</span>, <span style="color:#ae81ff">5</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">60</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">1000</span>); <span style="color:#75715e">// 每5分钟刷新Token
+</span></span></span></code></pre></div><h4 id="安全性考虑">安全性考虑</h4>
+<p>在实现无感知刷新 Token 的过程中，需要考虑到 Refresh Token 的安全性问题。因为 Refresh Token 具有长期的有效期限，一旦 Refresh Token 被泄露，攻击者就可以使用 Refresh Token 获取新的 Access Token，从而绕过认证机制，访问受保护的 API。</p>
+<ol>
+<li>限制访问次数</li>
+<li>请求加签（目前团队中大佬已经实现加签）</li>
+<li>加密</li>
+</ol>
+<h4 id="后续优化">后续优化</h4>
+<p>在实现过程中，会发现该实现方式大部分都是在请求拦截和相应拦截中设置的，这样带来的问题就是，耦合性高，接口重试的机制不太好。另一方面，我觉得<code>token无感知刷新</code>涉及到了接口重发，我理解的是接口维度的。所以在后续会考虑封装一个 class 类来实现。</p>
+</section>
+
+  
+  
+
+  
+  
+  
+  <nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
+    
+    <a class="flex w-1/2 items-center p-6 pr-3 no-underline" href="/articles/posts/91/"
+      ><span class="mr-1.5">←</span><span>聊聊图片预加载</span></a
+    >
+    
+    
+    <a
+      class="ml-auto flex w-1/2 items-center justify-end p-6 pl-3 no-underline"
+      href="/articles/posts/89/"
+      ><span>HTMl&#43;CSS&#43;JS实现瀑布流式页面布局</span><span class="ml-1.5">→</span></a
+    >
+    
+  </nav>
+  
+
+  
+  
+</article>
+
+
+    </main>
+
+    <footer
+  class="opaco mx-auto flex h-[5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+  style="position: relative; z-index: 10;display: none;"
+>
+  <div class="mr-auto">
+    &copy; 2024
+    <a class="link" href="/articles/">灏天阁</a>
+  </div>
+  <a class="link" href="https://yinchuanbo.github.io/" rel="noopener" target="_blank"
+    >Powered by YinHao</a
+  >️ ▷
+</footer>
+
+
+    <div class="img__mask" style="display: none;">
+      <img src="" alt="">
+      <span class="close_btn"></span>
+    </div>
+
+    <script>
+      const imgs = document.images;
+      const imgMask = document.querySelector('.img__mask')
+      const closeBtn = document.querySelector('.close_btn')
+      for (let i = 0; i < imgs.length; i++) {
+        const element = imgs[i];
+        element.onclick = () => {
+          const src = element.src;
+          imgMask.style.display = 'flex';
+          imgMask.querySelector('img').src = src;
+        }
+      }
+      closeBtn.onclick = () => {
+        imgMask.style.display = 'none';
+      }
+    </script>
+  </body>
+</html>

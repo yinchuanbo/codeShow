@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+  class="not-ready text-sm lg:text-base"
+  style="--bg: "
+  lang="en"
+>
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  
+  <title>JS复制粘贴兼容处理 - 灏天阁</title>
+
+  
+  <meta name="theme-color" />
+  
+  <meta name="description" content="const copyText = async (val) =&gt; { try { if (navigator.clipboard &amp;&amp; navigator.permissions) { await navigator.clipboard.writeText(val); return; // 如果成功，直接返回 } // 降级方案 const textArea = document.createElement(&#34;textarea&#34;); textArea.val = val; textArea.style.width = 0; textArea.style.position = &#34;fixed&#34;; textArea.style.left = &#34;-999px&#34;; textArea.style.top = &#34;10px&#34;; textArea.setAttribute(&#34;readonly&#34;, &#34;readonly&#34;); document.body.appendChild(textArea); textArea.select(); // 尝试执行赋值操作 const success = document.execCommand(&#34;copy&#34;); if (!success) { throw new Error(&#34;无法复制文本&#34;); } // 清理 document.body.removeChild(textArea); } catch (err) { console.log(&#34;复制失败:&#34;, err); } }; " />
+  <meta name="author" content="" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="/articles/main.min.css" />
+
+  
+
+  
+  
+  
+    
+  
+  <link
+    rel="preload"
+    as="image"
+    href="/articles/theme.png"
+  />
+
+  
+  
+  
+  <link rel="preload" as="image" href="/imgs/logo.png" />
+  
+  
+
+  
+
+  
+  <link rel="icon" href="/img/ico.ico" />
+  <link rel="apple-touch-icon" href="/articles/apple-touch-icon.png" />
+  
+  <meta name="generator" content="Hugo 0.108.0">
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="JS复制粘贴兼容处理" />
+<meta property="og:description" content="const copyText = async (val) =&gt; { try { if (navigator.clipboard &amp;&amp; navigator.permissions) { await navigator.clipboard.writeText(val); return; // 如果成功，直接返回 } // 降级方案 const textArea = document.createElement(&#34;textarea&#34;); textArea.val = val; textArea.style.width = 0; textArea.style.position = &#34;fixed&#34;; textArea.style.left = &#34;-999px&#34;; textArea.style.top = &#34;10px&#34;; textArea.setAttribute(&#34;readonly&#34;, &#34;readonly&#34;); document.body.appendChild(textArea); textArea.select(); // 尝试执行赋值操作 const success = document.execCommand(&#34;copy&#34;); if (!success) { throw new Error(&#34;无法复制文本&#34;); } // 清理 document.body.removeChild(textArea); } catch (err) { console.log(&#34;复制失败:&#34;, err); } }; " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/articles/posts/128/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-03-16T23:00:24+08:00" />
+<meta property="article:modified_time" content="2024-03-16T23:00:24+08:00" />
+
+  
+  <meta itemprop="name" content="JS复制粘贴兼容处理">
+<meta itemprop="description" content="const copyText = async (val) =&gt; { try { if (navigator.clipboard &amp;&amp; navigator.permissions) { await navigator.clipboard.writeText(val); return; // 如果成功，直接返回 } // 降级方案 const textArea = document.createElement(&#34;textarea&#34;); textArea.val = val; textArea.style.width = 0; textArea.style.position = &#34;fixed&#34;; textArea.style.left = &#34;-999px&#34;; textArea.style.top = &#34;10px&#34;; textArea.setAttribute(&#34;readonly&#34;, &#34;readonly&#34;); document.body.appendChild(textArea); textArea.select(); // 尝试执行赋值操作 const success = document.execCommand(&#34;copy&#34;); if (!success) { throw new Error(&#34;无法复制文本&#34;); } // 清理 document.body.removeChild(textArea); } catch (err) { console.log(&#34;复制失败:&#34;, err); } }; "><meta itemprop="datePublished" content="2024-03-16T23:00:24+08:00" />
+<meta itemprop="dateModified" content="2024-03-16T23:00:24+08:00" />
+<meta itemprop="wordCount" content="69">
+<meta itemprop="keywords" content="" />
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="JS复制粘贴兼容处理"/>
+<meta name="twitter:description" content="const copyText = async (val) =&gt; { try { if (navigator.clipboard &amp;&amp; navigator.permissions) { await navigator.clipboard.writeText(val); return; // 如果成功，直接返回 } // 降级方案 const textArea = document.createElement(&#34;textarea&#34;); textArea.val = val; textArea.style.width = 0; textArea.style.position = &#34;fixed&#34;; textArea.style.left = &#34;-999px&#34;; textArea.style.top = &#34;10px&#34;; textArea.setAttribute(&#34;readonly&#34;, &#34;readonly&#34;); document.body.appendChild(textArea); textArea.select(); // 尝试执行赋值操作 const success = document.execCommand(&#34;copy&#34;); if (!success) { throw new Error(&#34;无法复制文本&#34;); } // 清理 document.body.removeChild(textArea); } catch (err) { console.log(&#34;复制失败:&#34;, err); } }; "/>
+
+  
+  
+</head>
+  <body class="text-black duration-200 ease-out dark:text-white">
+    
+    
+
+    
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100%-10rem)] max-w-3xl px-8 pt-20 dark:prose-invert"
+      id="main"
+    >
+      
+
+<article>
+  <header class="mb-10">
+    <h1 class="!my-0 pb-2.5">
+      JS复制粘贴兼容处理
+    </h1>
+
+    
+    <div class="text-sm opacity-60">
+      
+      <time>Mar 16, 2024</time>
+      
+      
+      <span class="mx-1">&middot;</span>
+      <span>Yin灏</span>
+    </div>
+    
+  </header>
+
+  <section><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">copyText</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">async</span> (<span style="color:#a6e22e">val</span>) =&gt; {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">navigator</span>.<span style="color:#a6e22e">clipboard</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">navigator</span>.<span style="color:#a6e22e">permissions</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">navigator</span>.<span style="color:#a6e22e">clipboard</span>.<span style="color:#a6e22e">writeText</span>(<span style="color:#a6e22e">val</span>);
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span>; <span style="color:#75715e">// 如果成功，直接返回
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 降级方案
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">textArea</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">createElement</span>(<span style="color:#e6db74">&#34;textarea&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">textArea</span>.<span style="color:#a6e22e">val</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">val</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">textArea</span>.<span style="color:#a6e22e">style</span>.<span style="color:#a6e22e">width</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">textArea</span>.<span style="color:#a6e22e">style</span>.<span style="color:#a6e22e">position</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;fixed&#34;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">textArea</span>.<span style="color:#a6e22e">style</span>.<span style="color:#a6e22e">left</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;-999px&#34;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">textArea</span>.<span style="color:#a6e22e">style</span>.<span style="color:#a6e22e">top</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;10px&#34;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">textArea</span>.<span style="color:#a6e22e">setAttribute</span>(<span style="color:#e6db74">&#34;readonly&#34;</span>, <span style="color:#e6db74">&#34;readonly&#34;</span>);
+</span></span><span style="display:flex;"><span>    document.<span style="color:#a6e22e">body</span>.<span style="color:#a6e22e">appendChild</span>(<span style="color:#a6e22e">textArea</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">textArea</span>.<span style="color:#a6e22e">select</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 尝试执行赋值操作
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">success</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">execCommand</span>(<span style="color:#e6db74">&#34;copy&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">success</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">&#34;无法复制文本&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 清理
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    document.<span style="color:#a6e22e">body</span>.<span style="color:#a6e22e">removeChild</span>(<span style="color:#a6e22e">textArea</span>);
+</span></span><span style="display:flex;"><span>  } <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">err</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;复制失败:&#34;</span>, <span style="color:#a6e22e">err</span>);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div></section>
+
+  
+  
+
+  
+  
+  
+  <nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
+    
+    <a class="flex w-1/2 items-center p-6 pr-3 no-underline" href="/articles/posts/129/"
+      ><span class="mr-1.5">←</span><span>超有用的 Web API</span></a
+    >
+    
+    
+    <a
+      class="ml-auto flex w-1/2 items-center justify-end p-6 pl-3 no-underline"
+      href="/articles/posts/127/"
+      ><span>统一 Node 版本</span><span class="ml-1.5">→</span></a
+    >
+    
+  </nav>
+  
+
+  
+  
+</article>
+
+
+    </main>
+
+    <footer
+  class="opaco mx-auto flex h-[5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+  style="position: relative; z-index: 10;display: none;"
+>
+  <div class="mr-auto">
+    &copy; 2024
+    <a class="link" href="/articles/">灏天阁</a>
+  </div>
+  <a class="link" href="https://yinchuanbo.github.io/" rel="noopener" target="_blank"
+    >Powered by YinHao</a
+  >️ ▷
+</footer>
+
+
+    <div class="img__mask" style="display: none;">
+      <img src="" alt="">
+      <span class="close_btn"></span>
+    </div>
+
+    <script>
+      const imgs = document.images;
+      const imgMask = document.querySelector('.img__mask')
+      const closeBtn = document.querySelector('.close_btn')
+      for (let i = 0; i < imgs.length; i++) {
+        const element = imgs[i];
+        element.onclick = () => {
+          const src = element.src;
+          imgMask.style.display = 'flex';
+          imgMask.querySelector('img').src = src;
+        }
+      }
+      closeBtn.onclick = () => {
+        imgMask.style.display = 'none';
+      }
+    </script>
+  </body>
+</html>

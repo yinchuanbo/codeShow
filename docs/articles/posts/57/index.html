@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+  class="not-ready text-sm lg:text-base"
+  style="--bg: "
+  lang="en"
+>
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  
+  <title>背景图片语法 - 灏天阁</title>
+
+  
+  <meta name="theme-color" />
+  
+  <meta name="description" content="背景位置 下面尝试把背景图片定位到元素中心，背景图片的位置由 background-position 属性控制。
+为了更大的屏幕上也能覆盖整个元素，我们特意使用大图，在较小的屏幕上图片上端的边缘会被切掉，但至少图片是居中的。
+.profile-box { width: 100%; height: 600px; background-color: #8da9cf; background-image: url(&#34;img/big-cat.jpg&#34;); background-repeat: no-repeat; background-position: 50% 50%; } background-position 属性既可以使用关键字，也可以使用像素、em 或百分比。
+最简单情况下，可以只给两个值：
+一个表示相对于左侧的偏移量 一个表示相对于顶部的偏移量 如果使用像素或 em 单位来设置背景图片的位置，那么图片的左上角会相对于元素的左上角定位，也就是会偏移指定的数值。比如，要是在水平和垂直方向都指定了 20 像素，那么图片左上角就会偏移到距离元素左边和上边均为 20 像素的点。如果设置背景图片的位置时使用了百分比，那么情况就不一样了，百分比值不像绝对数值那样会定位背景图片的左上角，而是定位图片中对应的点。如果水平和垂直方向都设置为 20%，那么你定位的实际上是距图片左边和上边各 20% 的点，而这个点会与距离父元素左边和上边各 20% 的点重合。
+使用关键字来对齐背景图片，在 x 轴上用 left、center、right，在 y 轴上用 top、center、bottom。
+顺序一般是先 x 轴后 y 轴。
+但在一个关键字后加上一个长度值的情况下，规则本身将无效，比如如下声明：
+.box { background-position: 50% left; /* 不要这样写 */ } 背景裁剪与原点 默认情况下，背景图片是绘制到元素边框以内的，如果把背景图片定位到边框下方，同时边框也设置为半透明的话，那么图片边缘就会出现班半透明的边框，
+使用 background-clip 属性可以改变这个行为，这个属性默认值为 background-clip: border-box，将其改为 padding-box 就可以把图片裁剪到内边距盒子以内。而 content-box 值则会把图片位于内边距及其之外的部分裁剪。" />
+  <meta name="author" content="" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="/articles/main.min.css" />
+
+  
+
+  
+  
+  
+    
+  
+  <link
+    rel="preload"
+    as="image"
+    href="/articles/theme.png"
+  />
+
+  
+  
+  
+  <link rel="preload" as="image" href="/imgs/logo.png" />
+  
+  
+
+  
+
+  
+  <link rel="icon" href="/img/ico.ico" />
+  <link rel="apple-touch-icon" href="/articles/apple-touch-icon.png" />
+  
+  <meta name="generator" content="Hugo 0.108.0">
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="背景图片语法" />
+<meta property="og:description" content="背景位置 下面尝试把背景图片定位到元素中心，背景图片的位置由 background-position 属性控制。
+为了更大的屏幕上也能覆盖整个元素，我们特意使用大图，在较小的屏幕上图片上端的边缘会被切掉，但至少图片是居中的。
+.profile-box { width: 100%; height: 600px; background-color: #8da9cf; background-image: url(&#34;img/big-cat.jpg&#34;); background-repeat: no-repeat; background-position: 50% 50%; } background-position 属性既可以使用关键字，也可以使用像素、em 或百分比。
+最简单情况下，可以只给两个值：
+一个表示相对于左侧的偏移量 一个表示相对于顶部的偏移量 如果使用像素或 em 单位来设置背景图片的位置，那么图片的左上角会相对于元素的左上角定位，也就是会偏移指定的数值。比如，要是在水平和垂直方向都指定了 20 像素，那么图片左上角就会偏移到距离元素左边和上边均为 20 像素的点。如果设置背景图片的位置时使用了百分比，那么情况就不一样了，百分比值不像绝对数值那样会定位背景图片的左上角，而是定位图片中对应的点。如果水平和垂直方向都设置为 20%，那么你定位的实际上是距图片左边和上边各 20% 的点，而这个点会与距离父元素左边和上边各 20% 的点重合。
+使用关键字来对齐背景图片，在 x 轴上用 left、center、right，在 y 轴上用 top、center、bottom。
+顺序一般是先 x 轴后 y 轴。
+但在一个关键字后加上一个长度值的情况下，规则本身将无效，比如如下声明：
+.box { background-position: 50% left; /* 不要这样写 */ } 背景裁剪与原点 默认情况下，背景图片是绘制到元素边框以内的，如果把背景图片定位到边框下方，同时边框也设置为半透明的话，那么图片边缘就会出现班半透明的边框，
+使用 background-clip 属性可以改变这个行为，这个属性默认值为 background-clip: border-box，将其改为 padding-box 就可以把图片裁剪到内边距盒子以内。而 content-box 值则会把图片位于内边距及其之外的部分裁剪。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/articles/posts/57/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-09-24T11:03:50+08:00" />
+<meta property="article:modified_time" content="2023-09-24T11:03:50+08:00" />
+
+  
+  <meta itemprop="name" content="背景图片语法">
+<meta itemprop="description" content="背景位置 下面尝试把背景图片定位到元素中心，背景图片的位置由 background-position 属性控制。
+为了更大的屏幕上也能覆盖整个元素，我们特意使用大图，在较小的屏幕上图片上端的边缘会被切掉，但至少图片是居中的。
+.profile-box { width: 100%; height: 600px; background-color: #8da9cf; background-image: url(&#34;img/big-cat.jpg&#34;); background-repeat: no-repeat; background-position: 50% 50%; } background-position 属性既可以使用关键字，也可以使用像素、em 或百分比。
+最简单情况下，可以只给两个值：
+一个表示相对于左侧的偏移量 一个表示相对于顶部的偏移量 如果使用像素或 em 单位来设置背景图片的位置，那么图片的左上角会相对于元素的左上角定位，也就是会偏移指定的数值。比如，要是在水平和垂直方向都指定了 20 像素，那么图片左上角就会偏移到距离元素左边和上边均为 20 像素的点。如果设置背景图片的位置时使用了百分比，那么情况就不一样了，百分比值不像绝对数值那样会定位背景图片的左上角，而是定位图片中对应的点。如果水平和垂直方向都设置为 20%，那么你定位的实际上是距图片左边和上边各 20% 的点，而这个点会与距离父元素左边和上边各 20% 的点重合。
+使用关键字来对齐背景图片，在 x 轴上用 left、center、right，在 y 轴上用 top、center、bottom。
+顺序一般是先 x 轴后 y 轴。
+但在一个关键字后加上一个长度值的情况下，规则本身将无效，比如如下声明：
+.box { background-position: 50% left; /* 不要这样写 */ } 背景裁剪与原点 默认情况下，背景图片是绘制到元素边框以内的，如果把背景图片定位到边框下方，同时边框也设置为半透明的话，那么图片边缘就会出现班半透明的边框，
+使用 background-clip 属性可以改变这个行为，这个属性默认值为 background-clip: border-box，将其改为 padding-box 就可以把图片裁剪到内边距盒子以内。而 content-box 值则会把图片位于内边距及其之外的部分裁剪。"><meta itemprop="datePublished" content="2023-09-24T11:03:50+08:00" />
+<meta itemprop="dateModified" content="2023-09-24T11:03:50+08:00" />
+<meta itemprop="wordCount" content="249">
+<meta itemprop="keywords" content="" />
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="背景图片语法"/>
+<meta name="twitter:description" content="背景位置 下面尝试把背景图片定位到元素中心，背景图片的位置由 background-position 属性控制。
+为了更大的屏幕上也能覆盖整个元素，我们特意使用大图，在较小的屏幕上图片上端的边缘会被切掉，但至少图片是居中的。
+.profile-box { width: 100%; height: 600px; background-color: #8da9cf; background-image: url(&#34;img/big-cat.jpg&#34;); background-repeat: no-repeat; background-position: 50% 50%; } background-position 属性既可以使用关键字，也可以使用像素、em 或百分比。
+最简单情况下，可以只给两个值：
+一个表示相对于左侧的偏移量 一个表示相对于顶部的偏移量 如果使用像素或 em 单位来设置背景图片的位置，那么图片的左上角会相对于元素的左上角定位，也就是会偏移指定的数值。比如，要是在水平和垂直方向都指定了 20 像素，那么图片左上角就会偏移到距离元素左边和上边均为 20 像素的点。如果设置背景图片的位置时使用了百分比，那么情况就不一样了，百分比值不像绝对数值那样会定位背景图片的左上角，而是定位图片中对应的点。如果水平和垂直方向都设置为 20%，那么你定位的实际上是距图片左边和上边各 20% 的点，而这个点会与距离父元素左边和上边各 20% 的点重合。
+使用关键字来对齐背景图片，在 x 轴上用 left、center、right，在 y 轴上用 top、center、bottom。
+顺序一般是先 x 轴后 y 轴。
+但在一个关键字后加上一个长度值的情况下，规则本身将无效，比如如下声明：
+.box { background-position: 50% left; /* 不要这样写 */ } 背景裁剪与原点 默认情况下，背景图片是绘制到元素边框以内的，如果把背景图片定位到边框下方，同时边框也设置为半透明的话，那么图片边缘就会出现班半透明的边框，
+使用 background-clip 属性可以改变这个行为，这个属性默认值为 background-clip: border-box，将其改为 padding-box 就可以把图片裁剪到内边距盒子以内。而 content-box 值则会把图片位于内边距及其之外的部分裁剪。"/>
+
+  
+  
+</head>
+  <body class="text-black duration-200 ease-out dark:text-white">
+    
+    
+
+    
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100%-10rem)] max-w-3xl px-8 pt-20 dark:prose-invert"
+      id="main"
+    >
+      
+
+<article>
+  <header class="mb-10">
+    <h1 class="!my-0 pb-2.5">
+      背景图片语法
+    </h1>
+
+    
+    <div class="text-sm opacity-60">
+      
+      <time>Sep 24, 2023</time>
+      
+      
+      <span class="mx-1">&middot;</span>
+      <span>Yin灏</span>
+    </div>
+    
+  </header>
+
+  <section><h3 id="背景位置">背景位置</h3>
+<p>下面尝试把背景图片定位到元素中心，背景图片的位置由 <code>background-position</code> 属性控制。</p>
+<p>为了更大的屏幕上也能覆盖整个元素，我们特意使用大图，在较小的屏幕上图片上端的边缘会被切掉，但至少图片是居中的。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">profile-box</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">width</span>: <span style="color:#ae81ff">100</span><span style="color:#66d9ef">%</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">height</span>: <span style="color:#ae81ff">600</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">background-color</span>: <span style="color:#ae81ff">#8da9cf</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">background-image</span>: url(<span style="color:#e6db74">&#34;img/big-cat.jpg&#34;</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">background-repeat</span>: <span style="color:#66d9ef">no-repeat</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">background-position</span>: <span style="color:#ae81ff">50</span><span style="color:#66d9ef">%</span> <span style="color:#ae81ff">50</span><span style="color:#66d9ef">%</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><strong>background-position</strong> 属性既可以使用关键字，也可以使用像素、em 或百分比。</p>
+<p>最简单情况下，可以只给两个值：</p>
+<ul>
+<li>一个表示相对于<strong>左侧</strong>的偏移量</li>
+<li>一个表示相对于<strong>顶部</strong>的偏移量</li>
+</ul>
+<blockquote>
+<p>如果使用像素或 em 单位来设置背景图片的位置，那么图片的左上角会相对于元素的左上角定位，也就是会偏移指定的数值。比如，要是在水平和垂直方向都指定了 20 像素，那么图片左上角就会偏移到距离元素左边和上边均为 20 像素的点。如果设置背景图片的位置时使用了百分比，那么情况就不一样了，百分比值不像绝对数值那样会定位背景图片的左上角，而是定位图片中对应的点。如果水平和垂直方向都设置为 20%，那么你定位的实际上是距图片左边和上边各 20% 的点，而这个点会与距离父元素左边和上边各 20% 的点重合。</p>
+</blockquote>
+<img src="/img/57/01.png" />
+<p>使用关键字来对齐背景图片，在 x 轴上用 <code>left</code>、<code>center</code>、<code>right</code>，在 y 轴上用 <code>top</code>、<code>center</code>、<code>bottom</code>。</p>
+<p><strong>顺序一般是先 x 轴后 y 轴。</strong></p>
+<p>但在一个关键字后加上一个长度值的情况下，规则本身将无效，比如如下声明：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">box</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">background-position</span>: <span style="color:#ae81ff">50</span><span style="color:#66d9ef">%</span> <span style="color:#66d9ef">left</span>; <span style="color:#75715e">/* 不要这样写 */</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="背景裁剪与原点">背景裁剪与原点</h3>
+<p>默认情况下，背景图片是绘制到元素边框以内的，如果把背景图片定位到边框下方，同时边框也设置为半透明的话，那么图片边缘就会出现班半透明的边框，</p>
+<p>使用 <code>background-clip</code> 属性可以改变这个行为，这个属性默认值为 <strong>background-clip: border-box</strong>，将其改为 <code>padding-box</code> 就可以把图片裁剪到内边距盒子以内。而 <code>content-box</code> 值则会把图片位于内边距及其之外的部分裁剪。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">profile-box</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">border</span>: <span style="color:#ae81ff">10</span><span style="color:#66d9ef">px</span> <span style="color:#66d9ef">solid</span> rgba(<span style="color:#ae81ff">220</span>, <span style="color:#ae81ff">220</span>, <span style="color:#ae81ff">160</span>, <span style="color:#ae81ff">0.5</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">padding</span>: <span style="color:#ae81ff">10</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">background-image</span>: url(<span style="color:#e6db74">&#34;img/cat.jpg&#34;</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">background-clip</span>: <span style="color:#66d9ef">padding-box</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><img src="/img/57/02.png" />
+<p>即使 <code>background-clip</code> 属性的值改变了，背景定位默认的原点仍然在代码中声明的内边距盒子（padding-box）的左上角，换句话说，定位值从元素边框内开始计算。</p>
+<p>好在我们可以使用 <code>background-origin</code> 属性控制原点的位置。这个属性与 <code>background-clip</code> 一样，也接受盒模型相关的几个值：<code>border-box</code>、<code>padding-box</code>、<code>content-box</code>。</p>
+<h3 id="背景附着">背景附着</h3>
+<p>背景会附着在指定元素的后面，如果你滚动页面，那么背景也会随着元素移动而移动。可以通过 <code>background-attachment</code> 属性改变这种行为。</p>
+<p>如果想让示例中的大背景图在页面滚动时“粘”在页面上，可以使用以下代码：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">profile-box</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">background-attachment</span>: <span style="color:#66d9ef">fixed</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><img src="/img/57/03.png" />
+<h3 id="背景大小">背景大小</h3>
+<p>我们使用一张大图覆盖了整个元素，这样的话，如果是在小屏幕上，那么图片会被裁剪切掉。反之，如果是屏幕特别大，那么元素边缘可能出现空白，要避免上述情况，不管页面如何缩放，都让内容保持自己的宽高比，就要使用 <code>background-size</code> 属性。</p>
+<p>给 <code>background-size</code> 明确指定一个值，可以重新设置图片大小，也可以让他随元素大小缩放而缩放。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">profile-box</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">background-size</span>: <span style="color:#ae81ff">400</span><span style="color:#66d9ef">px</span> <span style="color:#ae81ff">240</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>要让图片随元素缩放而缩放，则必须使用百分比值。不过要注意，百分比值并不是相对于图片固有大小，而是相对于容器大小。因此，简单地把图片宽度和高度都设置成百分比值，可能会因容器变化而导致图片变形。</p>
+<p>更好的做法是只给一个维度设置百分比值，另一个维度设置关键字 <strong>auto</strong>，</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">profile-box</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">background-size</span>: <span style="color:#ae81ff">100</span><span style="color:#66d9ef">%</span> <span style="color:#66d9ef">auto</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>首先，可以把背景大小设置为 contain，这个值可以让浏览器尽可能保持图片最大化，同时不改变图片的宽高比。<strong>(图片能完全展示，问题是可能会在水平或垂直方向出现空白)</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">profile-box</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">background-size</span>: <span style="color:#66d9ef">contain</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>然后，第二个关键字是 cover，意思是图片会缩放以保证覆盖元素的每一个像素，同时不会变形。<strong>(图片会完全的充满元素，但是水平或垂直方向可能会被裁剪)</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">profile-box</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">background-size</span>: <span style="color:#66d9ef">cover</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="背景属性简写">背景属性简写</h3>
+<p>第一，因为两个长度值既可以用于 <code>background-position</code>，也可以用于 <code>background-size</code>，所以两个都需要声明，而且要先声明 <code>background-position</code>，后声明 <code>background-size</code>，值之间以斜杠 <code>/</code> 分隔。</p>
+<p>第二、因为 <code>*-box</code> 关键字（border-box、padding-box、content-box）既可以用于 <code>background-origin</code>，也可以用于 <code>background-clip</code>，所以规则如下：</p>
+<ul>
+<li>
+<p>如果只存在一个 <code>*-box</code> 关键字，则 <code>background-origin</code> 和 <code>background-clip</code> 都取这个关键字值。</p>
+</li>
+<li>
+<p>如果存在两个 <code>*-box</code> 关键字，则第一个设置 <code>background-origin</code>，第二个设置 <code>background-clip</code>。</p>
+</li>
+</ul>
+<p><strong>综合各种背景属性的例子：</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">profile-box</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">background</span>: url(<span style="color:#e6db74">&#34;img/cat.jpg&#34;</span>) <span style="color:#ae81ff">50</span><span style="color:#66d9ef">%</span> <span style="color:#ae81ff">50</span><span style="color:#66d9ef">%</span> <span style="color:#f92672">/</span> <span style="color:#66d9ef">cover</span> <span style="color:#66d9ef">no-repeat</span> <span style="color:#66d9ef">padding-box</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">content-box</span> <span style="color:#ae81ff">#bada55</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="多重背景">多重背景</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">multi-bg</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">background-image</span>: url(<span style="color:#e6db74">&#34;img/spades.png&#34;</span>), url(<span style="color:#e6db74">&#34;img/hearts.png&#34;</span>),
+</span></span><span style="display:flex;"><span>    url(<span style="color:#e6db74">&#34;img/diamonds.png&#34;</span>), url(<span style="color:#e6db74">&#34;img/clubs.png&#34;</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">background-position</span>: <span style="color:#66d9ef">left</span> <span style="color:#66d9ef">top</span>, <span style="color:#66d9ef">right</span> <span style="color:#66d9ef">top</span>, <span style="color:#66d9ef">left</span> <span style="color:#66d9ef">bottom</span>, <span style="color:#66d9ef">right</span> <span style="color:#66d9ef">bottom</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">background-repeat</span>: <span style="color:#66d9ef">no-repeat</span>, <span style="color:#66d9ef">no-repeat</span>, <span style="color:#66d9ef">no-repeat</span>, <span style="color:#66d9ef">no-repeat</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">background-color</span>: <span style="color:#66d9ef">pink</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>多重背景按声明的先后顺序自上而下堆叠，最先声明的在最上面，最后声明的在最下面。</p>
+<p><strong>也可以使用简写属性来声明多个背景图片：</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">multi-bg-shorthand</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">background</span>: url(<span style="color:#e6db74">&#34;img/spades.png&#34;</span>) <span style="color:#66d9ef">left</span> <span style="color:#66d9ef">top</span> <span style="color:#66d9ef">no-repeat</span>, url(<span style="color:#e6db74">&#34;img/hearts.png&#34;</span>)
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">right</span> <span style="color:#66d9ef">top</span> <span style="color:#66d9ef">no-repeat</span>, url(<span style="color:#e6db74">&#34;img/diamonds.png&#34;</span>) <span style="color:#66d9ef">left</span> <span style="color:#66d9ef">bottom</span> <span style="color:#66d9ef">no-repeat</span>, url(<span style="color:#e6db74">&#34;img/clubs.png&#34;</span>)
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">right</span> <span style="color:#66d9ef">bottom</span> <span style="color:#66d9ef">no-repeat</span>, <span style="color:#66d9ef">pink</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>如果随后的背景属性值少于背景图片的个数，那么相应的值会循环使用。这就意味着，如果所有背景图片的当前属性值都一样，那么只需要声明一个；如果是两个值交替，那么只需要声明两个。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">multi-bg-shorthand</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">background</span>: url(<span style="color:#e6db74">&#34;img/spades.png&#34;</span>) <span style="color:#66d9ef">left</span> <span style="color:#66d9ef">top</span>, url(<span style="color:#e6db74">&#34;img/hearts.png&#34;</span>) <span style="color:#66d9ef">right</span> <span style="color:#66d9ef">top</span>,
+</span></span><span style="display:flex;"><span>    url(<span style="color:#e6db74">&#34;img/diamonds.png&#34;</span>) <span style="color:#66d9ef">left</span> <span style="color:#66d9ef">bottom</span>, url(<span style="color:#e6db74">&#34;img/clubs.png&#34;</span>) <span style="color:#66d9ef">right</span> <span style="color:#66d9ef">bottom</span>, <span style="color:#66d9ef">pink</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">background-repeat</span>: <span style="color:#66d9ef">no-repeat</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></section>
+
+  
+  
+
+  
+  
+  
+  <nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
+    
+    <a class="flex w-1/2 items-center p-6 pr-3 no-underline" href="/articles/posts/58/"
+      ><span class="mr-1.5">←</span><span>盒阴影</span></a
+    >
+    
+    
+    <a
+      class="ml-auto flex w-1/2 items-center justify-end p-6 pl-3 no-underline"
+      href="/articles/posts/56/"
+      ><span>使用 JavaScript 提升排版品质</span><span class="ml-1.5">→</span></a
+    >
+    
+  </nav>
+  
+
+  
+  
+</article>
+
+
+    </main>
+
+    <footer
+  class="opaco mx-auto flex h-[5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+  style="position: relative; z-index: 10;display: none;"
+>
+  <div class="mr-auto">
+    &copy; 2024
+    <a class="link" href="/articles/">灏天阁</a>
+  </div>
+  <a class="link" href="https://yinchuanbo.github.io/" rel="noopener" target="_blank"
+    >Powered by YinHao</a
+  >️ ▷
+</footer>
+
+
+    <div class="img__mask" style="display: none;">
+      <img src="" alt="">
+      <span class="close_btn"></span>
+    </div>
+
+    <script>
+      const imgs = document.images;
+      const imgMask = document.querySelector('.img__mask')
+      const closeBtn = document.querySelector('.close_btn')
+      for (let i = 0; i < imgs.length; i++) {
+        const element = imgs[i];
+        element.onclick = () => {
+          const src = element.src;
+          imgMask.style.display = 'flex';
+          imgMask.querySelector('img').src = src;
+        }
+      }
+      closeBtn.onclick = () => {
+        imgMask.style.display = 'none';
+      }
+    </script>
+  </body>
+</html>

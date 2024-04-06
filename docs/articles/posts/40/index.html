@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+  class="not-ready text-sm lg:text-base"
+  style="--bg: "
+  lang="en"
+>
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  
+  <title>裁剪的3种方式，CSS 如何隐藏移动端的滚动条？ - 灏天阁</title>
+
+  
+  <meta name="theme-color" />
+  
+  <meta name="description" content="在移动端开发中，经常会碰到需要横向滚动的场景，例如这样的
+但很多时候是不需要展示这个滚动条的，也就是这样的效果，如下
+你可能想到直接设置滚动条样式就可以了，就像这样
+::-webkit-scrollbar { display: none; } 目前来看好像没什么问题，但在某些版本的 iOS 上却无效（具体待测试），滚动条仍然出现。
+那有没有其他方式可以解决这个问题呢？下面介绍几个方法
+一、通过 overflow 隐藏 既然有时候修改滚动条样式无法解决，我们可以想办法把它隐藏。
+下面是一个横向滚动列表
+&lt;div class=&#34;list&#34;&gt; &lt;div class=&#34;item&#34;&gt;&lt;/div&gt; &lt;div class=&#34;item&#34;&gt;&lt;/div&gt; &lt;div class=&#34;item&#34;&gt;&lt;/div&gt; &lt;div class=&#34;item&#34;&gt;&lt;/div&gt; &lt;div class=&#34;item&#34;&gt;&lt;/div&gt; &lt;div class=&#34;item&#34;&gt;&lt;/div&gt; &lt;div class=&#34;item&#34;&gt;&lt;/div&gt; &lt;/div&gt; 简单修饰一下，让这个列表可以横向滚动
+.list { display: flex; overflow: auto; gap: 10px; padding: 10px; } .item { width: 100px; height: 100px; background: royalblue; border-radius: 8px; flex-shrink: 0; } 效果如下
+通过 「overflow」 隐藏的方式很简单，我们需要一个父级
+&lt;div class=&#34;wrap&#34;&gt; &lt;div class=&#34;list&#34;&gt;&lt;/div&gt; &lt;/div&gt; 然后，将列表底部padding设置的稍微大一些，比如
+.list { /**/ padding-bottom: 20px; } 可以看到列表下方的距离变大了，滚动条也更靠下了，效果如下" />
+  <meta name="author" content="" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="/articles/main.min.css" />
+
+  
+
+  
+  
+  
+    
+  
+  <link
+    rel="preload"
+    as="image"
+    href="/articles/theme.png"
+  />
+
+  
+  
+  
+  <link rel="preload" as="image" href="/imgs/logo.png" />
+  
+  
+
+  
+
+  
+  <link rel="icon" href="/img/ico.ico" />
+  <link rel="apple-touch-icon" href="/articles/apple-touch-icon.png" />
+  
+  <meta name="generator" content="Hugo 0.108.0">
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="裁剪的3种方式，CSS 如何隐藏移动端的滚动条？" />
+<meta property="og:description" content="在移动端开发中，经常会碰到需要横向滚动的场景，例如这样的
+但很多时候是不需要展示这个滚动条的，也就是这样的效果，如下
+你可能想到直接设置滚动条样式就可以了，就像这样
+::-webkit-scrollbar { display: none; } 目前来看好像没什么问题，但在某些版本的 iOS 上却无效（具体待测试），滚动条仍然出现。
+那有没有其他方式可以解决这个问题呢？下面介绍几个方法
+一、通过 overflow 隐藏 既然有时候修改滚动条样式无法解决，我们可以想办法把它隐藏。
+下面是一个横向滚动列表
+&lt;div class=&#34;list&#34;&gt; &lt;div class=&#34;item&#34;&gt;&lt;/div&gt; &lt;div class=&#34;item&#34;&gt;&lt;/div&gt; &lt;div class=&#34;item&#34;&gt;&lt;/div&gt; &lt;div class=&#34;item&#34;&gt;&lt;/div&gt; &lt;div class=&#34;item&#34;&gt;&lt;/div&gt; &lt;div class=&#34;item&#34;&gt;&lt;/div&gt; &lt;div class=&#34;item&#34;&gt;&lt;/div&gt; &lt;/div&gt; 简单修饰一下，让这个列表可以横向滚动
+.list { display: flex; overflow: auto; gap: 10px; padding: 10px; } .item { width: 100px; height: 100px; background: royalblue; border-radius: 8px; flex-shrink: 0; } 效果如下
+通过 「overflow」 隐藏的方式很简单，我们需要一个父级
+&lt;div class=&#34;wrap&#34;&gt; &lt;div class=&#34;list&#34;&gt;&lt;/div&gt; &lt;/div&gt; 然后，将列表底部padding设置的稍微大一些，比如
+.list { /**/ padding-bottom: 20px; } 可以看到列表下方的距离变大了，滚动条也更靠下了，效果如下" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/articles/posts/40/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-09-11T18:36:17+08:00" />
+<meta property="article:modified_time" content="2023-09-11T18:36:17+08:00" />
+
+  
+  <meta itemprop="name" content="裁剪的3种方式，CSS 如何隐藏移动端的滚动条？">
+<meta itemprop="description" content="在移动端开发中，经常会碰到需要横向滚动的场景，例如这样的
+但很多时候是不需要展示这个滚动条的，也就是这样的效果，如下
+你可能想到直接设置滚动条样式就可以了，就像这样
+::-webkit-scrollbar { display: none; } 目前来看好像没什么问题，但在某些版本的 iOS 上却无效（具体待测试），滚动条仍然出现。
+那有没有其他方式可以解决这个问题呢？下面介绍几个方法
+一、通过 overflow 隐藏 既然有时候修改滚动条样式无法解决，我们可以想办法把它隐藏。
+下面是一个横向滚动列表
+&lt;div class=&#34;list&#34;&gt; &lt;div class=&#34;item&#34;&gt;&lt;/div&gt; &lt;div class=&#34;item&#34;&gt;&lt;/div&gt; &lt;div class=&#34;item&#34;&gt;&lt;/div&gt; &lt;div class=&#34;item&#34;&gt;&lt;/div&gt; &lt;div class=&#34;item&#34;&gt;&lt;/div&gt; &lt;div class=&#34;item&#34;&gt;&lt;/div&gt; &lt;div class=&#34;item&#34;&gt;&lt;/div&gt; &lt;/div&gt; 简单修饰一下，让这个列表可以横向滚动
+.list { display: flex; overflow: auto; gap: 10px; padding: 10px; } .item { width: 100px; height: 100px; background: royalblue; border-radius: 8px; flex-shrink: 0; } 效果如下
+通过 「overflow」 隐藏的方式很简单，我们需要一个父级
+&lt;div class=&#34;wrap&#34;&gt; &lt;div class=&#34;list&#34;&gt;&lt;/div&gt; &lt;/div&gt; 然后，将列表底部padding设置的稍微大一些，比如
+.list { /**/ padding-bottom: 20px; } 可以看到列表下方的距离变大了，滚动条也更靠下了，效果如下"><meta itemprop="datePublished" content="2023-09-11T18:36:17+08:00" />
+<meta itemprop="dateModified" content="2023-09-11T18:36:17+08:00" />
+<meta itemprop="wordCount" content="202">
+<meta itemprop="keywords" content="" />
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="裁剪的3种方式，CSS 如何隐藏移动端的滚动条？"/>
+<meta name="twitter:description" content="在移动端开发中，经常会碰到需要横向滚动的场景，例如这样的
+但很多时候是不需要展示这个滚动条的，也就是这样的效果，如下
+你可能想到直接设置滚动条样式就可以了，就像这样
+::-webkit-scrollbar { display: none; } 目前来看好像没什么问题，但在某些版本的 iOS 上却无效（具体待测试），滚动条仍然出现。
+那有没有其他方式可以解决这个问题呢？下面介绍几个方法
+一、通过 overflow 隐藏 既然有时候修改滚动条样式无法解决，我们可以想办法把它隐藏。
+下面是一个横向滚动列表
+&lt;div class=&#34;list&#34;&gt; &lt;div class=&#34;item&#34;&gt;&lt;/div&gt; &lt;div class=&#34;item&#34;&gt;&lt;/div&gt; &lt;div class=&#34;item&#34;&gt;&lt;/div&gt; &lt;div class=&#34;item&#34;&gt;&lt;/div&gt; &lt;div class=&#34;item&#34;&gt;&lt;/div&gt; &lt;div class=&#34;item&#34;&gt;&lt;/div&gt; &lt;div class=&#34;item&#34;&gt;&lt;/div&gt; &lt;/div&gt; 简单修饰一下，让这个列表可以横向滚动
+.list { display: flex; overflow: auto; gap: 10px; padding: 10px; } .item { width: 100px; height: 100px; background: royalblue; border-radius: 8px; flex-shrink: 0; } 效果如下
+通过 「overflow」 隐藏的方式很简单，我们需要一个父级
+&lt;div class=&#34;wrap&#34;&gt; &lt;div class=&#34;list&#34;&gt;&lt;/div&gt; &lt;/div&gt; 然后，将列表底部padding设置的稍微大一些，比如
+.list { /**/ padding-bottom: 20px; } 可以看到列表下方的距离变大了，滚动条也更靠下了，效果如下"/>
+
+  
+  
+</head>
+  <body class="text-black duration-200 ease-out dark:text-white">
+    
+    
+
+    
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100%-10rem)] max-w-3xl px-8 pt-20 dark:prose-invert"
+      id="main"
+    >
+      
+
+<article>
+  <header class="mb-10">
+    <h1 class="!my-0 pb-2.5">
+      裁剪的3种方式，CSS 如何隐藏移动端的滚动条？
+    </h1>
+
+    
+    <div class="text-sm opacity-60">
+      
+      <time>Sep 11, 2023</time>
+      
+      
+      <span class="mx-1">&middot;</span>
+      <span>Yin灏</span>
+    </div>
+    
+  </header>
+
+  <section><p>在移动端开发中，经常会碰到需要横向滚动的场景，例如这样的</p>
+<img src="/img/40/01.gif" />
+<p>但很多时候是不需要展示这个滚动条的，也就是这样的效果，如下</p>
+<img src="/img/40/02.gif" />
+<p>你可能想到直接设置滚动条样式就可以了，就像这样</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>::<span style="color:#a6e22e">-webkit-scrollbar</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">display</span>: <span style="color:#66d9ef">none</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>目前来看好像没什么问题，但在某些版本的 iOS 上却无效（具体待测试），滚动条仍然出现。</p>
+<p>那有没有其他方式可以解决这个问题呢？下面介绍几个方法</p>
+<h2 id="一通过-overflow-隐藏">一、通过 overflow 隐藏</h2>
+<p>既然有时候修改滚动条样式无法解决，我们可以想办法把它隐藏。</p>
+<p>下面是一个横向滚动列表</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;list&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;item&#34;</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;item&#34;</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;item&#34;</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;item&#34;</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;item&#34;</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;item&#34;</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;item&#34;</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span></code></pre></div><p>简单修饰一下，让这个列表可以横向滚动</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">list</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">display</span>: <span style="color:#66d9ef">flex</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">overflow</span>: <span style="color:#66d9ef">auto</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">gap</span>: <span style="color:#ae81ff">10</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">padding</span>: <span style="color:#ae81ff">10</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">item</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">width</span>: <span style="color:#ae81ff">100</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">height</span>: <span style="color:#ae81ff">100</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">background</span>: <span style="color:#66d9ef">royalblue</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">border-radius</span>: <span style="color:#ae81ff">8</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">flex-shrink</span>: <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>效果如下</p>
+<img src="/img/40/01.png" />
+<p>通过 <strong>「overflow」</strong> 隐藏的方式很简单，我们需要一个父级</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;wrap&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;list&#34;</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span></code></pre></div><p>然后，将列表底部<code>padding</code>设置的稍微大一些，比如</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">list</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">/**/</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">padding-bottom</span>: <span style="color:#ae81ff">20</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>可以看到列表下方的距离变大了，滚动条也更靠下了，效果如下</p>
+<img src="/img/40/02.png" />
+<p>如何让整体尺寸仍然保持原有呢？答案是借助负 <strong>「margin」</strong>，比如之前底部 <strong>「padding」</strong> 是<code>10</code>，现在改成了<code>20</code>，所以需要<code>-10</code>的 <strong>「margin」</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">list</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">/**/</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">margin-bottom</span>: <span style="color:#ae81ff">-10</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>这样整体尺寸就正常了，不过滚动条仍然是可见的，只是出去了</p>
+<img src="/img/40/03.png" />
+<p>最后只需要设置父级的  <strong>「overflow」</strong> 为隐藏就可以了</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">wrap</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">/**/</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">overflow</span>: <span style="color:#66d9ef">hidden</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>原理示意如下</p>
+<img src="/img/40/04.png" />
+<p>这样就完美隐藏了滚动条</p>
+<img src="/img/40/05.png" />
+<p>当然，不仅仅是  <strong>「overflow」</strong>，下面这种方式也可以实现超出隐藏</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">wrap</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">/**/</span>
+</span></span><span style="display:flex;"><span>  contain: paint;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>这个属性比较新，可以控制元素在容器内的绘制规则，了解一下即可</p>
+<blockquote>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/contain">https://developer.mozilla.org/zh-CN/docs/Web/CSS/contain</a></p>
+</blockquote>
+<h2 id="二通过-clip-裁剪">二、通过 clip 裁剪</h2>
+<p>第一种方式需要借助父级的超出隐藏，需要额外一层，好像有点麻烦，有没有办法自身也可以裁剪呢？</p>
+<p>那就是  <strong>「clip-path」</strong></p>
+<blockquote>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/clip-path">https://developer.mozilla.org/zh-CN/docs/Web/CSS/clip-path</a></p>
+</blockquote>
+<p>相信大家对这个属性应该很熟练了，非常直观的裁剪属性。</p>
+<p>比如这种情况，只需要把滚动条的那一部分裁剪掉就可以了，这里要用到<code>clip-path</code>的<code>inset</code>方法</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">clip-path</span><span style="color:#f92672">:</span> <span style="color:#f92672">inset</span><span style="color:#f92672">();</span>
+</span></span></code></pre></div><p>这里简单介绍一下。<strong>「inset」</strong> 最多可以传 4 个参数，分别表示裁剪掉距离上、右、下、左的部分</p>
+<img src="/img/40/06.png" />
+<p>所以，要把滚动条隐藏就很简单了，只需要把下方的裁剪距离设置大于滚动条尺寸的值就行了，这里就用<code>10px</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">list</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">clip-path</span>: inset(<span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">10</span><span style="color:#66d9ef">px</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>效果如下</p>
+<img src="/img/40/07.png" />
+<p>一行代码轻松解决~</p>
+<h2 id="三通过-mask-遮罩">三、通过 mask 遮罩</h2>
+<p>其实和  <strong>「clip」</strong> 思路是一致的，只不过实现方式不一样。</p>
+<p>关于  <a href="http://mp.weixin.qq.com/s?__biz=MzIyMDc1NTYxNg==&amp;mid=2247488049&amp;idx=1&amp;sn=dfa9e190e4828c5bf6cf8287ecaa471f&amp;chksm=97c671fea0b1f8e86a74fd50f2825ae38a5e45ba71142a0961f743d9bdcde24caaa51daef2b7&amp;scene=21#wechat_redirect">mask 遮罩</a>，之前在多篇文章中都有提到，非常实用的小技巧，主要原理是显示遮罩图片不透明的部分，透明的则会被裁剪，示意如下</p>
+<img src="/img/40/08.png" />
+<p>回到这里，我们只需要绘制一个不包含滚动条部分的纯色渐变就行了，可以直接绘制一个纯色渐变，然后设置背景尺寸，如下</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">list</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">-webkit-</span><span style="color:#66d9ef">mask</span>: linear-gradient(<span style="color:#66d9ef">red</span>, <span style="color:#66d9ef">red</span>) <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span><span style="color:#f92672">/</span><span style="color:#ae81ff">100</span><span style="color:#66d9ef">%</span> calc(<span style="color:#ae81ff">100</span><span style="color:#66d9ef">%</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">10</span><span style="color:#66d9ef">px</span>) <span style="color:#66d9ef">no-repeat</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>原理示意如下</p>
+<img src="/img/40/09.png" />
+<p>也能很好的隐藏滚动条</p>
+<img src="/img/40/10.png" />
+<p>除此以外，mask 还可以很好的实现滚动边界渐隐的效果，只需要叠加一层从<code>透明→纯色→透明</code>的渐变就行了</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">list</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">-webkit-</span><span style="color:#66d9ef">mask</span>: linear-gradient(
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">to</span> <span style="color:#66d9ef">right</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">transparent</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">red</span> <span style="color:#ae81ff">15</span><span style="color:#66d9ef">px</span> calc(<span style="color:#ae81ff">100</span><span style="color:#66d9ef">%</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">15</span><span style="color:#66d9ef">px</span>),
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">transparent</span>
+</span></span><span style="display:flex;"><span>    ), linear-gradient(<span style="color:#66d9ef">red</span>, <span style="color:#66d9ef">red</span>) <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span><span style="color:#f92672">/</span><span style="color:#ae81ff">100</span><span style="color:#66d9ef">%</span> calc(<span style="color:#ae81ff">100</span><span style="color:#66d9ef">%</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">10</span><span style="color:#66d9ef">px</span>) <span style="color:#66d9ef">no-repeat</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">-webkit-</span><span style="color:#66d9ef">mask-composite</span>: source-in;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>就可以得到这样的效果</p>
+<img src="/img/40/03.gif" />
+<p>由于是遮罩实现，并不是简单的颜色覆盖，所以换一种背景颜色也可以很好的融合</p>
+<img src="/img/40/04.gif" />
+<p>以上所有完整 demo 可以查看以下链接</p>
+<p>[1] CSS scroll hidden (juejin.cn)： <a href="https://code.juejin.cn/pen/7276721196161302588">https://code.juejin.cn/pen/7276721196161302588</a></p>
+<p>[2] CSS scroll hidden (codepen.io)： <a href="https://codepen.io/xboxyan/pen/GRPrzeO">https://codepen.io/xboxyan/pen/GRPrzeO</a></p>
+</section>
+
+  
+  
+
+  
+  
+  
+  <nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
+    
+    <a class="flex w-1/2 items-center p-6 pr-3 no-underline" href="/articles/posts/41/"
+      ><span class="mr-1.5">←</span><span>属性的 getter 和 setter</span></a
+    >
+    
+    
+    <a
+      class="ml-auto flex w-1/2 items-center justify-end p-6 pl-3 no-underline"
+      href="/articles/posts/39/"
+      ><span>当你的网站有新内容，如何立即通知你的用户呢？</span><span class="ml-1.5">→</span></a
+    >
+    
+  </nav>
+  
+
+  
+  
+</article>
+
+
+    </main>
+
+    <footer
+  class="opaco mx-auto flex h-[5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+  style="position: relative; z-index: 10;display: none;"
+>
+  <div class="mr-auto">
+    &copy; 2024
+    <a class="link" href="/articles/">灏天阁</a>
+  </div>
+  <a class="link" href="https://yinchuanbo.github.io/" rel="noopener" target="_blank"
+    >Powered by YinHao</a
+  >️ ▷
+</footer>
+
+
+    <div class="img__mask" style="display: none;">
+      <img src="" alt="">
+      <span class="close_btn"></span>
+    </div>
+
+    <script>
+      const imgs = document.images;
+      const imgMask = document.querySelector('.img__mask')
+      const closeBtn = document.querySelector('.close_btn')
+      for (let i = 0; i < imgs.length; i++) {
+        const element = imgs[i];
+        element.onclick = () => {
+          const src = element.src;
+          imgMask.style.display = 'flex';
+          imgMask.querySelector('img').src = src;
+        }
+      }
+      closeBtn.onclick = () => {
+        imgMask.style.display = 'none';
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,1934 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on 灏天阁</title>
+    <link>/articles/posts/</link>
+    <description>Recent content in Posts on 灏天阁</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>Copyright © 2008–2019, Steve Francia and the lee.so; all rights reserved.</copyright>
+    <lastBuildDate>Sun, 31 Mar 2024 08:54:55 +0800</lastBuildDate><atom:link href="/articles/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>构造函数、原型和继承[未完]</title>
+      <link>/articles/posts/133/</link>
+      <pubDate>Sun, 31 Mar 2024 08:54:55 +0800</pubDate>
+      
+      <guid>/articles/posts/133/</guid>
+      <description>构造函数 调用构造函数 function Point(x, y) { this.x = x; this.y = y; this.sum = function () { return this.x + this.y; }; } var p1 = new Point(100, 200); var p2 = new Point(300, 400); console.log(p1.x); console.log(p2.x); console.log(p1.sum()); console.log(p2.sum()); 如果不使用 new 命令，直接使用小括号调用构造函数，这时构造函数就是普通函数，不会生成实例对象。this 就代表调用函数的对象，在客户端指代全局对象 window。
+为了避免误用，最有效的方法是在函数中启用严格模式。
+function Point(x, y) { &amp;#34;use strict&amp;#34;; this.x = x; this.y = y; this.sum = function () { return this.x + this.y; }; } 这样调用构造函数时，必须使用 new 命令，否则将抛出异常。</description>
+    </item>
+    
+    <item>
+      <title>使用对象</title>
+      <link>/articles/posts/132/</link>
+      <pubDate>Mon, 25 Mar 2024 21:53:45 +0800</pubDate>
+      
+      <guid>/articles/posts/132/</guid>
+      <description>定义对象 使用 Object.create 用来定义一个实例对象，该方法可以指定对象的原型和对象特性，
+Object.create(prototype, descriptors); prototype: 必须参数，指定原型对象，可以为 null
+descriptors: 可选参数，包含一个或多个属性描述符的 JavaScript 对象。属性描述符包含数据特性和访问器特性，其中数据特性说明如下：
+value: 指定属性值。
+writable: 默认为 false，设置属性值是否可写。
+enumerable: 默认为 false，设置属性是否可枚举（for/in）
+configurable: 默认为 false，设置是否为可修改属性特性和删除属性
+访问器特性包含两个方法，简单说明如下：
+set(): 设置属性值
+get(): 返回属性值
+下面示例使用 Object.create 定义一个对象，继承 null，包含两个可枚举的属性 size 和 shape，属性值分别为 large 和 round。
+var newObj = Object.create(null, { size: { value: &amp;#34;large&amp;#34;, enumerable: true, // 可以枚举 }, shape: { value: &amp;#34;round&amp;#34;, enumerable: true, }, }); console.log(newObj.size); // large console.log(newObj.shape); // round console.log(Object.getPrototypeOf(newObj)); 下面示例使用 Object.create 定义一个与对象直接量具有相同原型的对象</description>
+    </item>
+    
+    <item>
+      <title>多个有趣的 JavaScript 与 CSS 库</title>
+      <link>/articles/posts/131/</link>
+      <pubDate>Thu, 21 Mar 2024 20:41:57 +0800</pubDate>
+      
+      <guid>/articles/posts/131/</guid>
+      <description>1. Wing Wing 是一个微型响应式的 CSS 框架，它提供了一个 12 列响应式网格以及基础的样式组件集。
+Wing 项目地址
+2. Shave Shave 是一个零依赖、轻量级的 Js 插件，它能截断多行文本，以适应基于 max-height 设置好的 html 元素，并将原始文本字符串存储在隐藏的元素中，以便文本能完整地保留在页面中。
+Shave 项目地址
+3. Wenk Wenk 是一个轻量级纯 CSS 写的文本工具提示库，
+Wenk 项目地址
+4. CSS Icon CSS Icon 是一个汇聚 500+ 纯 CSS 代码实现的图标集网站。
+CSS Icon 项目地址
+5. CurrencyFormatter.js CurrencyFormatter.js 是一款简单实用的纯 Js 格式化货币库。它支持 155 种不同国家的货币格式，以及超过 700 种不同语言的本地化设置。
+CurrencyFormatter.js 项目地址
+6. KUTE.js KUTE.js 一款具有高性能的原生 Js 动画引擎，KUTE.js 它的核心库提供了所有基本的动画方法，你可以添加许多插件来丰富 KUTE 的功能。
+KUTE.js 项目地址</description>
+    </item>
+    
+    <item>
+      <title>动态执行 js 的方法</title>
+      <link>/articles/posts/130/</link>
+      <pubDate>Sun, 17 Mar 2024 20:17:34 +0800</pubDate>
+      
+      <guid>/articles/posts/130/</guid>
+      <description>如何创建一个函数，将一个字符串当做代码执行？
+eval 方法 特点：同步，作用域是当前运行的作用域。
+var log = &amp;#34;全局---我是动态执行的 js 打印&amp;#34;; function exec(code) { var log = &amp;#34;局部---log我是动态执行的js打印&amp;#34;; eval(code); } exec(&amp;#34;console.log(log)&amp;#34;); console.log(&amp;#34;sync&amp;#34;); 结果：
+局部&amp;mdash;log 我是动态执行的 js 打印 sync
+setTimeout 特点：setTimeout 第一个参数是可以串字符串的，它会自动的将字符串当作代码看来运行，异步，作用域是全局作用域，不受当前作用域影响。
+var log = &amp;#34;全局---我是动态执行的 js 打印&amp;#34;; function exec(code) { var log = &amp;#34;局部---log我是动态执行的js打印&amp;#34;; setTimeout(code); } exec(&amp;#34;console.log(log)&amp;#34;); console.log(&amp;#34;sync&amp;#34;); 结果：
+sync 全局&amp;mdash;我是动态执行的 js 打印
+创建 script 标签，添加到页面 特点：会产生一个 script 元素，同步，作用域是全局作用域，不受当前作用域影响。
+var log = &amp;#34;全局---我是动态执行的 js 打印&amp;#34;; function exec(code) { var log = &amp;#34;局部---log我是动态执行的js打印&amp;#34;; const script = document.</description>
+    </item>
+    
+    <item>
+      <title>超有用的 Web API</title>
+      <link>/articles/posts/129/</link>
+      <pubDate>Sun, 17 Mar 2024 16:57:01 +0800</pubDate>
+      
+      <guid>/articles/posts/129/</guid>
+      <description>Screen Wake Lock API Screen Wake Lock API 提供了一种方式，使得当应用程序需要保持运行时，能够防止设备因为闲置而自动调低亮度或锁定屏幕。
+这对于如视频会议、演示文稿、实时游戏、在线教育等需要用户持续关注且不允许屏幕熄灭的应用场景尤其有用。
+通过这个 API，即使在没有用户交互的情况下，开发者也能确保屏幕始终保持开启状态。
+&amp;lt;button onclick=&amp;#34;onLockScreen()&amp;#34;&amp;gt;锁屏&amp;lt;/button&amp;gt; &amp;lt;button onclick=&amp;#34;onUnlockScreen()&amp;#34;&amp;gt;释放&amp;lt;/button&amp;gt; &amp;lt;div id=&amp;#34;statusElem&amp;#34;&amp;gt;&amp;lt;/div&amp;gt; let wakeLock = null; async function onLockScreen() { try { wakeLock = await navigator.wakeLock.request(&amp;#34;screen&amp;#34;); statusElem.textContent = &amp;#34;唤醒锁已激活&amp;#34;; wakeLock.addEventListener(&amp;#34;release&amp;#34;, () =&amp;gt; { statusElem.textContent = &amp;#34;唤醒锁已释放&amp;#34;; }); } catch (err) { statusElem.textContent = `${err.name}, ${err.message}`; } } async function onUnlockScreen() { if (!wakeLock) return; wakeLock.release().then(() =&amp;gt; { wakeLock = null; }); } Cookie Store API 按照以往，开发者如何获取 cookie 信息呢？当前是 document.</description>
+    </item>
+    
+    <item>
+      <title>JS复制粘贴兼容处理</title>
+      <link>/articles/posts/128/</link>
+      <pubDate>Sat, 16 Mar 2024 23:00:24 +0800</pubDate>
+      
+      <guid>/articles/posts/128/</guid>
+      <description>const copyText = async (val) =&amp;gt; { try { if (navigator.clipboard &amp;amp;&amp;amp; navigator.permissions) { await navigator.clipboard.writeText(val); return; // 如果成功，直接返回 } // 降级方案 const textArea = document.createElement(&amp;#34;textarea&amp;#34;); textArea.val = val; textArea.style.width = 0; textArea.style.position = &amp;#34;fixed&amp;#34;; textArea.style.left = &amp;#34;-999px&amp;#34;; textArea.style.top = &amp;#34;10px&amp;#34;; textArea.setAttribute(&amp;#34;readonly&amp;#34;, &amp;#34;readonly&amp;#34;); document.body.appendChild(textArea); textArea.select(); // 尝试执行赋值操作 const success = document.execCommand(&amp;#34;copy&amp;#34;); if (!success) { throw new Error(&amp;#34;无法复制文本&amp;#34;); } // 清理 document.body.removeChild(textArea); } catch (err) { console.log(&amp;#34;复制失败:&amp;#34;, err); } }; </description>
+    </item>
+    
+    <item>
+      <title>统一 Node 版本</title>
+      <link>/articles/posts/127/</link>
+      <pubDate>Sat, 16 Mar 2024 22:07:00 +0800</pubDate>
+      
+      <guid>/articles/posts/127/</guid>
+      <description>1. package.json 的 engines 字段 在项目的 package.json 文件中，可以使用 engines 字段来指定所需的 Node 版本，在该字段中，可以定义一个范围或者具体的版本号来限制 Node 的版本。
+// 指定特定版本号 { //... &amp;#34;engines&amp;#34;: { &amp;#34;node&amp;#34;: &amp;#34;14.17.0&amp;#34; } } // 指定版本号范围 { //... &amp;#34;engines&amp;#34;: { &amp;#34;node&amp;#34;: &amp;#34;&amp;gt;=12.0.0 &amp;lt;16.0.0&amp;#34; } } // 波浪线符号：表示项目需要 Node 版本为 14.17.x { //... &amp;#34;engines&amp;#34;: { &amp;#34;node&amp;#34;: &amp;#34;~14.17.0&amp;#34; } } // 插入符号：表示项目需要 Node 版本为 14.x.x { //... &amp;#34;engines&amp;#34;: { &amp;#34;node&amp;#34;: &amp;#34;^14.17.0&amp;#34; } } 但是，我们在使用 npm install 时，发现 engines 配置并没有起作用，然后换 yarn 安装，发现 engines 配置又起作用了。</description>
+    </item>
+    
+    <item>
+      <title>使用函数</title>
+      <link>/articles/posts/126/</link>
+      <pubDate>Tue, 12 Mar 2024 19:46:23 +0800</pubDate>
+      
+      <guid>/articles/posts/126/</guid>
+      <description>调用函数 函数调用 下面示例中，使用小括号调用函数，然后直接把返回值传入函数，进行第二次运算，这样可以节省两个临时变量。
+function f(x, y) { return x * y; } console.log(f(f(5, 6), f(7, 8))); // 1680 如果函数返回值为一个函数，则在调用时可以使用多个小括号反复调用。
+function f(x, y) { return function () { return x * y; }; } console.log(f(7, 8)()); // 56 设计递归调用函数，即在函数内调用自身，这样可以反复调用，但最终返回的都是函数自身。
+function f() { return f; } console.log(f()()()()()()()()()()()()); // 返回函数自身 函数的返回值 在函数体内，使用 return 语句可以设置函数的返回值，一旦执行 return 语句，将停止函数的运行。并运算和返回 return 后面的表达式的值，如果函数不包含 return 语句，则执行完函数体内的每条语句后，返回 undefined。
+下面代码定义函数的返回值为函数：
+function f() { return function (x, y) { return x + y; }; } 使用 call 和 apply 调用 call 和 apply 是 Function 的原型方法，它们能够将特定函数当做一个方法绑定到指定对象上，并进行调用。</description>
+    </item>
+    
+    <item>
+      <title>操作字符串</title>
+      <link>/articles/posts/125/</link>
+      <pubDate>Sun, 03 Mar 2024 21:31:33 +0800</pubDate>
+      
+      <guid>/articles/posts/125/</guid>
+      <description>字符串操作基础 定义字符串 1. 字符串直接量
+使用双引号或单引号包含任意长度的文本。
+var s = &amp;#34;true&amp;#34;; // 把布尔值转换为字符串 var s = &amp;#34;123&amp;#34;; // 把数值转换为字符串 var s = &amp;#34;[1,2,3]&amp;#34;; // 把数值转换为字符串 var s = &amp;#34;{x:1, y:2}&amp;#34;; // 把对象转换为字符串 var s = &amp;#34;console.log(&amp;#39;Hello, World&amp;#39;)&amp;#34;; // 把可表达式转换为字符串 对于字符串化脚本，可以调用全局方法 eval() 执行字符代码
+var s = &amp;#34;console.log(&amp;#39;Hello, World&amp;#39;)&amp;#34;; eval(s); 2. 构造字符串
+使用 String() 类型函数可以构造字符串，该函数可以接收一个参数，并把它作为值来初始化字符串。
+var s = new String(); // 创建一个空字符串对象，引用类型，并赋值给变量 s var s = new String(&amp;#34;我是构造字符串&amp;#34;); // 创建字符串对象，初始化之后赋值给变量 s 下面比较构造字符串和字符串直接量的数据类型值的不同：
+var s1 = new String(1); // 构造字符串 var s2 = &amp;#34;1&amp;#34;; console.</description>
+    </item>
+    
+    <item>
+      <title>SCSS</title>
+      <link>/articles/posts/124/</link>
+      <pubDate>Sat, 02 Mar 2024 21:23:27 +0800</pubDate>
+      
+      <guid>/articles/posts/124/</guid>
+      <description>继承 @extend 在使用的选择器中插入被继承的选择器样式。
+.icon { color: red; } .error-icon { @extend .icon; } .success-icon { @extend .icon; } 转化后：
+.icon, .error-icon, .success-icon { color: red; } 混入（Mixin） @mixin 定义可重复使用的样式片段，使用 @include，可以将定义的 Mixin 导入。
+@mixin icon-style { color: red; } .error-icon { @include icon-style; } .success-icon { @include icon-style; } 转化后：
+.error-icon { color: red; } .success-icon { color: red; } 在一个混入中也可以引入其他混入。
+@mixin special-icon { @include icon-style; @include special-style; } 在混入中传递变量
+@mixin icon($bg-color: grey) { background-color: $bg-color; } .</description>
+    </item>
+    
+    <item>
+      <title>Git开发工作流程</title>
+      <link>/articles/posts/123/</link>
+      <pubDate>Sat, 02 Mar 2024 10:11:57 +0800</pubDate>
+      
+      <guid>/articles/posts/123/</guid>
+      <description>一、开发分支模型分类 目前部门使用的主要是四种：dev(开发)、test(测试)、uat(预发布)、release(生产)
+二、开发主体流程 需求评审
+开发排期
+编码开发
+冒烟测试（自检查）
+冒烟通过，提交测试，合并代码到测试分支，部署测试环境
+测试环境测试，开发修 bug
+测试完成，提交预发布环境，合并代码到预发布分支，部署到预发布环境
+预发布环境测试，开发修 bug
+测试完成，产品验收
+验收完成，提交生产，合并代码到生产分支，部署生产环境
+生产运营（客户）验收
+验收完成，结项
+具体操作 1. 拉取代码 一般会在本地默认创建一个 master 分支
+git clone https://code.xxx.com/xxx/xxx.git 2. 初次开发需求前，要先拉取生成/预发布分支，然后基于这个分支之上，创建自己的特性分支进行开发 git fetch origin release:release git checkout release git checkout -b feat-0131-jie 此时，在你本地已经有一个 release 分支对应着远程仓库 release 分支，还有一个内容基于 release 分支的特性分支，之后便可以在这个特性分支上进行需求开发，
+如果不是初次开发，本地已经有生产/预发布分支，则需要重新拉取远程的最新代码，然后再创建
+# tips: 输入已有的分支名时，可以只输入前几个字符，然后按 tab 自动补充 git checkout release git pull origin release git checkout -b feat-0229-jie 注意1: 分支名称是有规范和含义的，不能乱取
+推荐格式：分支责任-需求日期/需求号-开发人姓名，一般按部门规范来，常见的有以下几种：
+feat: 新功能
+fix: 修补 bug</description>
+    </item>
+    
+    <item>
+      <title>Js 技巧</title>
+      <link>/articles/posts/122/</link>
+      <pubDate>Sat, 02 Mar 2024 09:55:06 +0800</pubDate>
+      
+      <guid>/articles/posts/122/</guid>
+      <description>动态对象键 const dynamicKey = &amp;#34;dynamicProperty&amp;#34;; const obj = { [dynamicKey]: &amp;#34;这是一个动态的属性&amp;#34;, }; console.log(obj.dynamicProperty); // 这是一个动态的属性 私有字段 现在，Js 类支持使用 # 符号的私有字段，私有字段不能从类外部访问，从而提供封装和信息隐藏。
+class Counter { #count = 0; increment() { this.#count++; } getCount() { return this.#count; } } const counter = new Counter(); counter.increment(); console.log(counter.getCount()); // 1 Promise.allSettled() 这个方法返回一个 Promise，该 Promise 在所有给定的 Promise 已经 resolve 或 reject 后 resolve，提供每个 Promise 的结果数组，
+const promises = [Promise.resolve(&amp;#34;Resolved&amp;#34;), Promise.reject(&amp;#34;Rejected&amp;#34;)]; Promise.allSettled(promises).then((results) =&amp;gt; { console.log(results); }); flatMap flatMap 方法将 map() 和 flat() 的效果结合到一个方法中。</description>
+    </item>
+    
+    <item>
+      <title>语句和程序结构</title>
+      <link>/articles/posts/121/</link>
+      <pubDate>Thu, 29 Feb 2024 21:07:48 +0800</pubDate>
+      
+      <guid>/articles/posts/121/</guid>
+      <description>流程控制 break 语句 break 语句能够结束当前 for、for/in、while、do/while 或者 switch 语句的执行；同时 break 也可以接受一个可选的标签名，来决定跳出的结构语句。语法格式如下：
+break label; 下面示例设计在客户端查找 document 的 bgColor 属性，如果完全遍历 document 对象，会浪费时间，因此设计一个条件，判断所枚举的属性名是都等于 “bgColor”，如果相等，则使用 break 语句跳出循环。
+for (i in document) { if (i.toString() == &amp;#34;bgColor&amp;#34;) { document.write(&amp;#34;document.&amp;#34; + i + &amp;#34;=&amp;#34; + document[i] + &amp;#34;&amp;lt;br /&amp;gt;&amp;#34;); break; } } 在下面嵌套结构中，break 语句并没有跳出 for/in 结构，仅仅退出 switch 结构。
+for (i in document) { switch (i.toString()) { case &amp;#34;bgColor&amp;#34;: document.write(&amp;#34;document.&amp;#34; + i + &amp;#34;=&amp;#34; + document[i] + &amp;#34;&amp;lt;br /&amp;gt;&amp;#34;); break; default: document.</description>
+    </item>
+    
+    <item>
+      <title>运算符和表达式</title>
+      <link>/articles/posts/120/</link>
+      <pubDate>Sun, 25 Feb 2024 09:51:47 +0800</pubDate>
+      
+      <guid>/articles/posts/120/</guid>
+      <description>运算符 左值、赋值及其副作用 var a = 0; a++; console.log(a); // 1 var a = 1; a = (a++) + (++a) - (a++) - (++a); console.log(a) 拆解表达式：
+var a = 1; // 初始值为 1 var b = a++; // a 先赋值给 b，在递加变为 2 var c = ++a; // a 先递加变为 3，再赋 3 给 c var d = a++; // a 赋 3 给 d，在递加变为 4 var e = ++a; // a 先递加变为 5，在赋 5 给 e console.</description>
+    </item>
+    
+    <item>
+      <title>类型转换</title>
+      <link>/articles/posts/119/</link>
+      <pubDate>Sat, 24 Feb 2024 09:56:01 +0800</pubDate>
+      
+      <guid>/articles/posts/119/</guid>
+      <description>转换为字符串 常用值转换为字符串说明如下：
+1 =&amp;gt; &amp;#34;1&amp;#34; 0 =&amp;gt; &amp;#34;0&amp;#34; true =&amp;gt; &amp;#34;true&amp;#34; false =&amp;gt; &amp;#34;false&amp;#34; &amp;#34;&amp;#34; =&amp;gt; &amp;#34;&amp;#34; undefined =&amp;gt; &amp;#34;undefined&amp;#34; null =&amp;gt; &amp;#34;null&amp;#34; NaN =&amp;gt; &amp;#34;NaN&amp;#34; Infinity =&amp;gt; &amp;#34;Infinity&amp;#34; 把值转换为字符串的常用方法有 2 种：
+使用加号运算符 当值与空字符串相加运算时，Js 会自动把值转换为字符串。 (1) 数字转换为字符串，
+var n = 123; n = n + &amp;#34;&amp;#34;; console.log(typeof n); // &amp;#34;string&amp;#34; (2) 把布尔值转换为字符串
+var b = true; b = b + &amp;#34;&amp;#34;; console.log(b); // &amp;#34;true&amp;#34; (3) 把数组转换为字符串
+var a = [1, 2, 3]; a = a + &amp;#34;&amp;#34;; console.</description>
+    </item>
+    
+    <item>
+      <title>类型检测</title>
+      <link>/articles/posts/118/</link>
+      <pubDate>Fri, 23 Feb 2024 22:11:00 +0800</pubDate>
+      
+      <guid>/articles/posts/118/</guid>
+      <description>使用 contructor contructor 是 Object 类型的原型属性，它能够返回当前对象的构造器（类型函数）。
+利用该属性，可以检测复合型数据的类型，如对象、数组和函数等。
+下面代码可以检测对象和数组的类型，以此可以过滤对象、数组
+var o = {}; var a = []; console.log(o.constructor == Object); // o 是对象 console.log(a.constructor == Array); // a 是数组 结合 typeof 运算符和 constructor 原型属性，可以检测不同类型的数据：
+值(value) typeof value value.contructor var value=1 &amp;ldquo;number&amp;rdquo; Number var value=&amp;ldquo;a&amp;rdquo; &amp;ldquo;string&amp;rdquo; String var value=true &amp;ldquo;boolean&amp;rdquo; Boolean var value={} &amp;ldquo;object&amp;rdquo; Object var value=new Object() &amp;ldquo;object&amp;rdquo; Object var value=[] &amp;ldquo;object&amp;rdquo; Array var value=new Array() &amp;ldquo;object&amp;rdquo; Array var value=function(){} &amp;ldquo;function&amp;rdquo; Function function className(){};var value=new ClassName() &amp;ldquo;object&amp;rdquo; className undefined 和 null 没有 constructor 属性，不能够直接读取，否则会抛出异常。因此，一般应先检测值为 undefined 和 null 等特殊值，然后再调用 constructor 属性。</description>
+    </item>
+    
+    <item>
+      <title>严格模式</title>
+      <link>/articles/posts/117/</link>
+      <pubDate>Fri, 23 Feb 2024 21:53:14 +0800</pubDate>
+      
+      <guid>/articles/posts/117/</guid>
+      <description>启用严格模式 在代码首部添加以下一行字符串，即可开启严格模式。
+&amp;#34;use strict&amp;#34;; 首部就是指其前面没有任何有效的 Js 代码，例如，以下用法都不会触发严格模式。
+&amp;ldquo;use strict&amp;rdquo; 前有可执行的代码 var width = 10; &amp;#34;use strict&amp;#34;; // 无效 globalVar = 100; &amp;ldquo;use strict&amp;rdquo; 前有空语句 ; &amp;#34;use strict&amp;#34;; // 无效 globalVar = 100; 或者
+;&amp;#34;use strict&amp;#34;; // 无效 globalVar = 100; 注意：
+注释语句不作为有效的 Js 代码，例如，下面用法会触发严格模式。
+// 严格模式 &amp;#34;use strict&amp;#34;; // 有效 globalVar = 100; 1. 全局模式
+将 &amp;ldquo;use strict&amp;rdquo; 放在脚本文件的第一行，则整个脚本都将以严格模式运行，如果不在第一行，则整个脚本将以正常模式运行。
+下面示例在页面中添加两个 Js 代码块，第一个代码块将开启严格模式，第二个代码块将按正常模式解析。
+&amp;lt;script&amp;gt; &amp;#34;use strict&amp;#34;; console.log(&amp;#34;这是严格模式&amp;#34;); &amp;lt;/script&amp;gt; &amp;lt;script&amp;gt; console.log(&amp;#34;这是正常模式&amp;#34;); &amp;lt;/script&amp;gt; 2.</description>
+    </item>
+    
+    <item>
+      <title>数据类型</title>
+      <link>/articles/posts/116/</link>
+      <pubDate>Fri, 23 Feb 2024 20:37:31 +0800</pubDate>
+      
+      <guid>/articles/posts/116/</guid>
+      <description>基本类型 JavaScript 的基本数据类型
+null: 控制，表示非对象
+undefined: 未定义的值，表示未赋值的初始化值
+number: 数字
+string: 字符串
+boolean: 布尔值
+object: 对象，表示复合结构的数据集
+使用 typeof 运算符可以检测数据的基本类型。
+console.log(typeof 1); // &amp;#34;number&amp;#34; console.log(typeof &amp;#34;1&amp;#34;); // &amp;#34;string&amp;#34; console.log(typeof true); // &amp;#34;boolean&amp;#34; console.log(typeof {}); // &amp;#34;object&amp;#34; console.log(typeof []); // &amp;#34;object&amp;#34; console.log(typeof function () {}); // &amp;#34;function&amp;#34; console.log(typeof null); // &amp;#34;object&amp;#34; console.log(typeof undefined); // &amp;#34;undefined&amp;#34; 由于 null 值返回类型为 Object，使用下面自定义函数可以避开因为 null 值影响基本类型检测。
+function typeOf(o) { return o === null ? &amp;#34;null&amp;#34; : typeof o; } console.</description>
+    </item>
+    
+    <item>
+      <title>CSS修改滚动条样式 scrollbar</title>
+      <link>/articles/posts/114/</link>
+      <pubDate>Tue, 20 Feb 2024 14:05:11 +0800</pubDate>
+      
+      <guid>/articles/posts/114/</guid>
+      <description>可以通过如下设置修改滚动条： ::webkit-scrollbar: 可以设置滚动条的大小、颜色、圆角
+::webkit-scrollbar-thumb: 设置滚动条的滑块
+::webkit-scrollbar-track: 设置滚动条轨道
+::webkit-scrollbar-track-piece: 设置没有滑块的轨道部分
+::webkit-scrollbar-corner: 设置水平和垂直滚动条叫交叉部分的背景色
+::webkit-resizer: 当元素设置为可拖动时（resize: horizontal | vertical | both），元素底角会出现可调整元素大小的滑块，
+::webkit-scrollbar-button: 设置滚动条两端的上下（左右）滚动按钮（上下、左右箭头）
+代码演示 ::webkit-scrollbar { width: 100px; height: 10px; background-color: #f5f5f5; border-radius: 5px; } ::webkit-scrollbar-thumb { background-color: #ccc; border-radius: 5px; } ::webkit-scrollbar-thumb:hover { background-color: #999; border-radius: 5px; } ::webkit-scrollbar-track { background-color: #f5f5f5; border-radius: 5px; } ::webkit-scrollbar-track:hover { background-color: #ccc; } ::webkit-scrollbar-corner { background-color: cyan; } ::webkit-scrollbar-track-piece { background-color: green; } ::webkit-resizer { background-color: rgb(242, 5, 151); } ::webkit-scrollbar-button { background-color: pink; border-radius: 20px; width: 20px; } </description>
+    </item>
+    
+    <item>
+      <title>Web Components</title>
+      <link>/articles/posts/115/</link>
+      <pubDate>Mon, 19 Feb 2024 23:11:08 +0800</pubDate>
+      
+      <guid>/articles/posts/115/</guid>
+      <description>示例 1 html &amp;lt;div&amp;gt; &amp;lt;p&amp;gt;This is content&amp;lt;/p&amp;gt; &amp;lt;my-element&amp;gt;&amp;lt;/my-element&amp;gt; &amp;lt;/div&amp;gt; js class MyElement extends HTMLElement { constructor() { super(); const shadow = this.attachShadow({ mode: &amp;#34;open&amp;#34; }); const paragraph = document.createElement(&amp;#34;p&amp;#34;); paragraph.textContent = &amp;#34;Hello World&amp;#34;; shadow.appendChild(paragraph); } } customElements.define(&amp;#34;my-element&amp;#34;, MyElement); 插槽 html &amp;lt;my-card&amp;gt; &amp;lt;h2 slot=&amp;#34;title&amp;#34;&amp;gt;Card Title&amp;lt;/h2&amp;gt; &amp;lt;p slot=&amp;#34;content&amp;#34;&amp;gt;This is ths content of the card&amp;lt;/p&amp;gt; &amp;lt;/my-card&amp;gt; js class MyCard extends HTMLElement { constructor() { super(); const shadow = this.attachShadow({ mode: &amp;#34;open&amp;#34; }); const cardContainer = document.</description>
+    </item>
+    
+    <item>
+      <title>webpack5-高级篇2</title>
+      <link>/articles/posts/113/</link>
+      <pubDate>Mon, 19 Feb 2024 08:09:02 +0800</pubDate>
+      
+      <guid>/articles/posts/113/</guid>
+      <description>多页面应用 4.1 entry 配置 单入口
+module.exports = { entry: &amp;#34;./path/to/my/entry/file.js&amp;#34;, }; entry 属性的单个入口语法，参考下面的简写：
+module.exports = { entry: { main: &amp;#34;./path/to/my/entry/file.js&amp;#34;, }, }; 我们也可以将一个文件路径数组传递给 entry 数组，在你想一次注入多个依赖文件，并且将它们的依赖关系绘制在一个 chunk 中时，这种方式就很有用了。
+module.exports = { entry: [&amp;#34;./src/file_1.js&amp;#34;, &amp;#34;./src/file_2.js&amp;#34;], output: { filename: &amp;#34;bundle.js&amp;#34;, }, }; 对象语法
+module.exports = { entry: { app: &amp;#34;./src/app.js&amp;#34;, adminApp: &amp;#34;./src/adminApp.js&amp;#34;, }, }; 描述入口的对象：
+dependOn: 当前入口所依赖的入口，它们必须在该入口被加载前被加载。 filename: 指定要输出的文件名称。 import: 启动时需加载的模块。 library: 指定 library 选项，为当前 entry 构建一个 library。 runtime: 运行时 chunk 的名字，如果设置了，就会创建一个新的运行时 chunk，在 webpack 5.</description>
+    </item>
+    
+    <item>
+      <title>webpack5-高级篇1</title>
+      <link>/articles/posts/112/</link>
+      <pubDate>Sun, 18 Feb 2024 19:23:40 +0800</pubDate>
+      
+      <guid>/articles/posts/112/</guid>
+      <description>提高开发效率与完善团队开发规范 1.1 source-map 开启 module.exports = { devtool: &amp;#34;source-map&amp;#34;, // 开发环境中推荐使用 source-map，生成环境一般不建议开启 }; 7 种模式
+模式 解释 eval 默认值，每个 module 会封装到 eval 里包裹起来执行，并且会在末尾追加注释 //@ sourceURL source-map 会生成一个 sourceMap 文件 hidden-source-map 和 source-map 一样，但不会在 bundle 末尾追加注释 inline-source-map 生成一个 DataUrl 形式的 SourceMap 文件 eval-source-map 每个 module 会用过 eval() 来执行，并且生成一个 DataUrl 形式的 SourceMap cheap-source-map 生成一个没有列信息的 SourceMaps 文件，不包含 loader 的 sourcemap cheap-module-source-map 生成一个没有列信息的 SourceMaps 文件，同时 loader 的 sourcemap 也被简化为只包含对应行的 1. eval
+默认情况下，即使我们没有配置 source map，webpack 也会在开发环境下，设置 source map，值为 eval。eval 可以准确定位到源代码。 2.</description>
+    </item>
+    
+    <item>
+      <title>webpack-CDN依赖注入</title>
+      <link>/articles/posts/111/</link>
+      <pubDate>Sun, 18 Feb 2024 18:39:27 +0800</pubDate>
+      
+      <guid>/articles/posts/111/</guid>
+      <description>webpack.config.js module.exports = { //... externalsType: &amp;#34;script&amp;#34;, externals: { jquery: [&amp;#34;https://cdn.bootcdn.net/ajax/libs/juqery/3.6.0/jquery.js&amp;#34;, &amp;#34;$&amp;#34;], }, //... }; 弊端： 会依赖网络。</description>
+    </item>
+    
+    <item>
+      <title>Preload 和 Prefetch</title>
+      <link>/articles/posts/110/</link>
+      <pubDate>Sun, 18 Feb 2024 17:43:53 +0800</pubDate>
+      
+      <guid>/articles/posts/110/</guid>
+      <description>前面已经做了代码分割处理，同时会使用 import 动态导入语法来进行代码按需加载，但是加载速度还是不够好，
+比如：是用户点击按钮时才加载这个资源的，如果资源体积很大，那么用户会感觉到明显卡顿效果。
+我们想在浏览器空闲时间，加载后续需要的使用的资源，我们就需要用上 preload 或 prefetch 技术。
+介绍 preload: 告诉浏览器立即加载资源
+prefetch: 告诉浏览器在空闲时才开始记载资源
+它们的共同点 都只会加载资源，并不执行
+都有缓存
+它们的区别 preload 加载优先级高，prefetch 加载优先级低
+preload 只能加载当前页面需要使用的资源，prefetch 可以加载当前页面资源，也可以加载下一页面需要使用的资源。
+总结 当前页面优先级高的资源用 preload 加载
+下一个页面需要使用的资源用 prefetch 加载</description>
+    </item>
+    
+    <item>
+      <title>FileReader</title>
+      <link>/articles/posts/109/</link>
+      <pubDate>Sun, 28 Jan 2024 20:52:12 +0800</pubDate>
+      
+      <guid>/articles/posts/109/</guid>
+      <description>读取文件 if (typeof FileReader === &amp;#34;undefined&amp;#34;) { alert(&amp;#34;当前浏览器不支持 FileReader 对象&amp;#34;); } else { var reader = new FileReader(); } FileReader 对象包含 5 个方法，其中前 4 个用以读取文件，另一个用来中断读取操作。
+readAsText(Blob, type): 将 Blob 对象或文件中的数据读取为文本数据。该方法包含两个参数，其中第二个参数是文本的编码方式，默认为 UTF-8。
+readAsBinaryString(Blob): 将 Blob 对象或文件中的数据读取为二进制字符串，通常用该方法将文件提交到服务器端，服务器端可以通过这段字符串存储文件。
+readAsDataURL(Blob): 将 Blob 对象或文件中的数据读取为 DataURL 字符串，该方法就是将数据以一种特殊格式的 URL 地址形式直接读入页面。
+readAsArrayBuffer(Blob): 将 Blob 对象或文件中的数据读取为一个 ArrayBuffer 对象。
+abort(): 不包含参数，中断读取操作。
+下面演示如何在网页中读取并显示图像文件、文本文件和二进制代码文件
+&amp;lt;input type=&amp;#34;file&amp;#34; id=&amp;#34;file&amp;#34; /&amp;gt; &amp;lt;input type=&amp;#34;button&amp;#34; value=&amp;#34;读取图像&amp;#34; onclick=&amp;#34;readAsDataURL()&amp;#34; /&amp;gt; &amp;lt;input type=&amp;#34;button&amp;#34; value=&amp;#34;读取二进制数据&amp;#34; onclick=&amp;#34;readAsBinaryString()&amp;#34; /&amp;gt; &amp;lt;input type=&amp;#34;button&amp;#34; value=&amp;#34;读取文本文件&amp;#34; onclick=&amp;#34;readAsText()&amp;#34; /&amp;gt; &amp;lt;div name=&amp;#34;result&amp;#34; id=&amp;#34;result&amp;#34;&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;script&amp;gt; window.</description>
+    </item>
+    
+    <item>
+      <title>文件操作</title>
+      <link>/articles/posts/108/</link>
+      <pubDate>Sat, 27 Jan 2024 22:20:05 +0800</pubDate>
+      
+      <guid>/articles/posts/108/</guid>
+      <description>FileList File 控件新添 multiple 属性，允许用户在一个 File 控件内选择和提交多个文件。
+&amp;lt;input type=&amp;#34;file&amp;#34; multiple /&amp;gt; 示例
+&amp;lt;input type=&amp;#34;file&amp;#34; id=&amp;#34;file&amp;#34; multiple /&amp;gt; &amp;lt;input type=&amp;#34;button&amp;#34; onclick=&amp;#34;ShowFileName()&amp;#34; value=&amp;#34;文件上传&amp;#34; /&amp;gt; function ShowFileName() { for (var i = 0; i &amp;lt; document.getElementById(&amp;#34;file&amp;#34;).files.length; i++) { var file = document.getElementById(&amp;#34;file&amp;#34;).files[i]; console.log(file.name); } } Blob Blob 对象用于存储二进制数据，还可以设置存储数据的 MIME 类型，
+访问 Blob Blob 对象包含两个属性：
+size: 表示一个 Blob 对象的字节长度
+type: 表示 Blob 的 MIME 类型，如果为未知类型，则返回一个空字符串。
+下面演示如果获取文件域中第一个文件的 Blob 对象，并访问该文件的长度和文件类型
+function showFileType() { var file = document.</description>
+    </item>
+    
+    <item>
+      <title>Web Storage</title>
+      <link>/articles/posts/107/</link>
+      <pubDate>Sat, 27 Jan 2024 22:01:54 +0800</pubDate>
+      
+      <guid>/articles/posts/107/</guid>
+      <description>遍历 var storage = window.localStorage; for(var i = 0, len = storage.length; i++) { var key = storage.key(i); var value = storage.getItem(key); console.log(key + &amp;#34;=&amp;#34; + value); } 监测事件 web storage 定义 storage 事件，当键值改变或者调用 clear() 方法的时候，将触发 storage 事件。
+window.addEventListener(&amp;#34;storage&amp;#34;, handle_storage, false); function handle_storage(e) { var logged = &amp;#34;key:&amp;#34; + e.key + &amp;#34;,newValue:&amp;#34; + e.newValue + &amp;#34;,oldValue:&amp;#34; + e.oldValue + &amp;#34;,url:&amp;#34; + e.url + &amp;#34;,storageArea:&amp;#34; + e.storageArea; console.log(logged); } storage 事件对象属性</description>
+    </item>
+    
+    <item>
+      <title>使用 HTML5 音频和视频</title>
+      <link>/articles/posts/106/</link>
+      <pubDate>Fri, 26 Jan 2024 20:22:30 +0800</pubDate>
+      
+      <guid>/articles/posts/106/</guid>
+      <description>Audio &amp;lt;audio src=&amp;#34;&amp;#34; controls=&amp;#34;controls&amp;#34;&amp;gt;&amp;lt;/audio&amp;gt; audio 支持的属性值：
+属性 值 说明 autoplay autoplay 如果出现该属性，则音频在就绪后马上播放 controls controls 如果出现该属性，则向用户显示控件，比如播放按钮 loop loop 如果出现该属性，则每当音频结束时重新开始播放 preload preload 如果出现该属性，则音频在页面加载时进行加载，并预备播放。如果使用 autoplay，则忽略该属性。 audio 标签可以包含多个 source 标签，用来导入不同的音频文件，浏览器会自动选择第一个可识别的格式进行播放。
+&amp;lt;audio controls=&amp;#34;controls&amp;#34;&amp;gt; &amp;lt;source src=&amp;#34;medias/test.ogg&amp;#34; type=&amp;#34;audio/ogg&amp;#34; /&amp;gt; &amp;lt;source src=&amp;#34;medias/test.mp3&amp;#34; type=&amp;#34;audio/mpeg&amp;#34; /&amp;gt; 你的浏览器不支持 audio 标签 &amp;lt;/audio&amp;gt; &amp;lt;audio autoplay loop&amp;gt; &amp;lt;source src=&amp;#34;medias/test.ogg&amp;#34; type=&amp;#34;audio/ogg&amp;#34; /&amp;gt; &amp;lt;source src=&amp;#34;medias/test.mp3&amp;#34; type=&amp;#34;audio/mpeg&amp;#34; /&amp;gt; 你的浏览器不支持 audio 标签 &amp;lt;/audio&amp;gt; Video &amp;lt;video src=&amp;#34;&amp;#34; controls=&amp;#34;controls&amp;#34;&amp;gt;&amp;lt;/video&amp;gt; video 支持的属性值：
+属性 值 说明 autoplay autoplay 如果出现该属性，则视频在就绪后马上播放 controls controls 如果出现该属性，则向用户显示控件，比如播放按钮 loop loop 如果出现该属性，则当媒介文件完成播放后再次开始播放 muted muted 设置视频的音频输出应该被静音 poster URL 设置视频下载时显示的图像，或者在用户单击 “播放” 按钮前显示的图像 preload preload 如果出现该属性，则视频在页面加载时进行加载，并预备播放。如果使用 “autoplay”，则忽略该属性 &amp;lt;video controls autoplay&amp;gt; &amp;lt;source src=&amp;#34;medias/trailer.</description>
+    </item>
+    
+    <item>
+      <title>利用 Performance API 分析网站性能</title>
+      <link>/articles/posts/105/</link>
+      <pubDate>Sat, 20 Jan 2024 22:57:31 +0800</pubDate>
+      
+      <guid>/articles/posts/105/</guid>
+      <description>window.performace.timing 对象包含了完整的网页加载性能数据，
+页面加载的第一个时间点就是 navigationStart，表示上一个页面的 unload 事件触发，接下来的时间点是 fetchStart，表示开始获取当前页面内容。fetchStart 时间点和 navigationStart 时间点之间的时间差是浏览器内核为加载新页面做的一些准备工作耗时。
+获取页面内容的第一步是查询是否有跟页面相关的资源缓存，查询完毕后，会触发开始 DNS 解析的时间点 domainLookupStart。domainLookupStart 时间点和 fetchStart 时间点之间的时间差就是查询缓存所消耗的时间。
+DNS 解析结束的时间点是 domainLookupEnd。domainLookupEnd 时间点和 domainLookupStart时间点之间的时间差是 DNS 解析消耗的时间。
+DNS 解析技术之后会开始建立 TCP 连接，TCP 连接开始和结束的时间分别是 connectStart 和 connectEnd。connectStart 时间点紧接着 domainLookupEnd 时间点， connectEnd 时间点和 connectStart 时间点之间的时间差是建立 TCP 消耗的时间。
+TCP 连接建立之后，开始发送请求内容至服务端，这个时间点是 requestStart。服务端接收到完整的请求并处理完毕后，会将响应结果返回给客户端，开始发送响应结果的时间点为 responseStart。浏览器收到完整的响应结果之后，会触发 responseEnd 时间点。
+浏览器接收到响应结果之后，会开始 DOM 解析，这个时间点是 domLoading， DOM 解析完成的时间点是 domInteractive。DOM 解析完成是指 DOM 树构建完成，页面依赖的外部资源，如 CSS、JavaScript、图片等，还未开始加载。
+注意： domLoading 时间点不一定在 responseEnd 时间点之后，有可能浏览器只接收了部分响应数据就开始解析 DOM 树。
+DOM 树解析完成之后，会开始按照顺序运行页面脚本和加载依赖外部资源，其中 JavaScript 资源会同步加载和执行。一旦所有页面脚本运行完毕，会触发 DOMContentLoaded 事件，这个时间点是 domContentLoadedStart。</description>
+    </item>
+    
+    <item>
+      <title>Drag 和 Drop 介绍</title>
+      <link>/articles/posts/104/</link>
+      <pubDate>Sat, 20 Jan 2024 22:20:41 +0800</pubDate>
+      
+      <guid>/articles/posts/104/</guid>
+      <description>页面中的圆形元素允许可拖动，将圆形元素拖动到正方形元素之上，并且释放元素，如果正方形元素内容为 “green”，则两者匹配成功，圆形元素消失不见，正方形元素内容更改为 “correct”。
+&amp;lt;div class=&amp;#34;draggable&amp;#34;&amp;gt; &amp;lt;!-- draggable 为 true，表示元素可拖动 --&amp;gt; &amp;lt;div draggable=&amp;#34;true&amp;#34;&amp;gt;绿色&amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;div class=&amp;#34;text&amp;#34;&amp;gt; &amp;lt;div&amp;gt;red&amp;lt;/div&amp;gt; &amp;lt;div&amp;gt;green&amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt; var draggableColor = $(&amp;#34;.draggable &amp;gt; div&amp;#34;); var greenText = $(&amp;#34;.text &amp;gt; div:nth-child(2)&amp;#34;); draggableColor.on(&amp;#34;dragstart&amp;#34;, function (event) { // 注册拖拽开始事件 event.dataTransfer.setData(&amp;#34;ele&amp;#34;, &amp;#34;.draggable &amp;gt; div&amp;#34;); // 保存数据 }); greenText .on(&amp;#34;dragover&amp;#34;, function (event) { event.preventDefault(); // 阻止浏览器默认行为 }) .on(&amp;#34;drop&amp;#34;, function (event) { var dragTarget = event.dataTransfer.getData(&amp;#34;ele&amp;#34;); $(dragTarget).css(&amp;#34;visibility&amp;#34;, &amp;#34;hidden&amp;#34;); $(this).text(&amp;#34;correct&amp;#34;); }); 注意： dragover 事件中必须阻止浏览器默认行为，否则后续的 drop 事件将不会被触发。</description>
+    </item>
+    
+    <item>
+      <title>History API 与单页应用</title>
+      <link>/articles/posts/103/</link>
+      <pubDate>Sat, 20 Jan 2024 21:52:20 +0800</pubDate>
+      
+      <guid>/articles/posts/103/</guid>
+      <description>单页应用，是指 web 应用可以无刷新在不同的页面间切换，并且页面访问记录会被浏览器保存，从而支持浏览器的前进、后退和刷新等操作。
+本实例将使用 History API 实现一个单页应用，页面访问路径为 “/green”，当使用路径 “/green” 来访问页面时，页面展示效果为 “green” 菜单项被选中，并且右边内容区域显示文字 “this is a green page”。
+注意： 单击不同菜单选项进行页面切换时，浏览器不会重新加载页面。
+&amp;lt;div class=&amp;#34;wrapper&amp;#34;&amp;gt; &amp;lt;ul class=&amp;#34;navigator&amp;#34;&amp;gt; &amp;lt;li class=&amp;#34;nav-item&amp;#34;&amp;gt;green&amp;lt;/li&amp;gt; &amp;lt;li class=&amp;#34;nav-item&amp;#34;&amp;gt;blue&amp;lt;/li&amp;gt; &amp;lt;li class=&amp;#34;nav-item&amp;#34;&amp;gt;red&amp;lt;/li&amp;gt; &amp;lt;/ul&amp;gt; &amp;lt;div class=&amp;#34;content&amp;#34;&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt; var menu = $(&amp;#34;ul.navigator &amp;gt; li&amp;#34;); var content = $(&amp;#34;div.content&amp;#34;); function initPage(page) { menu.removeClass(&amp;#34;selected-item&amp;#34;); menu .filter(function () { return $(this).text().toLowerCase().trim() === page; }) .addClass(&amp;#34;selected-item&amp;#34;); content.text(&amp;#34;this is a &amp;#34; + page + &amp;#34; page&amp;#34;); } // 根据当前 URL 初始化页面 initPage(location.</description>
+    </item>
+    
+    <item>
+      <title>使用音频和视频</title>
+      <link>/articles/posts/102/</link>
+      <pubDate>Sat, 20 Jan 2024 21:28:50 +0800</pubDate>
+      
+      <guid>/articles/posts/102/</guid>
+      <description>音频 &amp;lt;audio controls&amp;gt; &amp;lt;source src=&amp;#34;vincent.ogg&amp;#34; /&amp;gt; &amp;lt;source src=&amp;#34;vincent.mp3&amp;#34; /&amp;gt; 你的浏览器不支持 Audio 标记 &amp;lt;/audio&amp;gt; Audio 元素控制行为的属性如下：
+controls: 显示音频控件 autoplay: 是否自动播放，默认为 false loop: 是否循环播放，默认为 false preload: 预先加载的方式 none: 表示不预加载 metadata: 表示只加载音频的元数据 auto: 默认值，表示预加载整个音频 volumn: 音量，值在 0 ~ 1 之间 视频 &amp;lt;video width=&amp;#34;400&amp;#34; height=&amp;#34;300&amp;#34; controls&amp;gt; &amp;lt;source src=&amp;#34;dizzy.mp4&amp;#34; type=&amp;#34;video/mp4&amp;#34; /&amp;gt; &amp;lt;source src=&amp;#34;dizzy.webm&amp;#34; type=&amp;#34;video/webm&amp;#34; /&amp;gt; &amp;lt;source src=&amp;#34;dizzy.ogv&amp;#34; type=&amp;#34;video/ogg&amp;#34; /&amp;gt; &amp;lt;p&amp;gt;你的浏览器不支持 HTML5 视频&amp;lt;/p&amp;gt; &amp;lt;/video&amp;gt; 通过 API 控制 Video 的播放时间位置：
+&amp;lt;input type=&amp;#34;number&amp;#34; name=&amp;#34;time&amp;#34; value=&amp;#34;10&amp;#34; id=&amp;#34;time&amp;#34; /&amp;gt; &amp;lt;button id=&amp;#34;btnSeek&amp;#34;&amp;gt;GetInfo&amp;lt;/button&amp;gt; var video = document.</description>
+    </item>
+    
+    <item>
+      <title>获取上传进度的几种方式</title>
+      <link>/articles/posts/101/</link>
+      <pubDate>Sat, 20 Jan 2024 21:07:24 +0800</pubDate>
+      
+      <guid>/articles/posts/101/</guid>
+      <description>前端使用 axios 实现监听上传进度 咱们先使用axios实现监听上传进度如下：
+axios .post(&amp;#34;/api/file/uploadfile&amp;#34;, form, { headers: { &amp;#34;Content-Type&amp;#34;: &amp;#34;multipart/form-data&amp;#34;, }, onUploadProgress: (progressEvent) =&amp;gt; { if (progressEvent.lengthComputable) { this.progresss = Math.round( (progressEvent.loaded / progressEvent.total) * 100 ); } }, }) .then((res) =&amp;gt; { // ... }); 前端使用ajax获取上传进度 前端使用ajax如何获取上传进度呢？ 如下：
+const xhr = new XMLHttpRequest(); xhr.upload.addEventListener(&amp;#34;progress&amp;#34;, (event) =&amp;gt; { if (event.lengthComputable) { const progressPercentage = Math.round((event.loaded / event.total) * 100); console.log(`上传进度: ${progressPercentage}%`); } }); 前端使用fetch API获取上传进度 如何使用fetch API获取上传的进度呢？如下：
+const file = document.</description>
+    </item>
+    
+    <item>
+      <title>Set 和 WeakSet 的用法和区别</title>
+      <link>/articles/posts/100/</link>
+      <pubDate>Mon, 01 Jan 2024 11:40:54 +0800</pubDate>
+      
+      <guid>/articles/posts/100/</guid>
+      <description>Set 和 WeakSet 是 ES6 中新增的两种数据结构，它们都用于存储一组不重复的值。但是它们之间有一些区别，下面我会简要介绍它们的用法和区别，以及相应的应用场景。
+Set 的用法和特点： Set 是一个类似数组的数据结构，它的成员值都是唯一的，不会重复。 你可以向 Set 中添加值，并且它会自动去重。 Set 中的值可以是任何类型的数据，包括原始类型和对象引用。
+下面是 Set 常见的操作方法：
+add(value) : 向 Set 中添加一个新的值。 delete(value) : 从 Set 中删除一个值。 has(value) : 判断 Set 中是否包含某个值。 size : 返回 Set 中值的数量。 clear() : 清空 Set 中的所有值。 示例代码：
+const set = new Set(); set.add(1); set.add(2); set.add(2); // 这个值不会被重复添加 set.has(1); // true set.size; // 2 set.delete(2); set.clear(); 下面是一些常见的 Set 的应用场景：
+1. 数组去重：
+Set 的去重功能非常有用，可以方便地从数组中去除重复的值。可以通过将数组转换为 Set，然后将 Set 转回数组来实现去重。</description>
+    </item>
+    
+    <item>
+      <title>前端代码重复度检测</title>
+      <link>/articles/posts/99/</link>
+      <pubDate>Fri, 29 Dec 2023 21:27:28 +0800</pubDate>
+      
+      <guid>/articles/posts/99/</guid>
+      <description>在前端开发中，代码的重复度是一个常见的问题。重复的代码不仅增加了代码的维护成本，还可能导致程序的低效运行。为了解决这个问题，有许多工具和技术被用来检测和消除代码重复。其中一个被广泛使用的工具就是jscpd。
+jscpd 简介 jscpd是一款开源的JavaScript的工具库，用于检测代码重复的情况，针对复制粘贴的代码检测很有效果。它可以通过扫描源代码文件，分析其中的代码片段，并比较它们之间的相似性来检测代码的重复度。jscpd支持各种前端框架和语言，包括 HTML、CSS 和 JavaScript 等 150 种的源码文件格式。无论是原生的 JavaScript、CSS、HTML 代码，还是使用typescript、scss、vue、react等代码，都能很好的检测出项目中的重复代码。
+开源仓库地址：github.com/kucherenko/jscpd/tree/master
+如何使用 使用jscpd进行代码重复度检测非常简单。我们需要安装jscpd。可以通过npm或yarn来安装jscpd。
+npm install -g jscpd yarn global add jscpd 安装完成后，我们可以在终端运行 jscpd 命令，指定要检测的代码目录或文件。例如，我们可以输入以下命令来检测当前目录下的所有 JavaScript 文件：
+jscpd . 指定目录检测：
+jscpd /path/to/code 在命令行执行成功后的效果如下图所示：
+简要说明一下对应图中的字段内容：
+Clone found (javascript)： 显示找到的重复代码块，这里是 javascript 文件。并且会显示重复代码在文件中具体的行数，便于查找。 Format：文件格式，这里是 javascript，还可以是 scss、markup 等。 Files analyzed：已分析的文件数量，统计被检测中的文件数量。 Total lines：所有文件的总行数。 Total tokens：所有的 token 数量，一行代码一般包含几个到几十个不等的 token 数量。 Clones found：找到的重复块数量。 Duplicated lines：重复的代码行数和占比。 Duplicated tokens：重复的 token 数量和占比。 Detection time：检测耗时。 工程配置 以上示例是比较简单直接检测单个文件或文件夹。当下主流的前端项目大多都是基于脚手架生成或包含相关前端工程化的文件，由于很多文件是辅助工具如依赖包、构建脚本、文档、配置文件等，这类文件都不需要检测，需要排除。这种情况下的工程一般使用配置文件的方式，通过选项配置规范 jscpd 的使用。
+jscpd 的配置选项可以通过以下两种方式创建，增加的内容都一致无需区分对应的前端框架。</description>
+    </item>
+    
+    <item>
+      <title>改变 axios 的用法后，我的工作效率提升了3倍(alova)</title>
+      <link>/articles/posts/98/</link>
+      <pubDate>Fri, 29 Dec 2023 21:23:15 +0800</pubDate>
+      
+      <guid>/articles/posts/98/</guid>
+      <description>实际场景下的请求问题 作为前端开发，网络请求肯定是我们经常要面对的事情，在前端请求中，axios 和 fetch API 应该是我们最常用的请求工具了，它们在发送请求和接收响应数据已经做到了足够简单。
+但在实际项目中，为了达到更好的用户体验，我们还需要考虑下面这几个因素：
+展示加载中的请求状态 展示请求错误状态 展示上传/下载文件的进度信息 上面这些都需要我们编写额外的代码，增加了不少的工作量，你的请求代码可能是下面这样的，我们以 vue3 代码为示例。
+const loading = ref(false); const data = ref({}); const error = ref(null); const request = async () =&amp;gt; { try { loading.value = true; data.value = await axios.get(&amp;#34;/xxx&amp;#34;); } catch (e) { error.value = e; } loading.value = false; }; onMounted(request); 如果面对大量的 api，这工作量可想而知，想到这时就有点头疼啊。有没有一种方法可以自动帮我处理这些逻辑，让请求代码看起来更简洁呢？
+解决 我们可以用封装的思路，把上面这些都封装为一个简单的 use hook，就可以很好地解决了，封装后的代码大概是下面这样的。
+export const useRequest = (url) =&amp;gt; { const loading = ref(false); const data = ref({}); const error = ref(null); const request = async () =&amp;gt; { try { loading.</description>
+    </item>
+    
+    <item>
+      <title>CSS属性 appearance</title>
+      <link>/articles/posts/97/</link>
+      <pubDate>Fri, 29 Dec 2023 21:01:49 +0800</pubDate>
+      
+      <guid>/articles/posts/97/</guid>
+      <description>appearance：跨越原生与定制界限的桥梁 appearance属性在 Web 设计师的工具箱中可能尚属生僻，它能够移除或者添加操作系统和浏览器默认提供的样式。在创建定制化表单控件，如按钮、选择框、文本输入框等时，经常需要涉及到的是如何去除浏览器预设的样式，以便控件的外观更贴合设计稿。横亘在设计与实现之间的障碍，便是如何处理浏览器默认样式的复杂性。在这种情况下，appearance属性就显得尤为有用。
+解决痛点 在使用复杂的 CSS 重写浏览器样式之前，appearance可以作为第一步，移除浏览器默认样式，无须担忧控件在不同浏览器下的一致性问题。确切地说，这个属性能够让元素不再使用平台原生的样式，而是采用应用层定义的样式，这对于统一用户界面提供了极大的便利。
+属性解析 appearance属性的可能取值相对简单：
+none：消除元素的默认样式。 auto（默认值）：元素保持默认样式。 menulist-button、textfield 等浏览器允许的具体值，允许特定元素有特定的样式。 具体应用 假设在一个线上图书商店的界面上，有一组单选按钮用于筛选图书类别，而设计稿中的按钮样式与浏览器默认样式大相径庭。一种简明的实现方式是先用appearance属性去除默认的单选按钮样式，然后应用定制的 CSS 样式。
+/* Reset the default style of radio buttons */ .radio-button { -webkit-appearance: none; -moz-appearance: none; appearance: none; /* Custom styles */ width: 20px; height: 20px; border: 2px solid #5c6ac4; border-radius: 50%; background-color: transparent; } /* Style for checked state */ .radio-button:checked { background-color: #5c6ac4; } /* The label style for customization*/ .label { display: inline-block; margin-left: 8px; } &amp;lt;label&amp;gt; &amp;lt;input type=&amp;#34;radio&amp;#34; class=&amp;#34;radio-button&amp;#34; name=&amp;#34;book-category&amp;#34; value=&amp;#34;fiction&amp;#34; /&amp;gt; &amp;lt;span class=&amp;#34;label&amp;#34;&amp;gt;Fiction&amp;lt;/span&amp;gt; &amp;lt;/label&amp;gt; &amp;lt;label&amp;gt; &amp;lt;input type=&amp;#34;radio&amp;#34; class=&amp;#34;radio-button&amp;#34; name=&amp;#34;book-category&amp;#34; value=&amp;#34;non-fiction&amp;#34; /&amp;gt; &amp;lt;span class=&amp;#34;label&amp;#34;&amp;gt;Non-fiction&amp;lt;/span&amp;gt; &amp;lt;/label&amp;gt; 在上面的示例中，应用了appearance: none;之后，单选按钮的默认样式被去除，这就为添加新的样式提供了一个白板。接着，通过 CSS 我们定义了按钮的大小、边框、背景色以及在选中状态下的样式。</description>
+    </item>
+    
+    <item>
+      <title>PageSpy:支持远程调试的 vConsole</title>
+      <link>/articles/posts/96/</link>
+      <pubDate>Tue, 26 Dec 2023 22:25:44 +0800</pubDate>
+      
+      <guid>/articles/posts/96/</guid>
+      <description>PageSpy Page Spy 是由货拉拉大前端开源的一款用于调试 H5 、或者远程 Web 项目的工具。基于对原生 API 的封装，它将调用原生方法时的参数进行过滤、转化，整理成格式规范的消息供调试端消费；调试端收到消息数据，提供类控制台可交互式的功能界面将数据呈现出来。
+PageSpy 是一个强大的开源前端远程调试平台，它可以显著提高我们在面对前端问题时的效率。以下是 PageSpy 的一些主要特点：
+一眼查看客户端信息 PageSpy 会对客户端的运行环境进行识别，其中系统识别支持 Mac / iOS / Window / Linux / Android，浏览器识别支持谷歌、火狐、Safari、Edge、微信、UC、百度、QQ； 实时查看输出： PageSpy 可以实时捕获并显示程序输出，包括 Console、Network、Storage 和 Element。这使开发人员能够直观地了解页面的外观和行为，无需依赖用户的描述或截图。 网络请求监控： PageSpy 还可以捕获和显示页面的网络请求，有助于开发人员更好的查看与后端的交互。 远程控制台： PageSpy 支持远程调试 JavaScript 代码，允许开发人员执行 JavaScript 代码在用户的浏览器上运行。这对于排查特定问题或测试代码修复非常有帮助。 跨浏览器兼容性： SDK 可以在各种主流浏览器中运行，确保你可以检查和调试不同浏览器上的问题。 用户体验提升： 通过快速识别和解决前端问题，PageSpy 可以显著提升用户体验，减少用户因前端问题而受到的不便。 使用 PageSpy 进行远程调试 使用 PageSpy 进行远程调试是相对简单的。以下是一些基本步骤：
+部署 PageSpy： 首先，PageSpy 提供了 Docker、Node 和 Release 的一键部署方案，点击查看； 实例化 SDK： PageSpy 成功部署后，你可以在项目中引入对应的 SDK 文件并进行实例化，它提供了多场景类型的参数，以便于用户对它的行为进行定制。 实时监控页面： 之后，你可以实时查看页面的各种数据，这有助于你直观地理解页面的问题。 监控网络请求： 你还可以查看所有的网络请求，包括请求的 URL、响应代码和响应时间。这可以帮助你识别与后端通信相关的问题。 解决问题： 借助 PageSpy 提供的信息和工具，你可以更快速地定位和解决前端问题，从而提高用户体验。 </description>
+    </item>
+    
+    <item>
+      <title>IntersectionObserver：实现滚动动画、懒加载、虚拟列表...</title>
+      <link>/articles/posts/95/</link>
+      <pubDate>Tue, 26 Dec 2023 21:54:06 +0800</pubDate>
+      
+      <guid>/articles/posts/95/</guid>
+      <description>简介 IntersectionObserver API 提供了一种创建IntersectionObserver 对象的方法，对象用于监测目标元素与视窗(viewport)的交叉状态，并在交叉状态变化时执行回调函数，回调函数可以接收到元素与视窗交叉的具体数据。
+一个 IntersectionObserver 对象可以监听多个目标元素，并通过队列维护回调的执行顺序。
+IntersectionObserver 特别适用于：滚动动画、懒加载、虚拟列表等场景。
+回调异步执行，不阻塞主线程。且监听不随着目标元素的滚动而触发，性能消耗极低。
+API 构造函数 IntersectionObserver 构造函数 接收两个参数：
+callback： 当元素可见比例达到指定阈值后触发的回调函数 options： 配置对象（可选，不传时会使用默认配置） IntersectionObserver 构造函数 返回观察器实例，实例携带四个方法：
+observe：开始监听目标元素 unobserve：停止监听目标元素 disconnect：关闭观察器 takeRecords：返回所有观察目标的 IntersectionObserverEntry 对象数组 // 调用构造函数 生成IntersectionObserver观察器 const myObserver = new IntersectionObserver(callback, options); // 开始监听 指定元素 myObserver.observe(element); // 停止对目标的监听 myObserver.unobserve(element); // 关闭观察器 myObserver.disconnect(); 构造参数 - callback 回调函数，当交叉状态发生变化时（可见比例超过或者低于指定阈值）会进行调用，同时传入两个参数：
+entries：IntersectionObserverEntry 数组，每项都描述了目标元素与 root 的交叉状态 observer：被调用的 IntersectionObserver 实例 - options 配置参数，通过修改配置参数，可以改变进行监听的视窗，可以缩小或扩大交叉的判定范围，或者调整触发回调的阈值(交叉比例)。
+属性 说明 root 所监听对象的具体祖先元素，默认使用顶级文档的视窗(一般为 html)。 rootMargin 计算交叉时添加到根(root)边界盒bounding box的矩形偏移量， 可以有效的缩小或扩大根的判定范围从而满足计算需要。所有的偏移量均可用像素(px)或百分比(%)来表达, 默认值为&amp;quot;0px 0px 0px 0px&amp;quot;。 threshold 一个包含阈值的列表, 按升序排列, 列表中的每个阈值都是监听对象的交叉区域与边界区域的比率。当监听对象的任何阈值被越过时，都会触发 callback。默认值为 0。 - IntersectionObserverEntry 属性 说明 boundingClientRect 返回包含目标元素的边界信息，返回结果与 element.</description>
+    </item>
+    
+    <item>
+      <title>纯前端也可以实现「用户无感知录屏」</title>
+      <link>/articles/posts/94/</link>
+      <pubDate>Mon, 25 Dec 2023 22:28:27 +0800</pubDate>
+      
+      <guid>/articles/posts/94/</guid>
+      <description>视频是由帧组成的，我们是否可以不断的截图，然后组合成一段视频？好像是可以的。
+页面 先写一个简单的页面
+&amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;#34;en&amp;#34;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;#34;UTF-8&amp;#34; /&amp;gt; &amp;lt;title&amp;gt;Canvas视频录制&amp;lt;/title&amp;gt; &amp;lt;link rel=&amp;#34;stylesheet&amp;#34; href=&amp;#34;styles.css&amp;#34; /&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;main&amp;gt; &amp;lt;div class=&amp;#34;buttons&amp;#34;&amp;gt; &amp;lt;button class=&amp;#34;start-btn&amp;#34;&amp;gt;开始录制&amp;lt;/button&amp;gt; &amp;lt;button class=&amp;#34;pause-btn&amp;#34;&amp;gt;暂停录制&amp;lt;/button&amp;gt; &amp;lt;button class=&amp;#34;resume-btn&amp;#34;&amp;gt;继续录制&amp;lt;/button&amp;gt; &amp;lt;button class=&amp;#34;stop-btn&amp;#34;&amp;gt;结束录制&amp;lt;/button&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;div id=&amp;#34;box&amp;#34;&amp;gt; &amp;lt;section class=&amp;#34;content&amp;#34;&amp;gt; &amp;lt;h2&amp;gt;TODO LIST&amp;lt;/h2&amp;gt; &amp;lt;div class=&amp;#34;background-div&amp;#34;&amp;gt; &amp;lt;button class=&amp;#34;background-btn&amp;#34;&amp;gt;切换背景颜色&amp;lt;/button&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;div id=&amp;#34;todo-form&amp;#34;&amp;gt; &amp;lt;input type=&amp;#34;text&amp;#34; class=&amp;#34;input-field&amp;#34; placeholder=&amp;#34;输入待办事项&amp;#34; /&amp;gt; &amp;lt;button type=&amp;#34;submit&amp;#34; class=&amp;#34;submit-btn&amp;#34;&amp;gt;提交&amp;lt;/button&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;div class=&amp;#34;list&amp;#34;&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;/section&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;img src=&amp;#34;&amp;#34; alt=&amp;#34;&amp;#34; class=&amp;#34;hidden&amp;#34; /&amp;gt; &amp;lt;/main&amp;gt; &amp;lt;script src=&amp;#34;&amp;lt;https://cdn.bootcss.com/html2canvas/0.5.0-beta4/html2canvas.min.js&amp;gt;&amp;#34; defer &amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;#34;canvas.js&amp;#34; defer&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt; 截图 实现网页的截图操作，最常用的库是 html2canvas用，它可以将网页中的 HTML 元素转换为 Canvas 元素，并将其导出为图像文件。在浏览器中捕获整个页面或特定区域的截图，包括 CSS 样式和渲染效果。</description>
+    </item>
+    
+    <item>
+      <title>纯前端也可以访问文件系统</title>
+      <link>/articles/posts/93/</link>
+      <pubDate>Mon, 25 Dec 2023 22:16:27 +0800</pubDate>
+      
+      <guid>/articles/posts/93/</guid>
+      <description>showOpenFilePicker 用来选择文件
+语法 showOpenFilePicker(); 参数 options：（可选）包含以下属性 multiple：布尔值，默认为false。为true表示允许用户选择多个文件 excludeAcceptAllOption：布尔值，默认为false。默认情况下，文件选择器带有一个允许用户选择所有类型文件的过滤选项（展开于文件类型选项中）。设置此选项为 true 以使该过滤选项不可用。 types：表示允许选择的文件类型的数组 返回值 返回一个promise对象，会兑现一个包含 FileSystemFileHandle 对象的 Array 数组。
+体验 &amp;lt;template&amp;gt; &amp;lt;div class=&amp;#34;open_file&amp;#34; @click=&amp;#34;openFile&amp;#34;&amp;gt;打开文件&amp;lt;/div&amp;gt; &amp;lt;/template&amp;gt; &amp;lt;script setup lang=&amp;#34;ts&amp;#34;&amp;gt; const openFile = async () =&amp;gt; { const res = await window.showOpenFilePicker(); console.log(res); }; &amp;lt;/script&amp;gt; 默认只能打开一个文件，可以传入multiple:true打开多个文件
+showDirectoryPicker 用来选择目录
+语法 属于浏览器全局方法，直接调用即可
+showDirectoryPicker(); 参数 options：（可选）包含以下属性 multiple：布尔值，默认为false。为true表示允许用户选择多个文件 excludeAcceptAllOption：布尔值，默认为false。默认情况下，文件选择器带有一个允许用户选择所有类型文件的过滤选项（展开于文件类型选项中）。设置此选项为 true 以使该过滤选项不可用。 types：表示允许选择的文件类型的数组 返回值 返回一个promise对象，会兑现一个包含 FileSystemFileHandle 对象的 Array 数组。
+体验 &amp;lt;template&amp;gt; &amp;lt;div class=&amp;#34;open_file&amp;#34; @click=&amp;#34;openFile&amp;#34;&amp;gt;打开文件&amp;lt;/div&amp;gt; &amp;lt;div class=&amp;#34;open_file&amp;#34; @click=&amp;#34;openDir&amp;#34;&amp;gt;打开文件夹&amp;lt;/div&amp;gt; &amp;lt;/template&amp;gt; &amp;lt;script setup lang=&amp;#34;ts&amp;#34;&amp;gt; const openFile = async () =&amp;gt; { const res = await window.</description>
+    </item>
+    
+    <item>
+      <title>使用CSS&#43;JS实现多行文本的展开收起效果</title>
+      <link>/articles/posts/92/</link>
+      <pubDate>Mon, 25 Dec 2023 22:04:47 +0800</pubDate>
+      
+      <guid>/articles/posts/92/</guid>
+      <description>源码 &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;#34;en&amp;#34;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;#34;UTF-8&amp;#34; /&amp;gt; &amp;lt;meta http-equiv=&amp;#34;X-UA-Compatible&amp;#34; content=&amp;#34;IE=edge&amp;#34; /&amp;gt; &amp;lt;meta name=&amp;#34;viewport&amp;#34; content=&amp;#34;width=device-width, initial-scale=1.0&amp;#34; /&amp;gt; &amp;lt;title&amp;gt;Document&amp;lt;/title&amp;gt; &amp;lt;style&amp;gt; html, body { height: 100%; } .outerElement { display: flex; width: 600px; } .innerElement { line-height: 1.5; overflow: hidden; position: relative; overflow: hidden; /*必须结合的属性,当内容溢出元素框时发生的事情*/ text-overflow: ellipsis; /*可以用来多行文本的情况下，用省略号“…”隐藏超出范围的文本 。*/ display: -webkit-box; /*必须结合的属性 ，将对象作为弹性伸缩盒子模型显示 。*/ -webkit-box-orient: vertical; /*必须结合的属性 ，设置或检索伸缩盒对象的子元素的排列方式 。*/ } .line-clamp-three { -webkit-line-clamp: 3; /*用来限制在一个块元素显示的文本的行数。*/ } .line-clamp-countless { -webkit-line-clamp: 666; /*用来限制在一个块元素显示的文本的行数。*/ } .</description>
+    </item>
+    
+    <item>
+      <title>聊聊图片预加载</title>
+      <link>/articles/posts/91/</link>
+      <pubDate>Mon, 25 Dec 2023 21:33:34 +0800</pubDate>
+      
+      <guid>/articles/posts/91/</guid>
+      <description>如何进行图片的预加载 前端实现图片的预加载，其实是利用了浏览器的缓存，我们通过 a 标签来提前加载图片，如下：
+const img = new Image(); img.src = &amp;#34;链接&amp;#34;; img.onload = function () { console.log(&amp;#34;加载完成&amp;#34;); }; 预加载的策略 场景一：贪婪加载 刚进入页面有 loading，需要将后面的图片全部加载完成。如进入 h5 游戏的时候，需要把后面用到的人物背景图片都加载出来。
+这个时候我们不考虑带宽的问题，一次性加载所有的图片。
+将每次加载图片封装成一次 promise：
+new Promise((reslove, reject) =&amp;gt; { const img = new Image(); img.src = &amp;#34;链接&amp;#34;; img.onload = onerror = resolve; }); 再使用 promise.all 进行全加载
+Promise.all([...]) 场景二：部分加载 正常展示当前页面，但是下个页面的图片可以先偷偷加载进来，同时不要影响当前页面正常图片的加载。
+这时候我们需要考虑带宽，不能一次性使用加载图片拉满，这样会导致页面加载的图片加载不出来。可以使用批量加载，比如每次加载 5 张，加载完 5 张之后再加载下 5 张。这样如果当前页面如果有图片也可以正常展示加载。
+具体实现类似分页一样，获取要加载图片里面的 5 张，进行加载，直到加载结束。
+// 总任务 function loadImages(list) { const pageSize = 5; const pageNum = 0; return new Promise((reslove, reject) =&amp;gt; { function run() { Promise.</description>
+    </item>
+    
+    <item>
+      <title>token无感知刷新</title>
+      <link>/articles/posts/90/</link>
+      <pubDate>Sun, 24 Dec 2023 21:47:06 +0800</pubDate>
+      
+      <guid>/articles/posts/90/</guid>
+      <description>前言 在前后端分离的应用中，使用 token 进行交互验证是一种比较常见的方式。但是，由于 token 的有效期限制，需要不断地刷新 token，否则会导致用户认证失败。
+栗子 可以幻想一下，你在一个应用中，填写了很多个表单，最后提交的时候，401 认证失败，这个时候你心里肯定一万个&amp;hellip;.所以为了解决这个问题，给用户更好的体验，本文介绍无感知刷新 token 的实现。
+token 验证的原理 在 web 应用中，常见的 token 认证方式有基于 token 和基于 cookie 的认证。基于 token 的认证方式是，将认证信息每次放在请求头中，在每次发起请求时，将 token 发给服务端认证，而基于 cookie 的认证方式是，客户端本地存储的 cookie 文件来记录用户的操作状态在随后的访问请求中，客户端浏览器会检索与用户请求资源相匹配的 Cookie，并将其提交给 Web 服务器进行验证。如果 Cookie 合法，则允许用户访问请求的资源，反之则拒绝用户的访问请求。
+什么是无感知刷新 token 无感知刷新 Token 是指在 Token 过期之前，系统自动使用 Refresh Token 获取新的 Access Token，从而实现 Token 的无感知刷新，用户可以无缝继续使用应用。在实现无感知刷新 token 的时候需要考虑以下几点：
+如何判断 token 是否过期? 如何在 token 过期时，自动使用 Refresh Token 获取新的 Access Token? Refresh Token 安全性? 代码实现-第一步 使用 axios 作为客户端请求库</description>
+    </item>
+    
+    <item>
+      <title>HTMl&#43;CSS&#43;JS实现瀑布流式页面布局</title>
+      <link>/articles/posts/89/</link>
+      <pubDate>Sun, 24 Dec 2023 18:02:31 +0800</pubDate>
+      
+      <guid>/articles/posts/89/</guid>
+      <description>瀑布流式布局页面是什么？ 页面上给人一种参差不齐的多栏布局，其中元素大部分为图片，图片的宽度是统一固定的，但是由于高度不一样，第一行图片排满之后，新的图片会插入到第一排中高度最低的图片下面，并更新高度，如此循环，最终达到瀑布流式的效果。
+优点： 吸引眼球： 瀑布流布局的不规则排列方式能够引起用户的兴趣，使界面更吸引人。用户会感到好奇，想要浏览所有的项目，因为每个项目都以不同的方式呈现。 有效利用空间： 瀑布流布局可以充分利用页面空间，无论是横向还是纵向滚动，都可以容纳很多项目。这对于展示大量内容或产品非常有用。 适应性： 瀑布流布局可以适应不同屏幕大小和设备类型，因为它是响应式设计的一部分。这意味着它可以在桌面电脑、平板电脑和移动设备上都有良好的表现。 提高用户参与度： 用户通常更愿意探索页面上的不同项目，因为每次滚动都可能带来新的发现，从而增加了用户的参与度和浏览时间。 缺点： 信息层次不明确： 由于项目的不规则排列，瀑布流布局可能会使用户难以识别内容的层次和重要性。重要内容可能会被埋没在次要内容中。 不适用于所有类型的内容： 瀑布流布局更适合视觉导向的内容，如图片、照片、商品展示等。对于需要详细信息或结构化内容的页面，这种布局可能不够合适。 加载时间问题： 当页面包含大量项目时，瀑布流布局可能导致页面加载时间变长，特别是在网络连接较慢的情况下。这可能会影响用户体验。 有限的导航性： 用户可能会发现导航和查找特定项目变得更加困难，因为项目的位置是不固定的。这可能会使用户在页面上迷失方向。 代码实现 HTML:
+&amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;#34;en&amp;#34;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;#34;UTF-8&amp;#34; /&amp;gt; &amp;lt;meta http-equiv=&amp;#34;X-UA-Compatible&amp;#34; content=&amp;#34;IE=edge&amp;#34; /&amp;gt; &amp;lt;meta name=&amp;#34;viewport&amp;#34; content=&amp;#34;width=device-width, initial-scale=1.0&amp;#34; /&amp;gt; &amp;lt;title&amp;gt;js瀑布流&amp;lt;/title&amp;gt; &amp;lt;link rel=&amp;#34;stylesheet&amp;#34; href=&amp;#34;style.css&amp;#34; /&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;!-- container容器用来存放box容器，一个box放一张图片 --&amp;gt; &amp;lt;div id=&amp;#34;container&amp;#34;&amp;gt; &amp;lt;!-- 根据自己的需求添加图片的数量 --&amp;gt; &amp;lt;div class=&amp;#34;box&amp;#34;&amp;gt; &amp;lt;div class=&amp;#34;box-img&amp;#34;&amp;gt;&amp;lt;img src=&amp;#34;./img/1.jpg&amp;#34; alt=&amp;#34;&amp;#34; /&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;div class=&amp;#34;box&amp;#34;&amp;gt; &amp;lt;div class=&amp;#34;box-img&amp;#34;&amp;gt;&amp;lt;img src=&amp;#34;./img/2.jpg&amp;#34; alt=&amp;#34;&amp;#34; /&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;div class=&amp;#34;box&amp;#34;&amp;gt; &amp;lt;div class=&amp;#34;box-img&amp;#34;&amp;gt;&amp;lt;img src=&amp;#34;.</description>
+    </item>
+    
+    <item>
+      <title>前端外描边完美实现</title>
+      <link>/articles/posts/88/</link>
+      <pubDate>Sun, 24 Dec 2023 17:51:36 +0800</pubDate>
+      
+      <guid>/articles/posts/88/</guid>
+      <description>背景 最近在公司做画布相关的内容，涉及到了字体描边的方案选择，在三种方案对比和尝试下，最终选用了 SVG 作为字体描边的方案，今天就来讲讲这些方案的优缺点。
+字体描边方案对比 1. text-stroke 优点： 实现效果好
+缺点：
+兼容性一般，需要配合 -webkit-background-clip 属性来实现外描边，而市面上的截图库都不支持这个属性 😅，也就是截图后描边效果会丢失（尝试过 html2canvas、html-to-image、dom-to-image，以及公司内部的一些截图库） 有描边吞字的现象：描边宽度变大时，描边会向内扩展把文本覆盖， 宽度为 0px 的时候也依旧存在描边 效果：
+2. text-shadow 优点： 兼容性好
+缺点： 实现效果不好，怎么说呢，很难评，有种锯齿的美，毕竟人家不是干这行的 😅
+效果：
+3. SVG 优点： 兼容性好、实现效果好，整体上看比 text-stroke 效果还要好
+缺点： iOS 上同样存在描边吞字的现象，但是它的缺点都可以解决，还请看下文
+效果：
+4. Canvas 优点： 兼容性好
+缺点：
+字体整体比较模糊 有描边吞字的现象 需要通过 canvas api 来进行绘制 效果：
+调试 上面四种方案都可以在 CodeSandBox 中自行尝试一下：
+codesandbox.io/p/sandbox/s…
+SVG 实现字体描边 通过 svg 的 paint-order 来实现字体描边，兼容性最好，并且实现效果也很不错，基本兼容市面上所有浏览器，并且截图库基本都支持这个属性，下面就来讲讲 SVG 字体描边方案的实现：
+&amp;lt;svg xmlns=&amp;#34;http://www.w3.org/2000/svg&amp;#34; width=&amp;#34;400&amp;#34; height=&amp;#34;200&amp;#34;&amp;gt; &amp;lt;text x=&amp;#34;0&amp;#34; y=&amp;#34;0&amp;#34; alignment-baseline=&amp;#34;text-before-edge&amp;#34; text-anchor=&amp;#34;start&amp;#34;&amp;gt; 字体描边 &amp;lt;/text&amp;gt; &amp;lt;/svg&amp;gt; text { font-size: 50px; font-weight: bold; stroke: red; stroke-width: 4px; paint-order: stroke; } 通过 stroke-linejoin 属性，可以 对 svg 的描边有更灵活的控制：</description>
+    </item>
+    
+    <item>
+      <title>梳理一下浏览器中常见Observer</title>
+      <link>/articles/posts/87/</link>
+      <pubDate>Sun, 24 Dec 2023 16:23:07 +0800</pubDate>
+      
+      <guid>/articles/posts/87/</guid>
+      <description>MutationObserver MutationObserver 用于监听 DOM 对象的变更（包括子节点），当节点属性发生变化，或执行增删改操作时执行对应的 callback。
+MutationObserver 为我们提供了一种十分方便的监听 DOM 变化的方式。
+基本使用 // Observer需要一个用于监听的目标DOM const targetNode = document.getElementById(&amp;#34;app&amp;#34;); //用于确定mutation监听变化的范围 const config = { attributes: true, // 监听目标节点的属性变化，例如id，class等属性 childList: true, // 除目标节点外还要监听目标节点的直接子节点 subtree: true, // subtree的范围大于childList，还包括子节点children characterData: true, // 监听TextNode需要额外配置，默认TextNode变化不会触发callback }; // 当观察到变动时执行的回调函数，mutationsList包含本次变更的信息 const callback = function (mutationsList, observer) { console.log(mutationsList); }; const observer = new MutationObserver(callback); observer.observe(targetNode, config); API 介绍 observe observe 用于开启对某个 DOM 的监听，一个 MutationObserver 可以通过多次调用 observe 监听多个 DOM 的变化。</description>
+    </item>
+    
+    <item>
+      <title>普通的文本输入框实现敏感词文字高亮</title>
+      <link>/articles/posts/86/</link>
+      <pubDate>Wed, 20 Dec 2023 22:47:56 +0800</pubDate>
+      
+      <guid>/articles/posts/86/</guid>
+      <description>实现思路 实现标红就需要给文字加上 html 标签和样式，但是输入框会将 html 都转为字符串，既然输入框无法实现，那么我们换一种思路，通过 div 代替输入框来显示输入的文本，那我们是不是就可以实现文本标红了？
+&amp;lt;div class=&amp;#34;main&amp;#34;&amp;gt; &amp;lt;div id=&amp;#34;shadowInput&amp;#34; class=&amp;#34;highlight-shadow-input&amp;#34;&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;textarea id=&amp;#34;textarea&amp;#34; cols=&amp;#34;30&amp;#34; rows=&amp;#34;10&amp;#34; class=&amp;#34;highlight-input&amp;#34; &amp;gt;&amp;lt;/textarea&amp;gt; &amp;lt;/div&amp;gt; .main { position: relative; } .highlight-shadow-input { position: absolute; top: 0; left: 0; height: 100%; width: 100%; padding: 8px; border: 1px; box-sizing: border-box; font-size: 12px; font-family: monospace; overflow-y: auto; word-break: break-all; white-space: pre-wrap; } .highlight-input { position: relative; width: 100%; padding: 8px; box-sizing: border-box; font-size: 12px; background: rgba(0, 0, 0, 0); -webkit-text-fill-color: transparent; z-index: 999; word-break: break-all; } 实现这个功能的精髓就在于将输入框的背景和输入的文字设置为透明，然后将其层级设置在 div 之上，这样用户既可以在输入框中输入，而输入的文字又不会展示出来，然后将输入的文本处理后渲染到 div 上。</description>
+    </item>
+    
+    <item>
+      <title>前端数字格式化展示方法</title>
+      <link>/articles/posts/85/</link>
+      <pubDate>Mon, 18 Dec 2023 22:11:13 +0800</pubDate>
+      
+      <guid>/articles/posts/85/</guid>
+      <description>Number.prototype.toLocaleString() toLocaleString 是 JavaScript 的内置方法，用于格式化数字为字符串，考虑了地区和语言的差异。这个方法的灵活性使得它在实际开发中有很多有用的应用场景。
+基本用法 const number = 1234567.89; // 默认地区格式化 const formattedDefault = number.toLocaleString(); console.log(formattedDefault); // 根据浏览器/环境的默认地区输出：&amp;#34;1,234,567.89&amp;#34; // 指定地区格式化 const formattedWithLocale = number.toLocaleString(&amp;#34;fr-FR&amp;#34;); console.log(formattedWithLocale); // 指定法国地区输出：&amp;#34;1 234 567,89&amp;#34; 在上述例子中，toLocaleString 默认使用环境或浏览器的默认地区，但也可以通过传递一个地区字符串参数来指定特定的地区。
+小数位数和千位分隔符 const number = 1234567.89123; // 限定小数点后两位 const formattedWithPrecision = number.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2, }); console.log(formattedWithPrecision); // 输出：&amp;#34;1,234,567.89&amp;#34; // 不使用千位分隔符 const formattedWithoutSeparator = number.toLocaleString(undefined, { useGrouping: false, }); console.log(formattedWithoutSeparator); // 输出：&amp;#34;1234567.89&amp;#34; 通过在 toLocaleString 的第二个参数中传递一个选项对象，可以设置小数点后的位数，以及是否使用千位分隔符等。
+货币格式化 const currencyValue = 1234567.</description>
+    </item>
+    
+    <item>
+      <title>如何及时发现网页的隐形错误</title>
+      <link>/articles/posts/84/</link>
+      <pubDate>Sun, 17 Dec 2023 19:07:45 +0800</pubDate>
+      
+      <guid>/articles/posts/84/</guid>
+      <description>想要进行异常监控之前，肯定先要了解有哪些异常才能进行监控。
+异常的类型 一般来说，浏览器端的异常分为两种类型：
+JavaScript 错误，一般都是来自代码的原因。 静态资源错误，一般都是来着资源加载的原因 而这里面我们又有各自的差异
+JavaScript 错误 先来说说 JavaScript 的错误类型，ECMA-262 定义了 7 种错误类型，说明如下：
+EvalError ：eval() 函数的相关的错误 RangeError ：使用了超出了 JavaScript 的限制或范围的值。 ReferenceError： 引用了未定义的变量或对象 TypeError： 类型错误 URIError： URI 操作错误 SyntaxError： 语法错误 (这个错误 WebIDL 中故意省略，保留给 ES 解析器使用) Error： 普通异常，通常与 throw 语句和 try/catch 语句一起使用，利用属性 name 可以声明或了解异常的类型，利用 message 属性可以设置和读取异常的详细信息。 如果想更详细了解可以看详细错误罗列这篇文章
+静态资源错误 通过 XMLHttpRequest、Fetch() 的方式来请求的 http 资源时。 利用 &amp;lt;img&amp;gt; 、&amp;lt;script&amp;gt;、&amp;lt;video&amp;gt;、&amp;lt;audio&amp;gt;、&amp;lt;iframe&amp;gt; 等标签加载的资源。 通过创建实例的方式，例如 new Image() 等代码来实现初始化。 那既然我们已经知道了我们的网站在客户端运行时可能会出现这些异常。那我们要如何进行捕获错误信息呢？
+捕捉错误 我们常见的几种捕捉方法有
+try-catch (ES 提供基本的错误捕获语法) window.onerror = cb (DOM0) window.</description>
+    </item>
+    
+    <item>
+      <title>性能优化-前端时间分片渲染简单做法</title>
+      <link>/articles/posts/83/</link>
+      <pubDate>Sun, 17 Dec 2023 18:48:25 +0800</pubDate>
+      
+      <guid>/articles/posts/83/</guid>
+      <description>在经典的面试题中：”如果后端返回了十万条数据要你插入到页面中，你会怎么处理？”
+除了像 useVirtualList 这样的虚拟列表来处理外，我们还可以通过 时间分片 来处理
+通过 setTimeout &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;#34;en&amp;#34;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;#34;UTF-8&amp;#34; /&amp;gt; &amp;lt;meta http-equiv=&amp;#34;X-UA-Compatible&amp;#34; content=&amp;#34;IE=edge&amp;#34; /&amp;gt; &amp;lt;meta name=&amp;#34;viewport&amp;#34; content=&amp;#34;width=device-width, initial-scale=1.0&amp;#34; /&amp;gt; &amp;lt;title&amp;gt;十万数据渲染&amp;lt;/title&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;ul id=&amp;#34;list-container&amp;#34;&amp;gt;&amp;lt;/ul&amp;gt; &amp;lt;script&amp;gt; const oListContainer = document.getElementById(&amp;#34;list-container&amp;#34;); const fetchData = () =&amp;gt; { return new Promise((resolve) =&amp;gt; { const response = { code: 0, msg: &amp;#34;success&amp;#34;, data: [], }; for (let i = 0; i &amp;lt; 100000; i++) { response.data.push(`content-${i + 1}`); } setTimeout(() =&amp;gt; { resolve(response); }, 100); }); }; // 模拟请求后端接口返回十万条数据 // 渲染 total 条数据中的第 page 页，每页 pageCount 条数据 const renderData = (data, total, page, pageCount) =&amp;gt; { // base case -- total 为 0 时没有数据要渲染 不再递归调用 if (total &amp;lt;= 0) return; // total 比 pageCount 少时只渲染 total 条数据 pageCount = Math.</description>
+    </item>
+    
+    <item>
+      <title>IntersectionObserver：前端性能优化的新利器</title>
+      <link>/articles/posts/82/</link>
+      <pubDate>Sun, 17 Dec 2023 18:37:06 +0800</pubDate>
+      
+      <guid>/articles/posts/82/</guid>
+      <description>IntersectionObserver 是什么？ IntersectionObserver 是一种 JavaScript API，它提供了一种异步监测元素与其祖先容器或视口之间交叉状态的方法。简单来说，它可以告诉我们一个元素是否进入了视口或者与其祖先容器发生了交叉。
+通过 IntersectionObserver，我们可以轻松地监听目标元素的可见性变化，进而根据这些变化来实现各种交互效果，比如懒加载图片、实现无限滚动等功能。相较于传统的事件监听方式，IntersectionObserver 更高效、灵活，可以提供更好的用户体验和性能优化。
+当我们创建一个 IntersectionObserver 实例时，可以指定一个回调函数，该函数在目标元素进入或离开视口时被触发。 回调函数提供了一个入参 IntersectionObserverEntry，其中包含了与目标元素相关的信息，例如交叉比例、目标元素的位置和大小等。
+IntersectionObserver 还支持设定阈值，即交叉比例的百分比，用于触发回调函数。默认情况下，当目标元素至少有 0% 进入视口时，回调函数会被触发。我们可以通过设置不同的阈值来满足不同的需求。
+IntersectionObserver 创建使用 //创建IntersectionObserver实例 const options = { root: null, // 根元素，默认为浏览器视口 rootMargin: &amp;#34;0px&amp;#34;, // 根元素的外边距 threshold: 0.5, // 交叉比例的阈值，触发回调函数的条件 }; const observer = new IntersectionObserver(callback, options); //定义回调函数 function callback(entries, observer) { entries.forEach((entry) =&amp;gt; { if (entry.isIntersecting) { // 元素进入了视口 // 执行相应的操作，比如加载图片、添加动画等 } else { // 元素离开了视口 // 执行相应的操作，比如停止加载、移除动画等 } }); } //将目标元素与 IntersectionObserver 关联起来： const targetElement = document.</description>
+    </item>
+    
+    <item>
+      <title>CSS counters 嵌套索引</title>
+      <link>/articles/posts/81/</link>
+      <pubDate>Sun, 17 Dec 2023 18:07:23 +0800</pubDate>
+      
+      <guid>/articles/posts/81/</guid>
+      <description>HTML
+&amp;lt;ol&amp;gt; &amp;lt;li&amp;gt; &amp;lt;ol&amp;gt; &amp;lt;li&amp;gt;&amp;lt;/li&amp;gt; &amp;lt;li&amp;gt;&amp;lt;/li&amp;gt; &amp;lt;li&amp;gt;&amp;lt;/li&amp;gt; &amp;lt;/ol&amp;gt; &amp;lt;/li&amp;gt; &amp;lt;li&amp;gt;&amp;lt;/li&amp;gt; &amp;lt;li&amp;gt;&amp;lt;/li&amp;gt; &amp;lt;li&amp;gt; &amp;lt;ol&amp;gt; &amp;lt;li&amp;gt;&amp;lt;/li&amp;gt; &amp;lt;li&amp;gt; &amp;lt;ol&amp;gt; &amp;lt;li&amp;gt;&amp;lt;/li&amp;gt; &amp;lt;li&amp;gt;&amp;lt;/li&amp;gt; &amp;lt;li&amp;gt;&amp;lt;/li&amp;gt; &amp;lt;/ol&amp;gt; &amp;lt;/li&amp;gt; &amp;lt;/ol&amp;gt; &amp;lt;/li&amp;gt; &amp;lt;/ol&amp;gt; CSS
+ol { counter-reset: count; } li { counter-increment: count; } li::marker { content: counters(count, &amp;#34;.&amp;#34;); } </description>
+    </item>
+    
+    <item>
+      <title>细数那些惊艳一时的 CSS 属性</title>
+      <link>/articles/posts/80/</link>
+      <pubDate>Sun, 17 Dec 2023 17:37:39 +0800</pubDate>
+      
+      <guid>/articles/posts/80/</guid>
+      <description>background-clip: text 简单来说就是可以做一个带背景的文字效果
+:focus-within 伪类 :focus-within 表示一个元素获得焦点，或该元素的后代元素获得焦点，就会匹配上
+form { border: 1px solid; width: 400px; height: 300px; display: flex; justify-content: center; align-items: center; } form:focus-within { box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3); background-color: beige; } &amp;lt;form&amp;gt; &amp;lt;input type=&amp;#34;text&amp;#34; id=&amp;#34;ipt&amp;#34; placeholder=&amp;#34;请输入...&amp;#34; /&amp;gt; &amp;lt;/form&amp;gt; mix-blend-mode:difference mix-blend-mode:difference 属性描述了元素的内容应该与元素的直系父元素的内容和元素的背景如何混合。其中，difference 表示差值。
+如果给你这张图，你会怎么去绘制？是不是很麻烦。
+但是如果用 mix-blend-mode:difference 这个属性，就可以很容易的实现。
+.mode { display: flex; justify-content: center; align-items: center; mix-blend-mode: difference; } .dark { position: relative; left: 6px; height: 24px; width: 24px; background-color: grey; border-radius: 50%; } .</description>
+    </item>
+    
+    <item>
+      <title>如何使用 Promise 去控制并发请求？</title>
+      <link>/articles/posts/79/</link>
+      <pubDate>Tue, 24 Oct 2023 11:00:58 +0800</pubDate>
+      
+      <guid>/articles/posts/79/</guid>
+      <description>明确概念 并发：并发是多个任务同时交替的执行（因为 cpu 执行指令的速度非常之快，它可以不必按顺序一段代码一段代码的执行，这样效率反而更加低下），这样看起来就是一起执行的，所以叫并行。
+并行：可以理解为多个物理 cpu 或者有分布式系统，是真正的&amp;rsquo;同时&amp;rsquo;执行
+并发控制：意思是多个并发的任务，一旦有任务完成，就立刻开启下一个任务
+切片控制：将并发任务切片的分配出来，比如 10 个任务，切成 2 个片，每片有 5 个任务，当前一片的任务执行完毕，再开始下一个片的任务，这样明显效率没并发控制那么高了微信搜索公众号：架构师指南，回复：架构师 领取资料
+实现 定义常量和函数 function sendRequest(requestList, limits, callback) { // 定义执行队列，表示所有待执行的任务 const promises = requestList.slice(); // 定义开始时能执行的并发数 const concurrentNum = Math.min(limits, requestList.length); let concurrentCount = 0; // 当前并发数 // 启动初次能执行的任务 const runTaskNeeded = () =&amp;gt; { let i = 0; while (i &amp;lt; concurrentNum) { runTask(); } }; // 取出任务并推送到执行器 const runTask = () =&amp;gt; {}; // 执行器，这里去执行任务 const runner = () =&amp;gt; {}; // 捞起下一个任务 const picker = () =&amp;gt; {}; // 开始执行！ runTaskNeeded(); } 实现对应的函数 function sendRequest(requestList, limits, callback) { const promises = requestList; // 取得请求list // 得到开始时，能执行的并发数 const concurrentNum = Math.</description>
+    </item>
+    
+    <item>
+      <title>比较运算</title>
+      <link>/articles/posts/78/</link>
+      <pubDate>Thu, 19 Oct 2023 20:34:10 +0700</pubDate>
+      
+      <guid>/articles/posts/78/</guid>
+      <description>等值检测 等值检测的目的是判断两个变量是否相等，
+名称 运算符 说明 相等 == 比较两个表达式，看是否相等 不等 != 比较两个表达式，看是否不相等 严格相等 === 比较两个表达式，看值是否相等并具有相同的数据类型 不严格相等 !== 比较两个表达式，看是否具有不相等的值或不同的数据类型 对于等值检测来说，最简单和最有效的方法当然是比较两个变量引用（所指向的内存地址），但这并不准确，因为我们显然会在两个不同的内存地址上存放同样的数据，例如两个相同的字符串。
+因此比较引用虽然高效，但在很多时候却需要比较两个变量的值。
+等值检测中“相等”的运算原则 类型 运算规则 值类型与引用类型进行比较 将引用类型的数据转换为与值类型数据相同的数据，再进行“数据等值”比较 两个值类型进行比较 转换成相同数据类型的值进行“数据等值”比较 两个引用类型进行比较 比较引用（内存地址） 上述规则中所谓的 “数据等值” 仅指对 “值类型” 的比较而言，表明比较是变量所指向的存储单元中的数据（通常指 “内存数据”）
+在三种值类型（数值、布尔值、字符串）中，如果两个被比较的值类型不用，那么：
+有任何一个是数字时，会将另一个转换为数字进行比较
+有任何一个数布尔值时，它将被转换为数字进行比较（并且由于上一个规则的存在，所以另一个数据也将被转换为数字），
+有任何一个是对象（或函数）时，将调用该对象的 valueOf() 方法将其转换为数据进行比较，且在多数情况下该值数据作为数字值处理
+按照特定规则返回比较结果，例如 undefined 与 null 值总是相等的。
+undefined === undefined; // true null === null; // true 可见，Js 总是尽量用数字值比较来实现等值检测，
+这主要是因为 Js 内部的数据存储格式适合这一操作，同样的原因（即出于内部存储的格式的限制），字符串检测通常会存在非常大的开销。
+严格来说，必须对字符串中的每一个字符串进行比较，才能判断两个字符串是否相等，
+var str1 = &amp;#34;abc&amp;#34; + &amp;#34;def&amp;#34;; console.log(typeof str1); // string var str2 = &amp;#34;abcd&amp;#34; + &amp;#34;ef&amp;#34;; console.</description>
+    </item>
+    
+    <item>
+      <title>20个JS工具函数助力高效开发</title>
+      <link>/articles/posts/77/</link>
+      <pubDate>Thu, 19 Oct 2023 20:08:19 +0700</pubDate>
+      
+      <guid>/articles/posts/77/</guid>
+      <description>1.校验数据类型 export const typeOf = function (obj) { return Object.prototype.toString.call(obj).slice(8, -1).toLowerCase(); }; 示例： typeOf(&amp;#34;树哥&amp;#34;); // string typeOf([]); // array typeOf(new Date()); // date typeOf(null); // null typeOf(true); // boolean typeOf(() =&amp;gt; {}); // function 2.防抖 export const debounce = (() =&amp;gt; { let timer = null; return (callback, wait = 800) =&amp;gt; { timer &amp;amp;&amp;amp; clearTimeout(timer); timer = setTimeout(callback, wait); }; })(); 示例： debounce(() =&amp;gt; { console.log(&amp;#34;加载数据&amp;#34;); }, 500); 3.节流 export const throttle = (() =&amp;gt; { let last = 0; return (callback, wait = 800) =&amp;gt; { let now = +new Date(); if (now - last &amp;gt; wait) { callback(); last = now; } }; })(); 4.</description>
+    </item>
+    
+    <item>
+      <title>转义符</title>
+      <link>/articles/posts/75/</link>
+      <pubDate>Wed, 18 Oct 2023 22:39:43 +0800</pubDate>
+      
+      <guid>/articles/posts/75/</guid>
+      <description>JavaScript 中的字符串转义序列 转义符 含义 \b 退格符 \t 水平制表符 \v 垂直制表符 \n 换行符 \r 回车符 \f 换页符 \\ 反斜线字符 \&#39; 单引号 \&amp;quot; 双引号 除了定义转义符之外，当反斜线字符 \ 位于一行的末尾时，也用于表示 连续 的字符串声明，这在声明大段文本块时很有用。
+var aTextBlock = &amp;#34;\ sfhsvfghsdvfghsvdghfvgshdfvghsf\ \ 123456789\ \ +-*/&amp;#34;; console.log(aTextBlock); // &amp;#39;sfhsvfghsdvfghsvdghfvgshdfvghsf 123456789 +-*/&amp;#39; 比较容易被忽视的是：空字符串与其他字符串一样也可以用作对象成员名
+const obj = { &amp;#34; &amp;#34;: 100, }; console.log(obj[&amp;#34; &amp;#34;]); // 100 数值字面量 如果以 0x 或 0X 开始，则表明是一个 十六进制 数值。
+如果以 0o 或 0O 开始，则表明是一个 八进制 数值。
+如果以 0b 或 0B 开始，则表明是一个 二进制 数值。</description>
+    </item>
+    
+    <item>
+      <title>变量的数据类型</title>
+      <link>/articles/posts/74/</link>
+      <pubDate>Wed, 18 Oct 2023 22:14:56 +0800</pubDate>
+      
+      <guid>/articles/posts/74/</guid>
+      <description>7 种基本数据类型 undefined: 未定义
+number: 数值
+string: 字符串
+boolean: 布尔值
+symbol: 符号
+function: 函数
+object: 对象
+基本数据类型 任何一个变量或值的类型都可以使用 typeof 运算得到。
+var str = &amp;#34;this is a test.&amp;#34;; console.log(typeof str); // 类似函数的风格 console.log(typeof(str)); console.log(typeof &amp;#34;test!&amp;#34;); 值类型与引用类型 变量不但有数据类型之别，而且还有值类型与引用类型之别
+undefined: 值类型
+number: 值类型
+boolean: 值类型
+string: 值类型
+symbol: 值类型
+function: 引用类型
+object: 引用类型
+值与引用、值与值之间即使相等 (==)，也不一定严格相等 (===)
+两个引用之间如果相等 (==)，则一定严格相等 (===)
+var str = &amp;#34;abcde&amp;#34;; var obj = new String(str); function newToString() { return &amp;#34;hello, world!</description>
+    </item>
+    
+    <item>
+      <title>URI的编码与反编码</title>
+      <link>/articles/posts/73/</link>
+      <pubDate>Sat, 14 Oct 2023 10:35:33 +0800</pubDate>
+      
+      <guid>/articles/posts/73/</guid>
+      <description>有一些字符是具有特殊含义的，我们想 “转义” 这些字符，就可以去调用函数 encodeURI() 或 encodeURIComponent()。
+encodeURI() 会返回一个可用的 URL
+encodeURIComponent() 则会认为我们所传递的仅仅是 URL 的一部分
+var url = &amp;#39;http://www.packtpub.com/scr ipt.php?q=this and that&amp;#39;; encodeURI(url); // &amp;#39;http://www.packtpub.com/scr%20ipt.php?q=this%20and%20that&amp;#39; var url = &amp;#39;http://www.packtpub.com/scr ipt.php?q=this and that&amp;#39;; encodeURIComponent(url); // &amp;#39;http%3A%2F%2Fwww.packtpub.com%2Fscr%20ipt.php%3Fq%3Dthis%20and%20that&amp;#39; encodeURI() 和 encodeURIComponent() 分别都有各自对应的反编码函数：decodeURI() 和 decodeURIComponent()。
+[注] 还有相似的编码函数和反编码函数：escape() 和 unescape();</description>
+    </item>
+    
+    <item>
+      <title>Console Utilities API</title>
+      <link>/articles/posts/72/</link>
+      <pubDate>Tue, 10 Oct 2023 20:11:05 +0800</pubDate>
+      
+      <guid>/articles/posts/72/</guid>
+      <description>monitorEvents 执行 monitorEvents 来监听并打印出元素触发的事件，也可以传入数组来一次性监听多种事件，例如：
+monitorEvents(window, &amp;#34;click&amp;#34;); monitorEvents(window, [&amp;#34;mousedown&amp;#34;, &amp;#34;mouseup&amp;#34;]); 除了能监听特定事件外，还能监听事件类别，例如 monitorEvents(window, &#39;touch&#39;) 来监听所有 touch 类别的事件。
+若要停止监听，则执行 unmonitorEvents(元素, 事件)。
+getEventListeners 执行 getEventListeners(元素) 以打印出所有注册在元素上的事件监听器。
+$0 元素原本并无注册任何事件监听器，执行 monitorEvents($0, &#39;click&#39;) 后，可以看到已注册所有 touch 类别的事件监听器，</description>
+    </item>
+    
+    <item>
+      <title>Console API</title>
+      <link>/articles/posts/71/</link>
+      <pubDate>Mon, 09 Oct 2023 22:23:03 +0800</pubDate>
+      
+      <guid>/articles/posts/71/</guid>
+      <description>1. console.assert Level：Error 与 console.log 的作用相似，差别在于当第一个参数是 false 时才会打印出信息。
+[false, null, undefined, 0, -0, 0n, NaN, &amp;#34;&amp;#34;] # false 值 举例，检查 user 对象的 name 属性是否为字符串，可能会编写以下程序代码：
+const user = { name: null, }; if (typeof name === &amp;#34;string&amp;#34;) { console.log(&amp;#34;invalid name&amp;#34;, user); } 这种情况可以使用 console.assert 省去 if 条件判断语句，不但编写的程序代码可以更少，而且在语义上也更清晰，条件不符就抛出错误
+console.assert(typeof user.name === &amp;#34;string&amp;#34;, &amp;#34;invalid name&amp;#34;, user); 2. console.count Level：Info console.count 的默认参数为 default，可以作为计数器，累计特定标签出现的次数。
+for (let i = 0; i &amp;lt; 5; i++) { const number = Math.</description>
+    </item>
+    
+    <item>
+      <title>Console信息</title>
+      <link>/articles/posts/70/</link>
+      <pubDate>Mon, 09 Oct 2023 21:58:42 +0800</pubDate>
+      
+      <guid>/articles/posts/70/</guid>
+      <description>信息级别 Console 信息共分为以下 4 个级别：
+Verbose
+Info
+Warning
+Error
+例如，console.log 打印出的信息就属于 Info 级别，通过不同的 Console API 能够产生不用级别的信息。
+Verbose 基本 API：console.debug 默认情况下，Console 面板不会显示 Verbose 信息，若要查看，则需要展开上方的 All levels 菜单，勾选 Verbose。
+Info 基本 API：console.log、console.info 这两种 Console API 是等价的，执行时会打印出信息，并显示程序代码文件的文件名。
+Warning 基本 API：console.warn 常用于软件包和共享函数，适用于警示 “可能” 出错的情况或功能弃用提示，
+Warning 级别的信息会带有 Call stack，单击左侧的图片来展开 Call stack 信息。
+Error 基本 API：console.error Error 和 Warning 级别的信息都能够展开 Call stack 信息。</description>
+    </item>
+    
+    <item>
+      <title>错误处理技巧</title>
+      <link>/articles/posts/69/</link>
+      <pubDate>Sat, 07 Oct 2023 22:03:53 +0800</pubDate>
+      
+      <guid>/articles/posts/69/</guid>
+      <description>拦截错误 try/catch 语句 一般来说，JavaScript 中会以 try/catch 来拦截错误，且常常会搭配 finally 来减少重复的程序代码：
+try { // 可能出错的程序代码 } catch (error) { // 处理错误 } finally { // 此处必定执行 } 需要注意的是，在 finally 内使用 return 或 throw 会覆写掉 try/catch 内原本的操作：
+function foo() { try { throw new Error(&amp;#34;Hello World!&amp;#34;); } catch (error) { throw error; } finally { return &amp;#34;finally&amp;#34;; } } console.log(foo()); // finally function bar() { try { return &amp;#34;try&amp;#34;; } finally { throw new Error(&amp;#34;finally&amp;#34;); } } console.</description>
+    </item>
+    
+    <item>
+      <title>浏览器渲染性能分析技巧</title>
+      <link>/articles/posts/68/</link>
+      <pubDate>Fri, 06 Oct 2023 12:07:42 +0800</pubDate>
+      
+      <guid>/articles/posts/68/</guid>
+      <description>渲染流程 许多原因都会触发浏览器进行渲染，例如用户交互、CSS 动画、以 JavaScript 修改 CSS 等，不过整体上可以将渲染分为 5 个阶段：
+JavaScript -&amp;gt; Style Calculation -&amp;gt; Layout -&amp;gt; Paint -&amp;gt; Composite
+JavaScript：修改 DOM、CSS 或使用 Animation API 等
+Style Calculation(样式计算)：计算每个元素的最终样式
+Layout(布局)：计算元素的位置，大小
+Paint(绘制)：根据各个元素的样式和位置等信息制作出多个图层(Layers)
+Composite(合成)：将图层合并后产生最终的画面
+经过渲染后会产生一个画面，当浏览器将其显示于页面上时，用户才会看到新的一帧画面。
+一般来说，浏览器的画面刷新频率为每秒 60 次（60FPS），因此浏览器需要再约 16ms 的时间内完成渲染才不会造成画面延迟。
+JavaScript 阶段 制作动画除了用 JavaScript 直接修改 DOM、CSS 外，还有 Animation API、CSS Animations、CSS Transitions 等方式，但归根结底都是改变元素的样式，因此性能问题大致上可以归类为花过长时间或在错误的时机修改样式。
+requestAnimationFrame 作为渲染的第一阶段，最适合修改样式的时机在每一帧的开头，如此才能保留最多时间给后续的阶段。
+用 JavaScript 制作动画时，使用 requestAnimationFrame 能确保 JavaScript 在每一帧的开头执行，
+function updateScreen(time) { // 修改 DOM、CSS } requestAnimationFrame(updateScreen); 若使用 setTimeout、setInterval 来修改样式，则无法确保 JavaScript 在开头出执行，容易造成浏览器无法在 16ms 内完成渲染，或是在 16ms 内执行两次而造成性能损失，</description>
+    </item>
+    
+    <item>
+      <title>页面加载流程分析技巧</title>
+      <link>/articles/posts/67/</link>
+      <pubDate>Thu, 05 Oct 2023 22:51:11 +0800</pubDate>
+      
+      <guid>/articles/posts/67/</guid>
+      <description>分析 浏览器在开始渲染网页内容前，大致会经过以下步骤：
+载入 HTML
+开始解析 HTML
+载入或解析其他文件
+继续解析 HTML，重复以上步骤
+所有文件解析完毕，开始渲染页面
+例如：
+&amp;lt;html&amp;gt; &amp;lt;head&amp;gt; &amp;lt;link rel=&amp;#34;stylesheel&amp;#34; href=&amp;#34;style.css&amp;#34; /&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;div&amp;gt;Hello, World!&amp;lt;/div&amp;gt; &amp;lt;script src=&amp;#34;index.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt; 浏览器在下载完 HTML 后，将会开始解析，步骤如下：
+解析 HTML 至第 3 行时，开始加载 style.css，解析完成前不进行渲染。
+解析 HTML 至第 7 行时，开始加载 index.js，程序代码执行完毕前，暂停解析 HTML。
+若先下载完 style.css，则开始解析 style.css；若先下载完 index.js，则需等待 style.css 解析完毕后，才能执行程序代码。
+解析 HTML 完成，开始渲染页面。
+可以注意到在解析 HTML 的过程中，可能由于某些原因被 “阻塞” 而延后了渲染页面的时机，因此造成了阻塞的原因即为分析的重点。
+阻塞 解析 HTML 的过程中，会有许多需要加载的文件，例如 JavaScript、CSS、图片等，其中某些文件可能会造成阻塞，让浏览器无法开始渲染。阻塞分为 “阻塞渲染” 和 “阻塞解析” 两种。
+阻塞渲染 浏览器需要 HTML 和 CSS 才能绘制出完整的页面，若解析完 HTML 马上显示页面，等到解析完 CSS 又显示另一版页面，用户就会看到屏幕一闪而过，几乎无法阅读其中的文字，接着再变为加入 CSS 的正常页面，这种现象被称为 Flash of Unstyled Content(FOUC)。</description>
+    </item>
+    
+    <item>
+      <title>内存占用量</title>
+      <link>/articles/posts/66/</link>
+      <pubDate>Thu, 05 Oct 2023 22:02:52 +0800</pubDate>
+      
+      <guid>/articles/posts/66/</guid>
+      <description>“网页性能” 除了受到 JavaScript 执行和浏览器绘制页面的时间影响之外，还与内存的占用量有关系，且内存的占用量造成的性能问题通常对用户的影响非常明显。
+网页性能随着使用时间拉长变得越来越差就是典型的例子，其原因是 JavaScript 使用垃圾回收机制来管理内存，但是垃圾回收时在主线程上进行的，会占用其他任务的时间，当内存占用量过多时，会让垃圾回收的执行效率上升，进而影响网页性能。
+垃圾回收 “垃圾回收” 可以简单理解为每次新建对象、DOM 时，浏览器都会分配内存空间去存储这些对象，然而，当执行垃圾回收时，只要没有任何方式可以存取到某个对象，该对象所占用的内存就会被释放。
+范例如下：
+let a = {}; // 分配内存来存储 A 对象 let b = {}; // 分配内存来存储 B 对象 let c = a; a = undefined; b = undefined; 此时由于已经没有任何方式可以存取 B 对象，浏览器执行垃圾回收时，该对象占用的内存空间会被释放，而 a 虽然被修改为 undefined，A 对象还是能够通过 c 来存取的，因此无法释放。
+常见原因 内存占用量问题通常是因为程序代码的写法而造成浏览器无法释放内存，随着时间内存的使用量不断累计最终影响性能，这也被称为 内存泄漏。
+全局变量 全局变量在任何时候都能存取，因为会让该内存空间永远无法释放，除了尽可能减少全局变量外，还需要注意使用到的情况，不过在严格模式下基本可以避免这个问题。
+function foo() { this.bar = &amp;#34;bar&amp;#34;; baz = &amp;#34;baz&amp;#34;; // 意外存取到外部或全部变量 } foo(); 未清除的 Callback 先不考虑 Callback 函数本身用到的内存，如果 Callback 内存取了外部的变量，在清除 Callback 之前，该变量用到的内存空间都无法释放，下面举例：</description>
+    </item>
+    
+    <item>
+      <title>API技巧</title>
+      <link>/articles/posts/65/</link>
+      <pubDate>Thu, 05 Oct 2023 15:08:57 +0800</pubDate>
+      
+      <guid>/articles/posts/65/</guid>
+      <description>分析问题的原因 减少干扰 当请求出现非预期的运行方式，或者想要重现用户遇到的问题时，首先要去除开发环境和浏览器的干扰，才能有效缩小问题的范围，最简单的方式是启动无痕模式。另一种常用的方式为清除浏览器缓存并重新刷新页面。
+步骤如下：
+清除网站数据 在浏览网站的过程中，可能会存储 Cookie、缓存等，它们都可能影响后续网站浏览和请求的运行方式，使用 Clear site data 可以清除该网站所有的数据，
+如上，可以同时清除 LocalStorage 和 Cookie。
+网站之外的因素 除了网站本身外，请求的运行方式还可能受到以下因素影响：
+存储在服务器、CDN 的缓存：需要了解服务器端的设置，或通过 CDN 提供的 API 来清除非预期的缓存。
+设备连接状态：DNS 查询和建立连接的过程也占了请求时间的一环，浏览器会使用 DNS 解析缓存等机制来加速连接流程。
+HSTS: 使用 HSTS 机制的网站会将所有 HTTP 请求自动转为 HTTPS。
+清除 Chrome 现有的连接和 DNS 解析缓存的步骤如下：
+(1) 在网址输入：chrome://net-internals/#sockets
+(2) 单击 Flush socket pools 来关闭现有的连接
+(3) 从左侧列表切换到 DNS，单击 Clear host cache 来清除 DNS 解析缓存。
+清除 HSTS 机制步骤如下：
+(1) 在网址输入：chrome://net-internals/#hsts
+(2) 在最下方的 Delete domain security policies 中输入网站的 Domain
+(3) 单击 Delete 按钮</description>
+    </item>
+    
+    <item>
+      <title>元素检查技巧</title>
+      <link>/articles/posts/64/</link>
+      <pubDate>Thu, 05 Oct 2023 14:32:57 +0800</pubDate>
+      
+      <guid>/articles/posts/64/</guid>
+      <description>状态锁定 在 Elements 页面中找到目标元素，右击该元素，展开 Force state 选项，选择想要锁定的状态即可，
+节点隐藏 在 Elements 面板中右击选择元素，选择 Hide element 隐藏覆盖节点，随后就可以顺利 Debug 目标元素
+移动和删除节点 在 Elements 面板中，可以直接通鼠标拖拽改变节点的位置，使用键盘则可以通过 ctrl + c、ctrl + x、ctrl + v 组合键来复制、剪切、粘贴节点，也可以用过 delete 和 ctrl + z 组合键来删除和复原。
+==$0 检查元素时，元素右方会显示提示信息 ==$0，此时打开 Console 面板输入 $0，会返回该节点，可以直接使用 JavaScript 与节点互动。</description>
+    </item>
+    
+    <item>
+      <title>CSS功能特性</title>
+      <link>/articles/posts/63/</link>
+      <pubDate>Wed, 04 Oct 2023 22:07:00 +0800</pubDate>
+      
+      <guid>/articles/posts/63/</guid>
+      <description>01 clamp() clamp() 函数的作用是把一个值限制在一个上限和下限之间，当这个值超过最小值和最大值的范围时，在最小值和最大值之间选择一个值使用。它接收三个参数：最小值、首选值、最大值。
+.box { width: clamp(220px, 55%, 300px); } h1 { letter-spacing: 2px; font-size: clamp(1.8rem, 2.5vw, 2.8rem); } 02 smooth 平滑滚动。
+&amp;lt;div class=&amp;#34;top&amp;#34;&amp;gt; &amp;lt;a href=&amp;#34;#bottom&amp;#34;&amp;gt;TOP&amp;lt;/a&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;div class=&amp;#34;bottom&amp;#34; id=&amp;#34;bottom&amp;#34;&amp;gt;BOTTOM&amp;lt;/div&amp;gt; html { scroll-behavior: smooth; } .top, .bottom { height: 100vh; } 03 scroll snap 允许开发者在用户完成滚动后将视窗锁定在特定的元素或位置；设置了在有滚动容器的情形下吸附至吸附点的严格程度。
+语法：
+#不吸附 scroll-snap-type: none; #表示吸附轴的关键字 scroll-snap-type: x; scroll-snap-type: y; scroll-snap-type: block; scroll-snap-type: inline; scroll-snap-type: both; #表示吸附程度的可选关键字 #mandatory 或 proximity scroll-snap-type: x mandatory; scroll-snap-type: y proximity; scroll-snap-type: both mandatory; #全局值 scroll-snap-type: inherit; scroll-snap-type: initial; scroll-snap-type: revert; scroll-snap-type: revert-layer; scroll-snap-type: unset; &amp;lt;div class=&amp;#34;holster&amp;#34;&amp;gt; &amp;lt;div class=&amp;#34;container x mandatory-scroll-snapping&amp;#34; dir=&amp;#34;ltr&amp;#34;&amp;gt; &amp;lt;div&amp;gt;x 轴强制、从左往右&amp;lt;/div&amp;gt; &amp;lt;div&amp;gt;2&amp;lt;/div&amp;gt; &amp;lt;div&amp;gt;3&amp;lt;/div&amp;gt; &amp;lt;div&amp;gt;4&amp;lt;/div&amp;gt; &amp;lt;div&amp;gt;5&amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;div class=&amp;#34;container x proximity-scroll-snapping&amp;#34; dir=&amp;#34;ltr&amp;#34;&amp;gt; &amp;lt;div&amp;gt;x 轴靠近、从左往右&amp;lt;/div&amp;gt; &amp;lt;div&amp;gt;2&amp;lt;/div&amp;gt; &amp;lt;div&amp;gt;3&amp;lt;/div&amp;gt; &amp;lt;div&amp;gt;4&amp;lt;/div&amp;gt; &amp;lt;div&amp;gt;5&amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;div class=&amp;#34;container y mandatory-scroll-snapping&amp;#34; dir=&amp;#34;ltr&amp;#34;&amp;gt; &amp;lt;div&amp;gt;y 轴强制、从左往右&amp;lt;/div&amp;gt; &amp;lt;div&amp;gt;2&amp;lt;/div&amp;gt; &amp;lt;div&amp;gt;3&amp;lt;/div&amp;gt; &amp;lt;div&amp;gt;4&amp;lt;/div&amp;gt; &amp;lt;div&amp;gt;5&amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;div class=&amp;#34;container y proximity-scroll-snapping&amp;#34; dir=&amp;#34;ltr&amp;#34;&amp;gt; &amp;lt;div&amp;gt;y 轴靠近、从左往右&amp;lt;/div&amp;gt; &amp;lt;div&amp;gt;2&amp;lt;/div&amp;gt; &amp;lt;div&amp;gt;3&amp;lt;/div&amp;gt; &amp;lt;div&amp;gt;4&amp;lt;/div&amp;gt; &amp;lt;div&amp;gt;5&amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;div class=&amp;#34;container x mandatory-scroll-snapping&amp;#34; dir=&amp;#34;rtl&amp;#34;&amp;gt; &amp;lt;div&amp;gt;x 轴强制、从右往左&amp;lt;/div&amp;gt; &amp;lt;div&amp;gt;2&amp;lt;/div&amp;gt; &amp;lt;div&amp;gt;3&amp;lt;/div&amp;gt; &amp;lt;div&amp;gt;4&amp;lt;/div&amp;gt; &amp;lt;div&amp;gt;5&amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;div class=&amp;#34;container x proximity-scroll-snapping&amp;#34; dir=&amp;#34;rtl&amp;#34;&amp;gt; &amp;lt;div&amp;gt;x 轴靠近、从右往左&amp;lt;/div&amp;gt; &amp;lt;div&amp;gt;2&amp;lt;/div&amp;gt; &amp;lt;div&amp;gt;3&amp;lt;/div&amp;gt; &amp;lt;div&amp;gt;4&amp;lt;/div&amp;gt; &amp;lt;div&amp;gt;5&amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;div class=&amp;#34;container y mandatory-scroll-snapping&amp;#34; dir=&amp;#34;rtl&amp;#34;&amp;gt; &amp;lt;div&amp;gt;y 轴强制、从右往左&amp;lt;/div&amp;gt; &amp;lt;div&amp;gt;2&amp;lt;/div&amp;gt; &amp;lt;div&amp;gt;3&amp;lt;/div&amp;gt; &amp;lt;div&amp;gt;4&amp;lt;/div&amp;gt; &amp;lt;div&amp;gt;5&amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;div class=&amp;#34;container y proximity-scroll-snapping&amp;#34; dir=&amp;#34;rtl&amp;#34;&amp;gt; &amp;lt;div&amp;gt;y 轴靠近、从右往左&amp;lt;/div&amp;gt; &amp;lt;div&amp;gt;2&amp;lt;/div&amp;gt; &amp;lt;div&amp;gt;3&amp;lt;/div&amp;gt; &amp;lt;div&amp;gt;4&amp;lt;/div&amp;gt; &amp;lt;div&amp;gt;5&amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt; /* 滚动吸附 */ .</description>
+    </item>
+    
+    <item>
+      <title>Flexbox</title>
+      <link>/articles/posts/62/</link>
+      <pubDate>Mon, 25 Sep 2023 20:56:41 +0800</pubDate>
+      
+      <guid>/articles/posts/62/</guid>
+      <description>理解 Flex 方法：主轴和辅轴 Flexbox 可以针对页面中某一个区域，控制其中元素的顺序、大小、分布及对齐。这个区域内的盒子可以沿两个方向排列：默认水平排列，也可以垂直排列。这个排列方向称为主轴。
+与主轴垂直的方向称为辅轴，主轴方向的这个尺寸为主尺寸。
+ul { display: flex; } 如果把 flex-direction: row-reverse，那么选项就会集中在右侧，而且变成从右向左排列。
+ul { display: flex; flex-direction: row-reverse; } 如果不指定大小，Flex 容器内的项目会自动收缩，也就说，一行中的各项会收缩到各自的最小宽度，或者一列中的各项会收缩到各自的最小的高度，以恰好可以容纳自身内容为限。
+对齐与空间 Flexbox 对子项的排列有多种方式，沿主轴的排列叫 排布，沿辅轴的排列则叫 对齐。
+用于指定排布方式的属性是 justify-content，其默认值为 flex-start，表示左对齐。如果改成 flex-end，所有项就都会挤到右侧。另外 3 个关键字的效果：center、space-between、space-around。
+创造一项位于一侧，其余项位于另一侧的布局
+li:nth-child(1) { margin-right: auto; } 辅轴对齐 ul { display: flex; min-height: 100px; } li { width: 100px; } 子项自动就和父元素等高了，实际上，控制辅轴对齐的属性 align-items，其默认值是 stretch（拉伸）。也就是说子项默认拉伸，以填满可用空间。其他的关键字还有 flex-start、center、flex-end，
+最后，还可以使用 baseline 关键字，将子项中文本的基线与容器基线对齐，如果子项大小不一，而你希望它们在辅轴上虽然位置不同，但本身对齐，那么就可以采用这种方法。
+将第二项字体设大一点
+ul { display: flex; min-height: 100px; align-items: baseline; } li { min-width: 100px; height: 50px; background-color: red; list-style: none; text-align: center; line-height: 50px; } li:nth-child(2) { background-color: aqua; font-size: 30px; height: 70px; } 对齐个别项 还可以在辅轴上指定个别项的对齐方式。比如，让 “HOME” 项对齐到左上角，让其他项对齐到右下角。</description>
+    </item>
+    
+    <item>
+      <title>使用表格显示属性实现布局</title>
+      <link>/articles/posts/61/</link>
+      <pubDate>Mon, 25 Sep 2023 20:53:22 +0800</pubDate>
+      
+      <guid>/articles/posts/61/</guid>
+      <description> HTML &amp;lt;ul&amp;gt; &amp;lt;li&amp;gt;HOME&amp;lt;/li&amp;gt; &amp;lt;li&amp;gt;SPACESHIPS&amp;lt;/li&amp;gt; &amp;lt;li&amp;gt;PLANETS&amp;lt;/li&amp;gt; &amp;lt;li&amp;gt;STRAS&amp;lt;/li&amp;gt; &amp;lt;/ul&amp;gt; CSS ul { width: 100%; display: table; table-layout: fixed; } li { width: 25%; height: 50px; background-color: red; list-style: none; display: table-cell; vertical-align: middle; text-align: center; } li:nth-child(2) { background-color: aqua; } li:nth-child(3) { background-color: aquamarine; } li:nth-child(4) { background-color: blue; } </description>
+    </item>
+    
+    <item>
+      <title>为嵌入图片和元素添加样式</title>
+      <link>/articles/posts/60/</link>
+      <pubDate>Sun, 24 Sep 2023 16:37:08 +0800</pubDate>
+      
+      <guid>/articles/posts/60/</guid>
+      <description>可伸缩的图片模式 img { width: auto; max-width: 100%; height: auto; } 控制对象大小的新方法 img { width: 200px; height: 200px; } img.contain { object-fit: contain; } img.cover { object-fit: cover; } img.none { object-fit: none; } img.scaledown { object-fit: scale-down; } object-fit 属性的默认值为 fill，意味着图片内容会在必要时拉伸以填满容器，因此可能破坏宽高比，
+cover 和 contain 则与 background-size 属性中对应的关键字作用相同。none 会采用图片固有大小，不管容器有多大。最后，scale-down 会自动从 none 和 contain 中选一个，哪个结果尺寸小就用哪一个。最终图片会居中，但可以通过 object-position 重新设置，与定位背景图片时类似。
+可保持宽高比的容器 对于具有固定宽高比的位图，把高度设置为 auto，只改变宽度，或者把宽度设置为 auto，只改变高度，都是可以的，
+但如果是没有固定宽高比的元素呢？如果使其在可伸缩的同时保持固定宽高比？
+iframe 和 object 元素就属于这种情形，某些情况下的 SVG 内容也是。常见的例子是在页面中通过 iframe 嵌入一段视频：
+&amp;lt;iframe width=&amp;#34;420&amp;#34; height=&amp;#34;315&amp;#34; src=&amp;#34;xxx&amp;#34; frameborder=&amp;#34;0&amp;#34; allowfullscreen &amp;gt;&amp;lt;/iframe&amp;gt; 如果像这样给他设置一个可伸缩的宽度：</description>
+    </item>
+    
+    <item>
+      <title>渐变</title>
+      <link>/articles/posts/59/</link>
+      <pubDate>Sun, 24 Sep 2023 16:28:08 +0800</pubDate>
+      
+      <guid>/articles/posts/59/</guid>
+      <description>在背景上使用渐变色是一种常见设计，能够页面增加一种纵深感。
+.profile-box { background-image: linear-gradient(to bottom, #cfdeee 0%, #8da9cf 100%); } 线性渐变 前面的例子使用了 linear-gradient 函数，沿一条假象线，从元素顶部到底部绘制了一个渐变背景。
+这条线的角度由这个函数的第一对关键字（to bottom）表示，其后是由逗号分隔的色标，色标用于在渐变线上标出颜色发生变化的位置，在这个例子中，位置 0% 处的颜色是浅蓝灰色，而位置 100% 也就是元素底部的颜色是深蓝色。
+渐变线的方向可以使用关键字 to，再加上一个表示边（top、right、bottom、left）或表示角（top left、top right、bottom left、bottom right）的关键字来指定，后者指定的是对角线。渐变线总是始于元素的一个边或一个角，然后穿过元素的中心区域。
+此外，还可以使用 deg 单位指定渐变线的角度，0deg 表示垂直向上，增大角度值就意味着沿顺时针方向旋转，直到 360 度，跟 HSL 色轮类似。此时，度数表示绘制渐变的方向，因此起点就在我们指定的相反方向。
+比如下面就是一个 45 度角的渐变：
+.profile-box { background-image: linear-gradient(45deg, #cfdeee, #8da9cf); } 此时，渐变线的起点并不是背景图片区域的边，而是自动延长线的角，
+m 默认值及色标位置
+线性渐变的默认方向是自上而下（to bottom），而 0% 和 100% 分别表示第一个和最后一个色标的位置，因此前面第一个例子实际上可以简写如下：
+.profile-box { background-image: linear-gradient(#cfdeee, #8da9cf); } 新增色标若未指定位置，则在 0% ~ 100% 范围内取值。比如，有 5 个未指定位置的色标，那么它们的位置分别为 0%、25%、50%、75%、100%。
+.profile-box { background-image: linear-gradient(red, green, blue, yellow, purple); } 处理百分比，还可以使用绝对值指定色标位置，比如：</description>
+    </item>
+    
+    <item>
+      <title>盒阴影</title>
+      <link>/articles/posts/58/</link>
+      <pubDate>Sun, 24 Sep 2023 16:12:01 +0800</pubDate>
+      
+      <guid>/articles/posts/58/</guid>
+      <description>示例
+.profile-photo { box-shadow: 0.25em 0.25em 0.5em rgba(0, 0, 0, 0.3); } 扩展半径：调整阴影大小 比如，可以在模糊半径的值后面再加一个值，表示 扩展半径，用于扩展阴影的大小。这个值默认为 0，即阴影与所属元素一样大，增大这个值，阴影相应增大，负值导致阴影缩小。
+div:nth-child(1) { box-shadow: 1em 1em 0.5em 0.5em rgba(0, 0, 0, 0.3); } div:nth-child(2) { box-shadow: 1em 1em 0.5em -0.5em rgba(0, 0, 0, 0.3); } 内阴影 inset inset 关键字，这个关键字可以为元素应用内阴影，即把元素当成投影表面，可以创造一种背景被 “镂空” 的效果，比如，可以给个人页面顶部背景应用内阴影，制造一种在页面上凹陷或者被头像及其他页面内容并遮住的感觉。
+多阴影 也可以给一个元素应用多个阴影，以逗号分隔多组值。
+div:nth-child(1) { box-shadow: 0 0 0 10px #1c318d, 0 0 0 20px #3955c7, 0 0 0 30px #546dc7, 0 0 0 40px #7284d8; } </description>
+    </item>
+    
+    <item>
+      <title>背景图片语法</title>
+      <link>/articles/posts/57/</link>
+      <pubDate>Sun, 24 Sep 2023 11:03:50 +0800</pubDate>
+      
+      <guid>/articles/posts/57/</guid>
+      <description>背景位置 下面尝试把背景图片定位到元素中心，背景图片的位置由 background-position 属性控制。
+为了更大的屏幕上也能覆盖整个元素，我们特意使用大图，在较小的屏幕上图片上端的边缘会被切掉，但至少图片是居中的。
+.profile-box { width: 100%; height: 600px; background-color: #8da9cf; background-image: url(&amp;#34;img/big-cat.jpg&amp;#34;); background-repeat: no-repeat; background-position: 50% 50%; } background-position 属性既可以使用关键字，也可以使用像素、em 或百分比。
+最简单情况下，可以只给两个值：
+一个表示相对于左侧的偏移量 一个表示相对于顶部的偏移量 如果使用像素或 em 单位来设置背景图片的位置，那么图片的左上角会相对于元素的左上角定位，也就是会偏移指定的数值。比如，要是在水平和垂直方向都指定了 20 像素，那么图片左上角就会偏移到距离元素左边和上边均为 20 像素的点。如果设置背景图片的位置时使用了百分比，那么情况就不一样了，百分比值不像绝对数值那样会定位背景图片的左上角，而是定位图片中对应的点。如果水平和垂直方向都设置为 20%，那么你定位的实际上是距图片左边和上边各 20% 的点，而这个点会与距离父元素左边和上边各 20% 的点重合。
+使用关键字来对齐背景图片，在 x 轴上用 left、center、right，在 y 轴上用 top、center、bottom。
+顺序一般是先 x 轴后 y 轴。
+但在一个关键字后加上一个长度值的情况下，规则本身将无效，比如如下声明：
+.box { background-position: 50% left; /* 不要这样写 */ } 背景裁剪与原点 默认情况下，背景图片是绘制到元素边框以内的，如果把背景图片定位到边框下方，同时边框也设置为半透明的话，那么图片边缘就会出现班半透明的边框，
+使用 background-clip 属性可以改变这个行为，这个属性默认值为 background-clip: border-box，将其改为 padding-box 就可以把图片裁剪到内边距盒子以内。而 content-box 值则会把图片位于内边距及其之外的部分裁剪。</description>
+    </item>
+    
+    <item>
+      <title>使用 JavaScript 提升排版品质</title>
+      <link>/articles/posts/56/</link>
+      <pubDate>Sun, 24 Sep 2023 10:10:22 +0800</pubDate>
+      
+      <guid>/articles/posts/56/</guid>
+      <description>推荐几个 JavaScript 库 jQuery 插件 lettering.js: 对文本进行分割和样式化处理。它通过将文本包裹在不同的HTML元素中，使得对文本的各个部分进行独立的样式控制成为可能。通过Lettering.js，你可以对文字进行字母级别的样式化，比如单独控制每个字母的颜色、大小、动画效果等。这个插件在设计和排版方面提供了更多的自由度和创意性。
+jQuery 插件 fitText.js: 自动调整文本的大小以适应其容器的大小。它可以根据容器的宽度动态地调整文本的字体大小，使文本始终填满容器，并保持良好的可读性。这个插件在响应式设计和移动设备优化方面非常有用，可以确保文本在不同屏幕尺寸和设备上都能够自适应地显示。
+BitText.js: 可以让一行文本放大到尽可能与包含它的容器一般大。
+Widowtamer.js: 通过在一段的末尾每隔一定的距离就在单词间插入非换行空白符，来防止出现意外的孤行。</description>
+    </item>
+    
+    <item>
+      <title>使用 JavaScript 加载字体</title>
+      <link>/articles/posts/55/</link>
+      <pubDate>Fri, 22 Sep 2023 21:15:51 +0800</pubDate>
+      
+      <guid>/articles/posts/55/</guid>
+      <description>有一个库，叫 Web Font Loader，这个库体积很小，在浏览器支持的情况下，他会使用原生的字体加载 API；在浏览器不支持的情况下，它会模拟相同的功能。这个库内置了一些 web 字体服务，比如 Typekit、Google Fonts 和 Fonts.com，同时也支持自托管的字体。
+可以下载这个库，也可以从 Google 的服务器上加载它，地址是：https://developers.google.com/speed/libraries/#web-font-loader
+Web Font Loader 提供了很多有用的功能，其中最有用的就是确保字体加载的跨浏览器一致性。
+Web Font Loader 为以下事件提供了接入点：
+loading: 开始加载字体 active: 字体加载完成 inactive: 字体加载失败 需要把 @font-face 块中的所有代码转移到一个独立的样式表 alegreya-vollkorn.css，同时把它放在一个子文件夹 css 中，然后，需要在页面头部添加一个小段 Js 代码：
+&amp;lt;script&amp;gt; WebFontConfig = { custom: { families: [&amp;#34;AlegreyaSans:n4,i4&amp;#34;, &amp;#34;Vollkorn:n6,n5,n7&amp;#34;], urls: [&amp;#34;css/alegreya-vollkorn.css&amp;#34;], }, }; (function () { var wf = document.createElement(&amp;#34;script&amp;#34;); wf.src = &amp;#34;https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js&amp;#34;; wf.type = &amp;#34;text/javascript&amp;#34;; wf.async = &amp;#34;true&amp;#34;; var s = document.getElementsByTagName(&amp;#34;script&amp;#34;)[0]; s.</description>
+    </item>
+    
+    <item>
+      <title>scrollIntoview</title>
+      <link>/articles/posts/54/</link>
+      <pubDate>Mon, 18 Sep 2023 14:09:13 +0800</pubDate>
+      
+      <guid>/articles/posts/54/</guid>
+      <description>大家可能都知道 dom 有一个 scrollIntoview方法，它可以轻易的让目标元素滚动到可视范围之内，而无需手动计算偏移量
+dom.scrollIntoview(); 效果如下
+这样跳转比较生硬，因此可能还知道有这样一个参数
+dom.scrollIntoview({ behavior: &amp;#34;smooth&amp;#34;, }); 这样就能平滑滚动了
+仅仅只有这些了吗？其实还可以做很多
+一、重新学习 scrollIntoView 语法 打开 MDN 官网
+https://developer.mozilla.org/zh-CN/docs/Web/API/Element/scrollIntoView
+语法其实很简单，有三种形式
+scrollIntoView(); scrollIntoView(alignToTop); scrollIntoView(scrollIntoViewOptions); 首先看第 2 种形式，就一个参数 「alignToTop」 布尔值
+默认为 true，表示是否沿着元素的顶端和滚动容器对齐，否则和元素底端对齐。
+dom.scrollIntoView(); dom.scrollIntoView(true); 这两种效果是相同的
+如果设置为false，那么会居底部对齐
+dom.scrollIntoview(false); 效果如下
+注意，「alignToTop」 自适应于 「垂直方向」 上的滚动，如果是 「水平方向」 的滚动，设置了没有任何区别。
+// 水平滚动下，以下 3 种写法作用相同 dom.scrollIntoview(); dom.scrollIntoview(true); dom.scrollIntoview(false); 效果都是一样的，如下
+🤔 为啥是居右侧对齐呢？同时为了满足两个方向上的灵活控制，出现了 「scrollIntoViewOptions」 参数。
+这个稍微复杂一点，接着往下看。
+二、详解 scrollIntoViewOptions 参数 「scrollIntoViewOptions」 是一个对象，包含 3 个属性，分别是 「behavior」、「block」、「inline」
+dom.scrollIntoView({ behavior: &amp;#34;smooth&amp;#34;, block: &amp;#34;end&amp;#34;, inline: &amp;#34;nearest&amp;#34;, }); 首先来看 「behavior」 属性，这是用来定义滚动动画的，有 3 个关键词</description>
+    </item>
+    
+    <item>
+      <title>CSS网格布局</title>
+      <link>/articles/posts/53/</link>
+      <pubDate>Sun, 17 Sep 2023 22:09:38 +0800</pubDate>
+      
+      <guid>/articles/posts/53/</guid>
+      <description>&amp;lt;div id=&amp;#34;container&amp;#34;&amp;gt; &amp;lt;div class=&amp;#34;item item-1&amp;#34;&amp;gt;1&amp;lt;/div&amp;gt; &amp;lt;div class=&amp;#34;item item-2&amp;#34;&amp;gt;2&amp;lt;/div&amp;gt; &amp;lt;div class=&amp;#34;item item-3&amp;#34;&amp;gt;3&amp;lt;/div&amp;gt; &amp;lt;div class=&amp;#34;item item-4&amp;#34;&amp;gt;4&amp;lt;/div&amp;gt; &amp;lt;div class=&amp;#34;item item-5&amp;#34;&amp;gt;5&amp;lt;/div&amp;gt; &amp;lt;div class=&amp;#34;item item-6&amp;#34;&amp;gt;6&amp;lt;/div&amp;gt; &amp;lt;div class=&amp;#34;item item-7&amp;#34;&amp;gt;7&amp;lt;/div&amp;gt; &amp;lt;div class=&amp;#34;item item-8&amp;#34;&amp;gt;8&amp;lt;/div&amp;gt; &amp;lt;div class=&amp;#34;item item-9&amp;#34;&amp;gt;9&amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt; #container { display: grid; grid-template-columns: 50px 50px 50px; grid-template-rows: 50px 50px 50px; grid-gap: 10px; } .item { border: 1px solid red; text-align: center; line-height: 50px; } 使用百分比定义列宽和列高：
+#container { display: grid; grid-template-columns: 33.33% 33.33% 33.33%; grid-template-rows: 33.33% 33.33% 33.33%; /* 需要给 #container 设置一个高度 */ } 如上，重复书写比较麻烦，可以使用 repeat() 函数</description>
+    </item>
+    
+    <item>
+      <title> 一些 css 语法解释</title>
+      <link>/articles/posts/52/</link>
+      <pubDate>Sun, 17 Sep 2023 21:58:31 +0800</pubDate>
+      
+      <guid>/articles/posts/52/</guid>
+      <description>filter: invert(1) 是一种 CSS 滤镜效果，它用于将元素的颜色进行反转，即将亮色变为暗色，暗色变为亮色。具体而言，它将元素的亮度值进行反转，使得黑色变为白色，白色变为黑色，其他颜色也会相应地进行反转。这个滤镜效果常用于创建黑暗主题、反色效果或者增强视觉对比度。
+-webkit-autofill .contac__input: -webkit-autofill { transition: background-color 6000s, color 6000s; } 这段代码是用于自动填充表单输入框的样式设置。 -webkit-autofill 是一个 Webkit 浏览器的伪类选择器，用于匹配自动填充的表单字段。
+transition: background-color 6000s, color 6000s; 是一个过渡效果的设置，它定义了在 6000 秒内发生的过渡效果。具体来说，它定义了在自动填充表单字段时，背景颜色和文字颜色的过渡效果。
+这段代码的作用是为自动填充表单字段提供过渡效果，使得填充的背景颜色和文字颜色能够平滑地改变，提升用户体验。
+placeholder-shown .contact__input:not(:placeholder-shown).contact__input:not(:focus) + .contact__label { opacity: 1; top: -16px; } 这段代码是用于在表单输入框中输入内容时，控制相邻标签的样式变化。具体来说：
+.contact__input:not(:placeholder-shown).contact__input:not(:focus) 选择器表示选中没有占位符文本且没有获得焦点的输入框。
++ .contact__label 表示选中与上述选择器相邻的类名为 .contact__label 的元素。
+opacity: 1; 设置透明度为 1，即完全不透明。
+top: -16px 将元素的位置向上移动 16 像素。
+这段代码的作用是在用户在输入框中输入内容时，将相邻的标签元素显示出来，并将其位置向上移动 16 像素。通常用于实现输入框中的占位标签在输入内容时的动态效果，提升用户体验。
+margin-inline .contact__data { margin-inline: auto; } 这段代码设置了类名为 .contact__data 的元素的水平居中对齐。具体来说：
+margin-inline: auto; 是一个 CSS 属性，用于设置元素的水平外边距。 auto 值表示自动计算外边距，使元素在水平方向上居中对齐。</description>
+    </item>
+    
+    <item>
+      <title>创建带有曲线的侧边栏菜单</title>
+      <link>/articles/posts/51/</link>
+      <pubDate>Sun, 17 Sep 2023 21:33:06 +0800</pubDate>
+      
+      <guid>/articles/posts/51/</guid>
+      <description>具体代码如下: HTML
+&amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;#34;en&amp;#34;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;#34;UTF-8&amp;#34; /&amp;gt; &amp;lt;meta name=&amp;#34;viewport&amp;#34; content=&amp;#34;width=device-width, initial-scale=1.0&amp;#34; /&amp;gt; &amp;lt;link href=&amp;#34;https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css&amp;#34; rel=&amp;#34;stylesheet&amp;#34; /&amp;gt; &amp;lt;link rel=&amp;#34;stylesheet&amp;#34; href=&amp;#34;assets/css/styles.css&amp;#34; /&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;nav class=&amp;#34;nav&amp;#34;&amp;gt; &amp;lt;ul class=&amp;#34;nav__list&amp;#34;&amp;gt; &amp;lt;a href=&amp;#34;#&amp;#34; class=&amp;#34;nav__link active-link&amp;#34;&amp;gt; &amp;lt;i class=&amp;#34;ri-dashboard-3-line&amp;#34;&amp;gt;&amp;lt;/i&amp;gt; &amp;lt;span class=&amp;#34;nav__name&amp;#34;&amp;gt;Home&amp;lt;/span&amp;gt; &amp;lt;/a&amp;gt; &amp;lt;a href=&amp;#34;#&amp;#34; class=&amp;#34;nav__link&amp;#34;&amp;gt; &amp;lt;i class=&amp;#34;ri-account-box-line&amp;#34;&amp;gt;&amp;lt;/i&amp;gt; &amp;lt;span class=&amp;#34;nav__name&amp;#34;&amp;gt;Accounts&amp;lt;/span&amp;gt; &amp;lt;/a&amp;gt; &amp;lt;a href=&amp;#34;#&amp;#34; class=&amp;#34;nav__link&amp;#34;&amp;gt; &amp;lt;i class=&amp;#34;ri-rocket-line&amp;#34;&amp;gt;&amp;lt;/i&amp;gt; &amp;lt;span class=&amp;#34;nav__name&amp;#34;&amp;gt;Investments&amp;lt;/span&amp;gt; &amp;lt;/a&amp;gt; &amp;lt;a href=&amp;#34;#&amp;#34; class=&amp;#34;nav__link&amp;#34;&amp;gt; &amp;lt;i class=&amp;#34;ri-file-list-3-line&amp;#34;&amp;gt;&amp;lt;/i&amp;gt; &amp;lt;span class=&amp;#34;nav__name&amp;#34;&amp;gt;Files&amp;lt;/span&amp;gt; &amp;lt;/a&amp;gt; &amp;lt;a href=&amp;#34;#&amp;#34; class=&amp;#34;nav__link&amp;#34;&amp;gt; &amp;lt;i class=&amp;#34;ri-settings-3-line&amp;#34;&amp;gt;&amp;lt;/i&amp;gt; &amp;lt;span class=&amp;#34;nav__name&amp;#34;&amp;gt;Settings&amp;lt;/span&amp;gt; &amp;lt;/a&amp;gt; &amp;lt;/ul&amp;gt; &amp;lt;!</description>
+    </item>
+    
+    <item>
+      <title>渲染优化</title>
+      <link>/articles/posts/50/</link>
+      <pubDate>Sun, 17 Sep 2023 16:42:43 +0800</pubDate>
+      
+      <guid>/articles/posts/50/</guid>
+      <description>如果把浏览器呈现页面的整个过程一分为二，前面讨论的的诸如图像资源优化、加载优化，以及构建中如何压缩资源大小等，都可视为浏览器为呈现页面请求所需资源的部分，本章主要关注浏览器获取资源后，进行渲染部分的相关优化内容。
+页面渲染性能 流畅的使用体验 网站页面要快速加载出来，而且运行过程也应更顺畅。
+那么要达到在怎样的性能指标，才能满足用户流畅的使用体验呢？
+目前大部分设备的屏幕分辨率都在 60fps 左右，也就是每秒刷新 60 次，所以要满足用户的体验期望，就需要浏览器在渲染页面动画或响应用户操作时，每一帧的生成速率尽量接近屏幕的刷新率。
+若按照 60fps 来算，则留给每一帧画面的时间不到 17ms，再除去浏览器对资源的一些整理工作，一帧画面的渲染应尽量再 10ms 内完成，如果达不到要求而导致帧率下降，则屏幕上的内容会发生抖动或卡顿。
+渲染过程 为了使每一帧页面渲染的开销都能在期望的时间范围内完成，就需要开发者了解渲染过程的每个阶段，以及各个阶段有哪些优化空间是我们力能所及的，
+经过分析根据开发者对优化渲染过程的控制力度，可以大体将其划分为五个部分：
+JavaScript 处理、计算样式、页面布局、绘制、合成
+JavaScript 处理： 前端项目中经常会需要响应用户操作，通过 JavaScript 对数据集进行计算、操作 DOM 元素，并展示动画等视觉效果。当然对于动画的实现，除了 JavaScript，也可以考虑使用如 CSS Animations、Transitions 等技术。
+计算样式： 在解析 CSS 文件后，浏览器需要根据各种选择器去匹配所要应用 CSS 规则的元素节点，然后计算出每个元素的最终样式。
+页面布局： 指的是浏览器在计算完样式后，会对每个元素尺寸大小和屏幕位置进行计算。由于每个元素都可能会受到其他元素的影响，并且位于 DOM 树形结构中子节点元素，总会受到父级元素修改的影响，所以页面布局的计算会经常发生。
+绘制： 在页面布局确定后，接下来便可以绘制元素的可视内容，包括颜色、边框、阴影及文本和图像。
+合成： 通常由于页面中的不同部分可能被绘制在多个图层上，所以在绘制完成后需要将多个图层按照正确的顺序在屏幕上合成，以便最终正确地渲染出来。
+这个过程中的每一个阶段都可能产生卡顿，
+这里值得说明的是： 并非对于每一帧画面都会经历这五个部分，比如仅修改与绘制相关的属性（文字颜色、背景图片或边缘阴影等），而未对页面布局产生任何修改，那么在计算样式阶段完成后，便会跳过页面布局直接执行绘制。
+如果所更改的属性既不影响页面布局又不需要重新绘制，便可直接跳过合成阶段执行。
+具体修改哪些属性会触发页面布局、绘制或合成阶段的执行，这与浏览器的内核类型存在一定关系，
+不同内核浏览器的 CSS 属性触发差异 属性 Blink Gecko Webkit z-index 绘制/合成 绘制/合成 布局/绘制/合成 transform 合成 合成 布局/绘制/合成 opacity 绘制/合成 合成 布局/绘制/合成 min-width 布局/绘制/合成 布局/合成 布局/绘制/合成 color 布局/绘制 布局/绘制 布局/绘制/合成 background 布局/绘制 布局/绘制 布局/绘制/合成 border-radius 布局/绘制 布局/绘制 布局/绘制/合成 border-style 布局/绘制/合成 布局/绘制/合成 布局/绘制/合成 border-width 布局/绘制/合成 布局/绘制/合成 布局/绘制/合成 JavaScript 执行优化 实现动画效果 利用 JavaScript 通常最容易想到的方式是 setTimeout 或 setInterval 来实现，</description>
+    </item>
+    
+    <item>
+      <title>Object.create()</title>
+      <link>/articles/posts/49/</link>
+      <pubDate>Thu, 14 Sep 2023 14:44:40 +0800</pubDate>
+      
+      <guid>/articles/posts/49/</guid>
+      <description>定义 给对象原型赋值。
+Object.create(proto, [propertiesObject]); /* - proto: 新创建对象的原型对象 - propertiesObject: 可选。要添加到新对象的可枚举（新添加的属性是其自身的属性，而不是其原型链上的属性）的属性。 */ Object.create() 和 {} 的区别 var o = { a: 1 }; console.log(o); 从上图可以看到，新创建的对象继承了 Object 自身的方法，如 hasOwnProperty、toString 等，在新对象上可以直接使用。
+再看看使用 Object.create() 创建对象：
+// 创建纯净的对象 var o = Object.create(null, { a: { writable: true, configurable: true, value: &amp;#34;1&amp;#34;, }, }); console.log(o); 可以看到，新创建的对象除了自身属性之外，原型链上没有任何属性，也没有继承 Object 的任何东西，此时如果我们调用 o.toString() 会报 Uncaught TypeError 的错误。
+第一个参数是 null，也就是说将 null 设置成了新创建对象的原型。
+改改上面的例子：
+var o = Object.create( {}, { a: { writable: true, configurable: true, value: &amp;#34;1&amp;#34;, }, } ); console.</description>
+    </item>
+    
+    <item>
+      <title>构建优化</title>
+      <link>/articles/posts/48/</link>
+      <pubDate>Thu, 14 Sep 2023 07:06:22 +0800</pubDate>
+      
+      <guid>/articles/posts/48/</guid>
+      <description>压缩与合并 资源压缩和合并的优点:
+减少 http 的请求数量
+减少 http 请求的资源大小
+HTML 压缩 HTML 压缩的三种方式：
+在线网站提供 HTML 压缩服务
+基于 nodejs 的工具：html-minifier
+const fs = require(&amp;#34;fs&amp;#34;); const { minify } = require(&amp;#34;html-minifier&amp;#34;); fs.readFile(&amp;#34;./test.html&amp;#34;, &amp;#34;utf8&amp;#34;, (err, data) =&amp;gt; { if (err) throw err; fs.writeFile( &amp;#34;./test_mini.html&amp;#34;, minify( data, { removeComments: true, // 去掉注释 collapseWhitespace: true, // 去除空格 minifyJS: true, // 压缩 HTML 中的 JavaScript minifyCSS: true, // 压缩 HTML 中的 css }, () =&amp;gt; console.log(&amp;#34;success&amp;#34;) ) ); }); 服务端模板引擎的渲染压缩 CSS 压缩 CSS 代码也能进行压缩，而且很有必要去压缩。</description>
+    </item>
+    
+    <item>
+      <title>书写高性能的代码</title>
+      <link>/articles/posts/47/</link>
+      <pubDate>Tue, 12 Sep 2023 20:47:00 +0800</pubDate>
+      
+      <guid>/articles/posts/47/</guid>
+      <description>数据存取 数据存取方式 一般而言，Js 的数据存取有 4 种方式：
+直接字面量：字面量不存储在特定的位置，也不需要索引，仅仅代表自身，包括 布尔值、数字、字符串、对象、数组、函数、null、undefined 及正则表达式。
+变量：通过关键字 const、let、var 定义的数据存储单元。
+数组元素：存储在数组对象内部，通过数组下标数字进行索引。
+对象属性：存储在对象内部，通过对象的字符串名称进行索引。
+其中数组元素和对象属性不仅可以是直接字面量的形式，还可以是其他数组对象或对象属性组成的更为复杂的数据结构。
+从读取速度来看，直接字面量与变量是非常快的，相比之下数组元素和对象属性由于需要索引，其读取速度也会因其组成结构的复杂度越高而变的越慢。
+作用域和作用域链 JavaScript 只有 全局作用域 和每个函数内部的 局部作用域。
+全局作用域 就是无论此时执行的上下文是在函数内部还是函数外部，都能访问到存在于全局作用域中的变量或对象；
+而定义存储在函数的 局部作用域 中的对象，只有在该函数内部执行上下文时才能都访问，而对函数外部不可见。
+对于能够访问的数据，其在不同作用域中的查询也有 先后顺序。
+这就涉及到 作用域链 的概念。
+JavaScript 引擎会在页面加载后创建一个全局的作用域，然后每碰到一个要执行的函数，又会为其创建对应的作用域。
+最终，不同的 块级作用域 和嵌套在内部的 函数作用域，会形成一个 作用域堆栈。
+当前生效的作用域在堆栈的最顶端，由上往下就是当前执行上下文所能访问的作用域链。
+举一个简单的例子：
+function plus(num) { return num + 1; } const ret = plus(6); 当这段代码刚开始执行时，函数 plus 的作用域中仅拥有一个指向全局对象的作用域，其中包括 this、函数对象 plus 及常量 ret，
+而在执行到 plus 时，JavaScript 引擎会创建一个新的执行上下文和包含一些局部变量的活动对象。
+执行过程会先对 num 标识符进行解析，即从作用域链的最顶层依次向下查找，直至找到 num 标识符。
+实战经验 对局部变量的使用 记住这一条建议：</description>
+    </item>
+    
+    <item>
+      <title>资源优先级</title>
+      <link>/articles/posts/46/</link>
+      <pubDate>Tue, 12 Sep 2023 18:08:38 +0800</pubDate>
+      
+      <guid>/articles/posts/46/</guid>
+      <description>优先级 浏览器基于自身的启发式算法，会对资源的重要性进行判断来划分优先级，通常从低到高为：Lowest、Low、High、Highest。
+比如，在 &amp;lt;head&amp;gt; 标签中，CSS 文件通常具有最高的优先级 Highest，其次是 &amp;lt;script&amp;gt; 标签所请求的脚本文件，但当 &amp;lt;script&amp;gt; 标签带有 defer 或 async 的异步属性时，其优先级又会降为 Low。我们呢通过浏览器的控制台可以看到浏览器对资源进行的优先级划分。
+预加载 使用 &amp;lt;link rel=&amp;quot;preload&amp;quot;&amp;gt; 标签告诉浏览器当前所指定的资源，应该拥有更高的优先级，例如：
+&amp;lt;link rel=&amp;#34;preload&amp;#34; as=&amp;#34;script&amp;#34; href=&amp;#34;important.js&amp;#34; /&amp;gt; &amp;lt;link rel=&amp;#34;preload&amp;#34; as=&amp;#34;style&amp;#34; href=&amp;#34;critical.css&amp;#34; /&amp;gt; 这里通过 as 属性告诉浏览器所要加载的资源类型，
+要注意：&amp;lt;link rel=&amp;quot;preload&amp;quot;&amp;gt; 会强制浏览器进行预加载，它与其他资源的提示不同，浏览器对此是必须执行而非可选的。
+如果预加载指定的资源在 3s 内未被当前页面使用，则浏览器会在开发者工具的控制台中进行警告提示，该警告务必要处理。
+解下来看两个使用实例：字体的使用和关键路径渲染
+通常字体文件都位于页面加载的若干个 CSS 文件的末尾，但考虑为了减少用户等待文本内容的加载时间，以及避免系统字体与偏好字体发生冲突，就必须提前获取字体，
+&amp;lt;link rel=&amp;#34;preload&amp;#34; as=&amp;#34;font&amp;#34; crossorigin=&amp;#34;crossorigin&amp;#34; type=&amp;#34;font/woff2&amp;#34; href=&amp;#34;myfont.woff2&amp;#34; /&amp;gt; [注]：这里的 crossorigin 属性非常重要，如果缺失该属性，浏览器不会对指定的字体进行预加载。
+前面讲过页面渲染生命周期时，提到过关键渲染路径，其中涉及首次渲染之前必须加载的资源（比如 CSS 和 JavaScript 等），这些资源对首屏页面渲染来说是非常重要的。以前通常建议的做法是把这些资源内联到 HTML 中，但对服务端渲染或对页面而言，这样做很容易导致带宽浪费，
+所以使用 &amp;lt;link rel=&amp;quot;preload&amp;quot;&amp;gt; 对单个文件进行预加载，除了能很快的请求资源，还能尽量利用缓存，
+其唯一的缺点是可能会在浏览器和服务器之间发生额外的往返请求，因为浏览器需要加载解析 HTML 后，才会知道后续资源请求情况，其解决方式可以利用 HTTP2 的推送。</description>
+    </item>
+    
+    <item>
+      <title>网站优化之静态资源优化</title>
+      <link>/articles/posts/45/</link>
+      <pubDate>Tue, 12 Sep 2023 12:19:06 +0800</pubDate>
+      
+      <guid>/articles/posts/45/</guid>
+      <description>1、图片优化细则 1.1 用工具进行图片压缩 压缩 png
+node-pngquant-native
+跨平台，压缩比高，压缩 png24 非常好。
+说明文档：https://www.npmjs.com/package/node-pngquant-native
+安装方法：npm install node-pngquant-native
+压缩 jpg
+jpegtran
+跨平台，有 Linux 、Mac、 Windows 的解决方案
+官网：http://jpegclub.org/jpegtran/
+安装方法：npm install –g jpegtran
+使用方法：jpegtran -copy none -optimize -outfile out.jpg in.jpg
+压缩 gif
+Gifsicle：通过改变每帧比例，减小 gif 文件大小，同时可以使用透明来达到更小的 文件大小，目前公认的解决方案。
+安装： http://www.lcdf.org/gifsicle/
+使用方式：优化级别设置为不小于 2，1 的话基本不压缩 gifsicle --optimize=3 -o out.gif in.gif
+将透明部分截去 gifsicle --optimize=3 --crop-transparency -o out.gif in.gif
+1.2 图片尺寸随网络环境变化 不同网络环境（Wifi/4G/3G）下，加载不同尺寸和像素的图片，通过在图片 URL 后 缀加不同参数改变。
+http://img13.360buyimg.com/n1/s100x100_jfs/t2443/71/2538811251/470 889/c2ec38b3/570f3438N81a4b62c.jpg
+1.3 响应式图片 JavaScript 绑定事件检测窗口大小
+CSS 媒体查询 @media screen and (max-width:640px) { my_image{ width:640px; } }</description>
+    </item>
+    
+    <item>
+      <title>加载注意事项</title>
+      <link>/articles/posts/44/</link>
+      <pubDate>Tue, 12 Sep 2023 10:22:36 +0800</pubDate>
+      
+      <guid>/articles/posts/44/</guid>
+      <description>首屏加载 对于首屏上的内容就不应当进行延迟加载，而应该使用正常的加载方式。
+此外，若将首屏视窗边界线作为延迟加载触发的阈值，其实并非最贱的性能考虑，更理想的做法是，在延迟加载的媒体资源到达首屏边界之前设置一个缓冲区，以便媒体资源在进入视窗之前就开始进行加载。
+代码如下：
+const lazyImageObserver = new IntersectionObserver( (entries, onserver) =&amp;gt; { // .... }, { rootMargin: &amp;#34;0 0 256px 0&amp;#34;, } ); 资源占位 当延迟加载的媒体资源未渲染出来之前，应当在页面中使用相同尺寸的占位图，如果不使用占位图，图像延迟显示出来后，尺寸更改可能会使页面布局出现移位。
+这种现象不仅会对用户体验带来困惑，更严重的还会触发浏览器成本高昂的回流机制，进而增加系统资源开销，造成卡顿。
+而用来占位的图像解决方案也有多种，十分简单的方式是使用一个与目标媒体资源长度相同的纯色占位符，或者之前使用的 Base64 图片，当然也可以采用 LQIP 或 SQIP 等方法。
+内容加载失败 在进行延迟加载过程中，可能会因为某种原因造成媒体资源加载失败，进而导致错误的情况。
+例如，图片资源可能采用以下方式进行规避：
+const newImage = new Image(); newImage.src = &amp;#34;photo.png&amp;#34;; newImage.onerror = (err) =&amp;gt; { // 当发生故障时处理措施 /* 处理措施： 01 可将使用的图片占位图替换为按钮，让用户单击以尝试重新加载所需的媒体资源。 02 或者在占位符区域显示错误的提示信息。 */ }; newImage.onload = () =&amp;gt; { // 加载成功的回调 }; 图像解码延迟 我们知道渐进式的 JPEG 会先呈现一个低像素的图像版本，随后会慢慢呈现出原图的样貌。这是因为图像从被浏览器请求获取，再到最终完整呈现在屏幕上，需要经历一个解码的过程。</description>
+    </item>
+    
+    <item>
+      <title>视频加载</title>
+      <link>/articles/posts/43/</link>
+      <pubDate>Mon, 11 Sep 2023 22:24:25 +0800</pubDate>
+      
+      <guid>/articles/posts/43/</guid>
+      <description>不需要自动播放 为了使页面更快地加载并渲染出来，可以阻止不需要自动播放的视频的预加载，其方法是通过视频标签的 preload 进行控制。
+&amp;lt;video controls preload=&amp;#34;none&amp;#34; poster=&amp;#34;default.jpg&amp;#34;&amp;gt; &amp;lt;source src=&amp;#34;simply.webm&amp;#34; type=&amp;#34;video/webm&amp;#34; /&amp;gt; &amp;lt;source src=&amp;#34;simply.mp4&amp;#34; type=&amp;#34;video/mp4&amp;#34; /&amp;gt; &amp;lt;/video&amp;gt; preload 属性通常的默认值是 auto，表示无论用户是否希望，所有视频文件都会被自动下载，这里将其设置为 none，来阻止视频的自动预加载。同时这里还用过 poster 属性为视频提供占位符图片，它的作用是当视频未加载出来时，不至于在页面中呈现一块让用户未知的空白。
+浏览器对视频的加载行为可能存在较大的差异：
+Chrome 之前的版本中，preload 的默认值是 auto，从 64 版本以后其默认值改为了 metadata，表示仅加载视频的元数据，FireBox、IE11、Edge 等浏览器的行为类似。
+Safari 11.0 的 Mac 版会默认进行部分视频资源预加载，11.2 的 Mac 版后仅可预加载元数据，但 ios 的 Safari 不会对视频预加载。
+另外，如果你的站点中包含了同一域名下的多个视频资源，最好将 preload 属性设置为 metadata，或者定义 poster 属性值时将 preload 设置为 none，这样能很好的避免 HTTP 的最大连接数，因为通常 HTTP 1.1 协议规定同一域名下的最大连接数为 6，如果同时有超过此数量的资源请求连接，那么多余的连接便会被挂起，这无疑也会对性能造成负面的影响。
+视频代替 GIF 动画 应当尽量用视频代替尺寸多大的 GIF 动画，虽然 GIF 动画的应用历史和范围都很广泛，但其在输出文件大小，图像色彩质量等许多方面的表现均不如视频。GIF 动画相对于视频具有三个附加的特性：没有音轨、连续循环播放、加载完成自动播放，替换成视频后类似于：
+&amp;lt;video autoplay muted loop playsinline&amp;gt; &amp;lt;source src=&amp;#34;video.</description>
+    </item>
+    
+    <item>
+      <title>原生的延迟加载支持</title>
+      <link>/articles/posts/42/</link>
+      <pubDate>Mon, 11 Sep 2023 21:55:45 +0800</pubDate>
+      
+      <guid>/articles/posts/42/</guid>
+      <description>从 Chrome 75 版本开始，已经可以通过 &amp;lt;img&amp;gt; 和 &amp;lt;iframe&amp;gt; 标签的 loading 属性原生支持延迟加载了，loading 属性包含以下三种取值：
+lazy: 进行延迟加载
+eager: 立即加载
+auto: 浏览器自行决定是否进行延迟加载
+若不指定任何属性，loading 默认取值 auto，
+&amp;lt;!-- 当用户滚动屏幕视窗到该图像元素时，才进行加载 --&amp;gt; &amp;lt;img src=&amp;#34;photo.jpg&amp;#34; loading=&amp;#34;lazy&amp;#34; alt=&amp;#34;&amp;#34; /&amp;gt; &amp;lt;!-- 立刻加载图像元素 --&amp;gt; &amp;lt;img src=&amp;#34;photo.jpg&amp;#34; loading=&amp;#34;eager&amp;#34; alt=&amp;#34;&amp;#34; /&amp;gt; &amp;lt;!-- 浏览器决定是否进行延迟加载 --&amp;gt; &amp;lt;img src=&amp;#34;photo.jpg&amp;#34; loading=&amp;#34;auto&amp;#34; alt=&amp;#34;&amp;#34; /&amp;gt; &amp;lt;!-- 亦可延迟加载 picture 中的图像 --&amp;gt; &amp;lt;picture&amp;gt; &amp;lt;source media=&amp;#34;(min-width: 750px)&amp;#34; srcset=&amp;#34;phone.jpg 1x, phone-hd.jpg 2x&amp;#34; /&amp;gt; &amp;lt;source srcset=&amp;#34;small.jpg 1x, small- hd.jpg 2x&amp;#34; /&amp;gt; &amp;lt;img src=&amp;#34;default.jpg&amp;#34; loading=&amp;#34;lazy&amp;#34; /&amp;gt; &amp;lt;/picture&amp;gt; &amp;lt;!</description>
+    </item>
+    
+    <item>
+      <title>属性的 getter 和 setter</title>
+      <link>/articles/posts/41/</link>
+      <pubDate>Mon, 11 Sep 2023 19:34:22 +0800</pubDate>
+      
+      <guid>/articles/posts/41/</guid>
+      <description>有两种类型的对象属性。
+第一种是 数据属性。我们已经知道如何使用它们了。到目前为止，我们使用过的所有属性都是数据属性。
+第二种类型的属性是新东西。它是 访问器属性（accessor property）。它们本质上是用于获取和设置值的函数，但从外部代码来看就像常规属性。
+getter 和 setter 访问器属性由 “getter” 和 “setter” 方法表示。在对象字面量中，它们用 get 和 set 表示：
+let obj = { get propName() { // 当读取 obj.propName 时，getter 起作用 }, set propName(value) { // 当执行 obj.propName = value 操作时，setter 起作用 }, }; 当读取 obj.propName 时，getter 起作用，当 obj.propName 被赋值时，setter 起作用。
+例如，我们有一个具有 name 和 surname 属性的对象 user：
+let user = { name: &amp;#34;John&amp;#34;, surname: &amp;#34;Smith&amp;#34;, }; 现在我们想添加一个 fullName 属性，该属性值应该为 &amp;quot;John Smith&amp;quot;。当然，我们不想复制粘贴已有的信息，因此我们可以使用访问器来实现：</description>
+    </item>
+    
+    <item>
+      <title>裁剪的3种方式，CSS 如何隐藏移动端的滚动条？</title>
+      <link>/articles/posts/40/</link>
+      <pubDate>Mon, 11 Sep 2023 18:36:17 +0800</pubDate>
+      
+      <guid>/articles/posts/40/</guid>
+      <description>在移动端开发中，经常会碰到需要横向滚动的场景，例如这样的
+但很多时候是不需要展示这个滚动条的，也就是这样的效果，如下
+你可能想到直接设置滚动条样式就可以了，就像这样
+::-webkit-scrollbar { display: none; } 目前来看好像没什么问题，但在某些版本的 iOS 上却无效（具体待测试），滚动条仍然出现。
+那有没有其他方式可以解决这个问题呢？下面介绍几个方法
+一、通过 overflow 隐藏 既然有时候修改滚动条样式无法解决，我们可以想办法把它隐藏。
+下面是一个横向滚动列表
+&amp;lt;div class=&amp;#34;list&amp;#34;&amp;gt; &amp;lt;div class=&amp;#34;item&amp;#34;&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;div class=&amp;#34;item&amp;#34;&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;div class=&amp;#34;item&amp;#34;&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;div class=&amp;#34;item&amp;#34;&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;div class=&amp;#34;item&amp;#34;&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;div class=&amp;#34;item&amp;#34;&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;div class=&amp;#34;item&amp;#34;&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt; 简单修饰一下，让这个列表可以横向滚动
+.list { display: flex; overflow: auto; gap: 10px; padding: 10px; } .item { width: 100px; height: 100px; background: royalblue; border-radius: 8px; flex-shrink: 0; } 效果如下
+通过 「overflow」 隐藏的方式很简单，我们需要一个父级
+&amp;lt;div class=&amp;#34;wrap&amp;#34;&amp;gt; &amp;lt;div class=&amp;#34;list&amp;#34;&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt; 然后，将列表底部padding设置的稍微大一些，比如
+.list { /**/ padding-bottom: 20px; } 可以看到列表下方的距离变大了，滚动条也更靠下了，效果如下</description>
+    </item>
+    
+    <item>
+      <title>当你的网站有新内容，如何立即通知你的用户呢？</title>
+      <link>/articles/posts/39/</link>
+      <pubDate>Mon, 11 Sep 2023 17:58:59 +0800</pubDate>
+      
+      <guid>/articles/posts/39/</guid>
+      <description>你有没有遇到过这样的场景：当你在浏览网页时，突然收到一个通知，告诉你有新的内容更新，或者有一条重要的消息通知你查看。
+作为一枚前端开发，你可能会想，这不就是请求轮询吗？
+没错，异步请求通过轮询的方式确实能实现类似的功能，但这不是我们今天要分享的主题 ~
+是什么呢？
+是 Service Worker！
+是的，通过 Service Worker 来实现“推送通知”的功能。Service Worker 是 Web API 的一部分，其功能非常强大。相信通过今天的内容，你肯定会有所收获。
+那么现在，就让我们正式开始吧~
+1. 初识 Service Worker 简单来说，Service Worker 是一种在浏览器背后默默工作的 JS 脚本，它可以在用户没有打开网页的情况下运行，为网页提供了各种强大的功能，比如离线缓存、后台同步等，当然还有我们今天要分享的——推送通知。
+有些网站的推送通知做的相当不错，比如油管（YouTube）。当你关注了油管上的某个 UP 主，当 TA 更新视频后浏览器就会给你推送消息，这时候就算你没有打开浏览器，你也会收到通知。Windows 10 系统上在桌面右下角会弹出一个来自浏览器的消息通知框，通知的内容来自油管那位 UP 主的更新信息；Mac 系统上，在桌面右上角会有一条来自浏览器的通知，通知的内容与 Windows 上的信息一致。
+你可能会问，为什么我们要使用 Service Worker 来实现推送通知呢？
+原因很简单，因为它可以帮助我们更好地与用户进行交互，能提高用户的参与度，甚至在一定程度上可以提高用户的留存率。设想一下，如果你的网站有新的内容更新，你可以立即通过推送通知告诉你的用户。
+这样的话，你的用户就不会错过重要通知了，而通知的内容恰好又戳到了用户的 G 点，那 TA 肯定会点一下消息框，然后瞬间就回到你的网站了。相较于用户首先打开浏览器然后点击书签访问到你的网站来说，这种类似于系统级别的消息通知能极大提高用户粘性。
+所以，要不要考虑把 Service Worker 在自己网站上用起来呢？
+下面，我们就来一步步实现这个功能。
+2. Service Worker 基础 现在你已经对 Service Worker 有了一个基本的了解，接下来我们看一下它的基础知识。
+首先你要明白 Service Worker 是如何实现推送通知的。其实它的工作原理也不复杂，当用户访问网页时，Service Worker 就会被安装到用户的设备上。当服务器有新的信息需要传递给用户时，服务器就会发送一个推送事件到 Service Worker。然后，Service Worker 就会接收这个事件推送，并根据这个事件显示给用户一个通知。</description>
+    </item>
+    
+    <item>
+      <title>链模式</title>
+      <link>/articles/posts/38/</link>
+      <pubDate>Mon, 11 Sep 2023 11:06:14 +0800</pubDate>
+      
+      <guid>/articles/posts/38/</guid>
+      <description>通过在对象方法中将当前对象返回，实现对同一个对象多个方法的链式调用。
+找位助手 var A = function () { return A.fn(); }; A.fn = A.prototype = {}; 获取元素 var A = function (selector) { return A.fn.init(selector); }; A.fn = A.prototype = { init: function (selector) { return document.getElementById(selector); }, length: 2, size: function () { return this.length; }, }; console.log(A(&amp;#34;demo&amp;#34;)); 一个大问题 现在，我还想让 A 对象返回的结果还能够拥有 A.fn 中的方法，如 size 等，现在的设计是办不到的，
+var A = function (selector) { return A.fn.init(selector); }; A.fn = A.prototype = { init: function (selector) { // this === A.</description>
+    </item>
+    
+    <item>
+      <title>惰性模式</title>
+      <link>/articles/posts/37/</link>
+      <pubDate>Thu, 07 Sep 2023 22:48:24 +0800</pubDate>
+      
+      <guid>/articles/posts/37/</guid>
+      <description>减少每次代码执行时的重复性的分支判断，通过对对象重定义来屏蔽原对象中的分支判断
+对事件的思考 // 单例模式定义命名空间 var A = {}; A.on = function (dom, type, fn) { if (dom.addEventListener) { dom.addEventListener(type, fn, false); } else if (dom.attachEvent) { dom.attachEvent(&amp;#34;on&amp;#34; + type, fn); } else { dom[&amp;#34;on&amp;#34; + type] = fn; } }; 每次为元素添加事件时，总会走一遍能力检测，有点多余。
+加载即执行 // 添加绑定事件方法 on A.on = (function (dom, type, fn) { if (document.addEventListener) { return function (dom, type, fn) { dom.addEventListener(type, fn, false); }; } else if (document.attachEvent) { return function (dom, type, fn) { dom.</description>
+    </item>
+    
+    <item>
+      <title>简单模板模式</title>
+      <link>/articles/posts/36/</link>
+      <pubDate>Wed, 06 Sep 2023 14:04:59 +0800</pubDate>
+      
+      <guid>/articles/posts/36/</guid>
+      <description>通过格式化字符串拼凑出视图避免创建视图时大量节点操作，优化内存开销。
+实现方案 // 命名空间 var A = A || {}; // 主体展示区容器 A.root = document.getElementById(&amp;#34;conainer&amp;#34;); // 创建视图方法集合 A.strategy = { listPart: function () {}, codePart: function () {}, onlyTitle: function () {}, guide: function () {}, //... }; // 创建视图入口 A.init = function (data) { this.strategy[data.type](data); }; 模板渲染方法
+A.formateString = function (str, data) { return str.replace(/\{#(\w+)#\}/g, function (match, key) { return typeof data[key] === undefined ? &amp;#34;&amp;#34; : data[key]; }); }; 有了这个方法，我们可以通过简单模板来渲染出我们需求视图</description>
+    </item>
+    
+    <item>
+      <title>迭代器模式</title>
+      <link>/articles/posts/35/</link>
+      <pubDate>Wed, 06 Sep 2023 10:30:47 +0800</pubDate>
+      
+      <guid>/articles/posts/35/</guid>
+      <description>在不暴露对象内部结构的同时，可以顺序的访问聚合对象内部的元素。
+迭代器 迭代器就是用来顺序的访问一个聚合对象内部的元素，可以简化遍历操作，
+焦点图的例子中，那些图片元素对象其实就是一组聚合对象，然后你要做的就是创建一个迭代器，专门用来访问这些图片数据的，比如前一张、后一张、第一张、最后一张，对每一张图片的处理，对当前图片处理等等。
+// 迭代器 var Iterator = function (items, container) { // 父容器 var container = (container &amp;amp;&amp;amp; document.getElementById(container)) || document, // 获取元素 items = container.getElementsByTagName(items), length = items.length, index = 0; // 缓存原生数组的 splice 方法 var splice = [].splice; return { // 获取第一个元素 first: function () {}, // 获取最后一个元素 second: function () {}, // 获取前一个元素 pre: function () {}, // 获取后一个元素 next: function () {}, // 获取某一个元素 get: function () {}, // 对每一个元素执行某一个方法 dealEach: function () {}, // 对某一个元素执行某一个方法 dealItem: function () {}, // 排他方式处理某一个元素 exclusive: function () {}, }; }; 实现迭代器 // 获取第一个元素 first: function() { index = 0; return items[index] }, // 获取最后一个元素 second: function() { index = length - 1; return items[index]; }, // 获取前一个元素 pre: function() { if(--index &amp;gt; 0) { return items[index] } else { index = 0; return null } }, // 获取后一个元素 next: function() { if(++index &amp;lt; length) { return items[index] } else { index = length - 1; return null; } }, // 获取某一个元素 get: function(num) { index = num &amp;gt;= 0 ?</description>
+    </item>
+    
+    <item>
+      <title>中介者模式</title>
+      <link>/articles/posts/34/</link>
+      <pubDate>Wed, 06 Sep 2023 09:59:07 +0800</pubDate>
+      
+      <guid>/articles/posts/34/</guid>
+      <description>通过中介对象封装一系列对象之间的交互，使对象之间不再相互引用，降低他们之间的耦合，有时候中介者对象也可以改变对象之间的交互。
+中介者模式和观察者模式的区别？ 首先他们都是通过消息的收发机制实现的，不过在观察者模式中，一个对象既可以是消息的发送者也可以是消息的接受者，他们之间信息交流依托于消息系统实现的解耦。而中介者模式中消息的发送方只有一个，就是中介对象，而且中介对象不能订阅消息，只有那些活跃对象（订阅者）才可以订阅中介者的消息，观察者模式需要写一个消息系统，增加了开发成本。
+如果使用中介者模式，那么设置层模块对象就应该是一个中介者对象，它负责向各个导航模块对象发送用户设置的消息，而各个导航模块则应该作为消息的订阅者存在。
+创建中介者对象 // 中介者对象 var Mediator = function () { // 消息对象 var _msg = {}; return { // 订阅消息方法 register: function (type, action) { // 如果消息存在 if (_msg[type]) { // 存入回调函数 _msg[type].push(action); } else { // 不存在，则建立消息容器 _msg[type] = []; // 存入回调函数 _msg[type].push(action); } }, // 发布消息方法 send: function (type) { // 如果该消息已经被订阅 if (_msg[type]) { for (var i = 0, len = _msg[type].length; i &amp;lt; len; i++) { _msg[type][i] &amp;amp;&amp;amp; _msg[type][i](); } } }, }; }; 试试看，可否一用 // 单元测试 // 订阅消息 Mediator.</description>
+    </item>
+    
+    <item>
+      <title>命令模式</title>
+      <link>/articles/posts/33/</link>
+      <pubDate>Tue, 05 Sep 2023 21:35:45 +0800</pubDate>
+      
+      <guid>/articles/posts/33/</guid>
+      <description>命令对象 // 模块的实现 var viewCommand = (function () { // 方法集合 var Action = { // 创建方法 create: function () {}, // 展示方法 display: function () {}, }; // 命令接口 return function excute() {}; })(); 视图创建 // 模块的实现 var viewCommand = (function () { var tpl = { product: [ &amp;#34;&amp;lt;div&amp;gt;&amp;#34;, &amp;#39;&amp;lt;img src=&amp;#34;{#src#}&amp;#34;/&amp;gt;&amp;#39;, &amp;#34;&amp;lt;p&amp;gt;{#text#}&amp;lt;/p&amp;gt;&amp;#34;, &amp;#34;&amp;lt;/div&amp;gt;&amp;#34;, ].join(&amp;#34;&amp;#34;), title: [ &amp;#39;&amp;lt;div class=&amp;#34;title&amp;#34;&amp;gt;&amp;#39;, &amp;#39;&amp;lt;div class=&amp;#34;main&amp;#34;&amp;gt;&amp;#39;, &amp;#34;&amp;lt;h2&amp;gt;{#title#}&amp;lt;/h2&amp;gt;&amp;#34;, &amp;#34;&amp;lt;p&amp;gt;{#tips#}&amp;lt;/p&amp;gt;&amp;#34;, &amp;#34;&amp;lt;/div&amp;gt;&amp;#34;, &amp;#34;&amp;lt;/div&amp;gt;&amp;#34;, ].join(&amp;#34;&amp;#34;), }, html = &amp;#34;&amp;#34;; function formateString(str, obj) { return str.</description>
+    </item>
+    
+    <item>
+      <title>职责链模式</title>
+      <link>/articles/posts/32/</link>
+      <pubDate>Tue, 05 Sep 2023 19:33:22 +0800</pubDate>
+      
+      <guid>/articles/posts/32/</guid>
+      <description>解决请求的发送者与请求的接受者之间的耦合，通过职责链上的多个对象对分解请求流程，实现请求在多个对象之间传递，直到最后一个对象完成请求的处理。
+分解需求 既然一个需求要做很多事情，那就把每件事情独立出一个模块对象去处理，这样完整的需求就被分解成一部分一部分相互独立的模块需求
+第一站：请求模块 创建一个异步请求
+var sendData = function (data, dealType, dom) { var xhr = new XMLHttpRequest(); var url = &amp;#34;getData.php?mod=userInfo&amp;#34;; xhr.onload = function (event) { if ((xhr.status &amp;gt;= 200 &amp;amp;&amp;amp; xhr.status &amp;lt; 300) || xhr.status === 304) { // 请求成功 dealData(xhr.responseText, dealType, dom); } else { // 请求失败 } }; // 拼接请求字符串 for (var i in data) { url += &amp;#34;&amp;amp;&amp;#34; + i + &amp;#34;=&amp;#34; + data[i]; } // 发送异步请求 xhr.</description>
+    </item>
+    
+    <item>
+      <title>策略模式</title>
+      <link>/articles/posts/31/</link>
+      <pubDate>Tue, 05 Sep 2023 11:58:20 +0800</pubDate>
+      
+      <guid>/articles/posts/31/</guid>
+      <description>将定义的一组算法封装起来，使其相互之间可以替换。封装的算法具有一定的独立性，不会随客户端变化而变化。
+策略对象 // 价格策略 var PriceStrategy = (function () { // 内部算法对象 var strategy = { return30: function (price) { // +price 转化为数字类型 return +price + parseInt(price / 100) * 30; }, return50: function (price) { return +price + parseInt(price / 100) * 50; }, percent90: function (price) { // js 处理小数乘法有 bug return (price * 100 * 90) / 10000; }, percent80: function (price) { return (price * 100 * 80) / 10000; }, percent50: function (price) { return (price * 100 * 50) / 10000; }, }; // 策略算法调用接口 return function (algorithm, price) { return strategy[algorithm] &amp;amp;&amp;amp; strategy[algorithm](price); }; })(); // 使用 var price = PriceStrategy(&amp;#34;return50&amp;#34;, &amp;#34;314.</description>
+    </item>
+    
+    <item>
+      <title>状态模式</title>
+      <link>/articles/posts/30/</link>
+      <pubDate>Tue, 05 Sep 2023 09:24:15 +0800</pubDate>
+      
+      <guid>/articles/posts/30/</guid>
+      <description>状态对象的实现 var ResultState = function () { var State = { state0: function () { console.log(&amp;#34;这是第一种情况&amp;#34;); }, state1: function () { console.log(&amp;#34;这是第二种情况&amp;#34;); }, state2: function () { console.log(&amp;#34;这是第三种情况&amp;#34;); }, state3: function () { console.log(&amp;#34;这是第四种情况&amp;#34;); }, }; function show(result) { State[&amp;#34;state&amp;#34; + result] &amp;amp;&amp;amp; State[&amp;#34;state&amp;#34; + result](); } return { show, }; }; 状态对象的演练 ResultState.show(3); 状态的优化 // 创建超级玛丽状态类 var MarryState = function () { // 内部状态私有变量 var _currentState = {}, states = { jump: function () { // 跳跃 console.</description>
+    </item>
+    
+    <item>
+      <title>观察者模式</title>
+      <link>/articles/posts/29/</link>
+      <pubDate>Sun, 03 Sep 2023 11:00:57 +0800</pubDate>
+      
+      <guid>/articles/posts/29/</guid>
+      <description>又被称为发布-订阅模式或消息机制，定义了一种依赖关系，解决了主体对象与观察者之间功能的耦合。
+我们需要把观察者对象创建出来，他有一个消息容器，和三个方法，分别是订阅消息方法、取消订阅的消息方法、发送订阅消息的方法。
+// 将观察者放在闭包中，当页面加载就立即执行 var Observer = (function () { // 防止消息队列暴漏而被篡改故将消息容器作为静态私有变量保存 var _messages = {}; return { // 注册信息接口 regist: function (type, fn) { // 如果消息不存在则应该创建一个该消息类型 if (typeof _messages[type] === &amp;#34;undefined&amp;#34;) { // 将动作推入到该消息对应的动作执行队列中 _messages[type] = [fn]; } else { // 如果信息存在 // 将动作方法推入该消息对应的动作执行序列中 _messages[type].push(fn); } }, // 发布信息接口 fire: function (type, args) { // 如果该消息没有被注册，则返回 if (!_messages[type]) { return; } // 定义消息类型 var events = { type, // 消息类型 args: args || {}, // 消息携带数据 }, i = 0, // 消息动作循环变量 len = _messages[type].</description>
+    </item>
+    
+    <item>
+      <title>VSCODE 快捷键</title>
+      <link>/articles/posts/28/</link>
+      <pubDate>Sun, 03 Sep 2023 09:45:34 +0800</pubDate>
+      
+      <guid>/articles/posts/28/</guid>
+      <description>VSCODE 快捷键 </description>
+    </item>
+    
+    <item>
+      <title>模板方法模式</title>
+      <link>/articles/posts/27/</link>
+      <pubDate>Sat, 02 Sep 2023 18:56:18 +0800</pubDate>
+      
+      <guid>/articles/posts/27/</guid>
+      <description>父类中定义一组操作算法骨架，而将一些实现步骤延迟到子类中，使得子类可以不改变父类的算法结构的同时可重新定义算法中某些步骤。
+创建基本提示框 首先要做的就是创建一个基本提示框基类，然后其他提示框类只需要在继承基础上，拓展自己所需即可。
+// 模板类 基础提示框 data 渲染数据 var Alert = function (data) { // 没有数据则返回，防止后面程序执行 if (!data) { return; } // 设置内容 this.content = data.content; // 创建提示框面板 this.panel = document.createElement(&amp;#34;div&amp;#34;); // 创建提示内容组件 this.contentNode = document.createElement(&amp;#34;p&amp;#34;); // 创建确定按钮组件 this.confirmBtn = document.createElement(&amp;#34;span&amp;#34;); // 创建关闭按钮组件 this.closeBtn = document.createElement(&amp;#34;b&amp;#34;); // 为提示框面板添加类 this.panel.className = &amp;#34;alert&amp;#34;; // 为关闭按钮添加类 this.closeBtn.className = &amp;#34;a-close&amp;#34;; // 为确定按钮添加类 this.confirmBtn.className = &amp;#34;a-confirm&amp;#34;; // 为确定按钮添加文件 this.confirmBtn.innerHTML = data.confirm || &amp;#34;确认&amp;#34;; // 为提示内容添加文本 this.</description>
+    </item>
+    
+    <item>
+      <title>reset.css 知多少</title>
+      <link>/articles/posts/26/</link>
+      <pubDate>Sat, 02 Sep 2023 12:23:14 +0800</pubDate>
+      
+      <guid>/articles/posts/26/</guid>
+      <description>大部分的时候，作为前端，我们在写 CSS 样式之前，都知道需要添加一份 reset.css ，但是有深究过 reset.css 每一句的人恐怕不多，其实其中也是有很多学问的，知己知彼，真正厘清它，对提高 CSS 大有裨益。
+reset.css 先来看看早先 YUI 的一个版本的 reset.css，这是一份历史比较悠久的 RESET 方案:
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td { margin: 0; padding: 0; } table { border-collapse: collapse; border-spacing: 0; } fieldset, img { border: 0; } address, caption, cite, code, dfn, em, strong, th, var { font-style: normal; font-weight: normal; } ol, ul { list-style: none; } caption, th { text-align: left; } h1, h2, h3, h4, h5, h6 { font-size: 100%; font-weight: normal; } q:before, q:after { content: &amp;#34;&amp;#34;; } abbr, acronym { border: 0; } 首先，我们要知道 CSS RESET 的目的是什么？是为了消除不同的浏览器在默认样式上不同表现，但是到今天，现代浏览器在这方面的差异已经小了很多。</description>
+    </item>
+    
+    <item>
+      <title>现代 CSS 解决方案:CSS 数学函数</title>
+      <link>/articles/posts/25/</link>
+      <pubDate>Sat, 02 Sep 2023 11:41:00 +0800</pubDate>
+      
+      <guid>/articles/posts/25/</guid>
+      <description>在 CSS 中，其实存在各种各样的函数。具体分为：
+Transform functions Math functions Filter functions Color functions Image functions Counter functions Font functions Shape functions Reference functions CSS grid functions 本文，将具体介绍其中的 CSS 数学函数（Math functions）中，已经被浏览器大规模支持的 4 个：
+calc() min() max() clamp() 为什么说是被浏览器大规模支持的？因为除了这 4 个目前已经得到大规模支持的数学函数外，其实规范 CSS Values and Units Module Level 4 已经定义了诸如三角函数相关 sin()、cos()、tan() 等，指数函数相关 pow()、sqrt() 等等数学函数，只是目前都处于实验室阶段，还没有浏览器支持它们，需要给时间一点时间。
+Calc() calc() 此 CSS 函数允许在声明 CSS 属性值时执行一些计算。
+语法类似于
+{ width: calc(100% - 80px); } 一些需要注意的点：
++ 和 - 运算符的两边必须要有空白字符。比如，calc(50% -8px) 会被解析成为一个无效的表达式，必须写成calc(8px + -50%) * 和 / 这两个运算符前后不需要空白字符，但如果考虑到统一性，仍然推荐加上空白符 用 0 作除数会使 HTML 解析器抛出异常 涉及自动布局和固定布局的表格中的表列、表列组、表行、表行组和表单元格的宽度和高度百分比的数学表达式，auto 可视为已指定。 calc() 函数支持嵌套，但支持的方式是：把被嵌套的 calc() 函数全当成普通的括号。（所以，函数内直接用括号就好了。） calc() 支持与 CSS 变量混合使用 看一个最常见的例子，页面结构如下：</description>
+    </item>
+    
+    <item>
+      <title>21条CSS高级技巧</title>
+      <link>/articles/posts/24/</link>
+      <pubDate>Sat, 02 Sep 2023 10:59:54 +0800</pubDate>
+      
+      <guid>/articles/posts/24/</guid>
+      <description>使用 CSS 复位 CSS 复位可以在不同的浏览器上保持一致的样式风格。您可以使用 CSS reset 库Normalize等，也可以使用一个更简化的复位方法：
+* { box-sizing: border-box; margin: 0; padding: 0; } 现在元素的 margin 和 padding 已为 0，box-sizing可以管理您的 CSS 盒模型布局。 演示 注意：如果你遵循接下来继承 box-sizing讲解的这个技巧, 你不需要在以上代码中添加 box-sizing 属性。
+继承 box-sizing 从 html 元素继承 box-sizing ：
+html { box-sizing: border-box; } *, *:before, *:after { box-sizing: inherit; } 如此在插件或其它组件里改变 box-sizing 变得简单。
+使用 :not() 选择器来决定表单是否显示边框 先为元素添加边框
+/* 添加边框 */ .nav li { border-right: 1px solid #666; } 为最后一个元素去除边框
+/* 去掉边框 */ .</description>
+    </item>
+    
+    <item>
+      <title>享元模式</title>
+      <link>/articles/posts/23/</link>
+      <pubDate>Sat, 02 Sep 2023 09:39:55 +0800</pubDate>
+      
+      <guid>/articles/posts/23/</guid>
+      <description>运用共享技术有效的支持大量的细粒度的对象，避免对象间拥有相同内容造成多余的开销。
+享元模式主要还是对其数据、方法共享分离，它将数据和方法分成内部数据、内部方法和外部数据、外部方法。内部数据、内部方法指的是相似或者共有的数据和方法，所以将一部分提取出来减少开销。
+享元对象 var Flyweight = function () { // 已创建的元素 var created = []; // 创建一个新闻包装容器 function create() { var dom = document.createElement(&amp;#34;div&amp;#34;); // 将容器插入新闻列表容器中 document.getElementById(&amp;#34;container&amp;#34;).appendChild(dom); // 缓存新创建的元素 created.push(dom); // 返回创建的新元素 return dom; } return { // 获取创建新闻元素方法 getDiv: function () { // 如果已创建的元素小于当前页元素的总个数，则创建 if (created.length &amp;lt; 5) { return create(); } else { // 获取第一个元素，并插入最后面 var div = created.shift(); created.push(div); return div; } }, }; }; 实现需求 var paper = 0, num = 5, len = article.</description>
+    </item>
+    
+    <item>
+      <title>组合模式</title>
+      <link>/articles/posts/22/</link>
+      <pubDate>Thu, 31 Aug 2023 21:34:58 +0800</pubDate>
+      
+      <guid>/articles/posts/22/</guid>
+      <description>每个成员要有祖先 var News = function () { // 子组件容器 this.children = []; // 当前组件元素 this.element = null; }; News.prototype = { // 定义而不是实现 init: function () { throw new Error(&amp;#34;请重写你的方法&amp;#34;); }, // 定义而不是实现 add: function () { throw new Error(&amp;#34;请重写你的方法&amp;#34;); }, // 定义而不是实现 getElement: function () { throw new Error(&amp;#34;请重写你的方法&amp;#34;); }, }; 组合要有容器类 // 容器类构造函数 var Container = function (id, parent) { // 构造函数继承父类 News.call(this); // 模块 id this.id = id; // 模块的父容器 this.</description>
+    </item>
+    
+    <item>
+      <title>桥接模式</title>
+      <link>/articles/posts/21/</link>
+      <pubDate>Wed, 30 Aug 2023 22:06:48 +0800</pubDate>
+      
+      <guid>/articles/posts/21/</guid>
+      <description>多元化对象 // 多维变量类 // 运动单元 function Speed(x, y) { this.x = x; this.y = y; } Speed.prototype.run = function () { console.log(&amp;#34;运动起来&amp;#34;); }; // 着色单元 function Color(cl) { this.color = cl; } Color.prototype.draw = function () { console.log(&amp;#34;绘制色彩&amp;#34;); }; // 变形单元 function Shape(sp) { this.shape = sp; } Shape.prototype.change = function () { console.log(&amp;#34;改变形状&amp;#34;); }; // 说话单元 function Speek(wd) { this.word = wd; } Speek.prototype.say = function () { console.log(&amp;#34;书写字体&amp;#34;); }; 我们想创建一个球类，并且它可以运动，可以着色。</description>
+    </item>
+    
+    <item>
+      <title>装饰者模式</title>
+      <link>/articles/posts/20/</link>
+      <pubDate>Wed, 30 Aug 2023 21:55:19 +0800</pubDate>
+      
+      <guid>/articles/posts/20/</guid>
+      <description> 在不改变原对象的基础上，通过对其进行包装拓展使原有对象可以满足用户的更复杂需求。
+// 装饰者 var decorator = function (input, fn) { var input = document.getElementById(input); if (typeof input.onclick === &amp;#34;function&amp;#34;) { var oldClickFn = input.onclick; input.onclick = function () { oldClickFn(); fn(); }; } else { input.onclick = fn; } }; // 使用 decorator(&amp;#34;tel_input&amp;#34;, function () { document.getElementById(&amp;#34;tel_demo_text&amp;#34;).style.display = &amp;#34;none&amp;#34;; }); decorator(&amp;#34;name_input&amp;#34;, function () { document.getElementById(&amp;#34;name_demo_text&amp;#34;).style.display = &amp;#34;none&amp;#34;; }); decorator(&amp;#34;address_input&amp;#34;, function () { document.getElementById(&amp;#34;address_demo_text&amp;#34;).style.display = &amp;#34;none&amp;#34;; }); </description>
+    </item>
+    
+    <item>
+      <title>适配器模式</title>
+      <link>/articles/posts/19/</link>
+      <pubDate>Wed, 30 Aug 2023 21:18:21 +0800</pubDate>
+      
+      <guid>/articles/posts/19/</guid>
+      <description>将一个类（对象）的接口（方法或属性）转化成另外一个接口，以满足用户需求，使类（对象）之间接口的不兼容问题通过适配器得以解决。
+以前所写的功能代码 A(function () { A(&amp;#34;button&amp;#34;).on(&amp;#34;click&amp;#34;, function (e) { //... }); }); jQuery 适配器 公司 A 框架代码书写格式是不是与 jQuery 代码书写格式很像，所以需要在加载完 jQuery 框架后写一个适配器，将我们已有的功能适配到 jQuery。适配器主要的任务是适配两种代码库中不兼容的代码，所以首当其冲的就是全局对象 A 与 jQuery 了，所以可以像下面这样轻松的实现。
+window.A = A = jQuery; 适配异类框架 公司的整个轻量级 A 框架太像 jQuery 了，我们可以将两种框架看成是相似框架，但是如果一个框架与 jQuery 血缘远一点，那么对于这种异类框架适配情况就复杂多了，举个例子:
+// 定义框架 var A = A || {}; A.g = function (id) { return document.getElementById(id); }; // 为元素绑定事件 A.on = function (id, type, fn) { var dom = typeof id === &amp;#34;string&amp;#34; ?</description>
+    </item>
+    
+    <item>
+      <title>外观模式</title>
+      <link>/articles/posts/18/</link>
+      <pubDate>Wed, 30 Aug 2023 20:47:36 +0800</pubDate>
+      
+      <guid>/articles/posts/18/</guid>
+      <description>添加一个点击事件 document.onclick = function (e) { e.preventDefault(); if (e.target !== document.getElementById(&amp;#34;myinput&amp;#34;)) { hidePageAlert(); } }; function hidePageAlert() { // 隐藏提示框 } 兼容模式 套餐，定制，简化复杂请求，统一封装，外观模式封装
+// 外观模式实现 function addEvent(dom, type, fn) { if (dom.addEventListener) { dom.addEventListener(type, fn, false); } else if (dom.attachEvent) { dom.attachEvent(&amp;#34;on&amp;#34; + type, fn); } else { dom[&amp;#34;on&amp;#34; + type] = fn; } } // 使用 var myInput = document.getElementById(&amp;#34;myinput&amp;#34;); addEvent(myInput, &amp;#34;click&amp;#34;, function () { console.log(&amp;#34;绑定第一个事件&amp;#34;); }); addEvent(myInput, &amp;#34;click&amp;#34;, function () { console.</description>
+    </item>
+    
+    <item>
+      <title>CSS will-change</title>
+      <link>/articles/posts/17/</link>
+      <pubDate>Wed, 30 Aug 2023 13:07:35 +0800</pubDate>
+      
+      <guid>/articles/posts/17/</guid>
+      <description>一、什么是 will-change？ will-change是一个 CSS 属性，它可以告诉浏览器某个元素将要发生的变化。通过明确指定这些变化，浏览器可以事先分配和优化相应的资源，从而提升渲染的性能。
+二、will-change 的使用方法 要使用will-change，只需将它应用于你要进行性能优化的元素上。
+.element { will-change: transform; } 在上述示例中，我们告诉浏览器，该元素即将发生变换（transform），以便浏览器在渲染时提前分配所需的资源。
+值得注意的是，因为will-change是为了性能优化而设计的，滥用它可能会带来负面影响。只在需要优化的元素上使用will-change，避免对所有元素都进行指定。
+三、will-change 的原理 要理解will-change的原理，我们需要了解浏览器渲染流程的基本概念。
+1. 渲染流程简介 浏览器在渲染网页时，会经历一系列的步骤，如样式计算、布局、绘制和合成。为了提高性能，浏览器会尽量避免进行不必要的计算和操作。
+2. will-change 的作用 will-change的作用就是告诉浏览器某个元素将要发生的变化，从而使浏览器在渲染过程中提前分配和优化相应的资源。
+例如，当我们设置了will-change: transform时，浏览器会为该元素创建一个独立的图层，将这个图层标记为“即将变换”。这样，在进行布局和绘制时，浏览器就可以更高效地处理这个元素，而无需重新计算整个渲染树。
+加入 will-change 后，通过观察复合层，如图下
+加入 will-change 后，元素会被提升到单独的复合层，动画（重绘、重排）的操作只会在单独复合层上进行，减少了原来的页面层重绘和重排的行为 注：每一个元素单独加入 will-change 都会单独创建一个复合层，如果给大量的元素加上 will-change 就会创建大量的复合层，反而会影响性能
+3. will-change的优化效果 使用will-change可以带来以下优化效果：
+减少渲染阻塞：浏览器可以提前分配和优化资源，减少渲染阻塞时间，提高页面的响应速度。 减少重绘和重排：浏览器可以更好地管理渲染过程，避免不必要的重绘和重排，从而提高渲染性能。 硬件加速：某些浏览器对will-change属性会进行硬件加速，进一步提升性能。 4. will-change使用的时机 在很多关于 will-change 的描述，都能够看到类似下面的一段话
+在实际更改的元素上将 will-change 设置为您将实际更改的属性。并在他们停止时将其删除。- Tab Atkins Jr.（规范编辑者）
+至于为什么？大部分的描述都是因为 will-change 会消耗浏览器 GPU 资源
+当元素有 will-change 时，将元素提升到它们自己的“GPU 层”的浏览器。但有太多元素声明时，浏览器将忽略声明，以避免耗尽 GPU 内存
+所以对于 will-change 的使用应该控制时机
+在适当的时机移除 will-change 就是减少浏览器的复合层，避免过度使用 will-change 带来性能问题</description>
+    </item>
+    
+    <item>
+      <title>单例模式</title>
+      <link>/articles/posts/16/</link>
+      <pubDate>Tue, 29 Aug 2023 21:32:16 +0800</pubDate>
+      
+      <guid>/articles/posts/16/</guid>
+      <description>单例模式：是只允许实例化一次的对象类。
+命名空间的管理员 单例模式常用来定义命名空间
+var Ming = { g: function (id) { return document.getElementById(id); }, css: function (id, key, value) { this.g(id).style[key] = value; }, }; 模块分明 单例模式除了定义命名空间外，还有一个作用，就是通过单例模式来管理代码库的各个模块，
+baidu.dom.addClass #添加元素类 baidu.dom.append #插入元素 baidu.event.stopPropagation #阻止冒泡 baidu.event.preventDefault #阻止默认行为 baidu.event.trim #去除字符串收尾空白符 baidu.string.encodeHTML #将字符串进行html编码 创建一个小型代码库 我们也可以用单例模式来规范我们自己代码库的各个模块，比如我们有一个 A 库，它包含公用模块、工具模块、ajax 模块和其他模块，我们就可以自己定制一个如下的小型代码库。
+var A = { Util: { util_method1: function () {}, util_method2: function () {}, //... }, Tool: { tool_method1: function () {}, tool_method2: function () {}, //.</description>
+    </item>
+    
+    <item>
+      <title>原型模式</title>
+      <link>/articles/posts/15/</link>
+      <pubDate>Tue, 29 Aug 2023 17:16:23 +0800</pubDate>
+      
+      <guid>/articles/posts/15/</guid>
+      <description>创建一个焦点图 假设页面中有很多焦点图，那么我们要实现这些焦点图最好的方式就是通过创建对象来一一实现。我们就需要有一个焦点类，比如我们把这个类定义为 LoopImages。
+// 图片轮播类 var LoopImages = function (imgArr, container) { this.imagesArray = imgArr; this.container = container; this.createImage = function () {}; this.changeImage = function () {}; }; 如果一个页面中有多个焦点图，其切换动画一般是多样化的，有的可能是上下切换，有的可能是左右切换，有的可能是渐隐渐现，有的可能是放缩切换，等等。因此创建的轮播图片结构应该是多样化的，同样切换的效果也应该是多样化的，因此我们应该抽象出一个基类，让不同特效去继承这个基类，然后对于差异化的需求通过重写这些继承下来的属性或方法来解决。
+比如，有一个包含左右切换箭头，如下：
+// 上下滑动切换类 var SlideLoopImg = function (imgArr, container) { LoopImages.call(this, imgArr, container); this.changeImage = function () { console.log(&amp;#34;SlideLoopImg changeImage function&amp;#34;); }; }; // 渐隐切换类 var FadeLoopImg = function (imgArr, container, arrow) { LoopImages.call(this, imgArr, container); this.arrow = arrow; this.changeImage = function () { console.</description>
+    </item>
+    
+    <item>
+      <title>前端异常监控解决方案研究</title>
+      <link>/articles/posts/14/</link>
+      <pubDate>Tue, 29 Aug 2023 17:05:52 +0800</pubDate>
+      
+      <guid>/articles/posts/14/</guid>
+      <description>前端监控包括行为监控、异常监控、性能监控等，本文主要讨论异常监控。对于前端而言，和后端处于同一个监控系统中，前端有自己的监控方案，后端也有自己等监控方案，但两者并不分离，因为一个用户在操作应用过程中如果出现异常，有可能是前端引起，也有可能是后端引起，需要有一个机制，将前后端串联起来，使监控本身统一于监控系统。因此，即使只讨论前端异常监控，其实也不能严格区分前后端界限，而要根据实际系统的设计，在最终的报表中体现出监控对开发和业务的帮助。
+一般而言，一个监控系统，大致可以分为四个阶段：日志采集、日志存储、统计与分析、报告和警告。
+采集阶段：收集异常日志，先在本地做一定的处理，采取一定的方案上报到服务器。
+存储阶段：后端接收前端上报的异常日志，经过一定处理，按照一定的存储方案存储。
+分析阶段：分为机器自动分析和人工分析。机器自动分析，通过预设的条件和算法，对存储的日志信息进行统计和筛选，发现问题，触发报警。人工分析，通过提供一个可视化的数据面板，让系统用户可以看到具体的日志数据，根据信息，发现异常问题根源。
+报警阶段：分为告警和预警。告警按照一定的级别自动报警，通过设定的渠道，按照一定的触发规则进行。预警则在异常发生前，提前预判，给出警告。
+1 前端异常 前端异常是指在用户使用 Web 应用时无法快速得到符合预期结果的情况，不同的异常带来的后果程度不同，轻则引起用户使用不悦，重则导致产品无法使用，使用户丧失对产品的认可。
+1.1 前端异常分类 根据异常代码的后果的程度，对前端异常的表现分为如下几类
+a. 出错
+界面呈现的内容与用户预期的内容不符，例如点击进入非目标界面，数据不准确，出现的错误提示不可理解，界面错位，提交后跳转到错误界面等情况。这类异常出现时，虽然产品本身功能还能正常使用，但用户无法达成自己目标。
+b. 呆滞
+界面出现操作后没有反应的现象，例如点击按钮无法提交，提示成功后无法继续操作。这类异常出现时，产品已经存在界面级局部不可用现象。
+c. 损坏
+界面出现无法实现操作目的的现象，例如点击无法进入目标界面，点击无法查看详情内容等。这类异常出现时，应用部分功能无法被正常使用。
+d. 假死
+界面出现卡顿，无法对任何功能进行使用的现象。例如用户无法登陆导致无法使用应用内功能，由于某个遮罩层阻挡且不可关闭导致无法进行任何后续操作。这类异常出现时，用户很可能杀死应用。
+e. 崩溃
+应用出现经常性自动退出或无法操作的现象。例如间歇性 crash，网页无法正常加载或加载后无法进行任何操作。这类异常持续出现，将直接导致用户流失，影响产品生命力。
+1.2 异常错误原因分类 前端产生异常的原因主要分 5 类：
+原因案例频率逻辑错误1) 业务逻辑判断条件错误
+2) 事件绑定顺序错误
+3) 调用栈时序错误
+4) 错误的操作js对象经常数据类型错误1) 将null视作对象读取property
+2) 将undefined视作数组进行遍历
+3) 将字符串形式的数字直接用于加运算
+4) 函数参数未传经常语法句法错误较少网络错误1) 慢
+2) 服务端未返回数据但仍200，前端按正常进行数据遍历
+3) 提交数据时网络中断
+4) 服务端500错误时前端未做任何错误处理偶尔系统错误1) 内存不够用
+2) 磁盘塞满
+3) 壳不支持API
+4) 不兼容较少2 异常采集 2.1 采集内容 当异常出现的时候，我们需要知道异常的具体信息，根据异常的具体信息来决定采用什么样的解决方案。在采集异常信息时，可以遵循 4W 原则：</description>
+    </item>
+    
+    <item>
+      <title>JS错误监控篇</title>
+      <link>/articles/posts/13/</link>
+      <pubDate>Tue, 29 Aug 2023 16:59:15 +0800</pubDate>
+      
+      <guid>/articles/posts/13/</guid>
+      <description>监控流程：监控并收集错误 -&amp;gt; 存储并上报错误 -&amp;gt; 分析并聚合错误 -&amp;gt; 发送错误报警-&amp;gt; 定位并解决 JS 错误
+一、监控并收集 Javascript 错误 众所周知，我们是有办法去监听前端 Js 错误的，他们分别 window.onerror、window.onunhandledrejection、console.error 方法。
+通过这些方法能够为我们记录下线上的运行时错误，以及详细的堆栈信息。我将 window.onerror(捕获异常)，console.error(自定义异常) 方法收集到的错误信息进行分析统计后的效果如下：
+（1）重写 window.onerror 方法 // 重写 onerror 进行jsError的监听 window.onerror = function (errorMsg, url, lineNumber, columnNumber, errorObj) { var errorStack = errorObj ? errorObj.stack : null; siftAndMakeUpMessage( &amp;#34;on_error&amp;#34;, errorMsg, url, lineNumber, columnNumber, errorStack ); }; window.onerror 方法以及它的参数我就不一一介绍了，我相信大家也已经耳熟能详了；我们记录下错误发生时的行、列号，以及错误堆栈。
+（2）重写 window.onunhandledrejection 方法 window.onunhandledrejection = function (e) { var errorMsg = &amp;#34;&amp;#34;; var errorStack = &amp;#34;&amp;#34;; if (typeof e.</description>
+    </item>
+    
+    <item>
+      <title>前端异常处理最佳实践</title>
+      <link>/articles/posts/12/</link>
+      <pubDate>Tue, 29 Aug 2023 16:27:16 +0800</pubDate>
+      
+      <guid>/articles/posts/12/</guid>
+      <description>前端可以说是最贴近用户的一层，当产品不断的迭代完善，产品的用户体验会更加趋向于完美，然而前端异常却是很另人头疼的一个问题，我们应该怎么去对待这些异常呢？
+一、为什么要处理异常？
+异常是不可控的，会影响最终的呈现结果，但是我们有充分的理由去做这样的事情。
+增强用户体验； 远程定位问题； 未雨绸缪，及早发现问题； 无法复线问题，尤其是移动端，机型，系统都是问题； 完善的前端方案，前端监控系统； 对于 JS 而言，我们面对的仅仅只是异常，异常的出现不会直接导致 JS 引擎崩溃，最多只会使当前执行的任务终止。
+二、需要处理哪些异常？
+对于前端来说，我们可做的异常捕获还真不少。总结一下，大概如下：
+JS 语法错误、代码异常 AJAX 请求异常 静态资源加载异常 Promise 异常 Iframe 异常 跨域 Script error 崩溃和卡顿 下面我会针对每种具体情况来说明如何处理这些异常。
+三、Try-Catch 的误区
+try-catch 只能捕获到同步的运行时错误，对语法和异步错误却无能为力，捕获不到。
+1、同步运行时错误：
+输出：
+2、不能捕获到语法错误，我们修改一下代码，删掉一个单引号：
+输出：
+不过语法错误在我们开发阶段就可以看到，应该不会顺利上到线上环境。
+3、异步错误
+可以看看日志：
+并没有捕获到异常，这是需要我们特别注意的地方。
+四、window.onerror 不是万能的
+当 JS 运行时错误发生时，window 会触发一个 ErrorEvent 接口的 error 事件，并执行 window.onerror()。
+1、首先试试同步运行时错误
+可以看到，我们捕获到了异常：
+2、再试试语法错误呢？
+控制台打印出了这样的异常：
+竟然没有捕获到语法错误？
+3、怀着忐忑的心，我们最后来试试异步运行时错误：
+控制台输出了：
+4、接着，我们试试网络请求异常的情况：
+我们发现，不论是静态资源异常，或者接口异常，错误都无法捕获到。
+补充一点： window.onerror 函数只有在返回 true 的时候，异常才不会向上抛出，否则即使是知道异常的发生控制台还是会显示 Uncaught Error: xxxxx
+控制台就不会再有这样的错误了：</description>
+    </item>
+    
+    <item>
+      <title>高效加载第三方JavaScript</title>
+      <link>/articles/posts/11/</link>
+      <pubDate>Tue, 29 Aug 2023 16:16:21 +0800</pubDate>
+      
+      <guid>/articles/posts/11/</guid>
+      <description>如果第三方脚本降低您的页面加载速度，您有两个选项可以提高性能：
+如果它没有为您的网站增加明确的价值，请将其删除。 优化加载过程。 本文解释如何使用以下技术优化第三方脚本的加载过程：
+针对 &amp;lt;script&amp;gt; 标记使用 async 或 defer 属性 建立与所需来源的早期连接 延迟加载 优化您使用第三方脚本的方式 使用 async 或 defer 由于同步脚本会延迟 DOM 构建和呈现，因此您应该始终异步加载第三方脚本，除非脚本必须在页面呈现之前运行。
+async 和 defer 属性告诉浏览器其可以在后台加载脚本时继续解析 HTML，然后在加载后执行脚本。这样，脚本下载不会阻止 DOM 构建和页面呈现。这样，用户就可以在所有脚本加载完成之前看到页面。
+&amp;lt;script async src=&amp;#34;script.js&amp;#34;&amp;gt; &amp;lt;script defer src=&amp;#34;script.js&amp;#34;&amp;gt; async 和 defer 之间的区别在于它们何时开始执行脚本。
+async 具有 async 属性的脚本在完成下载后和窗口加载事件之前第一时间执行。这意味着 async 脚本可能（并且很可能）不会按照它们在 HTML 中出现的顺序执行。这也意味着如果它们在解析器仍在工作时完成下载，他们可以中断 DOM 构建。
+defer 具有 defer 属性的脚本在 HTML 解析完全完成之后执行，但在 DOMContentLoaded 事件之前执行。defer 保证脚本将按照它们在 HTML 中出现的顺序执行并且不会阻塞解析器。
+如果在加载过程中更早地运行脚本很重要，请使用 async。 对不太重要的资源使用 defer。例如，低于首屏的视频播放器。 使用这些属性可以显著加快页面加载速度。例如，Telegraph 最近推迟了所有脚本，包括广告和分析，并将广告加载时间平均缩短了四秒。
+分析脚本通常会提前加载，因此您不会错过任何有价值的分析数据。幸运的是，有一些模式可以在保留早期页面加载数据的同时延迟初始化分析。
+建立与所需来源的早期联系 通过与重要的第三方来源建立早期连接，您可以节省 100–500 毫秒。</description>
+    </item>
+    
+    <item>
+      <title>ES6到ES12常用新特性</title>
+      <link>/articles/posts/10/</link>
+      <pubDate>Tue, 29 Aug 2023 10:14:46 +0800</pubDate>
+      
+      <guid>/articles/posts/10/</guid>
+      <description>ES 是什么？ ES 是 ECMAScript 的缩写，也就是 JavaScript 的标准化规范。ECMAScript 是一种由 Ecma 国际组织制定的脚本语言标准，它定义了 JavaScript 的语法、类型、操作符、对象和函数等基本组件。ES6（也称为 ES2015）是 ECMAScript 的第六个版本，引入了许多新的语言特性和改进，如箭头函数、模板字面量、解构赋值等。随后的版本（如 ES7、ES8 等）也引入了许多新的功能和语法糖，以进一步改进和扩展 JavaScript。
+各版本特性总结 版本 特性 描述 ES6 let 和 const 关键字 引入了块级作用域声明变量的关键字 let 和常量声明变量的关键字 const ES6 函数参数默认值 允许在函数定义时为参数设置默认值 ES6 箭头函数 使用箭头 (=&amp;gt;) 定义函数，简化了函数的写法，并且自动绑定了当前作用域的 this ES6 模板字符串 使用反引号 (`) 来定义字符串，可以在字符串中插入变量或表达式，并支持多行字符串 ES6 扩展操作符 使用扩展操作符 (&amp;hellip;) 可以将数组或对象展开为单独的元素 ES6 解构赋值 可以从数组或对象中提取值并赋给变量 ES6 对象字面量简化 简化了对象的定义和属性的赋值方式 ES6 类 引入了类和继承的概念，使得 JavaScript 更像面向对象编程语言 ES6 模块化 支持使用 import 和 export 关键字进行模块化开发，可以方便地导入和导出模块 ES6 Promise 提供了一种更优雅的方式来处理异步操作，解决了回调地狱的问题 ES6 Symbol 引入了一种新的原始数据类型 Symbol，可以用来创建唯一的标识符 ES6 Map/WeakMap 和 Set/WeakSet 数据结构 提供了更灵活和高效的数据结构，Map 是一种键值对的集合，Set 是一种无重复值的集合，WeakMap 和 WeakSet 是弱引用版本，可以更好地处理内存和垃圾回收的问题 ES6 迭代器（Iterator）和 for&amp;hellip;of 迭代器提供了一种遍历集合的方式，for&amp;hellip;of 循环可以直接遍历可迭代对象 ES6 生成器（Generator） 可以生成多个值的函数，使用 function* 和 yield 关键字定义，可以暂停和恢复函数的执行 ES6 Proxy 提供了拦截和自定义操作的机制，可以代理对目标对象的访问和修改操作 ES6 Reflect 提供了一组静态方法来操作对象，比如获取对象的属性描述符、动态调用对象的方法等 ES6 数组对象扩展 引入了一些新的方法和属性，比如 Array.</description>
+    </item>
+    
+    <item>
+      <title>50个JS高级知识点</title>
+      <link>/articles/posts/09/</link>
+      <pubDate>Tue, 29 Aug 2023 09:30:43 +0800</pubDate>
+      
+      <guid>/articles/posts/09/</guid>
+      <description>知识点 1、undeclared 与 undefined 的区别？ undefined：声明了变量，但是没有赋值 undeclared：没有声明变量就直接使用 var a; //undefined b; // b is not defined 2、let &amp;amp; const 与 var 的区别？ var 存在变量提升，可重复声明同一变量，声明的变量均可改 let 没有变量提升，不可重复声明同一变量，声明的变量均可改 const 没有变量提升，不可重复声明同一变量，声明的基本数据类型不可改，引用类型可改属性，不可只声明变量而不赋值 3、暂时性死区问题 var a = 100; if (1) { a = 10; //在当前块作用域中存在a使用let/const声明的情况下，给a赋值10时，只会在当前作用域找变量a， // 而这时，还未到声明时候，所以控制台Error:a is not defined let a = 1; } 4、获取 DOM 元素有哪些方法 方法 描述 返回类型 document.getElementById(id) 通过 id 获取 dom 符合条件的 dom 对象 document.getElementsByTagName(tagName) 通过标签名获取 dom 符合条件的所有 dom 对象组成的类数组 document.</description>
+    </item>
+    
+    <item>
+      <title>真正理解Promise</title>
+      <link>/articles/posts/08/</link>
+      <pubDate>Sun, 27 Aug 2023 22:32:16 +0800</pubDate>
+      
+      <guid>/articles/posts/08/</guid>
+      <description>Promise 的简单介绍 Promise 是用来进行异步编程的。在 Promise 出现之前，传统的异步编程靠的是监听事件和回调函数，比如：
+const xhr = new XMLHttpRequest(); xhr.addEventListener(&amp;#34;load&amp;#34;, function (data) { console.log(data); }); xhr.open(&amp;#34;GET&amp;#34;, &amp;#34;http://www.example.com/&amp;#34;); xhr.send(); 这种方式有一个致命的缺点，那就是回调地狱，如果我们想在第一个请求成功返回数据之后，再发送第二个请求，那就只能在第一个请求成功的回调函数中发送，以此类推，还想再发送下一个请求时，就只能在上一个请求成功的回调函数中发送：
+const xhr = new XMLHttpRequest(); xhr.addEventListener(&amp;#34;load&amp;#34;, function (data) { console.log(data); const xhr1 = new XMLHttpRequest(); xhr1.open(&amp;#34;GET&amp;#34;, &amp;#34;http://www.example.com/&amp;#34;); xhr1.send(); xhr1.addEventListener(&amp;#34;load&amp;#34;, function (data1) { console.log(data1); //... 发送第三个请求 }); }); xhr.open(&amp;#34;GET&amp;#34;, &amp;#34;http://www.example.com/&amp;#34;); xhr.send(); 这种代码不仅看起来很痛苦，写起来也非常痛苦。而 Promise 就是用来解决这个问题的，可以把 Promise 理解成一个容器，里面保存着某个未来才会结束的事件的结果（也就是异步操作的结果），它有三种状态：pending（进行中）、fulfilled（已成功）和 rejected（已失败），状态改变只有两种：从 pending 变为 fulfilled 或从 pending 变为 rejected ，一旦状态改变，就不会再变了。一般情况下，可以分别通过 resolve 函数使得状态变为 fulfilled，reject 函数使得状态变为 rejected。</description>
+    </item>
+    
+    <item>
+      <title>10种JavaScript快乐写法</title>
+      <link>/articles/posts/07/</link>
+      <pubDate>Sun, 27 Aug 2023 22:28:42 +0800</pubDate>
+      
+      <guid>/articles/posts/07/</guid>
+      <description>数组去重 方式一 const arr = [ &amp;#34;justin1go&amp;#34;, &amp;#34;justin2go&amp;#34;, &amp;#34;justin2go&amp;#34;, &amp;#34;justin3go&amp;#34;, &amp;#34;justin3go&amp;#34;, &amp;#34;justin3go&amp;#34;, ]; const uniqueArr = Array.from(new Set(arr)); // const uniqueArr = [...new Set(arr)]; 方式二 const arr = [ &amp;#34;justin1go&amp;#34;, &amp;#34;justin2go&amp;#34;, &amp;#34;justin2go&amp;#34;, &amp;#34;justin3go&amp;#34;, &amp;#34;justin3go&amp;#34;, &amp;#34;justin3go&amp;#34;, ]; const uniqueArr = []; arr.forEach((item) =&amp;gt; { // 或者!uniqueArr.includes(item) if (uniqueArr.indexOf(item) === -1) { uniqueArr.push(item); } }); const arr = [ &amp;#34;justin1go&amp;#34;, &amp;#34;justin2go&amp;#34;, &amp;#34;justin2go&amp;#34;, &amp;#34;justin3go&amp;#34;, &amp;#34;justin3go&amp;#34;, &amp;#34;justin3go&amp;#34;, ]; const uniqueArr = arr.filter((item, index) =&amp;gt; { return arr.</description>
+    </item>
+    
+    <item>
+      <title>建造者模式</title>
+      <link>/articles/posts/06/</link>
+      <pubDate>Sun, 27 Aug 2023 22:28:40 +0800</pubDate>
+      
+      <guid>/articles/posts/06/</guid>
+      <description>建造者模式：将一个复杂对象的构建层与其表示层相互分离，同样的构建过程可采用不用的表示。
+创建对象的另一种形式 // 创建一位人类 var Human = function (param) { // 技能 this.skill = (param &amp;amp;&amp;amp; param.skill) || &amp;#34;保密&amp;#34;; // 兴趣爱好 this.hobby = (param &amp;amp;&amp;amp; param.hobby) || &amp;#34;保密&amp;#34;; }; // 类人原型方法 Human.prototype = { getSkill: function () { return this.skill; }, getHobby: function () { return this.hobby; }, }; // 实例化姓名类 var Named = function (name) { var that = this; // 构造器 // 构造函数解析姓名的姓与名 (function (name, that) { that.</description>
+    </item>
+    
+    <item>
+      <title>抽象工厂模式</title>
+      <link>/articles/posts/05/</link>
+      <pubDate>Sun, 27 Aug 2023 22:28:37 +0800</pubDate>
+      
+      <guid>/articles/posts/05/</guid>
+      <description>抽象类 是一种声明了但不能使用的类，当你使用的时候就会报错。
+// 汽车抽象类，当使用其实例对象的方法时会抛出错误 var Car = function () {}; Car.prototype = { getPrice: function () { return new Error(&amp;#34;抽象方法不能调用&amp;#34;); }, getSpeed: function () { return new Error(&amp;#34;抽象方法不能调用&amp;#34;); }, }; 如上，创建这个 Car 类其实什么都不用做，创建时没有任何属性，然后其原型上方法也不能使用，否则会报错。但在继承上很有用，因为定义了一种类，并定义了该类所必备的方法，如果在子类中没有重写这些方法，那调用的时候就会报错。
+抽象工厂模式 直接赋值是无法实现正确的继承关系的。如果直接将子类的原型设置为父类的实例，那么子类的原型对象将直接引用父类的实例对象，这样在修改子类的原型时会直接影响到父类的实例。而使用 F 函数作为中转，可以通过 F 函数的实例来实现子类对父类的继承，同时保持子类和父类的独立性，避免相互影响。这样子类可以自由地修改自己的原型对象，而不会影响到父类或其他子类的实例。因此，使用 F 函数作为中转是为了正确实现继承关系和保持对象的独立性。
+// 抽象工厂方法 var VehicleFactory = function (subType, superType) { // 判断抽象工厂中是否有该抽象类 if (typeof VehicleFactory[superType] === &amp;#34;function&amp;#34;) { // 缓存类 function F() {} // 继承父类属性和方法 F.prototype = new VehicleFactory[superType](); // 将子类 constructor 指向子类 superType.</description>
+    </item>
+    
+    <item>
+      <title>ES2016到ES2023新特性</title>
+      <link>/articles/posts/04/</link>
+      <pubDate>Sun, 27 Aug 2023 22:28:35 +0800</pubDate>
+      
+      <guid>/articles/posts/04/</guid>
+      <description>ES2016 Array.prototype.includes() 这个方法用于检查数组是否包含特定元素，如果包含则返回 true，否则返回 false
+// 我有一个水果篮子 const fruitBasket = [&amp;#34;apple&amp;#34;, &amp;#34;banana&amp;#34;, &amp;#34;orange&amp;#34;, &amp;#34;grape&amp;#34;]; // 我要检查篮子里是否有橙子 const hasOrange = fruitBasket.includes(&amp;#34;orange&amp;#34;); console.log(hasOrange); // 输出: true // 我还想知道篮子里是否有葡萄 const hasGrape = fruitBasket.includes(&amp;#34;grape&amp;#34;); console.log(hasGrape); // 输出: true // 现在我要检查篮子里是否有西瓜 const hasWatermelon = fruitBasket.includes(&amp;#34;watermelon&amp;#34;); console.log(hasWatermelon); // 输出: false 求幂运算符 求幂运算符： 这是一个新的算术运算符，用于计算一个数的幂
+// 我要计算 2 的 3 次幂 const result = 2 ** 3; console.log(result); // 输出: 8 ES2017 Object.values / Object.entries const person = { name: &amp;#34;Alice&amp;#34;, age: 25, city: &amp;#34;New York&amp;#34;, }; const values = Object.</description>
+    </item>
+    
+    <item>
+      <title>工厂方法模式</title>
+      <link>/articles/posts/03/</link>
+      <pubDate>Sun, 27 Aug 2023 22:28:33 +0800</pubDate>
+      
+      <guid>/articles/posts/03/</guid>
+      <description>安全工厂方法 // 安全模式创建的工厂类 var Factory = function (type, content) { if (this instanceof Factory) { var s = new this[type](content); return s; } else { return new Factory(type, content); } }; // 工厂原型中设置创建所有类型数据对象的基类 Factory.prototype = { Java: function (content) { //... }, JavaScript: function (content) { //... }, UI: function (content) { this.content = content; (function (content) { var div = document.createElement(&amp;#34;div&amp;#34;); div.innerHTML = content; div.style.border = &amp;#34;1px solid red&amp;#34;; document.</description>
+    </item>
+    
+    <item>
+      <title>简单工厂模式</title>
+      <link>/articles/posts/02/</link>
+      <pubDate>Sun, 27 Aug 2023 22:28:30 +0800</pubDate>
+      
+      <guid>/articles/posts/02/</guid>
+      <description>又叫静态工厂方法，由一个工厂对象决定创建某一种产品对象类的实例，主要用来创建用一类对象。
+工作中的一次需求 var LoginAlert = function (text) { this.content = text; }; LoginAlert.prototype.show = function () { // 显示警示框 }; var userNameAlert = new LoginAlert(&amp;#34;用户名不能多于 16 个字母或数字&amp;#34;); userNameAlert.show(); 上面的类，如果对于多种场景，就不那么适用了；可能要需要定义多个类。
+如果类太多，那么提供一个 // 篮球基类 var Basketball = function () { this.intro = &amp;#34;篮球盛行于美国&amp;#34;; }; Basketball.prototype = { getMember: function () { console.log(&amp;#34;每个队伍需要5名队员&amp;#34;); }, getBallSize: function () { console.log(&amp;#34;篮球很大&amp;#34;); }, }; // 足球基类 var Football = function () { this.intro = &amp;#34;足球在世界范围内很流行&amp;#34;; }; Football.</description>
+    </item>
+    
+    <item>
+      <title>面向对象编程</title>
+      <link>/articles/posts/01/</link>
+      <pubDate>Sun, 27 Aug 2023 22:28:28 +0800</pubDate>
+      
+      <guid>/articles/posts/01/</guid>
+      <description>封装 创建一个类 var Book = function (id, bookname, price) { this.id = id; this.bookname = bookname; this.price = price; }; 也可以通过在类的原型上添加属性和方法 Book.prototype.display = function () { // 展示这本书 }; // 或者 Book.prototype = { display: function () { // 展示这本书 }, }; 实例化使用类 var book = new Book(10, &amp;#34;JavaScript 设计模式&amp;#34;, 50); console.log(book.bookname); 属性与方法封装 var Book = function (id, name, price) { // 私有属性 var num = 1; // 私有方法 function checkId() {} // 特权方法 this.</description>
+    </item>
+    
+  </channel>
+</rss>
