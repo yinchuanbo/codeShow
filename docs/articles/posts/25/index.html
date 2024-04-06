@@ -213,7 +213,7 @@ Calc() calc() 此 CSS 函数允许在声明 CSS 属性值时执行一些计算�
 </span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;g-footer&#34;</span>&gt;Footer&lt;/<span style="color:#f92672">div</span>&gt;
 </span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">div</span>&gt;
 </span></span></code></pre></div><p>页面的 <code>g-footer</code> 高为 80px，我们希望不管页面多长，<code>g-content</code> 部分都可以占满剩余空间，像是这样：</p>
-<img src="/img/25/01.png">
+<img src="../../img/25/01.png">
 <p>这种布局使用 flex 的弹性布局可以轻松实现，当然，也可以使用 <code>calc()</code> 实现：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">g-container</span> {
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">height</span>: <span style="color:#ae81ff">100</span><span style="color:#66d9ef">vh</span>;
@@ -307,7 +307,7 @@ Calc() calc() 此 CSS 函数允许在声明 CSS 属性值时执行一些计算�
 </span></span></code></pre></div><p>可以看到，从 <code>--level-1</code> 到 <code>--level-30</code>，每次的运算量都是成倍的增长，最终到 <code>--level-final</code> 变量，展开将有 2^30 = <strong>1073741824</strong> 个 <code>--initial-level-0</code> 表达式的内容。</p>
 <p>并且，每个 <code>--initial-level-0</code> 表达式的内容 &ndash; <code>calc(1vh + 1% + 1px + 1em + 1vw + 1cm)</code>，在浏览器解析的时候，也已经足够复杂。</p>
 <p>混合在一起，就导致了浏览器的 BOOM（Chrome 70 之前的版本），为了能看到效果，我们将上述样式赋给某个元素被 hover 的时候，得到如下效果：</p>
-<img src="/img/25/01.gif">
+<img src="../../img/25/01.gif">
 <p>当然，这个 BUG 目前已经被修复了，我们也可以通过这个小 DEMO 了解到，一是 calc 是可以进行不同单位的混合运算的，另外一个就是注意具体使用的时候如果计算量巨大，可能会导致性能上较大的消耗。</p>
 <p>当然，<strong>不要</strong>将长度单位和非长度单位混合使用，像是这样：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>{
@@ -324,7 +324,7 @@ Calc() calc() 此 CSS 函数允许在声明 CSS 属性值时执行一些计算�
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>当然，这样看上去，根本看不出这样的写法的作用，好像没有什么意义。实际应用场景中，会比上述的 DEMO 要稍微复杂一些。</p>
 <p>假设我们要实现这样一个 loading 动画效果，一开始只有 3 个球：</p>
-<img src="/img/25/02.gif">
+<img src="../../img/25/02.gif">
 <p>可能的写法是这样，我们给 3 个球都添加同一个旋转动画，然后分别控制他们的 <code>animation-delay</code>：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;g-container&#34;</span>&gt;
 </span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;g-item&#34;</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;
@@ -341,7 +341,7 @@ Calc() calc() 此 CSS 函数允许在声明 CSS 属性值时执行一些计算�
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">animation</span>: rotate <span style="color:#ae81ff">3</span><span style="color:#66d9ef">s</span> <span style="color:#66d9ef">infinite</span> <span style="color:#ae81ff">-2</span><span style="color:#66d9ef">s</span> <span style="color:#66d9ef">linear</span>;
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>如果有一天，这个动画需要扩展成 5 个球的话，像是这样：</p>
-<img src="/img/25/03.gif">
+<img src="../../img/25/03.gif">
 <p>我们就不得已，得去既添加 HTML，又修改 CSS。而如果借助 Calc 和 CSS 变量，这个场景就可以稍微简化一下。</p>
 <p>假设只有 3 个球：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;g-container&#34;</span>&gt;
@@ -386,7 +386,7 @@ Calc() calc() 此 CSS 函数允许在声明 CSS 属性值时执行一些计算�
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">animation-delay</span>: calc(<span style="color:#a6e22e">var</span>(<span style="color:#f92672">--</span>delay) <span style="color:#f92672">*</span> <span style="color:#ae81ff">-1</span><span style="color:#66d9ef">s</span>);
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>由于 HTML 标签没有传入 <code>--delay</code> 的值，并且在 CSS 中向上查找也没找到对应的值，此时，<code>animation-delay: calc(var(--delay) * -1s)</code> 这一句其实是无效的，相当于 <code>animation-delay: 0</code>，效果也就是少了个球的效果：</p>
-<img src="/img/25/02.png">
+<img src="../../img/25/02.png">
 <p>所以，基于这种情况，可以利用 CSS 自定义变量 <code>var()</code> 的 fallback 机制：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">/* (--delay, 1) 中的 1 是个容错机制 */</span>
@@ -432,7 +432,7 @@ Calc() calc() 此 CSS 函数允许在声明 CSS 属性值时执行一些计算�
 <p><code>content: var(--stringA) + var(--stringB) + var(--stringC)</code> 中的加号可以省略。</p>
 </blockquote>
 <p>此时，内容可以正常展示：</p>
-<img src="/img/25/03.png">
+<img src="../../img/25/03.png">
 <p>再强调一下，<strong>calc 的没有字符串拼接的能力</strong>，如下的使用方式都是无法被识别的错误语法：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">el</span>::<span style="color:#a6e22e">before</span> {
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">/* 不支持字符串拼接 */</span>
@@ -457,7 +457,7 @@ Calc() calc() 此 CSS 函数允许在声明 CSS 属性值时执行一些计算�
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">background</span>: <span style="color:#ae81ff">#000</span>;
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>效果如下，<code>.container</code> 块它会随着屏幕的增大而增大，始终占据整个屏幕：</p>
-<img src="/img/25/04.png">
+<img src="../../img/25/04.png">
 <p>对于一个响应式的项目，我们肯定不希望它的宽度会一直变大，而是当达到一定的阈值时，宽度从相对单位变成了绝对单位，这种情况就适用于 <code>min()</code>，简单改造下代码：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">container</span> {
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">width</span>: <span style="color:#a6e22e">min</span>(<span style="color:#ae81ff">100</span><span style="color:#66d9ef">%</span>, <span style="color:#ae81ff">500</span><span style="color:#66d9ef">px</span>);
@@ -466,7 +466,7 @@ Calc() calc() 此 CSS 函数允许在声明 CSS 属性值时执行一些计算�
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>容器的宽度值会在 <code>width: 100%</code> 与 <code>width: 500px</code> 之间做选择，选取相对小的那个。</p>
 <p>在屏幕宽度不足 500px 时候，也就表现为 <code>width: 100%</code>，反之，则表现为 <code>width: 500px</code>：</p>
-<img src="/img/25/04.gif">
+<img src="../../img/25/04.gif">
 <p>同理，在类似的场景，我们也可以使用 <code>max()</code> 从多个值中，选取相对更大的值。</p>
 <h3 id="minmax-支持多个值的列表">min()、max() 支持多个值的列表</h3>
 <p>min()、max() 支持多个值的列表，譬如 <code>width: max(1px, 2px, 3px, 50px)</code>。</p>
@@ -491,7 +491,7 @@ Calc() calc() 此 CSS 函数允许在声明 CSS 属性值时执行一些计算�
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">font-size</span>: <span style="color:#a6e22e">max</span>(<span style="color:#ae81ff">12</span><span style="color:#66d9ef">px</span>, <span style="color:#a6e22e">min</span>(<span style="color:#ae81ff">3.75</span><span style="color:#66d9ef">vw</span>, <span style="color:#ae81ff">20</span><span style="color:#66d9ef">px</span>));
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>看看效果：</p>
-<img src="/img/25/05.png">
+<img src="../../img/25/05.png">
 <p>通过 <code>max()</code>、<code>min()</code> 的配合使用，以及搭配一个相对单位 vw，我们成功的给字体设置了上下限，而在这个上下限之间实现了动态变化。</p>
 <p>当然，上面核心的这一段 <code>max(12px, min(3.75vw, 20px))</code> 看上去有点绕，因此，CSS 推出了 <code>clamp()</code> 简化这个语法，下面两个写法是等价的：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">p</span> {
@@ -507,7 +507,7 @@ Calc() calc() 此 CSS 函数允许在声明 CSS 属性值时执行一些计算�
 <p>在不久的过去，移动端的适配方面，使用更多的 rem 适配方案，可能会借助一些现成的库，类似于 flexible.js、hotcss.js 等库。rem 方案比较大的一个问题在于需要一段 JavaScript 响应视口变化，重设根元素的 <code>font-size</code>，并且，使用 rem 多少有点 hack 的感觉。</p>
 <p>在现在，在移动端适配，我们更为推崇的是 vw 纯 CSS 方案，与 rem 方案类似，它的本质也是页面的等比例缩放。它的一个问题在于，如果仅仅使用 vw，随着屏幕的不断变大或者缩小，内容元素将会一直变大变小下去，这也导致了在大屏幕下，许多元素看着实在太大了！</p>
 <p>因此，我们需要一种能够控制最大、最小阈值的方式，像是这样：</p>
-<img src="/img/25/05.png">
+<img src="../../img/25/05.png">
 <p>此时，clamp 就能非常好的派上用场，还是我们上述的例子，这一段代码 <code>font-size: clamp(12px, 3.75vw, 20px)</code>，就能将字体限制在 <code>12px - 20px</code> 的范围内。</p>
 <p><strong>因此，对于移动端页面而言，所有涉及长度的单位，我们都可以使用 vw 进行设置。而诸如字体、内外边距、宽度等不应该完全等比例缩放的，采用 <code>clamp()</code> 控制最大最小阈值</strong>。</p>
 <p>在 <a href="https://www.smashingmagazine.com/2022/01/modern-fluid-typography-css-clamp/">Modern Fluid Typography Using CSS Clamp</a> 一文中，对使用 clamp() 进行流式响应式布局还有更为深入的探讨，感兴趣的可以深入阅读。</p>
@@ -522,7 +522,7 @@ Calc() calc() 此 CSS 函数允许在声明 CSS 属性值时执行一些计算�
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">font-size</span>: <span style="color:#a6e22e">clamp</span>(<span style="color:#ae81ff">20</span><span style="color:#66d9ef">px</span>, <span style="color:#ae81ff">-5</span><span style="color:#66d9ef">vw</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">96</span><span style="color:#66d9ef">px</span>, <span style="color:#ae81ff">60</span><span style="color:#66d9ef">px</span>);
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>看看效果：</p>
-<img src="/img/25/06.gif">
+<img src="../../img/25/06.gif">
 <p>这个技巧挺有意思的，由于 <code>-5vw + 96px</code> 的计算值会随着屏幕的变小而增大，实现了一种反向的字体响应式变化。</p>
 <h3 id="总结">总结</h3>
 <p>总结一下，合理运用 min()、max()、clamp()，是构建现代响应式布局的重点，我们可以告别传统的需要 JavaScript 辅助的一些方案，基于 CSS 这些数学函数即可完成所有的诉求。</p>

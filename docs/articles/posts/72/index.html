@@ -167,13 +167,13 @@ $0 元素原本并无注册任何事件监听器，执行 monitorEvents($0, &#39
 <p>执行 monitorEvents 来监听并打印出元素触发的事件，也可以传入数组来一次性监听多种事件，例如：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">monitorEvents</span>(window, <span style="color:#e6db74">&#34;click&#34;</span>);
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">monitorEvents</span>(window, [<span style="color:#e6db74">&#34;mousedown&#34;</span>, <span style="color:#e6db74">&#34;mouseup&#34;</span>]);
-</span></span></code></pre></div><img src="/img/72/1.png" />
+</span></span></code></pre></div><img src="../../img/72/1.png" />
 <p>除了能监听特定事件外，还能监听事件类别，例如 <code>monitorEvents(window, 'touch')</code> 来监听所有 touch 类别的事件。</p>
 <p>若要停止监听，则执行 <code>unmonitorEvents(元素, 事件)</code>。</p>
 <h2 id="geteventlisteners">getEventListeners</h2>
 <p>执行 <code>getEventListeners(元素)</code> 以打印出所有注册在元素上的事件监听器。</p>
 <p><code>$0</code> 元素原本并无注册任何事件监听器，执行 <code>monitorEvents($0, 'click')</code> 后，可以看到已注册所有 touch 类别的事件监听器，</p>
-<img src="/img/72/2.png" />
+<img src="../../img/72/2.png" />
 </section>
 
   

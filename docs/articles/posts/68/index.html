@@ -228,9 +228,9 @@ function updateScreen(time) { // 修改 DOM、CSS } requestAnimationFrame(update
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 修改 DOM、CSS
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">requestAnimationFrame</span>(<span style="color:#a6e22e">updateScreen</span>);
-</span></span></code></pre></div><img src="/img/68/01.png" />
+</span></span></code></pre></div><img src="../../img/68/01.png" />
 <p>若使用 setTimeout、setInterval 来修改样式，则无法确保 JavaScript 在开头出执行，容易造成浏览器无法在 16ms 内完成渲染，或是在 16ms 内执行两次而造成性能损失，</p>
-<img src="/img/68/02.png" />
+<img src="../../img/68/02.png" />
 <p>原本应在 16ms 内完成渲染，但需等待 JavaScript 执行完毕而延后。</p>
 <h3 id="worker">Worker</h3>
 <p>虽然每一帧的间隔是 16ms，但扣除其他阶段，最安全的运行时间是在 4ms 以内，如果动画计算量太过繁重，例如有大量排序、搜索等，可以把纯计算的部分移动 Worker 中，计算完再交由主线程来修改 DOM。</p>
@@ -344,8 +344,8 @@ function updateScreen(time) { // 修改 DOM、CSS } requestAnimationFrame(update
 <ul>
 <li>打开 DevTools 按 <code>ESC</code> 键以打开下方的 Drawer，</li>
 </ul>
-<img src="/img/68/03.png" />
-<img src="/img/68/04.png" />
+<img src="../../img/68/03.png" />
+<img src="../../img/68/04.png" />
 <ol start="2">
 <li>图层可视化工具</li>
 </ol>
@@ -353,7 +353,7 @@ function updateScreen(time) { // 修改 DOM、CSS } requestAnimationFrame(update
 <p>**More tools -&gt; Layers **</p>
 <p>面板左侧会显示当前页面存在哪些图层，单击列表或中间可视化区域内的图层，可以看到详细信息，包括图层的大小、产生的原因以及内存占用量</p>
 <p>此外，可以通过移动、翻转中间可视化的图形来进一步检查图层之间的堆叠关系。</p>
-<img src="/img/68/05.png" />
+<img src="../../img/68/05.png" />
 <ol start="3">
 <li>Performance 面板的 Frames 列表</li>
 </ol>

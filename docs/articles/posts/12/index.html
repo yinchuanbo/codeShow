@@ -289,42 +289,42 @@ try-catch 只能捕获到同步的运行时错误，对语法和异步错误却�
 <p>三、Try-Catch 的误区</p>
 <p>try-catch 只能捕获到同步的运行时错误，对语法和异步错误却无能为力，捕获不到。</p>
 <p><strong>1、同步运行时错误：</strong></p>
-<img src="/img/12/01.webp" />
+<img src="../../img/12/01.webp" />
 <p>输出：</p>
-<img src="/img/12/02.webp" />
+<img src="../../img/12/02.webp" />
 <p><strong>2、不能捕获到语法错误，我们修改一下代码，删掉一个单引号：</strong></p>
-<img src="/img/12/03.jpg" />
+<img src="../../img/12/03.jpg" />
 <p>输出：</p>
-<img src="/img/12/03.webp" />
+<img src="../../img/12/03.webp" />
 <p>不过语法错误在我们开发阶段就可以看到，应该不会顺利上到线上环境。</p>
 <p><strong>3、异步错误</strong></p>
-<img src="/img/12/04.jpg" />
+<img src="../../img/12/04.jpg" />
 <p>可以看看日志：</p>
-<img src="/img/12/04.webp" />
+<img src="../../img/12/04.webp" />
 <p>并没有捕获到异常，这是需要我们特别注意的地方。</p>
 <p>四、window.onerror 不是万能的</p>
 <p>当 JS 运行时错误发生时，window 会触发一个 ErrorEvent 接口的 error 事件，并执行 window.onerror()。</p>
-<img src="/img/12/05.jpg" />
+<img src="../../img/12/05.jpg" />
 <p><strong>1、首先试试同步运行时错误</strong></p>
-<img src="/img/12/05.webp" />
+<img src="../../img/12/05.webp" />
 <p>可以看到，我们捕获到了异常：</p>
-<img src="/img/12/06.webp" />
+<img src="../../img/12/06.webp" />
 <p><strong>2、再试试语法错误呢？</strong></p>
-<img src="/img/12/07.webp" />
+<img src="../../img/12/07.webp" />
 <p>控制台打印出了这样的异常：</p>
-<img src="/img/12/08.webp" />
+<img src="../../img/12/08.webp" />
 <p>竟然没有捕获到语法错误？</p>
 <p><strong>3、怀着忐忑的心，我们最后来试试异步运行时错误：</strong></p>
-<img src="/img/12/09.webp" />
+<img src="../../img/12/09.webp" />
 <p>控制台输出了：</p>
-<img src="/img/12/10.webp" />
+<img src="../../img/12/10.webp" />
 <p><strong>4、接着，我们试试网络请求异常的情况：</strong></p>
-<img src="/img/12/11.webp" />
+<img src="../../img/12/11.webp" />
 <p>我们发现，不论是静态资源异常，或者接口异常，错误都无法捕获到。</p>
 <p><strong>补充一点：</strong> window.onerror 函数只有在返回 true 的时候，异常才不会向上抛出，否则即使是知道异常的发生控制台还是会显示 Uncaught Error: xxxxx</p>
-<img src="/img/12/12.webp" />
+<img src="../../img/12/12.webp" />
 <p>控制台就不会再有这样的错误了：</p>
-<img src="/img/12/13.webp" />
+<img src="../../img/12/13.webp" />
 <p><strong>需要注意：</strong></p>
 <ul>
 <li>onerror 最好写在所有 JS 脚本的前面，否则有可能捕获不到错误；</li>
@@ -334,9 +334,9 @@ try-catch 只能捕获到同步的运行时错误，对语法和异步错误却�
 <p><strong>问题又来了，捕获不到静态资源加载异常怎么办？</strong></p>
 <p><strong>一、window.addEventListener</strong></p>
 <p>当一项资源（如图片或脚本）加载失败，加载资源的元素会触发一个 Event 接口的 error 事件，并执行该元素上的 onerror() 处理函数。这些 error 事件不会向上冒泡到 window ，不过（至少在 Firefox 中）能被单一的 window.addEventListener 捕获。</p>
-<img src="/img/12/14.webp" />
+<img src="../../img/12/14.webp" />
 <p>控制台输出：</p>
-<img src="/img/12/15.webp" />
+<img src="../../img/12/15.webp" />
 <p>由于网络请求异常不会事件冒泡，因此必须在捕获阶段将其捕捉到才行，但是这种方式虽然可以捕捉到网络请求的异常，但是无法判断 HTTP 的状态是 404 还是其他比如 500 等等，所以还需要配合服务端日志才进行排查分析才可以。</p>
 <p><strong>需要注意：</strong></p>
 <p>不同浏览器下返回的 error 对象可能不同，需要注意兼容处理。<br>
@@ -344,20 +344,20 @@ try-catch 只能捕获到同步的运行时错误，对语法和异步错误却�
 <p><strong>二、Promise Catch</strong></p>
 <p>在 promise 中使用 catch 可以非常方便的捕获到异步 error ，这个很简单。没有写 catch 的 Promise 中抛出的错误无法被 onerror 或 try-catch 捕获到，所以我们务必要在 Promise 中不要忘记写 catch 处理抛出的异常。</p>
 <p><strong>解决方案：</strong> 为了防止有漏掉的 Promise 异常，建议在全局增加一个对 unhandledrejection 的监听，用来全局监听 Uncaught Promise Error。使用方式：</p>
-<img src="/img/12/16.webp" />
+<img src="../../img/12/16.webp" />
 <p>我们继续来尝试一下：</p>
-<img src="/img/12/17.webp" />
+<img src="../../img/12/17.webp" />
 <p>那如果对 Promise 不进行 catch 呢？</p>
-<img src="/img/12/06.jpg" />
+<img src="../../img/12/06.jpg" />
 <p>嗯，事实证明，也是会被正常捕获到的。</p>
 <p>所以，正如我们上面所说，为了防止有漏掉的 Promise 异常，建议在全局增加一个对 unhandledrejection 的监听，用来全局监听 Uncaught Promise Error。</p>
 <p>补充一点：如果去掉控制台的异常显示，需要加上：</p>
-<img src="/img/12/18.webp" />
+<img src="../../img/12/18.webp" />
 <p><strong>三、VUE errorHandler</strong></p>
-<img src="/img/12/07.jpg" />
+<img src="../../img/12/07.jpg" />
 <p><strong>四、React 异常捕获</strong></p>
 <p>React 16 提供了一个内置函数 componentDidCatch，使用它可以非常简单的获取到 react 下的错误信息</p>
-<img src="/img/12/19.webp" />
+<img src="../../img/12/19.webp" />
 <p>UI 的某部分引起的 JS 错误不应该破坏整个程序，为了帮 React 的使用者解决这个问题，React 16 介绍了一种关于错误边界（error boundary)的新观念。</p>
 <p>需要注意的是：error boundaries 并不会捕捉下面这些错误。</p>
 <ol>
@@ -367,37 +367,37 @@ try-catch 只能捕获到同步的运行时错误，对语法和异步错误却�
 <li>在 error boundaries 区域内的错误</li>
 </ol>
 <p>我们来举一个小例子，在下面这个 componentDIdCatch(error,info) 里的类会变成一个 error boundary：</p>
-<img src="/img/12/20.webp" />
+<img src="../../img/12/20.webp" />
 <p>然后我们像使用普通组件那样使用它：</p>
-<img src="/img/12/08.jpg" />
+<img src="../../img/12/08.jpg" />
 <p>componentDidCatch() 方法像 JS 的 catch{} 模块一样工作，但是对于组件，只有 class 类型的组件(class component )可以成为一个 error boundaries 。</p>
 <p>实际上，大多数情况下我们可以在整个程序中定义一个 error boundary 组件，之后就可以一直使用它了！</p>
 <p><strong>五、iframe 异常</strong></p>
 <p>对于 iframe 的异常捕获，我们还得借力 window.onerror：</p>
-<img src="/img/12/21.webp" />
+<img src="../../img/12/21.webp" />
 <p>一个简单的例子可能如下：</p>
-<img src="/img/12/22.webp" />
+<img src="../../img/12/22.webp" />
 <p><strong>六、Script error</strong></p>
 <p>一般情况，如果出现 Script error 这样的错误，基本上可以确定是出现了跨域问题。这时候，是不会有其他太多辅助信息的，但是解决思路无非如下：</p>
 <p>跨源资源共享机制( CORS )：我们为 script 标签添加 crossOrigin 属性。</p>
-<img src="/img/12/23.webp" />
+<img src="../../img/12/23.webp" />
 <p>或者动态去添加 js 脚本：</p>
-<img src="/img/12/24.webp" />
+<img src="../../img/12/24.webp" />
 <p>特别注意，服务器端需要设置：Access-Control-Allow-Origin</p>
 <p>此外，我们也可以试试这个-解决 Script Error 的另类思路：</p>
-<img src="/img/12/09.jpg" />
+<img src="../../img/12/09.jpg" />
 <p><strong>简单解释一下：</strong></p>
 <p>改写了 EventTarget 的 addEventListener 方法；</p>
 <p>对传入的 listener 进行包装，返回包装过的 listener，对其执行进行 try-catch；</p>
 <p>浏览器不会对 try-catch 起来的异常进行跨域拦截，所以 catch 到的时候，是有堆栈信息的；</p>
 <p>重新 throw 出来异常的时候，执行的是同域代码，所以 window.onerror 捕获的时候不会丢失堆栈信息；</p>
 <p>利用包装 addEventListener，我们还可以达到「扩展堆栈」的效果</p>
-<img src="/img/12/25.webp" />
+<img src="../../img/12/25.webp" />
 <p><strong>七、崩溃和卡顿</strong></p>
 <p>卡顿也就是网页暂时响应比较慢， JS 可能无法及时执行。但崩溃就不一样了，网页都崩溃了，JS 都不运行了，还有什么办法可以监控网页的崩溃，并将网页崩溃上报呢？</p>
 <p>崩溃和卡顿也是不可忽视的，也许会导致你的用户流失。</p>
 <p><strong>1、利用 window 对象的 load 和 beforeunload 事件实现了对网页崩溃的监控。</strong></p>
-<img src="/img/12/26.webp" />
+<img src="../../img/12/26.webp" />
 <p><strong>2、基于以下原因，我们可以使用 service Worker 来实现对网页崩溃的监控。</strong></p>
 <ul>
 <li>Service Worker 有自己独立的工作线程，与网页区分开，网页崩溃了，Service Worker 一般情况下不会崩溃；</li>
@@ -408,9 +408,9 @@ try-catch 只能捕获到同步的运行时错误，对语法和异步错误却�
 <p><strong>1、通过 Ajax 发送数据</strong></p>
 <p>因为 Ajax 请求本身也有可能会发生异常，而且有可能会引发跨域问题，一般情况下更推荐使用动态创建 img 标签的形式进行上报。</p>
 <p><strong>2、动态创建 img 标签的形式</strong></p>
-<img src="/img/12/27.webp" />
+<img src="../../img/12/27.webp" />
 <p>收集异常信息量太多，怎么办？实际中，我们不得不考虑这样一种情况：如果你的网站访问量很大，那么一个必然的错误发送的信息就有很多条，这时候，我们需要设置采集率，从而减缓服务器的压力:</p>
-<img src="/img/12/28.webp" />
+<img src="../../img/12/28.webp" />
 <p>采集率应该通过实际情况来设定，随机数，或者某些用户特征都是不错的选择。</p>
 <p><strong>九、总结</strong></p>
 <p>回到我们开头提出的那个问题，如何优雅的处理异常呢？</p>

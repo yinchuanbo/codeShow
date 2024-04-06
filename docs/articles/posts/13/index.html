@@ -167,7 +167,7 @@
 <h2 id="一监控并收集-javascript-错误">一、监控并收集 Javascript 错误</h2>
 <p>众所周知，我们是有办法去监听前端 Js 错误的，他们分别 <code>window.onerror、window.onunhandledrejection、console.error</code> 方法。</p>
 <p>通过这些方法能够为我们记录下线上的运行时错误，以及详细的堆栈信息。我将 <code>window.onerror(捕获异常)</code>，<code>console.error(自定义异常)</code> 方法收集到的错误信息进行分析统计后的效果如下：</p>
-<img src="/img/13/01.png" />
+<img src="../../img/13/01.png" />
 <h3 id="1重写-windowonerror-方法">（1）重写 window.onerror 方法</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// 重写 onerror 进行jsError的监听
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>window.<span style="color:#a6e22e">onerror</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">errorMsg</span>, <span style="color:#a6e22e">url</span>, <span style="color:#a6e22e">lineNumber</span>, <span style="color:#a6e22e">columnNumber</span>, <span style="color:#a6e22e">errorObj</span>) {
@@ -289,7 +289,7 @@
 <p>只要每天的错误量没有波动太大，报错数据比较平稳，就可以认为线上应用是健康的。所以我选择跟一周前的数据进行比较，如果出现大幅上升，那么就需要对这个项目进行关注了，而不是每天查看具体的报错数据。</p>
 <p>本文上部的健康状况看板图片就是为了表达这种想法，截图上正是前端发了严重的异常，而出现的曲线图。</p>
 <p>那我们来看看如何对这些错误进行聚合，且看下 Webfunny 错误聚合的效果：</p>
-<img src="/img/13/02.png" />
+<img src="../../img/13/02.png" />
 <p>首先，我们对捕获的异常类型进行了分类（<code>TypeError、ReferenceError、UncaughtInPromiseError</code>），这样错误类型可以一目了然。</p>
 <p>同时我们对发生错误的操作系统（<code>Android、ios、Pc</code>）进行了分类统计，比如截图中的第一个错误，就只会在苹果手机上发生，排查范围也就缩小了很多。</p>
 <p>另外，我们把错误影响的人数也统计出来，就可以知道这个错误影响了多少用户，从而确定修复的优先级。</p>
@@ -297,16 +297,16 @@
 <p>这一步属于监控的附加功能，主要包括邮箱、钉钉、短信等消息通知，和本次讲得知识点无关，我就不细说了。</p>
 <h2 id="五如何定位并解决-js-错误">五、如何定位并解决 JS 错误</h2>
 <p>针对某一个错误，我们需要分析它发生的平台，影响的人数，系统版本，网络环境等等，同时也需要分析最为重要的一步，就是代码的位置。</p>
-<img src="/img/13/03.png" />
+<img src="../../img/13/03.png" />
 <p>如图所示</p>
 <p><strong>首先</strong>，我们分析了错误发生的具体时间、发生次数、影响人数、IP 地址、浏览器版本、操作系统等环境因素</p>
 <p><strong>其次</strong>，我们还需统计这个报错发生的时间曲线，如果是大量报错，我们可以很容易定位到错误发生的起始点，针对那个时间点，对报错的原因进行定位</p>
-<img src="/img/13/04.png" />
+<img src="../../img/13/04.png" />
 <p><strong>还有一个重要的点</strong>，就是对代码代码堆栈的分析。我们默认会根据错误提示的行、列号截取错误位置附近的一段代码，正常情况下，我们已经可以通过这段代码来定位出出错的具体位置了。</p>
 <p>但是有些小伙伴说，我就是看不出来怎么办，没关系，我们还提供了利用 Js 的 SourceMap 文件反向定位源码的功能，让你准确定位到 Js 源码的位置。</p>
 <p>PS：由于 SourceMap 文件反向定位源码的功能较为复杂，我将放到下一个知识分享中进行讲解。</p>
 <p><strong>最后</strong>，我们将 Js 错误结合到用户的行为记录中，这样我们就能够知道用户在发生错误的前后都做了什么，更进一步的了解错误发生原因，错误详情页提供了查看行为轨迹的按钮，我们来看看结果。</p>
-<img src="/img/13/05.png" />
+<img src="../../img/13/05.png" />
 </section>
 
   

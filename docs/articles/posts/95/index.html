@@ -181,7 +181,7 @@ entries：IntersectionObserverEntry 数组，每项都描述了目标元素与 r
 
   <section><h2 id="简介">简介</h2>
 <p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/IntersectionObserver">IntersectionObserver API</a> 提供了一种创建<code>IntersectionObserver</code>  对象的方法，对象用于<strong>监测目标元素与视窗(viewport)的交叉状态</strong>，并在交叉状态变化时执行回调函数，回调函数可以接收到元素与视窗交叉的具体数据。</p>
-<img src="/img/95/01.awebp" />
+<img src="../../img/95/01.awebp" />
 <p>一个 <code>IntersectionObserver</code>  对象可以监听多个目标元素，并通过队列维护回调的执行顺序。</p>
 <p><code>IntersectionObserver</code> 特别适用于：滚动动画、懒加载、虚拟列表等场景。</p>
 <blockquote>
@@ -240,7 +240,7 @@ entries：IntersectionObserverEntry 数组，每项都描述了目标元素与 r
 </tr>
 </tbody>
 </table>
-<img src="/img/95/02.awebp" />
+<img src="../../img/95/02.awebp" />
 <h4 id="--intersectionobserverentry">- IntersectionObserverEntry</h4>
 <table>
 <thead>
@@ -283,7 +283,7 @@ entries：IntersectionObserverEntry 数组，每项都描述了目标元素与 r
 <h2 id="应用">应用</h2>
 <h3 id="懒加载">懒加载</h3>
 <p>核心是延迟加载不可视区域内的资源，在元素标签中存储 src<code>data-src=&quot;xxx&quot;</code>，在元素进入视窗时进行加载。</p>
-<img src="/img/95/03.awebp" />
+<img src="../../img/95/03.awebp" />
 <iframe class="code-editor-frame" data-code="code-editor-element" data-code-id="7201030190938947587" data-src="https://code.juejin.cn/pen/7201030190938947587" style="display: block;width: 100%;height: 400px" loading="lazy" src="https://code.juejin.cn/pen/7201030190938947587"></iframe>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;skin_img&#34;</span>&gt;
 </span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">img</span>

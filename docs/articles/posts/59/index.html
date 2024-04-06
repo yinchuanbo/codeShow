@@ -191,7 +191,7 @@ m 默认值及色标位置
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">profile-box</span> {
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">background-image</span>: linear-gradient(<span style="color:#66d9ef">to</span> <span style="color:#66d9ef">bottom</span>, <span style="color:#ae81ff">#cfdeee</span> <span style="color:#ae81ff">0</span><span style="color:#66d9ef">%</span>, <span style="color:#ae81ff">#8da9cf</span> <span style="color:#ae81ff">100</span><span style="color:#66d9ef">%</span>);
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><img src="/img/59/01.png" />
+</span></span></code></pre></div><img src="../../img/59/01.png" />
 <h3 id="线性渐变">线性渐变</h3>
 <p>前面的例子使用了 <code>linear-gradient</code> 函数，沿一条假象线，从元素顶部到底部绘制了一个渐变背景。</p>
 <p>这条线的角度由这个函数的第一对关键字（<code>to bottom</code>）表示，其后是由逗号分隔的色标，色标用于在渐变线上标出颜色发生变化的位置，在这个例子中，位置 0% 处的颜色是浅蓝灰色，而位置 100% 也就是元素底部的颜色是深蓝色。</p>
@@ -202,7 +202,7 @@ m 默认值及色标位置
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">background-image</span>: linear-gradient(<span style="color:#ae81ff">45</span><span style="color:#66d9ef">deg</span>, <span style="color:#ae81ff">#cfdeee</span>, <span style="color:#ae81ff">#8da9cf</span>);
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>此时，渐变线的起点并不是背景图片区域的边，而是自动延长线的角，</p>
-<img src="/img/59/02.png" />
+<img src="../../img/59/02.png" />
 <p><strong>m 默认值及色标位置</strong></p>
 <p>线性渐变的默认方向是自上而下（to bottom），而 0% 和 100% 分别表示第一个和最后一个色标的位置，因此前面第一个例子实际上可以简写如下：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">profile-box</span> {
@@ -242,7 +242,7 @@ m 默认值及色标位置
 </span></span><span style="display:flex;"><span>  );
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>这样就会得到一个圆形放射渐变，中心点为 x 轴方向 20%，y 轴方向 30%，圆周范围到与最临近的角度接触为止。</p>
-<img src="/img/59/03.png" />
+<img src="../../img/59/03.png" />
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">profile-box</span> {
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">background-image</span>: radial-gradient(
 </span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">#cfdfee</span>,
@@ -253,7 +253,7 @@ m 默认值及色标位置
 </span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">#2c56a1</span>
 </span></span><span style="display:flex;"><span>  );
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><img src="/img/59/04.png" />
+</span></span></code></pre></div><img src="../../img/59/04.png" />
 <h3 id="重复渐变">重复渐变</h3>
 <p>重复渐变函数可以沿渐变直线（或射线）重复某个渐变色标组合，重复次数视其大小（由 <code>background-size</code> 决定）及允许的大小（元素大小）而定。</p>
 <ul>
@@ -262,14 +262,14 @@ m 默认值及色标位置
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">linear-repeat</span> {
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">background-image</span>: repeating-linear-gradient(<span style="color:#ae81ff">#cfdfee</span>, <span style="color:#ae81ff">#2c56a1</span> <span style="color:#ae81ff">20</span><span style="color:#66d9ef">px</span>);
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><img src="/img/59/05.png" />
+</span></span></code></pre></div><img src="../../img/59/05.png" />
 <ul>
 <li>放射渐变</li>
 </ul>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">radial-repeat</span> {
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">background-image</span>: repeating-radial-gradient(<span style="color:#ae81ff">#cfdfee</span>, <span style="color:#ae81ff">#2c56a1</span> <span style="color:#ae81ff">20</span><span style="color:#66d9ef">px</span>);
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><img src="/img/59/06.png" />
+</span></span></code></pre></div><img src="../../img/59/06.png" />
 <h3 id="把渐变当做图案">把渐变当做图案</h3>
 <p>渐变不一定需要很多像素来过渡，它也可以是突然的变化，从而形成锐利的线条或圆环，再搭配可以相互叠加的多重背景，就可以通过声明语法创造出简单的背景图案</p>
 <p>比如，要绘制一条垂直线，就要把相邻的两个色标重叠在一起，让渐变无从发生</p>
@@ -280,7 +280,7 @@ m 默认值及色标位置
 </span></span><span style="display:flex;"><span>    rgba(<span style="color:#ae81ff">55</span>, <span style="color:#ae81ff">110</span>, <span style="color:#ae81ff">176</span>, <span style="color:#ae81ff">0.3</span>) <span style="color:#ae81ff">50</span><span style="color:#66d9ef">%</span>
 </span></span><span style="display:flex;"><span>  );
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><img src="/img/59/07.png" />
+</span></span></code></pre></div><img src="../../img/59/07.png" />
 <p>我们没有在整个元素上使用多个线性渐变，而是只使用了一个，然后通过背景相关的属性控制其大小和重复，这样不仅能控制线条的多少，还不影响色标，然后我们再添加一个类似的水平方向的渐变，就完成了一张 “桌布” 图案</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">profile-box</span> {
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">background</span>: linear-gradient(
@@ -295,7 +295,7 @@ m 默认值及色标位置
 </span></span><span style="display:flex;"><span>  );
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">background-size</span>: <span style="color:#ae81ff">40</span><span style="color:#66d9ef">px</span> <span style="color:#ae81ff">40</span><span style="color:#66d9ef">px</span>;
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><img src="/img/59/08.png" />
+</span></span></code></pre></div><img src="../../img/59/08.png" />
 <blockquote>
 <p>渐变图形网站：https://projects.verou.me/css3patterns/</p>
 </blockquote>

@@ -310,7 +310,7 @@
 <p>函数作用域：在固定的代码片段才能被访问</p>
 </li>
 </ul>
-<img src="/img/09/01.webp" />
+<img src="../../img/09/01.webp" />
 <p>作用域有上下级关系，上下级关系的确定就看函数是在哪个作用域下创建的。如上，fn 作用域下创建了 bar 函数，那么“fn 作用域”就是“bar 作用域”的上级。</p>
 <p>作用域最大的用处就是隔离变量，不同作用域下同名变量不会有冲突。</p>
 <h4 id="什么是作用域链">什么是作用域链？</h4>
@@ -328,7 +328,7 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">show</span>(<span style="color:#a6e22e">fn</span>);
-</span></span></code></pre></div><img src="/img/09/02.webp" />
+</span></span></code></pre></div><img src="../../img/09/02.webp" />
 <h3 id="8数组的-splice-与-slice-的区别">8、数组的 splice 与 slice 的区别？</h3>
 <table>
 <thead>
@@ -1129,10 +1129,10 @@
 <h3 id="1-getboundingclientrect">1. getBoundingClientRect</h3>
 <h4 id="11-是什么">1.1 是什么</h4>
 <p><code>Element.getBoundingClientRect()</code>   方法返回元素的大小及其相对于视口的位置。返回的是一个对象，对象里有这 8 个属性：<code>left，right，top，bottom，width，height，x，y</code></p>
-<img src="/img/09/03.webp" />
+<img src="../../img/09/03.webp" />
 <h4 id="12-兼容性">1.2 兼容性</h4>
 <p>基本在每一个浏览器都可以使用<code>getBoundingClientRect</code></p>
-<img src="/img/09/04.webp" />
+<img src="../../img/09/04.webp" />
 <h4 id="13-判断元素是否在可视区域">1.3 判断元素是否在可视区域</h4>
 <p>这是<code>getBoundingClientRect</code>最常应用的场景了，判断一个元素是否完整出现在视口里</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;box&#34;</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;
@@ -1181,7 +1181,7 @@
 <h4 id="21-是什么">2.1 是什么</h4>
 <p><code>IntersectionObserver</code><strong>接口</strong> 提供了一种异步观察目标元素与其祖先元素或顶级文档视窗(<a href="https://link.segmentfault.com/?enc=3qk0sJgqtyg7i0hLBx9umQ%3D%3D.ziwJtfChvpKkirMkwtouh1%2BFR1vJCG2OdjbRjIEpSkJwE6qNHWYEXL6Zz9VvvAwplgtN9oowYXNPrnotIg46UA%3D%3D">viewport</a>)交叉状态的方法。祖先元素与视窗(<a href="https://link.segmentfault.com/?enc=7imHCTlfnFtjzF5Uth3BiQ%3D%3D.S0KZ8KskjcZ6IZWfwbQjtUwASzBLyu7ggAwF0BtdSFgKZBbe3pCU3w2sNSYAJ7RVvBXxqDo9eYXMnFzGJbdAqA%3D%3D">viewport</a>)被称为<strong>根(root)</strong></p>
 <p>通俗点说就是：<code>IntersectionObserver</code>是用来监听<strong>某个元素与视口</strong>的<code>交叉状态</code>的。交叉状态是什么呢？请看下图，一开始整个元素都在视口内，那么元素与视口的交叉状态就是<strong>100%</strong>，而我往下滚动，元素只有一半显示在视口里，那么元素与视口的交叉状态为<strong>50%</strong>：</p>
-<img src="/img/09/05.webp" />
+<img src="../../img/09/05.webp" />
 <h4 id="22-用法">2.2 用法</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// 接收两个参数 callback  option
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">io</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">IntersectionObserver</span>(<span style="color:#a6e22e">callback</span>, <span style="color:#a6e22e">option</span>);
@@ -1201,7 +1201,7 @@
 </span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">entries</span>);
 </span></span><span style="display:flex;"><span>});
 </span></span></code></pre></div><p><code>callback</code>函数的参数（<code>entries</code>）是一个数组，每个成员都是一个<a href="https://link.segmentfault.com/?enc=mO7paVHAGa3SH9QzmBqijA%3D%3D.IhbIWX1wG8wN5NrmPk%2F1N%2B2Kq1my1saR81c2CN9ie9HpsEUp0KccZiCo7NwKolRyf1x27b6rcRlNh7MiS%2FA6SCpmq50rpc5PsNycMo2n%2B5c%3D"><code>IntersectionObserverEntry</code></a>对象。举例来说，如果同时有两个被观察的对象的可见性发生变化，<code>entries</code>数组就会有两个成员。</p>
-<img src="/img/09/06.webp" />
+<img src="../../img/09/06.webp" />
 <h4 id="24-intersectionobserverentry-对象">2.4 IntersectionObserverEntry 对象</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">time</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">3893.92</span>,
@@ -1307,7 +1307,7 @@
 </ul>
 <h4 id="28-缺点">2.8 缺点</h4>
 <p>想兼容 IE 的就别考虑这个 API 了。。。</p>
-<img src="/img/09/07.webp" />
+<img src="../../img/09/07.webp" />
 <h3 id="3-createnodeiterator">3. createNodeIterator</h3>
 <h4 id="31-结识这个-api">3.1 结识这个 API</h4>
 <p>我是怎么认识这个 API 的呢？我面试的时候被问到了：<code>说一说，如何遍历输出页面中的所有元素</code>。我第一时间肯定想到使用循环递归去输出。面试官：行吧，回家等消息吧。</p>
@@ -1322,12 +1322,12 @@
 </span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">root</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">it</span>.<span style="color:#a6e22e">nextNode</span>();
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>找个网站测试下：</p>
-<img src="/img/09/08.webp" />
+<img src="../../img/09/08.webp" />
 <h4 id="33-详细参数">3.3 详细参数</h4>
 <p>详细参数可以看<a href="https://link.segmentfault.com/?enc=%2Bkl3w9Te3JYIG%2FFxnErSxA%3D%3D.wplxGCKkPd%2B48SVCCcg60g%2FYGVHY7lr6gZ3NAnd7ssqRo8fcnVV15mUsb%2B0Vk8y%2FEHYUfYAuplXy2g4Yuy4kAmSesm4aQ2qc7E0rtqTuzJI%3D">这里</a>，讲的很详细</p>
 <h4 id="34-兼容性">3.4 兼容性</h4>
 <p>一片绿啊，大胆放心使用吧！</p>
-<img src="/img/09/09.webp" />
+<img src="../../img/09/09.webp" />
 <h3 id="4-getcomputedstyle">4. getComputedStyle</h3>
 <h4 id="41-是什么">4.1 是什么</h4>
 <p><code>Window.getComputedStyle()</code>方法返回一个对象，该对象在应用活动样式表并解析这些值可能包含的任何基本计算后报告元素的所有 CSS 属性的值。 私有的 CSS 属性值可以通过对象提供的 API 或通过简单地使用 CSS 属性名称进行索引来访问。</p>
@@ -1336,7 +1336,7 @@
 <li><code>element</code>: 必需，要获取样式的元素。</li>
 <li><code>pseudoElement</code>: 可选，伪类元素，当不查询伪类元素的时候可以忽略或者传入 null。</li>
 </ul>
-<img src="/img/09/10.webp" />
+<img src="../../img/09/10.webp" />
 <h4 id="42-使用">4.2 使用</h4>
 <p>搭配<code>getPropertyValue</code>可以获取到具体样式</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>#box {
@@ -1353,7 +1353,7 @@
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">height</span>, <span style="color:#a6e22e">width</span>); <span style="color:#75715e">// ’300px‘ &#39;300px&#39;
 </span></span></span></code></pre></div><h4 id="43-兼容性">4.3 兼容性</h4>
 <p>一片绿油油。放心使用。</p>
-<img src="/img/09/11.webp" />
+<img src="../../img/09/11.webp" />
 <h3 id="5-requestanimationframe">5. requestAnimationFrame</h3>
 <p>这篇文章讲的不错，介绍，用法，兼容性，都说的明明白白：<a href="https://link.segmentfault.com/?enc=sODM3NiE9ClOx4Kwsr7xgw%3D%3D.fd%2BEO3BdwXbSGsY8DZULMmrgg9uefiV3o3r4t8mBY4VAxjmqUtufeHb%2BZgLEwcPVahCrzjiddAdsGMmz1e8Tlw%3D%3D">requestAnimationFrame 理解与实践</a></p>
 <h3 id="6-requestidlecallback">6. requestIdleCallback</h3>
@@ -1363,7 +1363,7 @@
 <p>当初始的  <strong>HTML</strong> 文档被完全加载和解析完成之后，<strong><code>DOMContentLoaded</code></strong> 事件被触发，而无需等待样式表、图像和子框架的完全加载。</p>
 <p>这时问题又来了，“HTML 文档被加载和解析完成”是什么意思呢？或者说，HTML 文档被加载和解析完成之前，浏览器做了哪些事情呢？那我们需要从浏览器渲染原理来谈谈。</p>
 <p>浏览器向服务器请求到了 HTML 文档后便开始解析，产物是 DOM（文档对象模型），到这里 HTML 文档就被加载和解析完成了。如果有 CSS 的会根据 CSS 生成 CSSOM（CSS 对象模型），然后再由 DOM 和 CSSOM 合并产生渲染树。有了渲染树，知道了所有节点的样式，下面便根据这些节点以及样式计算它们在浏览器中确切的大小和位置，这就是布局阶段。有了以上这些信息，下面就把节点绘制到浏览器上。所有的过程如下图所示：</p>
-<img src="/img/09/12.webp" />
+<img src="../../img/09/12.webp" />
 <p>现在你可能了解 HTML 文档被加载和解析完成前浏览器大概做了哪些工作，但还没完，因为我们还没有考虑现在前端的主角之一 JavaScript。</p>
 <p>JavaScript 可以阻塞 DOM 的生成，也就是说当浏览器在解析 HTML 文档时，如果遇到 <script>，便会停下对 HTML 文档的解析，转而去处理脚本。如果脚本是内联的，浏览器会先去执行这段内联的脚本，如果是外链的，那么先会去加载脚本，然后执行。在处理完脚本之后，浏览器便继续解析 HTML 文档。看下面的例子：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">body</span>&gt;
@@ -1381,16 +1381,16 @@
 <p>到这里，我们可以总结一下。当文档中没有脚本时，浏览器解析完文档便能触发 DOMContentLoaded 事件；如果文档中包含脚本，则脚本会阻塞文档的解析，而脚本需要等 CSSOM 构建完成才能执行。在任何情况下，DOMContentLoaded 的触发不需要等待图片等其他资源加载完成。</p>
 <h4 id="72-异步脚本">7.2 异步脚本</h4>
 <p>我们到这里一直在说同步脚本对网页渲染的影响，如果我们想让页面尽快显示，那我们可以使用异步脚本。HTML5 中定义了两个定义异步脚本的方法：defer 和 async。我们来看一看他们的区别。</p>
-<img src="/img/09/13.webp" />
+<img src="../../img/09/13.webp" />
 <p>同步脚本（标签中不含 async 或 defer）： <code>&lt;script src=&quot;\*\*\*.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;</code></p>
 <p>当 HTML 文档被解析时如果遇见（同步）脚本，则停止解析，先去加载脚本，然后执行，执行结束后继续解析 HTML 文档。过程如下图：</p>
-<img src="/img/09/14.webp" />
+<img src="../../img/09/14.webp" />
 <p>defer 脚本：<code>&lt;script src=&quot;\*\*\*.js&quot; charset=&quot;utf-8&quot; defer&gt;&lt;/script&gt;</code></p>
 <p>当 HTML 文档被解析时如果遇见 defer 脚本，则在后台加载脚本，文档解析过程不中断，而等文档解析结束之后，defer 脚本执行。另外，defer 脚本的执行顺序与定义时的位置有关。过程如下图：</p>
-<img src="/img/09/15.webp" />
+<img src="../../img/09/15.webp" />
 <p>async 脚本：<script src="\*\*\*.js" charset="utf-8" async></script></p>
 <p>当 HTML 文档被解析时如果遇见 async 脚本，则在后台加载脚本，文档解析过程不中断。脚本加载完成后，文档停止解析，脚本执行，执行结束后文档继续解析。过程如下图：</p>
-<img src="/img/09/16.webp" />
+<img src="../../img/09/16.webp" />
 <p>如果你 Google &ldquo;async 和 defer 的区别&rdquo;，你可能会发现一堆类似上面的文章或图片，而在这里，我想跟你分享的是 async 和 defer 对 DOMContentLoaded 事件触发的影响。</p>
 <p><strong>defer 与 DOMContentLoaded</strong></p>
 <p>如果 script 标签中包含 defer，那么这一块脚本将不会影响 HTML 文档的解析，而是等到 HTML 解析完成后才会执行。而 DOMContentLoaded 只有在 defer 脚本执行结束后才会被触发。 所以这意味着什么呢？HTML 文档解析不受影响，等 DOM 构建完成之后 defer 脚本执行，但脚本执行之前需要等待 CSSOM 构建完成。在 DOM、CSSOM 构建完毕，defer 脚本执行完成之后，DOMContentLoaded 事件触发。</p>
@@ -1398,7 +1398,7 @@
 <p>如果 script 标签中包含 async，则 HTML 文档构建不受影响，解析完毕后，DOMContentLoaded 触发，而不需要等待 async 脚本执行、样式表加载等等。</p>
 <h4 id="73-domcontentloaded-与-load">7.3 DOMContentLoaded 与 load</h4>
 <p>在回头看第一张图：</p>
-<img src="/img/09/17.webp" />
+<img src="../../img/09/17.webp" />
 <p>与标记 1 的蓝线平行的还有一条红线，红线就代表 load 事件触发的时间，对应的，在最下面的概览部分，还有一个用红色标记的 &ldquo;Load:1.60s&rdquo;，描述了 load 事件触发的具体时间。</p>
 <p>这两个事件有啥区别呢？点击这个网页你就能明白：<a href="https://link.segmentfault.com/?enc=St0VkM6Wreq9q8WUIUdQkg%3D%3D.9KbecmI8v9L5GPa66%2BNCfmArxod87mNLJ1wi8EgTvZMMz%2FA9GklvkNMc1LKkAQMnPoLGA5pYx1YVcC5ozCZbxv0npK5gtsGPF9rWHl9TKkJ1AyRuV9kSEJcUfB7HwKI2lp9sWS7zVkpnTYFE5tJUkXswpgosr%2FOc2QclaEsH8U8%3D">https://testdrive-archive.azu&hellip;</a></p>
 <p>解释一下，当 HTML 文档解析完成就会触发 DOMContentLoaded，而所有资源加载完成之后，load 事件才会被触发。</p>
@@ -1409,7 +1409,7 @@
 </span></span><span style="display:flex;"><span>});
 </span></span></code></pre></div><h4 id="75-兼容性">7.5 兼容性</h4>
 <p>绿油油一片，放心使用</p>
-<img src="/img/09/18.webp" />
+<img src="../../img/09/18.webp" />
 <h3 id="8-mutationobserver">8. MutationObserver</h3>
 <h4 id="81-是什么">8.1 是什么</h4>
 <p><code>MutationObserver</code>  是一个内建对象，它观察 DOM 元素，并在检测到更改时触发回调。</p>
@@ -1469,7 +1469,7 @@
 </li>
 </ul>
 <h4 id="84-兼容性">8.4 兼容性</h4>
-<img src="/img/09/19.webp" />
+<img src="../../img/09/19.webp" />
 <h3 id="9-promiseany">9. Promise.any</h3>
 <h4 id="91-是什么">9.1 是什么</h4>
 <p><code>Promise.any()</code>  接收一个<code>Promise</code>可迭代对象，只要其中的一个  <code>promise</code>  成功，就返回那个已经成功的  <code>promise</code> 。如果可迭代对象中没有一个  <code>promise</code>  成功（即所有的  <code>promises</code>  都失败/拒绝），就返回一个失败的 promise 和<code>AggregateError</code>类型的实例，它是 Error 的一个子类，用于把单一的错误集合在一起。本质上，这个方法和<code>Promise.all()</code>是相反的。</p>
@@ -1495,7 +1495,7 @@
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>})();
 </span></span></code></pre></div><h4 id="93-兼容性">9.3 兼容性</h4>
-<img src="/img/09/20.webp" />
+<img src="../../img/09/20.webp" />
 </section>
 
   

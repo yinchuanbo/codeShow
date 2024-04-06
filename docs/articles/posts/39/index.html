@@ -248,7 +248,7 @@
 </span></span></code></pre></div><p>这段代码中有个地方需要注意，在 register 方法中需要提供 Service Worker 的脚本路径，这里放在了网站根目录。比如，你用的是 Next.js，那么 sw.js 文件就应该放在 public 目录下面。</p>
 <p><code>navigator.serviceWorker.register</code> 方法返回一个 Promise，这个 Promise 在 Service Worker 注册成功时会解析为一个 <code>registration</code> 对象，这个对象包含了关于 Service Worker 的一些信息，比如它的作用域。如果 Service Worker 注册失败，Promise 会被拒绝，并且错误信息会被捕获并打印出来。</p>
 <p>我们看一下在浏览器中注册之后的效果：</p>
-<img src="/img/39/01.png" />
+<img src="../../img/39/01.png" />
 <p>是不是注册 Service Worker 很简单？</p>
 <p>注册完，接下来就是订阅了。</p>
 <h3 id="4-service-worker-订阅推送">4. Service Worker 订阅推送</h3>
@@ -305,7 +305,7 @@
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>服务器收到订阅对象后，返回了一个对象表示订阅成功。</p>
-<img src="/img/39/01.gif" />
+<img src="../../img/39/01.gif" />
 <p>这样，当服务器有新的消息时就能直接通知到用户了。</p>
 <p>如果你想测试一下消息推送功能该怎么办呢？这个也很简单。</p>
 <p>你可以在 Service Worker 中模拟一下从服务端发送消息：</p>
@@ -320,8 +320,8 @@
 </span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">waitUntil</span>(<span style="color:#a6e22e">self</span>.<span style="color:#a6e22e">registration</span>.<span style="color:#a6e22e">showNotification</span>(<span style="color:#a6e22e">title</span>, <span style="color:#a6e22e">options</span>));
 </span></span><span style="display:flex;"><span>});
 </span></span></code></pre></div><p>之后，你可以使用浏览器的开发者工具来模拟推送事件。在浏览器的开发者工具中，你可以选择“应用”选项卡下的 “Service Worker”菜单，然后点击 &ldquo;推送&rdquo; 按钮来模拟一个推送事件。</p>
-<img src="/img/39/02.png" />
-<img src="/img/39/02.gif" />
+<img src="../../img/39/02.png" />
+<img src="../../img/39/02.gif" />
 <h3 id="5-交互通知">5. 交互通知</h3>
 <p>目前为止，我们已经实现了“推送通知”的功能，但是只有通知是不够的。我们还需要让用户能够与这个通知进行交互。比如，当用户看到这个通知后可能会下意识去点一下，那么，我们就可以通过用户的这个点击动作，把用户引导到我们的网站上。</p>
 <p>具体应该怎么实现呢？</p>

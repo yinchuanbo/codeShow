@@ -181,7 +181,7 @@ var o = Object.create( {}, { a: { writable: true, configurable: true, value: &#3
 </span></span></code></pre></div><h3 id="objectcreate-和--的区别">Object.create() 和 {} 的区别</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">o</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">a</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span> };
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">o</span>);
-</span></span></code></pre></div><img src="/img/49/01.png" />
+</span></span></code></pre></div><img src="../../img/49/01.png" />
 <p>从上图可以看到，新创建的对象继承了 <code>Object</code> 自身的方法，如 <code>hasOwnProperty</code>、<code>toString</code> 等，在新对象上可以直接使用。</p>
 <p>再看看使用 <code>Object.create()</code> 创建对象：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// 创建纯净的对象
@@ -193,7 +193,7 @@ var o = Object.create( {}, { a: { writable: true, configurable: true, value: &#3
 </span></span><span style="display:flex;"><span>  },
 </span></span><span style="display:flex;"><span>});
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">o</span>);
-</span></span></code></pre></div><img src="/img/49/02.png" />
+</span></span></code></pre></div><img src="../../img/49/02.png" />
 <p>可以看到，新创建的对象除了自身属性之外，原型链上没有任何属性，也没有继承 Object 的任何东西，此时如果我们调用 <code>o.toString()</code> 会报 <code>Uncaught TypeError</code> 的错误。</p>
 <p>第一个参数是 null，也就是说将 null 设置成了新创建对象的原型。</p>
 <p>改改上面的例子：</p>
@@ -208,7 +208,7 @@ var o = Object.create( {}, { a: { writable: true, configurable: true, value: &#3
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>);
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">o</span>);
-</span></span></code></pre></div><img src="/img/49/03.png" />
+</span></span></code></pre></div><img src="../../img/49/03.png" />
 <p>我们看到，这样创建的对象和使用 <code>{}</code> 创建对象已经很相近了，但是还是有一点区别：多了一层 <code>prototype</code> 嵌套。</p>
 <p>最后再修改一下：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">o</span> <span style="color:#f92672">=</span> Object.<span style="color:#a6e22e">create</span>(Object.<span style="color:#a6e22e">prototype</span>, {
@@ -219,7 +219,7 @@ var o = Object.create( {}, { a: { writable: true, configurable: true, value: &#3
 </span></span><span style="display:flex;"><span>  },
 </span></span><span style="display:flex;"><span>});
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">o</span>);
-</span></span></code></pre></div><img src="/img/49/04.png" />
+</span></span></code></pre></div><img src="../../img/49/04.png" />
 <p>这次就和使用 <code>{}</code> 创建的对象一模一样了。</p>
 <h3 id="objectcreatenull-的使用场景">Object.create(null) 的使用场景</h3>
 <p>再回到文章开头的问题，为什么很多源码作者会使用 <code>Object.create(null)</code> 来初始化一个新对象呢？这是作者的习惯，还是一个最佳实践？</p>
@@ -227,7 +227,7 @@ var o = Object.create( {}, { a: { writable: true, configurable: true, value: &#3
 <p>我们进一步比较一下 <code>Object.create(null)</code> 和 <code>{}</code> 创建控对象的区别：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(Object.<span style="color:#a6e22e">create</span>(<span style="color:#66d9ef">null</span>));
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>({});
-</span></span></code></pre></div><img src="/img/49/05.png" />
+</span></span></code></pre></div><img src="../../img/49/05.png" />
 <p>从上图可以看到，使用<code>create</code>创建的对象，没有任何属性，显示 <code>No properties</code>，我们可以把它当作一个非常纯净的 map 来使用，我们可以自己定义 <code>hasOwnProperty</code>、<code>toString</code>方法，不管是有意还是不小心，我们完全不必担心会将原型链上的同名方法覆盖掉。举个例子：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">//Demo1:
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">a</span><span style="color:#f92672">=</span> {...<span style="color:#a6e22e">省略很多属性和方法</span>...};

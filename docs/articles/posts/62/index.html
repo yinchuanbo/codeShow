@@ -190,17 +190,17 @@ ul { display: flex; min-height: 100px; align-items: baseline; } li { min-width: 
   <section><h3 id="理解-flex-方法主轴和辅轴">理解 Flex 方法：主轴和辅轴</h3>
 <p>Flexbox 可以针对页面中某一个区域，控制其中元素的顺序、大小、分布及对齐。这个区域内的盒子可以沿两个方向排列：默认<strong>水平排列</strong>，也可以<strong>垂直排列</strong>。这个排列方向称为<strong>主轴</strong>。</p>
 <p>与主轴垂直的方向称为<strong>辅轴</strong>，主轴方向的这个尺寸为<strong>主尺寸</strong>。</p>
-<img src="/img/62/01.png" />
+<img src="../../img/62/01.png" />
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">ul</span> {
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">display</span>: <span style="color:#66d9ef">flex</span>;
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><img src="/img/62/02.png" />
+</span></span></code></pre></div><img src="../../img/62/02.png" />
 <p>如果把 <code>flex-direction: row-reverse</code>，那么选项就会集中在右侧，而且变成从右向左排列。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">ul</span> {
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">display</span>: <span style="color:#66d9ef">flex</span>;
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">flex-direction</span>: <span style="color:#66d9ef">row-reverse</span>;
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><img src="/img/62/03.png" />
+</span></span></code></pre></div><img src="../../img/62/03.png" />
 <p>如果不指定大小，Flex 容器内的项目会自动收缩，也就说，一行中的各项会收缩到各自的最小宽度，或者一列中的各项会收缩到各自的最小的高度，以恰好可以容纳自身内容为限。</p>
 <h3 id="对齐与空间">对齐与空间</h3>
 <p>Flexbox 对子项的排列有多种方式，沿主轴的排列叫 <strong>排布</strong>，沿辅轴的排列则叫 <strong>对齐</strong>。</p>
@@ -209,7 +209,7 @@ ul { display: flex; min-height: 100px; align-items: baseline; } li { min-width: 
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">li</span>:<span style="color:#a6e22e">nth-child</span><span style="color:#f92672">(</span><span style="color:#f92672">1</span><span style="color:#f92672">)</span> {
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">margin-right</span>: <span style="color:#66d9ef">auto</span>;
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><img src="/img/62/06.png" />
+</span></span></code></pre></div><img src="../../img/62/06.png" />
 <ol>
 <li>辅轴对齐</li>
 </ol>
@@ -220,7 +220,7 @@ ul { display: flex; min-height: 100px; align-items: baseline; } li { min-width: 
 </span></span><span style="display:flex;"><span><span style="color:#f92672">li</span> {
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">width</span>: <span style="color:#ae81ff">100</span><span style="color:#66d9ef">px</span>;
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><img src="/img/62/07.png" />
+</span></span></code></pre></div><img src="../../img/62/07.png" />
 <p>子项自动就和父元素等高了，实际上，控制辅轴对齐的属性 <code>align-items</code>，其默认值是 <code>stretch（拉伸）</code>。也就是说子项默认拉伸，以填满可用空间。其他的关键字还有 <code>flex-start</code>、<code>center</code>、<code>flex-end</code>，</p>
 <p>最后，还可以使用 <code>baseline</code> 关键字，将子项中文本的基线与容器基线对齐，如果子项大小不一，而你希望它们在辅轴上虽然位置不同，但本身对齐，那么就可以采用这种方法。</p>
 <p>将第二项字体设大一点</p>
@@ -242,7 +242,7 @@ ul { display: flex; min-height: 100px; align-items: baseline; } li { min-width: 
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">font-size</span>: <span style="color:#ae81ff">30</span><span style="color:#66d9ef">px</span>;
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">height</span>: <span style="color:#ae81ff">70</span><span style="color:#66d9ef">px</span>;
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><img src="/img/62/08.png" />
+</span></span></code></pre></div><img src="../../img/62/08.png" />
 <ol start="2">
 <li>对齐个别项</li>
 </ol>
@@ -255,7 +255,7 @@ ul { display: flex; min-height: 100px; align-items: baseline; } li { min-width: 
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">margin-right</span>: <span style="color:#66d9ef">auto</span>;
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">align-self</span>: <span style="color:#66d9ef">flex-start</span>;
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><img src="/img/62/09.png" />
+</span></span></code></pre></div><img src="../../img/62/09.png" />
 <ol start="3">
 <li>Flexbox 中的垂直对齐</li>
 </ol>
@@ -276,7 +276,7 @@ ul { display: flex; min-height: 100px; align-items: baseline; } li { min-width: 
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">background-color</span>: <span style="color:#ae81ff">#fff</span>;
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">padding</span>: <span style="color:#ae81ff">50</span><span style="color:#66d9ef">px</span> <span style="color:#ae81ff">20</span><span style="color:#66d9ef">px</span>;
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><img src="/img/62/10.png" />
+</span></span></code></pre></div><img src="../../img/62/10.png" />
 <p>如果 Flex 容器中有多个元素，</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">author-meta</span> {
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">display</span>: <span style="color:#66d9ef">flex</span>;
@@ -314,18 +314,18 @@ ul { display: flex; min-height: 100px; align-items: baseline; } li { min-width: 
 </span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">navbar</span> <span style="color:#f92672">li</span> {
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">flex-basis</span>: <span style="color:#66d9ef">auto</span>;
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><img src="/img/62/11.png" />
+</span></span></code></pre></div><img src="../../img/62/11.png" />
 <p>给 <code>flex-basis</code> 设置具体的数值</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">li</span> {
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">flex-basis</span>: <span style="color:#ae81ff">200</span><span style="color:#66d9ef">px</span>;
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><img src="/img/62/14.png" />
+</span></span></code></pre></div><img src="../../img/62/14.png" />
 <p>因为有剩余空间可分配，所以可以考虑 <code>flex-grow</code> 了，默认情况下，<code>flex-grow</code> 的值为 0，对各项的大小没有影响，假设此时把 <code>flex-grow</code> 的值设置成 1 会怎么样呢？</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">navbar</span> <span style="color:#f92672">li</span> {
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">flex-basis</span>: <span style="color:#66d9ef">auto</span>;
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">flex-grow</span>: <span style="color:#ae81ff">1</span>;
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><img src="/img/62/12.png" />
+</span></span></code></pre></div><img src="../../img/62/12.png" />
 <p>根据结果分析，<code>flex-grow: 1</code> 是将剩余的空间一分为二，然后分别加到原本的两个 li 的宽度之上。</p>
 <p>假设给它们分别设置不用的 <code>flex-grow</code>，类似这样：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">navbar</span> <span style="color:#f92672">li</span>:<span style="color:#a6e22e">nth-child</span><span style="color:#f92672">(</span><span style="color:#f92672">1</span><span style="color:#f92672">)</span> {
@@ -334,7 +334,7 @@ ul { display: flex; min-height: 100px; align-items: baseline; } li { min-width: 
 </span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">navbar</span> <span style="color:#f92672">li</span>:<span style="color:#a6e22e">nth-child</span><span style="color:#f92672">(</span><span style="color:#f92672">2</span><span style="color:#f92672">)</span> {
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">flex-grow</span>: <span style="color:#ae81ff">1</span>;
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><img src="/img/62/13.png" />
+</span></span></code></pre></div><img src="../../img/62/13.png" />
 <p>这会导致第一项分得剩余空间的 <code>3/4</code>，第二项分得 <code>1/4</code>。</p>
 <ol start="2">
 <li>纯粹按伸缩系数计算大小</li>
@@ -344,7 +344,7 @@ ul { display: flex; min-height: 100px; align-items: baseline; } li { min-width: 
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">flex-basis</span>: <span style="color:#ae81ff">0</span>;
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">flex-grow</span>: <span style="color:#ae81ff">1</span>;
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><img src="/img/62/15.png" />
+</span></span></code></pre></div><img src="../../img/62/15.png" />
 <p>接下来要使用 flex 这个简写属性一次性设置 <code>flex-grow</code>、<code>flex-shrink</code> 和 <code>flex-basis</code> 属性，顺序就是这样，值以空格分隔：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">navbar</span> <span style="color:#f92672">li</span> {
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">flex</span>: <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span><span style="color:#66d9ef">%</span>; <span style="color:#75715e">/* 与上面效果等同 */</span>
@@ -357,7 +357,7 @@ ul { display: flex; min-height: 100px; align-items: baseline; } li { min-width: 
 </span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">navbar</span> <span style="color:#f92672">li</span>:<span style="color:#a6e22e">nth-child</span><span style="color:#f92672">(</span><span style="color:#f92672">1</span><span style="color:#f92672">)</span> {
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">flex-grow</span>: <span style="color:#ae81ff">2</span>;
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><img src="/img/62/16.png" />
+</span></span></code></pre></div><img src="../../img/62/16.png" />
 <ol start="3">
 <li>收缩项目</li>
 </ol>
@@ -369,7 +369,7 @@ ul { display: flex; min-height: 100px; align-items: baseline; } li { min-width: 
 </span></span><span style="display:flex;"><span><span style="color:#f92672">li</span>:<span style="color:#a6e22e">nth-child</span><span style="color:#f92672">(</span><span style="color:#f92672">2</span><span style="color:#f92672">)</span> {
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">flex</span>: <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">500</span><span style="color:#66d9ef">px</span>;
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><img src="/img/62/17.png" />
+</span></span></code></pre></div><img src="../../img/62/17.png" />
 <p>加在一起的首选宽度（800px + 500px = 1300px），超出了容器宽度 300px，而且两个项目的 <code>flex-shrink</code> 值都是 1，它们会根据自己的 <code>flex-shrink</code> 系数和 <code>flex-basis</code> 的值来按比例收缩。</p>
 <p>具体来说，每个项目先用自己的 <code>flex-shrink</code> 乘以自己的 <code>flex-basis</code>，然后再用乘积除以每一项的 <code>flex-shrink</code> 与 <code>flex-basis</code> 的乘积之和，最后再拿得到的比例系数去乘以超出的宽度，从而得到该项目收缩的空间数量。</p>
 <p>以下是求第一个项目要收缩的量的过程：</p>
@@ -377,7 +377,7 @@ ul { display: flex; min-height: 100px; align-items: baseline; } li { min-width: 
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">  ((800 x 1) / ((800 x 1) + (500 x 1))) * 300 = 184.6;
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">  ((500 x 1) / ((800 x 1) + (500 x 1))) * 300 = 115.4;
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">*/</span>
-</span></span></code></pre></div><img src="/img/62/18.png" />
+</span></span></code></pre></div><img src="../../img/62/18.png" />
 <h3 id="flexbox-布局">Flexbox 布局</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">ul</span>&gt;
 </span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">li</span>&gt;
@@ -421,7 +421,7 @@ ul { display: flex; min-height: 100px; align-items: baseline; } li { min-width: 
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">left</span>: <span style="color:#ae81ff">-1.5</span><span style="color:#66d9ef">em</span>;
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">top</span>: <span style="color:#ae81ff">0</span>;
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><img src="/img/62/19.png" />
+</span></span></code></pre></div><img src="../../img/62/19.png" />
 <p>接下来该 Flexbox 上场了，首先，把列表元素转换为 Flex 容器，再通过 <code>flex-wrap</code> 属性的 wrap 值告诉它允许子元素折行：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">tags</span> {
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">/* ... */</span>
@@ -436,7 +436,7 @@ ul { display: flex; min-height: 100px; align-items: baseline; } li { min-width: 
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">flex-direction</span>: <span style="color:#66d9ef">row-reverse</span>;
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">flex-wrap</span>: <span style="color:#66d9ef">wrap</span>;
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><img src="/img/62/20.png" />
+</span></span></code></pre></div><img src="../../img/62/20.png" />
 <p>也可以反转垂直排布的方向，让第一行从底部开头，然后向上折行，</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">tags</span> {
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">/* ... */</span>
@@ -444,7 +444,7 @@ ul { display: flex; min-height: 100px; align-items: baseline; } li { min-width: 
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">flex-direction</span>: <span style="color:#66d9ef">row-reverse</span>;
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">flex-wrap</span>: <span style="color:#66d9ef">wrap-reverse</span>;
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><img src="/img/62/21.png" />
+</span></span></code></pre></div><img src="../../img/62/21.png" />
 <p>(2) 多行布局中可伸缩的大小</p>
 <p>Flexbox 对多行布局的另一个好处就是，可以利用可伸缩的大小均匀填充每一行，flex-grow 的计算是以行为单位的，因此项目的可扩展空间以行的宽度为限。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">tags</span> {
@@ -455,16 +455,16 @@ ul { display: flex; min-height: 100px; align-items: baseline; } li { min-width: 
 </span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">tags</span> <span style="color:#f92672">li</span> {
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">flex</span>: <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">auto</span>;
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><img src="/img/62/22.png" />
+</span></span></code></pre></div><img src="../../img/62/22.png" />
 <p>应用 <code>flex-grow</code> 系数，创造出完美的整行效果。</p>
 <p>此时，稍微缩小一点浏览器窗口，就会导致最后一个标签折行，从而创建一个新行，看着很不舒服，</p>
-<img src="/img/62/23.png" />
+<img src="../../img/62/23.png" />
 <p>要解决这个问题，可以给所有标签设置 <code>max-width</code>，限制可伸缩的范围</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">tags</span> <span style="color:#f92672">li</span> {
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">flex</span>: <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">auto</span>;
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">max-width</span>: <span style="color:#ae81ff">14</span><span style="color:#66d9ef">em</span>;
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><img src="/img/62/24.png" />
+</span></span></code></pre></div><img src="../../img/62/24.png" />
 <p>(3) 对齐所有行</p>
 <p>如果在标签列表容器中，我们设置了 <code>min-height: 300px</code>，就可以知道相对于容器对齐行或列的 <code>align-content</code> 属性的效果了。默认情况下，这个属性的值是 <code>stretch</code>，意思是每一行都会拉伸以填充自己应占的容器高度。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">tags</span> {
@@ -473,7 +473,7 @@ ul { display: flex; min-height: 100px; align-items: baseline; } li { min-width: 
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">min-height</span>: <span style="color:#ae81ff">300</span><span style="color:#66d9ef">px</span>;
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">/* align-content: stretch; 在这里是默认值 */</span>
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><img src="/img/62/25.png" />
+</span></span></code></pre></div><img src="../../img/62/25.png" />
 <h3 id="列布局与个别排序">列布局与个别排序</h3>
 <p>使用 Flexbox 的 order 属性，可以完全摆脱项目的源代码中顺序的约束。只要告诉浏览器这个项目排第几就行了。</p>
 <p>默认情况下，每个项目的 order 值都是 0，意味着按照它们在源代码中的顺序出现。</p>

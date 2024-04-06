@@ -203,10 +203,10 @@ defer 具有 defer 属性的脚本在 HTML 解析完全完成之后执行，但�
 </span></span></code></pre></div><p><code>async</code> 和 <code>defer</code> 之间的区别在于它们何时开始执行脚本。</p>
 <h3 id="async">async</h3>
 <p>具有 <code>async</code> 属性的脚本在完成下载后和窗口<a href="https://developer.mozilla.org/docs/Web/Events/load">加载</a>事件之前第一时间执行。这意味着 <code>async</code> 脚本可能（并且很可能）不会按照它们在 HTML 中出现的顺序执行。这也意味着如果它们在解析器仍在工作时完成下载，他们可以中断 DOM 构建。</p>
-<img src="/img/11/01.avif" />
+<img src="../../img/11/01.avif" />
 <h3 id="defer">defer</h3>
 <p>具有 <code>defer</code> 属性的脚本在 HTML 解析完全完成之后执行，但在 <a href="https://developer.mozilla.org/docs/Web/Events/DOMContentLoaded"><code>DOMContentLoaded</code></a> 事件之前执行。<code>defer</code> 保证脚本将按照它们在 HTML 中出现的顺序执行并且不会阻塞解析器。</p>
-<img src="/img/11/02.avif" />
+<img src="../../img/11/02.avif" />
 <ul>
 <li>如果在加载过程中更早地运行脚本很重要，请使用 <code>async</code>。</li>
 <li>对不太重要的资源使用 <code>defer</code>。例如，低于首屏的视频播放器。</li>
@@ -235,7 +235,7 @@ defer 具有 defer 属性的脚本在 HTML 解析完全完成之后执行，但�
 </span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">link</span> <span style="color:#a6e22e">rel</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;dns-prefetch&#34;</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;http://example.com&#34;</span> /&gt;
 </span></span></code></pre></div><h2 id="延迟加载第三方资源">延迟加载第三方资源</h2>
 <p>如果构建不当，嵌入的第三方资源可能是导致页面速度变慢的一个重要因素。如果它们不重要或低于首屏（即，如果用户必须滚动才能查看它们），则延迟加载是提高页面速度和绘制指标的好方法。这样，用户将更快地获得主页内容并拥有更好的体验。</p>
-<img src="/img/11/03.avif" />
+<img src="../../img/11/03.avif" />
 <p>一种有效的方法是在主页内容加载后延迟加载第三方内容。广告是这种方法的一个很好的候选者。</p>
 <p>广告是许多网站的重要收入来源，但用户是为了内容而来。通过延迟加载广告并更快地提供主要内容，您可以提高广告的整体可见度百分比。例如，MediaVine 改用<a href="https://www.mediavine.com/lazy-loading-ads-mediavine-ads-load-200-faster/">延迟加载广告</a>，页面加载速度提高了 200%。DoubleClick 在其<a href="https://support.google.com/dfp_premium/answer/4578089#lazyloading">官方文档</a>中提供了有关如何延迟加载广告的指南。</p>
 <p>另一种方法是仅当用户向下滚动到页面的相应部分时才加载第三方内容。</p>

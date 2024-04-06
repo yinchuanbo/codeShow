@@ -217,12 +217,12 @@ var A = function (selector) { return A.fn.init(selector); }; A.fn = A.prototype 
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">A</span>(<span style="color:#e6db74">&#34;demo&#34;</span>));
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">$</span>(<span style="color:#e6db74">&#34;#demo&#34;</span>));
 </span></span></code></pre></div><p>发现他们的原型有些不同：</p>
-<img src="/img/38/01.jpg">
+<img src="../../img/38/01.jpg">
 <p>第一个 <code>__proto__</code> 为 <code>A.fn.A.init</code></p>
 <p>第二个 <code>__proto__</code> 为 <code>jQuery[0]</code></p>
 <p>解决这个问题的方式很简单也很巧妙，只要将构造函数的原型指向一个已存在的对象即可。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">A</span>.<span style="color:#a6e22e">fn</span>.<span style="color:#a6e22e">init</span>.<span style="color:#a6e22e">prototype</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">A</span>.<span style="color:#a6e22e">fn</span>;
-</span></span></code></pre></div><img src="/img/38/02.jpg">
+</span></span></code></pre></div><img src="../../img/38/02.jpg">
 <p>果然是 Object 了，不过 jQuery 中确实是 jQuery 啊？？</p>
 <p>这是因为实例化的对象是在构造函数执行时创建的，所以 constructor 指向的就是 <code>A.fn.A.init</code> 构造函数，但是这个对象在执行完毕之后就 ‘不存在’ 了，所以我们为了加强 constructor，想像 jQuery 一样，为了让 <code>__proto__</code> 指向 A 对象，可以这么做：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">A</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">selector</span>) {
@@ -243,7 +243,7 @@ var A = function (selector) { return A.fn.init(selector); }; A.fn = A.prototype 
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">//...
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>};
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">A</span>.<span style="color:#a6e22e">fn</span>.<span style="color:#a6e22e">init</span>.<span style="color:#a6e22e">prototype</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">A</span>.<span style="color:#a6e22e">fn</span>;
-</span></span></code></pre></div><img src="/img/38/03.jpg">
+</span></span></code></pre></div><img src="../../img/38/03.jpg">
 <p>此时，我们 A 框架的 <code>__proto__</code> 为 A 了，并且 size 方法也可以正常使用了</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">A</span>(<span style="color:#e6db74">&#34;demo&#34;</span>).<span style="color:#a6e22e">size</span>());
 </span></span></code></pre></div><h3 id="丰富元素的获取">丰富元素的获取</h3>
@@ -286,7 +286,7 @@ var A = function (selector) { return A.fn.init(selector); }; A.fn = A.prototype 
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">A</span>.<span style="color:#a6e22e">fn</span>.<span style="color:#a6e22e">init</span>.<span style="color:#a6e22e">prototype</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">A</span>.<span style="color:#a6e22e">fn</span>;
 </span></span></code></pre></div><h3 id="数组与对象">数组与对象</h3>
 <p>测试的时候发现控制台：jQuery 获取的元素更像一个数组，而 A 框架返回的更像是一个对象。</p>
-<img src="/img/38/04.jpg">
+<img src="../../img/38/04.jpg">
 <p>由于 js 是弱类型的语言，并且数组、对象、函数都被看成是对象的实例，所以 js 中并没有一个纯粹的数组类型。而且 js 引擎的视线也没有做严格的校验，也是基于对象实现的。一些浏览器解析引擎在判断对象是否是数组的时候不仅仅判断其有没有 length 属性，可否通过 ‘[索引值]’ 方式访问元素，还会判断其是否具有数组方法来确定是否要用数组的形式展现，所以我们只需要在 A.fn 中添加几个数组常用的方法来增强数组特性就可以解决问题了。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">A</span>.<span style="color:#a6e22e">fn</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">A</span>.<span style="color:#a6e22e">prototype</span> <span style="color:#f92672">=</span> {
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">//...
@@ -296,7 +296,7 @@ var A = function (selector) { return A.fn.init(selector); }; A.fn = A.prototype 
 </span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">splice</span><span style="color:#f92672">:</span> [].<span style="color:#a6e22e">splice</span>,
 </span></span><span style="display:flex;"><span>};
 </span></span></code></pre></div><p>测试结果：</p>
-<img src="/img/38/05.jpg">
+<img src="../../img/38/05.jpg">
 <h3 id="方法拓展">方法拓展</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// 对象拓展
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">A</span>.<span style="color:#a6e22e">extend</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">A</span>.<span style="color:#a6e22e">fn</span>.<span style="color:#a6e22e">extend</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {

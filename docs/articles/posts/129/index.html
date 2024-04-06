@@ -189,7 +189,7 @@
 <p>这种的缺点是没法知道 <code>domain</code>、<code>path</code>、<code>expired</code> 等信息。</p>
 <p>Cookie Store API 可以获取开发工具的 cookie 属性，当然，具有 <code>HttpOnly</code> 的属性的是获取不到的。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">await</span> <span style="color:#a6e22e">cookieStore</span>.<span style="color:#a6e22e">getAll</span>();
-</span></span></code></pre></div><img src="/img/129/01.png" />
+</span></span></code></pre></div><img src="../../img/129/01.png" />
 <p><strong>当然还提供了</strong></p>
 <ul>
 <li>
@@ -205,7 +205,7 @@
 <h2 id="compression-stream-api">Compression Stream API</h2>
 <p>Compression Stream API 提供一种 Js API，使用 gzip 或者默认格式压缩和解压缩数据流，内置的压缩库意味着 Js 应用不再需要包含其他压缩库，这使得应用程序的下载大小更小。</p>
 <p>比如下面上传一个文本文件到浏览器，代码采用 gzip 压缩纯文本之后，从 6kb 变为了 1kb，解压缩后又变成了 6kb。</p>
-<img src="/img/129/02.png" />
+<img src="../../img/129/02.png" />
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;file&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;file&#34;</span> /&gt;
 </span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">script</span>&gt;
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">async</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">compressAndDownload</span>(<span style="color:#a6e22e">filename</span>, <span style="color:#a6e22e">content</span>) {
@@ -271,7 +271,7 @@
 </span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">script</span>&gt;
 </span></span></code></pre></div><h2 id="css-custom-highlight-api">CSS Custom Highlight API</h2>
 <p>CSS 自定义高亮 API 提供了一种方法，可以通过使用 Js 创建范文并使用 CSS 定义样式来设置文档中任意文本范围的样式。</p>
-<img src="/img/129/03.png" />
+<img src="../../img/129/03.png" />
 <p>其逻辑就是查找所有文本节点，收集匹配内容的 <code>Range</code>，最后作为参数构建 <code>HighLight</code> 对象，需要注意的是其 <code>并未产生新的节点</code>。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">query</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#34;query&#34;</span>);
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">article</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">querySelector</span>(<span style="color:#e6db74">&#34;article&#34;</span>);
@@ -333,7 +333,7 @@
 </span></span><span style="display:flex;"><span>});
 </span></span></code></pre></div><h2 id="eyedropper">EyeDropper</h2>
 <p>可以打开并使用它从屏幕上选择颜色。</p>
-<img src="/img/129/04.png" />
+<img src="../../img/129/04.png" />
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;start-button&#34;</span>&gt;打开拾色器&lt;/<span style="color:#f92672">button</span>&gt;
 </span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">img</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://img.alicdn.com/imgextra/i1/O1CN01CC9kic1ig1r4sAY5d_!!6000000004441-2-tps-880-210.png&#34;</span>
@@ -404,7 +404,7 @@
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Task with default priority: user-visible
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">scheduler</span>.<span style="color:#a6e22e">postTask</span>(() =&gt; <span style="color:#a6e22e">mylog</span>(<span style="color:#e6db74">&#34;user-visible 3 (default)&#34;</span>));
 </span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">script</span>&gt;
-</span></span></code></pre></div><img src="/img/129/05.png" />
+</span></span></code></pre></div><img src="../../img/129/05.png" />
 <h2 id="trusted-types-api">Trusted Types API</h2>
 <p>为 Web 开发者提供了一种锁定 DOM API 中不安全部分的方法，目的是防止客户端跨站脚本（<code>Cross-site scripting，XSS</code>）攻击</p>
 <p>在下面的例子中，通过 <code>TrustedTypePolicyFactory.createPolicy()</code> 方法创建一个策略，通过 <code>TrustedTypePolicy.createHTML</code> 方法创建一个安全的 HTML 字符串插入到文档中。</p>
@@ -534,7 +534,7 @@
 <h2 id="barcode-detection-api">Barcode Detection API</h2>
 <p>用于检测图像中的条形码和二维码。</p>
 <p>欸， 这就很有意思，配和 <code>navigator.mediaDevices.getUserMedia</code>唤起摄像头，定期截图分析，是不是就是一个 web 版本的扫码能力呢？</p>
-<img src="/img/129/01.awebp" />
+<img src="../../img/129/01.awebp" />
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;BarcodeDetector&#34;</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">globalThis</span>)) {
 </span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;此浏览器不支持条形码检测器。&#34;</span>);
 </span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">else</span> {
@@ -557,7 +557,7 @@
 </span></span></code></pre></div><h2 id="css-typed-object-model-api">CSS Typed Object Model API</h2>
 <p>CSS Typed Object Model（CSSOM）API 从根本上改变了开发者在 JavaScript 中处理 CSS 属性的方式，通过引入类型安全性和效率优化。</p>
 <p>比如：简简单单就能获取样式的键值对， 其实还有一个结果有类似功能 API <code>window.getComputedStyle</code></p>
-<img src="/img/129/02.awebp" /></section>
+<img src="../../img/129/02.awebp" /></section>
 
   
   

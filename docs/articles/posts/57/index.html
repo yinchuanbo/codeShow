@@ -203,7 +203,7 @@
 <blockquote>
 <p>如果使用像素或 em 单位来设置背景图片的位置，那么图片的左上角会相对于元素的左上角定位，也就是会偏移指定的数值。比如，要是在水平和垂直方向都指定了 20 像素，那么图片左上角就会偏移到距离元素左边和上边均为 20 像素的点。如果设置背景图片的位置时使用了百分比，那么情况就不一样了，百分比值不像绝对数值那样会定位背景图片的左上角，而是定位图片中对应的点。如果水平和垂直方向都设置为 20%，那么你定位的实际上是距图片左边和上边各 20% 的点，而这个点会与距离父元素左边和上边各 20% 的点重合。</p>
 </blockquote>
-<img src="/img/57/01.png" />
+<img src="../../img/57/01.png" />
 <p>使用关键字来对齐背景图片，在 x 轴上用 <code>left</code>、<code>center</code>、<code>right</code>，在 y 轴上用 <code>top</code>、<code>center</code>、<code>bottom</code>。</p>
 <p><strong>顺序一般是先 x 轴后 y 轴。</strong></p>
 <p>但在一个关键字后加上一个长度值的情况下，规则本身将无效，比如如下声明：</p>
@@ -219,7 +219,7 @@
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">background-image</span>: url(<span style="color:#e6db74">&#34;img/cat.jpg&#34;</span>);
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">background-clip</span>: <span style="color:#66d9ef">padding-box</span>;
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><img src="/img/57/02.png" />
+</span></span></code></pre></div><img src="../../img/57/02.png" />
 <p>即使 <code>background-clip</code> 属性的值改变了，背景定位默认的原点仍然在代码中声明的内边距盒子（padding-box）的左上角，换句话说，定位值从元素边框内开始计算。</p>
 <p>好在我们可以使用 <code>background-origin</code> 属性控制原点的位置。这个属性与 <code>background-clip</code> 一样，也接受盒模型相关的几个值：<code>border-box</code>、<code>padding-box</code>、<code>content-box</code>。</p>
 <h3 id="背景附着">背景附着</h3>
@@ -228,7 +228,7 @@
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">profile-box</span> {
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">background-attachment</span>: <span style="color:#66d9ef">fixed</span>;
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><img src="/img/57/03.png" />
+</span></span></code></pre></div><img src="../../img/57/03.png" />
 <h3 id="背景大小">背景大小</h3>
 <p>我们使用一张大图覆盖了整个元素，这样的话，如果是在小屏幕上，那么图片会被裁剪切掉。反之，如果是屏幕特别大，那么元素边缘可能出现空白，要避免上述情况，不管页面如何缩放，都让内容保持自己的宽高比，就要使用 <code>background-size</code> 属性。</p>
 <p>给 <code>background-size</code> 明确指定一个值，可以重新设置图片大小，也可以让他随元素大小缩放而缩放。</p>

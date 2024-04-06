@@ -259,7 +259,7 @@ function plus(num) { return num &#43; 1; } const ret = plus(6); 当这段代码�
 </span></span></code></pre></div><p>当这段代码刚开始执行时，函数 plus 的作用域中仅拥有一个指向全局对象的作用域，其中包括 <code>this、函数对象 plus 及常量 ret</code>，</p>
 <p>而在执行到 plus 时，JavaScript 引擎会创建一个新的执行上下文和包含一些局部变量的活动对象。</p>
 <p>执行过程会先对 num 标识符进行解析，即从作用域链的最顶层依次向下查找，直至找到 num 标识符。</p>
-<img src="/img/47/01.png" />
+<img src="../../img/47/01.png" />
 <h3 id="实战经验">实战经验</h3>
 <ol>
 <li>对局部变量的使用</li>
@@ -325,7 +325,7 @@ function plus(num) { return num &#43; 1; } const ret = plus(6); 当这段代码�
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">mkFunc</span>();
 </span></span></code></pre></div><p>showName() 函数就是一个闭包，它在 mkFunc() 函数被执行时被创建，并能访问 mkFunc() 函数的局部变量 name，</p>
 <p>为此便需要创建一个独立于 mkFunc() 函数的作用域链</p>
-<img src="/img/47/02.png" />
+<img src="../../img/47/02.png" />
 <p>一般的函数执行完成后，其中局部变量所占用的空间会被释放，但闭包的这种特性会<strong>延长</strong>父函数中局部变量的<strong>生命周期</strong>。</p>
 <p>这也就意味着使用闭包可能会带来<strong>更大</strong>的内存开销及内存可能泄漏的影响。</p>
 <h2 id="流程控制">流程控制</h2>

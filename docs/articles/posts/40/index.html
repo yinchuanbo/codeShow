@@ -192,9 +192,9 @@
   </header>
 
   <section><p>在移动端开发中，经常会碰到需要横向滚动的场景，例如这样的</p>
-<img src="/img/40/01.gif" />
+<img src="../../img/40/01.gif" />
 <p>但很多时候是不需要展示这个滚动条的，也就是这样的效果，如下</p>
-<img src="/img/40/02.gif" />
+<img src="../../img/40/02.gif" />
 <p>你可能想到直接设置滚动条样式就可以了，就像这样</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>::<span style="color:#a6e22e">-webkit-scrollbar</span> {
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">display</span>: <span style="color:#66d9ef">none</span>;
@@ -228,7 +228,7 @@
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">flex-shrink</span>: <span style="color:#ae81ff">0</span>;
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>效果如下</p>
-<img src="/img/40/01.png" />
+<img src="../../img/40/01.png" />
 <p>通过 <strong>「overflow」</strong> 隐藏的方式很简单，我们需要一个父级</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;wrap&#34;</span>&gt;
 </span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;list&#34;</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;
@@ -239,23 +239,23 @@
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">padding-bottom</span>: <span style="color:#ae81ff">20</span><span style="color:#66d9ef">px</span>;
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>可以看到列表下方的距离变大了，滚动条也更靠下了，效果如下</p>
-<img src="/img/40/02.png" />
+<img src="../../img/40/02.png" />
 <p>如何让整体尺寸仍然保持原有呢？答案是借助负 <strong>「margin」</strong>，比如之前底部 <strong>「padding」</strong> 是<code>10</code>，现在改成了<code>20</code>，所以需要<code>-10</code>的 <strong>「margin」</strong></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">list</span> {
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">/**/</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">margin-bottom</span>: <span style="color:#ae81ff">-10</span><span style="color:#66d9ef">px</span>;
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>这样整体尺寸就正常了，不过滚动条仍然是可见的，只是出去了</p>
-<img src="/img/40/03.png" />
+<img src="../../img/40/03.png" />
 <p>最后只需要设置父级的  <strong>「overflow」</strong> 为隐藏就可以了</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">wrap</span> {
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">/**/</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">overflow</span>: <span style="color:#66d9ef">hidden</span>;
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>原理示意如下</p>
-<img src="/img/40/04.png" />
+<img src="../../img/40/04.png" />
 <p>这样就完美隐藏了滚动条</p>
-<img src="/img/40/05.png" />
+<img src="../../img/40/05.png" />
 <p>当然，不仅仅是  <strong>「overflow」</strong>，下面这种方式也可以实现超出隐藏</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">wrap</span> {
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">/**/</span>
@@ -275,26 +275,26 @@
 <p>比如这种情况，只需要把滚动条的那一部分裁剪掉就可以了，这里要用到<code>clip-path</code>的<code>inset</code>方法</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">clip-path</span><span style="color:#f92672">:</span> <span style="color:#f92672">inset</span><span style="color:#f92672">();</span>
 </span></span></code></pre></div><p>这里简单介绍一下。<strong>「inset」</strong> 最多可以传 4 个参数，分别表示裁剪掉距离上、右、下、左的部分</p>
-<img src="/img/40/06.png" />
+<img src="../../img/40/06.png" />
 <p>所以，要把滚动条隐藏就很简单了，只需要把下方的裁剪距离设置大于滚动条尺寸的值就行了，这里就用<code>10px</code></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">list</span> {
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">clip-path</span>: inset(<span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">10</span><span style="color:#66d9ef">px</span>);
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>效果如下</p>
-<img src="/img/40/07.png" />
+<img src="../../img/40/07.png" />
 <p>一行代码轻松解决~</p>
 <h2 id="三通过-mask-遮罩">三、通过 mask 遮罩</h2>
 <p>其实和  <strong>「clip」</strong> 思路是一致的，只不过实现方式不一样。</p>
 <p>关于  <a href="http://mp.weixin.qq.com/s?__biz=MzIyMDc1NTYxNg==&amp;mid=2247488049&amp;idx=1&amp;sn=dfa9e190e4828c5bf6cf8287ecaa471f&amp;chksm=97c671fea0b1f8e86a74fd50f2825ae38a5e45ba71142a0961f743d9bdcde24caaa51daef2b7&amp;scene=21#wechat_redirect">mask 遮罩</a>，之前在多篇文章中都有提到，非常实用的小技巧，主要原理是显示遮罩图片不透明的部分，透明的则会被裁剪，示意如下</p>
-<img src="/img/40/08.png" />
+<img src="../../img/40/08.png" />
 <p>回到这里，我们只需要绘制一个不包含滚动条部分的纯色渐变就行了，可以直接绘制一个纯色渐变，然后设置背景尺寸，如下</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">list</span> {
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">-webkit-</span><span style="color:#66d9ef">mask</span>: linear-gradient(<span style="color:#66d9ef">red</span>, <span style="color:#66d9ef">red</span>) <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span><span style="color:#f92672">/</span><span style="color:#ae81ff">100</span><span style="color:#66d9ef">%</span> calc(<span style="color:#ae81ff">100</span><span style="color:#66d9ef">%</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">10</span><span style="color:#66d9ef">px</span>) <span style="color:#66d9ef">no-repeat</span>;
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>原理示意如下</p>
-<img src="/img/40/09.png" />
+<img src="../../img/40/09.png" />
 <p>也能很好的隐藏滚动条</p>
-<img src="/img/40/10.png" />
+<img src="../../img/40/10.png" />
 <p>除此以外，mask 还可以很好的实现滚动边界渐隐的效果，只需要叠加一层从<code>透明→纯色→透明</code>的渐变就行了</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">list</span> {
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">-webkit-</span><span style="color:#66d9ef">mask</span>: linear-gradient(
@@ -306,9 +306,9 @@
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">-webkit-</span><span style="color:#66d9ef">mask-composite</span>: source-in;
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>就可以得到这样的效果</p>
-<img src="/img/40/03.gif" />
+<img src="../../img/40/03.gif" />
 <p>由于是遮罩实现，并不是简单的颜色覆盖，所以换一种背景颜色也可以很好的融合</p>
-<img src="/img/40/04.gif" />
+<img src="../../img/40/04.gif" />
 <p>以上所有完整 demo 可以查看以下链接</p>
 <p>[1] CSS scroll hidden (juejin.cn)： <a href="https://code.juejin.cn/pen/7276721196161302588">https://code.juejin.cn/pen/7276721196161302588</a></p>
 <p>[2] CSS scroll hidden (codepen.io)： <a href="https://codepen.io/xboxyan/pen/GRPrzeO">https://codepen.io/xboxyan/pen/GRPrzeO</a></p>
