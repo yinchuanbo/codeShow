@@ -7,7 +7,50 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Copyright © 2008–2019, Steve Francia and the lee.so; all rights reserved.</copyright>
-    <lastBuildDate>Sun, 31 Mar 2024 08:54:55 +0800</lastBuildDate><atom:link href="/articles/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 06 Apr 2024 20:29:14 +0800</lastBuildDate><atom:link href="/articles/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>页面关闭时如何成功发送 API 请求</title>
+      <link>/articles/posts/136/</link>
+      <pubDate>Sat, 06 Apr 2024 20:29:14 +0800</pubDate>
+      
+      <guid>/articles/posts/136/</guid>
+      <description>浏览器事件监听 在浏览器中，我们可以使用 beforeunload 事件来监听窗口关闭前的事件。
+但是，这个事件并不总是可靠的，因为它可能会被浏览器弹出拦截器阻止。
+因此，还需要考虑使用 visibilitychange 事件，它在页面从可见变为隐藏时触发，这包括了页面关闭和刷新的情况。
+window.addEventListener(&amp;#34;beforeunload&amp;#34;, (event) =&amp;gt; { // 在这里执行 api 请求 }); document.addEventListener(&amp;#34;visibilitychange&amp;#34;, () =&amp;gt; { if (document.visibilityState == &amp;#34;hidden&amp;#34;) { // 页面不可见，执行 api } }); 发送 API 请求的方法 有几种方法可以在页面关闭时发送 API 请求，包括传统的 XMLHttpRequest、fetch API 以及 Navigator.sendBeacon 方法。
+- XMLHttpRequest XMLHttpRequest 是最早的 API 请求方法，但它在页面关闭时可能会被取消
+const xhr = new XMLHttpRequest(); xhr.open(&amp;#34;POST&amp;#34;, &amp;#34;/api/data&amp;#34;, true); xhr.send(JSON.stringify(data)); - Fetch 使用 keepalive fetch API 提供了一个 keepalive 选项，即使页面关闭了，请求也会继续执行。
+fetch(&amp;#34;/api/data&amp;#34;, { method: &amp;#34;POST&amp;#34;, body: JSON.</description>
+    </item>
+    
+    <item>
+      <title>一些很重要的 HTML 属性</title>
+      <link>/articles/posts/135/</link>
+      <pubDate>Sat, 06 Apr 2024 15:20:23 +0800</pubDate>
+      
+      <guid>/articles/posts/135/</guid>
+      <description>inputmode inputmode 属性可以定义 input 或者 textarea 元素弹出键盘的类型。
+这对于移动端开发还是很实用的
+&amp;lt;!-- 数字键盘 numeric --&amp;gt; &amp;lt;input type=&amp;#34;text&amp;#34; inputmode=&amp;#34;numeric&amp;#34; /&amp;gt; &amp;lt;!-- 手机号键盘 tel --&amp;gt; &amp;lt;input type=&amp;#34;text&amp;#34; inputmode=&amp;#34;tel&amp;#34; /&amp;gt; &amp;lt;!-- 邮箱 email --&amp;gt; &amp;lt;input type=&amp;#34;text&amp;#34; inputmode=&amp;#34;email&amp;#34; /&amp;gt; &amp;lt;!-- 链接 url --&amp;gt; &amp;lt;input type=&amp;#34;text&amp;#34; inputmode=&amp;#34;url&amp;#34; /&amp;gt; &amp;lt;!-- 搜索 search (键盘会出现 Go/确认/Return) --&amp;gt; &amp;lt;input type=&amp;#34;text&amp;#34; inputmode=&amp;#34;search&amp;#34; /&amp;gt; poster &amp;lt;video src=&amp;#34;&amp;#34; poster=&amp;#34;preview.png&amp;#34;&amp;gt;&amp;lt;/video&amp;gt; multiple multiple 通常用于 input 标签文本选择时的多选功能，如：
+&amp;lt;input type=&amp;#34;file&amp;#34; id=&amp;#34;files&amp;#34; name=&amp;#34;files&amp;#34; multiple /&amp;gt; 除此之外，还可以用于 select 标签多选：
+&amp;lt;label for=&amp;#34;cars&amp;#34;&amp;gt;请选择一个汽车品牌：&amp;lt;/label&amp;gt; &amp;lt;select name=&amp;#34;cars&amp;#34; id=&amp;#34;cars&amp;#34; multiple&amp;gt; &amp;lt;option value=&amp;#34;audi&amp;#34;&amp;gt;奥迪&amp;lt;/option&amp;gt; &amp;lt;option value=&amp;#34;byd&amp;#34;&amp;gt;比亚迪&amp;lt;/option&amp;gt; &amp;lt;option value=&amp;#34;geely&amp;#34;&amp;gt;吉利&amp;lt;/option&amp;gt; &amp;lt;option value=&amp;#34;volvo&amp;#34;&amp;gt;沃尔沃&amp;lt;/option&amp;gt; &amp;lt;/select&amp;gt; accesskey accesskey 用于规定快捷键，用于 激活/聚焦 元素，比如下面一个超链接：</description>
+    </item>
+    
+    <item>
+      <title>3个超酷的 Node.js 新功能</title>
+      <link>/articles/posts/134/</link>
+      <pubDate>Sat, 06 Apr 2024 12:41:51 +0800</pubDate>
+      
+      <guid>/articles/posts/134/</guid>
+      <description>1. 自带热更新 开发模式下，每次代码的修改我们期望无需重启代码即可看到最新的变化，nodemon 模块在这个场景已经是标配。
+有时候只写一个简单的脚本，做些测试或其他场景可能不太需要第三方模块，此时 Node.js 自带的热更新功能就派上用场了。
+一个 --watch 搞定这个场景，
+node --watch test.mjs 2. 内置环境变量支持 Node.js 21.7.0 版本增加一个方法 loadEnvFile() 可以直接加载 .env 文件到 process.env 对象。
+# .env API_KEY=&amp;#34;XXXX&amp;#34; DB_HOST=&amp;#34;localhost:999&amp;#34; // 使用 process.loadEnvFile(); console.log(process.env.API_KEY); console.log(process.env.DB_HOST); 3. 彩色输出 终端的彩色输出，之前的方案大多是使用 chalk 模块
+Node.js 21.7.0 在 util 模块增加了一个使用方法 util.styleText(format, text) 来支持彩色输出
+import { styleText } from &amp;#34;node:util&amp;#34;; const errorMessage = styleText(&amp;#34;red&amp;#34;, &amp;#34;error!error&amp;#34;); console.log(errorMessage); </description>
+    </item>
+    
     <item>
       <title>构造函数、原型和继承[未完]</title>
       <link>/articles/posts/133/</link>
