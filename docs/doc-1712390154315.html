@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>codeShow</title>
+    <link rel="icon" sizes="any" mask href="assets/images/ico.svg" />
+    <link rel="stylesheet" href="assets/codemirror5/theme/blackboard.css" />
+    <link rel="stylesheet" href="assets/css/common.css" />
+    <link rel="stylesheet" href="assets/lib/wenk.min.css" />
+  </head>
+  <body>
+    <div class="code__wrapper">
+      <div class="close__fs"></div>
+      <div class="code__wrapper_header">
+        <div class="code__wrapper_header_title">A Badly Written Answer - &lt;del&gt; &amp; &lt;ins&gt;</div>
+        <div class="tools">
+          <div class="home__icon" onclick="window.location.href = '/'"></div>
+        </div>
+      </div>
+      <div class="code__wrapper_top">
+        <div class="code__wrapper_top-html">
+          <div class="title">HTML</div>
+          <textarea id="htmlCode">&lt;i
+  &gt;Explain how financial intermediation exposes banks to risk and explain what
+  those risks are.&lt;/i
+&gt;&lt;br /&gt;&lt;br /&gt;Financial &lt;del&gt;intermission&lt;/del&gt; &lt;ins&gt;intermediation&lt;/ins&gt;involves
+asset transformation &lt;del&gt;wherepie&lt;/del&gt; whereby intermediares mismatch the
+liabilities owed and assets owned in terms of duration, size and liquidity. This
+mismatch leads to the intermediary facing several types of risk: interest rate
+risk, &lt;del&gt;market risk&lt;/del&gt;, credit risk and liquidity risk. Two other risks
+faced by a bank &lt;ins&gt;are&lt;/ins&gt;market risk and operational risk but these simply
+result from trading &lt;ins&gt;and operating&lt;/ins&gt;.&lt;br /&gt;Interest rate risk has two
+effects: the market effect and the income effect. Only the income effect results
+&lt;ins&gt;from&lt;/ins&gt;financial intermediation, which is further broken down into two
+scenarios: the assets of a bank having a greater duration than its
+&lt;del&gt;assets&lt;/del&gt; &lt;ins&gt;liabilities&lt;/ins&gt;or the the liabilities of a bank having
+a greater duration than its assets. The former results in
+&lt;del&gt;repotato-ing risk&lt;/del&gt; reinvestment risk which is the risk that assets
+(loans) may be re-invested at a rate &lt;del&gt;higher&lt;/del&gt; &lt;ins&gt;lower&lt;/ins&gt;than
+existing liabilities (deposits). The latter results in refinancing risk which is
+just the opposite.&lt;br /&gt;Credit risk is the risk that a &lt;del&gt;loan&lt;/del&gt; borrower
+defaults and that none &lt;ins&gt;or only a part&lt;/ins&gt;of the banks liabilities are
+recouped.&lt;br /&gt;Liquidity risk is the risk arising from a mismatch in
+&lt;del&gt;socks&lt;/del&gt; &lt;ins&gt;duration&lt;/ins&gt;. It is the risk that a bank is not able to
+liquidify its assets in time to pay its liabilities and
+&lt;del&gt;will definetely&lt;/del&gt; may default.</textarea>
+        </div>
+        <div class="code__wrapper_top-css">
+          <div class="title">CSS</div>
+          <textarea id="cssCode">@import url(&#34;https://fonts.googleapis.com/css?family=Kaushan+Script&#34;);
+
+$color: red;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  position: relative;
+}
+
+ins {
+  display: inline-block;
+  text-align: center;
+  line-height: 0.8;
+  font-size: 15px;
+  font-style: italic;
+  color: $color;
+}
+ins:after {
+  content: &#34;λ&#34;;
+  font-family: Verdana;
+  display: block;
+  font-size: 20px;
+  font-style: normal;
+  line-height: 1;
+  color: $color;
+}
+del {
+  white-space: nowrap;
+}
+del:before {
+  content: &#34;&#34;;
+  width: 100%;
+  height: 2px;
+  position: absolute;
+  border-top: 2px solid $color;
+  border-bottom: 2px solid $color;
+  top: 0.75em;
+}
+
+#iframe__wrapper {
+  line-height: 1.8;
+  font-size: 18px;
+  font-family: &#34;Kaushan Script&#34;, cursive;
+  padding: 1.7em;
+  background: #fff;
+  background-image: url(&#34;data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; width=&#39;100&#39; height=&#39;100&#39; viewBox=&#39;0 0 100 100&#39;%3E%3Cg fill-rule=&#39;evenodd&#39;%3E%3Cg fill=&#39;%23b0b0b0&#39; fill-opacity=&#39;0.6&#39;%3E%3Cpath opacity=&#39;.5&#39; d=&#39;M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z&#39;/%3E%3Cpath d=&#39;M6 5V0H5v5H0v1h5v94h1V6h94V5H6z&#39;/%3E%3C/g%3E%3C/g%3E%3C/svg%3E&#34;);
+}</textarea>
+        </div>
+        <div class="code__wrapper_top-js">
+          <div class="title">JAVASCRIPT</div>
+          <textarea id="jsCode">setTimeout(function () {
+  for (var i = 0; i &lt; document.getElementsByTagName(&#34;ins&#34;).length; i++) {
+    document.getElementsByTagName(&#34;ins&#34;)[i].style.margin =
+      &#34;0 &#34; +
+      (10 - 0.5 * document.getElementsByTagName(&#34;ins&#34;)[i].offsetWidth) +
+      &#34;px 0&#34;;
+  }
+}, 50);</textarea>
+        </div>
+      </div>
+      <div class="code__wrapper_bottom">
+        <div class="code__wrapper_top-preview">
+          <div class="fs__icon"></div>
+          
+          <iframe
+            id="live-preview"
+            src="assets/templates/template-iframe.html"
+            width="100%"
+            height="100%"
+            allow="accelerometer *; camera *; encrypted-media *; display-capture *; geolocation *; gyroscope *; microphone *; midi *; clipboard-read *; clipboard-write *; web-share *; serial *; xr-spatial-tracking *"
+            allowfullscreen="true"
+            allowpaymentrequest="true"
+            allowtransparency="true"
+            sandbox="allow-forms allow-modals allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation allow-downloads allow-presentation"
+            class="result-iframe iframe-visual-update"
+            name="codeShow"
+            loading="lazy"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+    <script src="assets/lib/jquery-3.7.1.min.js"></script>
+    <script src="assets/lib/sass.sync.min.js"></script>
+    <link rel="stylesheet" href="assets/codemirror5/lib/codemirror.css" />
+    <link rel="stylesheet" href="assets/codemirror5/addon/hint/show-hint.css" />
+    <script src="assets/codemirror5/lib/codemirror.js"></script>
+    <script src="assets/codemirror5/addon/hint/show-hint.js"></script>
+    <script src="assets/codemirror5/addon/hint/xml-hint.js"></script>
+    <script src="assets/codemirror5/addon/hint/html-hint.js"></script>
+    <script src="assets/codemirror5/mode/xml/xml.js"></script>
+    <script src="assets/codemirror5/mode/javascript/javascript.js"></script>
+    <script src="assets/codemirror5/mode/css/css.js"></script>
+    <script src="assets/codemirror5/mode/htmlmixed/htmlmixed.js"></script>
+    <script src="assets/codemirror5/addon/hint/css-hint.js"></script>
+    <script src="assets/js/common.js"></script>
+  </body>
+</html>
