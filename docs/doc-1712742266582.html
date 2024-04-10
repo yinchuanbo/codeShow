@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>codeShow</title>
+    <link rel="icon" sizes="any" mask href="assets/images/ico.svg" />
+    <link rel="stylesheet" href="assets/codemirror5/theme/blackboard.css" />
+    <link rel="stylesheet" href="assets/css/common.css" />
+    <link rel="stylesheet" href="assets/lib/wenk.min.css" />
+  </head>
+  <body>
+    <div class="code__wrapper">
+      <div class="close__fs"></div>
+      <div class="code__wrapper_header">
+        <div class="code__wrapper_header_title">Floating Button</div>
+        <div class="tools">
+          <div class="home__icon" onclick="window.location.href = '/'"></div>
+        </div>
+      </div>
+      <div class="code__wrapper_top">
+        <div class="code__wrapper_top-html">
+          <div class="title">HTML</div>
+          <textarea id="htmlCode">&lt;div class=&#34;action&#34; onclick=&#34;actionToggle();&#34;&gt;
+  &lt;span&gt;+&lt;/span&gt;
+  &lt;ul&gt;
+    &lt;li&gt;Share on Facebook&lt;/li&gt;
+    &lt;li&gt;Share on VK&lt;/li&gt;
+    &lt;li&gt;Share on GitHub&lt;/li&gt;
+    &lt;li&gt;Share on Instagram&lt;/li&gt;
+    &lt;li&gt;Share on Codepen&lt;/li&gt;
+    &lt;li&gt;Share on Linkedin&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;</textarea>
+        </div>
+        <div class="code__wrapper_top-css">
+          <div class="title">CSS</div>
+          <textarea id="cssCode">@import url(&#34;https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&amp;display=swap&#34;);
+* {
+  margin: 0;
+  padding: 0;
+  font-family: &#34;Poppins&#34;, sans-serif;
+}
+body {
+  min-height: 100vh;
+  background: linear-gradient(#7d6cfc, #c635ea);
+}
+.action {
+  position: fixed;
+  bottom: 50px;
+  left: 50px;
+  width: 50px;
+  height: 50px;
+  background: #fff;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+}
+.action span {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #a13dea;
+  font-size: 2em;
+  transition: 0.3s ease-in-out;
+}
+.action.active span {
+  transform: rotate(135deg);
+}
+
+.action ul {
+  position: absolute;
+  bottom: 55px;
+  background: #fff;
+  min-width: 250px;
+  padding: 20px;
+  border-radius: 20px;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.3s;
+}
+.action.active ul {
+  bottom: 65px;
+  opacity: 1;
+  visibility: visible;
+  transition: 0.3s;
+}
+.action ul li {
+  list-style: none;
+  text-decoration: none;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 7px 0;
+}
+
+.action ul li:hover {
+  font-weight: 600;
+}
+.action ul li:not(:last-child) {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.action ul li img {
+  margin-right: 15px;
+  opacity: 0.2;
+  transform: scale(0.7);
+}
+.action ul li:hover img {
+  opacity: 0.8;
+  transform: scale(1);
+}</textarea>
+        </div>
+        <div class="code__wrapper_top-js">
+          <div class="title">JAVASCRIPT</div>
+          <textarea id="jsCode">function actionToggle() {
+  const action = document.querySelector(&#34;.action&#34;);
+  action.classList.toggle(&#34;active&#34;);
+}</textarea>
+        </div>
+      </div>
+      <div class="code__wrapper_bottom">
+        <div class="code__wrapper_top-preview">
+          <div class="fs__icon"></div>
+          
+          <iframe
+            id="live-preview"
+            src="assets/templates/template-iframe.html"
+            width="100%"
+            height="100%"
+            allow="accelerometer *; camera *; encrypted-media *; display-capture *; geolocation *; gyroscope *; microphone *; midi *; clipboard-read *; clipboard-write *; web-share *; serial *; xr-spatial-tracking *"
+            allowfullscreen="true"
+            allowpaymentrequest="true"
+            allowtransparency="true"
+            sandbox="allow-forms allow-modals allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation allow-downloads allow-presentation"
+            class="result-iframe iframe-visual-update"
+            name="codeShow"
+            loading="lazy"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+    <script src="assets/lib/jquery-3.7.1.min.js"></script>
+    <script src="assets/lib/sass.sync.min.js"></script>
+    <link rel="stylesheet" href="assets/codemirror5/lib/codemirror.css" />
+    <link rel="stylesheet" href="assets/codemirror5/addon/hint/show-hint.css" />
+    <script src="assets/codemirror5/lib/codemirror.js"></script>
+    <script src="assets/codemirror5/addon/hint/show-hint.js"></script>
+    <script src="assets/codemirror5/addon/hint/xml-hint.js"></script>
+    <script src="assets/codemirror5/addon/hint/html-hint.js"></script>
+    <script src="assets/codemirror5/mode/xml/xml.js"></script>
+    <script src="assets/codemirror5/mode/javascript/javascript.js"></script>
+    <script src="assets/codemirror5/mode/css/css.js"></script>
+    <script src="assets/codemirror5/mode/htmlmixed/htmlmixed.js"></script>
+    <script src="assets/codemirror5/addon/hint/css-hint.js"></script>
+    <script src="assets/js/common.js"></script>
+  </body>
+</html>

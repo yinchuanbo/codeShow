@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>codeShow</title>
+    <link rel="icon" sizes="any" mask href="assets/images/ico.svg" />
+    <link rel="stylesheet" href="assets/codemirror5/theme/blackboard.css" />
+    <link rel="stylesheet" href="assets/css/common.css" />
+    <link rel="stylesheet" href="assets/lib/wenk.min.css" />
+  </head>
+  <body>
+    <div class="code__wrapper">
+      <div class="close__fs"></div>
+      <div class="code__wrapper_header">
+        <div class="code__wrapper_header_title">Animated Dismissible Banners</div>
+        <div class="tools">
+          <div class="home__icon" onclick="window.location.href = '/'"></div>
+        </div>
+      </div>
+      <div class="code__wrapper_top">
+        <div class="code__wrapper_top-html">
+          <div class="title">HTML</div>
+          <textarea id="htmlCode">&lt;div class=&#34;banners-container&#34;&gt;
+  &lt;div class=&#34;banners&#34;&gt;
+    &lt;div class=&#34;banner error&#34;&gt;
+      &lt;div class=&#34;banner-icon&#34;&gt;
+        &lt;i
+          data-eva=&#34;alert-circle-outline&#34;
+          data-eva-fill=&#34;#ffffff&#34;
+          data-eva-height=&#34;48&#34;
+          data-eva-width=&#34;48&#34;
+        &gt;&lt;/i&gt;
+      &lt;/div&gt;
+      &lt;div class=&#34;banner-message&#34;&gt;Oops! Something went wrong!&lt;/div&gt;
+      &lt;div class=&#34;banner-close&#34; onclick=&#34;hideBanners()&#34;&gt;X&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;banner success&#34;&gt;
+      &lt;div class=&#34;banner-icon&#34;&gt;
+        &lt;i
+          data-eva=&#34;checkmark-circle-outline&#34;
+          data-eva-fill=&#34;#ffffff&#34;
+          data-eva-height=&#34;48&#34;
+          data-eva-width=&#34;48&#34;
+        &gt;&lt;/i&gt;
+      &lt;/div&gt;
+      &lt;div class=&#34;banner-message&#34;&gt;Everything was fine!&lt;/div&gt;
+      &lt;div class=&#34;banner-close&#34; onclick=&#34;hideBanners()&#34;&gt;X&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;banner info&#34;&gt;
+      &lt;div class=&#34;banner-icon&#34;&gt;
+        &lt;i
+          data-eva=&#34;info-outline&#34;
+          data-eva-fill=&#34;#ffffff&#34;
+          data-eva-height=&#34;48&#34;
+          data-eva-width=&#34;48&#34;
+        &gt;&lt;/i&gt;
+      &lt;/div&gt;
+      &lt;div class=&#34;banner-message&#34;&gt;Here is some useful information&lt;/div&gt;
+      &lt;div class=&#34;banner-close&#34; onclick=&#34;hideBanners()&#34;&gt;X&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;button class=&#34;show-banner&#34; onclick=&#34;showBanner(&#39;.banner.error&#39;)&#34;&gt;
+  Show Error&lt;/button
+&gt;&lt;button class=&#34;show-banner&#34; onclick=&#34;showBanner(&#39;.banner.success&#39;)&#34;&gt;
+  Show Success&lt;/button
+&gt;&lt;button class=&#34;show-banner&#34; onclick=&#34;showBanner(&#39;.banner.info&#39;)&#34;&gt;
+  Show Info
+&lt;/button&gt;
+&lt;!-- &lt;script src=&#34;https://unpkg.com/eva-icons&#34; onload=&#34;eva.replace()&#34;&gt;&lt;/script&gt; --&gt;</textarea>
+        </div>
+        <div class="code__wrapper_top-css">
+          <div class="title">CSS</div>
+          <textarea id="cssCode">@import url(&#34;https://fonts.googleapis.com/css?family=Montserrat:400,400i,700&#34;);
+
+$overshoot: 10%;
+$color-error: #ed1c24;
+$color-success: #10c15c;
+$color-info: #0b22e2;
+
+:root {
+  font-family: &#34;Montserrat&#34;;
+}
+#iframe__wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+i {
+  color: inherit;
+}
+
+.banners-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.banner {
+  color: white;
+  font-weight: 700;
+  padding: 2rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  .banner-message {
+    flex: 1;
+    padding: 0 2rem;
+  }
+
+  .banner-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    cursor: pointer;
+    transition: background 0.3s;
+
+    &amp;:hover {
+      background: rgba(0, 0, 0, 0.12);
+    }
+  }
+}
+
+@mixin banner($background) {
+  background: $background;
+  &amp;::after {
+    background: $background;
+  }
+}
+
+.banner {
+  &amp;.success {
+    @include banner($color-success);
+  }
+  &amp;.error {
+    @include banner($color-error);
+  }
+  &amp;.info {
+    @include banner($color-info);
+  }
+}
+
+.banner::after {
+  content: &#34;&#34;;
+  position: absolute;
+  height: $overshoot;
+  width: 100%;
+  bottom: 100%;
+  left: 0;
+}
+
+.banner:not(.visible) {
+  display: none;
+  transform: translateY(-100%);
+}
+
+.banner.visible {
+  box-shadow: 0 2px 2px 2px rgba(0, 0, 0, 0.12);
+  animation-name: banner-in;
+  animation-direction: forwards;
+  animation-duration: 0.6s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+}
+
+@keyframes banner-in {
+  0% {
+    transform: translateY(-100%);
+  }
+
+  50% {
+    transform: translateY($overshoot);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.show-banner {
+  appearance: none;
+  background: #ededed;
+  border: 0;
+  padding: 1rem 2rem;
+  border-radius: 4px;
+  cursor: pointer;
+  text-transform: uppercase;
+  margin: 0.25rem;
+}</textarea>
+        </div>
+        <div class="code__wrapper_top-js">
+          <div class="title">JAVASCRIPT</div>
+          <textarea id="jsCode">// Pssst, I&#39;ve created a github package - https://github.com/brookesb91/dismissible
+
+const showBanner = (selector) =&gt; {
+  hideBanners();
+  // Ensure animation plays even if the same alert type is triggered.
+  requestAnimationFrame(() =&gt; {
+    const banner = document.querySelector(selector);
+    banner.classList.add(&#34;visible&#34;);
+  });
+};
+
+const hideBanners = (e) =&gt; {
+  document
+    .querySelectorAll(&#34;.banner.visible&#34;)
+    .forEach((b) =&gt; b.classList.remove(&#34;visible&#34;));
+};</textarea>
+        </div>
+      </div>
+      <div class="code__wrapper_bottom">
+        <div class="code__wrapper_top-preview">
+          <div class="fs__icon"></div>
+          
+          <iframe
+            id="live-preview"
+            src="assets/templates/template-iframe.html"
+            width="100%"
+            height="100%"
+            allow="accelerometer *; camera *; encrypted-media *; display-capture *; geolocation *; gyroscope *; microphone *; midi *; clipboard-read *; clipboard-write *; web-share *; serial *; xr-spatial-tracking *"
+            allowfullscreen="true"
+            allowpaymentrequest="true"
+            allowtransparency="true"
+            sandbox="allow-forms allow-modals allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation allow-downloads allow-presentation"
+            class="result-iframe iframe-visual-update"
+            name="codeShow"
+            loading="lazy"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+    <script src="assets/lib/jquery-3.7.1.min.js"></script>
+    <script src="assets/lib/sass.sync.min.js"></script>
+    <link rel="stylesheet" href="assets/codemirror5/lib/codemirror.css" />
+    <link rel="stylesheet" href="assets/codemirror5/addon/hint/show-hint.css" />
+    <script src="assets/codemirror5/lib/codemirror.js"></script>
+    <script src="assets/codemirror5/addon/hint/show-hint.js"></script>
+    <script src="assets/codemirror5/addon/hint/xml-hint.js"></script>
+    <script src="assets/codemirror5/addon/hint/html-hint.js"></script>
+    <script src="assets/codemirror5/mode/xml/xml.js"></script>
+    <script src="assets/codemirror5/mode/javascript/javascript.js"></script>
+    <script src="assets/codemirror5/mode/css/css.js"></script>
+    <script src="assets/codemirror5/mode/htmlmixed/htmlmixed.js"></script>
+    <script src="assets/codemirror5/addon/hint/css-hint.js"></script>
+    <script src="assets/js/common.js"></script>
+  </body>
+</html>
