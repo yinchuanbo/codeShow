@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>codeShow</title>
+    <link rel="icon" sizes="any" mask href="assets/images/ico.svg" />
+    <link rel="stylesheet" href="assets/codemirror5/theme/blackboard.css" />
+    <link rel="stylesheet" href="assets/codemirror5/lib/codemirror.css" />
+    <link rel="stylesheet" href="assets/codemirror5/addon/hint/show-hint.css" />
+    <link rel="stylesheet" href="assets/css/common.css" />
+    <link rel="stylesheet" href="assets/lib/wenk.min.css" />
+  </head>
+  <body>
+    <div class="code__wrapper">
+      <div class="close__fs"></div>
+      <div class="code__wrapper_header">
+        <div class="code__wrapper_header_title">Radial animated progress</div>
+        <div class="tools">
+          <div class="home__icon" onclick="window.location.href = '/'"></div>
+        </div>
+      </div>
+      <div class="code__wrapper_top">
+        <div class="code__wrapper_top-html">
+          <div class="title">HTML</div>
+          <textarea id="htmlCode">&lt;div style=&#34;--c0: #ec6056; --c1: #ea2963&#34;&gt;&lt;/div&gt;
+&lt;div style=&#34;--c0: #86dd54; --c1: #4ba75c&#34;&gt;&lt;/div&gt;</textarea>
+        </div>
+        <div class="code__wrapper_top-css">
+          <div class="title">CSS</div>
+          <textarea id="cssCode">$d: 3.5em;
+$w: 4px;
+
+@property --p {
+  syntax: &#34;&lt;integer&gt;&#34;;
+  initial-value: 0;
+  inherits: true;
+}
+
+#iframe__wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, $d);
+  grid-gap: 1em;
+  place-content: center;
+  /* padding: 0 1em; */
+  background: repeating-linear-gradient(45deg, #433d62 0 4px, #29253e 0 9px);
+  font: 2.5em ubuntu mono, monospace;
+}
+
+div:not(#iframe__wrapper, #eruda, .__chobitsu-hide__) {
+  height: $d;
+  box-shadow: inset 0 0 0 $w #1d1b33;
+  color: #fff;
+  counter-reset: p var(--p);
+  animation: p 8s linear infinite;
+
+  &amp;,
+  &amp;::before,
+  &amp;::after {
+    display: grid;
+    border-radius: 50%;
+  }
+
+  &amp;::before {
+    place-content: center;
+    margin: -0.5 * $w;
+    background: radial-gradient(
+        circle at 50% #{$w},
+        var(--c0) #{$w},
+        transparent 0
+      ), conic-gradient(var(--c0), var(--c1) calc(var(--p) * 1%), transparent 0%);
+    --mask: linear-gradient(red, red) text, radial-gradient(
+        closest-side,
+        transparent calc(100% - 2 *#{$w} - 1px),
+        red calc(100% - 2 *#{$w})
+      );
+    -webkit-mask: var(--mask);
+    content: counter(p) &#34;%&#34;;
+  }
+
+  &amp;::after {
+    position: absolute;
+    margin: calc(0.5 *#{$d} - #{$w});
+    padding: $w;
+    transform: rotate(calc(4grad * var(--p))) translatey(
+        calc(0.5 *#{$w} - 0.5 *#{$d})
+      );
+    box-shadow: 0 0 1px var(--c1);
+    background: var(--c1);
+    content: &#34;&#34;;
+  }
+}
+
+div:nth-child(2) {
+  animation-duration: 5s;
+  animation-delay: -4s;
+}
+
+@keyframes p {
+  95%,
+  100% {
+    --p: 100;
+  }
+}</textarea>
+        </div>
+        <div class="code__wrapper_top-js">
+          <div class="title">JAVASCRIPT</div>
+          <textarea id="jsCode"></textarea>
+        </div>
+      </div>
+      <div class="code__wrapper_bottom">
+        <div class="code__wrapper_top-preview">
+          <div class="fs__icon"></div>
+          
+          <iframe
+            id="live-preview"
+            src="assets/templates/template-iframe.html"
+            width="100%"
+            height="100%"
+            allow="accelerometer *; camera *; encrypted-media *; display-capture *; geolocation *; gyroscope *; microphone *; midi *; clipboard-read *; clipboard-write *; web-share *; serial *; xr-spatial-tracking *"
+            allowfullscreen="true"
+            allowpaymentrequest="true"
+            allowtransparency="true"
+            sandbox="allow-forms allow-modals allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation allow-downloads allow-presentation"
+            class="result-iframe iframe-visual-update"
+            name="codeShow"
+            loading="lazy"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+    <script src="assets/lib/jquery-3.7.1.min.js"></script>
+    <script src="assets/lib/sass.sync.min.js"></script>
+    <script src="assets/codemirror5/lib/codemirror.js"></script>
+    <script src="assets/codemirror5/addon/hint/show-hint.js"></script>
+    <script src="assets/codemirror5/addon/hint/xml-hint.js"></script>
+    <script src="assets/codemirror5/addon/hint/html-hint.js"></script>
+    <script src="assets/codemirror5/mode/xml/xml.js"></script>
+    <script src="assets/codemirror5/mode/javascript/javascript.js"></script>
+    <script src="assets/codemirror5/mode/css/css.js"></script>
+    <script src="assets/codemirror5/mode/htmlmixed/htmlmixed.js"></script>
+    <script src="assets/codemirror5/addon/hint/css-hint.js"></script>
+    <script src="assets/js/common.js"></script>
+  </body>
+</html>

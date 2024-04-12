@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>codeShow</title>
+    <link rel="icon" sizes="any" mask href="assets/images/ico.svg" />
+    <link rel="stylesheet" href="assets/codemirror5/theme/blackboard.css" />
+    <link rel="stylesheet" href="assets/codemirror5/lib/codemirror.css" />
+    <link rel="stylesheet" href="assets/codemirror5/addon/hint/show-hint.css" />
+    <link rel="stylesheet" href="assets/css/common.css" />
+    <link rel="stylesheet" href="assets/lib/wenk.min.css" />
+  </head>
+  <body>
+    <div class="code__wrapper">
+      <div class="close__fs"></div>
+      <div class="code__wrapper_header">
+        <div class="code__wrapper_header_title">Custom Image Carousel</div>
+        <div class="tools">
+          <div class="home__icon" onclick="window.location.href = '/'"></div>
+        </div>
+      </div>
+      <div class="code__wrapper_top">
+        <div class="code__wrapper_top-html">
+          <div class="title">HTML</div>
+          <textarea id="htmlCode">&lt;ul class=&#34;list&#34;&gt;
+  &lt;li class=&#34;hide&#34;&gt;&lt;/li&gt;
+  &lt;li class=&#34;prev&#34;&gt;&lt;/li&gt;
+  &lt;li class=&#34;act&#34;&gt;&lt;/li&gt;
+  &lt;li class=&#34;next&#34;&gt;&lt;/li&gt;
+  &lt;li class=&#34;next new-next&#34;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&#34;swipe&#34;&gt;&lt;/div&gt;</textarea>
+        </div>
+        <div class="code__wrapper_top-css">
+          <div class="title">CSS</div>
+          <textarea id="cssCode">#iframe__wrapper {
+  overflow-x: hidden;
+  background: #fed5c8;
+}
+
+.list {
+  height: 200px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.list li {
+  list-style-type: none;
+
+  width: 200px;
+  height: 200px;
+  opacity: 0.25;
+  position: absolute;
+  left: 50%;
+  margin-left: -100px;
+  border-radius: 2px;
+  background: #9c89b8;
+  transition: transform 1s, opacity 1s;
+}
+
+.list .act {
+  opacity: 1;
+}
+
+.list .prev,
+.list .next {
+  cursor: pointer;
+}
+
+.list .prev {
+  transform: translateX(-220px) scale(0.85);
+}
+
+.list .next {
+  transform: translateX(220px) scale(0.85);
+}
+
+.list .hide {
+  transform: translateX(-420px) scale(0.85);
+}
+
+.list .new-next {
+  transform: translateX(420px) scale(0.85);
+}
+
+.list .hide,
+.list .new-next {
+  opacity: 0;
+  transition: opacity 0.5s, transform 0.5s;
+}
+
+.swipe {
+  width: 270px;
+  height: 200px;
+  position: absolute;
+  background-color: green;
+  border-radius: 2px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+}</textarea>
+        </div>
+        <div class="code__wrapper_top-js">
+          <div class="title">JAVASCRIPT</div>
+          <textarea id="jsCode">const $ = (selector) =&gt; {
+  return document.querySelector(selector);
+};
+
+function next() {
+  if ($(&#34;.hide&#34;)) {
+    $(&#34;.hide&#34;).remove();
+  }
+
+  /* Step */
+
+  if ($(&#34;.prev&#34;)) {
+    $(&#34;.prev&#34;).classList.add(&#34;hide&#34;);
+    $(&#34;.prev&#34;).classList.remove(&#34;prev&#34;);
+  }
+
+  $(&#34;.act&#34;).classList.add(&#34;prev&#34;);
+  $(&#34;.act&#34;).classList.remove(&#34;act&#34;);
+
+  $(&#34;.next&#34;).classList.add(&#34;act&#34;);
+  $(&#34;.next&#34;).classList.remove(&#34;next&#34;);
+
+  /* New Next */
+
+  $(&#34;.new-next&#34;).classList.remove(&#34;new-next&#34;);
+
+  const addedEl = document.createElement(&#34;li&#34;);
+
+  $(&#34;.list&#34;).appendChild(addedEl);
+  addedEl.classList.add(&#34;next&#34;, &#34;new-next&#34;);
+}
+
+function prev() {
+  $(&#34;.new-next&#34;).remove();
+
+  /* Step */
+
+  $(&#34;.next&#34;).classList.add(&#34;new-next&#34;);
+
+  $(&#34;.act&#34;).classList.add(&#34;next&#34;);
+  $(&#34;.act&#34;).classList.remove(&#34;act&#34;);
+
+  $(&#34;.prev&#34;).classList.add(&#34;act&#34;);
+  $(&#34;.prev&#34;).classList.remove(&#34;prev&#34;);
+
+  /* New Prev */
+
+  $(&#34;.hide&#34;).classList.add(&#34;prev&#34;);
+  $(&#34;.hide&#34;).classList.remove(&#34;hide&#34;);
+
+  const addedEl = document.createElement(&#34;li&#34;);
+
+  $(&#34;.list&#34;).insertBefore(addedEl, $(&#34;.list&#34;).firstChild);
+  addedEl.classList.add(&#34;hide&#34;);
+}
+
+slide = (element) =&gt; {
+  /* Next slide */
+
+  if (element.classList.contains(&#34;next&#34;)) {
+    next();
+
+    /* Previous slide */
+  } else if (element.classList.contains(&#34;prev&#34;)) {
+    prev();
+  }
+};
+
+const slider = $(&#34;.list&#34;),
+  swipe = new Hammer($(&#34;.swipe&#34;));
+
+slider.onclick = (event) =&gt; {
+  slide(event.target);
+};
+
+swipe.on(&#34;swipeleft&#34;, (ev) =&gt; {
+  next();
+});
+
+swipe.on(&#34;swiperight&#34;, (ev) =&gt; {
+  prev();
+});</textarea>
+        </div>
+      </div>
+      <div class="code__wrapper_bottom">
+        <div class="code__wrapper_top-preview">
+          <div class="fs__icon"></div>
+          
+          <iframe
+            id="live-preview"
+            src="assets/templates/template-iframe.html"
+            width="100%"
+            height="100%"
+            allow="accelerometer *; camera *; encrypted-media *; display-capture *; geolocation *; gyroscope *; microphone *; midi *; clipboard-read *; clipboard-write *; web-share *; serial *; xr-spatial-tracking *"
+            allowfullscreen="true"
+            allowpaymentrequest="true"
+            allowtransparency="true"
+            sandbox="allow-forms allow-modals allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation allow-downloads allow-presentation"
+            class="result-iframe iframe-visual-update"
+            name="codeShow"
+            loading="lazy"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+    <script src="assets/lib/jquery-3.7.1.min.js"></script>
+    <script src="assets/lib/sass.sync.min.js"></script>
+    <script src="assets/codemirror5/lib/codemirror.js"></script>
+    <script src="assets/codemirror5/addon/hint/show-hint.js"></script>
+    <script src="assets/codemirror5/addon/hint/xml-hint.js"></script>
+    <script src="assets/codemirror5/addon/hint/html-hint.js"></script>
+    <script src="assets/codemirror5/mode/xml/xml.js"></script>
+    <script src="assets/codemirror5/mode/javascript/javascript.js"></script>
+    <script src="assets/codemirror5/mode/css/css.js"></script>
+    <script src="assets/codemirror5/mode/htmlmixed/htmlmixed.js"></script>
+    <script src="assets/codemirror5/addon/hint/css-hint.js"></script>
+    <script src="assets/js/common.js"></script>
+  </body>
+</html>
