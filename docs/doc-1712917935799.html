@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>codeShow</title>
+    <link rel="icon" sizes="any" mask href="assets/images/ico.svg" />
+    <link rel="stylesheet" href="assets/codemirror5/theme/blackboard.css" />
+    <link rel="stylesheet" href="assets/codemirror5/lib/codemirror.css" />
+    <link rel="stylesheet" href="assets/codemirror5/addon/hint/show-hint.css" />
+    <link rel="stylesheet" href="assets/css/common.css" />
+    <link rel="stylesheet" href="assets/lib/wenk.min.css" />
+  </head>
+  <body>
+    <div class="code__wrapper">
+      <div class="close__fs"></div>
+      <div class="code__wrapper_header">
+        <div class="code__wrapper_header_title">Fluid Meter exaples</div>
+        <div class="tools">
+          <div class="home__icon" onclick="window.location.href = '/'"></div>
+        </div>
+      </div>
+      <div class="code__wrapper_top">
+        <div class="code__wrapper_top-html">
+          <div class="title">HTML</div>
+          <textarea id="htmlCode">&lt;div class=&#34;container&#34;&gt;
+  &lt;div class=&#34;row&#34;&gt;
+    &lt;div class=&#34;col text-center&#34;&gt;
+      &lt;div id=&#34;fluid-meter&#34; class=&#34;mx-auto&#34;&gt;&lt;/div&gt;
+      &lt;input type=&#34;text&#34; id=&#34;percentage-1&#34; type=&#34;number&#34; value=&#34;50&#34; /&gt;
+      &lt;button id=&#34;submit-percentage-1&#34;&gt;submit&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;col text-center&#34;&gt;
+      &lt;div id=&#34;fluid-meter-2&#34;&gt;&lt;/div&gt;
+      &lt;input type=&#34;text&#34; id=&#34;percentage-2&#34; type=&#34;number&#34; value=&#34;50&#34; /&gt;
+      &lt;button id=&#34;submit-percentage-2&#34;&gt;submit&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;col  text-center&#34;&gt;
+      &lt;div id=&#34;fluid-meter-3&#34;&gt;&lt;/div&gt;
+      &lt;input type=&#34;text&#34; id=&#34;percentage-3&#34; type=&#34;number&#34; value=&#34;50&#34; /&gt;
+      &lt;button id=&#34;submit-percentage-3&#34;&gt;submit&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</textarea>
+        </div>
+        <div class="code__wrapper_top-css">
+          <div class="title">CSS</div>
+          <textarea id="cssCode">.container,
+.row {
+  width: 100%;
+  height: 100%;
+}
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}</textarea>
+        </div>
+        <div class="code__wrapper_top-js">
+          <div class="title">JAVASCRIPT</div>
+          <textarea id="jsCode">function FluidMeter() {
+  var context;
+  var targetContainer;
+
+  var time = null;
+  var dt = null;
+
+  var options = {
+    drawShadow: true,
+    drawText: true,
+    drawPercentageSign: true,
+    drawBubbles: true,
+    fontSize: &#34;70px&#34;,
+    fontFamily: &#34;Arial&#34;,
+    fontFillStyle: &#34;white&#34;,
+    size: 300,
+    borderWidth: 25,
+    backgroundColor: &#34;#e2e2e2&#34;,
+    foregroundColor: &#34;#fafafa&#34;,
+  };
+
+  var currentFillPercentage = 0;
+  var fillPercentage = 0;
+
+  //#region fluid context values
+  var foregroundFluidLayer = {
+    fillStyle: &#34;purple&#34;,
+    angle: 0,
+    horizontalPosition: 0,
+    angularSpeed: 0,
+    maxAmplitude: 9,
+    frequency: 30,
+    horizontalSpeed: -150,
+    initialHeight: 0,
+  };
+
+  var backgroundFluidLayer = {
+    fillStyle: &#34;pink&#34;,
+    angle: 0,
+    horizontalPosition: 0,
+    angularSpeed: 140,
+    maxAmplitude: 12,
+    frequency: 40,
+    horizontalSpeed: 150,
+    initialHeight: 0,
+  };
+
+  var bubblesLayer = {
+    bubbles: [],
+    amount: 12,
+    speed: 20,
+    current: 0,
+    swing: 0,
+    size: 2,
+    reset: function (bubble) {
+      // calculate the area where to spawn the bubble based on the fluid area
+      var meterBottom =
+        options.size -
+        (options.size - getMeterRadius()) / 2 -
+        options.borderWidth;
+      var fluidAmount =
+        (currentFillPercentage * (getMeterRadius() - options.borderWidth * 2)) /
+        100;
+
+      bubble.r = random(this.size, this.size * 2) / 2;
+      bubble.x = random(0, options.size);
+      bubble.y = random(meterBottom, meterBottom - fluidAmount);
+      bubble.velX = 0;
+      bubble.velY = random(this.speed, this.speed * 2);
+      bubble.swing = random(0, 2 * Math.PI);
+    },
+    init() {
+      for (var i = 0; i &lt; this.amount; i++) {
+        var meterBottom =
+          options.size -
+          (options.size - getMeterRadius()) / 2 -
+          options.borderWidth;
+        var fluidAmount =
+          (currentFillPercentage *
+            (getMeterRadius() - options.borderWidth * 2)) /
+          100;
+        this.bubbles.push({
+          x: random(0, options.size),
+          y: random(meterBottom, meterBottom - fluidAmount),
+          r: random(this.size, this.size * 2) / 2,
+          velX: 0,
+          velY: random(this.speed, this.speed * 2),
+        });
+      }
+    },
+  };
+  //#endregion
+
+  /**
+   * initializes and mount the canvas element on the document
+   */
+  function setupCanvas() {
+    var canvas = document.createElement(&#34;canvas&#34;);
+    canvas.width = options.size;
+    canvas.height = options.size;
+    canvas.imageSmoothingEnabled = true;
+    context = canvas.getContext(&#34;2d&#34;);
+    targetContainer.appendChild(canvas);
+
+    // shadow is not required  to be on the draw loop
+    //#region shadow
+    if (options.drawShadow) {
+      context.save();
+      context.beginPath();
+      context.filter = &#34;drop-shadow(0px 4px 6px rgba(0,0,0,0.1))&#34;;
+      context.arc(
+        options.size / 2,
+        options.size / 2,
+        getMeterRadius() / 2,
+        0,
+        2 * Math.PI
+      );
+      context.closePath();
+      context.fill();
+      context.restore();
+    }
+    //#endregion
+  }
+
+  /**
+   * draw cycle
+   */
+  function draw() {
+    var now = new Date().getTime();
+    dt = (now - (time || now)) / 1000;
+    time = now;
+
+    requestAnimationFrame(draw);
+    context.clearRect(0, 0, options.width, options.height);
+    drawMeterBackground();
+    drawFluid(dt);
+    if (options.drawText) {
+      drawText();
+    }
+    drawMeterForeground();
+  }
+
+  function drawMeterBackground() {
+    context.save();
+    context.fillStyle = options.backgroundColor;
+    context.beginPath();
+    context.arc(
+      options.size / 2,
+      options.size / 2,
+      getMeterRadius() / 2 - options.borderWidth,
+      0,
+      2 * Math.PI
+    );
+    context.closePath();
+    context.fill();
+    context.restore();
+  }
+
+  function drawMeterForeground() {
+    context.save();
+    context.lineWidth = options.borderWidth;
+    context.strokeStyle = options.foregroundColor;
+    context.beginPath();
+    context.arc(
+      options.size / 2,
+      options.size / 2,
+      getMeterRadius() / 2 - options.borderWidth / 2,
+      0,
+      2 * Math.PI
+    );
+    context.closePath();
+    context.stroke();
+    context.restore();
+  }
+  /**
+   * draws the fluid contents of the meter
+   * @param  {} dt elapsed time since last frame
+   */
+  function drawFluid(dt) {
+    context.save();
+    context.arc(
+      options.size / 2,
+      options.size / 2,
+      getMeterRadius() / 2 - options.borderWidth,
+      0,
+      Math.PI * 2
+    );
+    context.clip();
+    drawFluidLayer(backgroundFluidLayer, dt);
+    drawFluidLayer(foregroundFluidLayer, dt);
+    if (options.drawBubbles) {
+      drawFluidMask(foregroundFluidLayer, dt);
+      drawBubblesLayer(dt);
+    }
+    context.restore();
+  }
+
+  /**
+   * draws the foreground fluid layer
+   * @param  {} dt elapsed time since last frame
+   */
+  function drawFluidLayer(layer, dt) {
+    // calculate wave angle
+    if (layer.angularSpeed &gt; 0) {
+      layer.angle += layer.angularSpeed * dt;
+      layer.angle = layer.angle &lt; 0 ? layer.angle + 360 : layer.angle;
+    }
+
+    // calculate horizontal position
+    layer.horizontalPosition += layer.horizontalSpeed * dt;
+    if (layer.horizontalSpeed &gt; 0) {
+      layer.horizontalPosition &gt; Math.pow(2, 53) ? 0 : layer.horizontalPosition;
+    } else if (layer.horizontalPosition &lt; 0) {
+      layer.horizontalPosition &lt; -1 * Math.pow(2, 53)
+        ? 0
+        : layer.horizontalPosition;
+    }
+
+    var x = 0;
+    var y = 0;
+    var amplitude =
+      layer.maxAmplitude * Math.sin((layer.angle * Math.PI) / 180);
+
+    var meterBottom =
+      options.size -
+      (options.size - getMeterRadius()) / 2 -
+      options.borderWidth;
+    var fluidAmount =
+      (currentFillPercentage * (getMeterRadius() - options.borderWidth * 2)) /
+      100;
+
+    if (currentFillPercentage &lt; fillPercentage) {
+      currentFillPercentage += 15 * dt;
+    } else if (currentFillPercentage &gt; fillPercentage) {
+      currentFillPercentage -= 15 * dt;
+    }
+
+    layer.initialHeight = meterBottom - fluidAmount;
+
+    context.save();
+    context.beginPath();
+
+    context.lineTo(0, layer.initialHeight);
+
+    while (x &lt; options.size) {
+      y =
+        layer.initialHeight +
+        amplitude * Math.sin((x + layer.horizontalPosition) / layer.frequency);
+      context.lineTo(x, y);
+      x++;
+    }
+
+    context.lineTo(x, options.size);
+    context.lineTo(0, options.size);
+    context.closePath();
+
+    context.fillStyle = layer.fillStyle;
+    context.fill();
+    context.restore();
+  }
+
+  /**
+   * clipping mask for objects within the fluid constrains
+   * @param {Object} layer layer to be used as a mask
+   */
+  function drawFluidMask(layer) {
+    var x = 0;
+    var y = 0;
+    var amplitude =
+      layer.maxAmplitude * Math.sin((layer.angle * Math.PI) / 180);
+
+    context.beginPath();
+
+    context.lineTo(0, layer.initialHeight);
+
+    while (x &lt; options.size) {
+      y =
+        layer.initialHeight +
+        amplitude * Math.sin((x + layer.horizontalPosition) / layer.frequency);
+      context.lineTo(x, y);
+      x++;
+    }
+    context.lineTo(x, options.size);
+    context.lineTo(0, options.size);
+    context.closePath();
+    context.clip();
+  }
+
+  function drawBubblesLayer(dt) {
+    context.save();
+    for (var i = 0; i &lt; bubblesLayer.bubbles.length; i++) {
+      var bubble = bubblesLayer.bubbles[i];
+
+      context.beginPath();
+      context.strokeStyle = &#34;white&#34;;
+      context.arc(bubble.x, bubble.y, bubble.r, 2 * Math.PI, false);
+      context.stroke();
+      context.closePath();
+
+      var currentSpeed = bubblesLayer.current * dt;
+
+      bubble.velX =
+        Math.abs(bubble.velX) &lt; Math.abs(bubblesLayer.current)
+          ? bubble.velX + currentSpeed
+          : bubblesLayer.current;
+      bubble.y = bubble.y - bubble.velY * dt;
+      bubble.x =
+        bubble.x +
+        (bubblesLayer.swing
+          ? 0.4 * Math.cos((bubblesLayer.swing += 0.03)) * bubblesLayer.swing
+          : 0) +
+        bubble.velX * 0.5;
+
+      // determine if current bubble is outside the safe area
+      var meterBottom =
+        options.size -
+        (options.size - getMeterRadius()) / 2 -
+        options.borderWidth;
+      var fluidAmount =
+        (currentFillPercentage * (getMeterRadius() - options.borderWidth * 2)) /
+        100;
+
+      if (bubble.y &lt;= meterBottom - fluidAmount) {
+        bubblesLayer.reset(bubble);
+      }
+    }
+    context.restore();
+  }
+
+  function drawText() {
+    var text = options.drawPercentageSign
+      ? currentFillPercentage.toFixed(0) + &#34;%&#34;
+      : currentFillPercentage.toFixed(0);
+
+    context.save();
+    context.font = getFontSize();
+    context.fillStyle = options.fontFillStyle;
+    context.textAlign = &#34;center&#34;;
+    context.textBaseline = &#34;middle&#34;;
+    context.filter = &#34;drop-shadow(0px 0px 5px rgba(0,0,0,0.4))&#34;;
+    context.fillText(text, options.size / 2, options.size / 2);
+    context.restore();
+  }
+
+  //#region helper methods
+  function clamp(number, min, max) {
+    return Math.min(Math.max(number, min), max);
+  }
+  function getMeterRadius() {
+    return options.size * 0.9;
+  }
+
+  function random(min, max) {
+    var delta = max - min;
+    return max === min ? min : Math.random() * delta + min;
+  }
+
+  function getFontSize() {
+    return options.fontSize + &#34; &#34; + options.fontFamily;
+  }
+  //#endregion
+
+  return {
+    init: function (env) {
+      if (!env.targetContainer) throw &#34;empty or invalid container&#34;;
+
+      targetContainer = env.targetContainer;
+      fillPercentage = clamp(env.fillPercentage, 0, 100);
+
+      if (env.options) {
+        options.drawShadow = env.options.drawShadow === false ? false : true;
+        options.size = env.options.size;
+        options.drawBubbles = env.options.drawBubbles === false ? false : true;
+        options.borderWidth = env.options.borderWidth || options.borderWidth;
+        options.foregroundFluidColor =
+          env.options.foregroundFluidColor || options.foregroundFluidColor;
+        options.backgroundFluidColor =
+          env.options.backgroundFluidColor || options.backgroundFluidColor;
+        options.backgroundColor =
+          env.options.backgroundColor || options.backgroundColor;
+        options.foregroundColor =
+          env.options.foregroundColor || options.foregroundColor;
+
+        options.drawText = env.options.drawText === false ? false : true;
+        options.drawPercentageSign =
+          env.options.drawPercentageSign === false ? false : true;
+        options.fontSize = env.options.fontSize || options.fontSize;
+        options.fontFamily = env.options.fontFamily || options.fontFamily;
+        options.fontFillStyle =
+          env.options.fontFillStyle || options.fontFillStyle;
+        // fluid settings
+
+        if (env.options.foregroundFluidLayer) {
+          foregroundFluidLayer.fillStyle =
+            env.options.foregroundFluidLayer.fillStyle ||
+            foregroundFluidLayer.fillStyle;
+          foregroundFluidLayer.angularSpeed =
+            env.options.foregroundFluidLayer.angularSpeed ||
+            foregroundFluidLayer.angularSpeed;
+          foregroundFluidLayer.maxAmplitude =
+            env.options.foregroundFluidLayer.maxAmplitude ||
+            foregroundFluidLayer.maxAmplitude;
+          foregroundFluidLayer.frequency =
+            env.options.foregroundFluidLayer.frequency ||
+            foregroundFluidLayer.frequency;
+          foregroundFluidLayer.horizontalSpeed =
+            env.options.foregroundFluidLayer.horizontalSpeed ||
+            foregroundFluidLayer.horizontalSpeed;
+        }
+
+        if (env.options.backgroundFluidLayer) {
+          backgroundFluidLayer.fillStyle =
+            env.options.backgroundFluidLayer.fillStyle ||
+            backgroundFluidLayer.fillStyle;
+          backgroundFluidLayer.angularSpeed =
+            env.options.backgroundFluidLayer.angularSpeed ||
+            backgroundFluidLayer.angularSpeed;
+          backgroundFluidLayer.maxAmplitude =
+            env.options.backgroundFluidLayer.maxAmplitude ||
+            backgroundFluidLayer.maxAmplitude;
+          backgroundFluidLayer.frequency =
+            env.options.backgroundFluidLayer.frequency ||
+            backgroundFluidLayer.frequency;
+          backgroundFluidLayer.horizontalSpeed =
+            env.options.backgroundFluidLayer.horizontalSpeed ||
+            backgroundFluidLayer.horizontalSpeed;
+        }
+      }
+
+      bubblesLayer.init();
+      setupCanvas();
+      draw();
+    },
+    setPercentage(percentage) {
+      fillPercentage = clamp(percentage, 0, 100);
+    },
+  };
+}
+
+var fm = new FluidMeter();
+fm.init({
+  targetContainer: document.getElementById(&#34;fluid-meter&#34;),
+  fillPercentage: 15,
+  options: {
+    fontFamily: &#34;Raleway&#34;,
+    drawPercentageSign: false,
+    drawBubbles: true,
+    size: 300,
+    borderWidth: 19,
+    backgroundColor: &#34;#e2e2e2&#34;,
+    foregroundColor: &#34;#fafafa&#34;,
+    foregroundFluidLayer: {
+      fillStyle: &#34;purple&#34;,
+      angularSpeed: 100,
+      maxAmplitude: 12,
+      frequency: 30,
+      horizontalSpeed: -150,
+    },
+    backgroundFluidLayer: {
+      fillStyle: &#34;pink&#34;,
+      angularSpeed: 100,
+      maxAmplitude: 9,
+      frequency: 30,
+      horizontalSpeed: 150,
+    },
+  },
+});
+
+var fm2 = new FluidMeter();
+fm2.init({
+  targetContainer: document.getElementById(&#34;fluid-meter-2&#34;),
+  fillPercentage: 75,
+  options: {
+    fontFamily: &#34;Oxygen&#34;,
+    drawPercentageSign: true,
+    drawBubbles: true,
+    size: 300,
+    borderWidth: 10,
+    backgroundColor: &#34;#262626&#34;,
+    foregroundColor: &#34;#4C4A4A&#34;,
+    foregroundFluidLayer: {
+      fillStyle: &#34;#55DD10&#34;,
+      angularSpeed: 90,
+      maxAmplitude: 11,
+      frequency: 25,
+      horizontalSpeed: -200,
+    },
+    backgroundFluidLayer: {
+      fillStyle: &#34;#CDDD10&#34;,
+      angularSpeed: 100,
+      maxAmplitude: 13,
+      frequency: 23,
+      horizontalSpeed: 230,
+    },
+  },
+});
+
+var fm3 = new FluidMeter();
+fm3.init({
+  targetContainer: document.getElementById(&#34;fluid-meter-3&#34;),
+  fillPercentage: 45,
+  options: {
+    fontSize: &#34;30px&#34;,
+    drawPercentageSign: true,
+    drawBubbles: false,
+    size: 300,
+    borderWidth: 19,
+    backgroundColor: &#34;#e2e2e2&#34;,
+    foregroundColor: &#34;#fafafa&#34;,
+    foregroundFluidLayer: {
+      fillStyle: &#34;#16E1FF&#34;,
+      angularSpeed: 30,
+      maxAmplitude: 5,
+      frequency: 30,
+      horizontalSpeed: -20,
+    },
+    backgroundFluidLayer: {
+      fillStyle: &#34;#4F8FC6&#34;,
+      angularSpeed: 100,
+      maxAmplitude: 3,
+      frequency: 22,
+      horizontalSpeed: 20,
+    },
+  },
+});
+
+document.getElementById(&#34;submit-percentage-1&#34;).onclick = function () {
+  fm.setPercentage(Number(document.getElementById(&#34;percentage-1&#34;).value));
+};
+document.getElementById(&#34;submit-percentage-2&#34;).onclick = function () {
+  fm2.setPercentage(Number(document.getElementById(&#34;percentage-2&#34;).value));
+};
+document.getElementById(&#34;submit-percentage-3&#34;).onclick = function () {
+  fm3.setPercentage(Number(document.getElementById(&#34;percentage-3&#34;).value));
+};</textarea>
+        </div>
+      </div>
+      <div class="code__wrapper_bottom">
+        <div class="code__wrapper_top-preview">
+          <div class="fs__icon"></div>
+          
+          <iframe
+            id="live-preview"
+            src="assets/templates/template-iframe.html"
+            width="100%"
+            height="100%"
+            allow="accelerometer *; camera *; encrypted-media *; display-capture *; geolocation *; gyroscope *; microphone *; midi *; clipboard-read *; clipboard-write *; web-share *; serial *; xr-spatial-tracking *"
+            allowfullscreen="true"
+            allowpaymentrequest="true"
+            allowtransparency="true"
+            sandbox="allow-forms allow-modals allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation allow-downloads allow-presentation"
+            class="result-iframe iframe-visual-update"
+            name="codeShow"
+            loading="lazy"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+    <script src="assets/lib/jquery-3.7.1.min.js"></script>
+    <script src="assets/lib/sass.sync.min.js"></script>
+    <script src="assets/codemirror5/lib/codemirror.js"></script>
+    <script src="assets/codemirror5/addon/hint/show-hint.js"></script>
+    <script src="assets/codemirror5/addon/hint/xml-hint.js"></script>
+    <script src="assets/codemirror5/addon/hint/html-hint.js"></script>
+    <script src="assets/codemirror5/mode/xml/xml.js"></script>
+    <script src="assets/codemirror5/mode/javascript/javascript.js"></script>
+    <script src="assets/codemirror5/mode/css/css.js"></script>
+    <script src="assets/codemirror5/mode/htmlmixed/htmlmixed.js"></script>
+    <script src="assets/codemirror5/addon/hint/css-hint.js"></script>
+    <script src="assets/js/common.js"></script>
+  </body>
+</html>
