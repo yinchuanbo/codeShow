@@ -1,0 +1,140 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  font-family: "Fira Code";
+}
+
+body {
+  height: 100vh;
+  background-color: #f2f2f2;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  /* box-shadow: 0 0.25rem 1.125rem rgba(76, 92, 70, 0.1); */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.container-contents .contents-item {
+  display: none;
+}
+
+.container-tabs {
+  width: 100%;
+  height: 60px;
+  background-color: #333;
+  display: flex;
+}
+
+.tabs-item {
+  width: auto;
+  height: 100%;
+  line-height: 60px;
+  padding: 0 20px;
+  cursor: pointer;
+  color: #fff;
+  position: relative;
+  transition: all 0.5s;
+}
+
+.tabs-item.active {
+  transition: all 0.5s;
+}
+
+.tabs-item.active::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background-color: red;
+  transition: all 0.5s;
+}
+
+.tabs-item + .tabs-item {
+  margin-left: 20px;
+}
+
+.container-contents {
+  width: 100%;
+  /* flex: 1; */
+  height: calc(100vh - 60px);
+  background-color: aquamarine;
+}
+
+.contents-item {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.contents-item.active {
+  display: flex;
+}
+
+.contents-item:nth-child(1) {
+  background-color: red;
+}
+
+.contents-item:nth-child(2) {
+  background-color: blue;
+}
+
+.contents-item:nth-child(3) {
+  background-color: yellow;
+}
+
+.contents-item:nth-child(4) {
+  background-color: green;
+}
+
+.contents-item__left {
+  width: 50%;
+  height: 100%;
+  background-color: #fff;
+}
+.contents-item__right {
+  width: 50%;
+  height: 100%;
+  background-color: aliceblue;
+  line-height: 1.5;
+  padding: 20px;
+  overflow: auto;
+  font-size: 16px;
+  position: relative;
+  word-wrap: break-word;
+}
+
+textarea {
+  border: 0;
+  outline: none;
+  width: 100%;
+  height: 100%;
+  resize: none;
+  padding: 20px;
+  font-size: 16px;
+  color: #999;
+  box-sizing: border-box;
+  display: block;
+}

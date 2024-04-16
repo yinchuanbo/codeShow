@@ -1,11 +1,20 @@
-/* @import "https://cdn.jsdelivr.net/npm/hack-font@3/build/web/hack.css"; */
-@import url("https://fonts.googleapis.com/css2?&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap"); */
+
+/* @font-face {
+  font-family: "MyFont";
+  src: url("../assets/fonts/myfont.ttf") format("truetype");
+} */
+
+@font-face {
+  font-family: "MyFont2";
+  src: url("../assets/fonts/myfont2.ttf") format("truetype");
+}
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Fira Code";
+  font-family: MyFont2;
 }
 
 html,
@@ -28,7 +37,7 @@ body {
 
 .tools__wrapper_item {
   height: 70px;
-  font-size: 16px;
+  font-size: 18px;
   border: none;
   /* border-radius: 50px; */
   background-color: #ff0000;
@@ -41,7 +50,7 @@ body {
   justify-content: center;
   cursor: pointer;
   padding: 0 20px;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
 }
 
 .tools__wrapper_item:nth-child(2n + 1) {
