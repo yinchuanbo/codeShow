@@ -112,6 +112,79 @@ scssCompress.oninput = async (event) => {
   });
 };
 
+
+const jsonCompress = document.getElementById("json-compress");
+
+jsonCompress.oninput = async (event) => {
+  const val = event.target.value.trim();
+  if (!val) {
+    document.getElementById("json-compress-output").textContent = "";
+    return;
+  }
+  try {
+    const jsonObj = JSON.parse(val);
+    document.getElementById("json-compress-output").innerHTML = "";
+    buildTree(jsonObj, document.getElementById("json-compress-output"), "root");
+  } catch (e) {
+    console.log('e', e)
+    document.getElementById("json-compress-output").innerHTML =
+      '<p style="color: red;">Invalid JSON</p>';
+  }
+};
+
+function buildTree(obj, parentElement, key) {
+  const item = document.createElement("div");
+  parentElement.appendChild(item);
+  if (typeof obj === "object" && obj !== null) {
+    console.log(111)
+    let typeString = Array.isArray(obj) ? "[]" : "{}";
+    const keySpan = document.createElement("span");
+    keySpan.className = "key collapsible";
+    keySpan.innerHTML = `${key}<i class="typeString">${typeString}</i>: `;
+    item.appendChild(keySpan);
+
+    const childContainer = document.createElement("div");
+    childContainer.className =
+      "hidden " + (Array.isArray(obj) ? "array" : "object");
+    item.appendChild(childContainer);
+
+    for (const childKey in obj) {
+      buildTree(obj[childKey], childContainer, childKey);
+    }
+
+    keySpan.onclick = function (event) {
+      event.stopPropagation();
+      const childDiv = this.parentElement.querySelector(".hidden");
+      if (childDiv.style.display === "block") {
+        childDiv.style.display = "none";
+        this.classList.remove("collapsed");
+      } else {
+        childDiv.style.display = "block";
+        this.classList.add("collapsed");
+      }
+    };
+  } else {
+    console.log(222)
+    item.innerHTML =
+      '<span class="key">' +
+      key +
+      ": </span>" +
+      '<span class="' +
+      getType(obj) +
+      '">' +
+      obj +
+      "</span>";
+  }
+}
+
+function getType(value) {
+  if (typeof value === "string") return "string";
+  if (typeof value === "number") return "number";
+  if (Array.isArray(value)) return "array";
+  if (typeof value === "object" && value !== null) return "object";
+  return "unknown";
+}
+
 const doc = new Mergely("#compare", );
 doc.once("updated", () => {
   doc.lhs("the quick red fox\njumped over the hairy dog");
