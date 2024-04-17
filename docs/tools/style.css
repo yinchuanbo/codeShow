@@ -155,3 +155,7 @@ textarea {
 /* .mergely-margin {
   display: none;
 } */
+
+#compare-lhs-margin, #compare-rhs-margin {
+  visibility: hidden;
+}
