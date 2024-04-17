@@ -159,3 +159,7 @@ textarea {
 #compare-lhs-margin, #compare-rhs-margin {
   visibility: hidden;
 }
+
+.mergely-splash {
+  display: none;
+}
