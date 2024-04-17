@@ -28,7 +28,8 @@
         <div class="tabs-item">JS编译压缩</div>
         <div class="tabs-item">SCSS编译压缩</div>
         <div class="tabs-item">JSON格式化</div>
-        <div class="tabs-item">文本比较</div>
+        <div class="tabs-item">图片转Base64</div>
+        <div class="tabs-item">文本比较器</div>
       </div>
       <div class="container-contents">
         <div class="contents-item active">
@@ -39,27 +40,43 @@
         </div>
         <div class="contents-item">
           <div class="contents-item__left">
-            <textarea id="html-compress"  placeholder="请输入HTML代码"></textarea>
+            <textarea
+              id="html-compress"
+              placeholder="请输入HTML代码"
+            ></textarea>
           </div>
           <div class="contents-item__right" id="html-compress-output"></div>
         </div>
         <div class="contents-item">
           <div class="contents-item__left">
-            <textarea id="js-compress"  placeholder="请输入JS代码"></textarea>
+            <textarea id="js-compress" placeholder="请输入JS代码"></textarea>
           </div>
           <div class="contents-item__right" id="js-compress-output"></div>
         </div>
         <div class="contents-item">
           <div class="contents-item__left">
-            <textarea id="scss-compress"  placeholder="请输入SCSS代码"></textarea>
+            <textarea
+              id="scss-compress"
+              placeholder="请输入SCSS代码"
+            ></textarea>
           </div>
           <div class="contents-item__right" id="scss-compress-output"></div>
         </div>
         <div class="contents-item">
           <div class="contents-item__left">
-            <textarea id="json-compress"  placeholder="请输入JSON代码"></textarea>
+            <textarea
+              id="json-compress"
+              placeholder="请输入JSON代码"
+            ></textarea>
           </div>
           <div class="contents-item__right" id="json-compress-output"></div>
+        </div>
+        <div class="contents-item uploadImg">
+          <label class="imgInput__label">
+            <input type="file" name="" id="imgInput" style="display: none" />
+            <p>请点击上传图片</p>
+          </label>
+          <textarea id="imgInput__output" readonly></textarea>
         </div>
         <div class="contents-item" id="compare"></div>
       </div>
