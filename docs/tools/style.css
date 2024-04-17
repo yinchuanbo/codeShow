@@ -156,15 +156,6 @@ textarea {
   display: none;
 } */
 
-#compare-lhs-margin,
-#compare-rhs-margin {
-  visibility: hidden;
-}
-
-.mergely-splash {
-  display: none;
-}
-
 .collapsible {
   cursor: pointer;
   position: relative;
@@ -232,7 +223,7 @@ textarea {
 }
 
 /* 文本比较 */
-.mergely.ch.ind.lhs {
+/* .mergely.ch.ind.lhs {
   background-color: #ff0000;
   color: #fff !important;
 }
@@ -243,4 +234,17 @@ textarea {
 
 .mergely-editor .mergely.c.CodeMirror-linebackground {
   background-color: #e8e8e8;
+} */
+
+/* #compare-lhs-margin,
+#compare-rhs-margin {
+  visibility: hidden;
+}
+
+.mergely-splash {
+  display: none;
+} */
+
+.mergely-splash {
+  display: none;
 }

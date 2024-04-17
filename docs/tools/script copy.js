@@ -112,7 +112,6 @@ scssCompress.oninput = async (event) => {
   });
 };
 
-
 const jsonCompress = document.getElementById("json-compress");
 
 jsonCompress.oninput = async (event) => {
@@ -126,7 +125,7 @@ jsonCompress.oninput = async (event) => {
     document.getElementById("json-compress-output").innerHTML = "";
     buildTree(jsonObj, document.getElementById("json-compress-output"), "root");
   } catch (e) {
-    console.log('e', e)
+    console.log("e", e);
     document.getElementById("json-compress-output").innerHTML =
       '<p style="color: red;">Invalid JSON</p>';
   }
@@ -163,7 +162,7 @@ function buildTree(obj, parentElement, key) {
       }
     };
   } else {
-    console.log(222)
+    console.log(222);
     item.innerHTML =
       '<span class="key">' +
       key +
@@ -184,7 +183,14 @@ function getType(value) {
   return "unknown";
 }
 
-const doc = new Mergely("#compare");
+const doc = new Mergely("#compare", {
+  sidebar: true, //是否显示侧边栏，设置成false可以提高大型文档的性能
+  ignorews: false, //是否忽略空格对比
+  license: "lgpl",
+  cmsettings: {
+    readOnly: false, //false则展示合并箭头，运行两边能够合并
+  },
+});
 doc.once("updated", () => {
   doc.lhs("the quick red fox\njumped over the hairy dog");
   doc.rhs("the quick brown fox\njumped over the lazy dog");
