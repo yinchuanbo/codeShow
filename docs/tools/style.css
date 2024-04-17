@@ -156,7 +156,8 @@ textarea {
   display: none;
 } */
 
-#compare-lhs-margin, #compare-rhs-margin {
+#compare-lhs-margin,
+#compare-rhs-margin {
   visibility: hidden;
 }
 
@@ -228,4 +229,18 @@ textarea {
 
 .unknown {
   color: #555;
+}
+
+/* 文本比较 */
+.mergely.ch.ind.lhs {
+  background-color: #ff0000;
+  color: #fff !important;
+}
+.mergely.ch.ina.rhs {
+  background-color: #0000ff;
+  color: #fff !important;
+}
+
+.mergely-editor .mergely.c.CodeMirror-linebackground {
+  background-color: #e8e8e8;
 }

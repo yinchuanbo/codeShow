@@ -136,7 +136,6 @@ function buildTree(obj, parentElement, key) {
   const item = document.createElement("div");
   parentElement.appendChild(item);
   if (typeof obj === "object" && obj !== null) {
-    console.log(111)
     let typeString = Array.isArray(obj) ? "[]" : "{}";
     const keySpan = document.createElement("span");
     keySpan.className = "key collapsible";
@@ -185,7 +184,7 @@ function getType(value) {
   return "unknown";
 }
 
-const doc = new Mergely("#compare", );
+const doc = new Mergely("#compare");
 doc.once("updated", () => {
   doc.lhs("the quick red fox\njumped over the hairy dog");
   doc.rhs("the quick brown fox\njumped over the lazy dog");
