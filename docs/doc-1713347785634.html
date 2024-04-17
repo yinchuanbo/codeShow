@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>codeShow</title>
+    <link rel="icon" sizes="any" mask href="assets/images/ico.svg" />
+    <link rel="stylesheet" href="assets/codemirror5/theme/blackboard.css" />
+    <link rel="stylesheet" href="assets/codemirror5/lib/codemirror.css" />
+    <link rel="stylesheet" href="assets/codemirror5/addon/hint/show-hint.css" />
+    <link rel="stylesheet" href="assets/css/common.css" />
+    <link rel="stylesheet" href="assets/lib/wenk.min.css" />
+  </head>
+  <body>
+    <div class="code__wrapper">
+      <div class="close__fs"></div>
+      <div class="code__wrapper_header">
+        <div class="code__wrapper_header_title">Breadcrumbs &amp; tabs</div>
+        <div class="tools">
+          <div class="home__icon" onclick="window.location.href = '/'"></div>
+        </div>
+      </div>
+      <div class="code__wrapper_top">
+        <div class="code__wrapper_top-html">
+          <div class="title">HTML</div>
+          <textarea id="htmlCode">&lt;div class=&#34;phone&#34;&gt;
+  &lt;div class=&#34;card&#34;&gt;
+    &lt;div class=&#34;card__contents&#34;&gt;
+      &lt;div class=&#34;card__title&#34;&gt;Welcome&lt;/div&gt;
+      &lt;div class=&#34;card__body&#34;&gt;
+        &lt;p&gt;Are you too tired of high premiums?&lt;/p&gt;
+        &lt;p&gt;We&#39;re the insurance company that sends you the money directly!&lt;/p&gt;
+        &lt;p&gt;Interested? Jump in!&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&#34;card__next&#34;&gt;next →&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;card__shadow&#34;&gt;
+      &lt;div class=&#34;card__shadow-inner&#34;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;card__index&#34;&gt;1&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;card&#34;&gt;
+    &lt;div class=&#34;card__contents&#34;&gt;
+      &lt;div class=&#34;card__title&#34;&gt;Who are you?&lt;/div&gt;
+      &lt;div class=&#34;card__body&#34;&gt;
+        &lt;p&gt;What&#39;s your email address?&lt;/p&gt;
+        &lt;input class=&#34;card__input&#34; type=&#34;email&#34; /&gt;
+      &lt;/div&gt;
+      &lt;div class=&#34;card__next&#34;&gt;next →&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;card__shadow&#34;&gt;
+      &lt;div class=&#34;card__shadow-inner&#34;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;card__index&#34;&gt;2&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;card&#34;&gt;
+    &lt;div class=&#34;card__contents&#34;&gt;
+      &lt;div class=&#34;card__title&#34;&gt;Solar system&lt;/div&gt;
+      &lt;div class=&#34;card__body&#34;&gt;
+        &lt;p&gt;Which planet do you live on?&lt;/p&gt;
+        &lt;input class=&#34;card__input&#34; type=&#34;text&#34; /&gt;
+      &lt;/div&gt;
+      &lt;div class=&#34;card__next&#34;&gt;next →&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;card__shadow&#34;&gt;
+      &lt;div class=&#34;card__shadow-inner&#34;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;card__index&#34;&gt;3&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;card&#34;&gt;
+    &lt;div class=&#34;card__contents&#34;&gt;
+      &lt;div class=&#34;card__title&#34;&gt;Money&lt;/div&gt;
+      &lt;div class=&#34;card__body&#34;&gt;
+        &lt;p&gt;How do you want the money?&lt;/p&gt;
+        &lt;input class=&#34;card__radio&#34; type=&#34;radio&#34; name=&#34;cash&#34; id=&#34;cash&#34; /&gt;&lt;label
+          for=&#34;cash&#34;
+          &gt;Cash&lt;/label
+        &gt;
+        &lt;input
+          class=&#34;card__radio&#34;
+          type=&#34;radio&#34;
+          name=&#34;cash&#34;
+          id=&#34;account&#34;
+        /&gt;&lt;label for=&#34;account&#34;&gt;Bitcoins&lt;/label&gt;
+      &lt;/div&gt;
+      &lt;div class=&#34;card__next&#34;&gt;next →&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;card__shadow&#34;&gt;
+      &lt;div class=&#34;card__shadow-inner&#34;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;card__index&#34;&gt;4&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;card&#34;&gt;
+    &lt;div class=&#34;card__contents&#34;&gt;
+      &lt;div class=&#34;card__title&#34;&gt;Almost there...&lt;/div&gt;
+      &lt;div class=&#34;card__body&#34;&gt;
+        &lt;p&gt;As always, do you want to sign up for yet another newsletter?&lt;/p&gt;
+        &lt;input class=&#34;card__check&#34; type=&#34;checkbox&#34; id=&#34;newsletter&#34; /&gt;&lt;label
+          for=&#34;newsletter&#34;
+          &gt;Spam me!&lt;/label
+        &gt;
+      &lt;/div&gt;
+      &lt;!-- &lt;div class=&#34;card__next&#34;&gt;next →&lt;/div&gt; --&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;card__shadow&#34;&gt;
+      &lt;div class=&#34;card__shadow-inner&#34;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;card__index&#34;&gt;5&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</textarea>
+        </div>
+        <div class="code__wrapper_top-css">
+          <div class="title">CSS</div>
+          <textarea id="cssCode">#iframe__wrapper {
+  align-items: center;
+  justify-content: center;
+  background: #f2f2f2;
+  display: flex;
+  font-family: &#34;Nunito Sans&#34;, sans-serif;
+  font-size: 1.125em;
+  height: 100vh;
+  margin: 0;
+}
+.phone {
+  background: white;
+  height: 100%;
+  max-width: 360px;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+.card {
+  height: 100%;
+  position: absolute;
+  text-align: center;
+  transition: transform 300ms;
+  width: 100%;
+}
+.card:nth-child(2) {
+  transform: translateX(100%);
+}
+.card:nth-child(3) {
+  transform: translateX(100%);
+}
+.card:nth-child(4) {
+  transform: translateX(100%);
+}
+.card:nth-child(5) {
+  transform: translateX(100%);
+}
+.card__contents {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+.card:nth-child(1) .card__contents {
+  background: #fff;
+}
+.card:nth-child(2) .card__contents {
+  background: #c9f9e1;
+  -webkit-clip-path: polygon(
+    10% 0%,
+    10% 20%,
+    0% 20%,
+    0% 100%,
+    100% 100%,
+    100% 0%
+  );
+  clip-path: polygon(10% 0%, 10% 20%, 0% 20%, 0% 100%, 100% 100%, 100% 0%);
+}
+.card:nth-child(3) .card__contents {
+  background: #f9c9c7;
+  -webkit-clip-path: polygon(
+    10% 0%,
+    10% 40%,
+    0% 40%,
+    0% 100%,
+    100% 100%,
+    100% 0%
+  );
+  clip-path: polygon(10% 0%, 10% 40%, 0% 40%, 0% 100%, 100% 100%, 100% 0%);
+}
+.card:nth-child(4) .card__contents {
+  background: #f9f0c7;
+  -webkit-clip-path: polygon(
+    10% 0%,
+    10% 60%,
+    0% 60%,
+    0% 100%,
+    100% 100%,
+    100% 0%
+  );
+  clip-path: polygon(10% 0%, 10% 60%, 0% 60%, 0% 100%, 100% 100%, 100% 0%);
+}
+.card:nth-child(5) .card__contents {
+  background: #e6c9f9;
+  -webkit-clip-path: polygon(
+    10% 0%,
+    10% 80%,
+    0% 80%,
+    0% 100%,
+    100% 100%,
+    100% 0%
+  );
+  clip-path: polygon(10% 0%, 10% 80%, 0% 80%, 0% 100%, 100% 100%, 100% 0%);
+}
+.card__title {
+  font-weight: 800;
+  font-size: 2em;
+  margin-top: 20px;
+}
+.card__body {
+  margin-top: 20px;
+  max-width: 200px;
+}
+.card__input {
+  background: transparent;
+  border: 0;
+  border-bottom: 2px solid black;
+  font-size: 1em;
+  outline: none !important;
+}
+.card__input:focus {
+  border-width: 4px;
+}
+.card__radio {
+  margin-right: 10px;
+  vertical-align: baseline;
+}
+.card__check {
+  margin-right: 10px;
+}
+.card__next {
+  -webkit-tap-highlight-color: transparent;
+  bottom: 20px;
+  cursor: pointer;
+  margin-top: 50px;
+  position: absolute;
+  right: 20px;
+  user-select: none;
+}
+.card__shadow {
+  overflow: hidden;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  width: 10%;
+}
+.card__shadow-inner {
+  box-shadow: inset 0 0 6px rgba(50, 50, 50, 0.12);
+  height: calc(100% + 15px);
+  left: -15px;
+  position: relative;
+  top: -15px;
+  width: calc(100% + 15px);
+}
+.card:nth-child(1) .card__shadow {
+  height: 0;
+}
+.card:nth-child(2) .card__shadow {
+  height: 20%;
+}
+.card:nth-child(3) .card__shadow {
+  height: 40%;
+}
+.card:nth-child(4) .card__shadow {
+  height: 60%;
+}
+.card:nth-child(5) .card__shadow {
+  height: 80%;
+}
+.card__index {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  height: 20%;
+  justify-content: center;
+  position: absolute;
+  text-align: center;
+  width: 10%;
+  z-index: 1;
+}
+.card:nth-child(1) .card__index {
+  top: 0;
+}
+.card:nth-child(2) .card__index {
+  top: 20%;
+}
+.card:nth-child(3) .card__index {
+  top: 40%;
+}
+.card:nth-child(4) .card__index {
+  top: 60%;
+}
+.card:nth-child(5) .card__index {
+  top: 80%;
+}</textarea>
+        </div>
+        <div class="code__wrapper_top-js">
+          <div class="title">JAVASCRIPT</div>
+          <textarea id="jsCode">const cards = document.querySelectorAll(&#34;.card&#34;),
+  nexts = document.querySelectorAll(&#34;.card__next&#34;),
+  ixs = document.querySelectorAll(&#34;.card__index&#34;);
+nexts.forEach((next, i) =&gt; {
+  next.addEventListener(&#34;click&#34;, function () {
+    cards[i + 1].style.transform = &#34;none&#34;;
+  });
+});
+ixs.forEach((index, i) =&gt; {
+  index.addEventListener(&#34;click&#34;, () =&gt; {
+    for (let j = ixs.length - 1; j &gt; i; j--) {
+      cards[j].style.transform = &#34;translateX(100%)&#34;;
+    }
+    console.log(i);
+  });
+});</textarea>
+        </div>
+      </div>
+      <div class="code__wrapper_bottom">
+        <div class="code__wrapper_top-preview">
+          <div class="fs__icon"></div>
+          
+          <iframe
+            id="live-preview"
+            src="assets/templates/template-iframe.html"
+            width="100%"
+            height="100%"
+            allow="accelerometer *; camera *; encrypted-media *; display-capture *; geolocation *; gyroscope *; microphone *; midi *; clipboard-read *; clipboard-write *; web-share *; serial *; xr-spatial-tracking *"
+            allowfullscreen="true"
+            allowpaymentrequest="true"
+            allowtransparency="true"
+            sandbox="allow-forms allow-modals allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation allow-downloads allow-presentation"
+            class="result-iframe iframe-visual-update"
+            name="codeShow"
+            loading="lazy"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+    <script src="assets/lib/jquery-3.7.1.min.js"></script>
+    <script src="assets/lib/sass.sync.min.js"></script>
+    <script src="assets/codemirror5/lib/codemirror.js"></script>
+    <script src="assets/codemirror5/addon/hint/show-hint.js"></script>
+    <script src="assets/codemirror5/addon/hint/xml-hint.js"></script>
+    <script src="assets/codemirror5/addon/hint/html-hint.js"></script>
+    <script src="assets/codemirror5/mode/xml/xml.js"></script>
+    <script src="assets/codemirror5/mode/javascript/javascript.js"></script>
+    <script src="assets/codemirror5/mode/css/css.js"></script>
+    <script src="assets/codemirror5/mode/htmlmixed/htmlmixed.js"></script>
+    <script src="assets/codemirror5/addon/hint/css-hint.js"></script>
+    <script src="assets/js/common.js"></script>
+  </body>
+</html>
