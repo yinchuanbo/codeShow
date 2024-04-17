@@ -111,3 +111,13 @@ scssCompress.oninput = async (event) => {
     }
   });
 };
+
+const doc = new Mergely("#compare", );
+doc.once("updated", () => {
+  doc.lhs("the quick red fox\njumped over the hairy dog");
+  doc.rhs("the quick brown fox\njumped over the lazy dog");
+  // Scroll to first change on next update
+  doc.once("updated", () => {
+    doc.scrollToDiff("next");
+  });
+});

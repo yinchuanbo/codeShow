@@ -13,15 +13,19 @@ body {
 
 ::-webkit-scrollbar {
   width: 6px;
+  height: 6px;
   background-color: transparent;
+  box-shadow: none;
 }
 
 ::-webkit-scrollbar-thumb {
   background-color: rgba(0, 0, 0, 0.3);
+  box-shadow: none;
 }
 
 ::-webkit-scrollbar-track {
   background-color: transparent;
+  box-shadow: none;
 }
 
 .container {
@@ -59,9 +63,10 @@ body {
 
 .tabs-item.active {
   transition: all 0.5s;
+  background-color: #ff0000;
 }
 
-.tabs-item.active::after {
+/* .tabs-item.active::after {
   content: "";
   position: absolute;
   bottom: 0;
@@ -70,17 +75,17 @@ body {
   height: 4px;
   background-color: red;
   transition: all 0.5s;
-}
+} */
 
-.tabs-item + .tabs-item {
-  margin-left: 20px;
-}
+/* .tabs-item + .tabs-item {
+  margin-left: 30px;
+} */
 
 .container-contents {
   width: 100%;
   /* flex: 1; */
   height: calc(100vh - 60px);
-  background-color: aquamarine;
+  /* background-color: aquamarine; */
 }
 
 .contents-item {
@@ -93,7 +98,7 @@ body {
   display: flex;
 }
 
-.contents-item:nth-child(1) {
+/* .contents-item:nth-child(1) {
   background-color: red;
 }
 
@@ -107,7 +112,7 @@ body {
 
 .contents-item:nth-child(4) {
   background-color: green;
-}
+} */
 
 .contents-item__left {
   width: 50%;
@@ -138,3 +143,15 @@ textarea {
   box-sizing: border-box;
   display: block;
 }
+
+/* .mergely-editor .CodeMirror {
+  border-right: 1px solid #ccc;
+} */
+
+/* .CodeMirror-gutters {
+  border: 0!important;
+} */
+
+/* .mergely-margin {
+  display: none;
+} */
