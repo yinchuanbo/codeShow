@@ -183,6 +183,43 @@ function getType(value) {
   return "unknown";
 }
 
+const imgInput = document.getElementById("imgInput");
+
+function svgToBase64(svgString) {
+  const base64 = btoa(svgString);
+  return "data:image/svg+xml;base64," + base64;
+}
+
+imgInput.onchange = (e) => {
+  const file = e.target.files[0];
+  const name = file.name;
+  const type = file.type;
+  fileToBase64(file, (base64) => {
+    let base64Src = "";
+    if (type === "image/svg+xml" || name.includes(".svg")) {
+      const reader = new FileReader();
+      reader.onload = function (event) {
+        const base64 = event.target.result.split(",")[1];
+        base64Src = "data:image/svg+xml;base64," + base64;
+        document.querySelector("#imgInput__output").value = base64Src;
+      };
+      reader.readAsDataURL(file);
+    } else {
+      base64Src = "data:image/png;base64," + base64;
+      document.querySelector("#imgInput__output").value = base64Src;
+    }
+  });
+};
+
+function fileToBase64(file, callback) {
+  const reader = new FileReader();
+  reader.onload = function (e) {
+    const base64 = e.target.result.split(",")[1];
+    callback(base64);
+  };
+  reader.readAsDataURL(file);
+}
+
 const doc = new Mergely("#compare", {
   sidebar: true, //是否显示侧边栏，设置成false可以提高大型文档的性能
   ignorews: false, //是否忽略空格对比
