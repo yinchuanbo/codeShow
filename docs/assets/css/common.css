@@ -308,7 +308,7 @@ body {
   flex: 1;
   font-size: 1em;
   /* font-family: "hack", sans-serif !important; */
-  font-family: "Source Code Pro", sans-serif !important;
+  font-family: "SF Mono", "Source Code Pro", sans-serif !important;
   line-height: 1.6 !important;
 }
 ::-webkit-scrollbar {

@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "w": "node start.js"
+    "w": "node start.js",
+    "a": "node c-md.js",
+    "c": "node crop-image.js",
+    "n": "node md-to-html.js"
   },
   "keywords": [],
   "author": "",
@@ -19,5 +22,8 @@
     "marked": "^12.0.1",
     "node-sass": "^9.0.0",
     "sharp": "^0.33.3"
+  },
+  "dependencies": {
+    "fs-extra": "^11.2.0"
   }
 }

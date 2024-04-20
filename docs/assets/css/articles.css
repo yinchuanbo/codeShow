@@ -1,0 +1,164 @@
+@import "https://cdn.jsdelivr.net/npm/hack-font@3/build/web/hack.css";
+@import "https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap";
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  color: #fff;
+  font-family: "Fira Code";
+  font-size: 18px;
+}
+
+html,
+body {
+  min-height: 100%;
+  box-sizing: inherit;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-color);
+  background-color: rgb(47, 49, 48);
+  padding: 20px 0;
+  box-sizing: border-box;
+}
+
+.article__wrapper {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+pre {
+  line-height: 2;
+  border-radius: 0;
+  overflow: auto;
+  font-style: italic;
+  outline: none;
+  border-radius: 0;
+  box-shadow: none;
+  background-color: rgba(0, 0, 0, 0.2) !important;
+  border-radius: 10px !important;
+  margin: 20px 0;
+}
+
+h1 {
+  font-size: 25px;
+  font-weight: 600;
+  margin-bottom: 30px;
+}
+
+h2 {
+  font-size: 22px;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+h3 {
+  font-size: 19px;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+ul,
+ol {
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+ul > li {
+  list-style: none;
+  padding-left: 20px;
+  position: relative;
+  color: #fff;
+}
+
+ol {
+  list-style: decimal;
+}
+
+ol > li {
+  margin-left: 22px;
+  color: #fff;
+}
+
+ol > li::marker {
+  color: #ddd;
+  float: left;
+}
+
+ul > li + li {
+  margin-top: 10px;
+}
+
+ul > li::before {
+  content: "";
+  position: absolute;
+  top: 14px;
+  left: 0;
+  width: 7px;
+  height: 7px;
+  background-color: #ddd;
+  border-radius: 100%;
+}
+
+p {
+  margin: 20px 0;
+}
+
+pre code {
+  background-color: transparent !important;
+}
+
+.article__wrapper_header {
+  border-bottom: 2px solid #fff;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+
+.article__wrapper_header h1 {
+  margin-bottom: 0;
+}
+
+.articles__home li::before {
+  content: none;
+}
+
+.articles__home ul {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 300px);
+  grid-gap: 20px;
+  place-content: center;
+  margin: 0;
+  padding: 0;
+}
+
+.articles__home li {
+  margin: 0;
+  padding: 0;
+  height: 100px;
+}
+.articles__home li a {
+  color: #000;
+  text-decoration: none;
+  width: 100%;
+  height: 100%;
+  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  transition: 0.5s;
+  border-radius: 10px;
+}
+.articles__home li a:hover {
+  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset,
+    rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset,
+    rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px,
+    rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px,
+    rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+  transition: 0.5s;
+  color: #ff0000;
+  border-radius: 20px;
+}
