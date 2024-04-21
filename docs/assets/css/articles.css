@@ -73,8 +73,16 @@ body {
   user-select: none;
   border: 1px solid #ddd;
   background-color: #fff;
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-decoration: none;
+}
+
+.article__wrapper_footer-left svg,
+.article__wrapper_footer-right svg {
+  width: 16px;
+  height: 16px;
 }
 
 .article__wrapper_footer-left:active,
@@ -291,4 +299,9 @@ table tbody tr td:last-child {
 
 table tbody tr:last-child td {
   border-bottom: 1px solid #ddd;
+}
+
+.disabled {
+  opacity: 0.4;
+  pointer-events: none;
 }
