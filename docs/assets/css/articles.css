@@ -209,10 +209,18 @@ p {
 
 .articles__home_time {
   font-size: 14px;
-  color: #aaa;
-  opacity: 0.9;
+  color: #fff;
+  opacity: 0.7;
   display: block;
-  margin-top: 10px;
+  margin-top: 5px;
+}
+
+.article__wrapper_header {
+  span {
+    color: #aaa;
+    opacity: .9;
+    font-weight: 600;
+  }
 }
 
 .articles__home li::before {
@@ -234,6 +242,7 @@ p {
   margin: 0;
   padding: 0;
   /* height: 80px; */
+  background-color: #ff0000;
 }
 
 .articles__home li + li {
@@ -254,11 +263,13 @@ p {
   text-align: left;
   font-weight: 600;
   font-size: 20px;
+  color: #fff;
+  padding: 20px;
 }
 .articles__home li a:hover {
   /* padding-left: 15px; */
-  transition: 0.5s;
-  color: #ff0000;
+  /* transition: 0.5s;
+  color: #ff0000; */
 }
 /* .articles__home li a:hover {
   box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset,

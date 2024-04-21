@@ -47,7 +47,7 @@ for (var page of allPages) {
   listHTML += `<li>
     <a href="/articles/${pageName}.html">
       ${metaData.title}
-      <span class="articles__home_time">${date}</span>
+      <span class="articles__home_time">- ${date}</span>
     </a>
   </li>`;
   console.log("pageName", pageName);
