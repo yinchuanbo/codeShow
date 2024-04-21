@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>git worktree</title>
+    <meta charset="utf-8">
+    <meta name="description" content="This is a page">
+    <meta name="keywords" content="page, sample">
+    <meta name="author" content="None">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <link rel="stylesheet" href="../assets/css/articles.css">
+</head>
+<body>
+  <div class="article__wrapper">
+    <div class="article__wrapper_header">
+      <h1>git worktree</h1>
+      <span class="articles__home_time">2024/04/17 · YinHao</span>
+    </div>
+  <h3>创建工作目录</h3>
+<pre><code class="language-sh">mkdir myproject
+cd myproject
+</code></pre>
+<h3>以 bare 形式 clone 仓库代码</h3>
+<pre><code class="language-sh">git clone --bare xxx.git .bare
+</code></pre>
+<h3>修改 .bare 路径下的 config 文件，在 url = xxx 的后边添加以下内容</h3>
+<pre><code class="language-sh">fetch = +refs/heads/*:refs/remotes/origin/*
+</code></pre>
+<h3>在 myproject 的目录下添加 .git 文件，在文件中写入以下内容</h3>
+<pre><code class="language-sh"># .git
+gitdir: ./.bare
+</code></pre>
+<h3>然后我们就可以开始添加 worktree 了，比如添加 dev</h3>
+<pre><code class="language-sh">git worktree add dev dev
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>command</th>
+<th>describle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>git worktree add -b &lt;local-branch&gt; &lt;remote-branch&gt;</td>
+<td>添加远程仓库不存在的分支</td>
+</tr>
+<tr>
+<td>git worktree add &lt;local-branch&gt; &lt;remote-branch&gt;</td>
+<td>添加远程仓库存在的分支</td>
+</tr>
+<tr>
+<td>git worktree remove &lt;local-branch&gt;</td>
+<td>删除本地不需要的 worktree 分支</td>
+</tr>
+<tr>
+<td>git worktree prune</td>
+<td>清理 worktree</td>
+</tr>
+</tbody>
+</table>
+</div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
+  <script>hljs.highlightAll();</script>
+</body>
+</html>
+    

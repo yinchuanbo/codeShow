@@ -20,6 +20,7 @@ module.exports = {
   <div class="article__wrapper">
     <div class="article__wrapper_header">
       <h1>${pageMeta.title || this.defaultMeta.title}</h1>
+      <span class="articles__home_time">${pageMeta.date || this.defaultMeta.date} · YinHao</span>
     </div>
   ${md.render(pageContent)}</div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>

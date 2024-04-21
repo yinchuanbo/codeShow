@@ -7,7 +7,8 @@
     "w": "node start.js",
     "a": "node c-md.js",
     "c": "node crop-image.js",
-    "n": "node md-to-html.js"
+    "n": "node md-to-html.js",
+    "b": "node c-a.js"
   },
   "keywords": [],
   "author": "",

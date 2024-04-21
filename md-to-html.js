@@ -35,16 +35,23 @@ for (var page of fs.readdirSync(pages)) {
     }
   });
   const titleMatch = h2Content.match(/title:\s*"([^"]+)"/);
+  const dateMatch = h2Content.match(/date:\s*([^\s]+)/);
   const title = titleMatch ? titleMatch[1] : null;
+  let date = dateMatch ? dateMatch[1] : null;
+  date = newDate(date);
   metaData.title = title || metaData.title || pageName;
   pageContent = pageContent.replace(/^---[\s\S]*?---/, "");
 
-  listHTML += `<li><a href="/articles/${pageName}.html">${metaData.title}</a></li>`;
+  listHTML += `<li>
+    <a href="/articles/${pageName}.html">${metaData.title}</a>
+    <span class="articles__home_time">${date}</span>
+  </li>`;
 
   fs.writeFileSync(
     path.join(outputPath, pageName + ".html"),
     pageTemplate.generatePage(pageContent, {
       ...metaData,
+      date
     })
   );
 }
@@ -57,11 +64,23 @@ function unescapeHtml(html) {
     .replace(/&amp;/g, "&");
 }
 
+function newDate(dateString = "") {
+  const date = new Date(dateString);
+  const year = date.getFullYear();
+  const month = date.getMonth() + 1;
+  const day = date.getDate();
+  const formattedDate = `${year}/${month.toString().padStart(2, "0")}/${day
+    .toString()
+    .padStart(2, "0")}`;
+
+  return formattedDate;
+}
+
 listHTML += `</ul>`;
 const homeContent = fs.readFileSync("./template-article-home.html", "utf-8");
 
 const homeHTML = ejs.render(homeContent, {
-  content: unescapeHtml(listHTML)
+  content: unescapeHtml(listHTML),
 });
 
 fs.writeFileSync(`./docs/articles/index.html`, homeHTML);
