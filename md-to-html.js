@@ -23,7 +23,10 @@ for (var pageMeta of fs.readdirSync(pagesMetaPath)) {
 
 let listHTML = `<ul class="articles__list">`;
 
-for (var page of fs.readdirSync(pages)) {
+const allPages = fs.readdirSync(pages);
+const allLens = Object.keys(allPages).length;
+
+for (var page of allPages) {
   var pageName = page.slice(0, page.lastIndexOf("."));
   var metaData = JSON.parse(pagesMeta["index.json"]);
   var pageContent = fs.readFileSync(path.join(pages, page)).toString();
@@ -41,17 +44,20 @@ for (var page of fs.readdirSync(pages)) {
   date = newDate(date);
   metaData.title = title || metaData.title || pageName;
   pageContent = pageContent.replace(/^---[\s\S]*?---/, "");
-
   listHTML += `<li>
-    <a href="/articles/${pageName}.html">${metaData.title}</a>
-    <span class="articles__home_time">${date}</span>
+    <a href="/articles/${pageName}.html">
+      ${metaData.title}
+      <span class="articles__home_time">${date}</span>
+    </a>
   </li>`;
-
+  console.log("pageName", pageName);
   fs.writeFileSync(
     path.join(outputPath, pageName + ".html"),
     pageTemplate.generatePage(pageContent, {
       ...metaData,
-      date
+      date,
+      prev: Number(pageName) <= 1 ? 0 : Number(pageName) - 1,
+      next: Number(pageName) >= allLens ? 0 : Number(pageName) + 1,
     })
   );
 }
