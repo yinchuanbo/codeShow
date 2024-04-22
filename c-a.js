@@ -30,8 +30,14 @@ date: ${time()}
 title: ""
 ---`;
 
+function getFileCountByExtension(directory, extension) {
+  return fs.readdirSync(directory).filter(file => path.extname(file) === extension).length;
+}
+const pagesDirectory = path.join(__dirname, "pages");
+const mdFileCount = getFileCountByExtension(pagesDirectory, ".md");
+
 const timestamp = new Date().getTime();
-const filePath = path.join(__dirname, "pages", `${timestamp}.md`);
+const filePath = path.join(__dirname, "pages", `${ mdFileCount + 1 < 10 ? "0" + (mdFileCount + 1) : mdFileCount + 1}.md`);
 
 fs.writeFile(filePath, fileContent, (err) => {
   if (err) {

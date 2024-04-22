@@ -136,7 +136,6 @@ ul > li {
   list-style: none;
   padding-left: 20px;
   position: relative;
-  color: #fff;
 }
 
 ol {
@@ -146,7 +145,6 @@ ol {
 ol > li {
   /* margin-left: 22px; */
   margin-left: 33px;
-  color: #fff;
 }
 
 ol > li::marker {
@@ -185,6 +183,11 @@ p {
   border-bottom: 1px solid #ddd;
   padding-bottom: 20px;
   margin-bottom: 20px;
+}
+
+.article__wrapper img {
+  max-width: 100%;
+  height: auto;
 }
 
 .article__wrapper_header h1 {
