@@ -209,8 +209,8 @@ p {
 
 .articles__home_time {
   font-size: 14px;
-  color: #fff;
-  opacity: 0.7;
+  color: #d4d4d4;
+  opacity: 0.9;
   display: block;
   margin-top: 5px;
 }
@@ -242,7 +242,7 @@ p {
   margin: 0;
   padding: 0;
   /* height: 80px; */
-  background-color: #ff0000;
+  /* background-color: #ff0000; */
 }
 
 .articles__home li + li {
@@ -263,8 +263,8 @@ p {
   text-align: left;
   font-weight: 600;
   font-size: 20px;
-  color: #fff;
-  padding: 20px;
+  /* color: #fff; */
+  /* padding: 20px; */
 }
 .articles__home li a:hover {
   /* padding-left: 15px; */
