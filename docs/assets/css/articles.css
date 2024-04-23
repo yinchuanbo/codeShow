@@ -23,7 +23,7 @@ body {
 }
 
 body {
-  background-color: var(--bg-color);
+  /* background-color: var(--bg-color); */
   /* padding: 20px 0; */
   box-sizing: border-box;
   display: flex;
