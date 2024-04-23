@@ -106,9 +106,9 @@ body {
 }
 
 .article__wrapper {
-  width: 840px;
+  width: 70%;
   margin-left: auto;
-  margin-right: calc((78% - 840px) / 2);
+  margin-right: calc((78% - 70%) / 2);
   min-height: 100vh;
   height: fit-content;
 

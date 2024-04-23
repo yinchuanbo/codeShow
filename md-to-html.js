@@ -48,7 +48,7 @@ function getHTML(name = '') {
     pageContent = pageContent.replace(/^---[\s\S]*?---/, "");
     listHTML += `<li class="${ pageName === name ? 'active' : '' }">
     <a href="/articles/${pageName}.html">
-      ${curI}. ${metaData.title}
+      ${metaData.title}
     </a>
   </li>`;
   }
