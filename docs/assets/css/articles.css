@@ -76,6 +76,7 @@ body {
   display: block;
   padding: 15px 0;
   line-height: 1.5;
+  font-size: 16px;
 }
 
 .article__wrapper_left ul li a:hover {
