@@ -7,11 +7,11 @@
   box-sizing: border-box;
   /* color: #fff; */
   font-family: "Fira Code";
-  font-size: 18px;
+  font-size: 16px;
 }
 
 html {
-  --bg-color: #222222;
+  --bg-color: #fff;
 }
 
 html,
@@ -38,7 +38,7 @@ body {
   left: 0;
   width: 22%;
   height: 100vh;
-  border-right: 1px solid #fff;
+  border-right: 1px solid #ddd;
   box-sizing: border-box;
 }
 
@@ -48,6 +48,7 @@ body {
   box-sizing: border-box;
   padding: 20px;
   margin: 0;
+  overflow-x: hidden;
 }
 
 ::-webkit-scrollbar {
@@ -71,12 +72,12 @@ body {
 
 .article__wrapper_left ul li a {
   text-decoration: none;
-  color: #fff;
+  color: #333;
   transition: 0.5s;
   display: block;
   padding: 15px 0;
   line-height: 1.5;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 .article__wrapper_left ul li a:hover {
@@ -98,23 +99,20 @@ body {
 }
 
 .article__wrapper_left ul li.active a {
-  background-color: #a7a7a7;
-  color: #000;
+  background-color: #cccccc;
+  color: #333;
   padding-left: 20px;
   padding-right: 30px;
 }
 
 .article__wrapper {
-  width: 78%;
+  width: 840px;
   margin-left: auto;
+  margin-right: calc((78% - 840px) / 2);
   min-height: 100vh;
   height: fit-content;
-  /* box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset,
-    rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset,
-    rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px,
-    rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px,
-    rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px; */
-  padding: 20px 80px;
+
+  padding: 20px 0;
   /* border-radius: 10px; */
   /* border: 1px solid #ddd; */
   /* background-color: #fff; */
@@ -208,21 +206,21 @@ h1 {
   font-size: 25px;
   font-weight: 600;
   margin-bottom: 30px;
-  color: #fff;
+  color: #333;
 }
 
 h2 {
   font-size: 22px;
   margin-bottom: 20px;
   position: relative;
-  color: #fff;
+  color: #333;
 }
 
 h3 {
   font-size: 19px;
   margin-bottom: 20px;
   position: relative;
-  color: #fff;
+  color: #333;
 }
 
 ul,
@@ -235,7 +233,7 @@ ul > li {
   list-style: none;
   padding-left: 20px;
   position: relative;
-  color: #fff;
+  color: #333;
 }
 
 ol {
@@ -245,7 +243,7 @@ ol {
 ol > li {
   /* margin-left: 22px; */
   margin-left: 33px;
-  color: #fff;
+  color: #333;
 }
 
 ol > li::marker {
@@ -273,7 +271,7 @@ p {
   letter-spacing: 0.5px;
   line-height: 2;
   text-align: justify;
-  color: #fff;
+  color: #333;
 }
 
 /* pre code {
@@ -288,7 +286,7 @@ p {
 }
 
 .article__wrapper img {
-  max-width: 700px;
+  max-width: 100%;
   height: auto;
   margin: 0 auto;
   display: block;
@@ -341,8 +339,8 @@ p {
   height: 50px;
   text-align: center;
   cursor: pointer;
-  border: 1px solid #fff;
-  background-color: #fff;
+  border: 1px solid #333;
+  background-color: #333;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -429,7 +427,7 @@ p {
   text-align: left;
   font-weight: 600;
   font-size: 20px;
-  color: #fff;
+  color: #333;
   /* padding: 20px; */
 }
 .articles__home li a:hover {
@@ -490,5 +488,5 @@ table tbody tr:last-child td {
 }
 
 .hljs {
-  background-color: rgba(255, 255, 255, 0.6);
+  background-color: rgba(0, 0, 0, 0.2);
 }
