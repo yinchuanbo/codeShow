@@ -21,18 +21,42 @@ for (var pageMeta of fs.readdirSync(pagesMetaPath)) {
   pagesMeta[pageMeta] = content;
 }
 
-let listHTML = `<ul class="articles__list">`;
-
 const allPages = fs.readdirSync(pages);
 const allLens = Object.keys(allPages).length;
 
-let curI = -1;
+function getHTML(name = '') {
+  let curI = 0;
+  let listHTML = `<ul class="articles__list">`;
+  for (var page of allPages) {
+    curI++;
+    var pageName = page.slice(0, page.lastIndexOf("."));
+    var metaData = JSON.parse(pagesMeta["index.json"]);
+    var pageContent = fs.readFileSync(path.join(pages, page)).toString();
+    const tokens = marked.lexer(pageContent);
+    let h2Content = "";
+    tokens.forEach((token) => {
+      if (token.type === "heading") {
+        h2Content += token.text;
+      }
+    });
+    const titleMatch = h2Content.match(/title:\s*"([^"]+)"/);
+    const dateMatch = h2Content.match(/date:\s*([^\s]+)/);
+    const title = titleMatch ? titleMatch[1] : null;
+    let date = dateMatch ? dateMatch[1] : null;
+    date = newDate(date);
+    metaData.title = title || metaData.title || pageName;
+    pageContent = pageContent.replace(/^---[\s\S]*?---/, "");
+    listHTML += `<li class="${ pageName === name ? 'active' : '' }">
+    <a href="/articles/${pageName}.html">
+      ${curI}. ${metaData.title}
+    </a>
+  </li>`;
+  }
+  listHTML += `</ul>`;
+  return unescapeHtml(listHTML);
+}
 
 for (var page of allPages) {
-
-  curI ++;
-
-
   var pageName = page.slice(0, page.lastIndexOf("."));
   var metaData = JSON.parse(pagesMeta["index.json"]);
   var pageContent = fs.readFileSync(path.join(pages, page)).toString();
@@ -50,13 +74,6 @@ for (var page of allPages) {
   date = newDate(date);
   metaData.title = title || metaData.title || pageName;
   pageContent = pageContent.replace(/^---[\s\S]*?---/, "");
-  listHTML += `<li style="display: ${curI < showNum ? 'block' : 'none'}">
-    <a href="/articles/${pageName}.html">
-      ${metaData.title}
-      <span class="articles__home_time">- ${date}</span>
-    </a>
-  </li>`;
-  console.log("pageName", pageName);
   fs.writeFileSync(
     path.join(outputPath, pageName + ".html"),
     pageTemplate.generatePage(pageContent, {
@@ -64,6 +81,7 @@ for (var page of allPages) {
       date,
       prev: Number(pageName) <= 1 ? 0 : Number(pageName) - 1,
       next: Number(pageName) >= allLens ? 0 : Number(pageName) + 1,
+      lists: getHTML(pageName),
     })
   );
 }
@@ -88,11 +106,12 @@ function newDate(dateString = "") {
   return formattedDate;
 }
 
-listHTML += `</ul>`;
-const homeContent = fs.readFileSync("./template-article-home.html", "utf-8");
+// listHTML += `</ul>`;
 
-const homeHTML = ejs.render(homeContent, {
-  content: unescapeHtml(listHTML),
-});
+// const homeContent = fs.readFileSync("./template-article-home.html", "utf-8");
 
-fs.writeFileSync(`./docs/articles/index.html`, homeHTML);
+// const homeHTML = ejs.render(homeContent, {
+//   content: unescapeHtml(listHTML),
+// });
+
+// fs.writeFileSync(`./docs/articles/index.html`, homeHTML);

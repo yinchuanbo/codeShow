@@ -18,6 +18,9 @@ module.exports = {
     <link rel="stylesheet" href="../assets/css/articles.css">
 </head>
 <body>
+  <div class="article__wrapper_left">
+    ${pageMeta.lists}
+  </div>
   <div class="article__wrapper">
     <div class="article__wrapper_header">
       <h1>${pageMeta.title || this.defaultMeta.title}</h1>
