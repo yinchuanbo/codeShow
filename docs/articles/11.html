@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>前端工具库 Radash，取代 Lodash</title>
+    <meta charset="utf-8">
+    <meta name="description" content="This is a page">
+    <meta name="keywords" content="page, sample">
+    <meta name="author" content="None">
+    <link rel="icon" sizes="any" mask href="../assets/images/ico6.svg" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <link rel="stylesheet" href="../assets/css/articles.css">
+</head>
+<body>
+  <div class="article__wrapper">
+    <div class="article__wrapper_header">
+      <h1>前端工具库 Radash，取代 Lodash</h1>
+      <span class="articles__home_time">2024/04/23 · YinHao</span>
+    </div>
+    <h2>Radash</h2>
+<h3>tryit 方法</h3>
+<p>tryit 方法相当于可以给异步操作加一层 <code>try catch</code>，有利于操作的兜底以及错误的捕获。</p>
+<pre><code class="language-js">import { tryit } from &quot;radash&quot;;
+const [err, user] = await tryit(api.users.request)(userId);
+if (err) {
+  // error action
+  return;
+}
+// success action
+</code></pre>
+<h3>parallel 方法</h3>
+<p>parallel 可以理解为 <code>Promise.all</code> 的加强版，它不止能帮你做多个异步操作的并发处理，还能帮你控制并发数量。</p>
+<pre><code class="language-js">import { parallel } from &quot;radash&quot;;
+const userIds = [1, 2, 3, 4, 5, 6, 7, 8];
+const users = await parallel(3, userIds, async (userId) =&gt; {
+  return await api.users.find(userId);
+});
+</code></pre>
+<h3>retry 方法</h3>
+<p>retry 可以帮你做异步操作的失败重试，并且你可以配置重试延迟、重试次数</p>
+<pre><code class="language-js">import { retry } from &quot;radash&quot;;
+await retry({}, api.users.list);
+await retry({ times: 10 }, api.users.list);
+await retry({ times: 2, delay: 1000 }, api.users.list);
+await retry({ backof: (i) =&gt; 10 ** i }, api.users.list);
+</code></pre>
+<h3>counting 方法</h3>
+<p>counting 可以帮你计算符合条件的项的个数</p>
+<p>如，统计年龄大于 30 的人数：</p>
+<pre><code class="language-js">import { counting } from &quot;radash&quot;;
+
+const people = [
+  {
+    name: &quot;Alice&quot;,
+    age: 30,
+  },
+  {
+    name: &quot;Bob&quot;,
+    age: 25,
+  },
+  {
+    name: &quot;Charlie&quot;,
+    age: 35,
+  },
+];
+const olderThan20Count = counting((person) =&gt; person.age &gt; 30, people);
+console.log(olderThan20Count); // 1
+</code></pre>
+<h3>range 方法</h3>
+<p>range 帮你创建一个指定范围内数字的数组</p>
+<pre><code class="language-js">import { range } from &quot;radash&quot;;
+const numbers = range(1, 5);
+console.log(numbers); // [1,2,3,4,5]
+</code></pre>
+<pre><code class="language-js">import { range } from &quot;radash&quot;;
+const numbers = range(5, 0, -1);
+console.log(numbers); // [5,4,3,2,1,0]
+</code></pre>
+<h3>list 方法</h3>
+<p>list 方法帮你创建一个包含指定元素的数组，有点类似于 <code>Array.prototype.fill</code></p>
+<pre><code class="language-js">import { list } from &quot;radash&quot;;
+const repeatedNumbers = list(3, 0);
+console.log(repeatedNumbers); // [0,0,0]
+</code></pre>
+<pre><code class="language-js">import { list } from &quot;radash&quot;;
+const customList = list(4, (index) =&gt; index + 1);
+console.log(customList); // [1,2,3,4]
+</code></pre>
+ 
+  </div>
+  <div class="article__wrapper_footer">
+    <a class="article__wrapper_footer-left " href="/articles/10.html"><svg t="1713708729970" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8437" width="48" height="48"><path d="M409.272947 512.57741l403.237243 403.237243a63.349415 63.349415 0 1 1-89.622481 89.622482L274.839224 557.324726a63.349415 63.349415 0 0 1 0-89.494632L722.951633 19.717685a63.349415 63.349415 0 1 1 89.494633 89.622482L409.336872 512.57741z" p-id="8438" fill="#8a8a8a"></path></svg></a>
+    <a class="article__wrapper_footer-right " href="/articles/12.html"><svg t="1713708697355" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8093" width="48" height="48"><path d="M855.123 517.004c0 8.245-3.167 15.51-9.503 21.823L402.999 981.47c-6.336 6.336-13.625 9.477-21.869 9.477s-15.51-3.142-21.845-9.477L311.8 933.96c-6.336-6.336-9.502-13.6-9.502-21.845 0-8.222 3.167-15.51 9.502-21.845l373.29-373.29-373.293-373.267c-6.336-6.336-9.502-13.6-9.502-21.845s3.167-15.533 9.503-21.869l47.484-47.484c6.336-6.336 13.6-9.502 21.845-9.502s15.533 3.167 21.869 9.503l442.621 442.622c6.334 6.334 9.503 13.625 9.503 21.869z" fill="#8a8a8a" p-id="8094"></path></svg></a>
+  </div>
+  <a class="article__wrapper_index" href="/articles/"><svg t="1713708857338" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="9656" width="48" height="48"><path d="M549.61981 133.022476l319.683047 203.605334A70.851048 70.851048 0 0 1 902.095238 396.361143v434.883047A70.89981 70.89981 0 0 1 831.146667 902.095238h-282.819048l0.024381-218.112h-71.826286v218.087619L192.853333 902.095238A70.89981 70.89981 0 0 1 121.904762 831.24419V390.241524c0-24.527238 12.678095-47.299048 33.54819-60.220953l318.659048-197.485714a70.972952 70.972952 0 0 1 75.50781 0.487619zM828.952381 828.952381V397.214476L511.488 195.047619 195.047619 391.119238V828.952381h211.309714v-216.551619h212.187429v216.527238L828.952381 828.952381z" p-id="9657" fill="#707070"></path></svg></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
+  <script src=""></script>
+  <script>hljs.highlightAll();</script>
+</body>
+</html>
+    

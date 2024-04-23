@@ -2,7 +2,7 @@ const path = require("path");
 const fs = require("fs-extra");
 const ejs = require("ejs");
 const marked = require("marked");
-
+const showNum = 10;
 const pages = "./pages";
 const pageTemplate = require("./template-article-detail");
 const outputPath = "./docs/articles";
@@ -26,7 +26,13 @@ let listHTML = `<ul class="articles__list">`;
 const allPages = fs.readdirSync(pages);
 const allLens = Object.keys(allPages).length;
 
+let curI = -1;
+
 for (var page of allPages) {
+
+  curI ++;
+
+
   var pageName = page.slice(0, page.lastIndexOf("."));
   var metaData = JSON.parse(pagesMeta["index.json"]);
   var pageContent = fs.readFileSync(path.join(pages, page)).toString();
@@ -44,7 +50,7 @@ for (var page of allPages) {
   date = newDate(date);
   metaData.title = title || metaData.title || pageName;
   pageContent = pageContent.replace(/^---[\s\S]*?---/, "");
-  listHTML += `<li>
+  listHTML += `<li style="display: ${curI < showNum ? 'block' : 'none'}">
     <a href="/articles/${pageName}.html">
       ${metaData.title}
       <span class="articles__home_time">- ${date}</span>
