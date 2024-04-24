@@ -78,12 +78,17 @@
     </a>
   </li></ul>
   </div>
+  <div class="article__wrapper_sidebar">
+    <a href="/" target="_blank"><svg t="1714001835347" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4298" width="48" height="48"><path d="M147.904 304.128l301.866667-179.541333a128 128 0 0 1 131.712 0.512l295.466666 178.88A128 128 0 0 1 938.666667 413.482667V810.666667a128 128 0 0 1-128 128H213.333333a128 128 0 0 1-128-128V414.144a128 128 0 0 1 62.570667-110.016z m43.626667 73.344A42.666667 42.666667 0 0 0 170.666667 414.144V810.666667a42.666667 42.666667 0 0 0 42.666666 42.666666h597.333334a42.666667 42.666667 0 0 0 42.666666-42.666666V413.482667a42.666667 42.666667 0 0 0-20.565333-36.501334l-295.466667-178.88a42.666667 42.666667 0 0 0-43.925333-0.170666l-301.866667 179.541333z" fill="#8a919f" p-id="4299"></path><path d="M405.333333 469.333333h213.333334a42.666667 42.666667 0 1 1 0 85.333334H405.333333a42.666667 42.666667 0 1 1 0-85.333334z m0 85.333334a42.666667 42.666667 0 1 0 0-85.333334h213.333334a42.666667 42.666667 0 1 0 0 85.333334H405.333333z" fill="#8a919f" p-id="4300"></path></svg></a>
+    <a href="/tools/" target="_blank"><svg t="1714002003458" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6911" width="48" height="48"><path d="M817.87 556.31h-63.58v-66.24A42.27 42.27 0 0 0 712 447.8h-84.81a42.27 42.27 0 0 0-42.27 42.27v66.24H436.57v-66.24a42.27 42.27 0 0 0-42.27-42.27h-84.83a42.27 42.27 0 0 0-42.27 42.27v66.24h-61.83A22.39 22.39 0 0 0 183 578.7a22.39 22.39 0 0 0 22.39 22.39h61.81v65.55a42.27 42.27 0 0 0 42.27 42.27h84.83a42.27 42.27 0 0 0 42.27-42.27v-65.55h148.36v65.55a42.27 42.27 0 0 0 42.27 42.27H712a42.27 42.27 0 0 0 42.27-42.27v-65.55h63.58a22.39 22.39 0 0 0 22.39-22.39 22.39 22.39 0 0 0-22.37-22.39z m-438.64 95.26h-54.69V505.14h54.69z m317.72 0h-54.69V505.14H697z" p-id="6912" fill="#8a919f"></path><path d="M823 202.58h-90.81v-63.09a71.88 71.88 0 0 0-71.88-71.88H363.19a71.88 71.88 0 0 0-71.88 71.88v63.08h-90.12A137.17 137.17 0 0 0 64 339.75v479a137.17 137.17 0 0 0 137.19 137.14H823a137.17 137.17 0 0 0 137.19-137.17v-479A137.17 137.17 0 0 0 823 202.58z m-474.36-54.1A23.52 23.52 0 0 1 372.17 125h279.16a23.52 23.52 0 0 1 23.52 23.52v54.1h-326.2z m554.23 673.31a76.76 76.76 0 0 1-76.76 76.76h-628a76.76 76.76 0 0 1-76.76-76.76V336.67a76.76 76.76 0 0 1 76.76-76.76h628a76.76 76.76 0 0 1 76.76 76.76z" p-id="6913" fill="#8a919f"></path></svg></a>
+  </div>
   <div class="article__wrapper">
-    <div class="article__wrapper_header">
-      <h1>如何使用 JavaScript 阻止屏幕进入睡眠状态</h1>
-      <span class="articles__home_time">2024/04/23 · YinHao</span>
-    </div>
-    <h2>前言</h2>
+    <div class="article__wrapper__main">
+      <div class="article__wrapper_header">
+        <h1>如何使用 JavaScript 阻止屏幕进入睡眠状态</h1>
+        <span class="articles__home_time">2024/04/23 · YinHao</span>
+      </div>
+      <h2>前言</h2>
 <p>在移动设备上，屏幕常亮是一个常见的需求，尤其是在使用 Web 应用时。为了满足这一需求，开发者可以使用 JavaScript 中的 Wake Lock API 来阻止屏幕进入睡眠状态。本文将详细介绍如何使用这一 API，并讨论其在不同浏览器上的兼容性情况。</p>
 <h2>检查 Wake Lock 功能的支持情况</h2>
 <p>在使用 Wake Lock API 之前，我们需要确认当前浏览器是否支持这一功能。可以通过以下代码进行检查：</p>
@@ -140,6 +145,7 @@ requestScreenWakeLock();
 <h2>结论</h2>
 <p>通过以上步骤，开发者可以使用 JavaScript 中的 Wake Lock API 来保持屏幕常亮，从而提升用户体验。需要注意的是，这一 API 在不同的浏览器和平台上的支持情况可能不同，因此在实际使用时需要进行充分的测试和兼容性处理。同时，开发者应当注意合理使用这一 API，避免对用户的设备电池寿命造成不必要的影响。</p>
  
+    </div>
   </div>
   <div class="article__wrapper_footer">
     <a class="article__wrapper_footer-left " href="/articles/13.html"><svg t="1713708729970" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8437" width="48" height="48"><path d="M409.272947 512.57741l403.237243 403.237243a63.349415 63.349415 0 1 1-89.622481 89.622482L274.839224 557.324726a63.349415 63.349415 0 0 1 0-89.494632L722.951633 19.717685a63.349415 63.349415 0 1 1 89.494633 89.622482L409.336872 512.57741z" p-id="8438" fill="#8a8a8a"></path></svg></a>
@@ -149,7 +155,16 @@ requestScreenWakeLock();
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
   <script src=""></script>
-  <script>hljs.highlightAll();</script>
+  <script>
+    hljs.highlightAll();
+    const dom = document.querySelector('.articles__list li.active');
+    if(dom) {
+      dom.scrollIntoView({
+        block: "center",
+        behavior: "smooth"
+      });
+    }
+  </script>
 </body>
 </html>
     
