@@ -7,6 +7,8 @@ let allLiNumsLens = null,
 const leftBtn = document.querySelector(".home_navs_left");
 const rightBtn = document.querySelector(".home_navs_right");
 
+const imgs = document.querySelectorAll("img");
+
 document.addEventListener("DOMContentLoaded", () => {
   const allLiNums = document.querySelectorAll(".articles__list>li");
   allLiNumsLens = allLiNums.length;
