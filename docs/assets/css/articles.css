@@ -5,13 +5,13 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  /* color: #fff; */
-  font-family: "Fira Code";
+  color: #fff;
+  font-family: "hack";
   font-size: 16px;
 }
 
 html {
-  --bg-color: #fff;
+  --bg-color: #333;
 }
 
 html,
@@ -23,7 +23,7 @@ body {
 }
 
 body {
-  /* background-color: var(--bg-color); */
+  background-color: var(--bg-color);
   /* padding: 20px 0; */
   box-sizing: border-box;
   display: flex;
@@ -36,9 +36,10 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  width: 22%;
+  width: 24%;
   height: 100vh;
-  border-right: 1px solid #ddd;
+  /* border-right: 1px solid #ddd; */
+  background-color: #292929;
   box-sizing: border-box;
 }
 
@@ -72,18 +73,17 @@ body {
 
 .article__wrapper_left ul li a {
   text-decoration: none;
-  color: #333;
+  color: #fff;
   transition: 0.5s;
   display: block;
   padding: 15px 0;
   line-height: 1.5;
-  font-size: 14px;
 }
 
-.article__wrapper_left ul li a:hover {
+/* .article__wrapper_left ul li a:hover {
   text-decoration: underline;
   transition: 0.5s;
-}
+} */
 
 .article__wrapper_left ul li::before {
   content: none;
@@ -99,16 +99,16 @@ body {
 }
 
 .article__wrapper_left ul li.active a {
-  background-color: #cccccc;
-  color: #333;
+  background-color: #333;
+  color: brown;
   padding-left: 20px;
   padding-right: 30px;
 }
 
 .article__wrapper {
-  width: 70%;
+  width: 69%;
   margin-left: auto;
-  margin-right: calc((78% - 70%) / 2);
+  margin-right: calc((76% - 69%) / 2);
   min-height: 100vh;
   height: fit-content;
 
@@ -206,21 +206,18 @@ h1 {
   font-size: 25px;
   font-weight: 600;
   margin-bottom: 30px;
-  color: #333;
 }
 
 h2 {
   font-size: 22px;
   margin-bottom: 20px;
   position: relative;
-  color: #333;
 }
 
 h3 {
   font-size: 19px;
   margin-bottom: 20px;
   position: relative;
-  color: #333;
 }
 
 ul,
@@ -233,7 +230,6 @@ ul > li {
   list-style: none;
   padding-left: 20px;
   position: relative;
-  color: #333;
 }
 
 ol {
@@ -243,7 +239,6 @@ ol {
 ol > li {
   /* margin-left: 22px; */
   margin-left: 33px;
-  color: #333;
 }
 
 ol > li::marker {
@@ -271,7 +266,6 @@ p {
   letter-spacing: 0.5px;
   line-height: 2;
   text-align: justify;
-  color: #333;
 }
 
 /* pre code {
@@ -444,7 +438,7 @@ table {
   border-spacing: 0;
   margin-bottom: 15px;
   width: 100%;
-  background-color: rgba(255, 255, 255, 0.6);
+  background-color: #292929;
   /* border-radius: 10px; */
   overflow: hidden;
 }
@@ -488,5 +482,5 @@ table tbody tr:last-child td {
 }
 
 .hljs {
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.4);
 }
