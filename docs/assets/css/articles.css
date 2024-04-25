@@ -35,8 +35,8 @@ body {
   /* background-color: #aaa; */
   position: fixed;
   top: 100px;
-  right: calc((80% - 950px) / 2);
-  width: 18%;
+  right: calc((80% - 950px) / 2 - 30px);
+  width: 20%;
   height: calc(100vh - 200px);
   /* border-right: 1px solid #ddd; */
   background-color: #fff;
@@ -47,7 +47,7 @@ body {
   position: fixed;
   top: 50%;
   transform: translateY(-50%);
-  left: calc((80% - 950px) / 2 - 90px);
+  left: calc((80% - 950px) / 2 - 80px);
   width: 50px;
   height: auto;
 }
@@ -58,7 +58,7 @@ body {
   background-color: #fff;
   border-radius: 100%;
   display: block;
-  box-shadow: 0 2px 4px 0 rgba(50, 50, 50, .04);
+  box-shadow: 0 2px 4px 0 rgba(50, 50, 50, 0.04);
   text-align: center;
 }
 
@@ -161,11 +161,10 @@ body {
   margin-left: -20px;
   margin-right: -40px;
   position: relative;
-  
 }
 
 .article__wrapper_left ul li.active::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -561,15 +560,22 @@ table tbody tr:last-child td {
 }
 
 .img__preview span {
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 40px;
   height: 40px;
-  background-color: red;
+  background-color: rgba(0, 0, 0, 0.1);
   border-radius: 100%;
   position: absolute;
   top: 30px;
   right: 30px;
   cursor: pointer;
+}
+
+.img__preview span svg {
+  width: 18px;
+  height: 18px;
 }
 
 #imgClose {
