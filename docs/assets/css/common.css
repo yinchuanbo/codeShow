@@ -747,7 +747,7 @@ ul {
 .navbar {
   position: fixed;
   bottom: 100px;
-  left: 50px;
+  left: calc((100vw - 1140px) / 2 - 100px);
   background-color: #fff;
   transition: all 0.5s;
   border-radius: 5px;
