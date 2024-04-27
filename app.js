@@ -105,7 +105,7 @@ for (let i = filesList.length - 1; i >= 0; i--) {
   let params = `doc-${file}`;
   fs.writeFileSync(`./docs/${params}.html`, compiledHtml);
   let str = `style="display: none"`;
-  if (i < 8) {
+  if (i < 9) {
     str = "";
   }
   creator = (creator || "").trim();
