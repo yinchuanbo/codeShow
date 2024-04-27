@@ -771,7 +771,7 @@ ul {
   left: 50px;
   background-color: #fff;
   transition: all 0.5s;
-  border-radius: 5px;
+  border-radius: 10px;
 }
 
 .navbar:hover {
