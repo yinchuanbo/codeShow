@@ -495,8 +495,8 @@ ul {
 }
 
 .home__pages {
-  padding: 40px 2%;
-  width: 100%;
+  padding: 40px 0;
+  width: 1350px;
   position: fixed;
   top: 50%;
   left: 50%;
