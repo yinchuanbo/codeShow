@@ -613,6 +613,7 @@ ul {
   border-radius: 0;
   border-top-left-radius: 15px;
   font-size: 12px;
+  display: none;
 }
 
 .home__list li:hover {
@@ -668,6 +669,10 @@ ul {
   object-fit: cover;
   transition: all 0.5s;
   display: block;
+  border-top-left-radius: 100px;
+  border-bottom-right-radius: 100px;
+  border-top-right-radius: 30px;
+  border-bottom-left-radius: 30px;
 }
 
 .li__cover + a {
