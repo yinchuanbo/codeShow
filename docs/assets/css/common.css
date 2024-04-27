@@ -570,7 +570,7 @@ ul {
 .home__list li {
   /* height: 428px; */
   /* height: calc((100vh - 100px) / 2); */
-  height: 450px;
+  height: 320px;
   background-color: #fff;
   transition: all 0.5s;
   /* border: 1px solid #ddd; */
@@ -645,6 +645,7 @@ ul {
   position: relative;
   padding: 10px 10px 0 10px;
   /* aspect-ratio: 1; */
+  height: 222px;
 }
 
 .support-dev {
