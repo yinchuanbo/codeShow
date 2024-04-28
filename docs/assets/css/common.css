@@ -581,7 +581,7 @@ ul {
 .home__list li {
   /* height: 428px; */
   /* height: calc((100vh - 100px) / 2); */
-  height: 300px;
+  height: 320px;
   background-color: #fff;
   transition: all 0.5s;
   /* border: 1px solid #ddd; */
