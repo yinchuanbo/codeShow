@@ -557,11 +557,11 @@ ul {
 }
 
 #prev__page:active {
-  margin-left: -5px;
+  opacity: 0.5;
 }
 
 #next__page:active {
-  margin-right: -5px;
+  opacity: 0.5;
 }
 
 .home__banner:hover img {
