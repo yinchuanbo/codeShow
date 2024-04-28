@@ -495,8 +495,8 @@ ul {
 }
 
 .home__pages {
-  padding: 40px 10px;
-  width: 1350px;
+  padding: 40px;
+  width: 1450px;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -528,7 +528,7 @@ ul {
   cursor: pointer;
   font-size: 16px;
   font-family: myfont;
-  transition: all 0.5s;
+  transition: all 0.3s;
   background-color: #fff;
   /* border: 1px solid #ddd; */
   color: #0c1021;
@@ -545,13 +545,23 @@ ul {
   /* background-color: #0c1021;
   color: #fff;
   transition: all 0.5s; */
-  box-shadow: rgba(0, 0, 0, 0.17) 0 -23px 25px inset,
+  /* box-shadow: rgba(0, 0, 0, 0.17) 0 -23px 25px inset,
     rgba(0, 0, 0, 0.15) 0 -36px 30px inset,
     rgba(0, 0, 0, 0.1) 0 -79px 40px inset, rgba(0, 0, 0, 6%) 0 2px 1px,
     rgba(0, 0, 0, 9%) 0 4px 2px, rgba(0, 0, 0, 9%) 0 8px 4px,
-    rgba(0, 0, 0, 9%) 0 16px 8px, rgba(0, 0, 0, 9%) 0 32px 16px;
-  transition: all 0.5s;
+    rgba(0, 0, 0, 9%) 0 16px 8px, rgba(0, 0, 0, 9%) 0 32px 16px; */
+  transition: all 0.3s;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
   /* border-radius: 10px; */
+}
+
+#prev__page:active {
+  margin-left: -5px;
+}
+
+#next__page:active {
+  margin-right: -5px;
 }
 
 .home__banner:hover img {
@@ -570,17 +580,17 @@ ul {
 .home__list li {
   /* height: 428px; */
   /* height: calc((100vh - 100px) / 2); */
-  height: 320px;
+  height: 300px;
   background-color: #fff;
-  transition: all 0.5s;
+  transition: all 0.3s;
   /* border: 1px solid #ddd; */
   cursor: pointer;
   position: relative;
-  border-radius: 5px;
-  border-top-left-radius: 80px;
+  /* border-radius: 5px; */
+  /* border-top-left-radius: 80px;
   border-bottom-right-radius: 80px;
   border-top-right-radius: 30px;
-  border-bottom-left-radius: 30px;
+  border-bottom-left-radius: 30px; */
 }
 
 .home__list li span,
@@ -622,12 +632,11 @@ ul {
 }
 
 .home__list li:hover {
-  box-shadow: rgba(0, 0, 0, 0.17) 0 -23px 25px inset,
-    rgba(0, 0, 0, 0.15) 0 -36px 30px inset,
-    rgba(0, 0, 0, 0.1) 0 -79px 40px inset, rgba(0, 0, 0, 6%) 0 2px 1px,
-    rgba(0, 0, 0, 9%) 0 4px 2px, rgba(0, 0, 0, 9%) 0 8px 4px,
-    rgba(0, 0, 0, 9%) 0 16px 8px, rgba(0, 0, 0, 9%) 0 32px 16px;
-  transition: all 0.5s;
+  box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset,
+    rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+  margin-top: -5px;
+  transition: all 0.3s;
 }
 
 /* .home__list li:hover .li__cover > img {
@@ -643,7 +652,7 @@ ul {
   display: flex;
   align-items: center;
   position: relative;
-  padding: 10px 10px 0 10px;
+  padding: 0;
   /* aspect-ratio: 1; */
   height: 222px;
 }
@@ -665,10 +674,10 @@ ul {
   object-fit: cover;
   transition: all 0.5s;
   display: block;
-  border-top-left-radius: 80px;
+  /* border-top-left-radius: 80px;
   border-bottom-right-radius: 80px;
   border-top-right-radius: 30px;
-  border-bottom-left-radius: 30px;
+  border-bottom-left-radius: 30px; */
 }
 
 .li__cover + a {
@@ -771,18 +780,7 @@ ul {
   left: 50px;
   background-color: #fff;
   transition: all 0.5s;
-  border-radius: 10px;
-}
-
-.navbar:hover {
-  border-radius: 10px;
-  /* overflow: hidden; */
-  box-shadow: rgba(0, 0, 0, 17%) 0 -23px 25px inset,
-    rgba(0, 0, 0, 15%) 0 -36px 30px inset, rgba(0, 0, 0, 10%) 0 -79px 40px inset,
-    rgba(0, 0, 0, 6%) 0 2px 1px, rgba(0, 0, 0, 9%) 0 4px 2px,
-    rgba(0, 0, 0, 9%) 0 8px 4px, rgba(0, 0, 0, 9%) 0 16px 8px,
-    rgba(0, 0, 0, 9%) 0 32px 16px;
-  transition: all 0.5s;
+  /* border-radius: 10px; */
 }
 
 .tags {
