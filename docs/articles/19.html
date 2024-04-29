@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>git worktree</title>
+    <title>一个聚合了所有中国独立开发者项目的资源</title>
     <meta charset="utf-8">
     <meta name="description" content="This is a page">
     <meta name="keywords" content="page, sample">
@@ -16,7 +16,7 @@
     <a href="/articles/01.html">
       Git Worktree 让你无需切换分支
     </a>
-  </li><li class="active">
+  </li><li class="">
     <a href="/articles/02.html">
       git worktree
     </a>
@@ -84,7 +84,7 @@
     <a href="/articles/18.html">
       滚动插件 BetterScroll, 增强用户交互体验
     </a>
-  </li><li class="">
+  </li><li class="active">
     <a href="/articles/19.html">
       一个聚合了所有中国独立开发者项目的资源
     </a>
@@ -101,58 +101,119 @@
   <div class="article__wrapper">
     <div class="article__wrapper__main">
       <div class="article__wrapper_header">
-        <h1>git worktree</h1>
-        <span class="articles__home_time">2024/04/17 · YinHao</span>
+        <h1>一个聚合了所有中国独立开发者项目的资源</h1>
+        <span class="articles__home_time">2024/04/29 · YinHao</span>
       </div>
-      <h3>创建工作目录</h3>
-<pre><code class="language-sh">mkdir myproject
-cd myproject
-</code></pre>
-<h3>以 bare 形式 clone 仓库代码</h3>
-<pre><code class="language-sh">git clone --bare xxx.git .bare
-</code></pre>
-<h3>修改 .bare 路径下的 config 文件，在 url = xxx 的后边添加以下内容</h3>
-<pre><code class="language-sh">fetch = +refs/heads/*:refs/remotes/origin/*
-</code></pre>
-<h3>在 myproject 的目录下添加 .git 文件，在文件中写入以下内容</h3>
-<pre><code class="language-sh"># .git
-gitdir: ./.bare
-</code></pre>
-<h3>然后我们就可以开始添加 worktree 了，比如添加 dev</h3>
-<pre><code class="language-sh">git worktree add dev dev
-</code></pre>
-<table>
-<thead>
-<tr>
-<th>command</th>
-<th>describle</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>git worktree add -b &lt;local-branch&gt; &lt;remote-branch&gt;</td>
-<td>添加远程仓库不存在的分支</td>
-</tr>
-<tr>
-<td>git worktree add &lt;local-branch&gt; &lt;remote-branch&gt;</td>
-<td>添加远程仓库存在的分支</td>
-</tr>
-<tr>
-<td>git worktree remove &lt;local-branch&gt;</td>
-<td>删除本地不需要的 worktree 分支</td>
-</tr>
-<tr>
-<td>git worktree prune</td>
-<td>清理 worktree</td>
-</tr>
-</tbody>
-</table>
+      <blockquote>
+<p>https://github.com/1c7/chinese-independent-developer</p>
+</blockquote>
+<h2>项目简介</h2>
+<p>中国独立开发者项目列表是一个聚合了所有中国独立开发者项目的资源，该项目覆盖了不同领域和兴趣点，分享和展示中国独立开发者正在进行的项目，以便于开发者之间相互了解和学习。</p>
+<p>这个列表包含了各种类型的应用和工具，包括网站、App、工具、服务等，不包括开发者工具或论坛型网站。</p>
+<p><img src="../assets/images/articles/19/01.png" alt=""></p>
+<h2>项目示例</h2>
+<ul>
+<li>
+<p>通过这个项目资源，能够发现众多由中国独立开发者打造、满足多样化场景和需求的实用项目，并从中汲取灵感，了解他们的经验和心得，例如：</p>
+</li>
+<li>
+<p>视频拍摄管理工具：提升独立视频制作人的创作生产力。</p>
+</li>
+<li>
+<p>节点导航站：独立开发者出海工具，自媒体人的运营黑科技，跨境电商小白集散站。</p>
+</li>
+<li>
+<p>短链接生成器：精准触达目标客户，安全引流获客。</p>
+</li>
+<li>
+<p>新百词斩助手：支持取词翻译、收藏单词等操作。</p>
+</li>
+<li>
+<p>smind.app：思维脑图工具，支持自定义主题和结构化。</p>
+</li>
+<li>
+<p>fly63 工具箱：在线工具箱集合，包含多种开发和生活工具。</p>
+</li>
+<li>
+<p>haiwai：搜索海外的娱乐资源。</p>
+</li>
+<li>
+<p>sunost：基于 SUNO 生成背景音乐的工具。</p>
+</li>
+<li>
+<p>toolss.ai：AI 工具导航网站，收录 12000+个 AI 工具。</p>
+</li>
+<li>
+<p>ViBoard：跨平台数据可视化大屏软件。</p>
+</li>
+<li>
+<p>了然清单：P 型人友好的待办 App。</p>
+</li>
+<li>
+<p>海棠诗社：古诗词学习和创作的网站。</p>
+</li>
+<li>
+<p>DS Cloud：文件管理、视频播放和音频播放的 NAS 融合 App。</p>
+</li>
+<li>
+<p>AI Undetect：能绕过 AI 检测器的人工智能写作工具。</p>
+</li>
+<li>
+<p>AI Humanizer：AI 改写工具，面向 SEO 词汇。</p>
+</li>
+<li>
+<p>简单设计：设计工具，支持海报、LOGO 设计等。</p>
+</li>
+<li>
+<p>Minitrade：个人投资者的量化回测交易系统。</p>
+</li>
+<li>
+<p>在线 Markdown 转图片：将 Markdown 转换成多张图片。</p>
+</li>
+<li>
+<p>北京四中考试成绩分析：考试成绩可视化和分析工具。</p>
+</li>
+<li>
+<p>MyIP：多功能 IP 工具箱。</p>
+</li>
+<li>
+<p>OhEarningsCal：自动化美股财报日历订阅器。</p>
+</li>
+<li>
+<p>Macify：将 Chrome 的新标签页变成 macOS 屏保。</p>
+</li>
+<li>
+<p>躺平计算器：根据资产、收入水平等计算躺平的可行性。</p>
+</li>
+<li>
+<p>DIY 制作手机壳：在线 DIY 制作手机壳的小程序。</p>
+</li>
+<li>
+<p>文件收集小程序：在线收集文件的微信小程序。</p>
+</li>
+<li>
+<p>万物皆可 DIY：在线 DIY 制作多种物品的 H5 应用。</p>
+</li>
+<li>
+<p>SaaStores：收录网上优秀的 SaaS 软件和资源的网站。</p>
+</li>
+<li>
+<p>BindBook：社交关系记录小程序。</p>
+</li>
+<li>
+<p>TTW：使用手机中的照片生成旅行时间线的应用。
+……</p>
+</li>
+</ul>
+<h2>开发者资源</h2>
+<p>文档最后推荐了一些对独立开发者有帮助的网站，包括英文和中文资源。</p>
+<p><img src="../assets/images/articles/19/02.png" alt=""></p>
  
     </div>
   </div>
   <div class="article__wrapper_footer">
-    <a class="article__wrapper_footer-left " href="/articles/01.html"><svg t="1713708729970" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8437" width="48" height="48"><path d="M409.272947 512.57741l403.237243 403.237243a63.349415 63.349415 0 1 1-89.622481 89.622482L274.839224 557.324726a63.349415 63.349415 0 0 1 0-89.494632L722.951633 19.717685a63.349415 63.349415 0 1 1 89.494633 89.622482L409.336872 512.57741z" p-id="8438" fill="#8a8a8a"></path></svg></a>
-    <a class="article__wrapper_footer-right " href="/articles/03.html"><svg t="1713708697355" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8093" width="48" height="48"><path d="M855.123 517.004c0 8.245-3.167 15.51-9.503 21.823L402.999 981.47c-6.336 6.336-13.625 9.477-21.869 9.477s-15.51-3.142-21.845-9.477L311.8 933.96c-6.336-6.336-9.502-13.6-9.502-21.845 0-8.222 3.167-15.51 9.502-21.845l373.29-373.29-373.293-373.267c-6.336-6.336-9.502-13.6-9.502-21.845s3.167-15.533 9.503-21.869l47.484-47.484c6.336-6.336 13.6-9.502 21.845-9.502s15.533 3.167 21.869 9.503l442.621 442.622c6.334 6.334 9.503 13.625 9.503 21.869z" fill="#8a8a8a" p-id="8094"></path></svg></a>
+    <a class="article__wrapper_footer-left " href="/articles/18.html"><svg t="1713708729970" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8437" width="48" height="48"><path d="M409.272947 512.57741l403.237243 403.237243a63.349415 63.349415 0 1 1-89.622481 89.622482L274.839224 557.324726a63.349415 63.349415 0 0 1 0-89.494632L722.951633 19.717685a63.349415 63.349415 0 1 1 89.494633 89.622482L409.336872 512.57741z" p-id="8438" fill="#8a8a8a"></path></svg></a>
+    <a class="article__wrapper_footer-right " href="/articles/20.html"><svg t="1713708697355" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8093" width="48" height="48"><path d="M855.123 517.004c0 8.245-3.167 15.51-9.503 21.823L402.999 981.47c-6.336 6.336-13.625 9.477-21.869 9.477s-15.51-3.142-21.845-9.477L311.8 933.96c-6.336-6.336-9.502-13.6-9.502-21.845 0-8.222 3.167-15.51 9.502-21.845l373.29-373.29-373.293-373.267c-6.336-6.336-9.502-13.6-9.502-21.845s3.167-15.533 9.503-21.869l47.484-47.484c6.336-6.336 13.6-9.502 21.845-9.502s15.533 3.167 21.869 9.503l442.621 442.622c6.334 6.334 9.503 13.625 9.503 21.869z" fill="#8a8a8a" p-id="8094"></path></svg></a>
   </div>
   <a class="article__wrapper_index" href="/articles/"><svg t="1713708857338" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="9656" width="48" height="48"><path d="M549.61981 133.022476l319.683047 203.605334A70.851048 70.851048 0 0 1 902.095238 396.361143v434.883047A70.89981 70.89981 0 0 1 831.146667 902.095238h-282.819048l0.024381-218.112h-71.826286v218.087619L192.853333 902.095238A70.89981 70.89981 0 0 1 121.904762 831.24419V390.241524c0-24.527238 12.678095-47.299048 33.54819-60.220953l318.659048-197.485714a70.972952 70.972952 0 0 1 75.50781 0.487619zM828.952381 828.952381V397.214476L511.488 195.047619 195.047619 391.119238V828.952381h211.309714v-216.551619h212.187429v216.527238L828.952381 828.952381z" p-id="9657" fill="#707070"></path></svg></div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>

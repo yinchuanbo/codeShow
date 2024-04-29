@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>git worktree</title>
+    <title>快速了解CSS表单尺寸属性 field-sizing</title>
     <meta charset="utf-8">
     <meta name="description" content="This is a page">
     <meta name="keywords" content="page, sample">
@@ -16,7 +16,7 @@
     <a href="/articles/01.html">
       Git Worktree 让你无需切换分支
     </a>
-  </li><li class="active">
+  </li><li class="">
     <a href="/articles/02.html">
       git worktree
     </a>
@@ -76,7 +76,7 @@
     <a href="/articles/16.html">
       前端框架新势力大盘点
     </a>
-  </li><li class="">
+  </li><li class="active">
     <a href="/articles/17.html">
       快速了解CSS表单尺寸属性 field-sizing
     </a>
@@ -101,58 +101,101 @@
   <div class="article__wrapper">
     <div class="article__wrapper__main">
       <div class="article__wrapper_header">
-        <h1>git worktree</h1>
-        <span class="articles__home_time">2024/04/17 · YinHao</span>
+        <h1>快速了解CSS表单尺寸属性 field-sizing</h1>
+        <span class="articles__home_time">2024/04/29 · YinHao</span>
       </div>
-      <h3>创建工作目录</h3>
-<pre><code class="language-sh">mkdir myproject
-cd myproject
+      <p>最近 Chrome 123 又推出了一个新的 CSS 属性：field-sizing。有了它，可以轻松实现输入框尺寸自动跟随输入内容的效果</p>
+<h2>一、快速了解 field-sizing</h2>
+<p>field-sizing 表示“场地”尺寸，在这里指的是表单输入框的尺寸，语法很简单，可以取两个值，如下</p>
+<pre><code class="language-sh">field-sizing: fixed | content
 </code></pre>
-<h3>以 bare 形式 clone 仓库代码</h3>
-<pre><code class="language-sh">git clone --bare xxx.git .bare
+<p>其中，fixed 表示固定大小，也就是目前浏览器的默认行为，输入框必须要给定一个具体的尺寸</p>
+<p>而 content 表示输入框的尺寸完全由输入内容决定。</p>
+<p>举个例子，下面是一个文本域</p>
+<pre><code class="language-html">&lt;textarea&gt;&lt;/textarea&gt;
 </code></pre>
-<h3>修改 .bare 路径下的 config 文件，在 url = xxx 的后边添加以下内容</h3>
-<pre><code class="language-sh">fetch = +refs/heads/*:refs/remotes/origin/*
+<p>默认表现是这样的</p>
+<p><img src="../assets/images/articles/17/01.gif" alt=""></p>
+<p>可以看到，按回车时，出现了滚动条，这个大家应该再熟悉不过了</p>
+<p>这时，如果添加以下属性</p>
+<pre><code class="language-css">textarea {
+  field-sizing: content;
+}
 </code></pre>
-<h3>在 myproject 的目录下添加 .git 文件，在文件中写入以下内容</h3>
-<pre><code class="language-sh"># .git
-gitdir: ./.bare
+<p>结果...变成了这样</p>
+<p><img src="../assets/images/articles/17/02.png" alt=""></p>
+<p>因为这时没有内容，所以也就没有了尺寸，所以一般还需要手动加个尺寸</p>
+<pre><code class="language-css">textarea{
+  field-sizing: content;
+  width： 200px;
+}
 </code></pre>
-<h3>然后我们就可以开始添加 worktree 了，比如添加 dev</h3>
-<pre><code class="language-sh">git worktree add dev dev
+<p>现在宽度固定了，高度仍然有内容决定</p>
+<p><img src="../assets/images/articles/17/03.gif" alt=""></p>
+<p>这样就实现了一个回车自动增加高度的输入框了，是不是很方便？</p>
+<p>还可以设置最小尺寸，这样就更符实际规需求了</p>
+<pre><code class="language-css">textarea{
+  field-sizing: content;
+  width： 200px;
+  min-height: 40px;
+}
 </code></pre>
-<table>
-<thead>
-<tr>
-<th>command</th>
-<th>describle</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>git worktree add -b &lt;local-branch&gt; &lt;remote-branch&gt;</td>
-<td>添加远程仓库不存在的分支</td>
-</tr>
-<tr>
-<td>git worktree add &lt;local-branch&gt; &lt;remote-branch&gt;</td>
-<td>添加远程仓库存在的分支</td>
-</tr>
-<tr>
-<td>git worktree remove &lt;local-branch&gt;</td>
-<td>删除本地不需要的 worktree 分支</td>
-</tr>
-<tr>
-<td>git worktree prune</td>
-<td>清理 worktree</td>
-</tr>
-</tbody>
-</table>
+<p>效果如下</p>
+<p><img src="../assets/images/articles/17/05.gif" alt=""></p>
+<h2>二、其他输入元素</h2>
+<p>除了前面的文本域 textarea，input 也比较实用，比如要实现一个宽度自适应内容的输入框</p>
+<pre><code class="language-css">input {
+  min-width: 100px;
+  field-sizing: content;
+}
+</code></pre>
+<p>效果如下</p>
+<p><img src="../assets/images/articles/17/06.gif" alt=""></p>
+<p>另外，select 元素也是支持的</p>
+<pre><code class="language-html">&lt;select&gt;
+  &lt;option&gt;HTML&lt;/option&gt;
+  &lt;option&gt;CSS&lt;/option&gt;
+  &lt;option&gt;JavaScript&lt;/option&gt;
+  &lt;option&gt;这是一个很长很长的选项&lt;/option&gt;
+&lt;/select&gt;
+</code></pre>
+<p>默认情况下，select 元素的宽度是由最长的那一项决定的</p>
+<p><img src="../assets/images/articles/17/07.gif" alt=""></p>
+<p>这样在比较短的选项在选中时就比较突兀，现在我们设置自适应内容尺寸</p>
+<pre><code class="language-css">select {
+  field-sizing: content;
+}
+</code></pre>
+<p>比上面要好很多了</p>
+<p><img src="../assets/images/articles/17/08.gif" alt=""></p>
+<h2>三、相比可编辑 div 的好处</h2>
+<p>在以往，我们通常是通过给 div 设置可编辑属性，来实现内容自适应</p>
+<pre><code class="language-html">&lt;div contenteditable=&quot;true&quot;&gt;&lt;/div&gt;
+</code></pre>
+<p><strong>虽然也能实现，但是有很多表单特性就丢失了:</strong></p>
+<ul>
+<li>
+<p>onchange 事件缺失，由于只是普通的 div，所以无法监听 change 事件</p>
+</li>
+<li>
+<p>value 属性缺失，也就是无法通过 div.value 读取或者设置输入内容</p>
+</li>
+<li>
+<p>minLength、maxLength 属性缺失，无法直接设置最大最小长度</p>
+</li>
+<li>
+<p>表单提交信息缺失，无法通过默认的 new Form(表单)来获取表单内容</p>
+</li>
+<li>
+<p>在 vue、react 这些框架中也无法直接双向绑定等等</p>
+</li>
+</ul>
  
     </div>
   </div>
   <div class="article__wrapper_footer">
-    <a class="article__wrapper_footer-left " href="/articles/01.html"><svg t="1713708729970" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8437" width="48" height="48"><path d="M409.272947 512.57741l403.237243 403.237243a63.349415 63.349415 0 1 1-89.622481 89.622482L274.839224 557.324726a63.349415 63.349415 0 0 1 0-89.494632L722.951633 19.717685a63.349415 63.349415 0 1 1 89.494633 89.622482L409.336872 512.57741z" p-id="8438" fill="#8a8a8a"></path></svg></a>
-    <a class="article__wrapper_footer-right " href="/articles/03.html"><svg t="1713708697355" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8093" width="48" height="48"><path d="M855.123 517.004c0 8.245-3.167 15.51-9.503 21.823L402.999 981.47c-6.336 6.336-13.625 9.477-21.869 9.477s-15.51-3.142-21.845-9.477L311.8 933.96c-6.336-6.336-9.502-13.6-9.502-21.845 0-8.222 3.167-15.51 9.502-21.845l373.29-373.29-373.293-373.267c-6.336-6.336-9.502-13.6-9.502-21.845s3.167-15.533 9.503-21.869l47.484-47.484c6.336-6.336 13.6-9.502 21.845-9.502s15.533 3.167 21.869 9.503l442.621 442.622c6.334 6.334 9.503 13.625 9.503 21.869z" fill="#8a8a8a" p-id="8094"></path></svg></a>
+    <a class="article__wrapper_footer-left " href="/articles/16.html"><svg t="1713708729970" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8437" width="48" height="48"><path d="M409.272947 512.57741l403.237243 403.237243a63.349415 63.349415 0 1 1-89.622481 89.622482L274.839224 557.324726a63.349415 63.349415 0 0 1 0-89.494632L722.951633 19.717685a63.349415 63.349415 0 1 1 89.494633 89.622482L409.336872 512.57741z" p-id="8438" fill="#8a8a8a"></path></svg></a>
+    <a class="article__wrapper_footer-right " href="/articles/18.html"><svg t="1713708697355" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8093" width="48" height="48"><path d="M855.123 517.004c0 8.245-3.167 15.51-9.503 21.823L402.999 981.47c-6.336 6.336-13.625 9.477-21.869 9.477s-15.51-3.142-21.845-9.477L311.8 933.96c-6.336-6.336-9.502-13.6-9.502-21.845 0-8.222 3.167-15.51 9.502-21.845l373.29-373.29-373.293-373.267c-6.336-6.336-9.502-13.6-9.502-21.845s3.167-15.533 9.503-21.869l47.484-47.484c6.336-6.336 13.6-9.502 21.845-9.502s15.533 3.167 21.869 9.503l442.621 442.622c6.334 6.334 9.503 13.625 9.503 21.869z" fill="#8a8a8a" p-id="8094"></path></svg></a>
   </div>
   <a class="article__wrapper_index" href="/articles/"><svg t="1713708857338" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="9656" width="48" height="48"><path d="M549.61981 133.022476l319.683047 203.605334A70.851048 70.851048 0 0 1 902.095238 396.361143v434.883047A70.89981 70.89981 0 0 1 831.146667 902.095238h-282.819048l0.024381-218.112h-71.826286v218.087619L192.853333 902.095238A70.89981 70.89981 0 0 1 121.904762 831.24419V390.241524c0-24.527238 12.678095-47.299048 33.54819-60.220953l318.659048-197.485714a70.972952 70.972952 0 0 1 75.50781 0.487619zM828.952381 828.952381V397.214476L511.488 195.047619 195.047619 391.119238V828.952381h211.309714v-216.551619h212.187429v216.527238L828.952381 828.952381z" p-id="9657" fill="#707070"></path></svg></div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>

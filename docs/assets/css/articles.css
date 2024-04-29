@@ -598,3 +598,25 @@ table tbody tr:last-child td {
   opacity: 0.6;
   transition: 0.5s;
 }
+
+blockquote {
+  background-color: #f2f2f2;
+  padding: 20px 0;
+  margin-bottom: 20px;
+  padding-left: 20px;
+  position: relative;
+}
+
+blockquote p {
+  margin: 0;
+}
+
+blockquote::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 100%;
+  background-color: #000;
+}
