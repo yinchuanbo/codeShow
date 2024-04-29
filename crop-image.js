@@ -4,7 +4,7 @@ const path = require("path");
 
 const inputImagePath = "./docs/assets/images/cover";
 
-const aspectRatio = 1;
+const aspectRatio = 360 / 222;
 
 fs.readdir(inputImagePath, (err, files) => {
   if (err) {
