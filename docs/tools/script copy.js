@@ -26,8 +26,40 @@ for (let i = 0; i < tabs.length; i++) {
   };
 }
 
-const cssCompress = document.getElementById("css-compress");
+// base64 编码和解码
+const bmBtn = document.getElementById("bmBtn");
+bmBtn.onclick = () => {
+  const base64BmInput = document.getElementById("base64-bm-input");
+  const base64BmOutput = document.getElementById("base64-bm-output");
+  const val = (base64BmInput?.value || "").trim();
+  if (val) {
+    try {
+      base64BmOutput.value = Base64.encode(val);
+    } catch (error) {
+      base64BmOutput.value = "Error";
+    }
+  } else {
+    base64BmOutput.value = "";
+  }
+};
 
+const jmBtn = document.getElementById("jmBtn");
+jmBtn.onclick = () => {
+  const base64JmInput = document.getElementById("base64-jm-input");
+  const base64JmOutput = document.getElementById("base64-jm-output");
+  const val = (base64JmInput?.value || "").trim();
+  if (val) {
+    try {
+      base64JmOutput.value = Base64.decode(val);
+    } catch (error) {
+      base64JmOutput.value = "Error";
+    }
+  } else {
+    base64JmOutput.value = "";
+  }
+};
+
+const cssCompress = document.getElementById("css-compress");
 cssCompress.oninput = (event) => {
   const val = event.target.value.trim();
   if (!val) {

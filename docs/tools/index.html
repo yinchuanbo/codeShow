@@ -28,6 +28,7 @@
         <div class="tabs-item">JS编译压缩</div>
         <div class="tabs-item">SCSS编译压缩</div>
         <div class="tabs-item">JSON格式化</div>
+        <div class="tabs-item">Base64编解码</div>
         <div class="tabs-item">图片转Base64</div>
         <div class="tabs-item">文本比较器</div>
       </div>
@@ -71,6 +72,18 @@
           </div>
           <div class="contents-item__right" id="json-compress-output"></div>
         </div>
+        <div class="contents-item">
+          <div class="contents-item__left" id="base64-bm">
+            <textarea id="base64-bm-input"></textarea>
+            <button class="base64Btn" id="bmBtn">编码</button>
+            <textarea id="base64-bm-output"></textarea>
+          </div>
+          <div class="contents-item__right" id="base64-jm">
+            <textarea id="base64-jm-input"></textarea>
+            <button class="base64Btn" id="jmBtn">解码</button>
+            <textarea id="base64-jm-output"></textarea>
+          </div>
+        </div>
         <div class="contents-item uploadImg">
           <label class="imgInput__label">
             <input type="file" name="" id="imgInput" style="display: none" />
@@ -84,6 +97,7 @@
     <script src="../assets/lib/bundle.min.js"></script>
     <script src="../assets/lib/mergely.min.js"></script>
     <script src="../assets/lib/sass.sync.min.js"></script>
+    <script src="../assets/lib/base64.min.js"></script>
     <script src="../tools/script.js"></script>
   </body>
 </html>

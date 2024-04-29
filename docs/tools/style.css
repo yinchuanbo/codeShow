@@ -277,3 +277,40 @@ textarea {
 .uploadImg {
   flex-direction: column;
 }
+
+#base64-bm,
+#base64-jm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#base64-bm-input,
+#base64-bm-output,
+#base64-jm-input,
+#base64-jm-output {
+  width: 60%;
+  border: 1px solid #ddd;
+  height: 150px;
+}
+
+.base64Btn {
+  margin: 20px 0;
+  padding: 10px 30px;
+  border: none;
+  outline: none;
+  border-radius: 50px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.base64Btn:hover {
+  background-color: #ccc;
+  transition: 0.5s;
+}
+
+.base64Btn:active {
+  background-color: #ddd;
+}
