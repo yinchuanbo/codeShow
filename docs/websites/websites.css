@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: hack;
+  font-family: "Fira Code";
 }
 
 html,
@@ -12,10 +12,10 @@ body {
 
 .tools__wrapper {
   width: 100%;
-  background-color: #f2f2f2;
+  background-color: rgb(223, 225, 235);
   display: grid;
-  grid-template-columns: 300px 300px 300px 300px;
-  grid-gap: 20px;
+  grid-template-columns: 220px 220px 220px 220px;
+  grid-gap: 30px 50px;
   place-content: center;
   overflow: auto;
   padding: 20px 0;
@@ -82,3 +82,24 @@ body {
     border-radius: 0 !important;
   }
 }
+
+/* card */
+.card {
+  width: 220px;
+  height: 254px;
+  background: rgb(223, 225, 235);
+  border-radius: 50px;
+  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset,
+    rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset,
+    rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px,
+    rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px,
+    rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  padding: 0 20px;
+}
+
