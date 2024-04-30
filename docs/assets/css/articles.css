@@ -144,7 +144,6 @@ body {
   border-radius: 0;
   background: transparent;
 }
-
 /* .article__wrapper_left ul::-webkit-scrollbar {
   display: none;
 } */
@@ -357,7 +356,7 @@ p {
 }
 
 .article__wrapper img {
-  max-width: 800px;
+  max-width: 700px;
   height: auto;
   margin: 0 auto;
   display: block;
