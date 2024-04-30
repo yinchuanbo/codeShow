@@ -261,6 +261,9 @@ textarea {
   align-items: center;
   justify-content: center;
   background-color: #fff;
+  color: #ff0000;
+  font-size: 20px;
+  font-weight: 600;
 }
 
 #imgInput__output {
@@ -278,6 +281,11 @@ textarea {
   flex-direction: column;
 }
 
+#base64-bm {
+  width: 100%;
+  background-color: #f2f2f2;
+}
+
 #base64-bm,
 #base64-jm {
   display: flex;
@@ -290,9 +298,9 @@ textarea {
 #base64-bm-output,
 #base64-jm-input,
 #base64-jm-output {
-  width: 60%;
+  width: 700px;
   border: 1px solid #ddd;
-  height: 150px;
+  height: 200px;
 }
 
 .base64Btn {
@@ -304,13 +312,15 @@ textarea {
   font-size: 16px;
   cursor: pointer;
   transition: 0.5s;
+  background-color: #ff0000;
+  color: #fff;
 }
 
 .base64Btn:hover {
-  background-color: #ccc;
+  opacity: 0.5;
   transition: 0.5s;
 }
 
 .base64Btn:active {
-  background-color: #ddd;
+  opacity: 0.8;
 }

@@ -28,6 +28,7 @@ for (let i = 0; i < tabs.length; i++) {
 
 // base64 编码和解码
 const bmBtn = document.getElementById("bmBtn");
+const jmBtn = document.getElementById("jmBtn");
 bmBtn.onclick = () => {
   const base64BmInput = document.getElementById("base64-bm-input");
   const base64BmOutput = document.getElementById("base64-bm-output");
@@ -42,20 +43,18 @@ bmBtn.onclick = () => {
     base64BmOutput.value = "";
   }
 };
-
-const jmBtn = document.getElementById("jmBtn");
 jmBtn.onclick = () => {
-  const base64JmInput = document.getElementById("base64-jm-input");
-  const base64JmOutput = document.getElementById("base64-jm-output");
-  const val = (base64JmInput?.value || "").trim();
+  const base64BmInput = document.getElementById("base64-bm-input");
+  const base64BmOutput = document.getElementById("base64-bm-output");
+  const val = (base64BmInput?.value || "").trim();
   if (val) {
     try {
-      base64JmOutput.value = Base64.decode(val);
+      base64BmOutput.value = Base64.decode(val);
     } catch (error) {
-      base64JmOutput.value = "Error";
+      base64BmOutput.value = "Error";
     }
   } else {
-    base64JmOutput.value = "";
+    base64BmOutput.value = "";
   }
 };
 
