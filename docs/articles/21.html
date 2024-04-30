@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>根据已有视频生成指定样式视频</title>
+    <title>JS的哪些新特性，你都用过么？</title>
     <meta charset="utf-8">
     <meta name="description" content="This is a page">
     <meta name="keywords" content="page, sample">
@@ -33,7 +33,7 @@
     <a href="/articles/05.html">
       js-pytorch：开启前端+AI新世界
     </a>
-  </li><li class="active">
+  </li><li class="">
     <a href="/articles/06.html">
       根据已有视频生成指定样式视频
     </a>
@@ -93,7 +93,7 @@
     <a href="/articles/20.html">
       前端接口防止重复请求实现方案
     </a>
-  </li><li class="">
+  </li><li class="active">
     <a href="/articles/21.html">
       JS的哪些新特性，你都用过么？
     </a>
@@ -106,71 +106,100 @@
   <div class="article__wrapper">
     <div class="article__wrapper__main">
       <div class="article__wrapper_header">
-        <h1>根据已有视频生成指定样式视频</h1>
-        <span class="articles__home_time">2024/04/22 · YinHao</span>
+        <h1>JS的哪些新特性，你都用过么？</h1>
+        <span class="articles__home_time">2024/04/30 · YinHao</span>
       </div>
-      <blockquote>
-<p>根据已有视频生成指定样式视频，如对视频进行翻转、圆角等。</p>
-</blockquote>
-<pre><code class="language-html">&lt;button type=&quot;button&quot; id=&quot;playVideo&quot;&gt;播放&lt;/button&gt;
-</code></pre>
-<pre><code class="language-js">const playVideo = document.getElementById(&quot;playVideo&quot;);
-const video = document.createElement(&quot;video&quot;);
-video.src = &quot;./mov_bbb.mp4&quot;;
-// video.crossOrigin = &quot;anonymous&quot;; // 解决跨域问题
-
-playVideo.onclick = () =&gt; {
-  video.onloadedmetadata = async function () {
-    const canvas = document.createElement(&quot;canvas&quot;);
-    const ctx = canvas.getContext(&quot;2d&quot;);
-    canvas.width = video.videoWidth;
-    canvas.height = video.videoHeight;
-    const cornerRadius = 30;
-    // 应用水平翻转
-    ctx.scale(-1, 1);
-    ctx.translate(-canvas.width, 0); // 翻转后调整绘制位置
-    ctx.beginPath();
-    ctx.moveTo(cornerRadius, 0);
-    ctx.arcTo(canvas.width, 0, canvas.width, canvas.height, cornerRadius);
-    ctx.arcTo(canvas.width, canvas.height, 0, canvas.height, cornerRadius);
-    ctx.arcTo(0, canvas.height, 0, 0, cornerRadius);
-    ctx.arcTo(0, 0, canvas.width, 0, cornerRadius);
-    ctx.closePath();
-    ctx.clip();
-    const stream = canvas.captureStream();
-    const mediaRecorder = new MediaRecorder(stream);
-    const frames = [];
-    mediaRecorder.ondataavailable = async function (e) {
-      frames.push(e.data);
-      console.log(&quot;frames&quot;, frames);
-    };
-    mediaRecorder.onstop = async function () {
-      const blob = new Blob(frames, { type: &quot;video/mp4&quot; });
-      const url = URL.createObjectURL(blob);
-      console.log(&quot;url&quot;, url);
-    };
-    mediaRecorder.start();
-    video.play();
-    while (video.currentTime &lt; video.duration) {
-      await new Promise((resolve) =&gt;
-        setTimeout(resolve, 16 / video.playbackRate)
-      );
-      ctx.drawImage(video, 0, 0);
-      mediaRecorder.requestData();
-    }
-    mediaRecorder.stop();
-  };
-  video.load();
+      <h3>可选链</h3>
+<p>可选链让我们能够以安全的方式访问嵌套对象的属性，避免因为中间某个属性不存在而抛出错误。</p>
+<pre><code class="language-js">const user = {
+  profile: {
+    name: &quot;John Doe&quot;,
+    contact: {
+      email: &quot;john@example.com&quot;,
+    },
+  },
 };
+const userEmail = user.profile?.contact?.email;
+console.log(userEmail); // &quot;john@example.com&quot;
+const userPhone = user.profile?.contact?.phone;
+console.log(userPhone); // 输出undefined, 而不是抛出错误
 </code></pre>
-<h3>最终结果：</h3>
-<p><img src="../assets/images/articles/06/01.png" alt=""></p>
+<h3>空值合并运算符</h3>
+<p>空值合并运算符允许我们为可能是<code>null</code>或<code>undefined</code>的值提供一个默认值。</p>
+<pre><code class="language-js">const defaultAge = 25;
+const userAge = null;
+const age = userAge ?? defaultAge;
+console.log(age); // 25
+</code></pre>
+<h3>Promise.allSettled()</h3>
+<p>这个方法让我们可以在所有的 Promise 都得到解决之后，无论是 fulfilled 还是 rejected，都可以获得每一个 Promise 的结果。</p>
+<pre><code class="language-js">const promise1 = Promise.resolve(3);
+const promise2 = new Promise((resolve, reject) =&gt;
+  setTimeout(reject, 100, &quot;foo&quot;)
+);
+const promises = [promise1, promise2];
+Promise.allSettled(promises).then((results) =&gt;
+  results.forEach((result) =&gt; console.log(result.status))
+); // &quot;fulfilled&quot;, &quot;rejected&quot;
+</code></pre>
+<h3>动态导入</h3>
+<p>动态导入让我们可以在代码运行时按需加载模块。</p>
+<pre><code class="language-js">button.addEventListener(&quot;click&quot;, async () =&gt; {
+  try {
+    const module = await import(&quot;./module1.js&quot;);
+    module.load();
+  } catch (error) {
+    console.error(&quot;Module loading failed:&quot;, error);
+  }
+});
+</code></pre>
+<h3>BigInt</h3>
+<p>BigInt 是一种新的数值类型，让我们可以安全地操作大整数。</p>
+<pre><code class="language-js">const largeNumber = BigInt(&quot;9007199254740991&quot;);
+const anotherLargeNumber = 9007199254740992n; // 末尾的n表示BigInt
+console.log(largeNumber + anotherLargeNumber); // 18014398509481983n
+</code></pre>
+<h3>top-level await</h3>
+<p><code>top-level await</code>允许我们在模块顶层使用<code>await</code>关键字，简化了异步导入和操作的代码逻辑。</p>
+<pre><code class="language-js">const data = await fetchData(&quot;api/data&quot;);
+console.log(data);
+</code></pre>
+<h3>逻辑赋值运算符</h3>
+<p>这些运算符结合了逻辑运算符和赋值运算符。</p>
+<pre><code class="language-js">let a = null;
+let b = &quot;default&quot;;
+a ||= b;
+console.log(a); // &quot;default&quot;
+let x = 1;
+let y = 3;
+x &amp;&amp;= y;
+console.log(x); // 1
+</code></pre>
+<h3>String.prototype.replaceAll()</h3>
+<p><code>replaceAll</code>方法让我们可以更容易地替换字符串中的所有匹配项，而不仅仅是第一个匹配项。</p>
+<pre><code class="language-js">let str =
+  &quot;The quick brown fox jumps over the lazy dog. If the dog reacted, was it really lazy?&quot;;
+let newStr = str.replaceAll(&quot;dog&quot;, &quot;monkey&quot;);
+console.log(newStr);
+// &quot;The quick brown fox jumps over the lazy monkey. If the monkey reacted, was it really lazy?&quot;
+</code></pre>
+<h3>WeakRefs 和 FinalizationRegistry</h3>
+<p>这些新特性有助于管理内存。<code>WeakRef</code>对象允许您保持对另一个对象的弱引用，而不会阻止该对象被垃圾回收。<code>FinalizationRegistry</code>对象允许您在对象被垃圾回收时执行一些清理工作。</p>
+<pre><code class="language-js">let obj = {};
+const weakRef = new WeakRef(obj);
+const registry = new FinalizationRegistry((value) =&gt; {
+  console.log(`The object ${value} will be garbage collected.`);
+});
+registry.register(obj, &quot;myObj&quot;);
+// 某个时间后，如果obj不再被其他引用，垃圾回收器会清除obj
+obj = null;
+</code></pre>
  
     </div>
   </div>
   <div class="article__wrapper_footer">
-    <a class="article__wrapper_footer-left " href="/articles/05.html"><svg t="1713708729970" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8437" width="48" height="48"><path d="M409.272947 512.57741l403.237243 403.237243a63.349415 63.349415 0 1 1-89.622481 89.622482L274.839224 557.324726a63.349415 63.349415 0 0 1 0-89.494632L722.951633 19.717685a63.349415 63.349415 0 1 1 89.494633 89.622482L409.336872 512.57741z" p-id="8438" fill="#8a8a8a"></path></svg></a>
-    <a class="article__wrapper_footer-right " href="/articles/07.html"><svg t="1713708697355" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8093" width="48" height="48"><path d="M855.123 517.004c0 8.245-3.167 15.51-9.503 21.823L402.999 981.47c-6.336 6.336-13.625 9.477-21.869 9.477s-15.51-3.142-21.845-9.477L311.8 933.96c-6.336-6.336-9.502-13.6-9.502-21.845 0-8.222 3.167-15.51 9.502-21.845l373.29-373.29-373.293-373.267c-6.336-6.336-9.502-13.6-9.502-21.845s3.167-15.533 9.503-21.869l47.484-47.484c6.336-6.336 13.6-9.502 21.845-9.502s15.533 3.167 21.869 9.503l442.621 442.622c6.334 6.334 9.503 13.625 9.503 21.869z" fill="#8a8a8a" p-id="8094"></path></svg></a>
+    <a class="article__wrapper_footer-left " href="/articles/20.html"><svg t="1713708729970" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8437" width="48" height="48"><path d="M409.272947 512.57741l403.237243 403.237243a63.349415 63.349415 0 1 1-89.622481 89.622482L274.839224 557.324726a63.349415 63.349415 0 0 1 0-89.494632L722.951633 19.717685a63.349415 63.349415 0 1 1 89.494633 89.622482L409.336872 512.57741z" p-id="8438" fill="#8a8a8a"></path></svg></a>
+    <a class="article__wrapper_footer-right disabled" href="/articles/00.html"><svg t="1713708697355" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8093" width="48" height="48"><path d="M855.123 517.004c0 8.245-3.167 15.51-9.503 21.823L402.999 981.47c-6.336 6.336-13.625 9.477-21.869 9.477s-15.51-3.142-21.845-9.477L311.8 933.96c-6.336-6.336-9.502-13.6-9.502-21.845 0-8.222 3.167-15.51 9.502-21.845l373.29-373.29-373.293-373.267c-6.336-6.336-9.502-13.6-9.502-21.845s3.167-15.533 9.503-21.869l47.484-47.484c6.336-6.336 13.6-9.502 21.845-9.502s15.533 3.167 21.869 9.503l442.621 442.622c6.334 6.334 9.503 13.625 9.503 21.869z" fill="#8a8a8a" p-id="8094"></path></svg></a>
   </div>
   <a class="article__wrapper_index" href="/articles/"><svg t="1713708857338" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="9656" width="48" height="48"><path d="M549.61981 133.022476l319.683047 203.605334A70.851048 70.851048 0 0 1 902.095238 396.361143v434.883047A70.89981 70.89981 0 0 1 831.146667 902.095238h-282.819048l0.024381-218.112h-71.826286v218.087619L192.853333 902.095238A70.89981 70.89981 0 0 1 121.904762 831.24419V390.241524c0-24.527238 12.678095-47.299048 33.54819-60.220953l318.659048-197.485714a70.972952 70.972952 0 0 1 75.50781 0.487619zM828.952381 828.952381V397.214476L511.488 195.047619 195.047619 391.119238V828.952381h211.309714v-216.551619h212.187429v216.527238L828.952381 828.952381z" p-id="9657" fill="#707070"></path></svg></div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
