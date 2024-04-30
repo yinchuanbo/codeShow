@@ -61,12 +61,12 @@ body {
   display: block;
   box-shadow: 0 2px 4px 0 rgba(50, 50, 50, 0.04);
   text-align: center;
-  transition: .5s;
+  transition: 0.5s;
 }
 
 .article__wrapper_sidebar a:hover {
   background-color: #ff000014;
-  transition: .5s;
+  transition: 0.5s;
 }
 
 .article__wrapper_sidebar a svg {
@@ -120,12 +120,12 @@ body {
 }
 
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 1px;
+  width: 8px;
+  height: 8px;
 }
 ::-webkit-scrollbar-thumb {
-  border-radius: 4px;
-  background: rgba(0, 0, 0, 0.1);
+  border-radius: 0;
+  background: rgba(0, 0, 0, 0.5);
 }
 ::-webkit-scrollbar-track {
   box-shadow: none;
@@ -133,9 +133,9 @@ body {
   background: transparent;
 }
 
-.article__wrapper_left ul::-webkit-scrollbar {
+/* .article__wrapper_left ul::-webkit-scrollbar {
   display: none;
-}
+} */
 
 .article__wrapper_left ul li {
   list-style: none;
