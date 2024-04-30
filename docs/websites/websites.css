@@ -12,13 +12,13 @@ body {
 
 .tools__wrapper {
   width: 100%;
-  background-color: rgb(223, 225, 235);
+  background-color: #fff;
   display: grid;
-  grid-template-columns: 220px 220px 220px 220px;
-  grid-gap: 30px 50px;
+  grid-template-columns: repeat(5, 190px);
+  grid-gap: 50px;
   place-content: center;
   overflow: auto;
-  padding: 20px 0;
+  padding: 50px 0;
   min-height: 100%;
   overflow: hidden;
 }
@@ -84,22 +84,70 @@ body {
 }
 
 /* card */
-.card {
-  width: 220px;
+.flip-card {
+  background-color: transparent;
+  width: 190px;
   height: 254px;
-  background: rgb(223, 225, 235);
-  border-radius: 50px;
-  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset,
-    rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset,
-    rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px,
-    rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px,
-    rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-weight: 600;
-  cursor: pointer;
-  text-align: center;
-  padding: 0 20px;
+  perspective: 1000px;
+  font-family: sans-serif;
 }
 
+.title {
+  font-size: 1.1em;
+  font-weight: 900;
+  text-align: center;
+  margin: 0;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  box-shadow: 0 8px 14px 0 rgba(0, 0, 0, 0.2);
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  /* border: 1px solid coral; */
+  border-radius: 1rem;
+}
+
+.flip-card-front {
+  background: linear-gradient(
+    120deg,
+    bisque 60%,
+    rgb(255, 231, 222) 88%,
+    rgb(255, 211, 195) 40%,
+    rgba(255, 127, 80, 0.603) 48%
+  );
+  color: coral;
+  padding: 0 10px;
+}
+
+.flip-card-back {
+  background: linear-gradient(
+    120deg,
+    rgb(255, 174, 145) 30%,
+    coral 88%,
+    bisque 40%,
+    rgb(255, 185, 160) 78%
+  );
+  color: white;
+  transform: rotateY(180deg);
+  padding: 0 10px;
+}
