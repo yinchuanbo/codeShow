@@ -5,14 +5,424 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>codeShow</title>
     <link rel="icon" sizes="any" mask href="assets/images/ico.svg" />
-    <link rel="stylesheet" href="assets/codemirror5/theme/blackboard.css" />
-    <link rel="stylesheet" href="assets/codemirror5/lib/codemirror.css" />
-    <link rel="stylesheet" href="assets/codemirror5/addon/hint/show-hint.css" />
+    <link
+      rel="stylesheet"
+      data-name="vs/editor/editor.main"
+      href="https://unpkg.com/monaco-editor@^0.21.2/min/vs/editor/editor.main.css"
+    />
     <link rel="stylesheet" href="assets/css/common.css" />
     <link rel="stylesheet" href="assets/lib/wenk.min.css" />
   </head>
   <body>
-    <div class="code__wrapper">
+    <div class="vs__code_wrapper">
+      <textarea id="htmlcode-ta" style="display: none;">&lt;section class=&#34;introduce__pro&#34;&gt;
+  &lt;h2 class=&#34;introduce__pro_title&#34;&gt;
+    Vidnoz AI Video Translator Free, A Smart Way to Go
+  &lt;/h2&gt;
+  &lt;p class=&#34;introduce__pro_desc&#34;&gt;
+    Time to open the door to AI video translation! Vidnoz AI Video Translator is
+    the right direction to go ahead. With this tool, you can effortlessly get
+    translated videos perfect all the time! See how it can simplify and elevate
+    video translation to a new height!
+  &lt;/p&gt;
+  &lt;button
+    type=&#34;button&#34;
+    class=&#34;primary&#34;
+    onclick=&#34;window.scrollTo(0, 0);gtag(&#39;event&#39;, &#39;upclick_videotranslate_feature&#39;)&#34;
+  &gt;
+    Translate Now
+  &lt;/button&gt;
+  &lt;div class=&#34;introduce__pro_boxs&#34;&gt;
+    &lt;div class=&#34;introduce__pro_item&#34;&gt;
+      &lt;img
+        class=&#34;introduce__pro_item-img&#34;
+        src=&#34;https://via.placeholder.com/600x400&#34;
+        alt=&#34;Free AI Video Translate&#34;
+      /&gt;
+      &lt;div class=&#34;introduce__pro_item-info&#34;&gt;
+        &lt;h3 class=&#34;introduce__pro_item-title&#34;&gt;Free, Fast, Yet Accurate&lt;/h3&gt;
+        &lt;p class=&#34;introduce__pro_item-desc&#34;&gt;
+          Open Vidnoz AI Video Translator on a browser at any time, upload your
+          video, and choose a language. You will get an accurate translation for
+          free instantly. Say goodbye to those days when you had to hire
+          expensive human translators and wait for a couple of days. Enjoy AI
+          translation with less cost yet pro quality.
+        &lt;/p&gt;
+        &lt;button
+          type=&#34;button&#34;
+          class=&#34;primary&#34;
+          onclick=&#34;window.scrollTo(0, 0);gtag(&#39;event&#39;, &#39;upclick_videotranslate_feature1&#39;)&#34;
+        &gt;
+          Translate Now
+        &lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;introduce__pro_item&#34;&gt;
+      &lt;img
+        class=&#34;introduce__pro_item-img&#34;
+        src=&#34;https://via.placeholder.com/600x400&#34;
+        alt=&#34;Voice and Subtitle Translation&#34;
+      /&gt;
+      &lt;div class=&#34;introduce__pro_item-info&#34;&gt;
+        &lt;h3 class=&#34;introduce__pro_item-title&#34;&gt;
+          Translate Voices and Subtitles
+        &lt;/h3&gt;
+        &lt;p class=&#34;introduce__pro_item-desc&#34;&gt;
+          Do a voice-over translation, generate automated
+          &lt;a href=&#34;https://www.vidnoz.com/ai-solutions/ai-dubbing.html&#34;
+            &gt;AI dubbing&lt;/a
+          &gt;, and transcribe subtitles to a different language. You can translate
+          a video with the preferred elements or get it all done simultaneously.
+        &lt;/p&gt;
+        &lt;button
+          type=&#34;button&#34;
+          class=&#34;primary&#34;
+          onclick=&#34;window.scrollTo(0, 0);gtag(&#39;event&#39;, &#39;upclick_videotranslate_feature2&#39;)&#34;
+        &gt;
+          Translate Now
+        &lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;introduce__pro_item&#34;&gt;
+      &lt;img
+        class=&#34;introduce__pro_item-img&#34;
+        src=&#34;https://via.placeholder.com/600x400&#34;
+        alt=&#34;AI Voice Cloning&#34;
+      /&gt;
+      &lt;div class=&#34;introduce__pro_item-info&#34;&gt;
+        &lt;h3 class=&#34;introduce__pro_item-title&#34;&gt;Unparalleled AI Voice Cloning&lt;/h3&gt;
+        &lt;p class=&#34;introduce__pro_item-desc&#34;&gt;
+          Vdnoz’s AI voice cloning technology empowers you to generate a
+          synthetic replication of the original voice. The cloned voice is 100%
+          accurate to the real human voice tone and speaking style, which brings
+          personality to the video and helps deliver emotion deeply.
+        &lt;/p&gt;
+        &lt;button
+          type=&#34;button&#34;
+          class=&#34;primary&#34;
+          onclick=&#34;window.scrollTo(0, 0);gtag(&#39;event&#39;, &#39;upclick_videotranslate_feature3&#39;)&#34;
+        &gt;
+          Translate Now
+        &lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;introduce__pro_item&#34;&gt;
+      &lt;img
+        class=&#34;introduce__pro_item-img&#34;
+        src=&#34;https://via.placeholder.com/600x400&#34;
+        alt=&#34;AI Video Translate with Lip Synching&#34;
+      /&gt;
+      &lt;div class=&#34;introduce__pro_item-info&#34;&gt;
+        &lt;h3 class=&#34;introduce__pro_item-title&#34;&gt;Seamless Lip-Synching&lt;/h3&gt;
+        &lt;p class=&#34;introduce__pro_item-desc&#34;&gt;
+          The speaker’s lip movement in videos perfectly aligns with the dubbed
+          speech in any of the chosen languages. It makes it look like the
+          person is a native speaker naturally talking in the target language.
+          Your video content will be more convincing to the foreign audience.
+        &lt;/p&gt;
+        &lt;button
+          type=&#34;button&#34;
+          class=&#34;primary&#34;
+          onclick=&#34;window.scrollTo(0, 0);gtag(&#39;event&#39;, &#39;upclick_videotranslate_feature4&#39;)&#34;
+        &gt;
+          Translate Now
+        &lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;</textarea>
+      <textarea id="csscode-ta" style="display: none;">* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  scroll-behavior: smooth;
+  user-select: none;
+}
+:root {
+  --btn-bg-color: #8b3dff;
+  --text-color: #fff;
+  --text-b-color: #000000;
+  --border-color: #ebebeb;
+  --border-radius: 3px;
+  --ball-color: #ddc7ff;
+  --border-top-color: #a065f9;
+  --dot-color: #beb8cb;
+  --dot-active-color: #6d4dff;
+  --bg-color: #f8f8f8;
+  --border-bottom-color: #d2d0de;
+  --a-val: 0.17;
+  --click-btn-color: #15151c;
+  --bg-hover-color: #eadcff;
+  --article-border-color: #d7d4e5;
+}
+html,
+body {
+  box-sizing: inherit;
+  background-color: #fff;
+}
+button.primary {
+  outline: none;
+  border: 0;
+  cursor: pointer;
+  background-color: #6d4dff;
+  width: 81.3333333333vw;
+  height: 13.3333333333vw;
+  border-radius: 6.6666666667vw;
+  color: var(--text-color);
+  font-size: 4.2666666667vw;
+  font-weight: 500;
+}
+@media (min-width: 1200px) {
+  button.primary {
+    outline: none;
+    border: 0;
+    cursor: pointer;
+    background-color: #6d4dff;
+    width: 312px;
+    height: 49px;
+    border-radius: 25px;
+    color: var(--text-color);
+    font-size: 18px;
+    font-weight: 500;
+    transition: all 0.5s;
+  }
+  button.primary:hover {
+    background: #4a34da;
+    transition: all 0.5s;
+  }
+}
+.introduce__pro {
+  padding-top: 13.3333333333vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.introduce__pro .introduce__pro_title {
+  max-width: 84vw;
+  margin-bottom: 3.2vw;
+  font-size: 5.8666666667vw;
+  font-weight: 600;
+  line-height: 9.4666666667vw;
+  font-family: inherit;
+  color: var(--text-b-color);
+  text-align: center;
+}
+.introduce__pro .introduce__pro_desc {
+  max-width: 84vw;
+  margin-bottom: 5.3333333333vw;
+  font-size: 4.2666666667vw;
+  font-weight: 300;
+  line-height: 7.3333333333vw;
+  font-family: inherit;
+  color: var(--text-b-color);
+  text-align: center;
+}
+.introduce__pro .introduce__pro_boxs {
+  width: 100%;
+  margin-top: 7.3333333333vw;
+  padding-bottom: 13.3333333333vw;
+}
+.introduce__pro .introduce__pro_boxs .introduce__pro_item {
+  max-width: 86.6666666667vw;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.introduce__pro
+  .introduce__pro_boxs
+  .introduce__pro_item
+  .introduce__pro_item-img {
+  width: 100%;
+  display: block;
+  margin-bottom: 2vw;
+}
+.introduce__pro
+  .introduce__pro_boxs
+  .introduce__pro_item
+  .introduce__pro_item-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.introduce__pro
+  .introduce__pro_boxs
+  .introduce__pro_item
+  .introduce__pro_item-title {
+  font-size: 4.2666666667vw;
+  font-weight: 600;
+  line-height: 7.3333333333vw;
+  font-family: inherit;
+  color: var(--text-b-color);
+  text-align: center;
+  margin-bottom: 4vw;
+}
+.introduce__pro
+  .introduce__pro_boxs
+  .introduce__pro_item
+  .introduce__pro_item-desc {
+  font-size: 4.2666666667vw;
+  font-weight: 300;
+  line-height: 7.3333333333vw;
+  font-family: inherit;
+  color: var(--text-b-color);
+  text-align: center;
+  margin-bottom: 5.3333333333vw;
+}
+.introduce__pro
+  .introduce__pro_boxs
+  .introduce__pro_item
+  + .introduce__pro_item {
+  margin-top: 7.3333333333vw;
+}
+@media (min-width: 1200px) {
+  .introduce__pro {
+    padding-top: 108px;
+    padding-bottom: 100px;
+  }
+  .introduce__pro .introduce__pro_title {
+    font-size: 44px;
+    font-weight: 600;
+    line-height: 61px;
+    font-family: inherit;
+    color: var(--text-b-color);
+    text-align: center;
+    margin-bottom: 15px;
+  }
+  .introduce__pro .introduce__pro_desc {
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 25px;
+    font-family: inherit;
+    color: var(--text-b-color);
+    text-align: center;
+    max-width: 1062px;
+    margin-bottom: 30px;
+  }
+  .introduce__pro .introduce__pro_boxs {
+    margin-top: 100px;
+    width: 1224px;
+    padding-bottom: 0;
+  }
+  .introduce__pro .introduce__pro_boxs .introduce__pro_item {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .introduce__pro
+    .introduce__pro_boxs
+    .introduce__pro_item
+    + .introduce__pro_item {
+    margin-top: 150px;
+  }
+  .introduce__pro
+    .introduce__pro_boxs
+    .introduce__pro_item
+    .introduce__pro_item-info {
+    max-width: 540px;
+  }
+  .introduce__pro
+    .introduce__pro_boxs
+    .introduce__pro_item
+    .introduce__pro_item-img {
+    max-width: 600px;
+    margin-bottom: 0;
+  }
+  .introduce__pro
+    .introduce__pro_boxs
+    .introduce__pro_item
+    .introduce__pro_item-title {
+    width: 100%;
+    font-size: 26px;
+    font-weight: 600;
+    line-height: 36px;
+    font-family: inherit;
+    color: var(--text-b-color);
+    text-align: left;
+    margin-bottom: 20px;
+  }
+  .introduce__pro
+    .introduce__pro_boxs
+    .introduce__pro_item
+    .introduce__pro_item-desc {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 25px;
+    font-family: inherit;
+    color: var(--text-b-color);
+    text-align: left;
+    margin-bottom: 30px;
+  }
+  .introduce__pro .introduce__pro_boxs .introduce__pro_item button {
+    margin-right: auto;
+  }
+  .introduce__pro
+    .introduce__pro_boxs
+    .introduce__pro_item:nth-child(2)
+    .introduce__pro_item-info,
+  .introduce__pro
+    .introduce__pro_boxs
+    .introduce__pro_item:nth-child(4)
+    .introduce__pro_item-info {
+    order: 1;
+  }
+  .introduce__pro
+    .introduce__pro_boxs
+    .introduce__pro_item:nth-child(2)
+    .introduce__pro_item-img,
+  .introduce__pro
+    .introduce__pro_boxs
+    .introduce__pro_item:nth-child(4)
+    .introduce__pro_item-img {
+    order: 2;
+  }
+}</textarea>
+      <textarea id="jscode-ta" style="display: none;"></textarea>
+      <div class="vs__code_wrapper-main">
+      <div class="vs__code_wrapper-main">
+        <div class="code_wrapper_iframe">
+          <div class="code_fullscreen"></div>
+          
+            <div class="mobile__icon" data-wenk="请按 F12 查看" data-wenk-pos="right"></div>
+            <!-- <div class="mobile__icon"></div> -->
+          
+          <iframe
+            id="live-preview"
+            src="assets/templates/template-iframe.html"
+            width="100%"
+            height="100%"
+            allow="accelerometer *; camera *; encrypted-media *; display-capture *; geolocation *; gyroscope *; microphone *; midi *; clipboard-read *; clipboard-write *; web-share *; serial *; xr-spatial-tracking *"
+            allowfullscreen="true"
+            allowpaymentrequest="true"
+            allowtransparency="true"
+            sandbox="allow-forms allow-modals allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation allow-downloads allow-presentation"
+            class="result-iframe iframe-visual-update"
+            name="codeShow"
+            loading="lazy"
+          ></iframe>
+        </div>
+        <div class="code_wrapper_codes">
+          <div class="codes_tabs">
+            <div class="codes_tabs_item active">HTML</div>
+            <div class="codes_tabs_item">CSS</div>
+            <div class="codes_tabs_item">JAVASCRIPT</div>
+          </div>
+          <div class="codes_contents">
+            <div class="codes_contents_item active" id="htmlcode"></div>
+            <div class="codes_contents_item" id="csscode"></div>
+            <div class="codes_contents_item" id="jscode"></div>
+
+            <div class="Copy__code">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M16 4.038V4c0-.465 0-.697-.051-.888a1.5 1.5 0 0 0-1.06-1.06C14.697 2 14.464 2 14 2h-4c-.465 0-.697 0-.888.051a1.5 1.5 0 0 0-1.06 1.06C8 3.304 8 3.536 8 4v.038m8 0c0 .44-.001.665-.051.85a1.5 1.5 0 0 1-1.06 1.06C14.697 6 14.464 6 14 6h-4c-.465 0-.697 0-.888-.051a1.5 1.5 0 0 1-1.06-1.06C8.001 4.702 8 4.477 8 4.038m8 0c.784.047 1.34.155 1.816.397a4 4 0 0 1 1.748 1.748C20 7.04 20 8.16 20 10.4v5.2c0 2.24 0 3.36-.436 4.216a4 4 0 0 1-1.748 1.748C16.96 22 15.84 22 13.6 22h-3.2c-2.24 0-3.36 0-4.216-.436a4 4 0 0 1-1.748-1.748C4 18.96 4 17.84 4 15.6v-5.2c0-2.24 0-3.36.436-4.216a4 4 0 0 1 1.748-1.748c.475-.242 1.032-.35 1.816-.398"></path></svg>Copy</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="code__wrapper">
       <div class="close__fs"></div>
       <div class="code__wrapper_header">
         <div class="code__wrapper_header_title">官网效果</div>
@@ -420,18 +830,10 @@ button.primary {
           ></iframe>
         </div>
       </div>
-    </div>
+    </div> -->
     <script src="assets/lib/jquery-3.7.1.min.js"></script>
     <script src="assets/lib/sass.sync.min.js"></script>
-    <script src="assets/codemirror5/lib/codemirror.js"></script>
-    <script src="assets/codemirror5/addon/hint/show-hint.js"></script>
-    <script src="assets/codemirror5/addon/hint/xml-hint.js"></script>
-    <script src="assets/codemirror5/addon/hint/html-hint.js"></script>
-    <script src="assets/codemirror5/mode/xml/xml.js"></script>
-    <script src="assets/codemirror5/mode/javascript/javascript.js"></script>
-    <script src="assets/codemirror5/mode/css/css.js"></script>
-    <script src="assets/codemirror5/mode/htmlmixed/htmlmixed.js"></script>
-    <script src="assets/codemirror5/addon/hint/css-hint.js"></script>
-    <script src="assets/js/common.js"></script>
+    <script src="https://unpkg.com/monaco-editor@^0.21.2/min/vs/loader.js"></script>
+    <script src="assets/js/editor-vs.js"></script>
   </body>
 </html>

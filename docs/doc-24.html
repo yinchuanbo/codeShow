@@ -5,14 +5,206 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>codeShow</title>
     <link rel="icon" sizes="any" mask href="assets/images/ico.svg" />
-    <link rel="stylesheet" href="assets/codemirror5/theme/blackboard.css" />
-    <link rel="stylesheet" href="assets/codemirror5/lib/codemirror.css" />
-    <link rel="stylesheet" href="assets/codemirror5/addon/hint/show-hint.css" />
+    <link
+      rel="stylesheet"
+      data-name="vs/editor/editor.main"
+      href="https://unpkg.com/monaco-editor@^0.21.2/min/vs/editor/editor.main.css"
+    />
     <link rel="stylesheet" href="assets/css/common.css" />
     <link rel="stylesheet" href="assets/lib/wenk.min.css" />
   </head>
   <body>
-    <div class="code__wrapper">
+    <div class="vs__code_wrapper">
+      <textarea id="htmlcode-ta" style="display: none;">&lt;button class=&#34;operate-btn&#34;&gt;操作&lt;/button&gt;
+&lt;div class=&#34;container&#34;&gt;
+  &lt;ul class=&#34;list-wrap&#34;&gt;
+    &lt;li class=&#34;list-item&#34;&gt;item1&lt;/li&gt;
+    &lt;li class=&#34;list-item&#34;&gt;item2&lt;/li&gt;
+    &lt;li class=&#34;list-item&#34;&gt;item3&lt;/li&gt;
+    &lt;li class=&#34;list-item&#34;&gt;item4&lt;/li&gt;
+    &lt;li class=&#34;list-item&#34;&gt;item5&lt;/li&gt;
+    &lt;li class=&#34;list-item&#34;&gt;item6&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;</textarea>
+      <textarea id="csscode-ta" style="display: none;">li {
+  list-style: none;
+}
+#iframe__wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.operate-btn {
+  font-size: 1em;
+  padding: 0 10px;
+}
+.container {
+  width: 70%;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  margin: 30px auto;
+  padding: 20px;
+}
+li {
+  border: 1px solid #000;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  transition: all 0.3s;
+  margin-bottom: 5px;
+  background-color: green;
+}
+.list-wrap {
+  width: 300px;
+  margin: auto;
+}</textarea>
+      <textarea id="jscode-ta" style="display: none;">const list = document.querySelectorAll(&#34;.list-item&#34;);
+const ul = document.querySelector(&#34;ul&#34;);
+const operateBtn = document.querySelector(&#34;.operate-btn&#34;);
+
+function randomIndex() {
+  return Math.floor(Math.random() * list.length);
+}
+
+function swapNodes(node1, node2) {
+  const parent = node1.parentNode;
+  const node1NextElementSibling = node1.nextElementSibling;
+  const node2NextElementSibling = node2.nextElementSibling;
+  if (node2NextElementSibling) {
+    parent.insertBefore(node1, node2NextElementSibling);
+  } else {
+    parent.appendChild(node1);
+  }
+  if (node1NextElementSibling) {
+    parent.insertBefore(node2, node1NextElementSibling);
+  } else {
+    parent.appendChild(node2);
+  }
+}
+function handleMove() {
+  const animateQueen = [];
+  let isPending = false;
+  function animate(originIndex, targetIndex) {
+    const originListItem = list[originIndex];
+    const targetListItem = list[targetIndex];
+    const moveDistance =
+      targetListItem.getBoundingClientRect().top -
+      originListItem.getBoundingClientRect().top;
+    const originListItemAnimation = originListItem.animate(
+      [
+        {
+          transform: &#34; translateY(0)px&#34;,
+        },
+        {
+          transform: `translateY(${moveDistance}px)`,
+        },
+      ],
+      {
+        duration: 700,
+        easing: &#34;linear&#34;,
+      }
+    );
+    const targetListItemAnimation = targetListItem.animate(
+      [
+        {
+          transform: &#34;translateY(0)px&#34;,
+        },
+        {
+          transform: `translateY(${-moveDistance}px)`,
+        },
+      ],
+      {
+        duration: 700,
+        easing: &#34;linear&#34;,
+      }
+    );
+    // 动画先不要执行
+    originListItemAnimation.pause();
+    targetListItemAnimation.pause();
+    // 将对应动画追加到任务队列中
+    animateQueen.push({
+      originListItemAnimation,
+      targetListItemAnimation,
+      executeCount: 0, //动画正在执行的个数
+      isSwap: false, //是否完成交换
+    });
+    // 执行动画
+    function executeSwapElements(animationItem) {
+      isPending = false;
+      animationItem.executeCount++;
+      if (animationItem.executeCount === 2 &amp;&amp; !animationItem.isSwap) {
+        swapNodes(originListItem, targetListItem);
+        animationItem.isSwap = true;
+      }
+    }
+    // 递归检测上一个动画是否完成
+    function _run() {
+      while (animateQueen.length &amp;&amp; !isPending) {
+        let current = animateQueen.shift();
+        current.originListItemAnimation.play();
+        current.targetListItemAnimation.play();
+        isPending = true;
+        current.originListItemAnimation.onfinish = () =&gt; {
+          isPending = false;
+          executeSwapElements(current);
+          _run();
+        };
+        current.originListItemAnimation.onfinish = () =&gt; {
+          isPending = false;
+          executeSwapElements(current);
+          _run();
+        };
+      }
+    }
+    _run();
+  }
+  // 每个元素都执和其他随机元素执行一次交换动画
+  for (let i = 0; i &lt; list.length; i++) {
+    animate(i, randomIndex());
+  }
+}
+operateBtn.addEventListener(&#34;click&#34;, () =&gt; {
+  handleMove();
+});</textarea>
+      <div class="vs__code_wrapper-main">
+      <div class="vs__code_wrapper-main">
+        <div class="code_wrapper_iframe">
+          <div class="code_fullscreen"></div>
+          
+          <iframe
+            id="live-preview"
+            src="assets/templates/template-iframe.html"
+            width="100%"
+            height="100%"
+            allow="accelerometer *; camera *; encrypted-media *; display-capture *; geolocation *; gyroscope *; microphone *; midi *; clipboard-read *; clipboard-write *; web-share *; serial *; xr-spatial-tracking *"
+            allowfullscreen="true"
+            allowpaymentrequest="true"
+            allowtransparency="true"
+            sandbox="allow-forms allow-modals allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation allow-downloads allow-presentation"
+            class="result-iframe iframe-visual-update"
+            name="codeShow"
+            loading="lazy"
+          ></iframe>
+        </div>
+        <div class="code_wrapper_codes">
+          <div class="codes_tabs">
+            <div class="codes_tabs_item active">HTML</div>
+            <div class="codes_tabs_item">CSS</div>
+            <div class="codes_tabs_item">JAVASCRIPT</div>
+          </div>
+          <div class="codes_contents">
+            <div class="codes_contents_item active" id="htmlcode"></div>
+            <div class="codes_contents_item" id="csscode"></div>
+            <div class="codes_contents_item" id="jscode"></div>
+
+            <div class="Copy__code">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M16 4.038V4c0-.465 0-.697-.051-.888a1.5 1.5 0 0 0-1.06-1.06C14.697 2 14.464 2 14 2h-4c-.465 0-.697 0-.888.051a1.5 1.5 0 0 0-1.06 1.06C8 3.304 8 3.536 8 4v.038m8 0c0 .44-.001.665-.051.85a1.5 1.5 0 0 1-1.06 1.06C14.697 6 14.464 6 14 6h-4c-.465 0-.697 0-.888-.051a1.5 1.5 0 0 1-1.06-1.06C8.001 4.702 8 4.477 8 4.038m8 0c.784.047 1.34.155 1.816.397a4 4 0 0 1 1.748 1.748C20 7.04 20 8.16 20 10.4v5.2c0 2.24 0 3.36-.436 4.216a4 4 0 0 1-1.748 1.748C16.96 22 15.84 22 13.6 22h-3.2c-2.24 0-3.36 0-4.216-.436a4 4 0 0 1-1.748-1.748C4 18.96 4 17.84 4 15.6v-5.2c0-2.24 0-3.36.436-4.216a4 4 0 0 1 1.748-1.748c.475-.242 1.032-.35 1.816-.398"></path></svg>Copy</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="code__wrapper">
       <div class="close__fs"></div>
       <div class="code__wrapper_header">
         <div class="code__wrapper_header_title">FLIP 动画思路做一个交换 dom 元素过渡动画</div>
@@ -203,18 +395,10 @@ operateBtn.addEventListener(&#34;click&#34;, () =&gt; {
           ></iframe>
         </div>
       </div>
-    </div>
+    </div> -->
     <script src="assets/lib/jquery-3.7.1.min.js"></script>
     <script src="assets/lib/sass.sync.min.js"></script>
-    <script src="assets/codemirror5/lib/codemirror.js"></script>
-    <script src="assets/codemirror5/addon/hint/show-hint.js"></script>
-    <script src="assets/codemirror5/addon/hint/xml-hint.js"></script>
-    <script src="assets/codemirror5/addon/hint/html-hint.js"></script>
-    <script src="assets/codemirror5/mode/xml/xml.js"></script>
-    <script src="assets/codemirror5/mode/javascript/javascript.js"></script>
-    <script src="assets/codemirror5/mode/css/css.js"></script>
-    <script src="assets/codemirror5/mode/htmlmixed/htmlmixed.js"></script>
-    <script src="assets/codemirror5/addon/hint/css-hint.js"></script>
-    <script src="assets/js/common.js"></script>
+    <script src="https://unpkg.com/monaco-editor@^0.21.2/min/vs/loader.js"></script>
+    <script src="assets/js/editor-vs.js"></script>
   </body>
 </html>

@@ -5,14 +5,479 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>codeShow</title>
     <link rel="icon" sizes="any" mask href="assets/images/ico.svg" />
-    <link rel="stylesheet" href="assets/codemirror5/theme/blackboard.css" />
-    <link rel="stylesheet" href="assets/codemirror5/lib/codemirror.css" />
-    <link rel="stylesheet" href="assets/codemirror5/addon/hint/show-hint.css" />
+    <link
+      rel="stylesheet"
+      data-name="vs/editor/editor.main"
+      href="https://unpkg.com/monaco-editor@^0.21.2/min/vs/editor/editor.main.css"
+    />
     <link rel="stylesheet" href="assets/css/common.css" />
     <link rel="stylesheet" href="assets/lib/wenk.min.css" />
   </head>
   <body>
-    <div class="code__wrapper">
+    <div class="vs__code_wrapper">
+      <textarea id="htmlcode-ta" style="display: none;">&lt;div class=&#34;talking_head_situations_container&#34;&gt;
+  &lt;ul class=&#34;side_menu&#34;&gt;
+    &lt;li data-val=&#34;0&#34; class=&#34;side_menu_side&#34;&gt;Training &amp; How-to Videos&lt;/li&gt;
+    &lt;li data-val=&#34;1&#34; class=&#34;side_menu_side&#34;&gt;Customer Support&lt;/li&gt;
+    &lt;li data-val=&#34;2&#34; class=&#34;side_menu_side&#34;&gt;Education&lt;/li&gt;
+    &lt;li data-val=&#34;3&#34; class=&#34;side_menu_side active&#34;&gt;Business&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;div class=&#34;content&#34;&gt;
+    &lt;div data-val=&#34;0&#34; class=&#34;content_box&#34;&gt;
+      &lt;h3&gt;Training &amp; How-to Videos&lt;/h3&gt;
+      &lt;p&gt;
+        Add talking heads to your Training and How-to tutorials to make them
+        persuasive. Videos always convey more information than words.
+      &lt;/p&gt;
+      &lt;img
+        src=&#34;https://via.placeholder.com/740x440&#34;
+        class=&#34;talking_side4&#34;
+        alt=&#34;side4&#34;
+      /&gt;
+    &lt;/div&gt;
+    &lt;div data-val=&#34;1&#34; class=&#34;content_box&#34;&gt;
+      &lt;h3&gt;Customer Support&lt;/h3&gt;
+      &lt;p&gt;
+        Use a talking head to troubleshoot issues. Let AI unburden your shoulder
+        by addressing the after-sale problems or providing advice on tech
+        issues.
+      &lt;/p&gt;
+      &lt;img
+        src=&#34;https://via.placeholder.com/740x440&#34;
+        class=&#34;talking_side4&#34;
+        alt=&#34;side4&#34;
+      /&gt;
+    &lt;/div&gt;
+    &lt;div data-val=&#34;2&#34; class=&#34;content_box&#34;&gt;
+      &lt;h3&gt;Education&lt;/h3&gt;
+      &lt;p&gt;
+        Online courses with the most natural talking heads. Keep your students
+        dedicated to your classes effortlessly.
+      &lt;/p&gt;
+      &lt;img
+        src=&#34;https://via.placeholder.com/740x440&#34;
+        class=&#34;talking_side4&#34;
+        alt=&#34;side4&#34;
+      /&gt;
+    &lt;/div&gt;
+    &lt;div data-val=&#34;3&#34; class=&#34;content_box&#34;&gt;
+      &lt;h3&gt;Business&lt;/h3&gt;
+      &lt;p&gt;
+        Present your business plans on online webinars with XXXXX’s Virtual
+        talking heads. With formally dressed avatar and professional tones &amp;
+        pitches.
+      &lt;/p&gt;
+      &lt;img
+        src=&#34;https://via.placeholder.com/740x440&#34;
+        class=&#34;talking_side4&#34;
+        alt=&#34;side4&#34;
+      /&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</textarea>
+      <textarea id="csscode-ta" style="display: none;">.talking_head_situations_container {
+  padding-left: 85px;
+  margin-bottom: 46px;
+  display: flex;
+}
+
+.talking_head_situations_container ul {
+  width: 116px;
+  height: 405px;
+  border-radius: 20px;
+  background-color: #fff;
+  border: 2px solid #bec3e5;
+  overflow: hidden;
+  margin-right: 64px;
+}
+
+.talking_head_situations_container ul &gt; li {
+  padding: 29px 0;
+  text-align: center;
+  font-size: 16px;
+  font-family: Sora_M;
+  border-bottom: 1px solid #bec3e5;
+  cursor: pointer;
+  color: #1a0e6e;
+}
+
+.talking_head_situations_container ul &gt; li:nth-child(1).active {
+  background-color: #5a3fef;
+  color: #fff;
+}
+
+.talking_head_situations_container ul &gt; li:nth-child(2).active {
+  background-color: #a36eff;
+  color: #fff;
+}
+
+.talking_head_situations_container ul &gt; li:nth-child(3).active {
+  background-color: #7193ff;
+  color: #fff;
+}
+
+.talking_head_situations_container ul &gt; li:nth-child(4).active {
+  background-color: #9ebdff;
+  color: #fff;
+}
+
+.talking_head_situations_container ul &gt; li:last-child {
+  border: none;
+}
+
+.talking_head_situations_container .content {
+  position: relative;
+  width: 820px;
+  height: 968px;
+  border-radius: 40px 40px 0 0;
+  transform: translateY(-10px);
+  overflow: hidden;
+}
+
+.talking_head_situations_container .content &gt; div {
+  position: absolute;
+  top: 0px;
+  padding-left: 80px;
+  width: 100%;
+  height: 640px;
+  border-radius: 40px;
+  background-color: #5a3fef;
+  transition: all 0.3s;
+  transform: translateY(10px);
+}
+
+.talking_head_situations_container .content &gt; div:nth-child(1):hover {
+  top: -10px;
+}
+
+.talking_head_situations_container .content &gt; div:nth-child(2) {
+  top: 106px;
+  background-color: #a36eff;
+}
+
+.talking_head_situations_container .content &gt; div:nth-child(2):hover {
+  top: 96px;
+}
+
+.talking_head_situations_container .content &gt; div:nth-child(3) {
+  top: 212px;
+  background-color: #7193ff;
+}
+
+.talking_head_situations_container .content &gt; div:nth-child(3):hover {
+  top: 202px;
+}
+
+.talking_head_situations_container .content &gt; div:nth-child(4) {
+  top: 318px;
+  background-color: #9ebdff;
+}
+
+.talking_head_situations_container .content &gt; div:nth-child(4):hover {
+  top: 308px;
+}
+
+.talking_head_situations_container .content &gt; div h3 {
+  position: relative;
+  font-family: Sora_B;
+  font-size: 32px;
+  color: #fff;
+  line-height: 40px;
+  margin-bottom: 34px;
+  margin-top: 32px;
+  cursor: pointer;
+}
+
+.talking_head_situations_container .content &gt; div h3::before {
+  content: &#34;&#34;;
+  position: absolute;
+  top: 4px;
+  left: -20px;
+  width: 6px;
+  height: 30px;
+  background-color: #0be6ff;
+}
+
+.talking_head_situations_container .content &gt; div &gt; p {
+  font-family: Sora_M;
+  font-size: 16px;
+  color: #fff;
+  line-height: 26px;
+  width: 615px;
+  text-align: left;
+}
+
+.talking_head_situations_container .content &gt; div &gt; img {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.talking_head_situations_container .content &gt; div.animate {
+  transform: translateY(534px);
+}
+
+.talking_head_situations_container .content &gt; div.animate p {
+  opacity: 0;
+}</textarea>
+      <textarea id="jscode-ta" style="display: none;">$(&#34;.side_menu_side&#34;).click(function () {
+  $(&#34;.side_menu_side&#34;).removeClass(&#34;active&#34;);
+  $(this).addClass(&#34;active&#34;);
+  let activeShowIndex = $(this).attr(&#34;data-val&#34;);
+  let hasClassAn = false;
+  $(&#34;.content_box&#34;).each((i, el) =&gt; {
+    if ($(el).hasClass(&#34;animate&#34;)) {
+      return (hasClassAn = true);
+    }
+  });
+  switch (activeShowIndex) {
+    case &#34;0&#34;:
+      if (!hasClassAn) {
+        $(&#34;.content_box[data-val=3]&#34;).addClass(&#34;animate&#34;);
+        setTimeout(() =&gt; {
+          $(&#34;.content_box[data-val=2]&#34;).addClass(&#34;animate&#34;);
+          setTimeout(() =&gt; {
+            $(&#34;.content_box[data-val=1]&#34;).addClass(&#34;animate&#34;);
+          }, 100);
+        }, 100);
+      } else {
+        if ($(&#34;.content_box[data-val=3]&#34;).hasClass(&#34;animate&#34;)) {
+          $(&#34;.content_box[data-val=2]&#34;).addClass(&#34;animate&#34;);
+          setTimeout(() =&gt; {
+            $(&#34;.content_box[data-val=1]&#34;).addClass(&#34;animate&#34;);
+          }, 100);
+        } else if ($(&#34;.content_box[data-val=2]&#34;).hasClass(&#34;animate&#34;)) {
+          $(&#34;.content_box[data-val=1]&#34;).addClass(&#34;animate&#34;);
+        }
+      }
+      break;
+    case &#34;1&#34;:
+      if (!hasClassAn) {
+        $(&#34;.content_box[data-val=3]&#34;).addClass(&#34;animate&#34;);
+        setTimeout(() =&gt; {
+          $(&#34;.content_box[data-val=2]&#34;).addClass(&#34;animate&#34;);
+        }, 100);
+      } else {
+        if ($(&#34;.content_box[data-val=1]&#34;).hasClass(&#34;animate&#34;)) {
+          $(&#34;.content_box[data-val=1]&#34;).removeClass(&#34;animate&#34;);
+        }
+        if ($(&#34;.content_box[data-val=3]&#34;).hasClass(&#34;animate&#34;)) {
+          $(&#34;.content_box[data-val=2]&#34;).addClass(&#34;animate&#34;);
+        }
+      }
+      break;
+    case &#34;2&#34;:
+      if (!hasClassAn) {
+        $(&#34;.content_box[data-val=3]&#34;).addClass(&#34;animate&#34;);
+      } else {
+        if ($(&#34;.content_box[data-val=2]&#34;).hasClass(&#34;animate&#34;)) {
+          $(&#34;.content_box[data-val=1]&#34;).removeClass(&#34;animate&#34;);
+          setTimeout(() =&gt; {
+            $(&#34;.content_box[data-val=2]&#34;).removeClass(&#34;animate&#34;);
+          }, 100);
+        }
+      }
+      break;
+    case &#34;3&#34;:
+      if ($(&#34;.content_box[data-val=1]&#34;).hasClass(&#34;animate&#34;)) {
+        $(&#34;.content_box[data-val=1]&#34;).removeClass(&#34;animate&#34;);
+        setTimeout(() =&gt; {
+          $(&#34;.content_box[data-val=2]&#34;).removeClass(&#34;animate&#34;);
+          setTimeout(() =&gt; {
+            $(&#34;.content_box[data-val=3]&#34;).removeClass(&#34;animate&#34;);
+          }, 100);
+        }, 100);
+      } else if ($(&#34;.content_box[data-val=2]&#34;).hasClass(&#34;animate&#34;)) {
+        $(&#34;.content_box[data-val=2]&#34;).removeClass(&#34;animate&#34;);
+        setTimeout(() =&gt; {
+          $(&#34;.content_box[data-val=3]&#34;).removeClass(&#34;animate&#34;);
+        }, 100);
+      } else if ($(&#34;.content_box[data-val=3]&#34;).hasClass(&#34;animate&#34;)) {
+        $(&#34;.content_box[data-val=3]&#34;).removeClass(&#34;animate&#34;);
+      }
+      break;
+  }
+});
+
+$(&#34;.content_box h3&#34;).click(function () {
+  let activeShowIndex = $(this).parent().attr(&#34;data-val&#34;);
+  $(&#34;.side_menu_side&#34;).removeClass(&#34;active&#34;);
+  $(&#34;.side_menu_side&#34;).each((i, el) =&gt; {
+    if ($(el).attr(&#34;data-val&#34;) == activeShowIndex) {
+      $(el).addClass(&#34;active&#34;);
+    }
+  });
+  let hasClassAn = false;
+  $(&#34;.content_box&#34;).each((i, el) =&gt; {
+    if ($(el).hasClass(&#34;animate&#34;)) {
+      return (hasClassAn = true);
+    }
+  });
+
+  if (
+    $(&#34;.content_box[data-val=1]&#34;).hasClass(&#34;animate&#34;) &amp;&amp;
+    activeShowIndex == &#34;0&#34;
+  ) {
+    $(&#34;.content_box[data-val=1]&#34;).removeClass(&#34;animate&#34;);
+    setTimeout(() =&gt; {
+      $(&#34;.content_box[data-val=2]&#34;).removeClass(&#34;animate&#34;);
+      setTimeout(() =&gt; {
+        $(&#34;.content_box[data-val=3]&#34;).removeClass(&#34;animate&#34;);
+      }, 100);
+    }, 100);
+
+    $(&#34;.side_menu_side&#34;).removeClass(&#34;active&#34;);
+    $(&#34;.side_menu_side[data-val=3]&#34;).addClass(&#34;active&#34;);
+    return;
+  }
+
+  if (
+    $(&#34;.content_box[data-val=2]&#34;).hasClass(&#34;animate&#34;) &amp;&amp;
+    activeShowIndex == &#34;1&#34;
+  ) {
+    if ($(&#34;.content_box[data-val=1]&#34;).hasClass(&#34;animate&#34;)) {
+      $(&#34;.content_box[data-val=1]&#34;).removeClass(&#34;animate&#34;);
+      $(&#34;.side_menu_side&#34;).removeClass(&#34;active&#34;);
+      $(&#34;.side_menu_side[data-val=1]&#34;).addClass(&#34;active&#34;);
+    } else {
+      $(&#34;.content_box[data-val=2]&#34;).removeClass(&#34;animate&#34;);
+      setTimeout(() =&gt; {
+        $(&#34;.content_box[data-val=3]&#34;).removeClass(&#34;animate&#34;);
+      }, 100);
+      $(&#34;.side_menu_side&#34;).removeClass(&#34;active&#34;);
+      $(&#34;.side_menu_side[data-val=3]&#34;).addClass(&#34;active&#34;);
+    }
+    return;
+  }
+
+  if (
+    $(&#34;.content_box[data-val=3]&#34;).hasClass(&#34;animate&#34;) &amp;&amp;
+    activeShowIndex == &#34;2&#34;
+  ) {
+    if ($(&#34;.content_box[data-val=1]&#34;).hasClass(&#34;animate&#34;)) {
+      $(&#34;.content_box[data-val=1]&#34;).removeClass(&#34;animate&#34;);
+      setTimeout(() =&gt; {
+        $(&#34;.content_box[data-val=2]&#34;).removeClass(&#34;animate&#34;);
+      }, 100);
+      $(&#34;.side_menu_side&#34;).removeClass(&#34;active&#34;);
+      $(&#34;.side_menu_side[data-val=2]&#34;).addClass(&#34;active&#34;);
+    } else if ($(&#34;.content_box[data-val=2]&#34;).hasClass(&#34;animate&#34;)) {
+      $(&#34;.content_box[data-val=2]&#34;).removeClass(&#34;animate&#34;);
+    } else {
+      $(&#34;.content_box[data-val=3]&#34;).removeClass(&#34;animate&#34;);
+      $(&#34;.side_menu_side&#34;).removeClass(&#34;active&#34;);
+      $(&#34;.side_menu_side[data-val=3]&#34;).addClass(&#34;active&#34;);
+    }
+
+    return;
+  }
+
+  switch (activeShowIndex) {
+    case &#34;0&#34;:
+      if (!hasClassAn) {
+        $(&#34;.content_box[data-val=3]&#34;).addClass(&#34;animate&#34;);
+        setTimeout(() =&gt; {
+          $(&#34;.content_box[data-val=2]&#34;).addClass(&#34;animate&#34;);
+          setTimeout(() =&gt; {
+            $(&#34;.content_box[data-val=1]&#34;).addClass(&#34;animate&#34;);
+          }, 100);
+        }, 100);
+      } else {
+        if ($(&#34;.content_box[data-val=3]&#34;).hasClass(&#34;animate&#34;)) {
+          $(&#34;.content_box[data-val=2]&#34;).addClass(&#34;animate&#34;);
+          setTimeout(() =&gt; {
+            $(&#34;.content_box[data-val=1]&#34;).addClass(&#34;animate&#34;);
+          }, 100);
+        } else if ($(&#34;.content_box[data-val=2]&#34;).hasClass(&#34;animate&#34;)) {
+          $(&#34;.content_box[data-val=1]&#34;).addClass(&#34;animate&#34;);
+        }
+      }
+      break;
+    case &#34;1&#34;:
+      if (!hasClassAn) {
+        $(&#34;.content_box[data-val=3]&#34;).addClass(&#34;animate&#34;);
+        setTimeout(() =&gt; {
+          $(&#34;.content_box[data-val=2]&#34;).addClass(&#34;animate&#34;);
+        }, 100);
+      } else {
+        if ($(&#34;.content_box[data-val=1]&#34;).hasClass(&#34;animate&#34;)) {
+          $(&#34;.content_box[data-val=1]&#34;).removeClass(&#34;animate&#34;);
+        }
+        if ($(&#34;.content_box[data-val=3]&#34;).hasClass(&#34;animate&#34;)) {
+          $(&#34;.content_box[data-val=2]&#34;).addClass(&#34;animate&#34;);
+        }
+      }
+      break;
+    case &#34;2&#34;:
+      if (!hasClassAn) {
+        $(&#34;.content_box[data-val=3]&#34;).addClass(&#34;animate&#34;);
+      } else {
+        if ($(&#34;.content_box[data-val=2]&#34;).hasClass(&#34;animate&#34;)) {
+          $(&#34;.content_box[data-val=1]&#34;).removeClass(&#34;animate&#34;);
+          setTimeout(() =&gt; {
+            $(&#34;.content_box[data-val=2]&#34;).removeClass(&#34;animate&#34;);
+          }, 100);
+        }
+      }
+      break;
+    case &#34;3&#34;:
+      if ($(&#34;.content_box[data-val=1]&#34;).hasClass(&#34;animate&#34;)) {
+        $(&#34;.content_box[data-val=1]&#34;).removeClass(&#34;animate&#34;);
+        setTimeout(() =&gt; {
+          $(&#34;.content_box[data-val=2]&#34;).removeClass(&#34;animate&#34;);
+          setTimeout(() =&gt; {
+            $(&#34;.content_box[data-val=3]&#34;).removeClass(&#34;animate&#34;);
+          }, 100);
+        }, 100);
+      } else if ($(&#34;.content_box[data-val=2]&#34;).hasClass(&#34;animate&#34;)) {
+        $(&#34;.content_box[data-val=2]&#34;).removeClass(&#34;animate&#34;);
+        setTimeout(() =&gt; {
+          $(&#34;.content_box[data-val=3]&#34;).removeClass(&#34;animate&#34;);
+        }, 100);
+      } else if ($(&#34;.content_box[data-val=3]&#34;).hasClass(&#34;animate&#34;)) {
+        $(&#34;.content_box[data-val=3]&#34;).removeClass(&#34;animate&#34;);
+      }
+      break;
+  }
+});</textarea>
+      <div class="vs__code_wrapper-main">
+      <div class="vs__code_wrapper-main">
+        <div class="code_wrapper_iframe">
+          <div class="code_fullscreen"></div>
+          
+          <iframe
+            id="live-preview"
+            src="assets/templates/template-iframe.html"
+            width="100%"
+            height="100%"
+            allow="accelerometer *; camera *; encrypted-media *; display-capture *; geolocation *; gyroscope *; microphone *; midi *; clipboard-read *; clipboard-write *; web-share *; serial *; xr-spatial-tracking *"
+            allowfullscreen="true"
+            allowpaymentrequest="true"
+            allowtransparency="true"
+            sandbox="allow-forms allow-modals allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation allow-downloads allow-presentation"
+            class="result-iframe iframe-visual-update"
+            name="codeShow"
+            loading="lazy"
+          ></iframe>
+        </div>
+        <div class="code_wrapper_codes">
+          <div class="codes_tabs">
+            <div class="codes_tabs_item active">HTML</div>
+            <div class="codes_tabs_item">CSS</div>
+            <div class="codes_tabs_item">JAVASCRIPT</div>
+          </div>
+          <div class="codes_contents">
+            <div class="codes_contents_item active" id="htmlcode"></div>
+            <div class="codes_contents_item" id="csscode"></div>
+            <div class="codes_contents_item" id="jscode"></div>
+
+            <div class="Copy__code">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M16 4.038V4c0-.465 0-.697-.051-.888a1.5 1.5 0 0 0-1.06-1.06C14.697 2 14.464 2 14 2h-4c-.465 0-.697 0-.888.051a1.5 1.5 0 0 0-1.06 1.06C8 3.304 8 3.536 8 4v.038m8 0c0 .44-.001.665-.051.85a1.5 1.5 0 0 1-1.06 1.06C14.697 6 14.464 6 14 6h-4c-.465 0-.697 0-.888-.051a1.5 1.5 0 0 1-1.06-1.06C8.001 4.702 8 4.477 8 4.038m8 0c.784.047 1.34.155 1.816.397a4 4 0 0 1 1.748 1.748C20 7.04 20 8.16 20 10.4v5.2c0 2.24 0 3.36-.436 4.216a4 4 0 0 1-1.748 1.748C16.96 22 15.84 22 13.6 22h-3.2c-2.24 0-3.36 0-4.216-.436a4 4 0 0 1-1.748-1.748C4 18.96 4 17.84 4 15.6v-5.2c0-2.24 0-3.36.436-4.216a4 4 0 0 1 1.748-1.748c.475-.242 1.032-.35 1.816-.398"></path></svg>Copy</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="code__wrapper">
       <div class="close__fs"></div>
       <div class="code__wrapper_header">
         <div class="code__wrapper_header_title">官网特效</div>
@@ -476,18 +941,10 @@ $(&#34;.content_box h3&#34;).click(function () {
           ></iframe>
         </div>
       </div>
-    </div>
+    </div> -->
     <script src="assets/lib/jquery-3.7.1.min.js"></script>
     <script src="assets/lib/sass.sync.min.js"></script>
-    <script src="assets/codemirror5/lib/codemirror.js"></script>
-    <script src="assets/codemirror5/addon/hint/show-hint.js"></script>
-    <script src="assets/codemirror5/addon/hint/xml-hint.js"></script>
-    <script src="assets/codemirror5/addon/hint/html-hint.js"></script>
-    <script src="assets/codemirror5/mode/xml/xml.js"></script>
-    <script src="assets/codemirror5/mode/javascript/javascript.js"></script>
-    <script src="assets/codemirror5/mode/css/css.js"></script>
-    <script src="assets/codemirror5/mode/htmlmixed/htmlmixed.js"></script>
-    <script src="assets/codemirror5/addon/hint/css-hint.js"></script>
-    <script src="assets/js/common.js"></script>
+    <script src="https://unpkg.com/monaco-editor@^0.21.2/min/vs/loader.js"></script>
+    <script src="assets/js/editor-vs.js"></script>
   </body>
 </html>

@@ -15,78 +15,17 @@
   </head>
   <body>
     <div class="vs__code_wrapper">
-      <textarea id="htmlcode-ta" style="display: none;">&lt;div class=&#34;outer-circle&#34;&gt;
-  &lt;div class=&#34;inner-circle&#34;&gt;&lt;/div&gt;
-  &lt;span&gt;&lt;/span&gt;
-  &lt;span&gt;&lt;/span&gt;
-  &lt;span&gt;&lt;/span&gt;
-  &lt;span&gt;&lt;/span&gt;
-&lt;/div&gt;</textarea>
-      <textarea id="csscode-ta" style="display: none;">#iframe__wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.outer-circle {
-  position: relative;
-  height: 200px;
-  width: 200px;
-  background: linear-gradient(#14ffe9, #ffeb3b, #ff00e0);
-  border-radius: 50%;
-  animation: rotate 1.5s linear infinite;
-}
-
-.outer-circle span {
-  position: absolute;
-  height: 200px;
-  width: 200px;
-  background: linear-gradient(#14ffe9, #ffeb3b, #ff00e0);
-  border-radius: 50%;
-}
-
-span:nth-child(1) {
-  filter: blur(5px);
-}
-
-span:nth-child(2) {
-  filter: blur(10px);
-}
-
-span:nth-child(3) {
-  filter: blur(25px);
-}
-
-span:nth-child(4) {
-  filter: blur(150px);
-}
-
-.inner-circle {
-  height: 180px;
-  width: 180px;
-  position: absolute;
-  background: black;
-  top: 10px;
-  left: 10px;
-  border-radius: 50%;
-  z-index: 9;
-}
-
-@keyframes rotate {
-  0% {
-    filter: hue-rotate(0deg);
-  }
-
-  100% {
-    filter: hue-rotate(360deg);
-  }
-}</textarea>
-      <textarea id="jscode-ta" style="display: none;"></textarea>
+      <textarea id="htmlcode-ta" style="display: none;"><%= htmlContent %></textarea>
+      <textarea id="csscode-ta" style="display: none;"><%= cssContent %></textarea>
+      <textarea id="jscode-ta" style="display: none;"><%= jsContent %></textarea>
       <div class="vs__code_wrapper-main">
       <div class="vs__code_wrapper-main">
         <div class="code_wrapper_iframe">
           <div class="code_fullscreen"></div>
-          
+          <% if (type.includes('mobile')) { %>
+            <div class="mobile__icon" data-wenk="请按 F12 查看" data-wenk-pos="right"></div>
+            <!-- <div class="mobile__icon"></div> -->
+          <% } %>
           <iframe
             id="live-preview"
             src="assets/templates/template-iframe.html"
@@ -122,7 +61,7 @@ span:nth-child(4) {
     <!-- <div class="code__wrapper">
       <div class="close__fs"></div>
       <div class="code__wrapper_header">
-        <div class="code__wrapper_header_title">Gradient Loading Animation Effects</div>
+        <div class="code__wrapper_header_title"><%= title %></div>
         <div class="tools">
           <div class="home__icon" onclick="window.location.href = '/'"></div>
         </div>
@@ -130,85 +69,23 @@ span:nth-child(4) {
       <div class="code__wrapper_top">
         <div class="code__wrapper_top-html">
           <div class="title">HTML</div>
-          <textarea id="htmlCode">&lt;div class=&#34;outer-circle&#34;&gt;
-  &lt;div class=&#34;inner-circle&#34;&gt;&lt;/div&gt;
-  &lt;span&gt;&lt;/span&gt;
-  &lt;span&gt;&lt;/span&gt;
-  &lt;span&gt;&lt;/span&gt;
-  &lt;span&gt;&lt;/span&gt;
-&lt;/div&gt;</textarea>
+          <textarea id="htmlCode"><%= htmlContent %></textarea>
         </div>
         <div class="code__wrapper_top-css">
           <div class="title">CSS</div>
-          <textarea id="cssCode">#iframe__wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.outer-circle {
-  position: relative;
-  height: 200px;
-  width: 200px;
-  background: linear-gradient(#14ffe9, #ffeb3b, #ff00e0);
-  border-radius: 50%;
-  animation: rotate 1.5s linear infinite;
-}
-
-.outer-circle span {
-  position: absolute;
-  height: 200px;
-  width: 200px;
-  background: linear-gradient(#14ffe9, #ffeb3b, #ff00e0);
-  border-radius: 50%;
-}
-
-span:nth-child(1) {
-  filter: blur(5px);
-}
-
-span:nth-child(2) {
-  filter: blur(10px);
-}
-
-span:nth-child(3) {
-  filter: blur(25px);
-}
-
-span:nth-child(4) {
-  filter: blur(150px);
-}
-
-.inner-circle {
-  height: 180px;
-  width: 180px;
-  position: absolute;
-  background: black;
-  top: 10px;
-  left: 10px;
-  border-radius: 50%;
-  z-index: 9;
-}
-
-@keyframes rotate {
-  0% {
-    filter: hue-rotate(0deg);
-  }
-
-  100% {
-    filter: hue-rotate(360deg);
-  }
-}</textarea>
+          <textarea id="cssCode"><%= cssContent %></textarea>
         </div>
         <div class="code__wrapper_top-js">
           <div class="title">JAVASCRIPT</div>
-          <textarea id="jsCode"></textarea>
+          <textarea id="jsCode"><%= jsContent %></textarea>
         </div>
       </div>
       <div class="code__wrapper_bottom">
         <div class="code__wrapper_top-preview">
           <div class="fs__icon"></div>
-          
+          <% if (type.includes('mobile')) { %>
+            <div class="mobile__icon" data-wenk="请按 F12 查看" data-wenk-pos="right"></div>
+          <% } %>
           <iframe
             id="live-preview"
             src="assets/templates/template-iframe.html"

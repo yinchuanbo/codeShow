@@ -5,14 +5,303 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>codeShow</title>
     <link rel="icon" sizes="any" mask href="assets/images/ico.svg" />
-    <link rel="stylesheet" href="assets/codemirror5/theme/blackboard.css" />
-    <link rel="stylesheet" href="assets/codemirror5/lib/codemirror.css" />
-    <link rel="stylesheet" href="assets/codemirror5/addon/hint/show-hint.css" />
+    <link
+      rel="stylesheet"
+      data-name="vs/editor/editor.main"
+      href="https://unpkg.com/monaco-editor@^0.21.2/min/vs/editor/editor.main.css"
+    />
     <link rel="stylesheet" href="assets/css/common.css" />
     <link rel="stylesheet" href="assets/lib/wenk.min.css" />
   </head>
   <body>
-    <div class="code__wrapper">
+    <div class="vs__code_wrapper">
+      <textarea id="htmlcode-ta" style="display: none;">&lt;div class=&#34;swiper&#34;&gt;
+  &lt;div class=&#34;swiper-wrapper&#34;&gt;
+    &lt;div class=&#34;swiper-slide swiper-slide--one&#34;&gt;
+      &lt;div&gt;
+        &lt;h2&gt;Jellyfish&lt;/h2&gt;
+        &lt;p&gt;
+          Jellyfish and sea jellies are the informal common names given to the
+          medusa-phase of certain gelatinous members of the subphylum Medusozoa,
+          a major part of the phylum Cnidaria.
+        &lt;/p&gt;
+        &lt;a href=&#34;https://en.wikipedia.org/wiki/Jellyfish&#34; target=&#34;_blank&#34;
+          &gt;explore&lt;/a
+        &gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;swiper-slide swiper-slide--two&#34;&gt;
+      &lt;div&gt;
+        &lt;h2&gt;Seahorse&lt;/h2&gt;
+        &lt;p&gt;
+          Seahorses are mainly found in shallow tropical and temperate salt
+          water throughout the world. They live in sheltered areas such as
+          seagrass beds, estuaries, coral reefs, and mangroves. Four species are
+          found in Pacific waters from North America to South America.
+        &lt;/p&gt;
+        &lt;a href=&#34;https://en.wikipedia.org/wiki/Seahorse&#34; target=&#34;_blank&#34;
+          &gt;explore&lt;/a
+        &gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;swiper-slide swiper-slide--three&#34;&gt;
+      &lt;div&gt;
+        &lt;h2&gt;octopus&lt;/h2&gt;
+        &lt;p&gt;
+          Octopuses inhabit various regions of the ocean, including coral reefs,
+          pelagic waters, and the seabed; some live in the intertidal zone and
+          others at abyssal depths. Most species grow quickly, mature early, and
+          are short-lived.
+        &lt;/p&gt;
+        &lt;a href=&#34;https://en.wikipedia.org/wiki/Octopus&#34; target=&#34;_blank&#34;
+          &gt;explore&lt;/a
+        &gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;swiper-slide swiper-slide--four&#34;&gt;
+      &lt;div&gt;
+        &lt;h2&gt;Shark&lt;/h2&gt;
+        &lt;p&gt;
+          Sharks are a group of elasmobranch fish characterized by a
+          cartilaginous skeleton, five to seven gill slits on the sides of the
+          head, and pectoral fins that are not fused to the head.
+        &lt;/p&gt;
+        &lt;a href=&#34;https://en.wikipedia.org/wiki/Shark&#34; target=&#34;_blank&#34;
+          &gt;explore&lt;/a
+        &gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;swiper-slide swiper-slide--five&#34;&gt;
+      &lt;div&gt;
+        &lt;h2&gt;Dolphin&lt;/h2&gt;
+        &lt;p&gt;
+          Dolphins are widespread. Most species prefer the warm waters of the
+          tropic zones, but some, such as the right whale dolphin, prefer colder
+          climates. Dolphins feed largely on fish and squid, but a few, such as
+          the orca, feed on large mammals such as seals.
+        &lt;/p&gt;
+        &lt;a href=&#34;https://en.wikipedia.org/wiki/Dolphin&#34; target=&#34;_blank&#34;
+          &gt;explore&lt;/a
+        &gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;!-- Add Pagination --&gt;
+  &lt;div class=&#34;swiper-pagination&#34;&gt;&lt;/div&gt;
+&lt;/div&gt;</textarea>
+      <textarea id="csscode-ta" style="display: none;">@import url(&#34;https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600&amp;family=Roboto:wght@300;400;500;900&amp;display=swap&#34;);
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: &#34;Open Sans&#34;, sans-serif;
+}
+
+body {
+  background: #fff;
+}
+
+.swiper {
+  width: 100%;
+  padding-top: 3.125rem;
+}
+
+.swiper-pagination-bullet,
+.swiper-pagination-bullet-active {
+  background: #fff;
+}
+
+.swiper-pagination {
+  bottom: 1.25rem !important;
+}
+
+.swiper-slide {
+  width: 18.75rem;
+  height: 28.125rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: self-start;
+}
+
+.swiper-slide h2 {
+  color: #fff;
+  font-family: &#34;Roboto&#34;, sans-serif;
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 1.4;
+  margin-bottom: 0.625rem;
+  padding: 0 0 0 1.563rem;
+  text-transform: uppercase;
+}
+
+.swiper-slide p {
+  color: #dadada;
+  font-family: &#34;Roboto&#34;, sans-serif;
+  font-weight: 300;
+  padding: 0 1.563rem;
+  line-height: 1.6;
+  font-size: 0.75rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.swiper-slide a {
+  margin: 1.25rem 1.563rem 3.438rem 1.563rem;
+  padding: 0.438em 1.875rem;
+  font-size: 0.9rem;
+}
+
+.swiper-slide a:hover {
+  color: #005baa;
+}
+
+.swiper-slide div {
+  display: none;
+  opacity: 0;
+  padding-bottom: 0.625rem;
+}
+
+.swiper-slide-active div {
+  display: block;
+  opacity: 1;
+}
+
+.swiper-slide--one {
+  background: linear-gradient(to top, #0f2027, #203a4300, #2c536400),
+    url(&#34;https://images.unsplash.com/photo-1628944682084-831f35256163?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=687&amp;q=80&#34;)
+      no-repeat 50% 50% / cover;
+}
+
+.swiper-slide--two {
+  background: linear-gradient(to top, #0f2027, #203a4300, #2c536400),
+    url(&#34;https://images.unsplash.com/photo-1515309025403-4b0184873cef?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=735&amp;q=80&#34;)
+      no-repeat 50% 50% / cover;
+}
+
+.swiper-slide--three {
+  background: linear-gradient(to top, #0f2027, #203a4300, #2c536400),
+    url(&#34;https://images.unsplash.com/photo-1545671913-b89ac1b4ac10?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1170&amp;q=80&#34;)
+      no-repeat 50% 50% / cover;
+}
+
+.swiper-slide--four {
+  background: linear-gradient(to top, #0f2027, #203a4300, #2c536400),
+    url(&#34;https://images.unsplash.com/photo-1598977123118-4e30ba3c4f5b?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1170&amp;q=80&#34;)
+      no-repeat 50% 50% / cover;
+}
+
+.swiper-slide--five {
+  background: linear-gradient(to top, #0f2027, #203a4300, #2c536400),
+    url(&#34;https://images.unsplash.com/photo-1570481662006-a3a1374699e8?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=765&amp;q=80&#34;)
+      no-repeat 50% 50% / cover;
+}
+
+.swiper-3d .swiper-slide-shadow-left,
+.swiper-3d .swiper-slide-shadow-right {
+  background-image: none;
+}
+
+@media screen and (min-width: 48rem) {
+  main {
+    display: flex;
+    align-items: center;
+  }
+  .bg,
+  .bg2 {
+    opacity: 0.1;
+  }
+}
+
+@media screen and (min-width: 93.75rem) {
+  .swiper {
+    width: 85%;
+  }
+}</textarea>
+      <textarea id="jscode-ta" style="display: none;">var swiper = new Swiper(&#34;.swiper&#34;, {
+  effect: &#34;coverflow&#34;,
+  grabCursor: true,
+  centeredSlides: true,
+  coverflowEffect: {
+    rotate: 0,
+    stretch: 0,
+    depth: 100,
+    modifier: 3,
+    slideShadows: true,
+  },
+  keyboard: {
+    enabled: true,
+  },
+  mousewheel: {
+    thresholdDelta: 70,
+  },
+  loop: true,
+  pagination: {
+    el: &#34;.swiper-pagination&#34;,
+    clickable: true,
+  },
+  breakpoints: {
+    640: {
+      slidesPerView: 2,
+    },
+    768: {
+      slidesPerView: 1,
+    },
+    1024: {
+      slidesPerView: 2,
+    },
+    1560: {
+      slidesPerView: 3,
+    },
+  },
+});</textarea>
+      <div class="vs__code_wrapper-main">
+      <div class="vs__code_wrapper-main">
+        <div class="code_wrapper_iframe">
+          <div class="code_fullscreen"></div>
+          
+            <div class="mobile__icon" data-wenk="请按 F12 查看" data-wenk-pos="right"></div>
+            <!-- <div class="mobile__icon"></div> -->
+          
+          <iframe
+            id="live-preview"
+            src="assets/templates/template-iframe.html"
+            width="100%"
+            height="100%"
+            allow="accelerometer *; camera *; encrypted-media *; display-capture *; geolocation *; gyroscope *; microphone *; midi *; clipboard-read *; clipboard-write *; web-share *; serial *; xr-spatial-tracking *"
+            allowfullscreen="true"
+            allowpaymentrequest="true"
+            allowtransparency="true"
+            sandbox="allow-forms allow-modals allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation allow-downloads allow-presentation"
+            class="result-iframe iframe-visual-update"
+            name="codeShow"
+            loading="lazy"
+          ></iframe>
+        </div>
+        <div class="code_wrapper_codes">
+          <div class="codes_tabs">
+            <div class="codes_tabs_item active">HTML</div>
+            <div class="codes_tabs_item">CSS</div>
+            <div class="codes_tabs_item">JAVASCRIPT</div>
+          </div>
+          <div class="codes_contents">
+            <div class="codes_contents_item active" id="htmlcode"></div>
+            <div class="codes_contents_item" id="csscode"></div>
+            <div class="codes_contents_item" id="jscode"></div>
+
+            <div class="Copy__code">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M16 4.038V4c0-.465 0-.697-.051-.888a1.5 1.5 0 0 0-1.06-1.06C14.697 2 14.464 2 14 2h-4c-.465 0-.697 0-.888.051a1.5 1.5 0 0 0-1.06 1.06C8 3.304 8 3.536 8 4v.038m8 0c0 .44-.001.665-.051.85a1.5 1.5 0 0 1-1.06 1.06C14.697 6 14.464 6 14 6h-4c-.465 0-.697 0-.888-.051a1.5 1.5 0 0 1-1.06-1.06C8.001 4.702 8 4.477 8 4.038m8 0c.784.047 1.34.155 1.816.397a4 4 0 0 1 1.748 1.748C20 7.04 20 8.16 20 10.4v5.2c0 2.24 0 3.36-.436 4.216a4 4 0 0 1-1.748 1.748C16.96 22 15.84 22 13.6 22h-3.2c-2.24 0-3.36 0-4.216-.436a4 4 0 0 1-1.748-1.748C4 18.96 4 17.84 4 15.6v-5.2c0-2.24 0-3.36.436-4.216a4 4 0 0 1 1.748-1.748c.475-.242 1.032-.35 1.816-.398"></path></svg>Copy</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="code__wrapper">
       <div class="close__fs"></div>
       <div class="code__wrapper_header">
         <div class="code__wrapper_header_title">Landing page with swiper</div>
@@ -299,18 +588,10 @@ body {
           ></iframe>
         </div>
       </div>
-    </div>
+    </div> -->
     <script src="assets/lib/jquery-3.7.1.min.js"></script>
     <script src="assets/lib/sass.sync.min.js"></script>
-    <script src="assets/codemirror5/lib/codemirror.js"></script>
-    <script src="assets/codemirror5/addon/hint/show-hint.js"></script>
-    <script src="assets/codemirror5/addon/hint/xml-hint.js"></script>
-    <script src="assets/codemirror5/addon/hint/html-hint.js"></script>
-    <script src="assets/codemirror5/mode/xml/xml.js"></script>
-    <script src="assets/codemirror5/mode/javascript/javascript.js"></script>
-    <script src="assets/codemirror5/mode/css/css.js"></script>
-    <script src="assets/codemirror5/mode/htmlmixed/htmlmixed.js"></script>
-    <script src="assets/codemirror5/addon/hint/css-hint.js"></script>
-    <script src="assets/js/common.js"></script>
+    <script src="https://unpkg.com/monaco-editor@^0.21.2/min/vs/loader.js"></script>
+    <script src="assets/js/editor-vs.js"></script>
   </body>
 </html>

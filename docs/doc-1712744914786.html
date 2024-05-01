@@ -5,14 +5,364 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>codeShow</title>
     <link rel="icon" sizes="any" mask href="assets/images/ico.svg" />
-    <link rel="stylesheet" href="assets/codemirror5/theme/blackboard.css" />
-    <link rel="stylesheet" href="assets/codemirror5/lib/codemirror.css" />
-    <link rel="stylesheet" href="assets/codemirror5/addon/hint/show-hint.css" />
+    <link
+      rel="stylesheet"
+      data-name="vs/editor/editor.main"
+      href="https://unpkg.com/monaco-editor@^0.21.2/min/vs/editor/editor.main.css"
+    />
     <link rel="stylesheet" href="assets/css/common.css" />
     <link rel="stylesheet" href="assets/lib/wenk.min.css" />
   </head>
   <body>
-    <div class="code__wrapper">
+    <div class="vs__code_wrapper">
+      <textarea id="htmlcode-ta" style="display: none;">&lt;div class=&#34;wrapper&#34;&gt;
+  &lt;div class=&#34;notifications&#34;&gt;
+    &lt;div class=&#34;notifications__item&#34;&gt;
+      &lt;div class=&#34;notifications__item__avatar&#34;&gt;
+        &lt;img
+          src=&#34;https://via.placeholder.com/75x75&#34;
+        /&gt;
+      &lt;/div&gt;
+
+      &lt;div class=&#34;notifications__item__content&#34;&gt;
+        &lt;span class=&#34;notifications__item__title&#34;&gt;Verdieu Steeve&lt;/span&gt;
+        &lt;span class=&#34;notifications__item__message&#34;
+          &gt;Just started following you&lt;/span
+        &gt;
+      &lt;/div&gt;
+
+      &lt;div&gt;
+        &lt;div class=&#34;notifications__item__option archive js-option&#34;&gt;
+          &lt;i class=&#34;fas fa-folder&#34;&gt;&lt;/i&gt;
+        &lt;/div&gt;
+        &lt;div class=&#34;notifications__item__option delete js-option&#34;&gt;
+          &lt;i class=&#34;fas fa-trash&#34;&gt;&lt;/i&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;notifications__item&#34;&gt;
+      &lt;div class=&#34;notifications__item__avatar&#34;&gt;
+        &lt;img
+          src=&#34;https://via.placeholder.com/75x75&#34;
+        /&gt;
+      &lt;/div&gt;
+
+      &lt;div class=&#34;notifications__item__content&#34;&gt;
+        &lt;span class=&#34;notifications__item__title&#34;&gt;Mikes Miles&lt;/span&gt;
+        &lt;span class=&#34;notifications__item__message&#34;
+          &gt;Just liked your video story&lt;/span
+        &gt;
+      &lt;/div&gt;
+
+      &lt;div&gt;
+        &lt;div class=&#34;notifications__item__option archive js-option&#34;&gt;
+          &lt;i class=&#34;fas fa-folder&#34;&gt;&lt;/i&gt;
+        &lt;/div&gt;
+        &lt;div class=&#34;notifications__item__option delete js-option&#34;&gt;
+          &lt;i class=&#34;fas fa-trash&#34;&gt;&lt;/i&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;notifications__item&#34;&gt;
+      &lt;div class=&#34;notifications__item__avatar&#34;&gt;
+        &lt;img
+          src=&#34;https://via.placeholder.com/75x75&#34;
+        /&gt;
+      &lt;/div&gt;
+
+      &lt;div class=&#34;notifications__item__content&#34;&gt;
+        &lt;span class=&#34;notifications__item__title&#34;&gt;Helen Saga&lt;/span&gt;
+        &lt;span class=&#34;notifications__item__message&#34;
+          &gt;Added you to a todos list for tomorrow&lt;/span
+        &gt;
+      &lt;/div&gt;
+
+      &lt;div&gt;
+        &lt;div class=&#34;notifications__item__option archive js-option&#34;&gt;
+          &lt;i class=&#34;fas fa-folder&#34;&gt;&lt;/i&gt;
+        &lt;/div&gt;
+        &lt;div class=&#34;notifications__item__option delete js-option&#34;&gt;
+          &lt;i class=&#34;fas fa-trash&#34;&gt;&lt;/i&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;notifications__item&#34;&gt;
+      &lt;div class=&#34;notifications__item__avatar&#34;&gt;
+        &lt;img
+          src=&#34;https://via.placeholder.com/75x75&#34;
+        /&gt;
+      &lt;/div&gt;
+
+      &lt;div class=&#34;notifications__item__content&#34;&gt;
+        &lt;span class=&#34;notifications__item__title&#34;&gt;Sarah Sharp&lt;/span&gt;
+        &lt;span class=&#34;notifications__item__message&#34;
+          &gt;Just commented on your last post&lt;/span
+        &gt;
+      &lt;/div&gt;
+
+      &lt;div&gt;
+        &lt;div class=&#34;notifications__item__option archive js-option&#34;&gt;
+          &lt;i class=&#34;fas fa-folder&#34;&gt;&lt;/i&gt;
+        &lt;/div&gt;
+        &lt;div class=&#34;notifications__item__option delete js-option&#34;&gt;
+          &lt;i class=&#34;fas fa-trash&#34;&gt;&lt;/i&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;notifications__item&#34;&gt;
+      &lt;div class=&#34;notifications__item__avatar&#34;&gt;
+        &lt;img
+          src=&#34;https://via.placeholder.com/75x75&#34;
+        /&gt;
+      &lt;/div&gt;
+
+      &lt;div class=&#34;notifications__item__content&#34;&gt;
+        &lt;span class=&#34;notifications__item__title&#34;&gt;John Lee&lt;/span&gt;
+        &lt;span class=&#34;notifications__item__message&#34;
+          &gt;Just started following you&lt;/span
+        &gt;
+      &lt;/div&gt;
+
+      &lt;div&gt;
+        &lt;div class=&#34;notifications__item__option archive js-option&#34;&gt;
+          &lt;i class=&#34;fas fa-folder&#34;&gt;&lt;/i&gt;
+        &lt;/div&gt;
+        &lt;div class=&#34;notifications__item__option delete js-option&#34;&gt;
+          &lt;i class=&#34;fas fa-trash&#34;&gt;&lt;/i&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</textarea>
+      <textarea id="csscode-ta" style="display: none;">#iframe__wrapper {
+  background-color: #c9463d;
+  color: black;
+  overflow: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wrapper {
+  width: 480px;
+}
+
+.notifications__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 105px;
+  margin-bottom: 20px;
+  padding: 0 20px;
+
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0px 15px 20px 0px rgb(0, 0, 0, 0.2);
+  transition: all 0.3s ease-in;
+  cursor: pointer;
+}
+
+.notifications__item__avatar {
+  width: 75px;
+  height: 75px;
+  overflow: hidden;
+  margin-right: 20px;
+  border-radius: 50%;
+}
+
+.notifications__item__avatar img {
+  width: 100%;
+  height: 100%;
+}
+
+.notifications__item__content {
+  width: calc(100% - 105px);
+}
+.notifications__item__title,
+.notifications__item__message {
+  display: block;
+}
+
+.notifications__item__title {
+  letter-spacing: 2px;
+  font-size: 17px;
+}
+
+.notifications__item__message {
+  font-size: 14px;
+  color: #929292;
+}
+
+.notifications__item__option {
+  width: 20px;
+  height: 20px;
+  margin: 8px 0;
+
+  border-radius: 50%;
+  color: white;
+  opacity: 0;
+  font-size: 10px;
+  text-align: center;
+  line-height: 20px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.notifications__item__option.archive {
+  background-color: #3dc98c;
+}
+
+.notifications__item__option.delete {
+  background-color: #c93d4d;
+}
+
+/*
+* Animation part
+*/
+.notifications__item:hover {
+  background-color: #f7f7f7;
+  transform: scale(0.95);
+  box-shadow: 0px 5px 10px 0px rgb(0, 0, 0, 0.2);
+}
+
+.notifications__item:hover .notifications__item__option {
+  opacity: 1;
+}
+
+.notifications__item.archive .notifications__item__title,
+.notifications__item.delete .notifications__item__title {
+  color: white;
+}
+
+.notifications__item.archive .notifications__item__message,
+.notifications__item.delete .notifications__item__message {
+  color: #f3f3f3;
+}
+
+.notifications__item.archive {
+  background-color: #3dc98c;
+  animation: archiveAnimation 1.5s cubic-bezier(0, 0, 0, 1.12) forwards;
+  animation-delay: 0.6s;
+}
+
+.notifications__item.delete {
+  background-color: #c93d4d;
+  animation: deleteAnimation 1.5s cubic-bezier(0, 0, 0, 1.12) forwards;
+  animation-delay: 0.6s;
+}
+
+@keyframes archiveAnimation {
+  to {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+}
+
+@keyframes deleteAnimation {
+  to {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+}</textarea>
+      <textarea id="jscode-ta" style="display: none;">(function () {
+  /*
+   * Get all the buttons actions
+   */
+  let optionBtns = document.querySelectorAll(&#34;.js-option&#34;);
+
+  for (var i = 0; i &lt; optionBtns.length; i++) {
+    /*
+     * When click to a button
+     */
+    optionBtns[i].addEventListener(&#34;click&#34;, function (e) {
+      var notificationCard = this.parentNode.parentNode;
+      var clickBtn = this;
+      /*
+       * Execute the delete or Archive animation
+       */
+      requestAnimationFrame(function () {
+        archiveOrDelete(clickBtn, notificationCard);
+
+        /*
+         * Add transition
+         * That smoothly remove the blank space
+         * Leaves by the deleted notification card
+         */
+        window.setTimeout(function () {
+          requestAnimationFrame(function () {
+            notificationCard.style.transition = &#34;all .4s ease&#34;;
+            notificationCard.style.height = 0;
+            notificationCard.style.margin = 0;
+            notificationCard.style.padding = 0;
+          });
+
+          /*
+           * Delete definitely the animation card
+           */
+          window.setTimeout(function () {
+            notificationCard.parentNode.removeChild(notificationCard);
+          }, 1500);
+        }, 1500);
+      });
+    });
+  }
+
+  /*
+   * Function that adds
+   * delete or archive class
+   * To a notification card
+   */
+  var archiveOrDelete = function (clickBtn, notificationCard) {
+    if (clickBtn.classList.contains(&#34;archive&#34;)) {
+      notificationCard.classList.add(&#34;archive&#34;);
+    } else if (clickBtn.classList.contains(&#34;delete&#34;)) {
+      notificationCard.classList.add(&#34;delete&#34;);
+    }
+  };
+})();</textarea>
+      <div class="vs__code_wrapper-main">
+      <div class="vs__code_wrapper-main">
+        <div class="code_wrapper_iframe">
+          <div class="code_fullscreen"></div>
+          
+          <iframe
+            id="live-preview"
+            src="assets/templates/template-iframe.html"
+            width="100%"
+            height="100%"
+            allow="accelerometer *; camera *; encrypted-media *; display-capture *; geolocation *; gyroscope *; microphone *; midi *; clipboard-read *; clipboard-write *; web-share *; serial *; xr-spatial-tracking *"
+            allowfullscreen="true"
+            allowpaymentrequest="true"
+            allowtransparency="true"
+            sandbox="allow-forms allow-modals allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation allow-downloads allow-presentation"
+            class="result-iframe iframe-visual-update"
+            name="codeShow"
+            loading="lazy"
+          ></iframe>
+        </div>
+        <div class="code_wrapper_codes">
+          <div class="codes_tabs">
+            <div class="codes_tabs_item active">HTML</div>
+            <div class="codes_tabs_item">CSS</div>
+            <div class="codes_tabs_item">JAVASCRIPT</div>
+          </div>
+          <div class="codes_contents">
+            <div class="codes_contents_item active" id="htmlcode"></div>
+            <div class="codes_contents_item" id="csscode"></div>
+            <div class="codes_contents_item" id="jscode"></div>
+
+            <div class="Copy__code">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M16 4.038V4c0-.465 0-.697-.051-.888a1.5 1.5 0 0 0-1.06-1.06C14.697 2 14.464 2 14 2h-4c-.465 0-.697 0-.888.051a1.5 1.5 0 0 0-1.06 1.06C8 3.304 8 3.536 8 4v.038m8 0c0 .44-.001.665-.051.85a1.5 1.5 0 0 1-1.06 1.06C14.697 6 14.464 6 14 6h-4c-.465 0-.697 0-.888-.051a1.5 1.5 0 0 1-1.06-1.06C8.001 4.702 8 4.477 8 4.038m8 0c.784.047 1.34.155 1.816.397a4 4 0 0 1 1.748 1.748C20 7.04 20 8.16 20 10.4v5.2c0 2.24 0 3.36-.436 4.216a4 4 0 0 1-1.748 1.748C16.96 22 15.84 22 13.6 22h-3.2c-2.24 0-3.36 0-4.216-.436a4 4 0 0 1-1.748-1.748C4 18.96 4 17.84 4 15.6v-5.2c0-2.24 0-3.36.436-4.216a4 4 0 0 1 1.748-1.748c.475-.242 1.032-.35 1.816-.398"></path></svg>Copy</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="code__wrapper">
       <div class="close__fs"></div>
       <div class="code__wrapper_header">
         <div class="code__wrapper_header_title">Notification-cards-animation</div>
@@ -361,18 +711,10 @@
           ></iframe>
         </div>
       </div>
-    </div>
+    </div> -->
     <script src="assets/lib/jquery-3.7.1.min.js"></script>
     <script src="assets/lib/sass.sync.min.js"></script>
-    <script src="assets/codemirror5/lib/codemirror.js"></script>
-    <script src="assets/codemirror5/addon/hint/show-hint.js"></script>
-    <script src="assets/codemirror5/addon/hint/xml-hint.js"></script>
-    <script src="assets/codemirror5/addon/hint/html-hint.js"></script>
-    <script src="assets/codemirror5/mode/xml/xml.js"></script>
-    <script src="assets/codemirror5/mode/javascript/javascript.js"></script>
-    <script src="assets/codemirror5/mode/css/css.js"></script>
-    <script src="assets/codemirror5/mode/htmlmixed/htmlmixed.js"></script>
-    <script src="assets/codemirror5/addon/hint/css-hint.js"></script>
-    <script src="assets/js/common.js"></script>
+    <script src="https://unpkg.com/monaco-editor@^0.21.2/min/vs/loader.js"></script>
+    <script src="assets/js/editor-vs.js"></script>
   </body>
 </html>

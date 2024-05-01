@@ -5,14 +5,299 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>codeShow</title>
     <link rel="icon" sizes="any" mask href="assets/images/ico.svg" />
-    <link rel="stylesheet" href="assets/codemirror5/theme/blackboard.css" />
-    <link rel="stylesheet" href="assets/codemirror5/lib/codemirror.css" />
-    <link rel="stylesheet" href="assets/codemirror5/addon/hint/show-hint.css" />
+    <link
+      rel="stylesheet"
+      data-name="vs/editor/editor.main"
+      href="https://unpkg.com/monaco-editor@^0.21.2/min/vs/editor/editor.main.css"
+    />
     <link rel="stylesheet" href="assets/css/common.css" />
     <link rel="stylesheet" href="assets/lib/wenk.min.css" />
   </head>
   <body>
-    <div class="code__wrapper">
+    <div class="vs__code_wrapper">
+      <textarea id="htmlcode-ta" style="display: none;">&lt;section class=&#34;faqs__translator&#34;&gt;
+  &lt;h2 class=&#34;faqs__translator_title&#34;&gt;FAQs on Vidnoz AI Video Translator&lt;/h2&gt;
+  &lt;div class=&#34;faqs__translator_lists&#34;&gt;
+    &lt;div class=&#34;faqs__translator_item&#34;&gt;
+      &lt;div class=&#34;faqs__translator_item-header show&#34;&gt;
+        How can I translate a video without subtitles?
+      &lt;/div&gt;
+      &lt;div class=&#34;faqs__translator_item-body&#34; style=&#34;max-height: 300px;&#34;&gt;
+        Yes, Vidnoz AI Video Translator supports AI dubbing and voice-over
+        translation without subtitles. You can also choose to disable or enable
+        subtitle translation if the video has subtitles included.
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;faqs__translator_item&#34;&gt;
+      &lt;div class=&#34;faqs__translator_item-header&#34;&gt;
+        How do I auto-translate a video?
+      &lt;/div&gt;
+      &lt;div class=&#34;faqs__translator_item-body&#34;&gt;
+        Our AI video translator features an automated process from start to
+        finish. The only user steps are uploading a video, choosing your
+        preferred options, and clicking the Translate Now button.
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;faqs__translator_item&#34;&gt;
+      &lt;div class=&#34;faqs__translator_item-header&#34;&gt;
+        Can I translate an audio file?
+      &lt;/div&gt;
+      &lt;div class=&#34;faqs__translator_item-body&#34;&gt;
+        This video translate AI tool doesn’t support audio file formats. Still,
+        a workable solution is converting the audio to M4V, MP4, MOV, or WEBM
+        first and translating audio only in the converted file.
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;faqs__translator_item&#34;&gt;
+      &lt;div class=&#34;faqs__translator_item-header&#34;&gt;
+        How to translate a YouTube video?
+      &lt;/div&gt;
+      &lt;div class=&#34;faqs__translator_item-body&#34;&gt;
+        Before uploading, you can translate the YouTube video as you do with
+        other videos. When it comes to an online YouTube video, please save it
+        offline and do the translation with Vidnoz Youtube Video Translator.
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;faqs__translator_item&#34;&gt;
+      &lt;div class=&#34;faqs__translator_item-header&#34;&gt;
+        Can I translate a video from any language?
+      &lt;/div&gt;
+      &lt;div class=&#34;faqs__translator_item-body&#34;&gt;
+        The support for 140+ languages also refers to the input sources. In
+        other words, Vidnoz AI Video Translator can help you translate video
+        free in any popular spoken language for sure.
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;faqs__translator_item&#34;&gt;
+      &lt;div class=&#34;faqs__translator_item-header&#34;&gt;
+        How can I download my translations?
+      &lt;/div&gt;
+      &lt;div class=&#34;faqs__translator_item-body&#34;&gt;
+        Once the translation process is complete, click the Download button
+        below the translated video. A sign-up window will pop up. Sign in with
+        your Gmail address at a single click away and the download will start at
+        the next second.
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;</textarea>
+      <textarea id="csscode-ta" style="display: none;">@import url(&#34;https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap&#34;);
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: &#34;Poppins&#34;, sans-serif;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  scroll-behavior: smooth;
+  user-select: none;
+}
+html,
+body {
+  box-sizing: inherit;
+}
+:root {
+  --text-b-color: #000000;
+  --bg-color: #f8f8f8;
+  --border-bottom-color: #d2d0de;
+}
+@function pxToVw($px) {
+  @return ($px / 750) * 100vw;
+}
+@mixin flex-column-center-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin font-info($fs, $lh, $fw, $c, $ta: center) {
+  font-size: pxToVw($fs);
+  font-weight: $fw;
+  line-height: pxToVw($lh);
+  font-family: inherit;
+  color: $c;
+  text-align: $ta;
+}
+
+@mixin font-info-pc($fs, $lh, $fw, $c, $ta: center) {
+  font-size: $fs;
+  font-weight: $fw;
+  line-height: $lh;
+  font-family: inherit;
+  color: $c;
+  text-align: $ta;
+}
+
+@mixin bg-info($image, $color: transparent, $pos: center, $size: cover) {
+  background-color: $color;
+  background-image: url($image);
+  background-position: $pos;
+  background-repeat: no-repeat;
+  background-size: $size;
+}
+#iframe__wrapper {
+  display: grid;
+}
+.faqs__translator {
+  @include flex-column-center-center;
+  padding-top: pxToVw(100);
+  padding-bottom: pxToVw(100);
+  background-color: var(--bg-color);
+  .faqs__translator_title {
+    max-width: pxToVw(630);
+    margin-bottom: pxToVw(24);
+    @include font-info(44, 71, 600, var(--text-b-color));
+    margin-bottom: pxToVw(84);
+  }
+  .faqs__translator_lists {
+    max-width: pxToVw(630);
+  }
+  .faqs__translator_item {
+    width: 100%;
+    border-bottom: 1px solid var(--border-bottom-color);
+    padding-bottom: pxToVw(33);
+    &amp; + .faqs__translator_item {
+      padding-top: pxToVw(33);
+    }
+    .faqs__translator_item-header {
+      @include font-info(32, 48, 500, var(--text-b-color), left);
+      margin-bottom: pxToVw(8);
+      max-width: pxToVw(539);
+      position: relative;
+      &amp;::before {
+        content: &#34;&#34;;
+        position: absolute;
+        top: 0;
+        right: pxToVw(-49);
+        width: pxToVw(40);
+        height: pxToVw(40);
+        @include bg-info(
+          &#34;https://www.vidnoz.com/img/video-translate/arrow-down.svg&#34;,
+          transparent,
+          center
+        );
+        transition: all 0.5s;
+      }
+      transition: all 0.5s;
+      &amp;.show {
+        &amp;::before {
+          transition: all 0.5s;
+          transform-origin: center;
+          transform: rotate(-180deg);
+        }
+      }
+    }
+    .faqs__translator_item-body {
+      @include font-info(32, 55, 300, var(--text-b-color), left);
+      letter-spacing: 0.64px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease;
+    }
+  }
+}
+@media (min-width: 1200px) {
+  .faqs__translator {
+    padding-top: 100px;
+    padding-bottom: 100px;
+    height: fit-content;
+    min-height: 100vh;
+    .faqs__translator_title {
+      @include font-info-pc(44px, 61px, 600, var(--text-b-color));
+      margin-bottom: 42px;
+    }
+    .faqs__translator_lists {
+      max-width: 700px;
+    }
+    .faqs__translator_item {
+      padding-bottom: 25.5px;
+      &amp; + .faqs__translator_item {
+        padding-top: 25.5px;
+      }
+      .faqs__translator_item-header {
+        max-width: 666px;
+        cursor: pointer;
+        @include font-info-pc(18px, 27px, 500, var(--text-b-color), left);
+        margin-bottom: 0;
+        &amp;.show {
+          padding-bottom: 25.5px;
+        }
+        &amp;::before {
+          width: 18px;
+          height: 18px;
+          right: 0;
+        }
+      }
+      .faqs__translator_item-body {
+        max-width: 666px;
+        @include font-info-pc(16px, 25px, 300, var(--text-b-color), left);
+      }
+    }
+  }
+}</textarea>
+      <textarea id="jscode-ta" style="display: none;">const faqsTranslatorItems = document.querySelectorAll(&#34;.faqs__translator_item&#34;);
+
+function faqsTranslatorItemsClick() {
+  for (let i = 0; i &lt; faqsTranslatorItems.length; i++) {
+    const item = faqsTranslatorItems[i];
+    const header = item.querySelector(&#34;.faqs__translator_item-header&#34;);
+    const body = item.querySelector(&#34;.faqs__translator_item-body&#34;);
+    header.onclick = () =&gt; {
+      const show =
+        body.style.maxHeight === &#34;0px&#34; || body.style.maxHeight === &#34;&#34;;
+      body.style.maxHeight = show ? body.scrollHeight + &#34;px&#34; : &#34;0&#34;;
+      if (show) {
+        header.classList.add(&#34;show&#34;);
+      } else {
+        header.classList.remove(&#34;show&#34;);
+      }
+    };
+  }
+}
+
+faqsTranslatorItemsClick();</textarea>
+      <div class="vs__code_wrapper-main">
+      <div class="vs__code_wrapper-main">
+        <div class="code_wrapper_iframe">
+          <div class="code_fullscreen"></div>
+          
+            <div class="mobile__icon" data-wenk="请按 F12 查看" data-wenk-pos="right"></div>
+            <!-- <div class="mobile__icon"></div> -->
+          
+          <iframe
+            id="live-preview"
+            src="assets/templates/template-iframe.html"
+            width="100%"
+            height="100%"
+            allow="accelerometer *; camera *; encrypted-media *; display-capture *; geolocation *; gyroscope *; microphone *; midi *; clipboard-read *; clipboard-write *; web-share *; serial *; xr-spatial-tracking *"
+            allowfullscreen="true"
+            allowpaymentrequest="true"
+            allowtransparency="true"
+            sandbox="allow-forms allow-modals allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation allow-downloads allow-presentation"
+            class="result-iframe iframe-visual-update"
+            name="codeShow"
+            loading="lazy"
+          ></iframe>
+        </div>
+        <div class="code_wrapper_codes">
+          <div class="codes_tabs">
+            <div class="codes_tabs_item active">HTML</div>
+            <div class="codes_tabs_item">CSS</div>
+            <div class="codes_tabs_item">JAVASCRIPT</div>
+          </div>
+          <div class="codes_contents">
+            <div class="codes_contents_item active" id="htmlcode"></div>
+            <div class="codes_contents_item" id="csscode"></div>
+            <div class="codes_contents_item" id="jscode"></div>
+
+            <div class="Copy__code">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M16 4.038V4c0-.465 0-.697-.051-.888a1.5 1.5 0 0 0-1.06-1.06C14.697 2 14.464 2 14 2h-4c-.465 0-.697 0-.888.051a1.5 1.5 0 0 0-1.06 1.06C8 3.304 8 3.536 8 4v.038m8 0c0 .44-.001.665-.051.85a1.5 1.5 0 0 1-1.06 1.06C14.697 6 14.464 6 14 6h-4c-.465 0-.697 0-.888-.051a1.5 1.5 0 0 1-1.06-1.06C8.001 4.702 8 4.477 8 4.038m8 0c.784.047 1.34.155 1.816.397a4 4 0 0 1 1.748 1.748C20 7.04 20 8.16 20 10.4v5.2c0 2.24 0 3.36-.436 4.216a4 4 0 0 1-1.748 1.748C16.96 22 15.84 22 13.6 22h-3.2c-2.24 0-3.36 0-4.216-.436a4 4 0 0 1-1.748-1.748C4 18.96 4 17.84 4 15.6v-5.2c0-2.24 0-3.36.436-4.216a4 4 0 0 1 1.748-1.748c.475-.242 1.032-.35 1.816-.398"></path></svg>Copy</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="code__wrapper">
       <div class="close__fs"></div>
       <div class="code__wrapper_header">
         <div class="code__wrapper_header_title">官网效果</div>
@@ -295,18 +580,10 @@ faqsTranslatorItemsClick();</textarea>
           ></iframe>
         </div>
       </div>
-    </div>
+    </div> -->
     <script src="assets/lib/jquery-3.7.1.min.js"></script>
     <script src="assets/lib/sass.sync.min.js"></script>
-    <script src="assets/codemirror5/lib/codemirror.js"></script>
-    <script src="assets/codemirror5/addon/hint/show-hint.js"></script>
-    <script src="assets/codemirror5/addon/hint/xml-hint.js"></script>
-    <script src="assets/codemirror5/addon/hint/html-hint.js"></script>
-    <script src="assets/codemirror5/mode/xml/xml.js"></script>
-    <script src="assets/codemirror5/mode/javascript/javascript.js"></script>
-    <script src="assets/codemirror5/mode/css/css.js"></script>
-    <script src="assets/codemirror5/mode/htmlmixed/htmlmixed.js"></script>
-    <script src="assets/codemirror5/addon/hint/css-hint.js"></script>
-    <script src="assets/js/common.js"></script>
+    <script src="https://unpkg.com/monaco-editor@^0.21.2/min/vs/loader.js"></script>
+    <script src="assets/js/editor-vs.js"></script>
   </body>
 </html>

@@ -5,14 +5,628 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>codeShow</title>
     <link rel="icon" sizes="any" mask href="assets/images/ico.svg" />
-    <link rel="stylesheet" href="assets/codemirror5/theme/blackboard.css" />
-    <link rel="stylesheet" href="assets/codemirror5/lib/codemirror.css" />
-    <link rel="stylesheet" href="assets/codemirror5/addon/hint/show-hint.css" />
+    <link
+      rel="stylesheet"
+      data-name="vs/editor/editor.main"
+      href="https://unpkg.com/monaco-editor@^0.21.2/min/vs/editor/editor.main.css"
+    />
     <link rel="stylesheet" href="assets/css/common.css" />
     <link rel="stylesheet" href="assets/lib/wenk.min.css" />
   </head>
   <body>
-    <div class="code__wrapper">
+    <div class="vs__code_wrapper">
+      <textarea id="htmlcode-ta" style="display: none;">&lt;div class=&#34;col-sm-7 mx-auto&#34;&gt;
+  &lt;header class=&#34;section-header text-center&#34;&gt;
+    &lt;!-- &lt;span class=&#34;h1 d-block&#34;&gt;
+      &lt;span&gt;❝&lt;/span&gt;
+    &lt;/span&gt; --&gt;
+    &lt;h2&gt;Happy Customers&lt;/h2&gt;
+  &lt;/header&gt;
+&lt;/div&gt;
+
+&lt;div id=&#34;flex-container&#34; class=&#34;testimonials&#34;&gt;
+  &lt;div id=&#34;left-zone&#34;&gt;
+    &lt;ul class=&#34;list&#34;&gt;
+      &lt;li class=&#34;item&#34;&gt;
+        &lt;input
+          type=&#34;radio&#34;
+          id=&#34;radio_testimonial-1&#34;
+          name=&#34;basic_carousel&#34;
+          checked=&#34;checked&#34;
+        /&gt;
+        &lt;label class=&#34;label_testimonial-1&#34; for=&#34;radio_testimonial-1&#34;
+          &gt;Diamond Pest Elimination&lt;/label
+        &gt;
+        &lt;div class=&#34;content-test content_testimonial-1&#34;&gt;
+          &lt;span class=&#34;picto&#34;&gt;&lt;/span&gt;
+          &lt;h1&gt;Diamond Pest Elimination&lt;/h1&gt;
+          &lt;p&gt;
+            “The team really takes pride in their work. If I didn’t know any
+            better I would think they actually worked for my company.”
+          &lt;/p&gt;
+          &lt;p class=&#34;testimonialFrom&#34;&gt;Bill, Owner&lt;/p&gt;
+          &lt;p class=&#34;testimonialState&#34;&gt;Rochester, NY&lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/li&gt;
+      &lt;li class=&#34;item&#34;&gt;
+        &lt;input type=&#34;radio&#34; id=&#34;radio_testimonial-2&#34; name=&#34;basic_carousel&#34; /&gt;
+        &lt;label class=&#34;label_testimonial-2&#34; for=&#34;radio_testimonial-2&#34;
+          &gt;A+ Handyman Service&lt;/label
+        &gt;
+        &lt;div class=&#34;content-test content_testimonial-2&#34;&gt;
+          &lt;span class=&#34;picto&#34;&gt;&lt;/span&gt;
+          &lt;h1&gt;A+ Handyman Service&lt;/h1&gt;
+          &lt;p&gt;
+            “Quite simply… the service offers prompt response time to my
+            visitors and helps me to better know what type of project a
+            potential customer wants.”
+          &lt;/p&gt;
+          &lt;p class=&#34;testimonialFrom&#34;&gt;Bill, Owner&lt;/p&gt;
+          &lt;p class=&#34;testimonialState&#34;&gt;Tucson, AZ&lt;/p&gt;
+          &lt;br /&gt;
+        &lt;/div&gt;
+      &lt;/li&gt;
+      &lt;li class=&#34;item&#34;&gt;
+        &lt;input type=&#34;radio&#34; id=&#34;radio_testimonial-3&#34; name=&#34;basic_carousel&#34; /&gt;
+        &lt;label class=&#34;label_testimonial-3&#34; for=&#34;radio_testimonial-3&#34;
+          &gt;Mod Movers&lt;/label
+        &gt;
+        &lt;div class=&#34;content-test content_testimonial-3&#34;&gt;
+          &lt;span class=&#34;picto&#34;&gt;&lt;/span&gt;
+          &lt;h1&gt;Mod Movers&lt;/h1&gt;
+          &lt;p&gt;
+            “I couldn’t believe it. I actually had to hire someone to help me
+            keep up with the new business. I had no idea my website had so much
+            value.”
+          &lt;/p&gt;
+          &lt;p class=&#34;testimonialFrom&#34;&gt;Marlene, Owner&lt;/p&gt;
+          &lt;p class=&#34;testimonialState&#34;&gt;Monterey, CA&lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/li&gt;
+      &lt;li class=&#34;item&#34;&gt;
+        &lt;input type=&#34;radio&#34; id=&#34;radio_testimonial-4&#34; name=&#34;basic_carousel&#34; /&gt;
+        &lt;label class=&#34;label_testimonial-4&#34; for=&#34;radio_testimonial-4&#34;
+          &gt;AK Pest Control&lt;/label
+        &gt;
+        &lt;div class=&#34;content-test content_testimonial-4&#34;&gt;
+          &lt;span class=&#34;picto&#34;&gt;&lt;/span&gt;
+          &lt;h1&gt;AK Pest Control&lt;/h1&gt;
+          &lt;p&gt;
+            Great company to send leads. Very efficient and pleased with the
+            services. We get lots of leads and that whats important. Support is
+            also great from the managers/support. Thanks YPC Chat
+          &lt;/p&gt;
+          &lt;p class=&#34;testimonialFrom&#34;&gt;Mark, Owner&lt;/p&gt;
+          &lt;p class=&#34;testimonialState&#34;&gt;Somerset, VA&lt;/p&gt;
+          &lt;br /&gt;
+        &lt;/div&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+  &lt;div id=&#34;right-zone&#34;&gt;&lt;/div&gt;
+&lt;/div&gt;</textarea>
+      <textarea id="csscode-ta" style="display: none;">#iframe__wrapper {
+  background: #eee;
+  font-family: Tahoma;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  padding-top: 20px;
+}
+.d-block,
+h2 {
+  color: #33475c;
+  font-weight: 700;
+  font-size: 2.5rem;
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+/* ============= Begin Testimonial Flexbox ============ */
+#flex-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 100%;
+  min-height: 400px;
+  height: 110vh;
+  max-width: 1000px;
+  margin: auto;
+  background-color: #fff;
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  position: relative;
+}
+
+#left-zone {
+  height: 50%;
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+}
+
+#left-zone .list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  list-style: none;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  margin: auto;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.item input {
+  display: none;
+}
+
+label {
+  display: block;
+  opacity: 0.5;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  position: relative;
+}
+
+label:hover {
+  opacity: 0.75;
+  cursor: pointer;
+}
+
+.content-test {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  -webkit-transform: translateY(100%);
+  -ms-transform: translateY(100%);
+  transform: translateY(100%);
+  height: 50%;
+  width: 100%;
+  -webkit-transition: 0.5s ease-out;
+  -o-transition: 0.5s ease-out;
+  transition: 0.5s ease-out;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  pointer-events: none;
+}
+
+.content-test p {
+  max-width: 50%;
+  text-align: center;
+}
+
+#right-zone {
+  width: 100%;
+  -webkit-box-flex: 1;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  height: 50%;
+}
+
+input:checked ~ .content-test {
+  -webkit-transform: translateY(0%);
+  -ms-transform: translateY(0%);
+  transform: translateY(0%);
+  -webkit-transition: -webkit-transform 1s;
+  transition: -webkit-transform 1s;
+  -o-transition: transform 1s;
+  transition: transform 1s;
+  transition: transform 1s, -webkit-transform 1s;
+  opacity: 1;
+}
+
+@media (min-width: 480px) {
+  #flex-container {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    min-height: auto;
+    height: 400px;
+    /* position: absolute; */
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
+  #left-zone .list {
+    border-right: 2px solid #cccccc;
+  }
+
+  .content-test {
+    width: 65%;
+    height: 100%;
+    pointer-events: auto;
+    -webkit-transform: translateY(-100%);
+    -ms-transform: translateY(-100%);
+    transform: translateY(-100%);
+  }
+
+  #left-zone {
+    width: 35%;
+  }
+
+  #right-zone {
+    height: 100%;
+    width: 65%;
+  }
+}
+/* If the screen size is 480px or less */
+@media (max-width: 480px) {
+  .content_testimonial-1 .picto {
+    padding-top: 100px;
+  }
+  .content_testimonial-2 .picto {
+    padding-top: 100px;
+  }
+  .content_testimonial-3 .picto {
+    padding-top: 100px;
+  }
+  .content_testimonial-4 .picto {
+    padding-top: 100px;
+  }
+  .item &gt; label {
+    font-size: 1.3rem;
+  }
+}
+
+.content_testimonial-1 .picto {
+  height: 100px;
+  width: 100px;
+  background-image: url(&#34;https://i.postimg.cc/RFBHkG46/diamond-Pest-Logo-small.jpg&#34;);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.content_testimonial-1 h1 {
+  color: #d64541;
+  text-align: center;
+}
+
+.content_testimonial-2 .picto {
+  height: 100px;
+  width: 100px;
+  background-image: url(&#34;https://i.postimg.cc/bsqXXKCV/a-Plus-Handyman-Logo.jpg&#34;);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.content_testimonial-2 h1 {
+  color: #f5d76e;
+}
+
+.content_testimonial-3 .picto {
+  height: 100px;
+  width: 100px;
+  background-image: url(&#34;https://i.postimg.cc/zV7sq04z/mod-Movers-Logo.jpg&#34;);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.content_testimonial-3 h1 {
+  color: #00b16a;
+}
+
+.content_testimonial-4 .picto {
+  height: 100px;
+  width: 100px;
+  background-image: url(&#34;https://i.postimg.cc/4Y3rypTz/ak-Pest-Control-Logo.jpg&#34;);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.content_testimonial-4 h1 {
+  color: #f27935;
+}
+
+.content-test h1:first-letter {
+  text-transform: uppercase;
+}
+
+input:checked ~ label {
+  opacity: 1;
+  -webkit-animation: all 1s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  animation: all 1s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+}
+
+input:checked ~ label.label_testimonial-1 {
+  color: #d64541;
+  border-right: solid 4px #d64541;
+}
+
+input:checked ~ label.label_testimonial-2 {
+  color: #f5d76e;
+  border-right: solid 4px #f5d76e;
+}
+
+input:checked ~ label.label_testimonial-3 {
+  color: #00b16a;
+  border-right: solid 4px #00b16a;
+}
+
+input:checked ~ label.label_testimonial-4 {
+  color: #f27935;
+  border-right: solid 4px #f27935;
+}
+
+label.label_testimonial-1:before {
+  content: &#34; &#34;;
+  display: block;
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  margin-left: 15px;
+  background-image: url(&#34;https://i.postimg.cc/RFBHkG46/diamond-Pest-Logo-small.jpg&#34;);
+  background-position: center;
+  background-size: 75% 75%;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+}
+
+label.label_testimonial-2:before {
+  content: &#34; &#34;;
+  display: block;
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  margin-left: 15px;
+  background-image: url(&#34;https://i.postimg.cc/bsqXXKCV/a-Plus-Handyman-Logo.jpg&#34;);
+  background-position: center;
+  background-size: 75% 75%;
+  border-radius: 50%;
+  background-repeat: no-repeat;
+}
+
+label.label_testimonial-3:before {
+  content: &#34; &#34;;
+  display: block;
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  margin-left: 15px;
+  background-image: url(&#34;https://i.postimg.cc/zV7sq04z/mod-Movers-Logo.jpg&#34;);
+  background-position: center;
+  background-size: 75% 75%;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+}
+
+label.label_testimonial-4:before {
+  content: &#34; &#34;;
+  display: block;
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  margin-left: 15px;
+  background-image: url(&#34;https://i.postimg.cc/4Y3rypTz/ak-Pest-Control-Logo.jpg&#34;);
+  background-position: center;
+  background-size: 75% 75%;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+}
+
+label:first-letter {
+  text-transform: uppercase;
+}
+
+.label_testimonial-1:hover {
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    from(#ffffff),
+    to(#d64541a3)
+  );
+  background-image: -webkit-linear-gradient(left, #ffffff, #d64541a3);
+  background-image: -o-linear-gradient(left, #ffffff, #d64541a3);
+  background-image: linear-gradient(to right, #ffffff, #d64541a3);
+  font-size: 1.2rem;
+  -webkit-transition: font-size 0.5s;
+  -o-transition: font-size 0.5s;
+  transition: font-size 0.5s;
+}
+
+.label_testimonial-2:hover {
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    from(#ffffff),
+    to(#f5d76e59)
+  );
+  background-image: -webkit-linear-gradient(left, #ffffff, #f5d76e59);
+  background-image: -o-linear-gradient(left, #ffffff, #f5d76e59);
+  background-image: linear-gradient(to right, #ffffff, #f5d76e59);
+  font-size: 1.2rem;
+  -webkit-transition: font-size 0.5s;
+  -o-transition: font-size 0.5s;
+  transition: font-size 0.5s;
+}
+
+.label_testimonial-3:hover {
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    from(#ffffff),
+    to(#00b16aa3)
+  );
+  background-image: -webkit-linear-gradient(left, #ffffff, #00b16aa3);
+  background-image: -o-linear-gradient(left, #ffffff, #00b16aa3);
+  background-image: linear-gradient(to right, #ffffff, #00b16aa3);
+  font-size: 1.2rem;
+  -webkit-transition: font-size 0.5s;
+  -o-transition: font-size 0.5s;
+  transition: font-size 0.5s;
+}
+
+.label_testimonial-4:hover {
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    from(#ffffff),
+    to(#f27935a3)
+  );
+  background-image: -webkit-linear-gradient(left, #ffffff, #f27935a3);
+  background-image: -o-linear-gradient(left, #ffffff, #f27935a3);
+  background-image: linear-gradient(to right, #ffffff, #f27935a3);
+  font-size: 1.2rem;
+  -webkit-transition: font-size 0.5s;
+  -o-transition: font-size 0.5s;
+  transition: font-size 0.5s;
+}
+
+p.testimonialState {
+  margin-top: -5px;
+  font-size: 0.8rem;
+  font-style: italic;
+  color: #808080d4;
+}
+
+p.testimonialFrom {
+  margin-top: 5px;
+  font-weight: bold;
+  color: #33475c;
+}
+/* ============== End Testimonial Flexbox ============= */</textarea>
+      <textarea id="jscode-ta" style="display: none;">// Makeshift carousel function that gets invoked with the Index to start it off, then the callback increments the index to recursively invoke the same function. Works even in IE11!
+var testimonialItems = document.querySelectorAll(&#34;.item label&#34;);
+var timer;
+function cycleTestimonials(index) {
+  timer = setTimeout(function () {
+    var evt;
+    if (document.createEvent) {
+      //If browser = IE, then polyfill
+      evt = document.createEvent(&#34;MouseEvent&#34;);
+      evt.initMouseEvent(
+        &#34;click&#34;,
+        true,
+        true,
+        window,
+        0,
+        0,
+        0,
+        0,
+        0,
+        false,
+        false,
+        false,
+        false,
+        0,
+        null
+      );
+    } else {
+      //If Browser = modern, then create new MouseEvent
+      evt = new MouseEvent(&#34;click&#34;, {
+        view: window,
+        bubbles: true,
+        cancelable: true,
+        clientX: 20,
+      });
+    }
+    var ele = &#34;.&#34; + testimonialItems[index].className;
+    var ele2 = document.querySelector(ele);
+    ele2.dispatchEvent(evt);
+    index++; // Increment the index
+    if (index &gt;= testimonialItems.length) {
+      index = 0; // Set it back to `0` when it reaches `3`
+    }
+    cycleTestimonials(index); // recursively call `cycleTestimonials()`
+    document
+      .querySelector(&#34;.testimonials&#34;)
+      .addEventListener(&#34;click&#34;, function () {
+        clearTimeout(timer); //stop the carousel when someone clicks on the div
+      });
+  }, 2000); //adjust scroll speed in miliseconds
+}
+//run the function
+cycleTestimonials(0);</textarea>
+      <div class="vs__code_wrapper-main">
+      <div class="vs__code_wrapper-main">
+        <div class="code_wrapper_iframe">
+          <div class="code_fullscreen"></div>
+          
+          <iframe
+            id="live-preview"
+            src="assets/templates/template-iframe.html"
+            width="100%"
+            height="100%"
+            allow="accelerometer *; camera *; encrypted-media *; display-capture *; geolocation *; gyroscope *; microphone *; midi *; clipboard-read *; clipboard-write *; web-share *; serial *; xr-spatial-tracking *"
+            allowfullscreen="true"
+            allowpaymentrequest="true"
+            allowtransparency="true"
+            sandbox="allow-forms allow-modals allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation allow-downloads allow-presentation"
+            class="result-iframe iframe-visual-update"
+            name="codeShow"
+            loading="lazy"
+          ></iframe>
+        </div>
+        <div class="code_wrapper_codes">
+          <div class="codes_tabs">
+            <div class="codes_tabs_item active">HTML</div>
+            <div class="codes_tabs_item">CSS</div>
+            <div class="codes_tabs_item">JAVASCRIPT</div>
+          </div>
+          <div class="codes_contents">
+            <div class="codes_contents_item active" id="htmlcode"></div>
+            <div class="codes_contents_item" id="csscode"></div>
+            <div class="codes_contents_item" id="jscode"></div>
+
+            <div class="Copy__code">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M16 4.038V4c0-.465 0-.697-.051-.888a1.5 1.5 0 0 0-1.06-1.06C14.697 2 14.464 2 14 2h-4c-.465 0-.697 0-.888.051a1.5 1.5 0 0 0-1.06 1.06C8 3.304 8 3.536 8 4v.038m8 0c0 .44-.001.665-.051.85a1.5 1.5 0 0 1-1.06 1.06C14.697 6 14.464 6 14 6h-4c-.465 0-.697 0-.888-.051a1.5 1.5 0 0 1-1.06-1.06C8.001 4.702 8 4.477 8 4.038m8 0c.784.047 1.34.155 1.816.397a4 4 0 0 1 1.748 1.748C20 7.04 20 8.16 20 10.4v5.2c0 2.24 0 3.36-.436 4.216a4 4 0 0 1-1.748 1.748C16.96 22 15.84 22 13.6 22h-3.2c-2.24 0-3.36 0-4.216-.436a4 4 0 0 1-1.748-1.748C4 18.96 4 17.84 4 15.6v-5.2c0-2.24 0-3.36.436-4.216a4 4 0 0 1 1.748-1.748c.475-.242 1.032-.35 1.816-.398"></path></svg>Copy</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="code__wrapper">
       <div class="close__fs"></div>
       <div class="code__wrapper_header">
         <div class="code__wrapper_header_title">Flexbox Testimonial Carousel</div>
@@ -625,18 +1239,10 @@ cycleTestimonials(0);</textarea>
           ></iframe>
         </div>
       </div>
-    </div>
+    </div> -->
     <script src="assets/lib/jquery-3.7.1.min.js"></script>
     <script src="assets/lib/sass.sync.min.js"></script>
-    <script src="assets/codemirror5/lib/codemirror.js"></script>
-    <script src="assets/codemirror5/addon/hint/show-hint.js"></script>
-    <script src="assets/codemirror5/addon/hint/xml-hint.js"></script>
-    <script src="assets/codemirror5/addon/hint/html-hint.js"></script>
-    <script src="assets/codemirror5/mode/xml/xml.js"></script>
-    <script src="assets/codemirror5/mode/javascript/javascript.js"></script>
-    <script src="assets/codemirror5/mode/css/css.js"></script>
-    <script src="assets/codemirror5/mode/htmlmixed/htmlmixed.js"></script>
-    <script src="assets/codemirror5/addon/hint/css-hint.js"></script>
-    <script src="assets/js/common.js"></script>
+    <script src="https://unpkg.com/monaco-editor@^0.21.2/min/vs/loader.js"></script>
+    <script src="assets/js/editor-vs.js"></script>
   </body>
 </html>

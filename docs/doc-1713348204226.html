@@ -5,14 +5,636 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>codeShow</title>
     <link rel="icon" sizes="any" mask href="assets/images/ico.svg" />
-    <link rel="stylesheet" href="assets/codemirror5/theme/blackboard.css" />
-    <link rel="stylesheet" href="assets/codemirror5/lib/codemirror.css" />
-    <link rel="stylesheet" href="assets/codemirror5/addon/hint/show-hint.css" />
+    <link
+      rel="stylesheet"
+      data-name="vs/editor/editor.main"
+      href="https://unpkg.com/monaco-editor@^0.21.2/min/vs/editor/editor.main.css"
+    />
     <link rel="stylesheet" href="assets/css/common.css" />
     <link rel="stylesheet" href="assets/lib/wenk.min.css" />
   </head>
   <body>
-    <div class="code__wrapper">
+    <div class="vs__code_wrapper">
+      <textarea id="htmlcode-ta" style="display: none;">&lt;!-- A recreation of a micro-interaction designed by Lu Yuhang [7ahang] --&gt;
+&lt;!-- https://dribbble.com/shots/11983664-Folder-Open-Animation --&gt;
+
+&lt;div class=&#34;folder&#34; id=&#34;js_folder&#34;&gt;
+  &lt;div class=&#34;folder-summary&#34; id=&#34;js_toggle-folder&#34;&gt;
+    &lt;div class=&#34;folder-summary__start&#34;&gt;
+      &lt;button class=&#34;folder-collapse-button&#34; id=&#34;js_folder-collapse-button&#34;&gt;
+        &lt;svg
+          id=&#34;js_folder-collapse-button-icon&#34;
+          xmlns=&#34;http://www.w3.org/2000/svg&#34;
+          width=&#34;24&#34;
+          height=&#34;24&#34;
+          viewBox=&#34;0 0 24 24&#34;
+          fill=&#34;none&#34;
+          stroke=&#34;currentColor&#34;
+          stroke-width=&#34;2&#34;
+          stroke-linecap=&#34;round&#34;
+          stroke-linejoin=&#34;round&#34;
+          class=&#34;feather feather-chevron-up&#34;
+        &gt;
+          &lt;polyline points=&#34;18 15 12 9 6 15&#34;&gt;&lt;/polyline&gt;
+        &lt;/svg&gt;
+      &lt;/button&gt;
+      &lt;div class=&#34;folder-summary__file-count&#34; id=&#34;js_folder-summary-amount&#34;&gt;
+        &lt;span class=&#34;folder-summary__file-count__amount&#34;&gt;3&lt;/span&gt;
+        &lt;svg
+          xmlns=&#34;http://www.w3.org/2000/svg&#34;
+          width=&#34;24&#34;
+          height=&#34;24&#34;
+          viewBox=&#34;0 0 24 24&#34;
+          fill=&#34;currentColor&#34;
+          stroke=&#34;currentColor&#34;
+          stroke-width=&#34;2&#34;
+          stroke-linecap=&#34;round&#34;
+          stroke-linejoin=&#34;round&#34;
+          class=&#34;feather feather-folder&#34;
+        &gt;
+          &lt;path
+            d=&#34;M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z&#34;
+          &gt;&lt;/path&gt;
+        &lt;/svg&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;folder-summary__details&#34;&gt;
+      &lt;div class=&#34;folder-summary__details__name&#34;&gt;Portfolio&lt;/div&gt;
+      &lt;div class=&#34;folder-summary__details__share&#34;&gt;
+        Design by
+        &lt;a
+          class=&#34;shared-user&#34;
+          href=&#34;https://dribbble.com/7ahang&#34;
+          target=&#34;_blank&#34;
+          rel=&#34;noopener noreferrer&#34;
+        &gt;
+          &lt;svg
+            class=&#34;shared-user__avatar&#34;
+            width=&#34;24&#34;
+            height=&#34;24&#34;
+            viewBox=&#34;0 0 24 24&#34;
+            fill=&#34;none&#34;
+            xmlns=&#34;http://www.w3.org/2000/svg&#34;
+          &gt;
+            &lt;circle cx=&#34;12&#34; cy=&#34;12&#34; r=&#34;12&#34; fill=&#34;#1C213E&#34; /&gt;
+            &lt;circle cx=&#34;12&#34; cy=&#34;12&#34; fill=&#34;#BFBFC0&#34; r=&#34;6.168&#34; /&gt;
+            &lt;circle
+              cx=&#34;12.561&#34;
+              cy=&#34;11.439&#34;
+              r=&#34;5.607&#34;
+              fill=&#34;url(#paint0_radial)&#34;
+              fill-opacity=&#34;.5&#34;
+            /&gt;
+            &lt;defs&gt;
+              &lt;radialGradient
+                id=&#34;paint0_radial&#34;
+                cx=&#34;0&#34;
+                cy=&#34;0&#34;
+                r=&#34;1&#34;
+                gradientUnits=&#34;userSpaceOnUse&#34;
+                gradientTransform=&#34;rotate(109.486 3.244 10.282) scale(7.73263)&#34;
+              &gt;
+                &lt;stop stop-color=&#34;#758EA9&#34; /&gt;
+                &lt;stop offset=&#34;1&#34; stop-color=&#34;#668097&#34; stop-opacity=&#34;0&#34; /&gt;
+              &lt;/radialGradient&gt;
+            &lt;/defs&gt;
+          &lt;/svg&gt;
+          &lt;span class=&#34;shared-user__name&#34;&gt;7ahang&lt;/span&gt;
+        &lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;folder-summary__end&#34;&gt;
+      &lt;svg
+        xmlns=&#34;http://www.w3.org/2000/svg&#34;
+        width=&#34;24&#34;
+        height=&#34;24&#34;
+        viewBox=&#34;0 0 24 24&#34;
+      &gt;
+        &lt;path
+          d=&#34;M6 12c0 1.657-1.343 3-3 3s-3-1.343-3-3 1.343-3 3-3 3 1.343 3 3zm9 0c0 1.657-1.343 3-3 3s-3-1.343-3-3 1.343-3 3-3 3 1.343 3 3zm9 0c0 1.657-1.343 3-3 3s-3-1.343-3-3 1.343-3 3-3 3 1.343 3 3z&#34;
+        /&gt;
+      &lt;/svg&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;ul class=&#34;folder-content&#34; id=&#34;js_folder-content&#34;&gt;
+    &lt;li class=&#34;folder-item js_folder-item&#34;&gt;
+      &lt;div class=&#34;folder-item__icon&#34;&gt;
+        &lt;svg
+          width=&#34;50&#34;
+          height=&#34;70&#34;
+          viewBox=&#34;0 0 50 70&#34;
+          fill=&#34;none&#34;
+          xmlns=&#34;http://www.w3.org/2000/svg&#34;
+        &gt;
+          &lt;path
+            fill-rule=&#34;evenodd&#34;
+            clip-rule=&#34;evenodd&#34;
+            d=&#34;M33 0H5a5 5 0 00-5 5v60a5 5 0 005 5h40a5 5 0 005-5V17L33 0z&#34;
+            fill=&#34;#5085E8&#34;
+          /&gt;
+          &lt;path
+            d=&#34;M50 29L35 16l15 .867V29z&#34;
+            fill=&#34;url(#paint0_linear)&#34;
+            opacity=&#34;.1&#34;
+          /&gt;
+          &lt;path
+            fill-rule=&#34;evenodd&#34;
+            clip-rule=&#34;evenodd&#34;
+            d=&#34;M33 0l17 17H38a5 5 0 01-5-5V0z&#34;
+            fill=&#34;#A4BEF6&#34;
+          /&gt;
+          &lt;path
+            fill=&#34;#fff&#34;
+            fill-opacity=&#34;.75&#34;
+            d=&#34;M13 39h24v3H13zM13 57h17v3H13zM13 51h24v3H13zM13 45h24v3H13z&#34;
+          /&gt;
+          &lt;defs&gt;
+            &lt;linearGradient
+              id=&#34;paint0_linear&#34;
+              x1=&#34;42.5&#34;
+              y1=&#34;16&#34;
+              x2=&#34;42.5&#34;
+              y2=&#34;29&#34;
+              gradientUnits=&#34;userSpaceOnUse&#34;
+            &gt;
+              &lt;stop /&gt;
+              &lt;stop offset=&#34;1&#34; stop-opacity=&#34;0&#34; /&gt;
+            &lt;/linearGradient&gt;
+          &lt;/defs&gt;
+        &lt;/svg&gt;
+      &lt;/div&gt;
+      &lt;div class=&#34;folder-item__details&#34;&gt;
+        &lt;div class=&#34;folder-item__details__name&#34;&gt;
+          Graduate-reports.doc
+          &lt;svg
+            xmlns=&#34;http://www.w3.org/2000/svg&#34;
+            width=&#34;24&#34;
+            height=&#34;24&#34;
+            viewBox=&#34;0 0 24 24&#34;
+            fill=&#34;#ecc31c&#34;
+            stroke-widt
+            class=&#34;feather feather-star&#34;
+          &gt;
+            &lt;polygon
+              points=&#34;12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2&#34;
+            &gt;&lt;/polygon&gt;
+          &lt;/svg&gt;
+        &lt;/div&gt;
+        &lt;div class=&#34;folder-item__details__date&#34;&gt;Created 2020.4.25&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&#34;folder-item__size&#34;&gt;16.7 MB&lt;/div&gt;
+    &lt;/li&gt;
+
+    &lt;li class=&#34;folder-item js_folder-item&#34;&gt;
+      &lt;div class=&#34;folder-item__icon&#34;&gt;
+        &lt;svg
+          width=&#34;50&#34;
+          height=&#34;70&#34;
+          viewBox=&#34;0 0 50 70&#34;
+          fill=&#34;none&#34;
+          xmlns=&#34;http://www.w3.org/2000/svg&#34;
+        &gt;
+          &lt;path
+            fill-rule=&#34;evenodd&#34;
+            clip-rule=&#34;evenodd&#34;
+            d=&#34;M33 0H5a5 5 0 00-5 5v60a5 5 0 005 5h40a5 5 0 005-5V17L33 0z&#34;
+            fill=&#34;#36A95E&#34;
+          /&gt;
+          &lt;path
+            d=&#34;M50 29L35 16l15 .867V29z&#34;
+            fill=&#34;url(#paint0_linear)&#34;
+            opacity=&#34;.1&#34;
+          /&gt;
+          &lt;path
+            fill-rule=&#34;evenodd&#34;
+            clip-rule=&#34;evenodd&#34;
+            d=&#34;M33 0l17 17H38a5 5 0 01-5-5V0z&#34;
+            fill=&#34;#A0D0B3&#34;
+          /&gt;
+          &lt;path
+            fill-rule=&#34;evenodd&#34;
+            clip-rule=&#34;evenodd&#34;
+            d=&#34;M12 60V39h25v21H12zm14-3h8v-3h-8v3zm-3-3v3h-8v-3h8zm3-3h8v-3h-8v3zm-3-3v3h-8v-3h8zm3-3h8v-3h-8v3zm-3-3v3h-8v-3h8z&#34;
+            fill=&#34;#fff&#34;
+            fill-opacity=&#34;.75&#34;
+          /&gt;
+          &lt;defs&gt;
+            &lt;linearGradient
+              id=&#34;paint0_linear&#34;
+              x1=&#34;42.5&#34;
+              y1=&#34;16&#34;
+              x2=&#34;42.5&#34;
+              y2=&#34;29&#34;
+              gradientUnits=&#34;userSpaceOnUse&#34;
+            &gt;
+              &lt;stop /&gt;
+              &lt;stop offset=&#34;1&#34; stop-opacity=&#34;0&#34; /&gt;
+            &lt;/linearGradient&gt;
+          &lt;/defs&gt;
+        &lt;/svg&gt;
+      &lt;/div&gt;
+      &lt;div class=&#34;folder-item__details&#34;&gt;
+        &lt;div class=&#34;folder-item__details__name&#34;&gt;
+          Festival Visual Design.xlsx
+        &lt;/div&gt;
+        &lt;div class=&#34;folder-item__details__date&#34;&gt;Created 2020.5.17&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&#34;folder-item__size&#34;&gt;216.5 MB&lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li class=&#34;folder-item js_folder-item&#34;&gt;
+      &lt;div class=&#34;folder-item__icon&#34;&gt;
+        &lt;svg
+          width=&#34;50&#34;
+          height=&#34;70&#34;
+          viewBox=&#34;0 0 50 70&#34;
+          fill=&#34;none&#34;
+          xmlns=&#34;http://www.w3.org/2000/svg&#34;
+        &gt;
+          &lt;path
+            fill-rule=&#34;evenodd&#34;
+            clip-rule=&#34;evenodd&#34;
+            d=&#34;M33 0H5a5 5 0 00-5 5v60a5 5 0 005 5h40a5 5 0 005-5V17L33 0z&#34;
+            fill=&#34;#E8B52C&#34;
+          /&gt;
+          &lt;path
+            d=&#34;M50 29L35 16l15 .867V29z&#34;
+            fill=&#34;url(#paint0_linear)&#34;
+            opacity=&#34;.1&#34;
+          /&gt;
+          &lt;path
+            fill-rule=&#34;evenodd&#34;
+            clip-rule=&#34;evenodd&#34;
+            d=&#34;M33 0l17 17H38a5 5 0 01-5-5V0z&#34;
+            fill=&#34;#EEDA86&#34;
+          /&gt;
+          &lt;path
+            fill-rule=&#34;evenodd&#34;
+            clip-rule=&#34;evenodd&#34;
+            d=&#34;M34 39H13v21h24V39h-3zM16 54.75h18v-10.5H16v10.5z&#34;
+            fill=&#34;#fff&#34;
+            fill-opacity=&#34;.75&#34;
+          /&gt;
+          &lt;defs&gt;
+            &lt;linearGradient
+              id=&#34;paint0_linear&#34;
+              x1=&#34;42.5&#34;
+              y1=&#34;16&#34;
+              x2=&#34;42.5&#34;
+              y2=&#34;29&#34;
+              gradientUnits=&#34;userSpaceOnUse&#34;
+            &gt;
+              &lt;stop /&gt;
+              &lt;stop offset=&#34;1&#34; stop-opacity=&#34;0&#34; /&gt;
+            &lt;/linearGradient&gt;
+          &lt;/defs&gt;
+        &lt;/svg&gt;
+      &lt;/div&gt;
+      &lt;div class=&#34;folder-item__details&#34;&gt;
+        &lt;div class=&#34;folder-item__details__name&#34;&gt;Portfolio 2020.ppt&lt;/div&gt;
+        &lt;div class=&#34;folder-item__details__date&#34;&gt;Created 2020.6.7&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&#34;folder-item__size&#34;&gt;25.8 MB&lt;/div&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;</textarea>
+      <textarea id="csscode-ta" style="display: none;">@import url(&#34;https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500&amp;display=swap&#34;);
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+#iframe__wrapper {
+  background: #efeff0;
+  font-family: &#34;Noto Sans TC&#34;, sans-serif;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// ------- FOLDER
+
+.folder {
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  overflow: hidden;
+  width: 450px;
+}
+
+// ------ SHARED USER
+
+.shared-user {
+  align-items: center;
+  color: #6a696a;
+  display: inline-flex;
+  font-weight: 500;
+  margin-left: 5px;
+  outline: none;
+  text-decoration: none;
+
+  &amp;__avatar {
+    width: 15px;
+    height: 15px;
+    margin-right: 3px;
+  }
+}
+
+// ------- FOLDER SUMMARY
+
+.folder-summary {
+  padding: 15px 20px 15px 15px;
+  cursor: pointer;
+  display: flex;
+  line-height: 1;
+  height: 80px;
+  position: relative;
+
+  &amp;__start {
+    position: relative;
+  }
+
+  &amp;__file-count {
+    position: absolute;
+    top: -3px;
+
+    &amp;__amount {
+      color: #ffffff;
+      font-size: 12px;
+      left: 50%;
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    svg {
+      color: #5166fa;
+      height: 30px;
+      width: auto;
+    }
+  }
+
+  &amp;__details {
+    padding: 2px 0 0 13px;
+
+    &amp;__name {
+      color: #393738;
+      font-size: 20px;
+      font-weight: 500;
+    }
+
+    &amp;__share {
+      align-items: center;
+      color: #b5b4b5;
+      display: flex;
+      font-size: 15px;
+      margin-top: 8px;
+    }
+  }
+
+  &amp;__end {
+    margin-left: auto;
+
+    svg {
+      fill: #c3c2c3;
+    }
+  }
+
+  &amp;::after {
+    background: #e6e6e6;
+    bottom: -2px;
+    content: &#34;&#34;;
+    height: 2px;
+    left: 0;
+    position: absolute;
+    right: 0;
+  }
+}
+
+// ------- CHEVRON BUTTON
+
+.folder-collapse-button {
+  appearance: none;
+  background: transparent;
+  border-radius: 30px;
+  border: 0;
+  cursor: pointer;
+  height: 30px;
+  opacity: 0;
+  outline: none;
+  position: absolute;
+  position: relative;
+  width: 30px;
+  z-index: 1;
+
+  &amp;::after {
+    background: #efeff0;
+    border-radius: 40px;
+    content: &#34;&#34;;
+    height: 35px;
+    left: 50%;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.2s ease-out;
+    width: 35px;
+  }
+
+  &amp;:hover::after {
+    opacity: 1;
+  }
+
+  svg {
+    color: #9c9c9e;
+    left: 50%;
+    position: absolute;
+    stroke-width: 3;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+  }
+}
+
+// ------------ FOLDER ITEM
+
+.folder-item {
+  align-items: flex-start;
+  display: flex;
+  height: 80px;
+  line-height: 1;
+  opacity: 0;
+  padding: 20px 25px;
+  position: relative;
+
+  &amp;__icon svg {
+    display: block;
+    height: 40px;
+    width: auto;
+  }
+
+  &amp;__details {
+    padding: 1px 0 0 15px;
+
+    &amp;__name {
+      color: #393738;
+      font-size: 17px;
+      font-weight: 500;
+      position: relative;
+
+      svg {
+        height: auto;
+        position: absolute;
+        top: 50%;
+        transform: translate(5px, calc(-50% + 1px));
+        width: 20px;
+      }
+    }
+
+    &amp;__date {
+      color: #b5b4b5;
+      font-size: 15px;
+      margin-top: 8px;
+    }
+  }
+
+  &amp;__size {
+    color: #6a696a;
+    font-weight: 500;
+    margin-left: auto;
+    margin-top: 2px;
+  }
+
+  &amp;:not(:last-child)::after {
+    background: #edecee;
+    bottom: 0;
+    content: &#34;&#34;;
+    height: 1px;
+    left: 80px;
+    position: absolute;
+    right: 0;
+  }
+}</textarea>
+      <textarea id="jscode-ta" style="display: none;">const toggleFolder = document.getElementById(&#34;js_toggle-folder&#34;);
+
+// --------- ANIMATION
+
+const showFolderContentAnimation = anime.timeline({
+  easing: &#34;easeOutCubic&#34;,
+  autoplay: false,
+});
+
+showFolderContentAnimation
+  .add({
+    targets: &#34;#js_folder-content&#34;,
+    height: [0, 240],
+    duration: 350,
+  })
+  .add(
+    {
+      targets: &#34;#js_folder-summary-amount&#34;,
+      opacity: [1, 0],
+      duration: 400,
+    },
+    &#34;-=350&#34;
+  )
+  .add(
+    {
+      targets: &#34;#js_folder-collapse-button&#34;,
+      opacity: [0, 1],
+      duration: 400,
+    },
+    &#34;-=300&#34;
+  )
+  .add(
+    {
+      targets: &#34;#js_folder-collapse-button-icon&#34;,
+      duration: 300,
+      translateX: [&#34;-50%&#34;, &#34;-50%&#34;],
+      translateY: [&#34;-50%&#34;, &#34;-50%&#34;],
+      rotate: [&#34;0deg&#34;, &#34;180deg&#34;],
+    },
+    &#34;-=400&#34;
+  )
+  .add(
+    {
+      targets: &#34;.js_folder-item&#34;,
+      translateY: [20, 0],
+      opacity: [0, 1],
+      duration: 300,
+      delay: (el, i, l) =&gt; i * 120,
+    },
+    &#34;-=275&#34;
+  );
+
+// --------- TRIGGER
+
+toggleFolder.addEventListener(&#34;click&#34;, () =&gt; {
+  if (showFolderContentAnimation.began) {
+    showFolderContentAnimation.reverse();
+    if (
+      showFolderContentAnimation.progress === 100 &amp;&amp;
+      showFolderContentAnimation.direction === &#34;reverse&#34;
+    ) {
+      showFolderContentAnimation.completed = false;
+    }
+  }
+
+  if (showFolderContentAnimation.paused) {
+    showFolderContentAnimation.play();
+  }
+});</textarea>
+      <div class="vs__code_wrapper-main">
+      <div class="vs__code_wrapper-main">
+        <div class="code_wrapper_iframe">
+          <div class="code_fullscreen"></div>
+          
+          <iframe
+            id="live-preview"
+            src="assets/templates/template-iframe.html"
+            width="100%"
+            height="100%"
+            allow="accelerometer *; camera *; encrypted-media *; display-capture *; geolocation *; gyroscope *; microphone *; midi *; clipboard-read *; clipboard-write *; web-share *; serial *; xr-spatial-tracking *"
+            allowfullscreen="true"
+            allowpaymentrequest="true"
+            allowtransparency="true"
+            sandbox="allow-forms allow-modals allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation allow-downloads allow-presentation"
+            class="result-iframe iframe-visual-update"
+            name="codeShow"
+            loading="lazy"
+          ></iframe>
+        </div>
+        <div class="code_wrapper_codes">
+          <div class="codes_tabs">
+            <div class="codes_tabs_item active">HTML</div>
+            <div class="codes_tabs_item">CSS</div>
+            <div class="codes_tabs_item">JAVASCRIPT</div>
+          </div>
+          <div class="codes_contents">
+            <div class="codes_contents_item active" id="htmlcode"></div>
+            <div class="codes_contents_item" id="csscode"></div>
+            <div class="codes_contents_item" id="jscode"></div>
+
+            <div class="Copy__code">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M16 4.038V4c0-.465 0-.697-.051-.888a1.5 1.5 0 0 0-1.06-1.06C14.697 2 14.464 2 14 2h-4c-.465 0-.697 0-.888.051a1.5 1.5 0 0 0-1.06 1.06C8 3.304 8 3.536 8 4v.038m8 0c0 .44-.001.665-.051.85a1.5 1.5 0 0 1-1.06 1.06C14.697 6 14.464 6 14 6h-4c-.465 0-.697 0-.888-.051a1.5 1.5 0 0 1-1.06-1.06C8.001 4.702 8 4.477 8 4.038m8 0c.784.047 1.34.155 1.816.397a4 4 0 0 1 1.748 1.748C20 7.04 20 8.16 20 10.4v5.2c0 2.24 0 3.36-.436 4.216a4 4 0 0 1-1.748 1.748C16.96 22 15.84 22 13.6 22h-3.2c-2.24 0-3.36 0-4.216-.436a4 4 0 0 1-1.748-1.748C4 18.96 4 17.84 4 15.6v-5.2c0-2.24 0-3.36.436-4.216a4 4 0 0 1 1.748-1.748c.475-.242 1.032-.35 1.816-.398"></path></svg>Copy</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="code__wrapper">
       <div class="close__fs"></div>
       <div class="code__wrapper_header">
         <div class="code__wrapper_header_title">Animated folder micro-interaction</div>
@@ -633,18 +1255,10 @@ toggleFolder.addEventListener(&#34;click&#34;, () =&gt; {
           ></iframe>
         </div>
       </div>
-    </div>
+    </div> -->
     <script src="assets/lib/jquery-3.7.1.min.js"></script>
     <script src="assets/lib/sass.sync.min.js"></script>
-    <script src="assets/codemirror5/lib/codemirror.js"></script>
-    <script src="assets/codemirror5/addon/hint/show-hint.js"></script>
-    <script src="assets/codemirror5/addon/hint/xml-hint.js"></script>
-    <script src="assets/codemirror5/addon/hint/html-hint.js"></script>
-    <script src="assets/codemirror5/mode/xml/xml.js"></script>
-    <script src="assets/codemirror5/mode/javascript/javascript.js"></script>
-    <script src="assets/codemirror5/mode/css/css.js"></script>
-    <script src="assets/codemirror5/mode/htmlmixed/htmlmixed.js"></script>
-    <script src="assets/codemirror5/addon/hint/css-hint.js"></script>
-    <script src="assets/js/common.js"></script>
+    <script src="https://unpkg.com/monaco-editor@^0.21.2/min/vs/loader.js"></script>
+    <script src="assets/js/editor-vs.js"></script>
   </body>
 </html>

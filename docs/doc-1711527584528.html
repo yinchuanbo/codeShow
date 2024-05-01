@@ -5,14 +5,433 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>codeShow</title>
     <link rel="icon" sizes="any" mask href="assets/images/ico.svg" />
-    <link rel="stylesheet" href="assets/codemirror5/theme/blackboard.css" />
-    <link rel="stylesheet" href="assets/codemirror5/lib/codemirror.css" />
-    <link rel="stylesheet" href="assets/codemirror5/addon/hint/show-hint.css" />
+    <link
+      rel="stylesheet"
+      data-name="vs/editor/editor.main"
+      href="https://unpkg.com/monaco-editor@^0.21.2/min/vs/editor/editor.main.css"
+    />
     <link rel="stylesheet" href="assets/css/common.css" />
     <link rel="stylesheet" href="assets/lib/wenk.min.css" />
   </head>
   <body>
-    <div class="code__wrapper">
+    <div class="vs__code_wrapper">
+      <textarea id="htmlcode-ta" style="display: none;">&lt;div class=&#34;wrapper pre&#34;&gt;&lt;/div&gt;
+&lt;div class=&#34;wrapper&#34;&gt;
+  &lt;div class=&#34;container&#34;&gt;
+    &lt;div class=&#34;card tabs&#34;&gt;
+      &lt;input
+        id=&#34;tab-1&#34;
+        type=&#34;radio&#34;
+        class=&#34;tab tab-selector&#34;
+        checked=&#34;checked&#34;
+        name=&#34;tab&#34;
+      /&gt;
+      &lt;label for=&#34;tab-1&#34; class=&#34;tab tab-primary&#34;&gt;Product&lt;/label&gt;
+      &lt;input id=&#34;tab-2&#34; type=&#34;radio&#34; class=&#34;tab tab-selector&#34; name=&#34;tab&#34; /&gt;
+      &lt;label for=&#34;tab-2&#34; class=&#34;tab tab-success&#34;&gt;Options&lt;/label&gt;
+      &lt;input id=&#34;tab-3&#34; type=&#34;radio&#34; class=&#34;tab tab-selector&#34; name=&#34;tab&#34; /&gt;
+      &lt;label for=&#34;tab-3&#34; class=&#34;tab tab-default&#34;&gt;Shipping&lt;/label&gt;
+      &lt;input id=&#34;tab-4&#34; type=&#34;radio&#34; class=&#34;tab tab-selector&#34; name=&#34;tab&#34; /&gt;
+      &lt;label for=&#34;tab-4&#34; class=&#34;tab tab-warning&#34;&gt;Published&lt;/label&gt;
+      &lt;div class=&#34;tabsShadow&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;glider&#34;&gt;&lt;/div&gt;
+      &lt;section class=&#34;content&#34;&gt;
+        &lt;div class=&#34;item&#34; id=&#34;content-1&#34;&gt;
+          &lt;h2 class=&#34;tab-title tab-primary&#34;&gt;Sweep + Slide Dog Toy&lt;/h2&gt;
+          &lt;p&gt;
+            &lt;span class=&#34;numit&#34;&gt;1&lt;/span&gt; The Sweep + Slide is an indoor dog toy
+            with a sleek base designed to glide across any floor. Not only does
+            this toy stimulate your dog&#39;s natural chase instincts, but it also
+            sweeps away floor dust and grime with a replaceable sweeper bottom
+            cover.
+          &lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class=&#34;item&#34; id=&#34;content-2&#34;&gt;
+          &lt;h2 class=&#34;tab-title tab-success&#34;&gt;Tab 2&lt;/h2&gt;
+          &lt;p&gt;
+            &lt;span class=&#34;numit&#34;&gt;2&lt;/span&gt; Lorem ipsum dolor sit amet, consectetur
+            adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+            exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis aute irure dolor
+          &lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class=&#34;item&#34; id=&#34;content-3&#34;&gt;
+          &lt;h2 class=&#34;tab-title tab-default&#34;&gt;Tab 3&lt;/h2&gt;
+          &lt;p&gt;
+            &lt;span class=&#34;numit&#34;&gt;3&lt;/span&gt; Lorem ipsum dolor sit amet, consectetur
+            adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+            exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis
+          &lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class=&#34;item&#34; id=&#34;content-4&#34;&gt;
+          &lt;h2 class=&#34;tab-title tab-warning&#34;&gt;Tab 4&lt;/h2&gt;
+          &lt;p&gt;
+            &lt;span class=&#34;numit&#34;&gt;4&lt;/span&gt; Lorem ipsum dolor sit amet, consectetur
+            adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua.
+          &lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/section&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</textarea>
+      <textarea id="csscode-ta" style="display: none;">/* Basic */
+@import url(&#34;https://use.typekit.net/ovt6ynt.css&#34;);
+@import url(&#34;https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&amp;family=Oswald:wght@200;300;400;500;600;700&amp;family=Roboto+Condensed:wght@300;400;700&amp;family=Roboto:wght@100;300;400;500;700;900&amp;family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&amp;family=Spectral:wght@200;300;400;500;600;700;800&amp;display=swap&#34;);
+
+#frame__wrapper {
+  font-family: &#34;Roboto&#34;, sans-serif;
+  background: linear-gradient(#141e30, #243b55);
+}
+.title {
+  text-align: center;
+  padding: 50px 0px 25px 0;
+  font-size: 44px;
+  font-weight: 600;
+  color: #21222c;
+  font-family: &#34;Playfair Display SC&#34;;
+}
+.wrapper {
+  background-color: #f6f8ff;
+  width: 100%;
+  min-height: 100vh;
+  min-width: 90vh;
+  background: transparent;
+  opacity: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wrapper.pre {
+  background-size: cover !important;
+  background: url(https://images.unsplash.com/photo-1523633589114-88eaf4b4f1a8?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=3870&amp;q=80);
+  background: url(https://images.unsplash.com/photo-1462556791646-c201b8241a94?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=2896&amp;q=80);
+  position: absolute;
+  top: 0;
+  z-index: -2;
+  opacity: 0.75;
+  background: url(https://assets.codepen.io/4927073/mybg.jpg);
+}
+
+.wrapper .line {
+  width: 50%;
+  margin: 25px auto 0 auto;
+  height: 1px;
+  background-color: #c3d2e3;
+}
+
+.container {
+  width: 100%;
+  padding: 10px 0;
+  text-align: center;
+  width: 90%;
+  padding: 10px 0px;
+  text-align: center;
+  margin: auto;
+}
+.container .card {
+  max-width: 600px;
+  min-height: 140px;
+  min-width: 595px;
+
+  background-color: white;
+  border-radius: 10px;
+  border: 1px solid #e3e3e3;
+  margin: 0 auto;
+}
+.tabs {
+  text-align: left;
+  position: relative;
+}
+.tabs input {
+  position: absolute;
+  opacity: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.tabs input + label:hover {
+  color: #777;
+}
+.tabs .tabsShadow {
+  width: 100%;
+  padding: 10px;
+  box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.04);
+  box-sizing: border-box;
+  position: absolute;
+  height: 35px;
+  z-index: 0;
+  top: 0;
+  pointer-events: none;
+}
+
+.content .item {
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s;
+  position: absolute;
+  padding: 10px 20px;
+}
+
+#tab-1:checked ~ .glider {
+  left: 0px;
+}
+#tab-2:checked + label {
+  color: #51a14c;
+}
+#tab-2:checked ~ .glider {
+  background: linear-gradient(90deg, #51a14c 0%, #10c33e 100%);
+  box-shadow: 0px 0px 8px 0px rgba(47, 187, 12, 0.62);
+}
+
+#tab-3:checked + label {
+  color: #525252;
+}
+
+#tab-1:checked ~ section #content-1,
+#tab-2:checked ~ section #content-2,
+#tab-3:checked ~ section #content-3,
+#tab-4:checked ~ section #content-4 {
+  opacity: 1;
+  visibility: visible;
+}
+
+.tabs input + label {
+  margin: 12px -8px;
+  width: 15%;
+  transition: all 0.3s;
+  text-align: center;
+  border: none;
+  border-bottom: 0.5pt solid #1d1e22;
+  color: #e7e9f5;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  padding: 5pt 10pt;
+  vertical-align: top;
+  justify-content: flex-start;
+  background: #333;
+  box-shadow: 1px 1px 2px 1px #231f20;
+  text-transform: uppercase;
+  font-weight: 300;
+  font-size: 8pt;
+  background: #26292c;
+  margin-bottom: 0.5px;
+  border-radius: 7px 7px 0 0 !important;
+  border-top: 1px solid #3b3d3f;
+  letter-spacing: 0.1666666667em !important;
+  font-family: &#34;antique-olive&#34; !important;
+  background: hsl(232deg 6% 17%);
+  cursor: pointer;
+}
+
+.content {
+  margin: 0px auto;
+  text-align: left;
+  line-height: 20px;
+  height: 240px;
+  border-radius: 5px;
+  box-shadow: 0 2px 3px rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 10%);
+  display: block;
+  padding: 1.25rem;
+  z-index: 2;
+  border-top: 1px solid #3b3d3f;
+  background: hsl(232deg 16% 15%);
+  position: relative;
+}
+
+.container .card {
+  max-width: 600px;
+  min-height: 140px;
+  border-radius: 10px;
+  border: none;
+  margin: 0 auto;
+  z-index: 4 !important;
+  position: relative;
+  background: linear-gradient(#141e30, #243b55);
+  background: #16181a;
+  border-top: 1px solid #3b3d3f;
+  background: hsl(232deg 18% 8%);
+}
+
+.content p {
+  margin: 10px 15px 10px 0;
+  letter-spacing: 0.75px;
+  font-size: 14pt;
+  font-style: normal;
+  color: #f0f2fc;
+  line-height: 30px;
+  margin-top: 10pt;
+  font-family: &#34;freight-display-pro&#34;;
+  font-weight: 300 !important;
+}
+h2.tab-title.tab-warning,
+h2.tab-title.tab-success,
+h2.tab-title.tab-primary,
+h2.tab-title.tab-default {
+  display: inline-flex;
+  color: #fff;
+  background-position: bottom center;
+  margin-bottom: 0pt !important;
+  margin-top: 6pt;
+  height: 22pt;
+  text-fill-color: transparent !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  -webkit-background-clip: text !important;
+  -moz-background-clip: text;
+  -moz-text-fill-color: transparent;
+  -ms-background-clip: text;
+  -ms-text-fill-color: transparent;
+  text-transform: capitalize;
+  font-size: 24px;
+  letter-spacing: 0px;
+  font-family: &#34;Manrope&#34; !important;
+  font-weight: 800 !important;
+}
+
+h2.tab-title.tab-default {
+  background: linear-gradient(10deg, #f7ec9c, #ff8651);
+}
+
+h2.tab-title.tab-success {
+  background: linear-gradient(10deg, #02ce85, #02ceab);
+}
+
+h2.tab-title.tab-primary {
+  background: linear-gradient(
+    60deg,
+    hsl(202deg 100% 75%),
+    hsl(205deg 100% 64%),
+    hsl(230deg 100% 75%),
+    hsl(270deg 100% 72%)
+  );
+}
+
+h2.tab-title.tab-warning {
+  background: linear-gradient(70deg, #c51574, #97389b);
+}
+
+.tabs input {
+  position: relative;
+  opacity: 0;
+  margin: auto !important;
+  padding: 0;
+}
+label.tab.tab-primary {
+  border-radius: 6pt 0 0 6pt;
+}
+label.tab.tab-warning {
+  border-radius: 0 6pt 6pt 0;
+}
+#tab-1:checked + label {
+  color: deepskyblue;
+}
+#tab-3:checked + label {
+  color: #ffadfa;
+  color: #ffaa75;
+}
+#tab-4:checked + label {
+  color: #ffadfa;
+}
+#tab-1:checked ~ .glider {
+  left: 1.6%;
+}
+
+#tab-2:checked ~ .glider {
+  left: 21.85%;
+}
+#tab-3:checked ~ .glider {
+  background: linear-gradient(
+    90deg,
+    #faffcc 0%,
+    #f5eea3 10%,
+    #ffe48a 40%,
+    #ffb54d 65%,
+    #ff974d 85%,
+    #ff8052 100%
+  );
+  left: 42.15%;
+  box-shadow: 0px 0px 8px 0px hsl(17.72deg 100% 70% / 70%);
+}
+
+#tab-4:checked ~ .glider {
+  background: linear-gradient(90deg, #b9326f 0%, #ff5ddc 100%);
+  box-shadow: 0px 0px 8px 0px rgba(231, 13, 93, 0.57);
+  left: 62.365% !important;
+}
+
+.glider {
+  width: 15%;
+  padding: 0px 13px;
+  height: 4.5px;
+  border-radius: 0 0 1px 1px;
+  position: absolute;
+  box-shadow: 0px 0px 8px 0px hsl(262deg 100% 70% / 70%);
+  background: linear-gradient(
+    113deg,
+    hsl(260deg 100% 64%) 0%,
+    hsl(190deg 100% 55%) 100%
+  );
+  transition: all 0.3s;
+  top: 36px;
+  z-index: 2;
+}
+
+span.numit {
+  font-size: 12pt;
+  font-family: &#34;muli&#34;;
+  font-weight: 600;
+  text-shadow: 0.5px 0.5px 0.5px #e7e9f5;
+  color: #0e101a;
+  margin-right: 2px;
+  margin-left: -2px;
+  padding: 0;
+  color: aliceblue;
+  text-shadow: 0.5pt 0.5pt 0.5pt #2d3748;
+}</textarea>
+      <textarea id="jscode-ta" style="display: none;"></textarea>
+      <div class="vs__code_wrapper-main">
+      <div class="vs__code_wrapper-main">
+        <div class="code_wrapper_iframe">
+          <div class="code_fullscreen"></div>
+          
+          <iframe
+            id="live-preview"
+            src="assets/templates/template-iframe.html"
+            width="100%"
+            height="100%"
+            allow="accelerometer *; camera *; encrypted-media *; display-capture *; geolocation *; gyroscope *; microphone *; midi *; clipboard-read *; clipboard-write *; web-share *; serial *; xr-spatial-tracking *"
+            allowfullscreen="true"
+            allowpaymentrequest="true"
+            allowtransparency="true"
+            sandbox="allow-forms allow-modals allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation allow-downloads allow-presentation"
+            class="result-iframe iframe-visual-update"
+            name="codeShow"
+            loading="lazy"
+          ></iframe>
+        </div>
+        <div class="code_wrapper_codes">
+          <div class="codes_tabs">
+            <div class="codes_tabs_item active">HTML</div>
+            <div class="codes_tabs_item">CSS</div>
+            <div class="codes_tabs_item">JAVASCRIPT</div>
+          </div>
+          <div class="codes_contents">
+            <div class="codes_contents_item active" id="htmlcode"></div>
+            <div class="codes_contents_item" id="csscode"></div>
+            <div class="codes_contents_item" id="jscode"></div>
+
+            <div class="Copy__code">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M16 4.038V4c0-.465 0-.697-.051-.888a1.5 1.5 0 0 0-1.06-1.06C14.697 2 14.464 2 14 2h-4c-.465 0-.697 0-.888.051a1.5 1.5 0 0 0-1.06 1.06C8 3.304 8 3.536 8 4v.038m8 0c0 .44-.001.665-.051.85a1.5 1.5 0 0 1-1.06 1.06C14.697 6 14.464 6 14 6h-4c-.465 0-.697 0-.888-.051a1.5 1.5 0 0 1-1.06-1.06C8.001 4.702 8 4.477 8 4.038m8 0c.784.047 1.34.155 1.816.397a4 4 0 0 1 1.748 1.748C20 7.04 20 8.16 20 10.4v5.2c0 2.24 0 3.36-.436 4.216a4 4 0 0 1-1.748 1.748C16.96 22 15.84 22 13.6 22h-3.2c-2.24 0-3.36 0-4.216-.436a4 4 0 0 1-1.748-1.748C4 18.96 4 17.84 4 15.6v-5.2c0-2.24 0-3.36.436-4.216a4 4 0 0 1 1.748-1.748c.475-.242 1.032-.35 1.816-.398"></path></svg>Copy</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="code__wrapper">
       <div class="close__fs"></div>
       <div class="code__wrapper_header">
         <div class="code__wrapper_header_title">Responsive CSS Tabs</div>
@@ -430,18 +849,10 @@ span.numit {
           ></iframe>
         </div>
       </div>
-    </div>
+    </div> -->
     <script src="assets/lib/jquery-3.7.1.min.js"></script>
     <script src="assets/lib/sass.sync.min.js"></script>
-    <script src="assets/codemirror5/lib/codemirror.js"></script>
-    <script src="assets/codemirror5/addon/hint/show-hint.js"></script>
-    <script src="assets/codemirror5/addon/hint/xml-hint.js"></script>
-    <script src="assets/codemirror5/addon/hint/html-hint.js"></script>
-    <script src="assets/codemirror5/mode/xml/xml.js"></script>
-    <script src="assets/codemirror5/mode/javascript/javascript.js"></script>
-    <script src="assets/codemirror5/mode/css/css.js"></script>
-    <script src="assets/codemirror5/mode/htmlmixed/htmlmixed.js"></script>
-    <script src="assets/codemirror5/addon/hint/css-hint.js"></script>
-    <script src="assets/js/common.js"></script>
+    <script src="https://unpkg.com/monaco-editor@^0.21.2/min/vs/loader.js"></script>
+    <script src="assets/js/editor-vs.js"></script>
   </body>
 </html>

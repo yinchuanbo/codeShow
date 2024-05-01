@@ -5,14 +5,257 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>codeShow</title>
     <link rel="icon" sizes="any" mask href="assets/images/ico.svg" />
-    <link rel="stylesheet" href="assets/codemirror5/theme/blackboard.css" />
-    <link rel="stylesheet" href="assets/codemirror5/lib/codemirror.css" />
-    <link rel="stylesheet" href="assets/codemirror5/addon/hint/show-hint.css" />
+    <link
+      rel="stylesheet"
+      data-name="vs/editor/editor.main"
+      href="https://unpkg.com/monaco-editor@^0.21.2/min/vs/editor/editor.main.css"
+    />
     <link rel="stylesheet" href="assets/css/common.css" />
     <link rel="stylesheet" href="assets/lib/wenk.min.css" />
   </head>
   <body>
-    <div class="code__wrapper">
+    <div class="vs__code_wrapper">
+      <textarea id="htmlcode-ta" style="display: none;">&lt;div class=&#34;container&#34;&gt;
+  &lt;div class=&#34;result&#34;&gt;
+    &lt;div id=&#34;preview&#34;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&#34;settings&#34;&gt;
+    &lt;div class=&#34;range-wrapper&#34;&gt;
+      &lt;label for=&#34;x-shadow&#34;&gt;Horizontal Shadow :&lt;/label&gt;
+      &lt;input type=&#34;range&#34; id=&#34;x-shadow&#34; min=&#34;-100&#34; max=&#34;100&#34; value=&#34;-6&#34; /&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;range-wrapper&#34;&gt;
+      &lt;label for=&#34;y-shadow&#34;&gt;Vertical Shadow :&lt;/label&gt;
+      &lt;input type=&#34;range&#34; id=&#34;y-shadow&#34; min=&#34;-100&#34; max=&#34;100&#34; value=&#34;15&#34; /&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;range-wrapper&#34;&gt;
+      &lt;label for=&#34;blur-r&#34;&gt;Blur Radius :&lt;/label&gt;
+      &lt;input type=&#34;range&#34; id=&#34;blur-r&#34; min=&#34;0&#34; max=&#34;100&#34; value=&#34;30&#34; /&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;range-wrapper&#34;&gt;
+      &lt;label for=&#34;spread-r&#34;&gt;Spread Radius :&lt;/label&gt;
+      &lt;input type=&#34;range&#34; id=&#34;spread-r&#34; min=&#34;-50&#34; max=&#34;50&#34; value=&#34;6&#34; /&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;range-wrapper&#34;&gt;
+      &lt;label for=&#34;border-r&#34;&gt;Border Radius :&lt;/label&gt;
+      &lt;input type=&#34;range&#34; id=&#34;border-r&#34; min=&#34;0&#34; max=&#34;100&#34; step=&#34;1&#34; value=&#34;70&#34; /&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;range-wrapper&#34;&gt;
+      &lt;label for=&#34;shadow-opacity&#34;&gt;Shadow Opacity :&lt;/label&gt;
+      &lt;input
+        type=&#34;range&#34;
+        id=&#34;shadow-opacity&#34;
+        min=&#34;0&#34;
+        max=&#34;1&#34;
+        step=&#34;0.1&#34;
+        value=&#34;0.5&#34;
+      /&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;input-wrapper&#34;&gt;
+      &lt;label for=&#34;inset-shadow&#34;&gt;Inset Shadow :&lt;/label&gt;
+      &lt;input type=&#34;checkbox&#34; id=&#34;inset-shadow&#34; /&gt;
+    &lt;/div&gt;
+
+    &lt;div id=&#34;color-wrapper&#34;&gt;
+      &lt;label for=&#34;shadow-color&#34;&gt;Shadow Color :&lt;/label&gt;
+      &lt;input type=&#34;color&#34; id=&#34;shadow-color&#34; /&gt;ƒ
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&#34;code-container&#34;&gt;
+    &lt;textarea id=&#34;styles&#34; rows=&#34;2&#34;&gt;&lt;/textarea&gt;
+    &lt;button id=&#34;copy-styles&#34; onclick=&#34;copyStyles()&#34;&gt;Copy Styles&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</textarea>
+      <textarea id="csscode-ta" style="display: none;">@import url(&#34;https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&amp;display=swap&#34;);
+
+label {
+  font-size: 14px;
+}
+
+body {
+  background-color: #311b92;
+}
+
+.container {
+  background-color: #fff;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  padding: 30px;
+  width: 80vmin;
+  border-radius: 25px;
+  box-shadow: 0 20px 40px rgba(2, 42, 84, 0.2);
+}
+
+.result {
+  padding: 20px 0 120px;
+}
+
+#preview {
+  background-color: #311b92;
+  width: 200px;
+  height: 200px;
+  position: relative;
+  margin: auto;
+  border-radius: 70px;
+  box-shadow: -6px 15px 30px 6px rgba(0, 0, 0, 0.5);
+}
+
+.settings {
+  display: grid;
+  grid-template-columns: 6fr 6fr;
+  gap: 15px 25px;
+}
+
+.range-wrapper,
+#color-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+input[type=&#34;range&#34;] {
+  width: 100%;
+  cursor: pointer;
+}
+
+input[type=&#34;checkbox&#34;] {
+  cursor: pointer;
+}
+
+.code-container {
+  display: grid;
+  grid-template-columns: 6fr 2fr;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.code-container button {
+  background-color: #311b92;
+  border-radius: 5px;
+  cursor: pointer;
+  border: none;
+  color: #fff;
+}
+
+textarea {
+  resize: none;
+  padding: 5px;
+  border: 1px solid #000;
+  border-radius: 5px;
+}
+
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+#color-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 5px;
+}
+
+input[type=&#34;color&#34;] {
+  width: 25px;
+  height: 25px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}</textarea>
+      <textarea id="jscode-ta" style="display: none;">const preview = document.getElementById(&#34;preview&#34;);
+const styles = document.getElementById(&#34;styles&#34;);
+const ranges = document.querySelectorAll(&#34;.settings input&#34;);
+const copyButton = document.getElementById(&#34;copy-styles&#34;);
+
+ranges.forEach((slider) =&gt; {
+  slider.addEventListener(&#34;input&#34;, generateStyles);
+});
+
+function generateStyles() {
+  const xShadow = document.getElementById(&#34;x-shadow&#34;).value;
+  const yShadow = document.getElementById(&#34;y-shadow&#34;).value;
+  const blurRadius = document.getElementById(&#34;blur-r&#34;).value;
+  const spreadRadius = document.getElementById(&#34;spread-r&#34;).value;
+  const shadowColor = document.getElementById(&#34;shadow-color&#34;).value;
+  const shadowOpacity = document.getElementById(&#34;shadow-opacity&#34;).value;
+  const shadowInset = document.getElementById(&#34;inset-shadow&#34;).checked;
+  const borderRadius = document.getElementById(&#34;border-r&#34;).value;
+  const boxShadow = `${
+    shadowInset ? &#34;inset &#34; : &#34;&#34;
+  }${xShadow}px ${yShadow}px ${blurRadius}px ${spreadRadius}px ${hexToRgba(
+    shadowColor,
+    shadowOpacity
+  )}`;
+
+  console.log(&#34;boxShadow&#34;, boxShadow);
+
+  preview.style.boxShadow = boxShadow;
+  preview.style.borderRadius = `${borderRadius}px`;
+  styles.textContent = `box-shadow: ${boxShadow};\nborder-radius:${borderRadius}px`;
+}
+
+generateStyles();
+
+function hexToRgba(shadowColor, shadowOpacity) {
+  const r = parseInt(shadowColor.substr(1, 2), 16);
+  const g = parseInt(shadowColor.substr(3, 2), 16);
+  const b = parseInt(shadowColor.substr(5, 2), 16);
+  return `rgba(${r}, ${g}, ${b}, ${shadowOpacity})`;
+}
+
+function copyStyles() {
+  styles.select();
+  document.execCommand(&#34;copy&#34;);
+  copyButton.innerText = &#34;Copied!&#34;;
+  setTimeout(() =&gt; {
+    copyButton.innerText = &#34;Copy Styles&#34;;
+  }, 500);
+}</textarea>
+      <div class="vs__code_wrapper-main">
+      <div class="vs__code_wrapper-main">
+        <div class="code_wrapper_iframe">
+          <div class="code_fullscreen"></div>
+          
+          <iframe
+            id="live-preview"
+            src="assets/templates/template-iframe.html"
+            width="100%"
+            height="100%"
+            allow="accelerometer *; camera *; encrypted-media *; display-capture *; geolocation *; gyroscope *; microphone *; midi *; clipboard-read *; clipboard-write *; web-share *; serial *; xr-spatial-tracking *"
+            allowfullscreen="true"
+            allowpaymentrequest="true"
+            allowtransparency="true"
+            sandbox="allow-forms allow-modals allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation allow-downloads allow-presentation"
+            class="result-iframe iframe-visual-update"
+            name="codeShow"
+            loading="lazy"
+          ></iframe>
+        </div>
+        <div class="code_wrapper_codes">
+          <div class="codes_tabs">
+            <div class="codes_tabs_item active">HTML</div>
+            <div class="codes_tabs_item">CSS</div>
+            <div class="codes_tabs_item">JAVASCRIPT</div>
+          </div>
+          <div class="codes_contents">
+            <div class="codes_contents_item active" id="htmlcode"></div>
+            <div class="codes_contents_item" id="csscode"></div>
+            <div class="codes_contents_item" id="jscode"></div>
+
+            <div class="Copy__code">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M16 4.038V4c0-.465 0-.697-.051-.888a1.5 1.5 0 0 0-1.06-1.06C14.697 2 14.464 2 14 2h-4c-.465 0-.697 0-.888.051a1.5 1.5 0 0 0-1.06 1.06C8 3.304 8 3.536 8 4v.038m8 0c0 .44-.001.665-.051.85a1.5 1.5 0 0 1-1.06 1.06C14.697 6 14.464 6 14 6h-4c-.465 0-.697 0-.888-.051a1.5 1.5 0 0 1-1.06-1.06C8.001 4.702 8 4.477 8 4.038m8 0c.784.047 1.34.155 1.816.397a4 4 0 0 1 1.748 1.748C20 7.04 20 8.16 20 10.4v5.2c0 2.24 0 3.36-.436 4.216a4 4 0 0 1-1.748 1.748C16.96 22 15.84 22 13.6 22h-3.2c-2.24 0-3.36 0-4.216-.436a4 4 0 0 1-1.748-1.748C4 18.96 4 17.84 4 15.6v-5.2c0-2.24 0-3.36.436-4.216a4 4 0 0 1 1.748-1.748c.475-.242 1.032-.35 1.816-.398"></path></svg>Copy</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="code__wrapper">
       <div class="close__fs"></div>
       <div class="code__wrapper_header">
         <div class="code__wrapper_header_title">Box Shadow Generator</div>
@@ -254,18 +497,10 @@ function copyStyles() {
           ></iframe>
         </div>
       </div>
-    </div>
+    </div> -->
     <script src="assets/lib/jquery-3.7.1.min.js"></script>
     <script src="assets/lib/sass.sync.min.js"></script>
-    <script src="assets/codemirror5/lib/codemirror.js"></script>
-    <script src="assets/codemirror5/addon/hint/show-hint.js"></script>
-    <script src="assets/codemirror5/addon/hint/xml-hint.js"></script>
-    <script src="assets/codemirror5/addon/hint/html-hint.js"></script>
-    <script src="assets/codemirror5/mode/xml/xml.js"></script>
-    <script src="assets/codemirror5/mode/javascript/javascript.js"></script>
-    <script src="assets/codemirror5/mode/css/css.js"></script>
-    <script src="assets/codemirror5/mode/htmlmixed/htmlmixed.js"></script>
-    <script src="assets/codemirror5/addon/hint/css-hint.js"></script>
-    <script src="assets/js/common.js"></script>
+    <script src="https://unpkg.com/monaco-editor@^0.21.2/min/vs/loader.js"></script>
+    <script src="assets/js/editor-vs.js"></script>
   </body>
 </html>

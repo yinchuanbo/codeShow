@@ -5,14 +5,278 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>codeShow</title>
     <link rel="icon" sizes="any" mask href="assets/images/ico.svg" />
-    <link rel="stylesheet" href="assets/codemirror5/theme/blackboard.css" />
-    <link rel="stylesheet" href="assets/codemirror5/lib/codemirror.css" />
-    <link rel="stylesheet" href="assets/codemirror5/addon/hint/show-hint.css" />
+    <link
+      rel="stylesheet"
+      data-name="vs/editor/editor.main"
+      href="https://unpkg.com/monaco-editor@^0.21.2/min/vs/editor/editor.main.css"
+    />
     <link rel="stylesheet" href="assets/css/common.css" />
     <link rel="stylesheet" href="assets/lib/wenk.min.css" />
   </head>
   <body>
-    <div class="code__wrapper">
+    <div class="vs__code_wrapper">
+      <textarea id="htmlcode-ta" style="display: none;">&lt;div class=&#34;wrapper&#34;&gt;
+  &lt;div
+    class=&#34;container chart&#34;
+    data-size=&#34;300&#34;
+    data-value=&#34;73&#34;
+    data-arrow=&#34;down&#34;
+  &gt;&lt;/div&gt;
+&lt;/div&gt;</textarea>
+      <textarea id="csscode-ta" style="display: none;">body {
+  background-color: #18222f;
+}
+.wrapper {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  margin: auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+}
+.container {
+  font: 1px;
+  padding: 0 20px;
+}</textarea>
+      <textarea id="jscode-ta" style="display: none;">class Dial {
+  constructor(container) {
+    this.container = container;
+    this.size = this.container.dataset.size;
+    this.strokeWidth = this.size / 8;
+    this.radius = this.size / 2 - this.strokeWidth / 2;
+    this.value = this.container.dataset.value;
+    this.direction = this.container.dataset.arrow;
+    this.svg;
+    this.defs;
+    this.slice;
+    this.overlay;
+    this.text;
+    this.arrow;
+    this.create();
+  }
+
+  create() {
+    this.createSvg();
+    this.createDefs();
+    this.createSlice();
+    this.createOverlay();
+    this.createText();
+    this.createArrow();
+    this.container.appendChild(this.svg);
+  }
+
+  createSvg() {
+    let svg = document.createElementNS(&#34;http://www.w3.org/2000/svg&#34;, &#34;svg&#34;);
+    svg.setAttribute(&#34;width&#34;, `${this.size}px`);
+    svg.setAttribute(&#34;height&#34;, `${this.size}px`);
+    this.svg = svg;
+  }
+
+  createDefs() {
+    var defs = document.createElementNS(&#34;http://www.w3.org/2000/svg&#34;, &#34;defs&#34;),
+      linearGradient = document.createElementNS(
+        &#34;http://www.w3.org/2000/svg&#34;,
+        &#34;linearGradient&#34;
+      ),
+      stop1 = document.createElementNS(&#34;http://www.w3.org/2000/svg&#34;, &#34;stop&#34;),
+      stop2 = document.createElementNS(&#34;http://www.w3.org/2000/svg&#34;, &#34;stop&#34;),
+      linearGradientBackground = document.createElementNS(
+        &#34;http://www.w3.org/2000/svg&#34;,
+        &#34;background&#34;
+      );
+    linearGradient.setAttribute(&#34;id&#34;, &#34;gradient&#34;);
+    stop1.setAttribute(&#34;stop-color&#34;, &#34;#ffa000&#34;);
+    stop1.setAttribute(&#34;offset&#34;, &#34;0%&#34;);
+    linearGradient.appendChild(stop1);
+    stop2.setAttribute(&#34;stop-color&#34;, &#34;#f25767&#34;);
+    stop2.setAttribute(&#34;offset&#34;, &#34;100%&#34;);
+    linearGradient.appendChild(stop2);
+    linearGradientBackground.setAttribute(&#34;id&#34;, &#34;gradient-background&#34;);
+    var stop1 = document.createElementNS(&#34;http://www.w3.org/2000/svg&#34;, &#34;stop&#34;);
+    stop1.setAttribute(&#34;stop-color&#34;, &#34;rgba(0,0,0,0.2)&#34;);
+    stop1.setAttribute(&#34;offset&#34;, &#34;0%&#34;);
+    linearGradientBackground.appendChild(stop1);
+    var stop2 = document.createElementNS(&#34;http://www.w3.org/2000/svg&#34;, &#34;stop&#34;);
+    stop2.setAttribute(&#34;stop-color&#34;, &#34;rgba(0,0,0,0.5)&#34;);
+    stop2.setAttribute(&#34;offset&#34;, &#34;1000%&#34;);
+    linearGradientBackground.appendChild(stop2);
+    defs.appendChild(linearGradient);
+    defs.appendChild(linearGradientBackground);
+    this.svg.appendChild(defs);
+    this.defs = defs;
+  }
+
+  createSlice() {
+    let slice = document.createElementNS(&#34;http://www.w3.org/2000/svg&#34;, &#34;path&#34;);
+    slice.setAttribute(&#34;fill&#34;, &#34;none&#34;);
+    slice.setAttribute(&#34;stroke&#34;, &#34;url(#gradient)&#34;);
+    slice.setAttribute(&#34;stroke-width&#34;, this.strokeWidth);
+    slice.setAttribute(
+      &#34;transform&#34;,
+      `translate(${this.strokeWidth / 2},${this.strokeWidth / 2})`
+    );
+    slice.setAttribute(&#34;class&#34;, &#34;animate-draw&#34;);
+    this.svg.appendChild(slice);
+    this.slice = slice;
+  }
+
+  createOverlay() {
+    const r = this.size - this.size / 2 - this.strokeWidth / 2;
+    const circle = document.createElementNS(
+      &#34;http://www.w3.org/2000/svg&#34;,
+      &#34;circle&#34;
+    );
+    circle.setAttribute(&#34;cx&#34;, this.size / 2);
+    circle.setAttribute(&#34;cy&#34;, this.size / 2);
+    circle.setAttribute(&#34;r&#34;, r);
+    circle.setAttribute(&#34;fill&#34;, &#34;url(#gradient-background)&#34;);
+    circle.setAttribute(&#34;class&#34;, &#34;animate-draw&#34;);
+    this.svg.appendChild(circle);
+    this.overlay = circle;
+  }
+
+  createText() {
+    const fontSize = this.size / 3.5;
+    let text = document.createElementNS(&#34;http://www.w3.org/2000/svg&#34;, &#34;text&#34;);
+    text.setAttribute(&#34;x&#34;, this.size / 2 + fontSize / 7.5);
+    text.setAttribute(&#34;y&#34;, this.size / 2 + fontSize / 4);
+    text.setAttribute(&#34;font-family&#34;, &#34;Century Gothic Lato&#34;);
+    text.setAttribute(&#34;font-size&#34;, fontSize);
+    text.setAttribute(&#34;fill&#34;, &#34;#78f8ec&#34;);
+    text.setAttribute(&#34;text-anchor&#34;, &#34;middle&#34;);
+    const tspanSize = fontSize / 3;
+    text.innerHTML = `${0}% `;
+    this.svg.appendChild(text);
+    this.text = text;
+  }
+
+  createArrow() {
+    var arrowSize = this.size / 10;
+    var mapDir = {
+      up: [(arrowYOffset = arrowSize / 2), (m = -1)],
+      down: [(arrowYOffset = 0), (m = 1)],
+    };
+    function getDirection(i) {
+      return mapDir[i];
+    }
+    var [arrowYOffset, m] = getDirection(this.direction);
+
+    let arrowPosX = this.size / 2 - arrowSize / 2,
+      arrowPosY = this.size - this.size / 3 + arrowYOffset,
+      arrowDOffset = m * (arrowSize / 1.5),
+      arrow = document.createElementNS(&#34;http://www.w3.org/2000/svg&#34;, &#34;path&#34;);
+    arrow.setAttribute(
+      &#34;d&#34;,
+      `M 0 0 ${arrowSize} 0 ${arrowSize / 2} ${arrowDOffset} 0 0 Z`
+    );
+    arrow.setAttribute(&#34;fill&#34;, &#34;none&#34;);
+    arrow.setAttribute(&#34;opacity&#34;, &#34;0.6&#34;);
+    arrow.setAttribute(&#34;transform&#34;, `translate(${arrowPosX},${arrowPosY})`);
+    this.svg.appendChild(arrow);
+    this.arrow = arrow;
+  }
+
+  animateStart() {
+    let v = 0;
+    const intervalOne = setInterval(() =&gt; {
+      const p = +(v / this.value).toFixed(2);
+      const a = p &lt; 0.95 ? 2 - 2 * p : 0.05;
+      v += a;
+      if (v &gt;= +this.value) {
+        v = this.value;
+        clearInterval(intervalOne);
+      }
+      this.setValue(v);
+    }, 10);
+  }
+
+  polarToCartesian(centerX, centerY, radius, angleInDegrees) {
+    const angleInRadians = ((angleInDegrees - 180) * Math.PI) / 180.0;
+    return {
+      x: centerX + radius * Math.cos(angleInRadians),
+      y: centerY + radius * Math.sin(angleInRadians),
+    };
+  }
+
+  describeArc(x, y, radius, startAngle, endAngle) {
+    const start = this.polarToCartesian(x, y, radius, endAngle);
+    const end = this.polarToCartesian(x, y, radius, startAngle);
+    const largeArcFlag = endAngle - startAngle &lt;= 180 ? &#34;0&#34; : &#34;1&#34;;
+    const d = [
+      &#34;M&#34;,
+      start.x,
+      start.y,
+      &#34;A&#34;,
+      radius,
+      radius,
+      0,
+      largeArcFlag,
+      0,
+      end.x,
+      end.y,
+    ].join(&#34; &#34;);
+    return d;
+  }
+
+  setValue(value) {
+    let c = (value / 100) * 360;
+    if (c === 360) c = 359.99;
+    const xy = this.size / 2 - this.strokeWidth / 2;
+    const d = this.describeArc(xy, xy, xy, 180, 180 + c);
+    this.slice.setAttribute(&#34;d&#34;, d);
+    const tspanSize = this.size / 3.5 / 3;
+    this.text.innerHTML = `${Math.floor(value)}% `;
+  }
+
+  animateReset() {
+    this.setValue(0);
+  }
+}
+
+const containers = document.getElementsByClassName(&#34;chart&#34;);
+const dial = new Dial(containers[0]);
+dial.animateStart();</textarea>
+      <div class="vs__code_wrapper-main">
+      <div class="vs__code_wrapper-main">
+        <div class="code_wrapper_iframe">
+          <div class="code_fullscreen"></div>
+          
+          <iframe
+            id="live-preview"
+            src="assets/templates/template-iframe.html"
+            width="100%"
+            height="100%"
+            allow="accelerometer *; camera *; encrypted-media *; display-capture *; geolocation *; gyroscope *; microphone *; midi *; clipboard-read *; clipboard-write *; web-share *; serial *; xr-spatial-tracking *"
+            allowfullscreen="true"
+            allowpaymentrequest="true"
+            allowtransparency="true"
+            sandbox="allow-forms allow-modals allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation allow-downloads allow-presentation"
+            class="result-iframe iframe-visual-update"
+            name="codeShow"
+            loading="lazy"
+          ></iframe>
+        </div>
+        <div class="code_wrapper_codes">
+          <div class="codes_tabs">
+            <div class="codes_tabs_item active">HTML</div>
+            <div class="codes_tabs_item">CSS</div>
+            <div class="codes_tabs_item">JAVASCRIPT</div>
+          </div>
+          <div class="codes_contents">
+            <div class="codes_contents_item active" id="htmlcode"></div>
+            <div class="codes_contents_item" id="csscode"></div>
+            <div class="codes_contents_item" id="jscode"></div>
+
+            <div class="Copy__code">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M16 4.038V4c0-.465 0-.697-.051-.888a1.5 1.5 0 0 0-1.06-1.06C14.697 2 14.464 2 14 2h-4c-.465 0-.697 0-.888.051a1.5 1.5 0 0 0-1.06 1.06C8 3.304 8 3.536 8 4v.038m8 0c0 .44-.001.665-.051.85a1.5 1.5 0 0 1-1.06 1.06C14.697 6 14.464 6 14 6h-4c-.465 0-.697 0-.888-.051a1.5 1.5 0 0 1-1.06-1.06C8.001 4.702 8 4.477 8 4.038m8 0c.784.047 1.34.155 1.816.397a4 4 0 0 1 1.748 1.748C20 7.04 20 8.16 20 10.4v5.2c0 2.24 0 3.36-.436 4.216a4 4 0 0 1-1.748 1.748C16.96 22 15.84 22 13.6 22h-3.2c-2.24 0-3.36 0-4.216-.436a4 4 0 0 1-1.748-1.748C4 18.96 4 17.84 4 15.6v-5.2c0-2.24 0-3.36.436-4.216a4 4 0 0 1 1.748-1.748c.475-.242 1.032-.35 1.816-.398"></path></svg>Copy</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="code__wrapper">
       <div class="close__fs"></div>
       <div class="code__wrapper_header">
         <div class="code__wrapper_header_title">Circular Progress Bar</div>
@@ -275,18 +539,10 @@ dial.animateStart();</textarea>
           ></iframe>
         </div>
       </div>
-    </div>
+    </div> -->
     <script src="assets/lib/jquery-3.7.1.min.js"></script>
     <script src="assets/lib/sass.sync.min.js"></script>
-    <script src="assets/codemirror5/lib/codemirror.js"></script>
-    <script src="assets/codemirror5/addon/hint/show-hint.js"></script>
-    <script src="assets/codemirror5/addon/hint/xml-hint.js"></script>
-    <script src="assets/codemirror5/addon/hint/html-hint.js"></script>
-    <script src="assets/codemirror5/mode/xml/xml.js"></script>
-    <script src="assets/codemirror5/mode/javascript/javascript.js"></script>
-    <script src="assets/codemirror5/mode/css/css.js"></script>
-    <script src="assets/codemirror5/mode/htmlmixed/htmlmixed.js"></script>
-    <script src="assets/codemirror5/addon/hint/css-hint.js"></script>
-    <script src="assets/js/common.js"></script>
+    <script src="https://unpkg.com/monaco-editor@^0.21.2/min/vs/loader.js"></script>
+    <script src="assets/js/editor-vs.js"></script>
   </body>
 </html>

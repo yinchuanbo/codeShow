@@ -93,7 +93,7 @@ for (let i = filesList.length - 1; i >= 0; i--) {
   date = dateMatch ? dateMatch[1] : null;
   type = typeMatch ? typeMatch[1] : null;
   creator = creatorMatch ? creatorMatch[1] : null;
-  const templateContent = fs.readFileSync("./template-editor.html", "utf-8");
+  const templateContent = fs.readFileSync("./template-editor-vs.html", "utf-8");
   const compiledHtml = ejs.render(templateContent, {
     title: (title || "").trim(),
     type: (type || "").trim(),

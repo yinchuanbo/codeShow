@@ -5,14 +5,435 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>codeShow</title>
     <link rel="icon" sizes="any" mask href="assets/images/ico.svg" />
-    <link rel="stylesheet" href="assets/codemirror5/theme/blackboard.css" />
-    <link rel="stylesheet" href="assets/codemirror5/lib/codemirror.css" />
-    <link rel="stylesheet" href="assets/codemirror5/addon/hint/show-hint.css" />
+    <link
+      rel="stylesheet"
+      data-name="vs/editor/editor.main"
+      href="https://unpkg.com/monaco-editor@^0.21.2/min/vs/editor/editor.main.css"
+    />
     <link rel="stylesheet" href="assets/css/common.css" />
     <link rel="stylesheet" href="assets/lib/wenk.min.css" />
   </head>
   <body>
-    <div class="code__wrapper">
+    <div class="vs__code_wrapper">
+      <textarea id="htmlcode-ta" style="display: none;">&lt;div id=&#34;carousel-wrapper&#34;&gt;
+  &lt;div id=&#34;menu&#34;&gt;
+    &lt;div id=&#34;current-option&#34;&gt;
+      &lt;span
+        id=&#34;current-option-text1&#34;
+        data-previous-text=&#34;&#34;
+        data-next-text=&#34;&#34;
+      &gt;&lt;/span&gt;
+      &lt;span
+        id=&#34;current-option-text2&#34;
+        data-previous-text=&#34;&#34;
+        data-next-text=&#34;&#34;
+      &gt;&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;button id=&#34;previous-option&#34;&gt;&lt;/button&gt;
+    &lt;button id=&#34;next-option&#34;&gt;&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div id=&#34;image&#34;&gt;&lt;/div&gt;
+&lt;/div&gt;</textarea>
+      <textarea id="csscode-ta" style="display: none;">@import url(&#34;https://fonts.googleapis.com/css?family=Poppins|Lato|Roboto+Mono&amp;display=swap&#34;);
+
+#iframe__wrapper {
+  overflow: hidden;
+  background: lighten(#cb8589, 5%);
+  font-family: &#34;Helvetica Neue&#34;, &#34;Roboto Mono&#34;, &#34;Poppins&#34;, sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+* {
+  box-sizing: border-box;
+  outline: none;
+  user-select: none;
+}
+
+#carousel-wrapper {
+  width: auto;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+  #menu {
+    height: 380px;
+    width: 720px;
+    overflow: hidden;
+    font-weight: 700;
+    line-height: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    transition: all 0.6s ease-in-out;
+
+    #current-option {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform: translate(-25%, 0%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      //background-color: blue;
+      overflow: hidden;
+
+      #current-option-text1 {
+        font-size: 1.6rem;
+        line-height: 3rem;
+        width: 220px;
+        height: 200px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        //background: red;
+
+        &amp;::before {
+          content: attr(data-next-text);
+          position: absolute;
+          transform: translate(0%, 380px);
+          width: 100%;
+          height: 200px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: flex-start;
+          //background: red;
+        }
+
+        &amp;::after {
+          content: attr(data-previous-text);
+          position: absolute;
+          transform: translate(0%, -380px);
+          width: 100%;
+          height: 200px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: flex-start;
+          //background: red;
+        }
+      }
+
+      #current-option-text2 {
+        font-size: 0.8rem;
+        width: 220px;
+        height: 40px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-end;
+        //background: green;
+
+        &amp;::before {
+          content: attr(data-next-text);
+          position: absolute;
+          transform: translate(0%, 380px);
+          width: 100%;
+          height: 40px;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          justify-content: flex-end;
+          //background: green;
+        }
+
+        &amp;::after {
+          content: attr(data-previous-text);
+          position: absolute;
+          transform: translate(0%, -380px);
+          width: 100%;
+          height: 40px;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          justify-content: flex-end;
+          //background: green;
+        }
+      }
+    }
+
+    #previous-option {
+      width: 1.5rem;
+      height: 1.5rem;
+      border: none;
+      display: block;
+      cursor: pointer;
+      background: url(&#34;data:image/svg+xml,%3Csvg version=&#39;1.1&#39; xmlns=&#39;http://www.w3.org/2000/svg&#39; xmlns:xlink=&#39;http://www.w3.org/1999/xlink&#39; x=&#39;0px&#39; y=&#39;0px&#39; viewBox=&#39;0 0 256 256&#39;%3E%3Cpolygon points=&#39;225.813,48.907 128,146.72 30.187,48.907 0,79.093 128,207.093 256,79.093&#39; fill=&#39;%23333&#39;%3E%3C/polygon%3E%3C/svg%3E&#34;);
+      background-size: cover;
+      position: absolute;
+      transform: translate(310px, 50px);
+    }
+
+    #next-option {
+      width: 1.5rem;
+      height: 1.5rem;
+      border: none;
+      display: block;
+      cursor: pointer;
+      background: url(&#34;data:image/svg+xml,%3Csvg version=&#39;1.1&#39; xmlns=&#39;http://www.w3.org/2000/svg&#39; xmlns:xlink=&#39;http://www.w3.org/1999/xlink&#39; x=&#39;0px&#39; y=&#39;0px&#39; viewBox=&#39;0 0 256 256&#39;%3E%3Cpolygon points=&#39;225.813,48.907 128,146.72 30.187,48.907 0,79.093 128,207.093 256,79.093&#39; fill=&#39;%23333&#39;%3E%3C/polygon%3E%3C/svg%3E&#34;);
+      background-size: cover;
+      position: absolute;
+      transform: translate(310px, -50px) rotate(180deg);
+    }
+  }
+
+  #image {
+    height: 240px;
+    width: 240px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 101;
+    position: absolute;
+    transform: translate(140px, 0);
+  }
+
+  &amp;.anim-next {
+    pointer-events: none;
+
+    #current-option-text1 {
+      animation: next-text 0.65s 0.085s;
+    }
+
+    #current-option-text2 {
+      animation: next-text 0.65s 0.085s;
+    }
+
+    #previous-option {
+      animation: next-top-arrow 0.65s 0.085s;
+    }
+
+    #next-option {
+      animation: next-bottom-arrow 0.65s 0.085s;
+    }
+
+    #image {
+      animation: next-image 0.65s 0.085s;
+    }
+  }
+
+  &amp;.anim-previous {
+    pointer-events: none;
+
+    #current-option-text1 {
+      animation: previous-text 0.65s 0.085s;
+    }
+
+    #current-option-text2 {
+      animation: previous-text 0.65s 0.085s;
+    }
+
+    #previous-option {
+      animation: previous-top-arrow 0.65s 0.085s;
+    }
+
+    #next-option {
+      animation: previous-bottom-arrow 0.65s 0.085s;
+    }
+
+    #image {
+      animation: previous-image 0.65s 0.085s;
+    }
+  }
+}
+
+@keyframes previous-text {
+  50%,
+  55% {
+    transform: translate(0%, 390px);
+  }
+  to {
+    transform: translate(0%, 380px);
+  }
+}
+
+@keyframes previous-top-arrow {
+  50% {
+    transform: translate(310px, 53px);
+  }
+}
+
+@keyframes previous-bottom-arrow {
+  50% {
+    transform: translate(310px, -47px) rotate(180deg);
+  }
+}
+
+@keyframes previous-image {
+  0% {
+    transform: translate(140px, 0) scale(1);
+    opacity: 1;
+  }
+  70% {
+    transform: translate(140px, 0) scale(1.1);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(140px, 0) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes next-text {
+  50%,
+  55% {
+    transform: translate(0%, -390px);
+  }
+  to {
+    transform: translate(0%, -380px);
+  }
+}
+
+@keyframes next-top-arrow {
+  50% {
+    transform: translate(310px, 47px);
+  }
+}
+
+@keyframes next-bottom-arrow {
+  50% {
+    transform: translate(310px, -53px) rotate(180deg);
+  }
+}
+
+@keyframes next-image {
+  0% {
+    transform: translate(140px, 0) scale(1);
+    opacity: 1;
+  }
+  70% {
+    transform: translate(140px, 0) scale(1.1);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(140px, 0) scale(1);
+    opacity: 1;
+  }
+}</textarea>
+      <textarea id="jscode-ta" style="display: none;">const text1_options = [
+  &#34;Why art is so important&#34;,
+  &#34;Why you shouldn&#39;t buy the new iPhone&#34;,
+  &#34;Is life actually real?&#34;,
+  &#34;How to learn JS in 2 months&#34;,
+];
+const text2_options = [
+  &#34;69 min. read&#34;,
+  &#34;7 min. read&#34;,
+  &#34;8 min. read&#34;,
+  &#34;87,658.1277 min. read&#34;,
+];
+const color_options = [&#34;#EBB9D2&#34;, &#34;#FE9968&#34;, &#34;#7FE0EB&#34;, &#34;#6CE5B1&#34;];
+const image_options = [
+  &#34;https://images.unsplash.com/photo-1524721696987-b9527df9e512?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1190&amp;q=80&#34;,
+  &#34;https://images.unsplash.com/photo-1556656793-08538906a9f8?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1050&amp;q=80&#34;,
+  &#34;https://images.unsplash.com/photo-1506073828772-2f85239b6d2d?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1189&amp;q=80&#34;,
+  &#34;https://images.unsplash.com/photo-1523800503107-5bc3ba2a6f81?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=80&#34;,
+];
+var i = 0;
+const currentOptionText1 = document.getElementById(&#34;current-option-text1&#34;);
+const currentOptionText2 = document.getElementById(&#34;current-option-text2&#34;);
+const currentOptionImage = document.getElementById(&#34;image&#34;);
+const carousel = document.getElementById(&#34;carousel-wrapper&#34;);
+const mainMenu = document.getElementById(&#34;menu&#34;);
+const optionPrevious = document.getElementById(&#34;previous-option&#34;);
+const optionNext = document.getElementById(&#34;next-option&#34;);
+
+currentOptionText1.innerText = text1_options[i];
+currentOptionText2.innerText = text2_options[i];
+currentOptionImage.style.backgroundImage = &#34;url(&#34; + image_options[i] + &#34;)&#34;;
+mainMenu.style.background = color_options[i];
+
+optionNext.onclick = function () {
+  i = i + 1;
+  i = i % text1_options.length;
+  currentOptionText1.dataset.nextText = text1_options[i];
+
+  currentOptionText2.dataset.nextText = text2_options[i];
+
+  mainMenu.style.background = color_options[i];
+  carousel.classList.add(&#34;anim-next&#34;);
+
+  setTimeout(() =&gt; {
+    currentOptionImage.style.backgroundImage = &#34;url(&#34; + image_options[i] + &#34;)&#34;;
+  }, 455);
+
+  setTimeout(() =&gt; {
+    currentOptionText1.innerText = text1_options[i];
+    currentOptionText2.innerText = text2_options[i];
+    carousel.classList.remove(&#34;anim-next&#34;);
+  }, 650);
+};
+
+optionPrevious.onclick = function () {
+  if (i === 0) {
+    i = text1_options.length;
+  }
+  i = i - 1;
+  currentOptionText1.dataset.previousText = text1_options[i];
+
+  currentOptionText2.dataset.previousText = text2_options[i];
+
+  mainMenu.style.background = color_options[i];
+  carousel.classList.add(&#34;anim-previous&#34;);
+
+  setTimeout(() =&gt; {
+    currentOptionImage.style.backgroundImage = &#34;url(&#34; + image_options[i] + &#34;)&#34;;
+  }, 455);
+
+  setTimeout(() =&gt; {
+    currentOptionText1.innerText = text1_options[i];
+    currentOptionText2.innerText = text2_options[i];
+    carousel.classList.remove(&#34;anim-previous&#34;);
+  }, 650);
+};</textarea>
+      <div class="vs__code_wrapper-main">
+      <div class="vs__code_wrapper-main">
+        <div class="code_wrapper_iframe">
+          <div class="code_fullscreen"></div>
+          
+          <iframe
+            id="live-preview"
+            src="assets/templates/template-iframe.html"
+            width="100%"
+            height="100%"
+            allow="accelerometer *; camera *; encrypted-media *; display-capture *; geolocation *; gyroscope *; microphone *; midi *; clipboard-read *; clipboard-write *; web-share *; serial *; xr-spatial-tracking *"
+            allowfullscreen="true"
+            allowpaymentrequest="true"
+            allowtransparency="true"
+            sandbox="allow-forms allow-modals allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation allow-downloads allow-presentation"
+            class="result-iframe iframe-visual-update"
+            name="codeShow"
+            loading="lazy"
+          ></iframe>
+        </div>
+        <div class="code_wrapper_codes">
+          <div class="codes_tabs">
+            <div class="codes_tabs_item active">HTML</div>
+            <div class="codes_tabs_item">CSS</div>
+            <div class="codes_tabs_item">JAVASCRIPT</div>
+          </div>
+          <div class="codes_contents">
+            <div class="codes_contents_item active" id="htmlcode"></div>
+            <div class="codes_contents_item" id="csscode"></div>
+            <div class="codes_contents_item" id="jscode"></div>
+
+            <div class="Copy__code">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M16 4.038V4c0-.465 0-.697-.051-.888a1.5 1.5 0 0 0-1.06-1.06C14.697 2 14.464 2 14 2h-4c-.465 0-.697 0-.888.051a1.5 1.5 0 0 0-1.06 1.06C8 3.304 8 3.536 8 4v.038m8 0c0 .44-.001.665-.051.85a1.5 1.5 0 0 1-1.06 1.06C14.697 6 14.464 6 14 6h-4c-.465 0-.697 0-.888-.051a1.5 1.5 0 0 1-1.06-1.06C8.001 4.702 8 4.477 8 4.038m8 0c.784.047 1.34.155 1.816.397a4 4 0 0 1 1.748 1.748C20 7.04 20 8.16 20 10.4v5.2c0 2.24 0 3.36-.436 4.216a4 4 0 0 1-1.748 1.748C16.96 22 15.84 22 13.6 22h-3.2c-2.24 0-3.36 0-4.216-.436a4 4 0 0 1-1.748-1.748C4 18.96 4 17.84 4 15.6v-5.2c0-2.24 0-3.36.436-4.216a4 4 0 0 1 1.748-1.748c.475-.242 1.032-.35 1.816-.398"></path></svg>Copy</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="code__wrapper">
       <div class="close__fs"></div>
       <div class="code__wrapper_header">
         <div class="code__wrapper_header_title">CSS and JS Infinite Carousel</div>
@@ -432,18 +853,10 @@ optionPrevious.onclick = function () {
           ></iframe>
         </div>
       </div>
-    </div>
+    </div> -->
     <script src="assets/lib/jquery-3.7.1.min.js"></script>
     <script src="assets/lib/sass.sync.min.js"></script>
-    <script src="assets/codemirror5/lib/codemirror.js"></script>
-    <script src="assets/codemirror5/addon/hint/show-hint.js"></script>
-    <script src="assets/codemirror5/addon/hint/xml-hint.js"></script>
-    <script src="assets/codemirror5/addon/hint/html-hint.js"></script>
-    <script src="assets/codemirror5/mode/xml/xml.js"></script>
-    <script src="assets/codemirror5/mode/javascript/javascript.js"></script>
-    <script src="assets/codemirror5/mode/css/css.js"></script>
-    <script src="assets/codemirror5/mode/htmlmixed/htmlmixed.js"></script>
-    <script src="assets/codemirror5/addon/hint/css-hint.js"></script>
-    <script src="assets/js/common.js"></script>
+    <script src="https://unpkg.com/monaco-editor@^0.21.2/min/vs/loader.js"></script>
+    <script src="assets/js/editor-vs.js"></script>
   </body>
 </html>

@@ -5,14 +5,382 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>codeShow</title>
     <link rel="icon" sizes="any" mask href="assets/images/ico.svg" />
-    <link rel="stylesheet" href="assets/codemirror5/theme/blackboard.css" />
-    <link rel="stylesheet" href="assets/codemirror5/lib/codemirror.css" />
-    <link rel="stylesheet" href="assets/codemirror5/addon/hint/show-hint.css" />
+    <link
+      rel="stylesheet"
+      data-name="vs/editor/editor.main"
+      href="https://unpkg.com/monaco-editor@^0.21.2/min/vs/editor/editor.main.css"
+    />
     <link rel="stylesheet" href="assets/css/common.css" />
     <link rel="stylesheet" href="assets/lib/wenk.min.css" />
   </head>
   <body>
-    <div class="code__wrapper">
+    <div class="vs__code_wrapper">
+      <textarea id="htmlcode-ta" style="display: none;">&lt;div id=&#34;scroll-progress-1&#34; class=&#34;scroll-progress&#34;&gt;
+  &lt;span class=&#34;scroll-progress-percentage&#34;&gt;&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;div id=&#34;scroll-progress-2&#34; class=&#34;scroll-progress&#34;&gt;&lt;/div&gt;
+&lt;main&gt;
+  &lt;div id=&#34;scroll-progress-3&#34; class=&#34;scroll-progress&#34;&gt;
+    &lt;span class=&#34;scroll-progress-percentage&#34;&gt;&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div id=&#34;scroll-target-1&#34;&gt;
+    &lt;h1&gt;A Simple Vanilla Scroll Progress Bar/Indicator&lt;/h1&gt;
+    &lt;p&gt;
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
+      consectetur quam velit, vitae molestie nisl rutrum ac. Vestibulum placerat
+      sem erat, a aliquet nibh scelerisque sit amet. Aliquam fringilla felis in
+      libero egestas mattis. Maecenas non tempor orci. Sed vitae velit ac sapien
+      interdum suscipit condimentum in lorem. Mauris imperdiet id turpis
+      eleifend mattis. Integer interdum metus ac nunc consequat tempus. Fusce
+      sit amet aliquam libero. Vestibulum ante ipsum primis in faucibus orci
+      luctus et ultrices posuere cubilia curae; Sed a felis vehicula, fermentum
+      ante in, congue ipsum.
+    &lt;/p&gt;
+    &lt;p&gt;
+      Pellentesque habitant morbi tristique senectus et netus et malesuada fames
+      ac turpis egestas. Pellentesque et tellus vel turpis ultricies cursus. Sed
+      ac ligula id odio bibendum pretium vitae eu lacus. Pellentesque turpis
+      arcu, porttitor sed nisl imperdiet, aliquam scelerisque sem. Praesent
+      lobortis eget est a interdum. Sed ac risus ante. Praesent vitae
+      condimentum eros, vitae posuere dolor. Quisque iaculis, odio at convallis
+      accumsan, ante mi mattis lectus, vel mollis enim libero at libero. Proin
+      mattis feugiat ante eget sodales. Praesent nulla ipsum, consequat et erat
+      id, vehicula porttitor est. Maecenas ligula felis, interdum at arcu
+      pharetra, dignissim imperdiet odio. Donec finibus pellentesque
+      consectetur. Aliquam dictum volutpat velit, sit amet pellentesque velit
+      ultricies at. Quisque molestie, metus gravida vehicula imperdiet, libero
+      leo consectetur sapien, sed sagittis sapien velit in lectus. Pellentesque
+      euismod sagittis faucibus. Ut dapibus enim dictum vehicula tincidunt.
+    &lt;/p&gt;
+    &lt;p&gt;
+      Sed eu fermentum purus. Nulla tincidunt mauris vel odio egestas
+      ullamcorper. In id finibus tellus. Nulla vel accumsan velit. Fusce vel
+      finibus libero. Nam mollis urna ipsum, eu vehicula risus mattis et.
+      Suspendisse potenti. Proin sodales vel libero vel pellentesque. Cras
+      lobortis eros vitae ipsum viverra, nec dapibus augue maximus. Integer
+      convallis tortor ut tellus scelerisque, in tempus neque porta. Donec
+      sollicitudin sapien quis tristique elementum. Fusce scelerisque vulputate
+      venenatis. Fusce a dolor et turpis sodales hendrerit id et sem. Nam vel
+      purus ac nunc fringilla tempor vel sit amet lorem.
+    &lt;/p&gt;
+    &lt;p&gt;
+      Proin at bibendum ipsum. Mauris gravida, nulla vel tempus sollicitudin,
+      lacus neque placerat risus, vel facilisis ipsum orci quis quam. Etiam
+      condimentum urna venenatis risus pretium mattis. Pellentesque eros enim,
+      mollis vel imperdiet quis, auctor vel quam. Pellentesque in urna nec lorem
+      lacinia tempor. Praesent viverra neque vel dolor cursus ultricies. Vivamus
+      dictum est sem, nec commodo est egestas vel. Maecenas lacus augue, euismod
+      eu mauris at, mollis dictum velit. Quisque placerat velit in quam rhoncus,
+      non aliquam quam facilisis. Aliquam erat volutpat.
+    &lt;/p&gt;
+    &lt;p&gt;
+      Vivamus ligula nisl, scelerisque aliquet semper in, posuere quis orci.
+      Integer urna nunc, tempus varius mollis quis, tincidunt quis velit. Mauris
+      sem eros, sodales eget malesuada et, mattis in risus. In dolor est,
+      vulputate vitae rhoncus eget, blandit sed nibh. Vivamus non imperdiet mi.
+      Aliquam tortor justo, posuere eget risus eget, suscipit suscipit tellus.
+      Suspendisse vel accumsan nulla. Sed vel velit efficitur, consequat ex in,
+      condimentum justo. Fusce viverra ligula dui, id accumsan orci eleifend et.
+      Ut vitae tincidunt velit. Vivamus urna mauris, interdum et massa sit amet,
+      volutpat laoreet arcu. Aenean et ipsum eu nisl interdum efficitur. Nullam
+      scelerisque dui euismod aliquet tincidunt. Curabitur placerat enim sit
+      amet viverra finibus.
+    &lt;/p&gt;
+    &lt;p&gt;
+      Etiam auctor bibendum dolor. Aliquam et condimentum sapien. Phasellus nisi
+      lectus, lobortis at sodales id, faucibus sed velit. Pellentesque at
+      pharetra velit. In quis bibendum erat. Pellentesque aliquam justo a
+      ultrices dignissim. Morbi lacinia neque non condimentum mollis. Donec
+      sodales dui in leo feugiat facilisis. Nullam volutpat efficitur ex quis
+      ornare. Nulla facilisi.
+    &lt;/p&gt;
+  &lt;/div&gt;
+  &lt;hr /&gt;
+  &lt;div id=&#34;scroll-target-2&#34;&gt;
+    &lt;h1&gt;Easy to customize with CSS&lt;/h1&gt;
+    &lt;p&gt;
+      Mauris sit amet tristique urna. Vivamus eget rhoncus turpis. Pellentesque
+      ornare turpis sed odio imperdiet interdum. Ut pulvinar tristique massa
+      vitae luctus. Donec et imperdiet ligula. Suspendisse tristique, tellus nec
+      efficitur consequat, elit tortor laoreet orci, maximus commodo elit mi nec
+      magna. Aliquam egestas lobortis urna. Praesent condimentum augue vitae dui
+      posuere, vitae ultricies velit euismod. Donec suscipit diam ac blandit
+      mattis. Ut a efficitur nulla. Fusce ut augue eu dolor bibendum
+      pellentesque in efficitur nibh. Vestibulum a felis faucibus, malesuada
+      lectus elementum, mollis urna. Nulla mattis vulputate libero vel
+      fringilla. Integer et felis viverra, fermentum ante dictum, euismod risus.
+    &lt;/p&gt;
+    &lt;p&gt;
+      Phasellus pretium iaculis turpis, quis ultrices nulla hendrerit eget.
+      Morbi eget feugiat augue, eu ultrices turpis. Vivamus blandit, nibh
+      porttitor gravida vehicula, nunc augue sollicitudin purus, vitae mattis mi
+      orci eu mi. Phasellus efficitur malesuada libero et maximus. Nulla at
+      condimentum turpis. Ut iaculis dapibus magna, sed ultricies lectus
+      pharetra id. Fusce a lacus eu nunc faucibus laoreet. Maecenas et nunc
+      risus. Proin scelerisque pharetra nisl, nec placerat turpis feugiat
+      molestie.
+    &lt;/p&gt;
+    &lt;p&gt;
+      Maecenas convallis, dui eget cursus porttitor, odio arcu pharetra ipsum,
+      non egestas quam enim at massa. Sed accumsan ut nulla et efficitur.
+      Vivamus efficitur vel leo sed eleifend. Cras sed leo in metus imperdiet
+      ultricies nec vitae libero. Sed varius justo sit amet massa aliquam, eu
+      gravida enim tincidunt. Ut aliquet placerat leo vitae ultrices. Phasellus
+      varius nisl quis ex mattis, sit amet scelerisque sapien fringilla.
+      Maecenas arcu libero, consectetur quis semper consequat, feugiat a est.
+      Fusce sed neque diam.
+    &lt;/p&gt;
+    &lt;p&gt;
+      Nulla facilisi. Cras ornare viverra tortor in mollis. Sed bibendum diam et
+      dictum eleifend. Orci varius natoque penatibus et magnis dis parturient
+      montes, nascetur ridiculus mus. Fusce libero nunc, venenatis a tortor sed,
+      facilisis vestibulum est. Donec gravida nec dui eu vulputate. Duis dolor
+      lectus, tempus non ligula vitae, sagittis interdum tortor. Suspendisse ac
+      nulla pretium, finibus lorem id, tempus ante. Etiam id posuere nisl, nec
+      dapibus nulla.
+    &lt;/p&gt;
+    &lt;p&gt;
+      Cras mi massa, gravida vitae libero quis, sollicitudin maximus diam. Nulla
+      vulputate mattis pulvinar. Proin dignissim lorem vitae efficitur interdum.
+      Duis sed odio neque. Donec id est eu tellus pellentesque pharetra vel
+      vitae ipsum. Proin nec ex non nunc dignissim ornare id sit amet orci.
+      Donec feugiat lectus at dolor ultrices molestie. Nunc ultricies eros
+      tortor, vel vestibulum nulla scelerisque sed. Donec pharetra velit nec
+      sodales rutrum. Praesent ornare tempus erat in efficitur.
+    &lt;/p&gt;
+    &lt;p&gt;
+      Sed eu fermentum purus. Nulla tincidunt mauris vel odio egestas
+      ullamcorper. In id finibus tellus. Nulla vel accumsan velit. Fusce vel
+      finibus libero. Nam mollis urna ipsum, eu vehicula risus mattis et.
+      Suspendisse potenti. Proin sodales vel libero vel pellentesque. Cras
+      lobortis eros vitae ipsum viverra, nec dapibus augue maximus. Integer
+      convallis tortor ut tellus scelerisque, in tempus neque porta. Donec
+      sollicitudin sapien quis tristique elementum. Fusce scelerisque vulputate
+      venenatis. Fusce a dolor et turpis sodales hendrerit id et sem. Nam vel
+      purus ac nunc fringilla tempor vel sit amet lorem.
+    &lt;/p&gt;
+    &lt;p&gt;
+      Proin at bibendum ipsum. Mauris gravida, nulla vel tempus sollicitudin,
+      lacus neque placerat risus, vel facilisis ipsum orci quis quam. Etiam
+      condimentum urna venenatis risus pretium mattis. Pellentesque eros enim,
+      mollis vel imperdiet quis, auctor vel quam. Pellentesque in urna nec lorem
+      lacinia tempor. Praesent viverra neque vel dolor cursus ultricies. Vivamus
+      dictum est sem, nec commodo est egestas vel. Maecenas lacus augue, euismod
+      eu mauris at, mollis dictum velit. Quisque placerat velit in quam rhoncus,
+      non aliquam quam facilisis. Aliquam erat volutpat.
+    &lt;/p&gt;
+    &lt;hr /&gt;
+    &lt;span
+      style=&#34;display: flex; align-items: start; justify-content: space-between&#34;
+      &gt;By Colin Espinas&lt;span
+        &gt;&lt;a href=&#34;https://codepen.io/Call_in&#34; target=&#34;_blank&#34;
+          &gt;&lt;img
+            height=&#34;24&#34;
+            width=&#34;24&#34;
+            src=&#34;https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/codepen.svg&#34;
+        /&gt;&lt;/a&gt;
+        &lt;a href=&#34;https://github.com/ColinEspinas&#34; target=&#34;_blank&#34;
+          &gt;&lt;img
+            height=&#34;24&#34;
+            width=&#34;24&#34;
+            src=&#34;https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/github.svg&#34; /&gt;&lt;/a
+        &gt;&lt;a href=&#34;https://www.buymeacoffee.com/ColinEspinas&#34; target=&#34;_blank&#34;
+          &gt;&lt;img
+            height=&#34;24&#34;
+            width=&#34;24&#34;
+            src=&#34;https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/buymeacoffee.svg&#34; /&gt;&lt;/a&gt;&lt;/span
+    &gt;&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/main&gt;</textarea>
+      <textarea id="csscode-ta" style="display: none;">@import url(&#34;https://fonts.googleapis.com/css2?family=Alata&amp;display=swap&#34;);
+
+body {
+  box-sizing: border-box;
+  font-family: &#34;Alata&#34;, sans-serif;
+  background-color: #ebecf1;
+  color: #1b1c25;
+  margin: 0;
+  padding: 100px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+main {
+  position: relative;
+  margin-bottom: 100px;
+}
+
+p {
+  text-align: justify;
+}
+
+hr {
+  height: 2px;
+  width: 100%;
+  border: none;
+  background-color: #1b1c25;
+}
+
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0;
+  display: flex;
+  min-height: 10px;
+  justify-content: flex-end;
+  align-item: center;
+  background-color: #1b1c25;
+  transition: width 200ms ease, opacity 200ms ease;
+  z-index: 10;
+}
+
+.scroll-progress-percentage {
+  display: block;
+  padding: 5px 10px;
+  color: #ebecf1;
+}
+
+#scroll-progress-1 {
+  background-color: #e11d74;
+  border-radius: 0 5px 5px 0;
+}
+
+#scroll-progress-2 {
+  background-color: #17b978;
+  top: auto;
+  bottom: 0;
+  border-radius: 0 15px 15px 0;
+  transition: width 500ms ease, opacity 200ms ease;
+}
+
+#scroll-progress-3 {
+  background-color: #00bcd4;
+  position: absolute;
+  top: 0;
+  left: -25px;
+  width: 10px;
+  min-height: 20px;
+  border-radius: 15px;
+  transition: height 200ms ease, opacity 200ms ease;
+  align-items: flex-end;
+  z-index: 9;
+}
+
+#scroll-progress-3 &gt; .scroll-progress-percentage {
+  display: block;
+  padding: 0 20px;
+  color: #1b1c25;
+}</textarea>
+      <textarea id="jscode-ta" style="display: none;">class ScrollProgressBar {
+  constructor(selector, root, target, callback) {
+    // Get elements from selectors
+    this.element = document.querySelector(selector);
+    this.root = document.querySelector(root) || document.documentElement;
+    this.target = document.querySelector(target);
+    this.callback = callback;
+    // Set events
+    window.addEventListener(&#34;scroll&#34;, this.computeScroll.bind(this));
+    window.addEventListener(&#34;resize&#34;, this.computeScroll.bind(this));
+    // Compute to initialize
+    this.computeScroll();
+  }
+
+  computeScroll() {
+    // Compute percentage of scroll
+    const scrollPercent = ~~(
+      ((this.root.scrollTop -
+        this.target.offsetTop -
+        this.target.parentElement.offsetTop) /
+        (this.target.clientHeight - this.root.clientHeight)) *
+      100
+    );
+    // Call the callback function with scrollPercent as an argument
+    if (this.callback &amp;&amp; typeof this.callback === &#34;function&#34;)
+      this.callback(scrollPercent);
+  }
+}
+
+// Create ScrollProgressBar objects:
+
+// For progress bar 1
+let progressBar1 = new ScrollProgressBar(
+  &#34;#scroll-progress-1&#34;,
+  null,
+  &#34;#scroll-target-1&#34;,
+  function (scrollPercent) {
+    // Fade progress bar when below completion height
+    if (scrollPercent &gt; 100)
+      this.element.style.opacity = 1 - (scrollPercent - 110) / 40;
+    else this.element.style.opacity = 1;
+
+    // Affect percentage value to the width and the label of the progress bar
+    this.element.style.width = this.element.querySelector(&#34;span&#34;).innerText =
+      Math.max(0, Math.min(100, scrollPercent)) + &#34;%&#34;;
+  }
+);
+
+// For progress bar 2
+let progressBar2 = new ScrollProgressBar(
+  &#34;#scroll-progress-2&#34;,
+  null,
+  &#34;#scroll-target-2&#34;,
+  function (scrollPercent) {
+    // Affect percentage value to the width of the progress bar
+    this.element.style.width = Math.max(0, Math.min(100, scrollPercent)) + &#34;%&#34;;
+  }
+);
+
+// For progress bar 3
+let progressBar3 = new ScrollProgressBar(
+  &#34;#scroll-progress-3&#34;,
+  null,
+  &#34;main&#34;,
+  function (scrollPercent) {
+    // Affect percentage value to the width and the label of the progress bar
+    this.element.style.height = this.element.querySelector(&#34;span&#34;).innerText =
+      Math.max(0, Math.min(100, scrollPercent)) + &#34;%&#34;;
+  }
+);</textarea>
+      <div class="vs__code_wrapper-main">
+      <div class="vs__code_wrapper-main">
+        <div class="code_wrapper_iframe">
+          <div class="code_fullscreen"></div>
+          
+          <iframe
+            id="live-preview"
+            src="assets/templates/template-iframe.html"
+            width="100%"
+            height="100%"
+            allow="accelerometer *; camera *; encrypted-media *; display-capture *; geolocation *; gyroscope *; microphone *; midi *; clipboard-read *; clipboard-write *; web-share *; serial *; xr-spatial-tracking *"
+            allowfullscreen="true"
+            allowpaymentrequest="true"
+            allowtransparency="true"
+            sandbox="allow-forms allow-modals allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation allow-downloads allow-presentation"
+            class="result-iframe iframe-visual-update"
+            name="codeShow"
+            loading="lazy"
+          ></iframe>
+        </div>
+        <div class="code_wrapper_codes">
+          <div class="codes_tabs">
+            <div class="codes_tabs_item active">HTML</div>
+            <div class="codes_tabs_item">CSS</div>
+            <div class="codes_tabs_item">JAVASCRIPT</div>
+          </div>
+          <div class="codes_contents">
+            <div class="codes_contents_item active" id="htmlcode"></div>
+            <div class="codes_contents_item" id="csscode"></div>
+            <div class="codes_contents_item" id="jscode"></div>
+
+            <div class="Copy__code">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M16 4.038V4c0-.465 0-.697-.051-.888a1.5 1.5 0 0 0-1.06-1.06C14.697 2 14.464 2 14 2h-4c-.465 0-.697 0-.888.051a1.5 1.5 0 0 0-1.06 1.06C8 3.304 8 3.536 8 4v.038m8 0c0 .44-.001.665-.051.85a1.5 1.5 0 0 1-1.06 1.06C14.697 6 14.464 6 14 6h-4c-.465 0-.697 0-.888-.051a1.5 1.5 0 0 1-1.06-1.06C8.001 4.702 8 4.477 8 4.038m8 0c.784.047 1.34.155 1.816.397a4 4 0 0 1 1.748 1.748C20 7.04 20 8.16 20 10.4v5.2c0 2.24 0 3.36-.436 4.216a4 4 0 0 1-1.748 1.748C16.96 22 15.84 22 13.6 22h-3.2c-2.24 0-3.36 0-4.216-.436a4 4 0 0 1-1.748-1.748C4 18.96 4 17.84 4 15.6v-5.2c0-2.24 0-3.36.436-4.216a4 4 0 0 1 1.748-1.748c.475-.242 1.032-.35 1.816-.398"></path></svg>Copy</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="code__wrapper">
       <div class="close__fs"></div>
       <div class="code__wrapper_header">
         <div class="code__wrapper_header_title">Vanilla Scroll Progress Bar/Indicator</div>
@@ -379,18 +747,10 @@ let progressBar3 = new ScrollProgressBar(
           ></iframe>
         </div>
       </div>
-    </div>
+    </div> -->
     <script src="assets/lib/jquery-3.7.1.min.js"></script>
     <script src="assets/lib/sass.sync.min.js"></script>
-    <script src="assets/codemirror5/lib/codemirror.js"></script>
-    <script src="assets/codemirror5/addon/hint/show-hint.js"></script>
-    <script src="assets/codemirror5/addon/hint/xml-hint.js"></script>
-    <script src="assets/codemirror5/addon/hint/html-hint.js"></script>
-    <script src="assets/codemirror5/mode/xml/xml.js"></script>
-    <script src="assets/codemirror5/mode/javascript/javascript.js"></script>
-    <script src="assets/codemirror5/mode/css/css.js"></script>
-    <script src="assets/codemirror5/mode/htmlmixed/htmlmixed.js"></script>
-    <script src="assets/codemirror5/addon/hint/css-hint.js"></script>
-    <script src="assets/js/common.js"></script>
+    <script src="https://unpkg.com/monaco-editor@^0.21.2/min/vs/loader.js"></script>
+    <script src="assets/js/editor-vs.js"></script>
   </body>
 </html>
