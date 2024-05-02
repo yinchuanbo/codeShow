@@ -29,7 +29,7 @@ const allLens = Object.keys(allPages).length;
 function getHTML(name = "") {
   let curI = 0;
   let listHTML = `<ul class="articles__list">`;
-  let listHTML2 = '';
+  let listHTML2 = "";
   for (var page of allPages) {
     curI++;
     var pageName = page.slice(0, page.lastIndexOf("."));
@@ -60,7 +60,7 @@ function getHTML(name = "") {
   listHTML += `</ul>`;
   return {
     list1: unescapeHtml(listHTML),
-    list2: unescapeHtml(listHTML2)
+    list2: unescapeHtml(listHTML2),
   };
 }
 
@@ -86,13 +86,11 @@ function getHTML2(name = "") {
     date = newDate(date);
     metaData.title = title || metaData.title || pageName;
     pageContent = pageContent.replace(/^---[\s\S]*?---/, "");
-
-    if(pageName === name) {
+    if (pageName === name) {
       lock = true;
     }
-
-    if(lock) {
-      if(_idx >= 1 && _idx <= 10) {
+    if (lock) {
+      if (_idx >= 1 && _idx <= 10) {
         html += `<li class="${pageName === name ? "active" : ""}">
           <a href="/articles/${pageName}.html">
             ${metaData.title}
@@ -105,7 +103,6 @@ function getHTML2(name = "") {
 
   html += `</ul>`;
   return html;
-
 }
 
 for (var page of allPages) {
@@ -123,19 +120,20 @@ for (var page of allPages) {
   const dateMatch = h2Content.match(/date:\s*([^\s]+)/);
   const title = titleMatch ? titleMatch[1] : null;
   let date = dateMatch ? dateMatch[1] : null;
-  date = newDate(date);
   metaData.title = title || metaData.title || pageName;
   pageContent = pageContent.replace(/^---[\s\S]*?---/, "");
 
-  if(!allHTML) {
-    allHTML = getHTML()['list2']
+  if (!allHTML) {
+    allHTML = getHTML()["list2"];
   }
 
   fs.writeFileSync(
     path.join(outputPath, pageName + ".html"),
     pageTemplate.generatePage(pageContent, {
       ...metaData,
-      date,
+      date: !date
+        ? "2023-09-11T21:55:45+08:00"
+        : newDate(date.split("+")[0] + "+08:00"),
       prev: Number(pageName) <= 1 ? 0 : Number(pageName) - 1,
       next: Number(pageName) >= allLens ? 0 : Number(pageName) + 1,
       lists: getHTML2(pageName),
