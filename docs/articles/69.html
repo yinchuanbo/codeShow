@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>错误处理技巧</title>
+    <meta charset="utf-8">
+    <meta name="description" content="This is a page">
+    <meta name="keywords" content="page, sample">
+    <meta name="author" content="None">
+    <link rel="icon" sizes="any" mask href="../assets/images/ico6.svg" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <link rel="stylesheet" href="../assets/css/articles.css">
+</head>
+<body>
+  <div class="article__wrapper_left">
+    <div class="article__wrapper_left-mulu">目录</div>
+    <ul class="articles__list"><li class="">
+          <a href="/articles/70.html">
+            Console信息
+          </a>
+        </li><li class="">
+          <a href="/articles/71.html">
+            Console API
+          </a>
+        </li><li class="">
+          <a href="/articles/72.html">
+            Console Utilities API
+          </a>
+        </li><li class="">
+          <a href="/articles/73.html">
+            URI的编码与反编码
+          </a>
+        </li><li class="">
+          <a href="/articles/74.html">
+            变量的数据类型
+          </a>
+        </li><li class="">
+          <a href="/articles/75.html">
+            转义符
+          </a>
+        </li><li class="">
+          <a href="/articles/77.html">
+            20个JS工具函数助力高效开发
+          </a>
+        </li><li class="">
+          <a href="/articles/78.html">
+            比较运算
+          </a>
+        </li><li class="">
+          <a href="/articles/79.html">
+            如何使用 Promise 去控制并发请求？
+          </a>
+        </li><li class="">
+          <a href="/articles/80.html">
+            细数那些惊艳一时的 CSS 属性
+          </a>
+        </li></ul>
+  </div>
+  <div class="article__wrapper_sidebar">
+    <a href="/" target="_blank"><svg t="1714001835347" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4298" width="48" height="48"><path d="M147.904 304.128l301.866667-179.541333a128 128 0 0 1 131.712 0.512l295.466666 178.88A128 128 0 0 1 938.666667 413.482667V810.666667a128 128 0 0 1-128 128H213.333333a128 128 0 0 1-128-128V414.144a128 128 0 0 1 62.570667-110.016z m43.626667 73.344A42.666667 42.666667 0 0 0 170.666667 414.144V810.666667a42.666667 42.666667 0 0 0 42.666666 42.666666h597.333334a42.666667 42.666667 0 0 0 42.666666-42.666666V413.482667a42.666667 42.666667 0 0 0-20.565333-36.501334l-295.466667-178.88a42.666667 42.666667 0 0 0-43.925333-0.170666l-301.866667 179.541333z" fill="#8a919f" p-id="4299"></path><path d="M405.333333 469.333333h213.333334a42.666667 42.666667 0 1 1 0 85.333334H405.333333a42.666667 42.666667 0 1 1 0-85.333334z m0 85.333334a42.666667 42.666667 0 1 0 0-85.333334h213.333334a42.666667 42.666667 0 1 0 0 85.333334H405.333333z" fill="#8a919f" p-id="4300"></path></svg></a>
+    <a href="/tools/" target="_blank"><svg t="1714002003458" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6911" width="48" height="48"><path d="M817.87 556.31h-63.58v-66.24A42.27 42.27 0 0 0 712 447.8h-84.81a42.27 42.27 0 0 0-42.27 42.27v66.24H436.57v-66.24a42.27 42.27 0 0 0-42.27-42.27h-84.83a42.27 42.27 0 0 0-42.27 42.27v66.24h-61.83A22.39 22.39 0 0 0 183 578.7a22.39 22.39 0 0 0 22.39 22.39h61.81v65.55a42.27 42.27 0 0 0 42.27 42.27h84.83a42.27 42.27 0 0 0 42.27-42.27v-65.55h148.36v65.55a42.27 42.27 0 0 0 42.27 42.27H712a42.27 42.27 0 0 0 42.27-42.27v-65.55h63.58a22.39 22.39 0 0 0 22.39-22.39 22.39 22.39 0 0 0-22.37-22.39z m-438.64 95.26h-54.69V505.14h54.69z m317.72 0h-54.69V505.14H697z" p-id="6912" fill="#8a919f"></path><path d="M823 202.58h-90.81v-63.09a71.88 71.88 0 0 0-71.88-71.88H363.19a71.88 71.88 0 0 0-71.88 71.88v63.08h-90.12A137.17 137.17 0 0 0 64 339.75v479a137.17 137.17 0 0 0 137.19 137.14H823a137.17 137.17 0 0 0 137.19-137.17v-479A137.17 137.17 0 0 0 823 202.58z m-474.36-54.1A23.52 23.52 0 0 1 372.17 125h279.16a23.52 23.52 0 0 1 23.52 23.52v54.1h-326.2z m554.23 673.31a76.76 76.76 0 0 1-76.76 76.76h-628a76.76 76.76 0 0 1-76.76-76.76V336.67a76.76 76.76 0 0 1 76.76-76.76h628a76.76 76.76 0 0 1 76.76 76.76z" p-id="6913" fill="#8a919f"></path></svg></a>
+  </div>
+  <div class="article__wrapper">
+    <div class="article__wrapper__main">
+      <div class="article__wrapper_header">
+        <h1>错误处理技巧</h1>
+        <span class="articles__home_time">NaN/NaN/NaN · YinHao</span>
+      </div>
+      <h2>拦截错误</h2>
+<h3>try/catch 语句</h3>
+<p>一般来说，JavaScript 中会以 try/catch 来拦截错误，且常常会搭配 finally 来减少重复的程序代码：</p>
+<pre><code class="language-js">try {
+  // 可能出错的程序代码
+} catch (error) {
+  // 处理错误
+} finally {
+  // 此处必定执行
+}
+</code></pre>
+<p>需要注意的是，在 <strong>finally</strong> 内使用 return 或 throw 会<strong>覆写</strong>掉 try/catch 内原本的操作：</p>
+<pre><code class="language-js">function foo() {
+  try {
+    throw new Error(&quot;Hello World!&quot;);
+  } catch (error) {
+    throw error;
+  } finally {
+    return &quot;finally&quot;;
+  }
+}
+console.log(foo()); // finally
+</code></pre>
+<pre><code class="language-js">function bar() {
+  try {
+    return &quot;try&quot;;
+  } finally {
+    throw new Error(&quot;finally&quot;);
+  }
+}
+console.log(bar()); // Uncaught Error: finally
+</code></pre>
+<h3>异步错误拦截</h3>
+<p>try/catch 只能拦截同步的错误，例如：</p>
+<pre><code class="language-js">try {
+  Promise.reject(&quot;Promise rejection&quot;);
+  setTimeout(() =&gt; {
+    throw new Error(&quot;Timeout error&quot;);
+  });
+} catch (error) {
+  console.error(&quot;err&quot;, error); // 没有拦截到错误
+}
+</code></pre>
+<p>若要拦截错误，则需要加入额外的程序代码，例如：</p>
+<pre><code class="language-js">Promise.reject(&quot;Promise rejection&quot;)
+  .then((data) =&gt; console.log(&quot;OK&quot;))
+  .catch((reason) =&gt; {
+    console.log(&quot;Rejection handled.&quot;);
+  })
+  .finally(() =&gt; {
+    console.log(&quot;Finally&quot;);
+  });
+
+setTimeout(() =&gt; {
+  try {
+    throw new Error(&quot;Timeout error&quot;);
+  } catch (error) {
+    console.log(&quot;Error handled.&quot;);
+  }
+});
+</code></pre>
+<p>此外，将 Callback 语句转化为 Promise 也是常见的用法，这么做的好处是可以把错误从 Callback 中取出来：</p>
+<pre><code class="language-js">const promise = new Promise((resolve, reject) =&gt; {
+  setTimeout(() =&gt; {
+    try {
+      throw new Error(&quot;Timeout error!&quot;);
+    } catch (error) {
+      reject(error);
+    }
+  });
+});
+promise.catch((error) =&gt; {
+  handleError(error); // 处理错误
+});
+</code></pre>
+<h3>错误拦截时机</h3>
+<p>try/catch 应该用于无法控制的错误，例如：</p>
+<ul>
+<li>
+<p>无法避免的错误：如 JSON.parse，执行函数时无法保证是否会出错，需要使用 try/catch 来处理错误，确保程序代码不会中断执行。</p>
+</li>
+<li>
+<p>定制化错误：使用第三方软件包时，可能出现软件包自定义的错误提示信息，或者非预期的错误，由于无法改变软件包的行为，可以使用 try/catch 拦截错误，再定制错误提示信息或处理错误。</p>
+</li>
+</ul>
+<ol>
+<li>避免不必要的拦截</li>
+</ol>
+<p>如果明确知道程序代码在哪些情况会出错，就不应该使用 try/catch，请看以下范例：</p>
+<ul>
+<li>知道当变量 str 不是字符串类型时会出错，应做好事前检查，主动解释并抛出错误。</li>
+</ul>
+<pre><code class="language-js">// 做好事前检查，主动解释并抛出错误
+if (typeof str !== &quot;string&quot;) {
+  throw new Error(&quot;str must be a string.&quot;);
+}
+return str.toLowerCase();
+</code></pre>
+<ul>
+<li>知道此段程序代码可能会出错，因此使用 try/catch 来拦截错误，然而这么做并没有什么帮助。</li>
+</ul>
+<pre><code class="language-js">// 没有意义的 try/catch
+try {
+  return str.toLowerCase();
+} catch (error) {
+  throw error;
+}
+</code></pre>
+<ol start="2">
+<li>避免过早拦截</li>
+</ol>
+<p>只有在知道该如何处理错误时，才能够拦截错误。</p>
+<p>如下：在 say 函数中，以 try/catch 程序块中包含 logOrError 函数来拦截可能会出现的错误，虽然可以在出错时避免程序中断，但 say 作为一个底层共享函数，无法得知网页应用的逻辑以及用户当前的应用场景，也无法正确处理错误，此外，如果拦截了错误，却不进行处理，对外层函数而言就如同没有发生错误，通常会提升 Debug 的难度：</p>
+<pre><code class="language-js">function logOrError(message) {
+  if (Math.random() &lt; 0.5) {
+    throw new Error(message);
+  }
+  console.log(message);
+}
+function say(message) {
+  try {
+    logOrError(message);
+  } catch (error) {
+    console.error(&quot;Something went wrong.&quot;); // 过早拦截错误且打印出无用的信息
+  }
+}
+function sayHi() {
+  try {
+    say(&quot;hi&quot;);
+  } catch (error) {
+    console.error(&quot;Failed to say hi. Please try again.&quot;); // 较轻微的错误
+  }
+}
+function mustSayHi() {
+  try {
+    say(&quot;hi&quot;);
+  } catch (error) {
+    console.error(&quot;Fatal error!&quot;); // 遭遇重大错误，必须重新刷新页面
+    window.location.reload();
+  }
+}
+</code></pre>
+<p>想要避免上述问题，可以删除 try/catch 语句，交由其他函数（如 sayHi、mustSayHi）来处理错误：</p>
+<pre><code class="language-js">function say(message) {
+  logOrError(message);
+}
+</code></pre>
+<p>或者在 say 函数中进行基本的错误处理，再抛出错误：</p>
+<pre><code class="language-js">function say(message) {
+  try {
+    logOrError(message);
+  } catch (error) {
+    console.error(error); // 必要时可以先行处理错误
+    throw new Error(`say(): Failed to log ${message}.`); // 更详细的错误提示信息
+  }
+}
+</code></pre>
+<h3>错误事件</h3>
+<p>即使尽可能做好错误处理，还是有可能出现没有拦截到的错误。</p>
+<p>没有被拦截到的错误会在 window 上触发 error 或 <code>unhandledrejection(Promise)</code> 事件。</p>
+<p>拦截错误事件可以视为包了一层全局的 try/catch 语句，不过一般而言，若有正确的错误处理方式，则不应该出现该事件：</p>
+<pre><code class="language-js">function handleUncaughtError(event) {
+  console.log(event);
+  event.preventDefault(); // 避免默认操作，如打印出错误提示信息
+}
+window.addEventListener(&quot;error&quot;, handleUncaughtError);
+window.addEventListener(&quot;unhandledrejection&quot;, handleUncaughtError);
+</code></pre>
+<h2>抛出错误</h2>
+<p>只要程序代码出现无法正确执行的情况，就应该使用 throw 语句来主动抛出错误</p>
+<p>通过自定义错误类别可以协助区分错误类型，并根据不同类型进行不同的错误处理，</p>
+<p>如下，利用 TrustedError 表示已知错误，并用 ApiError 表示 API 相关错误：</p>
+<pre><code class="language-js">class TrustedError extends Error {
+  constructor(message) {
+    super(message);
+    this.name = new.target.name;
+  }
+}
+class ApiError extends TrustedError {
+  constructor(message, status) {
+    super(message);
+    this.status = status;
+  }
+}
+</code></pre>
+<p>遇到 API 错误时，抛出自定义的错误（如 ApiError），在拦截时能根据错误类别进行相应的处理：</p>
+<pre><code class="language-js">try {
+  throw new ApiError(&quot;Path not found.&quot;, 404);
+} catch (error) {
+  if (error instanceof ApiError) {
+    console.log(`${error.name}: ${error.message}. (Status ${error.status})`);
+    // ApiError: Path not found. (Status 404)
+  } else if (error instanceof TrustedError) {
+    console.log(error.message);
+  } else {
+    handleUnexpectedError(error); // 处理非预期的错误
+  }
+}
+</code></pre>
+ 
+    </div>
+  </div>
+  <div class="article__wrapper_footer">
+    <a class="article__wrapper_footer-left " href="/articles/68.html"><svg t="1713708729970" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8437" width="48" height="48"><path d="M409.272947 512.57741l403.237243 403.237243a63.349415 63.349415 0 1 1-89.622481 89.622482L274.839224 557.324726a63.349415 63.349415 0 0 1 0-89.494632L722.951633 19.717685a63.349415 63.349415 0 1 1 89.494633 89.622482L409.336872 512.57741z" p-id="8438" fill="#8a8a8a"></path></svg></a>
+    <a class="article__wrapper_footer-right " href="/articles/70.html"><svg t="1713708697355" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8093" width="48" height="48"><path d="M855.123 517.004c0 8.245-3.167 15.51-9.503 21.823L402.999 981.47c-6.336 6.336-13.625 9.477-21.869 9.477s-15.51-3.142-21.845-9.477L311.8 933.96c-6.336-6.336-9.502-13.6-9.502-21.845 0-8.222 3.167-15.51 9.502-21.845l373.29-373.29-373.293-373.267c-6.336-6.336-9.502-13.6-9.502-21.845s3.167-15.533 9.503-21.869l47.484-47.484c6.336-6.336 13.6-9.502 21.845-9.502s15.533 3.167 21.869 9.503l442.621 442.622c6.334 6.334 9.503 13.625 9.503 21.869z" fill="#8a8a8a" p-id="8094"></path></svg></a>
+  </div>
+  <a class="article__wrapper_index" href="/articles/"><svg t="1713708857338" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="9656" width="48" height="48"><path d="M549.61981 133.022476l319.683047 203.605334A70.851048 70.851048 0 0 1 902.095238 396.361143v434.883047A70.89981 70.89981 0 0 1 831.146667 902.095238h-282.819048l0.024381-218.112h-71.826286v218.087619L192.853333 902.095238A70.89981 70.89981 0 0 1 121.904762 831.24419V390.241524c0-24.527238 12.678095-47.299048 33.54819-60.220953l318.659048-197.485714a70.972952 70.972952 0 0 1 75.50781 0.487619zM828.952381 828.952381V397.214476L511.488 195.047619 195.047619 391.119238V828.952381h211.309714v-216.551619h212.187429v216.527238L828.952381 828.952381z" p-id="9657" fill="#707070"></path></svg></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
+  <script src="../assets/js/articles-detail.js"></script>
+  <script>
+    hljs.highlightAll();
+  </script>
+</body>
+</html>
+    

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>利用 Performance API 分析网站性能</title>
+    <meta charset="utf-8">
+    <meta name="description" content="This is a page">
+    <meta name="keywords" content="page, sample">
+    <meta name="author" content="None">
+    <link rel="icon" sizes="any" mask href="../assets/images/ico6.svg" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <link rel="stylesheet" href="../assets/css/articles.css">
+</head>
+<body>
+  <div class="article__wrapper_left">
+    <div class="article__wrapper_left-mulu">目录</div>
+    <ul class="articles__list"><li class="">
+          <a href="/articles/106.html">
+            使用 HTML5 音频和视频
+          </a>
+        </li><li class="">
+          <a href="/articles/107.html">
+            Web Storage
+          </a>
+        </li><li class="">
+          <a href="/articles/108.html">
+            文件操作
+          </a>
+        </li><li class="">
+          <a href="/articles/109.html">
+            FileReader
+          </a>
+        </li><li class="">
+          <a href="/articles/11.html">
+            高效加载第三方JavaScript
+          </a>
+        </li><li class="">
+          <a href="/articles/110.html">
+            Preload 和 Prefetch
+          </a>
+        </li><li class="">
+          <a href="/articles/111.html">
+            webpack-CDN依赖注入
+          </a>
+        </li><li class="">
+          <a href="/articles/112.html">
+            webpack5-高级篇1
+          </a>
+        </li><li class="">
+          <a href="/articles/113.html">
+            webpack5-高级篇2
+          </a>
+        </li><li class="">
+          <a href="/articles/114.html">
+            CSS修改滚动条样式 scrollbar
+          </a>
+        </li></ul>
+  </div>
+  <div class="article__wrapper_sidebar">
+    <a href="/" target="_blank"><svg t="1714001835347" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4298" width="48" height="48"><path d="M147.904 304.128l301.866667-179.541333a128 128 0 0 1 131.712 0.512l295.466666 178.88A128 128 0 0 1 938.666667 413.482667V810.666667a128 128 0 0 1-128 128H213.333333a128 128 0 0 1-128-128V414.144a128 128 0 0 1 62.570667-110.016z m43.626667 73.344A42.666667 42.666667 0 0 0 170.666667 414.144V810.666667a42.666667 42.666667 0 0 0 42.666666 42.666666h597.333334a42.666667 42.666667 0 0 0 42.666666-42.666666V413.482667a42.666667 42.666667 0 0 0-20.565333-36.501334l-295.466667-178.88a42.666667 42.666667 0 0 0-43.925333-0.170666l-301.866667 179.541333z" fill="#8a919f" p-id="4299"></path><path d="M405.333333 469.333333h213.333334a42.666667 42.666667 0 1 1 0 85.333334H405.333333a42.666667 42.666667 0 1 1 0-85.333334z m0 85.333334a42.666667 42.666667 0 1 0 0-85.333334h213.333334a42.666667 42.666667 0 1 0 0 85.333334H405.333333z" fill="#8a919f" p-id="4300"></path></svg></a>
+    <a href="/tools/" target="_blank"><svg t="1714002003458" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6911" width="48" height="48"><path d="M817.87 556.31h-63.58v-66.24A42.27 42.27 0 0 0 712 447.8h-84.81a42.27 42.27 0 0 0-42.27 42.27v66.24H436.57v-66.24a42.27 42.27 0 0 0-42.27-42.27h-84.83a42.27 42.27 0 0 0-42.27 42.27v66.24h-61.83A22.39 22.39 0 0 0 183 578.7a22.39 22.39 0 0 0 22.39 22.39h61.81v65.55a42.27 42.27 0 0 0 42.27 42.27h84.83a42.27 42.27 0 0 0 42.27-42.27v-65.55h148.36v65.55a42.27 42.27 0 0 0 42.27 42.27H712a42.27 42.27 0 0 0 42.27-42.27v-65.55h63.58a22.39 22.39 0 0 0 22.39-22.39 22.39 22.39 0 0 0-22.37-22.39z m-438.64 95.26h-54.69V505.14h54.69z m317.72 0h-54.69V505.14H697z" p-id="6912" fill="#8a919f"></path><path d="M823 202.58h-90.81v-63.09a71.88 71.88 0 0 0-71.88-71.88H363.19a71.88 71.88 0 0 0-71.88 71.88v63.08h-90.12A137.17 137.17 0 0 0 64 339.75v479a137.17 137.17 0 0 0 137.19 137.14H823a137.17 137.17 0 0 0 137.19-137.17v-479A137.17 137.17 0 0 0 823 202.58z m-474.36-54.1A23.52 23.52 0 0 1 372.17 125h279.16a23.52 23.52 0 0 1 23.52 23.52v54.1h-326.2z m554.23 673.31a76.76 76.76 0 0 1-76.76 76.76h-628a76.76 76.76 0 0 1-76.76-76.76V336.67a76.76 76.76 0 0 1 76.76-76.76h628a76.76 76.76 0 0 1 76.76 76.76z" p-id="6913" fill="#8a919f"></path></svg></a>
+  </div>
+  <div class="article__wrapper">
+    <div class="article__wrapper__main">
+      <div class="article__wrapper_header">
+        <h1>利用 Performance API 分析网站性能</h1>
+        <span class="articles__home_time">2024/01/20 · YinHao</span>
+      </div>
+      <p><img src="../assets/images/articles/105/01.png" alt=""></p>
+<p><code>window.performace.timing</code> 对象包含了完整的网页加载性能数据，</p>
+<p>页面加载的第一个时间点就是 <code>navigationStart</code>，表示上一个页面的 unload 事件触发，接下来的时间点是 <code>fetchStart</code>，表示开始获取当前页面内容。<code>fetchStart</code> 时间点和 <code>navigationStart</code> 时间点之间的时间差是浏览器内核为加载新页面做的一些准备工作耗时。</p>
+<p>获取页面内容的第一步是查询是否有跟页面相关的资源缓存，查询完毕后，会触发开始 DNS 解析的时间点 <code>domainLookupStart</code>。<code>domainLookupStart</code> 时间点和 <code>fetchStart</code> 时间点之间的时间差就是查询缓存所消耗的时间。</p>
+<p>DNS 解析结束的时间点是 <code>domainLookupEnd</code>。<code>domainLookupEnd</code> 时间点和 <code>domainLookupStart</code>时间点之间的时间差是 DNS 解析消耗的时间。</p>
+<p>DNS 解析技术之后会开始建立 TCP 连接，TCP 连接开始和结束的时间分别是 <code>connectStart</code> 和 <code>connectEnd</code>。<code>connectStart</code> 时间点紧接着 <code>domainLookupEnd</code> 时间点， <code>connectEnd</code> 时间点和 <code>connectStart</code> 时间点之间的时间差是建立 TCP 消耗的时间。</p>
+<p>TCP 连接建立之后，开始发送请求内容至服务端，这个时间点是 <code>requestStart</code>。服务端接收到完整的请求并处理完毕后，会将响应结果返回给客户端，开始发送响应结果的时间点为 <code>responseStart</code>。浏览器收到完整的响应结果之后，会触发 <code>responseEnd</code> 时间点。</p>
+<p>浏览器接收到响应结果之后，会开始 DOM 解析，这个时间点是 <code>domLoading</code>， DOM 解析完成的时间点是 <code>domInteractive</code>。DOM 解析完成是指 DOM 树构建完成，页面依赖的外部资源，如 CSS、JavaScript、图片等，还未开始加载。</p>
+<p><strong>注意：</strong> <code>domLoading</code> 时间点不一定在 <code>responseEnd</code> 时间点之后，有可能浏览器只接收了部分响应数据就开始解析 DOM 树。</p>
+<p>DOM 树解析完成之后，会开始按照顺序运行页面脚本和加载依赖外部资源，其中 JavaScript 资源会同步加载和执行。一旦所有页面脚本运行完毕，会触发 <code>DOMContentLoaded</code> 事件，这个时间点是 <code>domContentLoadedStart</code>。</p>
+<p>开发者注册的 <code>DOMContentLoaded</code> 事件执行完毕之后，会触发 <code>domContentLoadedEnd</code> 时间点。</p>
+<p>当依赖的外部资源全部加载并解析之后，会触发 <code>domComplete</code> 时间点，同时会触发暴露给开发者的 <code>load</code> 事件。<code>loadEventStart</code> 时间点表示 <code>load</code> 事件开始触发，<code>loadEventEnd</code> 时间点表示所有开发者注册在 <code>load</code> 事件上所有脚本执行完毕。</p>
+<p><img src="../assets/images/articles/105/02.png" alt=""></p>
+ 
+    </div>
+  </div>
+  <div class="article__wrapper_footer">
+    <a class="article__wrapper_footer-left " href="/articles/104.html"><svg t="1713708729970" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8437" width="48" height="48"><path d="M409.272947 512.57741l403.237243 403.237243a63.349415 63.349415 0 1 1-89.622481 89.622482L274.839224 557.324726a63.349415 63.349415 0 0 1 0-89.494632L722.951633 19.717685a63.349415 63.349415 0 1 1 89.494633 89.622482L409.336872 512.57741z" p-id="8438" fill="#8a8a8a"></path></svg></a>
+    <a class="article__wrapper_footer-right " href="/articles/106.html"><svg t="1713708697355" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8093" width="48" height="48"><path d="M855.123 517.004c0 8.245-3.167 15.51-9.503 21.823L402.999 981.47c-6.336 6.336-13.625 9.477-21.869 9.477s-15.51-3.142-21.845-9.477L311.8 933.96c-6.336-6.336-9.502-13.6-9.502-21.845 0-8.222 3.167-15.51 9.502-21.845l373.29-373.29-373.293-373.267c-6.336-6.336-9.502-13.6-9.502-21.845s3.167-15.533 9.503-21.869l47.484-47.484c6.336-6.336 13.6-9.502 21.845-9.502s15.533 3.167 21.869 9.503l442.621 442.622c6.334 6.334 9.503 13.625 9.503 21.869z" fill="#8a8a8a" p-id="8094"></path></svg></a>
+  </div>
+  <a class="article__wrapper_index" href="/articles/"><svg t="1713708857338" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="9656" width="48" height="48"><path d="M549.61981 133.022476l319.683047 203.605334A70.851048 70.851048 0 0 1 902.095238 396.361143v434.883047A70.89981 70.89981 0 0 1 831.146667 902.095238h-282.819048l0.024381-218.112h-71.826286v218.087619L192.853333 902.095238A70.89981 70.89981 0 0 1 121.904762 831.24419V390.241524c0-24.527238 12.678095-47.299048 33.54819-60.220953l318.659048-197.485714a70.972952 70.972952 0 0 1 75.50781 0.487619zM828.952381 828.952381V397.214476L511.488 195.047619 195.047619 391.119238V828.952381h211.309714v-216.551619h212.187429v216.527238L828.952381 828.952381z" p-id="9657" fill="#707070"></path></svg></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
+  <script src="../assets/js/articles-detail.js"></script>
+  <script>
+    hljs.highlightAll();
+  </script>
+</body>
+</html>
+    

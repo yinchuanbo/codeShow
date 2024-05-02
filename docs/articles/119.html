@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>类型转换</title>
+    <meta charset="utf-8">
+    <meta name="description" content="This is a page">
+    <meta name="keywords" content="page, sample">
+    <meta name="author" content="None">
+    <link rel="icon" sizes="any" mask href="../assets/images/ico6.svg" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <link rel="stylesheet" href="../assets/css/articles.css">
+</head>
+<body>
+  <div class="article__wrapper_left">
+    <div class="article__wrapper_left-mulu">目录</div>
+    <ul class="articles__list"><li class="">
+          <a href="/articles/12.html">
+            前端异常处理最佳实践
+          </a>
+        </li><li class="">
+          <a href="/articles/120.html">
+            运算符和表达式
+          </a>
+        </li><li class="">
+          <a href="/articles/121.html">
+            语句和程序结构
+          </a>
+        </li><li class="">
+          <a href="/articles/122.html">
+            Js 技巧
+          </a>
+        </li><li class="">
+          <a href="/articles/123.html">
+            Git开发工作流程
+          </a>
+        </li><li class="">
+          <a href="/articles/124.html">
+            SCSS
+          </a>
+        </li><li class="">
+          <a href="/articles/125.html">
+            操作字符串
+          </a>
+        </li><li class="">
+          <a href="/articles/126.html">
+            使用函数
+          </a>
+        </li><li class="">
+          <a href="/articles/127.html">
+            统一 Node 版本
+          </a>
+        </li><li class="">
+          <a href="/articles/128.html">
+            JS复制粘贴兼容处理
+          </a>
+        </li></ul>
+  </div>
+  <div class="article__wrapper_sidebar">
+    <a href="/" target="_blank"><svg t="1714001835347" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4298" width="48" height="48"><path d="M147.904 304.128l301.866667-179.541333a128 128 0 0 1 131.712 0.512l295.466666 178.88A128 128 0 0 1 938.666667 413.482667V810.666667a128 128 0 0 1-128 128H213.333333a128 128 0 0 1-128-128V414.144a128 128 0 0 1 62.570667-110.016z m43.626667 73.344A42.666667 42.666667 0 0 0 170.666667 414.144V810.666667a42.666667 42.666667 0 0 0 42.666666 42.666666h597.333334a42.666667 42.666667 0 0 0 42.666666-42.666666V413.482667a42.666667 42.666667 0 0 0-20.565333-36.501334l-295.466667-178.88a42.666667 42.666667 0 0 0-43.925333-0.170666l-301.866667 179.541333z" fill="#8a919f" p-id="4299"></path><path d="M405.333333 469.333333h213.333334a42.666667 42.666667 0 1 1 0 85.333334H405.333333a42.666667 42.666667 0 1 1 0-85.333334z m0 85.333334a42.666667 42.666667 0 1 0 0-85.333334h213.333334a42.666667 42.666667 0 1 0 0 85.333334H405.333333z" fill="#8a919f" p-id="4300"></path></svg></a>
+    <a href="/tools/" target="_blank"><svg t="1714002003458" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6911" width="48" height="48"><path d="M817.87 556.31h-63.58v-66.24A42.27 42.27 0 0 0 712 447.8h-84.81a42.27 42.27 0 0 0-42.27 42.27v66.24H436.57v-66.24a42.27 42.27 0 0 0-42.27-42.27h-84.83a42.27 42.27 0 0 0-42.27 42.27v66.24h-61.83A22.39 22.39 0 0 0 183 578.7a22.39 22.39 0 0 0 22.39 22.39h61.81v65.55a42.27 42.27 0 0 0 42.27 42.27h84.83a42.27 42.27 0 0 0 42.27-42.27v-65.55h148.36v65.55a42.27 42.27 0 0 0 42.27 42.27H712a42.27 42.27 0 0 0 42.27-42.27v-65.55h63.58a22.39 22.39 0 0 0 22.39-22.39 22.39 22.39 0 0 0-22.37-22.39z m-438.64 95.26h-54.69V505.14h54.69z m317.72 0h-54.69V505.14H697z" p-id="6912" fill="#8a919f"></path><path d="M823 202.58h-90.81v-63.09a71.88 71.88 0 0 0-71.88-71.88H363.19a71.88 71.88 0 0 0-71.88 71.88v63.08h-90.12A137.17 137.17 0 0 0 64 339.75v479a137.17 137.17 0 0 0 137.19 137.14H823a137.17 137.17 0 0 0 137.19-137.17v-479A137.17 137.17 0 0 0 823 202.58z m-474.36-54.1A23.52 23.52 0 0 1 372.17 125h279.16a23.52 23.52 0 0 1 23.52 23.52v54.1h-326.2z m554.23 673.31a76.76 76.76 0 0 1-76.76 76.76h-628a76.76 76.76 0 0 1-76.76-76.76V336.67a76.76 76.76 0 0 1 76.76-76.76h628a76.76 76.76 0 0 1 76.76 76.76z" p-id="6913" fill="#8a919f"></path></svg></a>
+  </div>
+  <div class="article__wrapper">
+    <div class="article__wrapper__main">
+      <div class="article__wrapper_header">
+        <h1>类型转换</h1>
+        <span class="articles__home_time">NaN/NaN/NaN · YinHao</span>
+      </div>
+      <h2>转换为字符串</h2>
+<p>常用值转换为字符串说明如下：</p>
+<pre><code class="language-sh">1 =&gt; &quot;1&quot;
+0 =&gt; &quot;0&quot;
+true =&gt; &quot;true&quot;
+false =&gt; &quot;false&quot;
+&quot;&quot; =&gt; &quot;&quot;
+undefined =&gt; &quot;undefined&quot;
+null =&gt; &quot;null&quot;
+NaN =&gt; &quot;NaN&quot;
+Infinity =&gt; &quot;Infinity&quot;
+</code></pre>
+<p><strong>把值转换为字符串的常用方法有 2 种：</strong></p>
+<ol>
+<li>使用加号运算符</li>
+</ol>
+<ul>
+<li>当值与空字符串相加运算时，Js 会自动把值转换为字符串。</li>
+</ul>
+<p>(1) 数字转换为字符串，</p>
+<pre><code class="language-js">var n = 123;
+n = n + &quot;&quot;;
+console.log(typeof n); // &quot;string&quot;
+</code></pre>
+<p>(2) 把布尔值转换为字符串</p>
+<pre><code class="language-js">var b = true;
+b = b + &quot;&quot;;
+console.log(b); // &quot;true&quot;
+</code></pre>
+<p>(3) 把数组转换为字符串</p>
+<pre><code class="language-js">var a = [1, 2, 3];
+a = a + &quot;&quot;;
+console.log(a); // &quot;1,2,3&quot;
+</code></pre>
+<p>(4) 把函数转换为字符串</p>
+<pre><code class="language-js">var f = function () {
+  return 1;
+};
+f = f + &quot;&quot;;
+console.log(f); // &quot;function() { return 1 }&quot;
+</code></pre>
+<p>❶ 如果是内置类型函数，则只返回构造函数的基本结构，省略函数的具体实现代码。而自定义类型函数与普通函数一样，返回函数的具体实现代码字符串。</p>
+<pre><code class="language-js">var d = Date + &quot;&quot;;
+console.log(d); // &quot;function Date() { [native code] }&quot;
+</code></pre>
+<p>❷ 如果是内置静态函数，则返回 [object Class] 格式的字符串表示</p>
+<pre><code class="language-js">var m = Math + &quot;&quot;;
+console.log(m); // &quot;[object Math]&quot;
+</code></pre>
+<p>(5) 如果把对象实例转换为字符串，则返回的字符串会根据不同类型或定义对象的方法和参数而不同。</p>
+<p>❶ 对象字面量，则返回 &quot;[object object]&quot;</p>
+<pre><code class="language-js">var a = {
+  x: 1,
+};
+a = a + &quot;&quot;;
+console.log(a); // &quot;[object Object]&quot;
+</code></pre>
+<p>❷ 如果是自定义类型的对象实例，则返回字符串为 &quot;[object Object]&quot;</p>
+<pre><code class="language-js">var a = new (function () {})();
+a = a + &quot;&quot;;
+console.log(a); // &quot;[object Object]&quot;
+</code></pre>
+<p>❸ 如果是内置对象实例，具体返回字符串将根据参数而定</p>
+<ul>
+<li>正则表达式对象会返回匹配模式字符串，时间对象会返回当前 GMT 格式的时间字符串，数值对象会返回传递的参数值字符串或者 0 等。</li>
+</ul>
+<pre><code class="language-js">var a = new RegExp(/^\w$/) + &quot;&quot;;
+console.log(a); // &quot;/^\w$/&quot;
+</code></pre>
+<blockquote>
+<p>加号运算符有两个计算功能：数值求和、字符串连接。但是字符串连接操作的优先级要大于求和运算。</p>
+</blockquote>
+<p>但是当多个加号运算符位于同一行时，这个问题就比较复杂了，例如：</p>
+<pre><code class="language-js">var a = 1 + 1 + &quot;a&quot;;
+var b = &quot;a&quot; + 1 + 1;
+console.log(a); // &quot;2a&quot;
+console.log(b); // &quot;a11&quot;
+</code></pre>
+<p>如果要避免此类现象的发生，可以考虑使用小括号运算符来改变表达式的运算顺序。</p>
+<pre><code class="language-js">var b = &quot;a&quot; + (1 + 1); // &quot;a2&quot;
+</code></pre>
+<ol start="2">
+<li>使用 toString() 方法</li>
+</ol>
+<p>当为简单的值调用 toString() 方法时，Js 会自动把它们封装为对象，然后再调用 toString() 方法，获取对象的字符串表示。</p>
+<pre><code class="language-js">var a = 123456;
+a.toString();
+console.log(a); // &quot;123456&quot;
+</code></pre>
+<p>使用加号运算转换字符串，实际上也是调用 toString() 方法来完成的，只不过是 Js 自动调用 toString() 方法实现的。</p>
+<h2>转换为数字模式字符串</h2>
+<p>toString() 是 Object 类型的原型方法，Number 子类继承该方法后，重写了 toString()，允许传递一个整数参数，设置显示模式。数字默认是十进制显示模式。通过设置参数可以改变数字模式。</p>
+<p>(1) 如果省略参数，则 toString() 方法会采用默认模式，直接把数字转换为数字字符串。</p>
+<pre><code class="language-js">var a = 1.000;
+var b = 0.0001;
+var c = 1e-4;
+console.log(a.toString()); // &quot;1&quot;
+console.log(b.toString()); // &quot;0.0001&quot;
+console.log(c.toString()); // &quot;0.0001&quot;
+</code></pre>
+<p>toString() 方法能够直接输出整数和浮点数，保留小数位。小数位末尾的零会被清除。</p>
+<p>但是对于科学计数法，则会条件许可的情况下把它转换为浮点数，否则就是用科学计数法形式输出字符串。</p>
+<pre><code class="language-js">var a = 1e-14;
+console.log(a.toStirng()); // &quot;1e-14&quot;
+</code></pre>
+<p>在默认情况下，无论数值采用什么模式表示，toString() 方法返回的都是十进制的数字字符串。因此，对于八进制、二进制或十六进制的数字，toString() 方法都会先把它们转换为十进制数值后再输出。</p>
+<pre><code class="language-js">var a = 010; // 八进制数值 10
+var b = 0x10; // 十六进制数值 10
+console.log(a.toString()); // 返回 &quot;8&quot;
+console.log(b.toString()); // 返回 &quot;16&quot;
+</code></pre>
+<p>(2) 如果设置参数，则 toString() 方法会根据参数把数值转换为对应进制的值之后，再输出为字符串表示。</p>
+<pre><code class="language-js">var a = 10; // 十进制数值 10
+console.log(a.toString(2)); // 二进制数字字符串 &quot;1010&quot;
+console.log(a.toString(8)); // 八进制数字字符串 &quot;12&quot;
+console.log(a.toString(16)); // 八进制数字字符串 &quot;a&quot;
+</code></pre>
+<h2>转换为小数格式字符串</h2>
+<p>(1) toFixed()</p>
+<p>toFixed() 能把数值转换为字符串，并显示小数点后的指定位数。</p>
+<pre><code class="language-js">var a = 10;
+console.log(a.toFixed(2)); // &quot;10.00&quot;
+console.log(a.toFixed(4)); // &quot;10.0000&quot;
+</code></pre>
+<p>(2) toExponential()</p>
+<p>toExponential() 方法专门用来把数字转换为科学计数法形式的字符串。</p>
+<pre><code class="language-js">var a = 123456789;
+console.log(a.toExponential(2)); // &quot;1.23e+8&quot;
+console.log(a.toExponential(4)); // 1.2346e+8
+</code></pre>
+<p>toExponential() 方法的参数指定了保留的小数位数。省略部分采用四舍五入的方式进行处理。</p>
+<p>(3) toPrecision()</p>
+<p>toPrecision() 方法与 toExponential() 方法相似，但它可以指定有效数字的位数，而不是指定小数位数。</p>
+<pre><code class="language-js">var a = 123456789;
+console.log(a.toPrecision(2)); // &quot;1.2e+8&quot;
+console.log(a.toPrecision(4)); // 1.235e+8
+</code></pre>
+<h2>转换为数字</h2>
+<p>常用值转换为数字说明如下：</p>
+<pre><code class="language-sh">1 =&gt; 1
+0 =&gt; 0
+true =&gt; 1
+false =&gt; 0
+&quot;&quot; =&gt; 0
+undefined =&gt; NaN
+null =&gt; 0
+NaN =&gt; NaN
+Infinity =&gt; Infinity
+</code></pre>
+<p>把值转换为数字的常用方法有 3 种，具体说明如下：</p>
+<ol>
+<li>使用 parseInt()</li>
+</ol>
+<p>parseInt() 是一个全局方法，它可以把值转换为整数，转换过程如下：</p>
+<p>第 1 步：先解析位置 0 处的字符，如果不是有效数字，则直接返回 NaN</p>
+<p>第 2 步：如果位置 0 处的字符是数字，或者可以转换为有效数字，则继续解析位置 1 处的字符，如果不是有效数字，则直接返回位置 0 处的有效数字。</p>
+<p>第 3 步：以此类推，按从左到右的顺序，逐个分析每个字符，直到发现非数字字符为止。</p>
+<p>第 4 步：parseInt() 将把前面分析合法的数字字符全部转换为数值并返回。</p>
+<pre><code class="language-js">console.log(parseInt(&quot;123abc&quot;)); // 123
+console.log(parseInt(&quot;1.73&quot;)); // 1
+console.log(parseInt(&quot;.123&quot;)); // NaN
+</code></pre>
+<p>注意：浮点数中的点号对于 parseInt() 来说属于非法字符，因此不会转换小数部分值。</p>
+<p>如果是以 0 开头的数字字符串，则 parseInt() 会把它作为八进制数字处理，先把它转换为八进制数值，然后再转换为十进制的数字返回。</p>
+<p>如果是以 0x 开头的数字字符串，则 parseInt() 会把它作为十六进制数字处理，先把它转换为十六进制数值，然后再转换为十进制的数字返回。</p>
+<pre><code class="language-js">var d = &quot;010&quot;; // 八进制数字字符串
+var e = &quot;0x10&quot;; // 十六进制数字字符串
+console.log(parseInt(d)); // 返回十进制数字 8
+console.log(parseInt(e)); // 返回十进制数字 16
+</code></pre>
+<p>parseInt() 也支持基模式，可以把二进制、八进制、十六进制等不同进制的数字字符串转换为整数。基模式由 parseInt() 函数的第二个参数指定。</p>
+<p>下面代码把十六进制数字字符串 “123abc” 转换为十进制整数：</p>
+<pre><code class="language-js">var a = &quot;123abc&quot;;
+console.log(parseInt(a, 16)); // 返回十进制整数 1194684
+</code></pre>
+<p>下面代码把二进制、八进制和十进制数字字符串转换为十进制的整数：</p>
+<pre><code class="language-js">console.log(parseInt(&quot;10&quot;, 2)); // 把二进制数字 10 转换为十进制整数 2
+console.log(parseInt(&quot;10&quot;, 8)); // 把八进制数字 10 转换为十进制整数 8
+console.log(parseInt(&quot;10&quot;, 10)); // 把十进制数字 10 转换为十进制整数 10
+</code></pre>
+<p>如果第一个参数是十进制的值，包含 0 前缀，为了避免被误解为八进制的数字，则应该指定第二个参数值为 10，即显示定义基模式，而不是采用默认基模式。</p>
+<pre><code class="language-js">console.log(parseInt(&quot;010&quot;)); // 把默认基模式数字 010 转换为十进制整数为 10
+console.log(parseInt(&quot;010&quot;, 8)); // 把八进制数字 010 转换为十进制整数为 8
+console.log(parseInt(&quot;010&quot;, 10)); // 把十进制数字 010 转换为十进制整数为 8
+</code></pre>
+<ol start="2">
+<li>使用 parseFloat() 函数</li>
+</ol>
+<p>parseFloat() 也是一个全局方法，它可以把值转换为浮点数，即它能够识别第一个出现的小数点，而第二个小数点被视为非法。</p>
+<p>解析过程与 parseFloat() 方法相同。</p>
+<pre><code class="language-js">console.log(parseFloat(&quot;1.234.5&quot;)); // 1.234
+</code></pre>
+<p>parseFloat() 的参数必须是十进制的字符串，而不能使用八进制或十六进制的数字字符串，同时对于数字前面的 0 会忽略，对于十六进制形式的数字将返回 0。</p>
+<pre><code class="language-js">console.log(parseFloat(&quot;123&quot;)); // 123
+console.log(parseFloat(&quot;123abc&quot;)); // 123
+console.log(parseFloat(&quot;010&quot;)); // 10
+console.log(parseFloat(&quot;0x10&quot;)); // 0
+console.log(parseFloat(&quot;x10&quot;)); // NaN
+</code></pre>
+<ol start="3">
+<li>使用乘号运算符</li>
+</ol>
+<p>如果变量乘以 1，则变量会被 Js 自动转换为数值，乘以 1 之后，结果没有发生变化，但是值的类型被转换为数值，</p>
+<p>如果值无法被转换为合法的数值，则返回 NaN</p>
+<pre><code class="language-js">var a = 1;
+var b = &quot;1&quot;;
+console.log(a + (b * 1)); // 2
+</code></pre>
+<h2>转换为布尔值</h2>
+<p>常用值转换为布尔值说明如下：</p>
+<pre><code class="language-sh">1 =&gt; true
+0 =&gt; false
+true =&gt; true
+false =&gt; false
+&quot;&quot; =&gt; false
+undefined =&gt; false
+null =&gt; false
+NaN =&gt; false
+Infinity =&gt; true
+</code></pre>
+<p>把值转换为布尔值的常用方法有 2 种，具体说明如下：</p>
+<ol>
+<li>使用双重逻辑非</li>
+</ol>
+<pre><code class="language-js">console.log(!!0); // false
+console.log(!!1); // true
+console.log(!!&quot;&quot;); // false
+console.log(!!NaN); // false
+console.log(!!null); // false
+console.log(!!undefined); // false
+console.log(!![]); // true
+console.log(!!{}); // true
+console.log(!!function() {}); // true
+</code></pre>
+<ol start="2">
+<li>使用 Boolean() 函数</li>
+</ol>
+<p>使用 Boolean() 函数可以强制把值转换为布尔类型</p>
+<pre><code class="language-js">console.log(Boolean(0)); // false
+console.log(Boolean(1)); // true
+</code></pre>
+<h2>转换为对象</h2>
+<p>使用 new 命令调用 String、Number、Boolean 类型函数，可以把字符串、数字、布尔值 3 类简单值封装为对应类型的对象。</p>
+<pre><code class="language-js">var n = &quot;123&quot;;
+console.log(typeof new String(n)); // &quot;object&quot;
+console.log(typeof new Number(n)); // &quot;object&quot;
+console.log(typeof new Boolean(n)); // &quot;object&quot;
+console.log(Object.prototype.toString.call(new String(n))); // &quot;[object String]&quot;
+console.log(Object.prototype.toString.call(new Number(n))); // &quot;[object Number]&quot;
+console.log(Object.prototype.toString.call(new Boolean(n))); // &quot;[object Boolean]&quot;
+</code></pre>
+<h2>转换为简单值</h2>
+<ol>
+<li>在逻辑运算环境中</li>
+</ol>
+<p>在逻辑运算环境中，所有复合型数据对象转换为布尔值都为 true</p>
+<p>下面代码创建 3 个不同类型的对象，然后参与逻辑与运算，因为不管其值是什么，凡是对象转换为布尔值都为 true，所以才看到不同的显示结果。</p>
+<pre><code class="language-js">var b = new Boolean(false); // 封装 false 为对象
+var n = new Number(0); // 封装数字 0 为对象
+var s = new String(&quot;&quot;); // 封装空字符对象
+b &amp;&amp; console.log(b); // 如果 b 为true，则显示 &quot;false&quot;
+n &amp;&amp; console.log(n); // 如果 n 为 true，则显示 &quot;0&quot;
+s &amp;&amp; console.log(s); // 如果 s 为 true，则显示 &quot;&quot;
+</code></pre>
+<ol start="2">
+<li>在数值运算环境中</li>
+</ol>
+<p>在数值运算环境中，对象会尝试调用 valueOf() 方法，如果不成功，则再调用 toString() 方法，获取一个值。然后尝试把该值转换为数字，如果成功，则取用改值参与运算，如果转换失败，则取用 NaN 参与运算。</p>
+<pre><code class="language-js">var b = new Boolean(true); // 把 true 封装为对象
+console.log(b.valueOf()); // 测试该对象的值为 true
+console.log(typeof (b.valueOf())); // &quot;boolean&quot;
+var n = b - 0; // 投放到数值运算环境中
+console.log(n); // 1
+console.log(typeof n); // &quot;number&quot;
+</code></pre>
+<ol start="3">
+<li>在字符串运算环境中</li>
+</ol>
+<p>在字符串运算环境中，对象会调用 toString() 方法，获取对象的字符串表示，以此作为转换的值。</p>
+<ol start="4">
+<li>转换数组</li>
+</ol>
+<p>数组转换为简单值时，会调用 toString() 方法，获取一个字符串表示，然后根据具体运算环境，再把该字符串转换为对应类型的简单值。</p>
+<ol start="5">
+<li>转换对象</li>
+</ol>
+<p>当对象与数值进行加运算时，会尝试把对象转换为数值，然后参与求和运算，如果不能转换为有效数值，则执行字符串连接操作。</p>
+<pre><code class="language-js">var a = new String(&quot;a&quot;); // 字符串封装为对象
+var b = new Boolean(true); // 布尔值封装为对象
+console.log(a + 0); // &quot;a0&quot;
+console.log(b + 0); // 1
+</code></pre>
+<p>当对象与字符串进行加运算时，则直接转换为字符串，执行连接操作。</p>
+<pre><code class="language-js">var a = new String(1);
+var b = new Boolean(true);
+console.log(a + &quot;&quot;); // &quot;1&quot;
+console.log(b + &quot;&quot;); // &quot;true&quot;
+</code></pre>
+<p>当对象与数值进行比较运算时，则尝试把对象转换为数值，然后参与比较运算，如果不能转换为有效数值，则执行字符串比较运算。</p>
+<pre><code class="language-js">var a = new String(&quot;true&quot;);
+var b = new Boolean(true);
+console.log(a &gt; 0); // false，以字符串的形式进行比较
+console.log(b &gt; 0); // true，以数值形式进行比较
+</code></pre>
+<p>当对象与字符串进行比较运算时，则直接转换为字符串，进行比较操作。</p>
+<ol start="6">
+<li>转换函数</li>
+</ol>
+<p>函数转换为简单值时，会调用 toString() 方法，获取字符串表示。然后根据不同运算环境，再把该字符串表示转换为对应类型的值。</p>
+<pre><code class="language-js">var f = function() { return 5 };
+console.log(String(f)); // &quot;function(){ return 5 }&quot;
+console.log(Number(f)); // NaN
+console.log(Boolean(f)); // true
+</code></pre>
+<h2>强制类型转换</h2>
+<p>Js 支持使用以下函数进行强制类型转换。</p>
+<ul>
+<li>
+<p>Boolean(value): 把参数转换为布尔型值，</p>
+</li>
+<li>
+<p>Number(value): 把参数值转换为数字</p>
+</li>
+<li>
+<p>String(value): 把参数值转换为字符串</p>
+</li>
+</ul>
+<pre><code class="language-js">console.log(String(true)); // &quot;true&quot;
+console.log(String(0)); // &quot;0&quot;
+console.log(Number(&quot;1&quot;)); // 1
+console.log(Number(true)); // 1
+console.log(Number(&quot;a&quot;)); // NaN
+console.log(Boolean(1)); // true
+console.log(Boolean(&quot;&quot;)); // false
+</code></pre>
+<p>注意：</p>
+<p>true 被强制转换为数值 1，false 被强制转换为数值 0，而使用 parseInt() 方法转换时，都返回 NaN。</p>
+<pre><code class="language-js">console.log(Number(true)); // 1
+console.log(Number(false)); // 0
+console.log(parseInt(true)); // NaN
+console.log(parseInt(false)); // NaN
+</code></pre>
+<p>当值包含至少一个字符的字符串、非 0 数字或对象时，Boolean() 强制转换后都会返回 true。</p>
+<p>如果只是空字符串、数字 0、undefined 或 null，Boolean() 强制转换后都会返回 false。</p>
+<p>Number() 强制转换与 parseInt() 和 parseFloat() 方法的处理方式不同，Number() 转换的是整体，而不是局部值。</p>
+<pre><code class="language-js">console.log(Number(&quot;123abc&quot;)); // NaN
+console.log(parseInt(&quot;123abc&quot;)); // 123
+</code></pre>
+<p>String() 能够把 null 和 undefined 强制转换为对应字符串，而调用 toString() 方法将引发错误。</p>
+<pre><code class="language-js">console.log(String(null)); // &quot;null&quot;
+console.log(String(undefined)); // &quot;undefined&quot;
+console.log(null.toString()); // 抛出异常
+console.log(undefined.toString()); // 抛出异常
+</code></pre>
+ 
+    </div>
+  </div>
+  <div class="article__wrapper_footer">
+    <a class="article__wrapper_footer-left " href="/articles/118.html"><svg t="1713708729970" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8437" width="48" height="48"><path d="M409.272947 512.57741l403.237243 403.237243a63.349415 63.349415 0 1 1-89.622481 89.622482L274.839224 557.324726a63.349415 63.349415 0 0 1 0-89.494632L722.951633 19.717685a63.349415 63.349415 0 1 1 89.494633 89.622482L409.336872 512.57741z" p-id="8438" fill="#8a8a8a"></path></svg></a>
+    <a class="article__wrapper_footer-right " href="/articles/120.html"><svg t="1713708697355" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8093" width="48" height="48"><path d="M855.123 517.004c0 8.245-3.167 15.51-9.503 21.823L402.999 981.47c-6.336 6.336-13.625 9.477-21.869 9.477s-15.51-3.142-21.845-9.477L311.8 933.96c-6.336-6.336-9.502-13.6-9.502-21.845 0-8.222 3.167-15.51 9.502-21.845l373.29-373.29-373.293-373.267c-6.336-6.336-9.502-13.6-9.502-21.845s3.167-15.533 9.503-21.869l47.484-47.484c6.336-6.336 13.6-9.502 21.845-9.502s15.533 3.167 21.869 9.503l442.621 442.622c6.334 6.334 9.503 13.625 9.503 21.869z" fill="#8a8a8a" p-id="8094"></path></svg></a>
+  </div>
+  <a class="article__wrapper_index" href="/articles/"><svg t="1713708857338" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="9656" width="48" height="48"><path d="M549.61981 133.022476l319.683047 203.605334A70.851048 70.851048 0 0 1 902.095238 396.361143v434.883047A70.89981 70.89981 0 0 1 831.146667 902.095238h-282.819048l0.024381-218.112h-71.826286v218.087619L192.853333 902.095238A70.89981 70.89981 0 0 1 121.904762 831.24419V390.241524c0-24.527238 12.678095-47.299048 33.54819-60.220953l318.659048-197.485714a70.972952 70.972952 0 0 1 75.50781 0.487619zM828.952381 828.952381V397.214476L511.488 195.047619 195.047619 391.119238V828.952381h211.309714v-216.551619h212.187429v216.527238L828.952381 828.952381z" p-id="9657" fill="#707070"></path></svg></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
+  <script src="../assets/js/articles-detail.js"></script>
+  <script>
+    hljs.highlightAll();
+  </script>
+</body>
+</html>
+    

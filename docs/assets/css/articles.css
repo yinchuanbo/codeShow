@@ -31,13 +31,13 @@ body {
 
 .article__wrapper_left {
   flex: 1;
-  height: 100%;
+  /* height: 100%; */
   /* background-color: #aaa; */
   position: fixed;
   top: 20px;
   right: calc((80% - 950px) / 2 - 30px);
   width: 20%;
-  height: calc(100vh - 40px);
+  /* height: calc(100vh - 40px); */
   /* border-right: 1px solid #ddd; */
   background-color: #fff;
   box-sizing: border-box;
@@ -123,7 +123,7 @@ body {
 
 .article__wrapper_left ul {
   overflow: auto;
-  height: calc(100% - 50px);
+  /* height: calc(100% - 50px); */
   box-sizing: border-box;
   /* padding: 20px; */
   padding: 0 20px;

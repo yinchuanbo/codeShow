@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Set 和 WeakSet 的用法和区别</title>
+    <meta charset="utf-8">
+    <meta name="description" content="This is a page">
+    <meta name="keywords" content="page, sample">
+    <meta name="author" content="None">
+    <link rel="icon" sizes="any" mask href="../assets/images/ico6.svg" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <link rel="stylesheet" href="../assets/css/articles.css">
+</head>
+<body>
+  <div class="article__wrapper_left">
+    <div class="article__wrapper_left-mulu">目录</div>
+    <ul class="articles__list"><li class="">
+          <a href="/articles/101.html">
+            获取上传进度的几种方式
+          </a>
+        </li><li class="">
+          <a href="/articles/102.html">
+            使用音频和视频
+          </a>
+        </li><li class="">
+          <a href="/articles/103.html">
+            History API 与单页应用
+          </a>
+        </li><li class="">
+          <a href="/articles/104.html">
+            Drag 和 Drop 介绍
+          </a>
+        </li><li class="">
+          <a href="/articles/105.html">
+            利用 Performance API 分析网站性能
+          </a>
+        </li><li class="">
+          <a href="/articles/106.html">
+            使用 HTML5 音频和视频
+          </a>
+        </li><li class="">
+          <a href="/articles/107.html">
+            Web Storage
+          </a>
+        </li><li class="">
+          <a href="/articles/108.html">
+            文件操作
+          </a>
+        </li><li class="">
+          <a href="/articles/109.html">
+            FileReader
+          </a>
+        </li><li class="">
+          <a href="/articles/11.html">
+            高效加载第三方JavaScript
+          </a>
+        </li></ul>
+  </div>
+  <div class="article__wrapper_sidebar">
+    <a href="/" target="_blank"><svg t="1714001835347" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4298" width="48" height="48"><path d="M147.904 304.128l301.866667-179.541333a128 128 0 0 1 131.712 0.512l295.466666 178.88A128 128 0 0 1 938.666667 413.482667V810.666667a128 128 0 0 1-128 128H213.333333a128 128 0 0 1-128-128V414.144a128 128 0 0 1 62.570667-110.016z m43.626667 73.344A42.666667 42.666667 0 0 0 170.666667 414.144V810.666667a42.666667 42.666667 0 0 0 42.666666 42.666666h597.333334a42.666667 42.666667 0 0 0 42.666666-42.666666V413.482667a42.666667 42.666667 0 0 0-20.565333-36.501334l-295.466667-178.88a42.666667 42.666667 0 0 0-43.925333-0.170666l-301.866667 179.541333z" fill="#8a919f" p-id="4299"></path><path d="M405.333333 469.333333h213.333334a42.666667 42.666667 0 1 1 0 85.333334H405.333333a42.666667 42.666667 0 1 1 0-85.333334z m0 85.333334a42.666667 42.666667 0 1 0 0-85.333334h213.333334a42.666667 42.666667 0 1 0 0 85.333334H405.333333z" fill="#8a919f" p-id="4300"></path></svg></a>
+    <a href="/tools/" target="_blank"><svg t="1714002003458" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6911" width="48" height="48"><path d="M817.87 556.31h-63.58v-66.24A42.27 42.27 0 0 0 712 447.8h-84.81a42.27 42.27 0 0 0-42.27 42.27v66.24H436.57v-66.24a42.27 42.27 0 0 0-42.27-42.27h-84.83a42.27 42.27 0 0 0-42.27 42.27v66.24h-61.83A22.39 22.39 0 0 0 183 578.7a22.39 22.39 0 0 0 22.39 22.39h61.81v65.55a42.27 42.27 0 0 0 42.27 42.27h84.83a42.27 42.27 0 0 0 42.27-42.27v-65.55h148.36v65.55a42.27 42.27 0 0 0 42.27 42.27H712a42.27 42.27 0 0 0 42.27-42.27v-65.55h63.58a22.39 22.39 0 0 0 22.39-22.39 22.39 22.39 0 0 0-22.37-22.39z m-438.64 95.26h-54.69V505.14h54.69z m317.72 0h-54.69V505.14H697z" p-id="6912" fill="#8a919f"></path><path d="M823 202.58h-90.81v-63.09a71.88 71.88 0 0 0-71.88-71.88H363.19a71.88 71.88 0 0 0-71.88 71.88v63.08h-90.12A137.17 137.17 0 0 0 64 339.75v479a137.17 137.17 0 0 0 137.19 137.14H823a137.17 137.17 0 0 0 137.19-137.17v-479A137.17 137.17 0 0 0 823 202.58z m-474.36-54.1A23.52 23.52 0 0 1 372.17 125h279.16a23.52 23.52 0 0 1 23.52 23.52v54.1h-326.2z m554.23 673.31a76.76 76.76 0 0 1-76.76 76.76h-628a76.76 76.76 0 0 1-76.76-76.76V336.67a76.76 76.76 0 0 1 76.76-76.76h628a76.76 76.76 0 0 1 76.76 76.76z" p-id="6913" fill="#8a919f"></path></svg></a>
+  </div>
+  <div class="article__wrapper">
+    <div class="article__wrapper__main">
+      <div class="article__wrapper_header">
+        <h1>Set 和 WeakSet 的用法和区别</h1>
+        <span class="articles__home_time">NaN/NaN/NaN · YinHao</span>
+      </div>
+      <p>Set 和 WeakSet 是 ES6 中新增的两种数据结构，它们都用于存储一组不重复的值。但是它们之间有一些区别，下面我会简要介绍它们的用法和区别，以及相应的应用场景。</p>
+<h2>Set 的用法和特点：</h2>
+<p>Set 是一个类似数组的数据结构，它的成员值都是唯一的，不会重复。 你可以向 Set 中添加值，并且它会自动去重。 Set 中的值可以是任何类型的数据，包括原始类型和对象引用。</p>
+<p>下面是 Set 常见的操作方法：</p>
+<ul>
+<li>add(value) : 向 Set 中添加一个新的值。</li>
+<li>delete(value) : 从 Set 中删除一个值。</li>
+<li>has(value) : 判断 Set 中是否包含某个值。</li>
+<li>size : 返回 Set 中值的数量。</li>
+<li>clear() : 清空 Set 中的所有值。</li>
+</ul>
+<p>示例代码：</p>
+<pre><code class="language-js">const set = new Set();
+set.add(1);
+set.add(2);
+set.add(2); // 这个值不会被重复添加
+set.has(1); // true
+set.size; // 2
+set.delete(2);
+set.clear();
+</code></pre>
+<p>下面是一些常见的  Set  的应用场景：</p>
+<p>1.  数组去重：</p>
+<p>Set  的去重功能非常有用，可以方便地从数组中去除重复的值。可以通过将数组转换为  Set，然后将 Set  转回数组来实现去重。</p>
+<pre><code class="language-js">const arr = [1, 2, 2, 3, 3, 4, 5];
+//展开解构，将 Set 转回数组
+const res = [...new Set(arr)];
+//或者也可以使用Array.from()方法将类数组Set转回数组
+const res2 = Array.from(new Set(arr));
+console.log(res); //[ 1, 2, 3, 4, 5 ]
+console.log(res2); //[ 1, 2, 3, 4, 5 ]
+</code></pre>
+<p>2.  数据统计和计数：</p>
+<p>Set  可以用来快速统计某个数据集合中不同元素的个数。</p>
+<pre><code class="language-js">const arr = [1, 2, 2, 3, 3, 4, 5];
+const res = new Set(arr);
+console.log(res.size); // 5
+</code></pre>
+<p>3.  数据交集和并集：</p>
+<p>Set  也可以通过配合数组的方法，用来求两个数据集合的交集、并集和差集。 （注：如果对 filter 方法还不熟悉的小伙伴可以看我之前的文章，有常用数组方法汇总）</p>
+<pre><code class="language-js">const set1 = new Set([1, 2, 3]);
+const set2 = new Set([2, 3, 4]);
+
+// 求交集
+const res = new Set([...set1].filter((item) =&gt; set2.has(item))); //返回共有的元素
+console.log([...res]); // [2, 3]
+
+// 求并集
+const res2 = new Set([...set1, ...set2]);
+console.log([...res2]); // [1, 2, 3, 4]
+
+// 求差集
+const res3 = new Set([...set1].filter((item) =&gt; !set2.has(item)));
+console.log([...res3]); // [1]
+</code></pre>
+<p>4.  去除文本中的重复单词：</p>
+<p>Set  可以用来去除文本中的重复单词，可以将文本按照单词分割，然后将单词添加到  Set  中，最后将  Set  转回文本。</p>
+<pre><code class="language-js">const text = &quot;I have have a dog. My dog's name name is Lucky.&quot;;
+const words = text.split(&quot; &quot;); //将文本以空格作为分隔符，即将每个单词切割出来
+const arrWords = [...new Set(words)]; //将 Set 转回数组
+const res = arrWords.join(&quot; &quot;); //重新将单词进行拼接成句子
+console.log(res); // I have a dog. My dog's name is Lucky.
+</code></pre>
+<h2>WeakSet 的用法和特点：</h2>
+<p>WeakSet 是一种弱引用的集合（只能存储对象引用），它持有的对象都是被弱引用的，不会阻止垃圾回收器对这些对象的回收。也就是说，一个对象被 weakSet 所引用，在垃圾回收机制的眼中，该对象是没有被引用的，那么只要垃圾回收机制一生效，该对象所占据的内存空间会被销毁。</p>
+<p>WeakSet 中的对象是无序且不可迭代的，因此没有提供类似于 size 和 forEach 等方法。 WeakSet 中的值不能被枚举，也不能被遍历。</p>
+<p>WeakSet 的主要用途是存储临时对象的引用，在某些场景下非常有用，比如需要在对象被销毁时执行一些特定的操作或者需要跟踪对象的存活状态，这些对象在不再需要时会被自动回收。可以帮助我们避免内存泄漏的问题，并且使垃圾回收更加高效。下面是一些使用 WeakSet 的示例代码来展示其应用场景以及和 Set 的区别：</p>
+<pre><code class="language-js">// 1. 使用 WeakSet 跟踪对象的存活状态
+const weakset = new WeakSet();
+
+const obj1 = { name: &quot;小米&quot; };
+const obj2 = { name: &quot;小露&quot; };
+
+weakset.add(obj1); //添加对象1
+weakset.add(obj2); //添加对象2
+
+console.log(weakset.has(obj1)); // true
+weakset.delete(obj1); // 执行一些清理操作
+console.log(weakset.has(obj1)); // false
+
+//使用Set 与 WeakSet进行结果对比
+const set = new Set();
+set.add(obj1); //添加对象1
+set.add(obj2); //添加对象2
+console.log(set.has(obj1)); // true
+weakset.delete(obj1); // 执行一些清理操作
+console.log(set.has(obj1)); // true
+</code></pre>
+<pre><code class="language-html">&lt;!-- 2. 需要在对象被销毁时执行一些特定的操作，避免内存泄漏 --&gt;
+&lt;body&gt;
+  &lt;div id=&quot;wrap&quot;&gt;
+    &lt;button id=&quot;btn&quot;&gt;确认&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/body&gt;
+&lt;script&gt;
+  const wrap = document.getElementById(&quot;wrap&quot;);
+  const btn = document.getElementById(&quot;btn&quot;);
+  //给btn打上标签
+  const disableElements = new weakSet(); //若使用new Set(),会造成内存泄漏
+  disableElements.add(btn);
+  btn.addEventListener(&quot;click&quot;, () =&gt; {
+    //给按钮添加点击事件
+    wrap.removeChild(btn); //按钮点击完成后将其销毁
+    console.log(disableElements); //理论上认为为{}
+  });
+&lt;/script&gt;
+</code></pre>
+<p>在第一个示例中，我们使用 WeakSet 跟踪对象的存活状态。通过调用 WeakSet 的 add 方法将对象添加到 weakset 实例中，然后可以使用 has 方法来检查对象是否仍然存活。在调用 WeakSet 的 delete 方法时，我们从 weakset 实例中删除对象，并执行了一些清理操作。会发现当使用 WeakSet 存储对象时，如果一个对象被清除了，再调用 has 方法去查找该对象结果会返回 false，而当使用 Set 存储对象时，对象被清除了再查找结果还是 true。所以我们可以使用 WeakSet 来跟踪对象的存活状态。</p>
+<p>在第二个示例中，我们展示了使用 WeakSet 来避免内存泄漏。我们在 body 里面创建了一个 button 按钮元素，并且向 button 按钮绑定了一个点击监听事件，然后用了一个弱引用容器 disableElements 存放按钮标签，在我们点击 button 按钮时，会触发监听事件，将 button 按钮从页面中移除。由于  disableElements  中存储的是弱引用，所以当 button 按钮被移除页面后，垃圾回收器会自动回收内存，避免了内存泄漏的问题。而如果我们的 disableElements 是用 Set 创建的容器，那么当执行按钮点击事件后，按钮被移除页面后，则会因为 button 对象被 disableElements 所引用依旧保留在内存中，不会被垃圾回收器自动回收内存，造成内存泄漏。所以，在这种应用场景下使用 WeakSet 容器，就解决了内存泄漏的问题。</p>
+<h2>总结：</h2>
+<p>Set 和 WeakSet 都是用于存储一组不重复的值，但它们的用法和特点有所不同。Set 可以存储任何类型的值且自动去重，适用于数据去重和快速查找。WeakSet 是一种弱引用的集合，只能存储对象引用，并且不会阻止对象被垃圾回收器回收，适用于需要跟踪对象存活状态或执行一些特定操作的场景。 上面两个示例展示了 WeakSet 的使用场景，即跟踪对象的存活状态和避免内存泄漏。使用 WeakSet 可以更加高效和安全地管理对象引用，确保对象的生命周期和内存资源的正确管理。</p>
+ 
+    </div>
+  </div>
+  <div class="article__wrapper_footer">
+    <a class="article__wrapper_footer-left " href="/articles/99.html"><svg t="1713708729970" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8437" width="48" height="48"><path d="M409.272947 512.57741l403.237243 403.237243a63.349415 63.349415 0 1 1-89.622481 89.622482L274.839224 557.324726a63.349415 63.349415 0 0 1 0-89.494632L722.951633 19.717685a63.349415 63.349415 0 1 1 89.494633 89.622482L409.336872 512.57741z" p-id="8438" fill="#8a8a8a"></path></svg></a>
+    <a class="article__wrapper_footer-right " href="/articles/101.html"><svg t="1713708697355" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8093" width="48" height="48"><path d="M855.123 517.004c0 8.245-3.167 15.51-9.503 21.823L402.999 981.47c-6.336 6.336-13.625 9.477-21.869 9.477s-15.51-3.142-21.845-9.477L311.8 933.96c-6.336-6.336-9.502-13.6-9.502-21.845 0-8.222 3.167-15.51 9.502-21.845l373.29-373.29-373.293-373.267c-6.336-6.336-9.502-13.6-9.502-21.845s3.167-15.533 9.503-21.869l47.484-47.484c6.336-6.336 13.6-9.502 21.845-9.502s15.533 3.167 21.869 9.503l442.621 442.622c6.334 6.334 9.503 13.625 9.503 21.869z" fill="#8a8a8a" p-id="8094"></path></svg></a>
+  </div>
+  <a class="article__wrapper_index" href="/articles/"><svg t="1713708857338" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="9656" width="48" height="48"><path d="M549.61981 133.022476l319.683047 203.605334A70.851048 70.851048 0 0 1 902.095238 396.361143v434.883047A70.89981 70.89981 0 0 1 831.146667 902.095238h-282.819048l0.024381-218.112h-71.826286v218.087619L192.853333 902.095238A70.89981 70.89981 0 0 1 121.904762 831.24419V390.241524c0-24.527238 12.678095-47.299048 33.54819-60.220953l318.659048-197.485714a70.972952 70.972952 0 0 1 75.50781 0.487619zM828.952381 828.952381V397.214476L511.488 195.047619 195.047619 391.119238V828.952381h211.309714v-216.551619h212.187429v216.527238L828.952381 828.952381z" p-id="9657" fill="#707070"></path></svg></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
+  <script src="../assets/js/articles-detail.js"></script>
+  <script>
+    hljs.highlightAll();
+  </script>
+</body>
+</html>
+    

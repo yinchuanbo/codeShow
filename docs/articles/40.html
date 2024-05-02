@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>裁剪的3种方式，CSS 如何隐藏移动端的滚动条？</title>
+    <meta charset="utf-8">
+    <meta name="description" content="This is a page">
+    <meta name="keywords" content="page, sample">
+    <meta name="author" content="None">
+    <link rel="icon" sizes="any" mask href="../assets/images/ico6.svg" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <link rel="stylesheet" href="../assets/css/articles.css">
+</head>
+<body>
+  <div class="article__wrapper_left">
+    <div class="article__wrapper_left-mulu">目录</div>
+    <ul class="articles__list"><li class="">
+          <a href="/articles/41.html">
+            属性的 getter 和 setter
+          </a>
+        </li><li class="">
+          <a href="/articles/42.html">
+            原生的延迟加载支持
+          </a>
+        </li><li class="">
+          <a href="/articles/43.html">
+            视频加载
+          </a>
+        </li><li class="">
+          <a href="/articles/44.html">
+            加载注意事项
+          </a>
+        </li><li class="">
+          <a href="/articles/45.html">
+            网站优化之静态资源优化
+          </a>
+        </li><li class="">
+          <a href="/articles/46.html">
+            资源优先级
+          </a>
+        </li><li class="">
+          <a href="/articles/47.html">
+            书写高性能的代码
+          </a>
+        </li><li class="">
+          <a href="/articles/48.html">
+            构建优化
+          </a>
+        </li><li class="">
+          <a href="/articles/49.html">
+            Object.create()
+          </a>
+        </li><li class="">
+          <a href="/articles/50.html">
+            渲染优化
+          </a>
+        </li></ul>
+  </div>
+  <div class="article__wrapper_sidebar">
+    <a href="/" target="_blank"><svg t="1714001835347" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4298" width="48" height="48"><path d="M147.904 304.128l301.866667-179.541333a128 128 0 0 1 131.712 0.512l295.466666 178.88A128 128 0 0 1 938.666667 413.482667V810.666667a128 128 0 0 1-128 128H213.333333a128 128 0 0 1-128-128V414.144a128 128 0 0 1 62.570667-110.016z m43.626667 73.344A42.666667 42.666667 0 0 0 170.666667 414.144V810.666667a42.666667 42.666667 0 0 0 42.666666 42.666666h597.333334a42.666667 42.666667 0 0 0 42.666666-42.666666V413.482667a42.666667 42.666667 0 0 0-20.565333-36.501334l-295.466667-178.88a42.666667 42.666667 0 0 0-43.925333-0.170666l-301.866667 179.541333z" fill="#8a919f" p-id="4299"></path><path d="M405.333333 469.333333h213.333334a42.666667 42.666667 0 1 1 0 85.333334H405.333333a42.666667 42.666667 0 1 1 0-85.333334z m0 85.333334a42.666667 42.666667 0 1 0 0-85.333334h213.333334a42.666667 42.666667 0 1 0 0 85.333334H405.333333z" fill="#8a919f" p-id="4300"></path></svg></a>
+    <a href="/tools/" target="_blank"><svg t="1714002003458" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6911" width="48" height="48"><path d="M817.87 556.31h-63.58v-66.24A42.27 42.27 0 0 0 712 447.8h-84.81a42.27 42.27 0 0 0-42.27 42.27v66.24H436.57v-66.24a42.27 42.27 0 0 0-42.27-42.27h-84.83a42.27 42.27 0 0 0-42.27 42.27v66.24h-61.83A22.39 22.39 0 0 0 183 578.7a22.39 22.39 0 0 0 22.39 22.39h61.81v65.55a42.27 42.27 0 0 0 42.27 42.27h84.83a42.27 42.27 0 0 0 42.27-42.27v-65.55h148.36v65.55a42.27 42.27 0 0 0 42.27 42.27H712a42.27 42.27 0 0 0 42.27-42.27v-65.55h63.58a22.39 22.39 0 0 0 22.39-22.39 22.39 22.39 0 0 0-22.37-22.39z m-438.64 95.26h-54.69V505.14h54.69z m317.72 0h-54.69V505.14H697z" p-id="6912" fill="#8a919f"></path><path d="M823 202.58h-90.81v-63.09a71.88 71.88 0 0 0-71.88-71.88H363.19a71.88 71.88 0 0 0-71.88 71.88v63.08h-90.12A137.17 137.17 0 0 0 64 339.75v479a137.17 137.17 0 0 0 137.19 137.14H823a137.17 137.17 0 0 0 137.19-137.17v-479A137.17 137.17 0 0 0 823 202.58z m-474.36-54.1A23.52 23.52 0 0 1 372.17 125h279.16a23.52 23.52 0 0 1 23.52 23.52v54.1h-326.2z m554.23 673.31a76.76 76.76 0 0 1-76.76 76.76h-628a76.76 76.76 0 0 1-76.76-76.76V336.67a76.76 76.76 0 0 1 76.76-76.76h628a76.76 76.76 0 0 1 76.76 76.76z" p-id="6913" fill="#8a919f"></path></svg></a>
+  </div>
+  <div class="article__wrapper">
+    <div class="article__wrapper__main">
+      <div class="article__wrapper_header">
+        <h1>裁剪的3种方式，CSS 如何隐藏移动端的滚动条？</h1>
+        <span class="articles__home_time">NaN/NaN/NaN · YinHao</span>
+      </div>
+      <p>在移动端开发中，经常会碰到需要横向滚动的场景，例如这样的</p>
+<p><img src="../assets/images/articles/40/01.gif" alt=""></p>
+<p>但很多时候是不需要展示这个滚动条的，也就是这样的效果，如下</p>
+<p><img src="../assets/images/articles/40/02.gif" alt=""></p>
+<p>你可能想到直接设置滚动条样式就可以了，就像这样</p>
+<pre><code class="language-css">::-webkit-scrollbar {
+  display: none;
+}
+</code></pre>
+<p>目前来看好像没什么问题，但在某些版本的 iOS 上却无效（具体待测试），滚动条仍然出现。</p>
+<p>那有没有其他方式可以解决这个问题呢？下面介绍几个方法</p>
+<h2>一、通过 overflow 隐藏</h2>
+<p>既然有时候修改滚动条样式无法解决，我们可以想办法把它隐藏。</p>
+<p>下面是一个横向滚动列表</p>
+<pre><code class="language-html">&lt;div class=&quot;list&quot;&gt;
+  &lt;div class=&quot;item&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;item&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;item&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;item&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;item&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;item&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;item&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<p>简单修饰一下，让这个列表可以横向滚动</p>
+<pre><code class="language-css">.list {
+  display: flex;
+  overflow: auto;
+  gap: 10px;
+  padding: 10px;
+}
+.item {
+  width: 100px;
+  height: 100px;
+  background: royalblue;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+</code></pre>
+<p>效果如下</p>
+<p><img src="../assets/images/articles/40/01.png" alt=""></p>
+<p>通过 <strong>「overflow」</strong> 隐藏的方式很简单，我们需要一个父级</p>
+<pre><code class="language-html">&lt;div class=&quot;wrap&quot;&gt;
+  &lt;div class=&quot;list&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<p>然后，将列表底部<code>padding</code>设置的稍微大一些，比如</p>
+<pre><code class="language-css">.list {
+  /**/
+  padding-bottom: 20px;
+}
+</code></pre>
+<p>可以看到列表下方的距离变大了，滚动条也更靠下了，效果如下</p>
+<p><img src="../assets/images/articles/40/02.png" alt=""></p>
+<p>如何让整体尺寸仍然保持原有呢？答案是借助负 <strong>「margin」</strong>，比如之前底部 <strong>「padding」</strong> 是<code>10</code>，现在改成了<code>20</code>，所以需要<code>-10</code>的 <strong>「margin」</strong></p>
+<pre><code class="language-css">.list {
+  /**/
+  margin-bottom: -10px;
+}
+</code></pre>
+<p>这样整体尺寸就正常了，不过滚动条仍然是可见的，只是出去了</p>
+<p><img src="../assets/images/articles/40/03.png" alt=""></p>
+<p>最后只需要设置父级的  <strong>「overflow」</strong> 为隐藏就可以了</p>
+<pre><code class="language-css">.wrap {
+  /**/
+  overflow: hidden;
+}
+</code></pre>
+<p>原理示意如下</p>
+<p><img src="../assets/images/articles/40/04.png" alt=""></p>
+<p>这样就完美隐藏了滚动条</p>
+<p><img src="../assets/images/articles/40/05.png" alt=""></p>
+<p>当然，不仅仅是  <strong>「overflow」</strong>，下面这种方式也可以实现超出隐藏</p>
+<pre><code class="language-css">.wrap {
+  /**/
+  contain: paint;
+}
+</code></pre>
+<p>这个属性比较新，可以控制元素在容器内的绘制规则，了解一下即可</p>
+<blockquote>
+<p>https://developer.mozilla.org/zh-CN/docs/Web/CSS/contain</p>
+</blockquote>
+<h2>二、通过 clip 裁剪</h2>
+<p>第一种方式需要借助父级的超出隐藏，需要额外一层，好像有点麻烦，有没有办法自身也可以裁剪呢？</p>
+<p>那就是  <strong>「clip-path」</strong></p>
+<blockquote>
+<p>https://developer.mozilla.org/zh-CN/docs/Web/CSS/clip-path</p>
+</blockquote>
+<p>相信大家对这个属性应该很熟练了，非常直观的裁剪属性。</p>
+<p>比如这种情况，只需要把滚动条的那一部分裁剪掉就可以了，这里要用到<code>clip-path</code>的<code>inset</code>方法</p>
+<pre><code class="language-css">clip-path: inset();
+</code></pre>
+<p>这里简单介绍一下。<strong>「inset」</strong> 最多可以传 4 个参数，分别表示裁剪掉距离上、右、下、左的部分</p>
+<p><img src="../assets/images/articles/40/06.png" alt=""></p>
+<p>所以，要把滚动条隐藏就很简单了，只需要把下方的裁剪距离设置大于滚动条尺寸的值就行了，这里就用<code>10px</code></p>
+<pre><code class="language-css">.list {
+  clip-path: inset(0 0 10px);
+}
+</code></pre>
+<p>效果如下</p>
+<p><img src="../assets/images/articles/40/07.png" alt=""></p>
+<p>一行代码轻松解决~</p>
+<h2>三、通过 mask 遮罩</h2>
+<p>其实和  <strong>「clip」</strong> 思路是一致的，只不过实现方式不一样。</p>
+<p>关于  <a href="http://mp.weixin.qq.com/s?__biz=MzIyMDc1NTYxNg==&amp;mid=2247488049&amp;idx=1&amp;sn=dfa9e190e4828c5bf6cf8287ecaa471f&amp;chksm=97c671fea0b1f8e86a74fd50f2825ae38a5e45ba71142a0961f743d9bdcde24caaa51daef2b7&amp;scene=21#wechat_redirect">mask 遮罩</a>，之前在多篇文章中都有提到，非常实用的小技巧，主要原理是显示遮罩图片不透明的部分，透明的则会被裁剪，示意如下</p>
+<p><img src="../assets/images/articles/40/08.png" alt=""></p>
+<p>回到这里，我们只需要绘制一个不包含滚动条部分的纯色渐变就行了，可以直接绘制一个纯色渐变，然后设置背景尺寸，如下</p>
+<pre><code class="language-css">.list {
+  -webkit-mask: linear-gradient(red, red) 0 0/100% calc(100% - 10px) no-repeat;
+}
+</code></pre>
+<p>原理示意如下</p>
+<p><img src="../assets/images/articles/40/09.png" alt=""></p>
+<p>也能很好的隐藏滚动条</p>
+<p><img src="../assets/images/articles/40/10.png" alt=""></p>
+<p>除此以外，mask 还可以很好的实现滚动边界渐隐的效果，只需要叠加一层从<code>透明→纯色→透明</code>的渐变就行了</p>
+<pre><code class="language-css">.list {
+  -webkit-mask: linear-gradient(
+      to right,
+      transparent,
+      red 15px calc(100% - 15px),
+      transparent
+    ), linear-gradient(red, red) 0 0/100% calc(100% - 10px) no-repeat;
+  -webkit-mask-composite: source-in;
+}
+</code></pre>
+<p>就可以得到这样的效果</p>
+<p><img src="../assets/images/articles/40/03.gif" alt=""></p>
+<p>由于是遮罩实现，并不是简单的颜色覆盖，所以换一种背景颜色也可以很好的融合</p>
+<p><img src="../assets/images/articles/40/04.gif" alt=""></p>
+<p>以上所有完整 demo 可以查看以下链接</p>
+<p>[1] CSS scroll hidden (juejin.cn)： https://code.juejin.cn/pen/7276721196161302588</p>
+<p>[2] CSS scroll hidden (codepen.io)： https://codepen.io/xboxyan/pen/GRPrzeO</p>
+ 
+    </div>
+  </div>
+  <div class="article__wrapper_footer">
+    <a class="article__wrapper_footer-left " href="/articles/39.html"><svg t="1713708729970" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8437" width="48" height="48"><path d="M409.272947 512.57741l403.237243 403.237243a63.349415 63.349415 0 1 1-89.622481 89.622482L274.839224 557.324726a63.349415 63.349415 0 0 1 0-89.494632L722.951633 19.717685a63.349415 63.349415 0 1 1 89.494633 89.622482L409.336872 512.57741z" p-id="8438" fill="#8a8a8a"></path></svg></a>
+    <a class="article__wrapper_footer-right " href="/articles/41.html"><svg t="1713708697355" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8093" width="48" height="48"><path d="M855.123 517.004c0 8.245-3.167 15.51-9.503 21.823L402.999 981.47c-6.336 6.336-13.625 9.477-21.869 9.477s-15.51-3.142-21.845-9.477L311.8 933.96c-6.336-6.336-9.502-13.6-9.502-21.845 0-8.222 3.167-15.51 9.502-21.845l373.29-373.29-373.293-373.267c-6.336-6.336-9.502-13.6-9.502-21.845s3.167-15.533 9.503-21.869l47.484-47.484c6.336-6.336 13.6-9.502 21.845-9.502s15.533 3.167 21.869 9.503l442.621 442.622c6.334 6.334 9.503 13.625 9.503 21.869z" fill="#8a8a8a" p-id="8094"></path></svg></a>
+  </div>
+  <a class="article__wrapper_index" href="/articles/"><svg t="1713708857338" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="9656" width="48" height="48"><path d="M549.61981 133.022476l319.683047 203.605334A70.851048 70.851048 0 0 1 902.095238 396.361143v434.883047A70.89981 70.89981 0 0 1 831.146667 902.095238h-282.819048l0.024381-218.112h-71.826286v218.087619L192.853333 902.095238A70.89981 70.89981 0 0 1 121.904762 831.24419V390.241524c0-24.527238 12.678095-47.299048 33.54819-60.220953l318.659048-197.485714a70.972952 70.972952 0 0 1 75.50781 0.487619zM828.952381 828.952381V397.214476L511.488 195.047619 195.047619 391.119238V828.952381h211.309714v-216.551619h212.187429v216.527238L828.952381 828.952381z" p-id="9657" fill="#707070"></path></svg></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
+  <script src="../assets/js/articles-detail.js"></script>
+  <script>
+    hljs.highlightAll();
+  </script>
+</body>
+</html>
+    

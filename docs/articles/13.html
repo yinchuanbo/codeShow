@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>三种 async/await 错误捕获方式</title>
+    <title>JS错误监控篇</title>
     <meta charset="utf-8">
     <meta name="description" content="This is a page">
     <meta name="keywords" content="page, sample">
@@ -14,94 +14,46 @@
   <div class="article__wrapper_left">
     <div class="article__wrapper_left-mulu">目录</div>
     <ul class="articles__list"><li class="">
-    <a href="/articles/01.html">
-      Git Worktree 让你无需切换分支
-    </a>
-  </li><li class="">
-    <a href="/articles/02.html">
-      git worktree
-    </a>
-  </li><li class="">
-    <a href="/articles/03.html">
-      git cherry-pick
-    </a>
-  </li><li class="">
-    <a href="/articles/04.html">
-      Git 生成 patch 和应用 patch
-    </a>
-  </li><li class="">
-    <a href="/articles/05.html">
-      js-pytorch：开启前端+AI新世界
-    </a>
-  </li><li class="">
-    <a href="/articles/06.html">
-      根据已有视频生成指定样式视频
-    </a>
-  </li><li class="">
-    <a href="/articles/07.html">
-      视频实时录制，并设置镜像翻转及圆角，下载视频样式同设置
-    </a>
-  </li><li class="">
-    <a href="/articles/08.html">
-      视频录制，音频实时更新且视频画面固定唯一
-    </a>
-  </li><li class="">
-    <a href="/articles/09.html">
-      IOS Window.Open 弹窗被阻止解决方案
-    </a>
-  </li><li class="">
-    <a href="/articles/10.html">
-      浏览器保存密码后自动填充问题
-    </a>
-  </li><li class="">
-    <a href="/articles/11.html">
-      前端工具库 Radash，取代 Lodash
-    </a>
-  </li><li class="">
-    <a href="/articles/12.html">
-      如何实现页面刷新后不定位到之前的滚动位置？
-    </a>
-  </li><li class="active">
-    <a href="/articles/13.html">
-      三种 async/await 错误捕获方式
-    </a>
-  </li><li class="">
-    <a href="/articles/14.html">
-      如何使用 JavaScript 阻止屏幕进入睡眠状态
-    </a>
-  </li><li class="">
-    <a href="/articles/15.html">
-      分享几个前端中好玩且有用的开源工具
-    </a>
-  </li><li class="">
-    <a href="/articles/16.html">
-      前端框架新势力大盘点
-    </a>
-  </li><li class="">
-    <a href="/articles/17.html">
-      快速了解CSS表单尺寸属性 field-sizing
-    </a>
-  </li><li class="">
-    <a href="/articles/18.html">
-      滚动插件 BetterScroll, 增强用户交互体验
-    </a>
-  </li><li class="">
-    <a href="/articles/19.html">
-      一个聚合了所有中国独立开发者项目的资源
-    </a>
-  </li><li class="">
-    <a href="/articles/20.html">
-      前端接口防止重复请求实现方案
-    </a>
-  </li><li class="">
-    <a href="/articles/21.html">
-      JS的哪些新特性，你都用过么？
-    </a>
-  </li><li class="">
-    <a href="/articles/22.html">
-      8个小而美的前端库
-    </a>
-  </li></ul>
+          <a href="/articles/130.html">
+            动态执行 js 的方法
+          </a>
+        </li><li class="">
+          <a href="/articles/131.html">
+            多个有趣的 JavaScript 与 CSS 库
+          </a>
+        </li><li class="">
+          <a href="/articles/132.html">
+            使用对象
+          </a>
+        </li><li class="">
+          <a href="/articles/133.html">
+            构造函数、原型和继承[未完]
+          </a>
+        </li><li class="">
+          <a href="/articles/134.html">
+            3个超酷的 Node.js 新功能
+          </a>
+        </li><li class="">
+          <a href="/articles/135.html">
+            一些很重要的 HTML 属性
+          </a>
+        </li><li class="">
+          <a href="/articles/136.html">
+            页面关闭时如何成功发送 API 请求
+          </a>
+        </li><li class="">
+          <a href="/articles/137.html">
+            更灵活的 Map - array.flatMap()
+          </a>
+        </li><li class="">
+          <a href="/articles/138.html">
+            提升JavaScript代码质量的最佳实践
+          </a>
+        </li><li class="">
+          <a href="/articles/139.html">
+            如何使用 JavaScript 阻止屏幕进入睡眠状态
+          </a>
+        </li></ul>
   </div>
   <div class="article__wrapper_sidebar">
     <a href="/" target="_blank"><svg t="1714001835347" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4298" width="48" height="48"><path d="M147.904 304.128l301.866667-179.541333a128 128 0 0 1 131.712 0.512l295.466666 178.88A128 128 0 0 1 938.666667 413.482667V810.666667a128 128 0 0 1-128 128H213.333333a128 128 0 0 1-128-128V414.144a128 128 0 0 1 62.570667-110.016z m43.626667 73.344A42.666667 42.666667 0 0 0 170.666667 414.144V810.666667a42.666667 42.666667 0 0 0 42.666666 42.666666h597.333334a42.666667 42.666667 0 0 0 42.666666-42.666666V413.482667a42.666667 42.666667 0 0 0-20.565333-36.501334l-295.466667-178.88a42.666667 42.666667 0 0 0-43.925333-0.170666l-301.866667 179.541333z" fill="#8a919f" p-id="4299"></path><path d="M405.333333 469.333333h213.333334a42.666667 42.666667 0 1 1 0 85.333334H405.333333a42.666667 42.666667 0 1 1 0-85.333334z m0 85.333334a42.666667 42.666667 0 1 0 0-85.333334h213.333334a42.666667 42.666667 0 1 0 0 85.333334H405.333333z" fill="#8a919f" p-id="4300"></path></svg></a>
@@ -110,101 +62,157 @@
   <div class="article__wrapper">
     <div class="article__wrapper__main">
       <div class="article__wrapper_header">
-        <h1>三种 async/await 错误捕获方式</h1>
-        <span class="articles__home_time">2024/04/23 · YinHao</span>
+        <h1>JS错误监控篇</h1>
+        <span class="articles__home_time">NaN/NaN/NaN · YinHao</span>
       </div>
-      <h3>使用 try/catch 进行捕获</h3>
-<pre><code class="language-js">function getUserInfo() {
-  return new Promise((resolve, reject) =&gt; {
-    setTimeout(() =&gt; {
-      reject(&quot;请求出现错误&quot;);
-    }, 1000);
-  });
-}
-async function loggedIn() {
-  try {
-    // 执行中断
-    let userInfo = await getUserInfo();
-    console.log(&quot;不会继续执行&quot;);
-  } catch (e) {
-    console.log(e);
+      <p><strong>监控流程：监控并收集错误 -&gt; 存储并上报错误 -&gt; 分析并聚合错误 -&gt; 发送错误报警-&gt; 定位并解决 JS 错误</strong></p>
+<h2>一、监控并收集 Javascript 错误</h2>
+<p>众所周知，我们是有办法去监听前端 Js 错误的，他们分别 <code>window.onerror、window.onunhandledrejection、console.error</code> 方法。</p>
+<p>通过这些方法能够为我们记录下线上的运行时错误，以及详细的堆栈信息。我将 <code>window.onerror(捕获异常)</code>，<code>console.error(自定义异常)</code> 方法收集到的错误信息进行分析统计后的效果如下：</p>
+<p><img src="../assets/images/articles/13/01.png" alt=""></p>
+<h3>（1）重写 window.onerror 方法</h3>
+<pre><code class="language-js">// 重写 onerror 进行jsError的监听
+window.onerror = function (errorMsg, url, lineNumber, columnNumber, errorObj) {
+  var errorStack = errorObj ? errorObj.stack : null;
+  siftAndMakeUpMessage(
+    &quot;on_error&quot;,
+    errorMsg,
+    url,
+    lineNumber,
+    columnNumber,
+    errorStack
+  );
+};
+</code></pre>
+<p><code>window.onerror</code> 方法以及它的参数我就不一一介绍了，我相信大家也已经耳熟能详了；我们记录下错误发生时的行、列号，以及错误堆栈。</p>
+<h3>（2）重写  window.onunhandledrejection 方法</h3>
+<pre><code class="language-js">window.onunhandledrejection = function (e) {
+  var errorMsg = &quot;&quot;;
+  var errorStack = &quot;&quot;;
+  if (typeof e.reason === &quot;object&quot;) {
+    errorMsg = e.reason.message;
+    errorStack = e.reason.stack;
+  } else {
+    errorMsg = e.reason;
+    errorStack = &quot;&quot;;
   }
-}
-loggedIn();
+  // 分类解析
+  siftAndMakeUpMessage(
+    &quot;on_error&quot;,
+    errorMsg,
+    WEB_LOCATION,
+    0,
+    0,
+    &quot;UncaughtInPromiseError: &quot; + errorStack
+  );
+};
 </code></pre>
-<p>上面的代码在执行时，会通过 try-catch 捕获到“请求异常”并中断执行 getUserInfo。这也是日常开发中常见处理方式。</p>
-<p>但是如果我们存在多次的请求，就必须要通过多次的 try-catch 进行捕获，特别是在请求需要具备连续性的时候：</p>
-<pre><code class="language-js">async function loggedIn() {
-  try {
-    let userInfo = await getUserInfo();
-    console.log(&quot;不会继续执行&quot;);
-    let pageInfo = await getPageInfo(userInfo?.userId);
-  } catch (e) {
-    console.warn(e);
+<p><code>window.onunhandledrejection</code> 能够捕获到 <code>Promise</code> 未处理的 <code>rejection</code> <code>异常，rejection</code> 异常并不会阻断页面运行，容易被很多小伙伴所遗忘，所以我们监控了此类型的错误。</p>
+<h3>（3）重写  console.error 方法</h3>
+<pre><code class="language-js">// 重写console.error, 可以捕获更全面的报错信息
+var oldError = console.error;
+console.error = function (tempErrorMsg) {
+  var errorMsg = (arguments[0] &amp;&amp; arguments[0].message) || tempErrorMsg;
+  var lineNumber = 0;
+  var columnNumber = 0;
+  var errorObj = arguments[0] &amp;&amp; arguments[0].stack;
+  if (!errorObj) {
+    if (typeof errorMsg == &quot;object&quot;) {
+      try {
+        errorMsg = JSON.stringify(errorMsg);
+      } catch (e) {
+        errorMsg = &quot;错误无法解析&quot;;
+      }
+    }
+    siftAndMakeUpMessage(
+      &quot;console_error&quot;,
+      errorMsg,
+      WEB_LOCATION,
+      lineNumber,
+      columnNumber,
+      &quot;CustomizeError: &quot; + errorMsg
+    );
+  } else {
+    // 如果报错中包含错误堆栈，可以认为是JS报错，而非自定义报错
+    siftAndMakeUpMessage(
+      &quot;on_error&quot;,
+      errorMsg,
+      WEB_LOCATION,
+      lineNumber,
+      columnNumber,
+      errorObj
+    );
   }
-}
-loggedIn();
+  return oldError.apply(console, arguments);
+};
 </code></pre>
-<p>这样的处理，在当前场景下并没有什么问题，但是如果每一个接口的请求都这么进行调用，那么就会显得冗余了。所以，我们就可以延伸出一些其他的处理方案。</p>
-<h3>直接捕获</h3>
-<pre><code class="language-js">function getUserInfo() {
-  return new Promise((resolve, reject) =&gt; {
-    setTimeout(() =&gt; {
-      reject(&quot;请求出现错误&quot;);
-    }, 1000);
-  });
+<p><code>console.error</code> 是用来打印警告日志，所以我将其归类为自定义异常。一般像前端框架、引入第三方的插件都会用 <code>console.error</code> 来打印较为严重的警告信息，而我在工作中也会将后台抛出的错误信息（非后台异常）用 <code>console.error</code> 打印出来，上报到监控系统里。这样对排查异常也是有很大作用的（这一点会在行为记录查询中有体现）。</p>
+<h2>二、存储并上报错误</h2>
+<p>Javascript 错误产生后，应该存入浏览器的缓存中，然后定时上传，如果实时上传，将会对服务器造成压力。通过接口将 Js 错误信息上传到服务器，由后台 server 对数据进行清洗分类，然后再进行持久化存储。因为我用的是 mysql 来存储日志信息，所以需要以 JS 错误为一个 model，明确定义 Js 错误的每个字段，定义如下：</p>
+<pre><code class="language-js">// 设置日志对象类的通用属性
+function setCommonProperty() {
+  this.wmVersion = WM_VERSION; // 探针版本号
+  this.happenTime = new Date().getTime(); // 日志发生时间
+  this.webMonitorId = WEB_MONITOR_ID; // 用于区分应用的唯一标识（一个项目对应一个）
+  this.simpleUrl = window.location.href.split(&quot;?&quot;)[0].replace(&quot;#&quot;, &quot;&quot;); // 页面的url
+  this.completeUrl = utils.b64EncodeUnicode(
+    encodeURIComponent(window.location.href)
+  ); // 页面的完整url
+  this.customerKey = utils.getCustomerKey(); // 用于区分用户，所对应唯一的标识，清理本地数据后失效，
+  // 用户自定义信息， 由开发者主动传入， 便于对线上问题进行准确定位
+  var wmUserInfo = lsg.wmUserInfo ? JSON.parse(lsg.wmUserInfo) : {};
+  this.userId = wmUserInfo.userId;
+  this.firstUserParam = utils.b64EncodeUnicode(wmUserInfo.firstUserParam || &quot;&quot;);
+  this.secondUserParam = utils.b64EncodeUnicode(
+    wmUserInfo.secondUserParam || &quot;&quot;
+  );
 }
-async function loggedIn() {
-  let userInfo = await getUserInfo().catch((e) =&gt; console.log(e));
-  console.log(&quot;程序会继续执行&quot;);
-  if (!userInfo) return;
-  let pageInfo = await getPageInfo(userInfo?.userId);
-}
-loggedIn();
-</code></pre>
-<p>在上面的代码中，我们通过 catch 捕获了异常，但程序会继续执行，所以我们只需要在后续进行 if 判断，从而完成连续的逻辑。</p>
-<p>如果你不希望程序继续执行，那么可以按照下面的方式进行处理</p>
-<pre><code class="language-js">function getUserInfo() {
-  return new Promise((resolve, reject) =&gt; {
-    setTimeout(() =&gt; {
-      reject(&quot;请求出现错误&quot;);
-    }, 1000);
-  });
-}
-
-async function loggedIn() {
-  let userInfo = await getUserInfo().catch((e) =&gt; {
-    console.log(e);
-    return Promise.reject(e);
-  });
-  console.log(&quot;程序不会继续执行&quot;);
-  let pageInfo = await getPageInfo(userInfo?.userId);
-}
-loggedIn();
-</code></pre>
-<p>这种方式会执行通过 在 catch 块中的 <code>Promise.reject(e)</code> 来中断执行。</p>
-<h2>如何选择？</h2>
-<p><strong>1、如果错误不需要中断程序执行，那么可以使用如下方式</strong></p>
-<pre><code class="language-js">let userInfo = await getUserInfo().catch((e) =&gt; console.log(e));
-if (!userInfo) return;
-</code></pre>
-<p><strong>2、如果发生错误时需要中断，并且通过控制台明确一个统一的错误</strong></p>
-<pre><code class="language-js">try {
-  let userInfo = await getUserInfo();
-  console.log(&quot;不会继续执行&quot;);
-  let pageInfo = await getPageInfo(userInfo?.userId);
-} catch (e) {
-  console.warn(e);
+// JS错误日志，继承于日志基类MonitorBaseInfo
+function JavaScriptErrorInfo(uploadType, infoType, errorMsg, errorStack) {
+  setCommonProperty.apply(this);
+  this.uploadType = uploadType;
+  this.infoType = infoType;
+  this.pageKey = utils.getPageKey(); // 用于区分页面，所对应唯一的标识，每个新页面对应一个值
+  this.deviceName = DEVICE_INFO.deviceName;
+  this.os =
+    DEVICE_INFO.os + (DEVICE_INFO.osVersion ? &quot; &quot; + DEVICE_INFO.osVersion : &quot;&quot;);
+  this.browserName = DEVICE_INFO.browserName;
+  this.browserVersion = DEVICE_INFO.browserVersion;
+  // TODO 位置信息, 待处理
+  this.monitorIp = utils.getCookie(&quot;webfunny_ip&quot;); // 用户的IP地址
+  this.country = &quot;china&quot;; // 用户所在国家
+  this.province = &quot;&quot;; // 用户所在省份
+  this.city = &quot;&quot;; // 用户所在城市
+  this.errorMessage = utils.b64EncodeUnicode(errorMsg);
+  this.errorStack = utils.b64EncodeUnicode(errorStack);
+  this.browserInfo = &quot;&quot;;
 }
 </code></pre>
-<p><strong>3、如果发生错误时需要中断，但是不需要控制台显示统一的错误</strong></p>
-<pre><code class="language-js">let userInfo = await getUserInfo().catch((e) =&gt; {
-  console.log(e);
-  return Promise.reject(e);
-});
-console.log(&quot;程序不会继续执行&quot;);
-let pageInfo = await getPageInfo(userInfo?.userId);
-</code></pre>
+<p>Js 错误信息需要包含系统版本号、应用版本号、平台信息、页面 Url、错误信息、错误堆栈、发生时间等等，这样才能帮助我们准确定位，至于数据库的字段如何定义，我就不赘述了，可以访问我的 git 项目查看。</p>
+<h2>三、分析并聚合错误</h2>
+<p>如果每天都去盯着前端的报错数据，真的很耗费精力，而且很难看出是今天发生的，还是一直存在的报错。</p>
+<p>其实前端项目每天都会有些报错，比如：<code>script error</code> 。我们既不能控制，也不会影响我们的业务，但它会一直存在。</p>
+<p>只要每天的错误量没有波动太大，报错数据比较平稳，就可以认为线上应用是健康的。所以我选择跟一周前的数据进行比较，如果出现大幅上升，那么就需要对这个项目进行关注了，而不是每天查看具体的报错数据。</p>
+<p>本文上部的健康状况看板图片就是为了表达这种想法，截图上正是前端发了严重的异常，而出现的曲线图。</p>
+<p>那我们来看看如何对这些错误进行聚合，且看下 Webfunny 错误聚合的效果：</p>
+<p><img src="../assets/images/articles/13/02.png" alt=""></p>
+<p>首先，我们对捕获的异常类型进行了分类（<code>TypeError、ReferenceError、UncaughtInPromiseError</code>），这样错误类型可以一目了然。</p>
+<p>同时我们对发生错误的操作系统（<code>Android、ios、Pc</code>）进行了分类统计，比如截图中的第一个错误，就只会在苹果手机上发生，排查范围也就缩小了很多。</p>
+<p>另外，我们把错误影响的人数也统计出来，就可以知道这个错误影响了多少用户，从而确定修复的优先级。</p>
+<h2>四、<strong>发送错误报警</strong></h2>
+<p>这一步属于监控的附加功能，主要包括邮箱、钉钉、短信等消息通知，和本次讲得知识点无关，我就不细说了。</p>
+<h2>五、如何定位并解决 JS 错误</h2>
+<p>针对某一个错误，我们需要分析它发生的平台，影响的人数，系统版本，网络环境等等，同时也需要分析最为重要的一步，就是代码的位置。</p>
+<p><img src="../assets/images/articles/13/03.png" alt=""></p>
+<p>如图所示</p>
+<p><strong>首先</strong>，我们分析了错误发生的具体时间、发生次数、影响人数、IP 地址、浏览器版本、操作系统等环境因素</p>
+<p><strong>其次</strong>，我们还需统计这个报错发生的时间曲线，如果是大量报错，我们可以很容易定位到错误发生的起始点，针对那个时间点，对报错的原因进行定位</p>
+<p><img src="../assets/images/articles/13/04.png" alt=""></p>
+<p><strong>还有一个重要的点</strong>，就是对代码代码堆栈的分析。我们默认会根据错误提示的行、列号截取错误位置附近的一段代码，正常情况下，我们已经可以通过这段代码来定位出出错的具体位置了。</p>
+<p>但是有些小伙伴说，我就是看不出来怎么办，没关系，我们还提供了利用 Js 的 SourceMap 文件反向定位源码的功能，让你准确定位到 Js 源码的位置。</p>
+<p>PS：由于 SourceMap 文件反向定位源码的功能较为复杂，我将放到下一个知识分享中进行讲解。</p>
+<p><strong>最后</strong>，我们将 Js 错误结合到用户的行为记录中，这样我们就能够知道用户在发生错误的前后都做了什么，更进一步的了解错误发生原因，错误详情页提供了查看行为轨迹的按钮，我们来看看结果。</p>
+<p><img src="../assets/images/articles/13/05.png" alt=""></p>
  
     </div>
   </div>
@@ -218,13 +226,6 @@ let pageInfo = await getPageInfo(userInfo?.userId);
   <script src="../assets/js/articles-detail.js"></script>
   <script>
     hljs.highlightAll();
-    const dom = document.querySelector('.articles__list li.active');
-    if(dom) {
-      dom.scrollIntoView({
-        block: "center",
-        behavior: "smooth"
-      });
-    }
   </script>
 </body>
 </html>

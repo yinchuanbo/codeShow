@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>CSS网格布局</title>
+    <meta charset="utf-8">
+    <meta name="description" content="This is a page">
+    <meta name="keywords" content="page, sample">
+    <meta name="author" content="None">
+    <link rel="icon" sizes="any" mask href="../assets/images/ico6.svg" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <link rel="stylesheet" href="../assets/css/articles.css">
+</head>
+<body>
+  <div class="article__wrapper_left">
+    <div class="article__wrapper_left-mulu">目录</div>
+    <ul class="articles__list"><li class="">
+          <a href="/articles/54.html">
+            scrollIntoview
+          </a>
+        </li><li class="">
+          <a href="/articles/55.html">
+            使用 JavaScript 加载字体
+          </a>
+        </li><li class="">
+          <a href="/articles/56.html">
+            使用 JavaScript 提升排版品质
+          </a>
+        </li><li class="">
+          <a href="/articles/57.html">
+            背景图片语法
+          </a>
+        </li><li class="">
+          <a href="/articles/58.html">
+            盒阴影
+          </a>
+        </li><li class="">
+          <a href="/articles/59.html">
+            渐变
+          </a>
+        </li><li class="">
+          <a href="/articles/60.html">
+            为嵌入图片和元素添加样式
+          </a>
+        </li><li class="">
+          <a href="/articles/61.html">
+            使用表格显示属性实现布局
+          </a>
+        </li><li class="">
+          <a href="/articles/62.html">
+            Index
+          </a>
+        </li><li class="">
+          <a href="/articles/63.html">
+            CSS功能特性
+          </a>
+        </li></ul>
+  </div>
+  <div class="article__wrapper_sidebar">
+    <a href="/" target="_blank"><svg t="1714001835347" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4298" width="48" height="48"><path d="M147.904 304.128l301.866667-179.541333a128 128 0 0 1 131.712 0.512l295.466666 178.88A128 128 0 0 1 938.666667 413.482667V810.666667a128 128 0 0 1-128 128H213.333333a128 128 0 0 1-128-128V414.144a128 128 0 0 1 62.570667-110.016z m43.626667 73.344A42.666667 42.666667 0 0 0 170.666667 414.144V810.666667a42.666667 42.666667 0 0 0 42.666666 42.666666h597.333334a42.666667 42.666667 0 0 0 42.666666-42.666666V413.482667a42.666667 42.666667 0 0 0-20.565333-36.501334l-295.466667-178.88a42.666667 42.666667 0 0 0-43.925333-0.170666l-301.866667 179.541333z" fill="#8a919f" p-id="4299"></path><path d="M405.333333 469.333333h213.333334a42.666667 42.666667 0 1 1 0 85.333334H405.333333a42.666667 42.666667 0 1 1 0-85.333334z m0 85.333334a42.666667 42.666667 0 1 0 0-85.333334h213.333334a42.666667 42.666667 0 1 0 0 85.333334H405.333333z" fill="#8a919f" p-id="4300"></path></svg></a>
+    <a href="/tools/" target="_blank"><svg t="1714002003458" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6911" width="48" height="48"><path d="M817.87 556.31h-63.58v-66.24A42.27 42.27 0 0 0 712 447.8h-84.81a42.27 42.27 0 0 0-42.27 42.27v66.24H436.57v-66.24a42.27 42.27 0 0 0-42.27-42.27h-84.83a42.27 42.27 0 0 0-42.27 42.27v66.24h-61.83A22.39 22.39 0 0 0 183 578.7a22.39 22.39 0 0 0 22.39 22.39h61.81v65.55a42.27 42.27 0 0 0 42.27 42.27h84.83a42.27 42.27 0 0 0 42.27-42.27v-65.55h148.36v65.55a42.27 42.27 0 0 0 42.27 42.27H712a42.27 42.27 0 0 0 42.27-42.27v-65.55h63.58a22.39 22.39 0 0 0 22.39-22.39 22.39 22.39 0 0 0-22.37-22.39z m-438.64 95.26h-54.69V505.14h54.69z m317.72 0h-54.69V505.14H697z" p-id="6912" fill="#8a919f"></path><path d="M823 202.58h-90.81v-63.09a71.88 71.88 0 0 0-71.88-71.88H363.19a71.88 71.88 0 0 0-71.88 71.88v63.08h-90.12A137.17 137.17 0 0 0 64 339.75v479a137.17 137.17 0 0 0 137.19 137.14H823a137.17 137.17 0 0 0 137.19-137.17v-479A137.17 137.17 0 0 0 823 202.58z m-474.36-54.1A23.52 23.52 0 0 1 372.17 125h279.16a23.52 23.52 0 0 1 23.52 23.52v54.1h-326.2z m554.23 673.31a76.76 76.76 0 0 1-76.76 76.76h-628a76.76 76.76 0 0 1-76.76-76.76V336.67a76.76 76.76 0 0 1 76.76-76.76h628a76.76 76.76 0 0 1 76.76 76.76z" p-id="6913" fill="#8a919f"></path></svg></a>
+  </div>
+  <div class="article__wrapper">
+    <div class="article__wrapper__main">
+      <div class="article__wrapper_header">
+        <h1>CSS网格布局</h1>
+        <span class="articles__home_time">NaN/NaN/NaN · YinHao</span>
+      </div>
+      <pre><code class="language-html">&lt;div id=&quot;container&quot;&gt;
+  &lt;div class=&quot;item item-1&quot;&gt;1&lt;/div&gt;
+  &lt;div class=&quot;item item-2&quot;&gt;2&lt;/div&gt;
+  &lt;div class=&quot;item item-3&quot;&gt;3&lt;/div&gt;
+  &lt;div class=&quot;item item-4&quot;&gt;4&lt;/div&gt;
+  &lt;div class=&quot;item item-5&quot;&gt;5&lt;/div&gt;
+  &lt;div class=&quot;item item-6&quot;&gt;6&lt;/div&gt;
+  &lt;div class=&quot;item item-7&quot;&gt;7&lt;/div&gt;
+  &lt;div class=&quot;item item-8&quot;&gt;8&lt;/div&gt;
+  &lt;div class=&quot;item item-9&quot;&gt;9&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<pre><code class="language-css">#container {
+  display: grid;
+  grid-template-columns: 50px 50px 50px;
+  grid-template-rows: 50px 50px 50px;
+  grid-gap: 10px;
+}
+.item {
+  border: 1px solid red;
+  text-align: center;
+  line-height: 50px;
+}
+</code></pre>
+<p><img src="../assets/images/articles/53/01.png" alt=""></p>
+<p><strong>使用百分比定义列宽和列高：</strong></p>
+<pre><code class="language-css">#container {
+  display: grid;
+  grid-template-columns: 33.33% 33.33% 33.33%;
+  grid-template-rows: 33.33% 33.33% 33.33%; /* 需要给 #container 设置一个高度 */
+}
+</code></pre>
+<p>如上，重复书写比较麻烦，可以使用 repeat() 函数</p>
+<pre><code class="language-css">#container {
+  display: grid;
+  grid-template-columns: repeat(3, 33.33%);
+  grid-template-rows: repeat(3, 33.33%);
+}
+</code></pre>
+<p>重复某种模式：</p>
+<pre><code class="language-css">#container {
+  display: grid;
+  grid-template-columns: repeat(2, 100px 20px 80px);
+  grid-template-rows: repeat(3, 33.33%);
+  grid-gap: 5px;
+}
+</code></pre>
+<p><img src="../assets/images/articles/53/02.png" alt=""></p>
+<p><strong>auto-fill 关键字：</strong></p>
+<p>单元格大小固定，但是容器大小不固定，如果希望一行或一列容纳尽可能多的单元格，可以使用 auto-fill 关键字自动填充。</p>
+<pre><code class="language-css">#container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 100px);
+  grid-template-rows: repeat(3, 33.33%);
+  grid-gap: 5px;
+}
+</code></pre>
+<p><strong>fr 关键字：</strong></p>
+<p>为了方便表示比例关系，网格布局提供了<code>fr</code>关键字（fraction 的缩写，意为&quot;片段&quot;）。如果两列的宽度分别为<code>1fr</code>和<code>2fr</code>，就表示后者是前者的两倍。</p>
+<pre><code class="language-css">#container {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 50px;
+  grid-gap: 5px;
+}
+</code></pre>
+<p>fr 可以与绝对长度单位结合使用，这时会非常方便。</p>
+<pre><code class="language-css">#container {
+  display: grid;
+  grid-template-columns: 150px 1fr 2fr;
+  grid-template-rows: 50px;
+  grid-gap: 5px;
+}
+</code></pre>
+<p><img src="../assets/images/articles/53/03.png" alt=""></p>
+<p><strong>minmax()</strong></p>
+<p><code>minmax()</code> 函数产生一个长度范围，表示长度就在这个范围之中。它接受两个参数，分别为最小值和最大值。</p>
+<pre><code class="language-css">#container {
+  display: grid;
+  /* 可以控制列的最小宽度，100 &lt; 列宽 &lt; 1fr */
+  grid-template-columns: 1fr 1fr minmax(100px, 1fr);
+  grid-template-rows: 50px;
+  grid-gap: 5px;
+}
+</code></pre>
+<p><strong>auto 关键字：</strong></p>
+<p>auto 关键字表示由浏览器自己决定长度。</p>
+<pre><code class="language-sh">grid-template-columns: 100px auto 100px;
+</code></pre>
+<p><img src="../assets/images/articles/53/04.png" alt=""></p>
+<p><strong>网格线名称：</strong></p>
+<p><code>grid-template-columns</code> 属性和 <code>grid-template-rows</code> 属性里面，还可以使用方括号，指定每一根网格线的名字，方便以后的引用。</p>
+<pre><code class="language-css">.container {
+  display: grid;
+  /* 指定网格线的名称 */
+  grid-template-columns: [c1] 100px [c2] 100px [c3] auto [c4];
+  grid-template-rows: [r1] 100px [r2] 100px [r3] auto [r4];
+}
+</code></pre>
+<p>上面代码指定网格布局为 3 行 x 3 列，因此有 4 根垂直网格线和 4 根 水平网格线。方括号里面依次是这八根线的名字。</p>
+<p>布局实例：</p>
+<pre><code class="language-css">#container {
+  display: grid;
+  grid-template-columns: 70% 30%;
+}
+</code></pre>
+<p>传统的 12 网格布局，也很容易</p>
+<pre><code class="language-css">#container {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}
+</code></pre>
+<h2>间距</h2>
+<pre><code class="language-css">#container {
+  display: grid;
+  grid-template-columns: repeat(3, 50px);
+  grid-template-rows: 50px;
+  grid-column-gap: 20px; /* 列之间的间距是 20px */
+  grid-row-gap: 20px; /* 行之间的间距是 20px */
+}
+</code></pre>
+<p><code>grid-gap</code> 属性是 <code>grid-column-gap</code> 和 <code>grid-row-gap</code> 的合并简写形式：</p>
+<pre><code class="language-css">.container {
+  grid-gap: 20px 20px;
+}
+</code></pre>
+<p>根据最新标准，上面三个属性名的 <code>grid-</code> 前缀已经删除，<code>grid-column-gap</code> 和 <code>grid-row-gap</code> 写成 <code>column-gap</code> 和 <code>row-gap</code>，<code>grid-gap</code> 写成 <code>gap</code>。</p>
+<h3>grid-template-areas 属性</h3>
+<p>网格布局允许指定&quot;区域&quot;（area），一个区域由单个或多个单元格组成。<code>grid-template-areas</code> 属性用于定义区域。</p>
+<pre><code class="language-css">#container {
+  display: grid;
+  grid-template-columns: 100px 100px 100px;
+  grid-template-rows: 100px 100px 100px;
+  grid-template-areas:
+    &quot;a b c&quot;
+    &quot;d e f&quot;
+    &quot;g h i&quot;;
+}
+</code></pre>
+<p>上面代码先划分出 9 个单元格，然后将其定名为<code>a</code>到<code>i</code>的九个区域，分别对应这九个单元格。</p>
+<p>多个单元格合并成一个区域的写法如下。</p>
+<pre><code class="language-css">#container {
+  grid-template-areas:
+    &quot;a a a&quot;
+    &quot;b b b&quot;
+    &quot;c c c&quot;;
+}
+</code></pre>
+<p>上面代码将 9 个单元格分成<code>a</code>、<code>b</code>、<code>c</code>三个区域。</p>
+<pre><code class="language-css">#container {
+  grid-template-areas:
+    &quot;header header header&quot;
+    &quot;main main sidebar&quot;
+    &quot;footer footer footer&quot;;
+}
+</code></pre>
+<p>上面代码中，顶部是页眉区域<code>header</code>，底部是页脚区域<code>footer</code>，中间部分则为<code>main</code>和<code>sidebar</code>。</p>
+<p>如果某些区域不需要利用，则使用&quot;点&quot;（<code>.</code>）表示。</p>
+<pre><code class="language-css">#container {
+  grid-template-areas:
+    &quot;a . c&quot;
+    &quot;d . f&quot;
+    &quot;g . i&quot;;
+}
+</code></pre>
+<p>上面代码中，中间一列为点，表示没有用到该单元格，或者该单元格不属于任何区域。</p>
+<p>注意，区域的命名会影响到网格线。每个区域的起始网格线，会自动命名为<code>区域名-start</code>，终止网格线自动命名为<code>区域名-end</code>。</p>
+<p>比如，区域名为<code>header</code>，则起始位置的水平网格线和垂直网格线叫做<code>header-start</code>，终止位置的水平网格线和垂直网格线叫做<code>header-end</code>。</p>
+<h3>grid-auto-flow 属性</h3>
+<p>划分网格以后，容器的子元素会按照顺序，自动放置在每一个网格。默认的放置顺序是&quot;先行后列&quot;，即先填满第一行，再开始放入第二行，即下图数字的顺序。</p>
+<p><img src="../assets/images/articles/53/05.png" alt=""></p>
+<p>这个顺序由<code>grid-auto-flow</code>属性决定，默认值是<code>row</code>，即&quot;先行后列&quot;。也可以将它设成<code>column</code>，变成&quot;先列后行&quot;。</p>
+<pre><code class="language-sh">grid-auto-flow: column;
+</code></pre>
+<p><img src="../assets/images/articles/53/06.png" alt=""></p>
+<p><code>grid-auto-flow</code> 属性除了设置成 <code>row</code> 和 <code>column</code>，还可以设成 <code>row dense</code> 和 <code>column dense</code>。这两个值主要用于，某些项目指定位置以后，剩下的项目怎么自动放置。</p>
+<p>下面的例子让 1 号项目和 2 号项目各占据两个单元格，然后在默认的 <code>grid-auto-flow: row</code> 情况下，会产生下面这样的布局</p>
+<pre><code class="language-css">#container {
+  display: grid;
+  grid-template-columns: 100px 100px 100px;
+  grid-template-rows: 100px 100px 100px;
+  grid-auto-flow: row;
+}
+.item {
+  font-size: 4em;
+  text-align: center;
+  border: 1px solid #e5e4e9;
+}
+.item-1 {
+  background-color: #ef342a;
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+.item-2 {
+  background-color: #f68f26;
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+.item-3 {
+  background-color: #4ba946;
+}
+.item-4 {
+  background-color: #0376c2;
+}
+.item-5 {
+  background-color: #c077af;
+}
+.item-6 {
+  background-color: #f8d29d;
+}
+.item-7 {
+  background-color: #b5a87f;
+}
+.item-8 {
+  background-color: #d0e4a9;
+}
+.item-9 {
+  background-color: #4dc7ec;
+}
+</code></pre>
+<p><img src="../assets/images/articles/53/07.png" alt=""></p>
+<p>上图中，1 号项目后面的位置是空的，这是因为 3 号项目默认跟着 2 号项目，所以会排在 2 号项目后面。</p>
+<p>现在修改设置，设为<code>row dense</code>，表示&quot;先行后列&quot;，并且尽可能紧密填满，尽量不出现空格。</p>
+<pre><code class="language-sh">grid-auto-flow: row dense;
+</code></pre>
+<p><img src="../assets/images/articles/53/08.png" alt=""></p>
+<p>上图会先填满第一行，再填满第二行，所以 3 号项目就会紧跟在 1 号项目的后面。8 号项目和 9 号项目就会排到第四行。</p>
+<p>如果将设置改为 <code>column dense</code>，表示&quot;先列后行&quot;，并且尽量填满空格。</p>
+<p><img src="../assets/images/articles/53/09.png" alt=""></p>
+<p>上图会先填满第一列，再填满第 2 列，所以 3 号项目在第一列，4 号项目在第二列。8 号项目和 9 号项目被挤到了第四列。</p>
+<h3>justify-items 属性， align-items 属性， place-items 属性</h3>
+<p><code>justify-items</code> 属性设置单元格内容的水平位置（左中右），<code>align-items</code> 属性设置单元格内容的垂直位置（上中下）。</p>
+<pre><code class="language-css">.container {
+  justify-items: start;
+  /* 可选值：end 、center 、stretch */
+  align-items: start;
+  /* 可选值：end 、center 、stretch */
+}
+</code></pre>
+<ul>
+<li>start：对齐单元格的起始边缘。</li>
+<li>end：对齐单元格的结束边缘。</li>
+<li>center：单元格内部居中。</li>
+<li>stretch：拉伸，占满单元格的整个宽度（默认值）。</li>
+</ul>
+<pre><code class="language-css">#container {
+  display: grid;
+  grid-template-columns: 100px 100px 100px;
+  grid-template-rows: 100px 100px 100px;
+  justify-items: start;
+}
+/* ... */
+</code></pre>
+<p><img src="../assets/images/articles/53/10.png" alt=""></p>
+<pre><code class="language-css">#container {
+  display: grid;
+  grid-template-columns: 100px 100px 100px;
+  grid-template-rows: 100px 100px 100px;
+  align-items: start;
+}
+/* ... */
+</code></pre>
+<p><img src="../assets/images/articles/53/11.png" alt=""></p>
+<p><code>place-items</code> 属性是 <code>align-items</code> 属性和 <code>justify-items</code> 属性的合并简写形式。</p>
+<pre><code class="language-sh">place-items: &lt;align-items&gt; &lt;justify-items&gt;;
+</code></pre>
+<pre><code class="language-sh">place-items: start end;
+</code></pre>
+<p>如果省略第二个值，则浏览器认为与第一个值相等。</p>
+<h3>justify-content 属性， align-content 属性， place-content 属性</h3>
+<p><code>justify-content</code> 属性是整个内容区域在容器里面的水平位置（左中右），<code>align-content</code> 属性是整个内容区域的垂直位置（上中下）。</p>
+<pre><code class="language-css">.container {
+  justify-content: start;
+  /* 可选值：end 、center 、stretch 、space-around 、space-between
+    、space-evenly */
+  align-content: start;
+  /* 可选值：end 、center 、stretch 、space-around 、space-between 、space-evenly */
+}
+</code></pre>
+<p>这两个属性的写法完全相同，都可以取下面这些值。（下面的图都以 <code>justify-content</code> 属性为例，<code>align-content</code> 属性的图完全一样，只是将水平方向改成垂直方向。）</p>
+<ul>
+<li>start - 对齐容器的起始边框。</li>
+</ul>
+<p><img src="../assets/images/articles/53/12.png" alt=""></p>
+<ul>
+<li>end - 对齐容器的结束边框。</li>
+</ul>
+<p><img src="../assets/images/articles/53/13.png" alt=""></p>
+<ul>
+<li>center - 容器内部居中。</li>
+</ul>
+<p><img src="../assets/images/articles/53/14.png" alt=""></p>
+<ul>
+<li>stretch - 项目大小没有指定时，拉伸占据整个网格容器。</li>
+</ul>
+<p><img src="../assets/images/articles/53/15.png" alt=""></p>
+<ul>
+<li>space-around - 每个项目两侧的间隔相等。所以，项目之间的间隔比项目与容器边框的间隔大一倍。</li>
+</ul>
+<p><img src="../assets/images/articles/53/16.png" alt=""></p>
+<ul>
+<li>space-between - 项目与项目的间隔相等，项目与容器边框之间没有间隔。</li>
+</ul>
+<p><img src="../assets/images/articles/53/17.png" alt=""></p>
+<ul>
+<li>space-evenly - 项目与项目的间隔相等，项目与容器边框之间也是同样长度的间隔。</li>
+</ul>
+<p><img src="../assets/images/articles/53/18.png" alt=""></p>
+<p><code>place-content</code> 属性是 <code>align-content</code> 属性和 <code>justify-content</code> 属性的合并简写形式。</p>
+<pre><code class="language-sh">place-content: &lt;align-content&gt; &lt;justify-content&gt;;
+</code></pre>
+<pre><code class="language-sh">place-content: space-around space-evenly;
+</code></pre>
+<h3>grid-auto-columns 属性， grid-auto-rows 属性</h3>
+<p>有时候，一些项目的指定位置，在现有网格的外部。比如网格只有 3 列，但是某一个项目指定在第 5 行。这时，浏览器会自动生成多余的网格，以便放置项目。</p>
+<p><code>grid-auto-columns</code> 属性和 <code>grid-auto-rows</code> 属性用来设置，浏览器自动创建的多余网格的列宽和行高。它们的写法与 <code>grid-template-columns</code> 和 <code>grid-template-rows</code> 完全相同。如果不指定这两个属性，浏览器完全根据单元格内容的大小，决定新增网格的列宽和行高。</p>
+<p>下面划分好的网格是 3 行 x 3 列，但是，8 号项目指定在第 4 行，9 号项目指定在第 5 行。</p>
+<pre><code class="language-css">#container {
+  display: grid;
+  grid-template-columns: 100px 100px 100px;
+  grid-template-rows: 100px 100px 100px;
+  grid-auto-rows: 50px;
+}
+.item {
+  font-size: 2em;
+  text-align: center;
+  border: 1px solid #e5e4e9;
+}
+.item-1 {
+  background-color: #ef342a;
+}
+.item-2 {
+  background-color: #f68f26;
+}
+.item-3 {
+  background-color: #4ba946;
+}
+.item-4 {
+  background-color: #0376c2;
+}
+.item-5 {
+  background-color: #c077af;
+}
+.item-6 {
+  background-color: #f8d29d;
+}
+.item-7 {
+  background-color: #b5a87f;
+}
+.item-8 {
+  background-color: #d0e4a9;
+  grid-row-start: 4;
+  grid-column-start: 2;
+}
+.item-9 {
+  background-color: #4dc7ec;
+  grid-row-start: 5;
+  grid-column-start: 3;
+}
+</code></pre>
+<p><img src="../assets/images/articles/53/19.png" alt=""></p>
+<p>上面代码指定新增的行高统一为 50px（原始的行高为 100px ）。</p>
+<h3>grid-template 属性， grid 属性</h3>
+<p><code>grid-template</code>属性是<code>grid-template-columns</code>、<code>grid-template-rows</code>和<code>grid-template-areas</code>这三个属性的合并简写形式。</p>
+<p><code>grid</code>属性是<code>grid-template-rows</code>、<code>grid-template-columns</code>、<code>grid-template-areas</code>、 <code>grid-auto-rows</code>、<code>grid-auto-columns</code>、<code>grid-auto-flow</code>这六个属性的合并简写形式。</p>
+<p>从易读易写的角度考虑，还是建议不要合并属性，所以这里就不详细介绍这两个属性了。</p>
+<h2>项目属性</h2>
+<h3>grid-column-start 属性， grid-column-end 属性， grid-row-start 属性， grid-row-end 属性</h3>
+<p>项目的位置是可以指定的，具体方法就是指定项目的四个边框，分别定位在哪根网格线。</p>
+<ul>
+<li><code>grid-column-start</code>属性：左边框所在的垂直网格线</li>
+<li><code>grid-column-end</code>属性：右边框所在的垂直网格线</li>
+<li><code>grid-row-start</code>属性：上边框所在的水平网格线</li>
+<li><code>grid-row-end</code>属性：下边框所在的水平网格线</li>
+</ul>
+<pre><code class="language-css">#container {
+  display: grid;
+  grid-template-columns: 100px 100px 100px;
+  grid-template-rows: 100px 100px 100px;
+}
+.item {
+  font-size: 4em;
+  text-align: center;
+  border: 1px solid #e5e4e9;
+}
+.item-1 {
+  background-color: #ef342a;
+  grid-column-start: 2;
+  grid-column-end: 4;
+}
+</code></pre>
+<p><img src="../assets/images/articles/53/20.png" alt=""></p>
+<p>上图中，只指定了 1 号项目的左右边框，没有指定上下边框，所以会采用默认位置，即上边框是第一根水平网格线，下边框是第二根水平网格线。</p>
+<p>除了 1 号项目以外，其他项目都没有指定位置，由浏览器自动布局，这时它们的位置由容器的<code>grid-auto-flow</code>属性决定，这个属性的默认值是<code>row</code>，因此会&quot;先行后列&quot;进行排列。读者可以把这个属性的值分别改成<code>column</code>、<code>row dense</code>和<code>column dense</code>，看看其他项目的位置发生了怎样的变化。</p>
+<p>下面是指定四个边框位置的效果</p>
+<pre><code class="language-css">.item-1 {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 2;
+  grid-row-end: 4;
+}
+</code></pre>
+<p><img src="../assets/images/articles/53/21.png" alt=""></p>
+<p>这四个属性的值，除了指定为第几个网格线，还可以指定为网格线的名字。</p>
+<pre><code class="language-css">.item-1 {
+  grid-column-start: header-start;
+  grid-column-end: header-end;
+}
+</code></pre>
+<p>上面代码中，左边框和右边框的位置，都指定为网格线的名字。</p>
+<p>这四个属性的值还可以使用<code>span</code>关键字，表示&quot;跨越&quot;，即左右边框（上下边框）之间跨越多少个网格。</p>
+<pre><code class="language-css">#container {
+  display: grid;
+  grid-template-columns: 100px 100px 100px;
+  grid-template-rows: 100px 100px 100px;
+}
+.item {
+  font-size: 4em;
+  text-align: center;
+  border: 1px solid #e5e4e9;
+}
+.item-1 {
+  background-color: #ef342a;
+  grid-column-start: span 2;
+}
+</code></pre>
+<p>1 号项目的左边框距离右边框跨越 2 个网格。</p>
+<p><img src="../assets/images/articles/53/22.png" alt=""></p>
+<p>与下面代码的效果完全一样</p>
+<pre><code class="language-css">#container {
+  display: grid;
+  grid-template-columns: 100px 100px 100px;
+  grid-template-rows: 100px 100px 100px;
+}
+.item {
+  font-size: 4em;
+  text-align: center;
+  border: 1px solid #e5e4e9;
+}
+.item-1 {
+  background-color: #ef342a;
+  grid-column-start: 1;
+  grid-column-end: span 2;
+  grid-row-start: 2;
+  grid-row-end: 4;
+}
+</code></pre>
+<p>使用这四个属性，如果产生了项目的重叠，则使用<code>z-index</code>属性指定项目的重叠顺序。</p>
+<h3>grid-column 属性， grid-row 属性</h3>
+<p><code>grid-column</code> 属性是 <code>grid-column-start</code> 和 <code>grid-column-end</code> 的合并简写形式，<code>grid-row</code> 属性是 <code>grid-row-start</code> 属性和 <code>grid-row-end</code> 的合并简写形式。</p>
+<pre><code class="language-sh">grid-column: &lt;start-line&gt; / &lt;end-line&gt;;
+grid-row: &lt;start-line&gt; / &lt;end-line&gt;;
+</code></pre>
+<pre><code class="language-css">.item-1 {
+  grid-column: 1 / 3;
+  grid-row: 1 / 2;
+}
+/* 等同于 */
+.item-1 {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+</code></pre>
+<p>上面代码中，项目 <code>item-1</code> 占据第一行，从第一根列线到第三根列线。</p>
+<p>这两个属性之中，也可以使用 <code>span</code> 关键字，表示跨越多少个网格。</p>
+<pre><code class="language-css">.item-1 {
+  background: #b03532;
+  grid-column: 1 / 3;
+  grid-row: 1 / 3;
+}
+/* 等同于 */
+.item-1 {
+  background: #b03532;
+  grid-column: 1 / span 2;
+  grid-row: 1 / span 2;
+}
+</code></pre>
+<p>上面代码中，项目<code>item-1</code>占据的区域，包括第一行 + 第二行、第一列 + 第二列。</p>
+<p><img src="../assets/images/articles/53/23.png" alt=""></p>
+<p>斜杠以及后面的部分可以省略，默认跨越一个网格。</p>
+<pre><code class="language-css">.item-1 {
+  grid-column: 1;
+  grid-row: 1;
+}
+</code></pre>
+<p>上面代码中，项目<code>item-1</code>占据左上角第一个网格。</p>
+<h3>grid-area 属性</h3>
+<p><code>grid-area</code> 属性指定项目放在哪一个区域。</p>
+<pre><code class="language-css">#container {
+  display: grid;
+  grid-template-columns: 100px 100px 100px;
+  grid-template-rows: 100px 100px 100px;
+  grid-template-areas:
+    &quot;a b c&quot;
+    &quot;d e f&quot;
+    &quot;g h i&quot;;
+}
+.item {
+  font-size: 4em;
+  text-align: center;
+  border: 1px solid #e5e4e9;
+}
+.item-1 {
+  background-color: #ef342a;
+  grid-area: e;
+}
+</code></pre>
+<p><img src="../assets/images/articles/53/24.png" alt=""></p>
+<p>上面代码中，1 号项目位于<code>e</code>区域，效果如下图。</p>
+<p><code>grid-area</code>属性还可用作 <code>grid-row-start</code>、<code>grid-column-start</code>、<code>grid-row-end</code>、<code>grid-column-end</code> 的合并简写形式，直接指定项目的位置。</p>
+<pre><code class="language-sh">grid-area: &lt;row-start&gt; / &lt;column-start&gt; / &lt;row-end&gt; / &lt;column-end&gt;;
+</code></pre>
+<pre><code class="language-css">.item-1 {
+  grid-area: 1 / 1 / 3 / 3;
+}
+</code></pre>
+<h3>justify-self 属性， align-self 属性， place-self 属性</h3>
+<p><code>justify-self</code> 属性设置单元格内容的水平位置（左中右），跟 <code>justify-items</code> 属性的用法完全一致，但只作用于单个项目。</p>
+<p><code>align-self</code> 属性设置单元格内容的垂直位置（上中下），跟 <code>align-items</code> 属性的用法完全一致，也是只作用于单个项目。</p>
+<pre><code class="language-css">.item {
+  justify-self: start;
+  /* 可选值：end 、center 、stretch */
+  align-self: start;
+  /* 可选值：end 、center 、stretch */
+}
+</code></pre>
+<p>这两个属性都可以取下面四个值。</p>
+<ul>
+<li>start：对齐单元格的起始边缘。</li>
+<li>end：对齐单元格的结束边缘。</li>
+<li>center：单元格内部居中。</li>
+<li>stretch：拉伸，占满单元格的整个宽度（默认值）。</li>
+</ul>
+<pre><code class="language-css">.item-1 {
+  justify-self: start;
+}
+</code></pre>
+<p><img src="../assets/images/articles/53/25.png" alt=""></p>
+<p><code>place-self</code> 属性是 <code>align-self</code> 属性和 <code>justify-self</code> 属性的合并简写形式。</p>
+<pre><code class="language-sh">place-self: &lt;align-self&gt; &lt;justify-self&gt;;
+</code></pre>
+<pre><code class="language-sh">place-self: center center;
+</code></pre>
+<p>如果省略第二个值，<code>place-self</code>属性会认为这两个值相等。</p>
+ 
+    </div>
+  </div>
+  <div class="article__wrapper_footer">
+    <a class="article__wrapper_footer-left " href="/articles/52.html"><svg t="1713708729970" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8437" width="48" height="48"><path d="M409.272947 512.57741l403.237243 403.237243a63.349415 63.349415 0 1 1-89.622481 89.622482L274.839224 557.324726a63.349415 63.349415 0 0 1 0-89.494632L722.951633 19.717685a63.349415 63.349415 0 1 1 89.494633 89.622482L409.336872 512.57741z" p-id="8438" fill="#8a8a8a"></path></svg></a>
+    <a class="article__wrapper_footer-right " href="/articles/54.html"><svg t="1713708697355" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8093" width="48" height="48"><path d="M855.123 517.004c0 8.245-3.167 15.51-9.503 21.823L402.999 981.47c-6.336 6.336-13.625 9.477-21.869 9.477s-15.51-3.142-21.845-9.477L311.8 933.96c-6.336-6.336-9.502-13.6-9.502-21.845 0-8.222 3.167-15.51 9.502-21.845l373.29-373.29-373.293-373.267c-6.336-6.336-9.502-13.6-9.502-21.845s3.167-15.533 9.503-21.869l47.484-47.484c6.336-6.336 13.6-9.502 21.845-9.502s15.533 3.167 21.869 9.503l442.621 442.622c6.334 6.334 9.503 13.625 9.503 21.869z" fill="#8a8a8a" p-id="8094"></path></svg></a>
+  </div>
+  <a class="article__wrapper_index" href="/articles/"><svg t="1713708857338" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="9656" width="48" height="48"><path d="M549.61981 133.022476l319.683047 203.605334A70.851048 70.851048 0 0 1 902.095238 396.361143v434.883047A70.89981 70.89981 0 0 1 831.146667 902.095238h-282.819048l0.024381-218.112h-71.826286v218.087619L192.853333 902.095238A70.89981 70.89981 0 0 1 121.904762 831.24419V390.241524c0-24.527238 12.678095-47.299048 33.54819-60.220953l318.659048-197.485714a70.972952 70.972952 0 0 1 75.50781 0.487619zM828.952381 828.952381V397.214476L511.488 195.047619 195.047619 391.119238V828.952381h211.309714v-216.551619h212.187429v216.527238L828.952381 828.952381z" p-id="9657" fill="#707070"></path></svg></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
+  <script src="../assets/js/articles-detail.js"></script>
+  <script>
+    hljs.highlightAll();
+  </script>
+</body>
+</html>
+    

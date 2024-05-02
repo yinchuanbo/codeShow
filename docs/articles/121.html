@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>语句和程序结构</title>
+    <meta charset="utf-8">
+    <meta name="description" content="This is a page">
+    <meta name="keywords" content="page, sample">
+    <meta name="author" content="None">
+    <link rel="icon" sizes="any" mask href="../assets/images/ico6.svg" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <link rel="stylesheet" href="../assets/css/articles.css">
+</head>
+<body>
+  <div class="article__wrapper_left">
+    <div class="article__wrapper_left-mulu">目录</div>
+    <ul class="articles__list"><li class="">
+          <a href="/articles/122.html">
+            Js 技巧
+          </a>
+        </li><li class="">
+          <a href="/articles/123.html">
+            Git开发工作流程
+          </a>
+        </li><li class="">
+          <a href="/articles/124.html">
+            SCSS
+          </a>
+        </li><li class="">
+          <a href="/articles/125.html">
+            操作字符串
+          </a>
+        </li><li class="">
+          <a href="/articles/126.html">
+            使用函数
+          </a>
+        </li><li class="">
+          <a href="/articles/127.html">
+            统一 Node 版本
+          </a>
+        </li><li class="">
+          <a href="/articles/128.html">
+            JS复制粘贴兼容处理
+          </a>
+        </li><li class="">
+          <a href="/articles/129.html">
+            超有用的 Web API
+          </a>
+        </li><li class="">
+          <a href="/articles/13.html">
+            JS错误监控篇
+          </a>
+        </li><li class="">
+          <a href="/articles/130.html">
+            动态执行 js 的方法
+          </a>
+        </li></ul>
+  </div>
+  <div class="article__wrapper_sidebar">
+    <a href="/" target="_blank"><svg t="1714001835347" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4298" width="48" height="48"><path d="M147.904 304.128l301.866667-179.541333a128 128 0 0 1 131.712 0.512l295.466666 178.88A128 128 0 0 1 938.666667 413.482667V810.666667a128 128 0 0 1-128 128H213.333333a128 128 0 0 1-128-128V414.144a128 128 0 0 1 62.570667-110.016z m43.626667 73.344A42.666667 42.666667 0 0 0 170.666667 414.144V810.666667a42.666667 42.666667 0 0 0 42.666666 42.666666h597.333334a42.666667 42.666667 0 0 0 42.666666-42.666666V413.482667a42.666667 42.666667 0 0 0-20.565333-36.501334l-295.466667-178.88a42.666667 42.666667 0 0 0-43.925333-0.170666l-301.866667 179.541333z" fill="#8a919f" p-id="4299"></path><path d="M405.333333 469.333333h213.333334a42.666667 42.666667 0 1 1 0 85.333334H405.333333a42.666667 42.666667 0 1 1 0-85.333334z m0 85.333334a42.666667 42.666667 0 1 0 0-85.333334h213.333334a42.666667 42.666667 0 1 0 0 85.333334H405.333333z" fill="#8a919f" p-id="4300"></path></svg></a>
+    <a href="/tools/" target="_blank"><svg t="1714002003458" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6911" width="48" height="48"><path d="M817.87 556.31h-63.58v-66.24A42.27 42.27 0 0 0 712 447.8h-84.81a42.27 42.27 0 0 0-42.27 42.27v66.24H436.57v-66.24a42.27 42.27 0 0 0-42.27-42.27h-84.83a42.27 42.27 0 0 0-42.27 42.27v66.24h-61.83A22.39 22.39 0 0 0 183 578.7a22.39 22.39 0 0 0 22.39 22.39h61.81v65.55a42.27 42.27 0 0 0 42.27 42.27h84.83a42.27 42.27 0 0 0 42.27-42.27v-65.55h148.36v65.55a42.27 42.27 0 0 0 42.27 42.27H712a42.27 42.27 0 0 0 42.27-42.27v-65.55h63.58a22.39 22.39 0 0 0 22.39-22.39 22.39 22.39 0 0 0-22.37-22.39z m-438.64 95.26h-54.69V505.14h54.69z m317.72 0h-54.69V505.14H697z" p-id="6912" fill="#8a919f"></path><path d="M823 202.58h-90.81v-63.09a71.88 71.88 0 0 0-71.88-71.88H363.19a71.88 71.88 0 0 0-71.88 71.88v63.08h-90.12A137.17 137.17 0 0 0 64 339.75v479a137.17 137.17 0 0 0 137.19 137.14H823a137.17 137.17 0 0 0 137.19-137.17v-479A137.17 137.17 0 0 0 823 202.58z m-474.36-54.1A23.52 23.52 0 0 1 372.17 125h279.16a23.52 23.52 0 0 1 23.52 23.52v54.1h-326.2z m554.23 673.31a76.76 76.76 0 0 1-76.76 76.76h-628a76.76 76.76 0 0 1-76.76-76.76V336.67a76.76 76.76 0 0 1 76.76-76.76h628a76.76 76.76 0 0 1 76.76 76.76z" p-id="6913" fill="#8a919f"></path></svg></a>
+  </div>
+  <div class="article__wrapper">
+    <div class="article__wrapper__main">
+      <div class="article__wrapper_header">
+        <h1>语句和程序结构</h1>
+        <span class="articles__home_time">NaN/NaN/NaN · YinHao</span>
+      </div>
+      <h2>流程控制</h2>
+<h3>break 语句</h3>
+<p>break 语句能够结束当前 for、for/in、while、do/while 或者 switch 语句的执行；同时 break 也可以接受一个可选的标签名，来决定跳出的结构语句。语法格式如下：</p>
+<pre><code class="language-js">break label;
+</code></pre>
+<p>下面示例设计在客户端查找 document 的 bgColor 属性，如果完全遍历 document 对象，会浪费时间，因此设计一个条件，判断所枚举的属性名是都等于 “bgColor”，如果相等，则使用 break 语句跳出循环。</p>
+<pre><code class="language-js">for (i in document) {
+  if (i.toString() == &quot;bgColor&quot;) {
+    document.write(&quot;document.&quot; + i + &quot;=&quot; + document[i] + &quot;&lt;br /&gt;&quot;);
+    break;
+  }
+}
+</code></pre>
+<p>在下面嵌套结构中，break 语句并没有跳出 <code>for/in</code> 结构，仅仅退出 <code>switch</code> 结构。</p>
+<pre><code class="language-js">for (i in document) {
+  switch (i.toString()) {
+    case &quot;bgColor&quot;:
+      document.write(&quot;document.&quot; + i + &quot;=&quot; + document[i] + &quot;&lt;br /&gt;&quot;);
+      break;
+    default:
+      document.write(&quot;没有找到&quot;);
+  }
+}
+</code></pre>
+<p>可以为 <code>for/in</code> 语句定义一个标签 outloop，然后再最内层的 break 语句中设置该标签名，这样当条件满足时就可以跳出最外层的 <code>for/in</code> 循环结构。</p>
+<pre><code class="language-js">outloop: for (i in document) {
+  switch (i.toString()) {
+    case &quot;bgColor&quot;:
+      document.write(&quot;document.&quot; + i + &quot;=&quot; + document[i] + &quot;&lt;br /&gt;&quot;);
+      break outloop;
+    default:
+      document.write(&quot;没有找到&quot;);
+  }
+}
+</code></pre>
+<h3>continue 语句</h3>
+<p>continue 语句用在循环结构内，用于跳过本次循环中剩余的代码，并在表达式的值为真时，继续执行下一次循环。它可以接受一个可选的标签名，来决定跳出的循环语句，</p>
+<pre><code class="language-js">continue label;
+</code></pre>
+<p>下面示例使用 continue 语句过滤数组中的字符串值</p>
+<pre><code class="language-js">var a = [1, &quot;hi&quot;, 2, &quot;good&quot;, &quot;4&quot;, , &quot;&quot;, 3, 4],
+  b = [],
+  j = 0;
+
+for (var i in a) {
+  if (typeof a[i] == &quot;string&quot;) {
+    // 如果为字符串，则返回继续下一次循环
+    continue;
+  }
+  b[j++] = a[i]; // 把数字寄存在数组 b
+}
+
+document.write(b);
+</code></pre>
+<blockquote>
+<p>continue 语句只能用在 while、do/while、for、for/in 语句中，对于不同的循环结构，其执行顺序略有不同。</p>
+</blockquote>
+<h2>异常处理</h2>
+<p>ECMA-262 规范了 7 中错误类型，具体说明如下，其中 Error 是基类，其他 6 种错误类型是子类，都继承 Error 基类。</p>
+<ul>
+<li>
+<p>Error: 普通异常，与 throw 语句和 <code>try/catch</code> 语句一起使用，属性 name 可以读写异常类型，message 属性可以读写详细错误信息。</p>
+</li>
+<li>
+<p>EvalError: 不正确地使用 eval() 方法时抛出。</p>
+</li>
+<li>
+<p>SyntaxError: 出现语法错误时抛出。</p>
+</li>
+<li>
+<p>RangeError: 数字超出合法范围时抛出。</p>
+</li>
+<li>
+<p>ReferenceError: 读取不存在的变量时抛出。</p>
+</li>
+<li>
+<p>TypeError: 值的类型发生错误时抛出。</p>
+</li>
+<li>
+<p>URIError: URI 编码和解码错误时抛出。</p>
+</li>
+</ul>
+<h3>try/catch/finally 语句</h3>
+<pre><code class="language-js">try {
+  //..
+} catch (e) {
+  // 捕获异常，并进行异常处理的代码块
+} finally {
+  // 后期清理代码块
+}
+</code></pre>
+<p>在正常情况下，Js 按顺序执行 try 子句中的代码，如果没有发生异常，将会忽略 catch 子句，跳转到 finally 子句中继续执行。</p>
+<p>如果 try 子句运行时发生错误，或者使用 throw 语句主动抛出异常，则执行 catch 子句中的代码，同时传入一个参数，引用 Error 对象。</p>
+<blockquote>
+<p>不管 try 语句是否完全执行，finally 语句最后都必须要执行，即使使用了跳转语句跳出了异常处理结构，也必须在跳出之前先执行 finally 子句。</p>
+</blockquote>
+<p>下面示例在函数体内设计一个异常处理结构，为每个子句添加一个 return 语句，调用函数后，实际返回是 “finally”，而不是 “try”，因为 finally 子句必须最后执行，把 finally 子句去掉，函数才会返回 “try”。</p>
+<pre><code class="language-js">function test() {
+  try {
+    return &quot;try&quot;;
+  } catch (error) {
+    return &quot;catch&quot;;
+  } finally {
+    return &quot;finally&quot;;
+  }
+}
+console.log(test()); // &quot;finally
+</code></pre>
+<p><code>try/catch/finally</code> 语句允许嵌套使用，嵌套的层数不限，同时形成一条词法作用域链。Js 会停止程序的正常执行，并跳转到层级最近的 catch 子句（异常处理器），如果没有找到异常处理器，则会沿着作用域链，检查上一级的 catch 子句，以此类推，直到找到一个异常处理器。如果没有在程序中没有找到任何异常处理器，将会显示错误。</p>
+<p>下面代码就是一个多层嵌套的异常结构，在处理一系列的异常时，内层的 catch 子句通过将异常抛出，就可以将异常抛给外层 catch 子句来处理。</p>
+<pre><code class="language-js">try {
+  try {
+    test();
+  } catch (error) {
+    if (error.name === &quot;ReferenceError&quot;) console.log(&quot;错误参考&quot;);
+    else throw error;
+  }
+} catch (error) {
+  console.log(&quot;内层 try/catch 不能处理这个错误&quot;);
+}
+</code></pre>
+<h3>throw 语句</h3>
+<p>throw 语句能够主动抛出一个异常，语法格式如下：</p>
+<pre><code class="language-sh">throw expression
+</code></pre>
+<p>expression 是任意类型的表达式，一般为 Error 对象，或者 Error 子类实例。</p>
+<p>当执行 throw 语句时，程序会立即停止执行，只有当使用 <code>try/catch</code> 语句捕获到被抛出的值时，程序才会继续执行。</p>
+<pre><code class="language-js">try {
+  for (var i = 0; i &lt; 10; i++) {
+    if (i &gt; 5) {
+      throw new Error(&quot;循环变量的值大于 5 了&quot;);
+    }
+    console.log(i);
+  }
+} catch (error) {}
+</code></pre>
+ 
+    </div>
+  </div>
+  <div class="article__wrapper_footer">
+    <a class="article__wrapper_footer-left " href="/articles/120.html"><svg t="1713708729970" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8437" width="48" height="48"><path d="M409.272947 512.57741l403.237243 403.237243a63.349415 63.349415 0 1 1-89.622481 89.622482L274.839224 557.324726a63.349415 63.349415 0 0 1 0-89.494632L722.951633 19.717685a63.349415 63.349415 0 1 1 89.494633 89.622482L409.336872 512.57741z" p-id="8438" fill="#8a8a8a"></path></svg></a>
+    <a class="article__wrapper_footer-right " href="/articles/122.html"><svg t="1713708697355" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8093" width="48" height="48"><path d="M855.123 517.004c0 8.245-3.167 15.51-9.503 21.823L402.999 981.47c-6.336 6.336-13.625 9.477-21.869 9.477s-15.51-3.142-21.845-9.477L311.8 933.96c-6.336-6.336-9.502-13.6-9.502-21.845 0-8.222 3.167-15.51 9.502-21.845l373.29-373.29-373.293-373.267c-6.336-6.336-9.502-13.6-9.502-21.845s3.167-15.533 9.503-21.869l47.484-47.484c6.336-6.336 13.6-9.502 21.845-9.502s15.533 3.167 21.869 9.503l442.621 442.622c6.334 6.334 9.503 13.625 9.503 21.869z" fill="#8a8a8a" p-id="8094"></path></svg></a>
+  </div>
+  <a class="article__wrapper_index" href="/articles/"><svg t="1713708857338" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="9656" width="48" height="48"><path d="M549.61981 133.022476l319.683047 203.605334A70.851048 70.851048 0 0 1 902.095238 396.361143v434.883047A70.89981 70.89981 0 0 1 831.146667 902.095238h-282.819048l0.024381-218.112h-71.826286v218.087619L192.853333 902.095238A70.89981 70.89981 0 0 1 121.904762 831.24419V390.241524c0-24.527238 12.678095-47.299048 33.54819-60.220953l318.659048-197.485714a70.972952 70.972952 0 0 1 75.50781 0.487619zM828.952381 828.952381V397.214476L511.488 195.047619 195.047619 391.119238V828.952381h211.309714v-216.551619h212.187429v216.527238L828.952381 828.952381z" p-id="9657" fill="#707070"></path></svg></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
+  <script src="../assets/js/articles-detail.js"></script>
+  <script>
+    hljs.highlightAll();
+  </script>
+</body>
+</html>
+    

@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>使用函数</title>
+    <meta charset="utf-8">
+    <meta name="description" content="This is a page">
+    <meta name="keywords" content="page, sample">
+    <meta name="author" content="None">
+    <link rel="icon" sizes="any" mask href="../assets/images/ico6.svg" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <link rel="stylesheet" href="../assets/css/articles.css">
+</head>
+<body>
+  <div class="article__wrapper_left">
+    <div class="article__wrapper_left-mulu">目录</div>
+    <ul class="articles__list"><li class="">
+          <a href="/articles/127.html">
+            统一 Node 版本
+          </a>
+        </li><li class="">
+          <a href="/articles/128.html">
+            JS复制粘贴兼容处理
+          </a>
+        </li><li class="">
+          <a href="/articles/129.html">
+            超有用的 Web API
+          </a>
+        </li><li class="">
+          <a href="/articles/13.html">
+            JS错误监控篇
+          </a>
+        </li><li class="">
+          <a href="/articles/130.html">
+            动态执行 js 的方法
+          </a>
+        </li><li class="">
+          <a href="/articles/131.html">
+            多个有趣的 JavaScript 与 CSS 库
+          </a>
+        </li><li class="">
+          <a href="/articles/132.html">
+            使用对象
+          </a>
+        </li><li class="">
+          <a href="/articles/133.html">
+            构造函数、原型和继承[未完]
+          </a>
+        </li><li class="">
+          <a href="/articles/134.html">
+            3个超酷的 Node.js 新功能
+          </a>
+        </li><li class="">
+          <a href="/articles/135.html">
+            一些很重要的 HTML 属性
+          </a>
+        </li></ul>
+  </div>
+  <div class="article__wrapper_sidebar">
+    <a href="/" target="_blank"><svg t="1714001835347" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4298" width="48" height="48"><path d="M147.904 304.128l301.866667-179.541333a128 128 0 0 1 131.712 0.512l295.466666 178.88A128 128 0 0 1 938.666667 413.482667V810.666667a128 128 0 0 1-128 128H213.333333a128 128 0 0 1-128-128V414.144a128 128 0 0 1 62.570667-110.016z m43.626667 73.344A42.666667 42.666667 0 0 0 170.666667 414.144V810.666667a42.666667 42.666667 0 0 0 42.666666 42.666666h597.333334a42.666667 42.666667 0 0 0 42.666666-42.666666V413.482667a42.666667 42.666667 0 0 0-20.565333-36.501334l-295.466667-178.88a42.666667 42.666667 0 0 0-43.925333-0.170666l-301.866667 179.541333z" fill="#8a919f" p-id="4299"></path><path d="M405.333333 469.333333h213.333334a42.666667 42.666667 0 1 1 0 85.333334H405.333333a42.666667 42.666667 0 1 1 0-85.333334z m0 85.333334a42.666667 42.666667 0 1 0 0-85.333334h213.333334a42.666667 42.666667 0 1 0 0 85.333334H405.333333z" fill="#8a919f" p-id="4300"></path></svg></a>
+    <a href="/tools/" target="_blank"><svg t="1714002003458" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6911" width="48" height="48"><path d="M817.87 556.31h-63.58v-66.24A42.27 42.27 0 0 0 712 447.8h-84.81a42.27 42.27 0 0 0-42.27 42.27v66.24H436.57v-66.24a42.27 42.27 0 0 0-42.27-42.27h-84.83a42.27 42.27 0 0 0-42.27 42.27v66.24h-61.83A22.39 22.39 0 0 0 183 578.7a22.39 22.39 0 0 0 22.39 22.39h61.81v65.55a42.27 42.27 0 0 0 42.27 42.27h84.83a42.27 42.27 0 0 0 42.27-42.27v-65.55h148.36v65.55a42.27 42.27 0 0 0 42.27 42.27H712a42.27 42.27 0 0 0 42.27-42.27v-65.55h63.58a22.39 22.39 0 0 0 22.39-22.39 22.39 22.39 0 0 0-22.37-22.39z m-438.64 95.26h-54.69V505.14h54.69z m317.72 0h-54.69V505.14H697z" p-id="6912" fill="#8a919f"></path><path d="M823 202.58h-90.81v-63.09a71.88 71.88 0 0 0-71.88-71.88H363.19a71.88 71.88 0 0 0-71.88 71.88v63.08h-90.12A137.17 137.17 0 0 0 64 339.75v479a137.17 137.17 0 0 0 137.19 137.14H823a137.17 137.17 0 0 0 137.19-137.17v-479A137.17 137.17 0 0 0 823 202.58z m-474.36-54.1A23.52 23.52 0 0 1 372.17 125h279.16a23.52 23.52 0 0 1 23.52 23.52v54.1h-326.2z m554.23 673.31a76.76 76.76 0 0 1-76.76 76.76h-628a76.76 76.76 0 0 1-76.76-76.76V336.67a76.76 76.76 0 0 1 76.76-76.76h628a76.76 76.76 0 0 1 76.76 76.76z" p-id="6913" fill="#8a919f"></path></svg></a>
+  </div>
+  <div class="article__wrapper">
+    <div class="article__wrapper__main">
+      <div class="article__wrapper_header">
+        <h1>使用函数</h1>
+        <span class="articles__home_time">NaN/NaN/NaN · YinHao</span>
+      </div>
+      <h2>调用函数</h2>
+<h3>函数调用</h3>
+<p>下面示例中，使用小括号调用函数，然后直接把返回值传入函数，进行第二次运算，这样可以节省两个临时变量。</p>
+<pre><code class="language-js">function f(x, y) {
+  return x * y;
+}
+console.log(f(f(5, 6), f(7, 8))); // 1680
+</code></pre>
+<p>如果函数返回值为一个函数，则在调用时可以使用多个小括号反复调用。</p>
+<pre><code class="language-js">function f(x, y) {
+  return function () {
+    return x * y;
+  };
+}
+console.log(f(7, 8)()); // 56
+</code></pre>
+<p>设计递归调用函数，即在函数内调用自身，这样可以反复调用，但最终返回的都是函数自身。</p>
+<pre><code class="language-js">function f() {
+  return f;
+}
+console.log(f()()()()()()()()()()()()); // 返回函数自身
+</code></pre>
+<h3>函数的返回值</h3>
+<p>在函数体内，使用 return 语句可以设置函数的返回值，一旦执行 return 语句，将停止函数的运行。并运算和返回 return 后面的表达式的值，如果函数不包含 return 语句，则执行完函数体内的每条语句后，返回 undefined。</p>
+<p>下面代码定义函数的返回值为函数：</p>
+<pre><code class="language-js">function f() {
+  return function (x, y) {
+    return x + y;
+  };
+}
+</code></pre>
+<h3>使用 call 和 apply 调用</h3>
+<p><code>call</code> 和 <code>apply</code> 是 <code>Function</code> 的原型方法，它们能够将特定函数当做一个方法绑定到指定对象上，并进行调用。</p>
+<pre><code class="language-js">function.call(thisobj, args...)
+function.apply(thisobj, [args])
+</code></pre>
+<p>function 表示要调用的函数，参数 thisobj 表示绑定对象，即 this 指代的对象，参数 args 表示要传递给被调用函数的参数，call 可以接收多个参数列表，而 apply 只能接收一个数组或伪类数组，数组将作为参数列表传递给被调用函数。</p>
+<p>下面使用 call 动态调用函数 f，并传入参数值 3，4，并返回运算值。</p>
+<pre><code class="language-js">function f(x, y) {
+  return x + y;
+}
+console.log(f.call(null, 3, 4)); // 7
+</code></pre>
+<p>在上面示例中，f 是一个简单的求和函数，通过 call 方法把函数 f 绑定到空对象 null 身上，以实现动态调用函数 f，同时把参数 3 和 4 传递给函数 f，返回值 7，实际上，<code>f.call(null, 3, 4)</code> 等价于 <code>null.f(3, 4)</code>。</p>
+<p>使用 call 调用，实际上也可以使用 apply 方法来调用函数 f:</p>
+<pre><code class="language-js">function f(x, y) {
+  return x + y;
+}
+console.log(f.apply(null, [3, 4]));
+</code></pre>
+<blockquote>
+<p>如果把一个数组或伪类数组的所有元素作为参数进行传递，使用 apply 方法就非常便利。</p>
+</blockquote>
+<p>下面使用 apply 方法设计一个求最大值的函数：</p>
+<pre><code class="language-js">function max() {
+  var m = Number.NEGATIVE_INFINITY; // -Infinity，声明一个负无穷大的数值
+  for (var i = 0; i &lt; arguments.length; i++) {
+    if (arguments[i] &gt; m) {
+      m = arguments[i];
+    }
+  }
+  return m;
+}
+var a = [23, 45, 2, 46, 62, 45, 56, 63];
+var m = max.apply(Object, a); // 动态调用 max，绑定为 Object 的方法
+console.log(m); // 63
+</code></pre>
+<p>也可以动态调用 Math 的 max() 来计算数组的最大值元素：</p>
+<pre><code class="language-js">var a = [23, 45, 2, 46, 62, 45, 56, 63];
+var m = Math.max.apply(Object, a);
+console.log(m); // 63
+console.log(Math.max(23, 45, 2, 46, 62, 45, 56, 63)); // 63
+</code></pre>
+<p>使用 call 和 apply 可以把一个函数转换为指定对象的方法，并在这个对象上调用该方法。当函数动态调用之后，这个对象的临时方法也就不存在。</p>
+<pre><code class="language-js">function f() {
+  return &quot;函数 f&quot;;
+}
+var obj = {};
+f.call(obj); // &quot;函数 f&quot;
+console.log(obj.f()); // TypeError: obj.f is not a function
+</code></pre>
+<p><strong>注意：</strong></p>
+<p>call 和 apply 的主要功能如下：</p>
+<ol>
+<li>
+<p>调用函数</p>
+</li>
+<li>
+<p>修改函数体内的 this 指代对象</p>
+</li>
+<li>
+<p>为对象绑定方法</p>
+</li>
+<li>
+<p>跨越限制调用不同类型的方法</p>
+</li>
+</ol>
+<h3>使用 new 调用</h3>
+<p>使用 new 命令可以实例化对象，这是它的主要功能，但是在创建对象的过程中会激活并运行函数。</p>
+<p>因此，使用 new 命令可以间接调用函数。</p>
+<p><strong>注意</strong></p>
+<p>使用 new 命令调用函数时，返回的是对象，而不是 return 的返回值。如果不需要返回值，或者 return 的返回值是对象，则可以选用 new 间接调用函数。</p>
+<p>下面示例简单演示了如果使用 new 命令，把传入的参数显示在控制台：</p>
+<pre><code class="language-js">function f(x, y) {
+  console.log(&quot;x = &quot; + x + &quot;, y = &quot; + y);
+}
+new f(3, 4);
+</code></pre>
+<h2>函数参数</h2>
+<h3>获取参数个数</h3>
+<p>使用 arguments 对象的 length 属性可以获取函数的实参个数。</p>
+<p>arguments 对象只能在函数体内可见，因此，arguments.length 也只能在函数体内使用。</p>
+<p>使用函数对象的 length 属性可以获取函数的形参个数，该属性为只读属性，在函数体内、体外都可以使用。</p>
+<p>下面设计一个 checkArg() 函数，用来检测一个函数的形参和实参是否一致，如果不一致则抛出异常：</p>
+<pre><code class="language-js">function checkArg(a) {
+  if (a.length != a.callee.length) {
+    throw new Error(&quot;实参和形参不一致&quot;);
+  }
+}
+function f(a, b) {
+  checkArg(arguments);
+  return ((a * 1 ? a : 0) + (b * 1 ? b : 0)) / 2;
+}
+console.log(f(6)); // Error: 实参和形参不一致
+</code></pre>
+<h3>使用 arguments 对象</h3>
+<p>arguments 对象表示函数的实参集合，仅能够在函数体内可见，并可以直接访问。</p>
+<p>在下面示例中，函数没有定义形参，但是在函数体内通过 arguments 对象可以获取调用函数时传入的每一个实参值。</p>
+<pre><code class="language-js">function f() {
+  for (var i = 0; i &lt; arguments.length; i++) {
+    console.log(arguments[i]);
+  }
+}
+f(3, 3, 6);
+</code></pre>
+<p><strong>注意</strong></p>
+<p>arguments 对象是一个伪类数组，不能够继承 Array 的原型方法，可以使用数组下标的形式访问每个实参。</p>
+<p>通过修改 length 属性值，也可以改变函数的实参个数，当 length 属性值增大时，则增加的实参值为 undefined，如果 length 属性值减小，则会丢弃 length 长度值之后的实参值。</p>
+<pre><code class="language-js">function f() {
+  arguments.length = 2;
+  for (var i = 0; i &lt; arguments.length; i++) {
+    console.log(arguments[i]);
+  }
+}
+f(3, 3, 6); // 3, 3
+</code></pre>
+<h3>使用 callee</h3>
+<p>callee 是 arguments 对象的属性，它引用当前 arguments 对象所在的函数，使用该属性可以在函数体内调用函数自身，在匿名函数中，callee 比较有用，例如，可以利用它设计递归调用。</p>
+<p>下面示例中，使用 arguments.callee 获取匿名函数，然后通过函数的 length 属性获取函数形参个数。最后比较实参个数与形参个数，以检测用户传递的参数是否符合要求，</p>
+<pre><code class="language-js">function f(x, y, z) {
+  var a = arguments.length; // 获取函数实参个数
+  var b = arguments.callee.length; // 获取函数形参个数
+  if (a != b) {
+    throw new Error(&quot;传递的参数不匹配&quot;);
+  } else {
+    return x + y + z;
+  }
+}
+console.log(f(3, 4, 5)); // 12
+// arguments.callee 等价于函数名
+</code></pre>
+<h3>应用 arguments 对象</h3>
+<p><strong>(1) 技巧一：</strong> 如果函数的参数个数不确定，或这函数的参数个数很多，而又不想逐一定义每一个形参，则可以省略定义参数，直接在函数体内使用 arguments 对象来访问调用函数的实参值。</p>
+<p>下面示例定义一个求平均值的函数，该函数借助 arguments 对象来计算参数的平均值，在调用函数时，可以传入任意多个参数。</p>
+<pre><code class="language-js">function avg() {
+  var num = 0,
+    l = 0;
+  for (var i = 0; i &lt; arguments.length; i++) {
+    if (typeof arguments[i] !== &quot;number&quot;) {
+      continue;
+    }
+    num += arguments[i];
+    l++;
+  }
+  num /= l;
+  return num;
+}
+console.log(avg(1, 2, 3, 4));
+console.log(avg(1, 2, &quot;3&quot;, 4));
+</code></pre>
+<p>在页面设计中，经常需要验证表单输入值，</p>
+<pre><code class="language-js">function isEmail() {
+  if (arguments.length &gt; 1) {
+    throw new Error(&quot;只能够传递一个参数&quot;);
+  }
+  var regexp =
+    /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/;
+  if (arguments[0].search(regexp) != -1) {
+    return true;
+  } else {
+    return false;
+  }
+}
+var email = &quot;zhangsan@css8.com&quot;;
+console.log(isEmail(email));
+</code></pre>
+<p><strong>(2) 技巧二：</strong> arguments 对象是伪类数组，不是数组，可以通过 length 属性和中括号语法来遍历或访问实参的值。不过，通过动态调用方式，也可以使用数组的方法，如 push、pop、slice 等。</p>
+<p>使用 arguments 可以模拟重载，实现方法：通过 arguments.length 属性值判断实际参数的个数和类型，决定执行不同的代码。</p>
+<pre><code class="language-js">function sayHello() {
+  switch (arguments.length) {
+    case 0:
+      return &quot;Hello&quot;;
+    case 1:
+      return &quot;Hello, &quot; + arguments[0];
+    case 2:
+      return (arguments[1] == &quot;cn&quot; ? &quot;你好, &quot; : &quot;Hello, &quot;) + arguments[0];
+  }
+}
+console.log(sayHello()); // &quot;Hello&quot;
+console.log(sayHello(&quot;Alex&quot;)); // &quot;Hello, Alex&quot;
+console.log(sayHello(&quot;Alex&quot;, &quot;cn&quot;)); // &quot;你好, Alex&quot;
+</code></pre>
+<p>下面示例使用动态调用的方法，让 arguments 对象调用数组方法 slice()，可以把函数的参数对象转换为数组。</p>
+<pre><code class="language-js">function f() {
+  return [].slice.apply(arguments);
+}
+console.log(f(1, 2, 3, 4, 5, 6)); // [1, 2, 3, 4, 5, 6]
+</code></pre>
+<h2>闭包</h2>
+<p>典型的闭包体是一个嵌套结构的函数，内部函数引用外部函数的私有成员，同时内部函数又被外界引用，当外部函数被调用后，就形成了闭包。这个函数也称为闭包函数。</p>
+<p>下面是一个典型的闭包结构：</p>
+<pre><code class="language-js">function f(x) {
+  return function (y) {
+    return x + y;
+  };
+}
+var c = f(5);
+console.log(c(6));
+</code></pre>
+<p>下面结构也可以形成闭包，通过全局变量引用内部函数，实现内部函数对外开放。</p>
+<pre><code class="language-js">var c;
+function f(x) {
+  c = function (y) {
+    return x + y;
+  };
+}
+f(5);
+console.log(c(6)); // 11
+</code></pre>
+<p><strong>闭包变体</strong></p>
+<p>除了嵌套函数，如果外部引用函数内部的私有数组或对象，也容易形成闭包。</p>
+<pre><code class="language-js">var add; // 全局变量
+function f() {
+  // 外部函数
+  var a = [1, 2, 3]; // 私有变量，引用型数组
+  // 测试函数，对外开放
+  add = function (x) {
+    a[0] = x * x; // 修改私有数组的元素值
+  };
+  return a; // 返回私有数组的引用
+}
+var c = f();
+console.log(c[0]); // 读取闭包内数组，返回 1
+add(5); // 测试修改数组
+console.log(a[0]); // 25
+add(10);
+console.log(c[0]); // 100
+</code></pre>
+<p>反之，如果返回的是一个简单的值，就无法形成闭包，值传递是直接复制，外部变量 c 得到的仅是一个值，而不是对函数内部变量的引用，这样当函数调用后，见直接注销活动对象。</p>
+<pre><code class="language-js">function f(x) {
+  var a = 1;
+  return a;
+}
+var c = f(5);
+console.log(c); // 仅是一个值，返回 1
+</code></pre>
+<h3>使用闭包</h3>
+<p>使用闭包实现优雅的打包，定义存储器</p>
+<pre><code class="language-js">var f = (function () {
+  var a = [];
+  return function (x) {
+    a.push(x);
+    return a;
+  };
+})();
+var a = f(1);
+console.log(a); // [1]
+var b = f(2);
+console.log(b); // [1, 2]
+</code></pre>
+<p>上面示例中，通过外部函数设计一个闭包，定义一个永久的存储器。</p>
+<p>在网页中事件处理函数很容易形成闭包：</p>
+<pre><code class="language-html">&lt;script&gt;
+  function f() {
+    var a = 1;
+    b = function () {
+      console.log(&quot;a = &quot; + a);
+    };
+    c = function () {
+      a++;
+    };
+    d = function () {
+      a--;
+    };
+  }
+&lt;/script&gt;
+&lt;button onclick=&quot;f()&quot;&gt;生成闭包&lt;/button&gt;
+&lt;button onclick=&quot;b()&quot;&gt;查看 a 的值&lt;/button&gt;
+&lt;button onclick=&quot;c()&quot;&gt;递增&lt;/button&gt;
+&lt;button onclick=&quot;d()&quot;&gt;递减&lt;/button&gt;
+</code></pre>
+<p>在浏览器中浏览时，首先单击 “生成闭包” 时，生成一个闭包；单击 “查看 a 的值” 按钮，可以随时查看闭包内私有变量 a 的值，单击 “递增” “递减” 按钮时，可以动态修改闭包内变量 a 的值。</p>
+<h3>闭包的局限性</h3>
+<p>闭包的价值是方便在表达式运算过程中存储数据，但是它的确定样式不容忽视的。</p>
+<ul>
+<li>
+<p>由于函数调用后，无法注销调用对象，会占用系统资源，在脚本中大量使用闭包，容易造成内存泄漏。解决办法，慎用闭包，不要滥用。</p>
+</li>
+<li>
+<p>由于闭包的作用，其保存的值时动态的，如果处理不当，容易出现异常或错误。</p>
+</li>
+</ul>
+<p>设计一个简单的选项卡效果：</p>
+<pre><code class="language-html">&lt;div class=&quot;tab_wrap&quot;&gt;
+  &lt;ul class=&quot;tab&quot; id=&quot;tab&quot;&gt;
+    &lt;li id=&quot;tab_1&quot; class=&quot;hover&quot;&gt;Tab1&lt;/li&gt;
+    &lt;li id=&quot;tab_2&quot; class=&quot;normal&quot;&gt;Tab2&lt;/li&gt;
+    &lt;li id=&quot;tab_3&quot; class=&quot;normal&quot;&gt;Tab3&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;div class=&quot;content&quot; id=&quot;content&quot;&gt;
+    &lt;div id=&quot;content_1&quot; class=&quot;show&quot;&gt;
+      &lt;img src=&quot;images/1.jpg&quot; height=&quot;200&quot; /&gt;
+    &lt;/div&gt;
+    &lt;div id=&quot;content_2&quot; class=&quot;none&quot;&gt;
+      &lt;img src=&quot;images/2.jpg&quot; height=&quot;200&quot; /&gt;
+    &lt;/div&gt;
+    &lt;div id=&quot;content_3&quot; class=&quot;none&quot;&gt;
+      &lt;img src=&quot;images/3.jpg&quot; height=&quot;200&quot; /&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<p>下面看下 Js 脚本：</p>
+<pre><code class="language-js">window.onload = function () {
+  var tab = document.getElementById(&quot;tab&quot;).getElementsByTagName(&quot;li&quot;),
+    content = document.getElementById(&quot;content&quot;).getElementsByTagName(&quot;div&quot;);
+  for (var i = 0; i &lt; tab.length; i++) {
+    tab[i].addEventListener(&quot;mouseover&quot;, function () {
+      for (var n = 0; n &lt; tab.length; n++) {
+        tab[n].className = &quot;normal&quot;;
+        content[n].className = &quot;none&quot;;
+      }
+      tab[i].className = &quot;hover&quot;;
+      content[i].className = &quot;show&quot;;
+    });
+  }
+};
+</code></pre>
+<p>上面代码在运行的时候，会抛出异常：</p>
+<blockquote>
+<p>无法设置未定义或 null 引用的属性 &quot;className&quot;。</p>
+</blockquote>
+<p><strong>原因分析：</strong></p>
+<p>上面的 JS 代码是一个典型的的嵌套函数结构，外部函数为 load 事件处理函数，内部函数为 mouseover 事件处理函数，变量 i 为外部函数的私有变量。</p>
+<p>通过事件绑定，mouseover 事件处理函数被外界引用（li 元素），这样就形成了一个闭包体，虽然在 for 语句中为每个选项卡 li 分别绑定事件处理函数，但是这个操作是动态的，因此 <code>tab[i]</code> 中的 i 的值也是动态的，所以就会出现上述异常。</p>
+<p><strong>解决方法：</strong></p>
+<p>解决闭包缺陷，最简单的方法是阻断内部函数对外部函数的变量引用，这样就形成不了闭包体。</p>
+<p>针对本例子的缺陷，我们可以在内部函数（mouseover 事件处理函数）外边增加一层防火墙，不让其直接引用外部变量。</p>
+<pre><code class="language-js">window.onload = function () {
+  var tab = document.getElementById(&quot;tab&quot;).getElementsByTagName(&quot;li&quot;),
+    content = document.getElementById(&quot;content&quot;).getElementsByTagName(&quot;div&quot;);
+  for (var i = 0; i &lt; tab.length; i++) {
+    (function (j) {
+      tab[j].addEventListener(&quot;mouseover&quot;, function () {
+        for (var n = 0; n &lt; tab.length; n++) {
+          tab[n].className = &quot;normal&quot;;
+          content[n].className = &quot;none&quot;;
+        }
+        tab[j].className = &quot;hover&quot;;
+        content[j].className = &quot;show&quot;;
+      });
+    })(i);
+  }
+};
+</code></pre>
+<p>在 for 语句中，直接调用匿名函数，把外部函数的 i 变量传给调用函数，在调用函数中接收这个值，而不是引用外部变量，规避了闭包体带来的困惑。</p>
+<h2>函数式运算</h2>
+<h3>函数合成</h3>
+<p>语法格式如下：</p>
+<pre><code class="language-js">var f = compose(a, b, c);
+</code></pre>
+<p>例如：</p>
+<pre><code class="language-js">var compose = function (f, g) {
+  return function (x) {
+    return f(g(x));
+  };
+};
+var add = function (x) {
+  return x + 1;
+};
+var mul = function (x) {
+  return x * 5;
+};
+compose(mul, add)(2);
+</code></pre>
+<p><strong>使用 compose 要注意以下 3 点：</strong></p>
+<ul>
+<li>
+<p>compose 的参数是函数，返回的也是一个函数。</p>
+</li>
+<li>
+<p>处理初始函数（最右侧的一个）外，其他函数的接收参数都是上一个函数的返回值，所以初始函数的参数可以是多元的，而其他函数的接收值是一元的。</p>
+</li>
+<li>
+<p>compose 函数可以接收任意的函数，所有参数都是函数，且执行方向为自右向左的。初始函数一定要放到参数的最右侧。</p>
+</li>
+</ul>
+<p>下面来完善 compose 实现，实现无限函数合成：</p>
+<p>既然函数以多米诺骨牌式执行，那么可以使用递归或迭代，在函数体内不断地执行 arguments 中的函数，将上一个函数的执行结果作为下一个执行函数的输入参数。</p>
+<pre><code class="language-js">// 函数合成，从右到左合成函数
+var compose = function () {
+  var _arguments = arguments;
+  var length = _arguments.length;
+  var index = length;
+  // 检测参数，如果存在非函数参数，则抛出异常
+  while (index--) {
+    if (typeof _arguments[index] !== &quot;function&quot;) {
+      throw new Error(&quot;参数必须为函数！&quot;);
+    }
+  }
+  return function () {
+    var index = length - 1; // 定位到最后一个参数下标
+    // 如果存在两个及以参数，则调用最后一个参数函数，并传入内层参数；否则直接返回第 1 个参数函数
+    var result = length
+      ? _arguments[index].apply(this, arguments)
+      : arguments[0];
+    while (index--) {
+      // 把右侧的执行结果作为参数传给左侧参数函数，并调用
+      result = _arguments[index].call(this, result);
+    }
+    return result;
+  };
+};
+// 反向函数合成，即从左到右合成函数
+var composeLeft = function () {
+  return compose.apply(null, [].reverse.call(arguments));
+};
+</code></pre>
+<p>在上面实现代码中，compose 实现是从右到左进行合成，也提供了从左到右的合成，即 composeLeft，同时在 compose 体内添加了一层函数的校验，允许传递一个或多个参数。</p>
+<pre><code class="language-js">var add = function (x) {
+  return x + 5;
+};
+var mul = function (x) {
+  return x * 5;
+};
+var sub = function (x) {
+  return x - 5;
+};
+var div = function (x) {
+  return x / 5;
+};
+var fn = compose(add, mul, sub, div);
+console.log(fn(50)); // 30
+var fn = compose(add, compose(mul, sub, div));
+console.log(fn(50)); // 30
+var fn = compose(compose(add, mul), sub, div);
+console.log(fn(50)); // 30
+</code></pre>
+<h3>函数柯里化</h3>
+<p>所谓柯里化，就是把一个多参数的函数转换为单一参数函数，有了柯里化运算之后，我们就能做到所有函数只接收一个参数。</p>
+<p>下面是一个简单的求和函数 add():</p>
+<pre><code class="language-js">var add = function (x, y) {
+  return x + y;
+};
+</code></pre>
+<p>每次调动 add()，需要同时传入两个参数，如果希望每次仅传入一个参数，可以这样进行柯里化。</p>
+<pre><code class="language-js">var add = function (x) {
+  return function (y) {
+    return x + y;
+  };
+};
+console.log(add(2)(6)); // 8
+var add1 = add(200);
+console.log(add1(2)); // 202
+</code></pre>
+<p>从某种意义上讲，这是对参数的 “缓存”，是一种非常高效的函数式运算方法，柯里化在 DOM 的回调中非常实用。</p>
+<p><strong>实现代码</strong></p>
+<p>设想 curry 可以接收一个函数，即原始函数，返回的也是一个函数，即柯里化函数。这个返回的柯里化函数在执行的过程中会不断地返回一个存储了传入参数的函数，直到触发了原始函数执行的条件，</p>
+<p>例如，设计一个 <code>add()</code> 函数，计算两个参数之和</p>
+<pre><code class="language-js">var add = function (x, y) {
+  return x + y;
+};
+</code></pre>
+<p>柯里化函数：</p>
+<pre><code class="language-js">var curryAdd = curry(add);
+</code></pre>
+<p>这个 add 需要两个参数，但是执行 curryAdd 时，可以传入更少的参数。当传入的参数少于 add 需要的参数时，add 函数并不会立即执行，curryAdd 就会将这个参数记录下来，并且返回另外一个函数，这个函数可以继续执行传入参数。如果传入参数的总数等于 add 所需参数的总数，则执行原始参数，返回想要的结果，如果没有参数限制，最后根据空的小括号作为执行原始参数的条件，返回运算结果。</p>
+<p>curry 实现的封装代码如下：</p>
+<pre><code class="language-js">// 柯里化函数
+function curry(fn) {
+  var _argLen = fn.length; // 记录原始函数的形参个数
+  var _args = [].slice.call(arguments, 1); // 把传入的第2个及以后参数转换为数组
+  function wrap() {
+    // 把当前参数转换为数组，与前面参数进行合并
+    _args = _args.concat([].slice.call(arguments));
+    function act() {
+      // 把当前参数转换为数组，与前面参数进行合并
+      _args = _args.concat([].slice.call(arguments));
+      // 如果传入参数总和大于等于原始参数的个数，触发执行条件
+      if (
+        (_argLen == 0 &amp;&amp; arguments.length == 0) ||
+        (_argLen &gt; 0 &amp;&amp; _args.length &gt;= _argLen)
+      ) {
+        // 执行原始函数，并把每次传入参数传入进去，返回执行结果，停止 curry
+        return fn.apply(null, _args);
+      }
+      return arguments.callee;
+    }
+    // 如果传入参数大于等于原始函数的参数个数，即触发了执行条件
+    if (
+      (_argLen == 0 &amp;&amp; arguments.length == 0) ||
+      (_argLen &gt; 0 &amp;&amp; _args.length &gt;= _argLen)
+    ) {
+      // 执行原始函数，并把每次传入参数传入进去，返回执行结果，停止 curry
+      return fn.apply(null, _args);
+    }
+    act.toString = function () {
+      return fn.toString();
+    };
+    return act; // 返回处理函数
+  }
+  return wrap; // 返回 curry 函数
+}
+</code></pre>
+<p>设计求和函数，没有形参限制，柯里化函数将根据空小括号作为最后调用原始函数的条件。</p>
+<pre><code class="language-js">// 求和函数，参数不限
+var add = function () {
+  return [].slice.call(arguments).reduce(function (a, b) {
+    return (typeof a == &quot;number&quot; ? a : 0) + (typeof b == &quot;number&quot; ? b : 0);
+  });
+};
+var curried = curry(add);
+console.log(curried(1)(2)(3)()); // 6
+
+var curried = curry(add);
+console.log(curried(1, 2, 3)(4)()); // 10
+
+var curried = curry(add, 1);
+console.log(curried(1, 2)(3)(3)()); // 10
+
+var curried = curry(add, 1, 5);
+console.log(curried(1, 2, 3, 4)(5)()); // 21
+</code></pre>
+<p>设计求和函数，返回 3 个参数之和</p>
+<pre><code class="language-js">var add = function (a, b, c) {
+  return a + b + c;
+};
+
+var curried = curry(add, 2);
+console.log(curried(1)(2)); // 5
+
+var curried = curry(add, 2, 1);
+console.log(curried(2)); // 5
+
+var curried = curry(add);
+console.log(curried(1)(2)(6)); // 9
+
+var curried = curry(add);
+console.log(curried(1, 2, 6)); // 9
+</code></pre>
+<h2>高阶函数</h2>
+<h3>回调函数</h3>
+<pre><code class="language-js">function map(array, func) {
+  var res = [];
+  for (var i in array) {
+    res.push(func(array[i]));
+  }
+  return res;
+}
+console.log(
+  map([1, 3, 5, 7, 8], function (n) {
+    return n * n;
+  })
+);
+</code></pre>
+<h3>单例模式</h3>
+<p>单例模式可以确保一个类型只有一个实例对象</p>
+<pre><code class="language-js">var getSingle = function (fn) {
+  var ret;
+  return function () {
+    return ret || (ret = fn.apply(this, arguments));
+  };
+};
+</code></pre>
+<p>在脚本中定义 XMLHttpRequest 对象，由于一个页面可能需要多次创建异步请求对象，使用单例模式封装之后，就不用重复创建实例对象，共用一个即可。</p>
+<pre><code class="language-js">function XHR() {
+  return new XMLHttpRequest();
+}
+var xhr = getSingle(XHR);
+var a = xhr();
+var b = xhr();
+console.log(a === b);
+</code></pre>
+<p>可以限定函数仅能调用一次，避免重复调用，这在事件处理函数中非常有用。</p>
+<pre><code class="language-html">&lt;button&gt;仅能点击一次&lt;/button&gt;
+&lt;script&gt;
+  var getSingle = function (fn) {
+    var ret;
+    return function () {
+      return ret || (ret = fn.apply(this, arguments));
+    };
+  };
+  var f = function () {
+    console.log(this.nodeName);
+  };
+  document.getElementByTagName(&quot;button&quot;)[0].onclick = getSingle(f);
+&lt;/script&gt;
+</code></pre>
+<h3>分时函数</h3>
+<p>当批量操作影响到页面性能时，如一次性往页面中添加大量 DOM 节点，显然会给浏览器渲染带来影响，极端情况下可能会出现卡顿和假死等现象。</p>
+<blockquote>
+<p>把批量操作分批处理，如把 1 秒创建 1000 个节点，改为每隔 200 毫秒创建 100 个节点等。</p>
+</blockquote>
+<pre><code class="language-js">var timeChunk = function (ary, fn, count) {
+  var t;
+  var start = function () {
+    for (var i = 0; i &lt; Math.min(count || 1, ary.length); i++) {
+      var obj = ary.shift();
+      fn(obj);
+    }
+  };
+  return function () {
+    t = setInterval(function () {
+      if (ary.length === 0) {
+        return clearInterval(t);
+      }
+      start();
+    }, 200);
+  };
+};
+</code></pre>
+<p>timeChunk 函数接收 3 个参数，第 1 个参数表示批量操作时需要用到的数据，第 2 个参数封装了批量操作的逻辑函数，第 3 个参数表示分批操作的数量。</p>
+<pre><code class="language-js">var arr = [];
+for (var i = 1; i &lt;= 10000; i++) {
+  var span = document.createElement(&quot;span&quot;);
+  span.style.padding = &quot;6px 12px&quot;;
+  span.innerHTML = i;
+  arr.push(span);
+}
+var fn = function (obj) {
+  document.body.appendChild(obj);
+};
+timeChunk(arr, fn, 100)();
+</code></pre>
+<h3>惰性载入函数</h3>
+<p>惰性载入就是当第 1 次根据条件执行函数后，第 2 次调用函数时，就不再检测条件，直接执行函数。</p>
+<pre><code class="language-js">var addEvent = function (element, type, handle) {
+  addEvent = element.addEventListener
+    ? function (element, type, handle) {
+        element.addEventListener(type, handle, false);
+      }
+    : function (element, type, handle) {
+        element.attachEvent(&quot;on&quot; + type, handle);
+      };
+  // 在第一次执行 addEvent 函数时，修改了 addEvent 函数之后，必须执行一次
+  addEvent(element, type, handle);
+};
+</code></pre>
+ 
+    </div>
+  </div>
+  <div class="article__wrapper_footer">
+    <a class="article__wrapper_footer-left " href="/articles/125.html"><svg t="1713708729970" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8437" width="48" height="48"><path d="M409.272947 512.57741l403.237243 403.237243a63.349415 63.349415 0 1 1-89.622481 89.622482L274.839224 557.324726a63.349415 63.349415 0 0 1 0-89.494632L722.951633 19.717685a63.349415 63.349415 0 1 1 89.494633 89.622482L409.336872 512.57741z" p-id="8438" fill="#8a8a8a"></path></svg></a>
+    <a class="article__wrapper_footer-right " href="/articles/127.html"><svg t="1713708697355" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8093" width="48" height="48"><path d="M855.123 517.004c0 8.245-3.167 15.51-9.503 21.823L402.999 981.47c-6.336 6.336-13.625 9.477-21.869 9.477s-15.51-3.142-21.845-9.477L311.8 933.96c-6.336-6.336-9.502-13.6-9.502-21.845 0-8.222 3.167-15.51 9.502-21.845l373.29-373.29-373.293-373.267c-6.336-6.336-9.502-13.6-9.502-21.845s3.167-15.533 9.503-21.869l47.484-47.484c6.336-6.336 13.6-9.502 21.845-9.502s15.533 3.167 21.869 9.503l442.621 442.622c6.334 6.334 9.503 13.625 9.503 21.869z" fill="#8a8a8a" p-id="8094"></path></svg></a>
+  </div>
+  <a class="article__wrapper_index" href="/articles/"><svg t="1713708857338" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="9656" width="48" height="48"><path d="M549.61981 133.022476l319.683047 203.605334A70.851048 70.851048 0 0 1 902.095238 396.361143v434.883047A70.89981 70.89981 0 0 1 831.146667 902.095238h-282.819048l0.024381-218.112h-71.826286v218.087619L192.853333 902.095238A70.89981 70.89981 0 0 1 121.904762 831.24419V390.241524c0-24.527238 12.678095-47.299048 33.54819-60.220953l318.659048-197.485714a70.972952 70.972952 0 0 1 75.50781 0.487619zM828.952381 828.952381V397.214476L511.488 195.047619 195.047619 391.119238V828.952381h211.309714v-216.551619h212.187429v216.527238L828.952381 828.952381z" p-id="9657" fill="#707070"></path></svg></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
+  <script src="../assets/js/articles-detail.js"></script>
+  <script>
+    hljs.highlightAll();
+  </script>
+</body>
+</html>
+    

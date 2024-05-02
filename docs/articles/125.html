@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>操作字符串</title>
+    <meta charset="utf-8">
+    <meta name="description" content="This is a page">
+    <meta name="keywords" content="page, sample">
+    <meta name="author" content="None">
+    <link rel="icon" sizes="any" mask href="../assets/images/ico6.svg" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <link rel="stylesheet" href="../assets/css/articles.css">
+</head>
+<body>
+  <div class="article__wrapper_left">
+    <div class="article__wrapper_left-mulu">目录</div>
+    <ul class="articles__list"><li class="">
+          <a href="/articles/126.html">
+            使用函数
+          </a>
+        </li><li class="">
+          <a href="/articles/127.html">
+            统一 Node 版本
+          </a>
+        </li><li class="">
+          <a href="/articles/128.html">
+            JS复制粘贴兼容处理
+          </a>
+        </li><li class="">
+          <a href="/articles/129.html">
+            超有用的 Web API
+          </a>
+        </li><li class="">
+          <a href="/articles/13.html">
+            JS错误监控篇
+          </a>
+        </li><li class="">
+          <a href="/articles/130.html">
+            动态执行 js 的方法
+          </a>
+        </li><li class="">
+          <a href="/articles/131.html">
+            多个有趣的 JavaScript 与 CSS 库
+          </a>
+        </li><li class="">
+          <a href="/articles/132.html">
+            使用对象
+          </a>
+        </li><li class="">
+          <a href="/articles/133.html">
+            构造函数、原型和继承[未完]
+          </a>
+        </li><li class="">
+          <a href="/articles/134.html">
+            3个超酷的 Node.js 新功能
+          </a>
+        </li></ul>
+  </div>
+  <div class="article__wrapper_sidebar">
+    <a href="/" target="_blank"><svg t="1714001835347" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4298" width="48" height="48"><path d="M147.904 304.128l301.866667-179.541333a128 128 0 0 1 131.712 0.512l295.466666 178.88A128 128 0 0 1 938.666667 413.482667V810.666667a128 128 0 0 1-128 128H213.333333a128 128 0 0 1-128-128V414.144a128 128 0 0 1 62.570667-110.016z m43.626667 73.344A42.666667 42.666667 0 0 0 170.666667 414.144V810.666667a42.666667 42.666667 0 0 0 42.666666 42.666666h597.333334a42.666667 42.666667 0 0 0 42.666666-42.666666V413.482667a42.666667 42.666667 0 0 0-20.565333-36.501334l-295.466667-178.88a42.666667 42.666667 0 0 0-43.925333-0.170666l-301.866667 179.541333z" fill="#8a919f" p-id="4299"></path><path d="M405.333333 469.333333h213.333334a42.666667 42.666667 0 1 1 0 85.333334H405.333333a42.666667 42.666667 0 1 1 0-85.333334z m0 85.333334a42.666667 42.666667 0 1 0 0-85.333334h213.333334a42.666667 42.666667 0 1 0 0 85.333334H405.333333z" fill="#8a919f" p-id="4300"></path></svg></a>
+    <a href="/tools/" target="_blank"><svg t="1714002003458" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6911" width="48" height="48"><path d="M817.87 556.31h-63.58v-66.24A42.27 42.27 0 0 0 712 447.8h-84.81a42.27 42.27 0 0 0-42.27 42.27v66.24H436.57v-66.24a42.27 42.27 0 0 0-42.27-42.27h-84.83a42.27 42.27 0 0 0-42.27 42.27v66.24h-61.83A22.39 22.39 0 0 0 183 578.7a22.39 22.39 0 0 0 22.39 22.39h61.81v65.55a42.27 42.27 0 0 0 42.27 42.27h84.83a42.27 42.27 0 0 0 42.27-42.27v-65.55h148.36v65.55a42.27 42.27 0 0 0 42.27 42.27H712a42.27 42.27 0 0 0 42.27-42.27v-65.55h63.58a22.39 22.39 0 0 0 22.39-22.39 22.39 22.39 0 0 0-22.37-22.39z m-438.64 95.26h-54.69V505.14h54.69z m317.72 0h-54.69V505.14H697z" p-id="6912" fill="#8a919f"></path><path d="M823 202.58h-90.81v-63.09a71.88 71.88 0 0 0-71.88-71.88H363.19a71.88 71.88 0 0 0-71.88 71.88v63.08h-90.12A137.17 137.17 0 0 0 64 339.75v479a137.17 137.17 0 0 0 137.19 137.14H823a137.17 137.17 0 0 0 137.19-137.17v-479A137.17 137.17 0 0 0 823 202.58z m-474.36-54.1A23.52 23.52 0 0 1 372.17 125h279.16a23.52 23.52 0 0 1 23.52 23.52v54.1h-326.2z m554.23 673.31a76.76 76.76 0 0 1-76.76 76.76h-628a76.76 76.76 0 0 1-76.76-76.76V336.67a76.76 76.76 0 0 1 76.76-76.76h628a76.76 76.76 0 0 1 76.76 76.76z" p-id="6913" fill="#8a919f"></path></svg></a>
+  </div>
+  <div class="article__wrapper">
+    <div class="article__wrapper__main">
+      <div class="article__wrapper_header">
+        <h1>操作字符串</h1>
+        <span class="articles__home_time">NaN/NaN/NaN · YinHao</span>
+      </div>
+      <h2>字符串操作基础</h2>
+<h3>定义字符串</h3>
+<p><strong>1. 字符串直接量</strong></p>
+<p>使用双引号或单引号包含任意长度的文本。</p>
+<pre><code class="language-js">var s = &quot;true&quot;; // 把布尔值转换为字符串
+var s = &quot;123&quot;; // 把数值转换为字符串
+var s = &quot;[1,2,3]&quot;; // 把数值转换为字符串
+var s = &quot;{x:1, y:2}&quot;; // 把对象转换为字符串
+var s = &quot;console.log('Hello, World')&quot;; // 把可表达式转换为字符串
+</code></pre>
+<p>对于字符串化脚本，可以调用全局方法 <code>eval()</code> 执行字符代码</p>
+<pre><code class="language-js">var s = &quot;console.log('Hello, World')&quot;;
+eval(s);
+</code></pre>
+<p><strong>2. 构造字符串</strong></p>
+<p>使用 <code>String()</code> 类型函数可以构造字符串，该函数可以接收一个参数，并把它作为值来初始化字符串。</p>
+<pre><code class="language-js">var s = new String(); // 创建一个空字符串对象，引用类型，并赋值给变量 s
+var s = new String(&quot;我是构造字符串&quot;); // 创建字符串对象，初始化之后赋值给变量 s
+</code></pre>
+<p>下面比较构造字符串和字符串直接量的数据类型值的不同：</p>
+<pre><code class="language-js">var s1 = new String(1); // 构造字符串
+var s2 = &quot;1&quot;;
+console.log(typeof s1); // &quot;object&quot;，说明是引用类型
+console.log(typeof s2); // &quot;string&quot;，说明是值类型字符串
+</code></pre>
+<p><code>String()</code> 也可以作为普通函数使用，把参数转换为字符串类型的值返回：</p>
+<pre><code class="language-js">var s = String(123456);
+console.log(s); // 返回字符串 &quot;123456&quot;
+console.log(typeof s); // &quot;string&quot;
+</code></pre>
+<p><code>String()</code> 允许传入多个参数，但是仅处理第一个参数，并把它转换为字符串返回：</p>
+<pre><code class="language-js">var s = String(1, 2, 3, 4, 5, 6);
+console.log(s); // &quot;1&quot;
+</code></pre>
+<p>下面变量 n 在构造函数内经过多次计算之后，最后值递增为 5：</p>
+<pre><code class="language-js">var n = 1;
+var s = new String(++n, ++n, ++n, ++n);
+console.log(s); // String {'2'}
+console.log(n); // 5
+console.log(typeof s); // &quot;object&quot;，说明是引用型对象
+console.log(typeof n); // &quot;number&quot;，说明是值类型
+</code></pre>
+<p><strong>3. 使用字符编码</strong></p>
+<p>使用 <code>fromCharCode()</code> 方法可以把字符串编码转化为字符串。</p>
+<p>该方法可以包含多个整数参数，每个参数代表字符串的 Unicode 编码，返回值为字符编码的字符串表示。</p>
+<pre><code class="language-js">var a = [35835, 32773, 24744, 22909],
+  b = [];
+for (var i in a) {
+  b.push(String.fromCharCode(a[i]));
+}
+console.log(b.join(&quot;&quot;)); // &quot;读者您好&quot;
+</code></pre>
+<p>可以把所有字符串按顺序传给 fromCharCode()</p>
+<pre><code class="language-js">var b = String.fromCharCode(35835, 32773, 24744, 22909); // 传递多个参数
+</code></pre>
+<p>也可以使用 apply() 方法动态调用 fromCharCode() 方法</p>
+<pre><code class="language-js">var a = [35835, 32773, 24744, 22909];
+var b = [];
+var b = String.fromCharCode.apply(null, a);
+console.log(b);
+</code></pre>
+<h3>字符串的值和长度</h3>
+<p><strong>1. 字符串的值</strong></p>
+<p>使用字符串的 toString() 方法可以返回字符串的字符表示，使用 valueOf() 方法可以返回字符串的值。</p>
+<p>两个方法的返回值始终相同，所以一般不直接调用这两个方法。</p>
+<pre><code class="language-js">var s = &quot;JavaScript&quot;;
+var s = s.toString(); // 返回 &quot;JavaScript&quot;
+var b = s.valueOf(); // 返回 &quot;JavaScript&quot;
+</code></pre>
+<p>可以重写 toString() 和 valueOf() 方法，以便个性化显示字符串。</p>
+<pre><code class="language-js">// 重写 toString() 和 ValueOf() 方法，参数 color 表示显示颜色
+String.prototype.toString = function (color) {
+  var color = color || &quot;red&quot;;
+  return `&lt;span style=&quot;color: ${color}&quot;&gt;${this.valueOf()}&lt;/span&gt;`;
+};
+document.write(s.toString()); // 显示红色字符串 &quot;JavaScript&quot;
+document.write(s.toString(&quot;blue&quot;)); // 显示蓝色字符串 &quot;JavaScript&quot;
+</code></pre>
+<p><strong>2. 字符串的长度</strong></p>
+<p>使用字符串的 length 属性可以读取字符串的长度，长度以字符为单位，该属性为只读属性。</p>
+<pre><code class="language-js">var s = &quot;String 类型长度&quot;;
+console.log(s.length); // 10
+</code></pre>
+<p>注意：</p>
+<p>Js 支持的字符包括为单字节、双字节两种类型，为了精确计算字符串的字节长度，可以采用下面方法来计算。</p>
+<p>为 String 扩展原型方法 byteLength()，该方法将枚举每个字符，并根据字符编码，判断当前字符是单字节还是双字节，然后统计字符串的字节长度。</p>
+<pre><code class="language-js">String.prototype.byteLength = function () {
+  var b = 0,
+    l = this.length;
+  if (l) {
+    for (var i = 0; i &lt; l; i++) {
+      if (this.charCodeAt(i) &gt; 255) {
+        // 字符编码大于 255，说明是双字节字符
+        b += 2;
+      } else {
+        b++; // 单字节
+      }
+    }
+    return b;
+  } else {
+    return 0;
+  }
+};
+// 使用
+var s = &quot;String类型长度&quot;;
+console.log(s.byteLength()); // 14
+</code></pre>
+<h3>字符串连接</h3>
+<p><strong>1. 使用加号运算符</strong></p>
+<p>连接字符串最简便的方法时使用加号运算符</p>
+<pre><code class="language-js">var s1 = &quot;abc&quot;,
+  s2 = &quot;def&quot;;
+console.log(s1 + s2); // &quot;abcdef&quot;
+</code></pre>
+<p><strong>2. 使用 concat() 方法</strong></p>
+<p>使用字符串的 concat() 方法可以把多个参数添加到指定字符串的尾部。</p>
+<pre><code class="language-js">var s1 = &quot;abc&quot;;
+var s2 = s1.concat(&quot;d&quot;, &quot;e&quot;, &quot;f&quot;);
+console.log(s2); // &quot;abcdef&quot;
+</code></pre>
+<p>concat() 不会修改原始字符串的值，与数组的 concat() 方法操作类似。</p>
+<p><strong>3. 使用 join() 方法</strong></p>
+<p>在特定的操作环境中，也可以借助数组的 join() 方法来连接字符串，如 HTML 字符串输出等。</p>
+<pre><code class="language-js">var s = &quot;JavaScript&quot;,
+  a = [];
+for (var i = 0; i &lt; 1000; i++) {
+  a.push(s);
+}
+var str = a.join(&quot;&quot;);
+a = null;
+document.write(str);
+</code></pre>
+<h3>字符串查找</h3>
+<ol>
+<li>
+<p>charAt(): 返回字符串中的第 n 个字符</p>
+</li>
+<li>
+<p>charCodeAt(): 返回字符串中的第 n 个字符的代码</p>
+</li>
+<li>
+<p>indexOf(): 检索字符串</p>
+</li>
+<li>
+<p>lastIndexOf(): 从后向前检索一个字符串</p>
+</li>
+<li>
+<p>match(): 找到一个或多个正则表达式的匹配</p>
+</li>
+<li>
+<p>search(): 检索与正则表达式相匹配的子串</p>
+</li>
+</ol>
+<p><strong>1. 查找字符串</strong></p>
+<p>使用字符串的 charAt() 和 charCodeAt() 方法，可以根据参数返回指定位置的字符或字符编码。</p>
+<p>下面示例为 String 类型扩展一个原型方法，用来把字符串转换为数组，</p>
+<pre><code class="language-js">String.prototype.toArray = function () {
+  var l = this.length,
+    a = [];
+  if (l) {
+    for (var i = 0; i &lt; l; i++) {
+      a.push(this.charAt(i));
+    }
+  }
+  return a; // 返回数组
+};
+// 使用
+var s = &quot;abcdefghijklmn&quot;.toArray();
+for (var i in a) {
+  console.log(s[i]);
+}
+</code></pre>
+<p><strong>2. 查找字符串</strong></p>
+<p>使用字符串的 indexOf() 和 lastIndexOf() 方法，可以根据参数字符串，返回指定子字符串的下标位置，</p>
+<ul>
+<li>
+<p>第一个参数为一个子字符串，指定要查找的目标</p>
+</li>
+<li>
+<p>第二个参数为一个整数，指定查找的起始位置，取值范围为 0 ~ length - 1</p>
+</li>
+</ul>
+<p>对于第二个参数来说，需要注意以下几种特殊情况：</p>
+<ul>
+<li>
+<p>如果是负值，则视为 0，相当于从第一个字符开始查找</p>
+</li>
+<li>
+<p>如果省略了这个参数，也将从字符串的第一个字符开始查找</p>
+</li>
+<li>
+<p>如果值大于等于 length 属性值，则视为当前字符串中没有指定的子字符串，返回 -1</p>
+</li>
+</ul>
+<p>下面代码查找首个字母 a 的下标位置：</p>
+<pre><code class="language-js">var s = &quot;JavaScript&quot;;
+var i = s.indexOf(&quot;a&quot;);
+console.log(i); // 1
+// indexOf() 只返回查找到的第一个字符串的起始下标位置
+</code></pre>
+<p>下面代码分别查询 URL 字符串中两个点号字符的下标位置</p>
+<pre><code class="language-js">var s = &quot;http://www.mysite.cn/&quot;;
+var b = s.indexOf(&quot;.&quot;); // 返回 10
+var e = s.indexOf(&quot;.&quot;, b + 1); // 返回 17
+</code></pre>
+<pre><code class="language-js">var s = &quot;http://www.mysite.cn/index.html&quot;;
+var n = s.lastIndexOf(&quot;.&quot;); // 26
+</code></pre>
+<p>lastIndexOf() 的第二个参数指定开始查找的下标位置，但是，将从该点开始向左查找，而不是向右查找。</p>
+<pre><code class="language-js">var s = &quot;http://www.mysite.cn/index.html&quot;;
+var n = s.lastIndexOf(&quot;.&quot;, 11); // 10
+</code></pre>
+<p><strong>3. 搜索字符串</strong></p>
+<p>search() 与 indexOf() 的功能是相同的，查找指定字符串第一次出现的位置。</p>
+<p>但是 search() 仅有一个参数，该方法没有 lastIndexOf() 的反向检索功能，也不支持全局模式。</p>
+<pre><code class="language-js">var s = &quot;http://www.mysite.cn/index.html&quot;;
+var n = s.search(&quot;//&quot;); // 返回值为 5
+</code></pre>
+<p><strong>4. 匹配字符串</strong></p>
+<p>match() 方法能够找出所有匹配的子字符串，并以数组的形式返回。</p>
+<p>下面代码使用 match() 方法找到字符串中所有字母 h，并返回它们：</p>
+<pre><code class="language-js">var s = &quot;http://www.mysite.cn/index.html&quot;;
+var s = s.match(/h/g);
+console.log(s); // ['h', 'h']
+</code></pre>
+<p>match() 返回的是一个数组，如果不是全局匹配，那么 match() 只能执行一次匹配，</p>
+<pre><code class="language-js">var a = s.match(/h/); // [&quot;h&quot;]
+</code></pre>
+<p>如果没有找到匹配字符，则返回 null，而不是空数组。</p>
+<p>下面代码使用 match() 方法匹配 URL 字符串中所有点号字符：</p>
+<pre><code class="language-js">var s = &quot;http://www.mysite.cn/index.html&quot;;
+var a = s.match(/(\.).*(\.).*(\.)/);
+console.log(a); // [&quot;.mysite.cn/index.&quot;, &quot;.&quot;, &quot;.&quot;, &quot;.&quot;]
+</code></pre>
+<h3>字符串截取</h3>
+<p><strong>1. 截取指定长度字符串</strong></p>
+<p>substr() 能够根据指定长度来截取子字符串，它包含两个参数，第一个参数表示准备截取的子串的起始下标，第二个参数表示截取的长度，</p>
+<p>下面示例中使用 lastIndexOf() 获取字符串的最后一个点号的下标位置，然后从其后的位置开始截取 4 个字符</p>
+<pre><code class="language-js">var s = &quot;http://www.mysite.cn/index.html&quot;;
+var b = s.substr(s.lastIndexOf(&quot;.&quot;) + 1, 4);
+console.log(b); // &quot;html&quot;
+</code></pre>
+<p><strong>[注意]</strong></p>
+<ul>
+<li>
+<p>如果省略第二个参数，则表示截取从起始位置开始到结尾的所有字符。</p>
+</li>
+<li>
+<p>如果第一个参数为负值，则表示从字符串的尾部开始计算下标位置，即 -1 表示最后一个字符，-2 表示倒数第二个字符，以此类推。这对于左侧字符长度不固定时非常有用。</p>
+</li>
+</ul>
+<blockquote>
+<p>ECMAScript 不再建议使用该方法，推荐使用 slice() 和 substring()。</p>
+</blockquote>
+<p><strong>2. 截取起止下标位置字符串</strong></p>
+<p>slice() 和 substring() 都是根据指定的起止下标位置来截取子字符串。</p>
+<p>它们都可以包含两个参数，第一个参数表示起始下标，第二个参数表示结束下标。</p>
+<pre><code class="language-js">var s = &quot;http://www.mysite.cn/index.html&quot;;
+var a = s.indexOf(&quot;www&quot;); // 获取起始点的下标位置
+var b = s.indexOf(&quot;/&quot;, a); // 获取结束点的下标位置
+var c = s.substring(a, b); // 返回字符串 www.mysite.cn
+var d = s.slice(a, b); // 返回字符串 www.mysite.cn
+</code></pre>
+<ul>
+<li>
+<p>截取的字符串包含第一个参数所指定的字符，结束点不被截取，即不包含在字符串中。</p>
+</li>
+<li>
+<p>第二个参数如果省略，表示截取到结尾的所有字符串。</p>
+</li>
+<li>
+<p>如果第一个参数值比第二个参数值大，substring() 能够在执行截取之前先交换两个参数，而 slice() 则被视为无效，并返回空字符串。</p>
+</li>
+</ul>
+<p>下面代码比较 substring() 和 slice() 用法不用：</p>
+<pre><code class="language-js">var s = &quot;http://www.mysite.cn/index.html&quot;;
+var a = s.indexOf(&quot;www&quot;);
+var b = s.indexOf(&quot;/&quot;, a);
+var c = s.substring(b, a); // &quot;www.mysite.cn&quot;
+var d = s.slice(b, a); // &quot;&quot;
+</code></pre>
+<ul>
+<li>
+<p>当起点和结束点的值大小无法确定时，使用 substring() 方法更合适。</p>
+</li>
+<li>
+<p>如果参数值为负值，slice() 能够把负号解释为从右侧开始定位，这与 Array 的 slice() 方法相同，但是 substring() 会视其为无效，并返回空字符串。</p>
+</li>
+</ul>
+<p>下面代码比较 substring() 和 slice() 用法不同：</p>
+<pre><code class="language-js">var s = &quot;http://www.mysite.cn/index.html&quot;;
+var a = s.indexOf(&quot;www&quot;);
+var b = s.indexOf(&quot;/&quot;, a);
+var l = s.length;
+var c = s.substring(a - l, b - l); // &quot;&quot;
+var d = s.slice(a - l, b - l); // &quot;www.mysite.cn&quot;
+</code></pre>
+<h3>字符串替换</h3>
+<p>使用字符串的 replace() 可以替换指定的子字符串。</p>
+<p>下面使用 replace() 替换字符串中的 html 为 htm：</p>
+<pre><code class="language-js">var s = &quot;http://www.mysite.cn/index.html&quot;;
+var b = s.replace(/html/, &quot;htm&quot;);
+console.log(b); // &quot;http://www.mysite.cn/index.htm&quot;
+</code></pre>
+<p>该方法第一个参数是一个正则表达式对象，也可以传递字符串。</p>
+<pre><code class="language-js">var b = s.replace(&quot;html&quot;, &quot;htm&quot;);
+</code></pre>
+<p>下面代码在使用 replace() 时，灵活使用替换函数修改匹配字符串</p>
+<pre><code class="language-js">var s = &quot;http://www.mysite.cn/index.html&quot;;
+function f(x) {
+  return x.substring(x.lastIndexOf(&quot;.&quot;) + 1, x.length - 1);
+}
+var b = s.replace(/(html)/, f(s));
+console.log(b); // &quot;http://www.mysite.cn/index.htm&quot;
+</code></pre>
+<p>在 replace() 中约定了一个特殊的字符（$），这个美元符号如果附加一个序号就表示对正则表达式中匹配的子表达式存储的字符串进行引用。</p>
+<pre><code class="language-js">var s = &quot;JavaScript&quot;;
+var b = s.replace(/(Java)(Script)/, &quot;$2-$1&quot;); // 交换位置
+console.log(b); // 'Script-Java'
+</code></pre>
+<p><strong>replace() 方法第二个参数中特殊字符</strong></p>
+<table>
+<thead>
+<tr>
+<th>约定字符串</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$1、$2、...、$99</td>
+<td>与正则表达式中的第 1 ~ 99 个子表达式相匹配的文本</td>
+</tr>
+<tr>
+<td>$&amp;(美元符号 + 连字符)</td>
+<td>与正则表达式相匹配的子字符串</td>
+</tr>
+<tr>
+<td>$`(美元符号 + 切换只能键)</td>
+<td>位于匹配子字符串左侧的文本</td>
+</tr>
+<tr>
+<td><code>$'</code>(美元符号 + 单引号)</td>
+<td>位于匹配子字符串右侧的文本</td>
+</tr>
+<tr>
+<td>$$</td>
+<td>表示$符号</td>
+</tr>
+</tbody>
+</table>
+<p>重复字符串：</p>
+<pre><code class="language-js">var s = &quot;JavaScript&quot;;
+var b = s.replace(/.*/, &quot;$&amp;$&amp;&quot;); // &quot;JavaScriptJavaScript&quot;
+</code></pre>
+<p>由于字符串 “$&amp;” 在 replace() 中被约定为正则表达式所匹配的文本，利用它可以重复引用匹配的文本，从而实现字符串重复显示效果，其中正则表达式 <code>/.*/</code> 表示完全匹配字符串。</p>
+<p>对于匹配文本左侧的文本完全引用：</p>
+<pre><code class="language-js">var s = &quot;JavaScript&quot;;
+var b = s.replace(/Script/, &quot;$&amp; != $'&quot;); // 返回字符串 &quot;JavaScript != Java&quot;
+</code></pre>
+<p>对于匹配文本右侧的文本完全引用：</p>
+<pre><code class="language-js">var s = &quot;JavaScript&quot;;
+var b = s.replace(/Java/, &quot;$&amp;$' is &quot;); // 返回字符串 &quot;JavaScript is Script&quot;
+</code></pre>
+<p>其中字符 “$&amp;” 代表匹配子字符串 “Java”，字符 <code>$'</code>代表匹配文本右侧文本 “Script”，然后把<code>&quot;$&amp;$' is &quot;</code> 所表示的字符串 “JavaScript is” 替换，</p>
+<h3>字符串大小转换</h3>
+<ul>
+<li>
+<p><code>toLocaleLowerCase()</code>: 把字符串转换成小写</p>
+</li>
+<li>
+<p><code>toLocaleUpperCase()</code>: 把字符串转换成大写</p>
+</li>
+<li>
+<p><code>toLowerCase()</code>: 把字符串转换成小写</p>
+</li>
+<li>
+<p><code>toUpperCase()</code>: 把字符串转换成大写</p>
+</li>
+</ul>
+<p>下面代码把字符串全部转换为大写形式：</p>
+<pre><code class="language-js">var s = &quot;JavaScript&quot;;
+console.log(s.toUpperCase()); // &quot;JAVASCRIPT&quot;
+</code></pre>
+<h3>字符串比较</h3>
+<p>JavaScript 能够根据字符的 Unicode 编码大小逐位比较字符串大小。</p>
+<p>小写字母 a 的编码为 97，大写字母 A 的编码为 65，则字符 “a” 就大于 “A”。</p>
+<pre><code class="language-js">console.log(&quot;a&quot; &gt; &quot;A&quot;); // true
+</code></pre>
+<p>使用字符串的 <code>localeCompare()</code> 方法，可以根据本地约定顺序来比较两个字符串的大小。</p>
+<p><code>localeCompare()</code> 包含一个参数，指定要比较的目标字符串，如果当前字符串小于参数字符串，则返回小于 0，如果大于参数字符串，则返回大于 0 的数；如果相等，或与本地排序约定没有区别，则该方法返回 0。</p>
+<p>下面代码把字符串 “JavaScript” 转换为数组，然后按本地字符顺序进行排序：</p>
+<pre><code class="language-js">var s = &quot;JavaScript&quot;;
+var s = s.split(&quot;&quot;);
+var s1 = s.sort(function (a, b) {
+  return a.localeCompare(b);
+});
+a = s1.join(&quot;&quot;);
+console.log(a); // &quot;aaciJprStv&quot;
+</code></pre>
+<h3>字符串与数组转换</h3>
+<p>如果参数为空字符串，则 split() 能够按单个字符进行切分，然后返回与字符串等长的的数组。</p>
+<pre><code class="language-js">var s = &quot;JavaScript&quot;;
+var a = s.split(&quot;&quot;);
+console.log(s.length); // 10
+console.log(a.length); // 10
+</code></pre>
+<p>如果参数为空，则 split() 能够把整个字符串作为一个元素的数组返回</p>
+<pre><code class="language-js">var s = &quot;JavaScript&quot;;
+var s = s.split();
+console.log(a.constructor == Array); // true，说明是 Array 实例
+console.log(a.length); // 1
+</code></pre>
+<p>如果参数为正则表达式，则 split() 能够以匹配文本作为分隔符进行切分。</p>
+<pre><code class="language-js">var s = &quot;a2b3c4d5e678f12g&quot;;
+var a = s.split(/\d+/); // 把以匹配的数字分隔符来切分字符串
+console.log(a); //  ['a', 'b', 'c', 'd', 'e', 'f', 'g']
+console.log(a.length); // 7
+</code></pre>
+<p>如果正则表达式匹配的文本位于字符串的边沿，则 split() 也执行切分操作，且为数组添加一个空元素。</p>
+<pre><code class="language-js">var s = &quot;122a2b3c4d5e678f12g&quot;;
+var a = s.split(/\d+/);
+console.log(a); // ['', 'a', 'b', 'c', 'd', 'e', 'f', 'g']
+console.log(a.length);
+</code></pre>
+<p>如果在字符串中指定的分隔符没有找到，则返回一个包含整个字符串的数组。</p>
+<p>split() 支持第二个参数，该参数是一个可选的整数，用来指定返回数组的最大长度。</p>
+<p>如果设置了该参数，则返回的数组长度不会大于这个参数指定的值，如果没有设置该参数，那么整个字符串都被分割，不会考虑数组长度。</p>
+<pre><code class="language-js">var s = &quot;JavaScript&quot;;
+var a = s.split(&quot;&quot;, 4);
+console.log(a); // ['J', 'a', 'v', 'a']
+</code></pre>
+<p>如果想使返回的数组包含分隔符或分隔符的一个或多个部分，可以使用带子表达式的正则表达式来实现。</p>
+<pre><code class="language-js">var s = &quot;aa2bb3cc4dd5e678f12g&quot;;
+var a = s.split(/(\d)/);
+console.log(a); //  ['aa', '2', 'bb', '3', 'cc', '4', 'dd', '5', 'e', '6', '', '7', '', '8', 'f', '1', '', '2', 'g']
+</code></pre>
+ 
+    </div>
+  </div>
+  <div class="article__wrapper_footer">
+    <a class="article__wrapper_footer-left " href="/articles/124.html"><svg t="1713708729970" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8437" width="48" height="48"><path d="M409.272947 512.57741l403.237243 403.237243a63.349415 63.349415 0 1 1-89.622481 89.622482L274.839224 557.324726a63.349415 63.349415 0 0 1 0-89.494632L722.951633 19.717685a63.349415 63.349415 0 1 1 89.494633 89.622482L409.336872 512.57741z" p-id="8438" fill="#8a8a8a"></path></svg></a>
+    <a class="article__wrapper_footer-right " href="/articles/126.html"><svg t="1713708697355" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8093" width="48" height="48"><path d="M855.123 517.004c0 8.245-3.167 15.51-9.503 21.823L402.999 981.47c-6.336 6.336-13.625 9.477-21.869 9.477s-15.51-3.142-21.845-9.477L311.8 933.96c-6.336-6.336-9.502-13.6-9.502-21.845 0-8.222 3.167-15.51 9.502-21.845l373.29-373.29-373.293-373.267c-6.336-6.336-9.502-13.6-9.502-21.845s3.167-15.533 9.503-21.869l47.484-47.484c6.336-6.336 13.6-9.502 21.845-9.502s15.533 3.167 21.869 9.503l442.621 442.622c6.334 6.334 9.503 13.625 9.503 21.869z" fill="#8a8a8a" p-id="8094"></path></svg></a>
+  </div>
+  <a class="article__wrapper_index" href="/articles/"><svg t="1713708857338" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="9656" width="48" height="48"><path d="M549.61981 133.022476l319.683047 203.605334A70.851048 70.851048 0 0 1 902.095238 396.361143v434.883047A70.89981 70.89981 0 0 1 831.146667 902.095238h-282.819048l0.024381-218.112h-71.826286v218.087619L192.853333 902.095238A70.89981 70.89981 0 0 1 121.904762 831.24419V390.241524c0-24.527238 12.678095-47.299048 33.54819-60.220953l318.659048-197.485714a70.972952 70.972952 0 0 1 75.50781 0.487619zM828.952381 828.952381V397.214476L511.488 195.047619 195.047619 391.119238V828.952381h211.309714v-216.551619h212.187429v216.527238L828.952381 828.952381z" p-id="9657" fill="#707070"></path></svg></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
+  <script src="../assets/js/articles-detail.js"></script>
+  <script>
+    hljs.highlightAll();
+  </script>
+</body>
+</html>
+    

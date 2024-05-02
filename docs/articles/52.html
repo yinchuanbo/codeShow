@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title> 一些 css 语法解释</title>
+    <meta charset="utf-8">
+    <meta name="description" content="This is a page">
+    <meta name="keywords" content="page, sample">
+    <meta name="author" content="None">
+    <link rel="icon" sizes="any" mask href="../assets/images/ico6.svg" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <link rel="stylesheet" href="../assets/css/articles.css">
+</head>
+<body>
+  <div class="article__wrapper_left">
+    <div class="article__wrapper_left-mulu">目录</div>
+    <ul class="articles__list"><li class="">
+          <a href="/articles/53.html">
+            CSS网格布局
+          </a>
+        </li><li class="">
+          <a href="/articles/54.html">
+            scrollIntoview
+          </a>
+        </li><li class="">
+          <a href="/articles/55.html">
+            使用 JavaScript 加载字体
+          </a>
+        </li><li class="">
+          <a href="/articles/56.html">
+            使用 JavaScript 提升排版品质
+          </a>
+        </li><li class="">
+          <a href="/articles/57.html">
+            背景图片语法
+          </a>
+        </li><li class="">
+          <a href="/articles/58.html">
+            盒阴影
+          </a>
+        </li><li class="">
+          <a href="/articles/59.html">
+            渐变
+          </a>
+        </li><li class="">
+          <a href="/articles/60.html">
+            为嵌入图片和元素添加样式
+          </a>
+        </li><li class="">
+          <a href="/articles/61.html">
+            使用表格显示属性实现布局
+          </a>
+        </li><li class="">
+          <a href="/articles/62.html">
+            Index
+          </a>
+        </li></ul>
+  </div>
+  <div class="article__wrapper_sidebar">
+    <a href="/" target="_blank"><svg t="1714001835347" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4298" width="48" height="48"><path d="M147.904 304.128l301.866667-179.541333a128 128 0 0 1 131.712 0.512l295.466666 178.88A128 128 0 0 1 938.666667 413.482667V810.666667a128 128 0 0 1-128 128H213.333333a128 128 0 0 1-128-128V414.144a128 128 0 0 1 62.570667-110.016z m43.626667 73.344A42.666667 42.666667 0 0 0 170.666667 414.144V810.666667a42.666667 42.666667 0 0 0 42.666666 42.666666h597.333334a42.666667 42.666667 0 0 0 42.666666-42.666666V413.482667a42.666667 42.666667 0 0 0-20.565333-36.501334l-295.466667-178.88a42.666667 42.666667 0 0 0-43.925333-0.170666l-301.866667 179.541333z" fill="#8a919f" p-id="4299"></path><path d="M405.333333 469.333333h213.333334a42.666667 42.666667 0 1 1 0 85.333334H405.333333a42.666667 42.666667 0 1 1 0-85.333334z m0 85.333334a42.666667 42.666667 0 1 0 0-85.333334h213.333334a42.666667 42.666667 0 1 0 0 85.333334H405.333333z" fill="#8a919f" p-id="4300"></path></svg></a>
+    <a href="/tools/" target="_blank"><svg t="1714002003458" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6911" width="48" height="48"><path d="M817.87 556.31h-63.58v-66.24A42.27 42.27 0 0 0 712 447.8h-84.81a42.27 42.27 0 0 0-42.27 42.27v66.24H436.57v-66.24a42.27 42.27 0 0 0-42.27-42.27h-84.83a42.27 42.27 0 0 0-42.27 42.27v66.24h-61.83A22.39 22.39 0 0 0 183 578.7a22.39 22.39 0 0 0 22.39 22.39h61.81v65.55a42.27 42.27 0 0 0 42.27 42.27h84.83a42.27 42.27 0 0 0 42.27-42.27v-65.55h148.36v65.55a42.27 42.27 0 0 0 42.27 42.27H712a42.27 42.27 0 0 0 42.27-42.27v-65.55h63.58a22.39 22.39 0 0 0 22.39-22.39 22.39 22.39 0 0 0-22.37-22.39z m-438.64 95.26h-54.69V505.14h54.69z m317.72 0h-54.69V505.14H697z" p-id="6912" fill="#8a919f"></path><path d="M823 202.58h-90.81v-63.09a71.88 71.88 0 0 0-71.88-71.88H363.19a71.88 71.88 0 0 0-71.88 71.88v63.08h-90.12A137.17 137.17 0 0 0 64 339.75v479a137.17 137.17 0 0 0 137.19 137.14H823a137.17 137.17 0 0 0 137.19-137.17v-479A137.17 137.17 0 0 0 823 202.58z m-474.36-54.1A23.52 23.52 0 0 1 372.17 125h279.16a23.52 23.52 0 0 1 23.52 23.52v54.1h-326.2z m554.23 673.31a76.76 76.76 0 0 1-76.76 76.76h-628a76.76 76.76 0 0 1-76.76-76.76V336.67a76.76 76.76 0 0 1 76.76-76.76h628a76.76 76.76 0 0 1 76.76 76.76z" p-id="6913" fill="#8a919f"></path></svg></a>
+  </div>
+  <div class="article__wrapper">
+    <div class="article__wrapper__main">
+      <div class="article__wrapper_header">
+        <h1> 一些 css 语法解释</h1>
+        <span class="articles__home_time">2023/09/17 · YinHao</span>
+      </div>
+      <ol>
+<li><strong>filter: invert(1)</strong></li>
+</ol>
+<p>是一种 CSS 滤镜效果，它用于将元素的颜色进行反转，即将亮色变为暗色，暗色变为亮色。具体而言，它将元素的亮度值进行反转，使得黑色变为白色，白色变为黑色，其他颜色也会相应地进行反转。这个滤镜效果常用于创建黑暗主题、反色效果或者增强视觉对比度。</p>
+<ol start="2">
+<li><strong>-webkit-autofill</strong></li>
+</ol>
+<pre><code class="language-css">.contac__input: -webkit-autofill {
+  transition: background-color 6000s, color 6000s;
+}
+</code></pre>
+<p>这段代码是用于自动填充表单输入框的样式设置。 <code>-webkit-autofill</code> 是一个 Webkit 浏览器的伪类选择器，用于匹配自动填充的表单字段。</p>
+<p><code>transition: background-color 6000s, color 6000s;</code> 是一个过渡效果的设置，它定义了在 6000 秒内发生的过渡效果。具体来说，它定义了在自动填充表单字段时，背景颜色和文字颜色的过渡效果。</p>
+<p>这段代码的作用是为自动填充表单字段提供过渡效果，使得填充的背景颜色和文字颜色能够平滑地改变，提升用户体验。</p>
+<ol start="3">
+<li><strong>placeholder-shown</strong></li>
+</ol>
+<pre><code class="language-css">.contact__input:not(:placeholder-shown).contact__input:not(:focus)
+  + .contact__label {
+  opacity: 1;
+  top: -16px;
+}
+</code></pre>
+<p>这段代码是用于在表单输入框中输入内容时，控制相邻标签的样式变化。具体来说：</p>
+<p><code>.contact__input:not(:placeholder-shown).contact__input:not(:focus)</code> 选择器表示选中没有占位符文本且没有获得焦点的输入框。</p>
+<p><code>+ .contact__label</code> 表示选中与上述选择器相邻的类名为 <code>.contact__label</code> 的元素。</p>
+<p><code>opacity: 1;</code> 设置透明度为 1，即完全不透明。</p>
+<p><code>top: -16px</code> 将元素的位置向上移动 16 像素。</p>
+<p>这段代码的作用是在用户在输入框中输入内容时，将相邻的标签元素显示出来，并将其位置向上移动 16 像素。通常用于实现输入框中的占位标签在输入内容时的动态效果，提升用户体验。</p>
+<ol start="4">
+<li><strong>margin-inline</strong></li>
+</ol>
+<pre><code class="language-css">.contact__data {
+  margin-inline: auto;
+}
+</code></pre>
+<p>这段代码设置了类名为 <code>.contact__data</code> 的元素的水平居中对齐。具体来说：</p>
+<p><code>margin-inline: auto;</code> 是一个 CSS 属性，用于设置元素的水平外边距。 <code>auto</code> 值表示自动计算外边距，使元素在水平方向上居中对齐。</p>
+<p>这段代码的作用是将类名为 <code>.contact__data</code> 的元素在水平方向上居中对齐。通常用于在布局中使元素水平居中，以提升页面的美观性和可读性。</p>
+<ol start="5">
+<li><strong>padding-block</strong></li>
+</ol>
+<p><code>padding-block: 5.5rem</code> 是一个 CSS 属性，用于设置元素的内边距（padding）。具体来说：</p>
+<p><code>padding-block</code> 是一个逻辑属性，它根据文本方向自动映射到 <code>padding-top</code> 和 <code>padding-bottom</code> 属性。</p>
+<p><code>5.5rem</code> 是一个长度值，表示以根元素的字体尺寸（root em）为单位的内边距大小。</p>
+<p>这段代码的作用是设置元素的上下内边距为 5.5 倍根元素字体尺寸的大小。通过调整元素的内边距，可以控制元素与其内容之间的间距，从而影响元素的布局和外观。</p>
+<ol start="6">
+<li><strong>inset: 0</strong></li>
+</ol>
+<pre><code class="language-css">.nav {
+  width: 72px;
+  height: max-content;
+  position: fixed;
+  inset: 0;
+  margin: auto 0;
+}
+</code></pre>
+<p><code>inset: 0;</code> 是一个 CSS 属性，用于设置元素的定位偏移量。具体来说：</p>
+<p><code>inset</code> 是一个逻辑属性，它可以同时设置 <code>top</code> 、 <code>right</code> 、 <code>bottom</code> 和 <code>left</code> 四个方向的偏移量。</p>
+<p><code>0</code> 表示将元素的上、右、下和左四个方向的偏移量都设置为 0。</p>
+<p>这段代码的作用是将类名为 <code>.nav</code> 的元素固定定位于父容器中，并将其上、右、下和左四个方向的偏移量都设置为 0，即紧贴父容器的上、右、下和左边缘。</p>
+<p>通过使用 <code>inset: 0;</code> ，可以实现将元素完全填充到父容器中，使其充满整个容器的效果。这在创建全屏导航菜单等布局中非常有用。</p>
+ 
+    </div>
+  </div>
+  <div class="article__wrapper_footer">
+    <a class="article__wrapper_footer-left " href="/articles/51.html"><svg t="1713708729970" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8437" width="48" height="48"><path d="M409.272947 512.57741l403.237243 403.237243a63.349415 63.349415 0 1 1-89.622481 89.622482L274.839224 557.324726a63.349415 63.349415 0 0 1 0-89.494632L722.951633 19.717685a63.349415 63.349415 0 1 1 89.494633 89.622482L409.336872 512.57741z" p-id="8438" fill="#8a8a8a"></path></svg></a>
+    <a class="article__wrapper_footer-right " href="/articles/53.html"><svg t="1713708697355" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8093" width="48" height="48"><path d="M855.123 517.004c0 8.245-3.167 15.51-9.503 21.823L402.999 981.47c-6.336 6.336-13.625 9.477-21.869 9.477s-15.51-3.142-21.845-9.477L311.8 933.96c-6.336-6.336-9.502-13.6-9.502-21.845 0-8.222 3.167-15.51 9.502-21.845l373.29-373.29-373.293-373.267c-6.336-6.336-9.502-13.6-9.502-21.845s3.167-15.533 9.503-21.869l47.484-47.484c6.336-6.336 13.6-9.502 21.845-9.502s15.533 3.167 21.869 9.503l442.621 442.622c6.334 6.334 9.503 13.625 9.503 21.869z" fill="#8a8a8a" p-id="8094"></path></svg></a>
+  </div>
+  <a class="article__wrapper_index" href="/articles/"><svg t="1713708857338" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="9656" width="48" height="48"><path d="M549.61981 133.022476l319.683047 203.605334A70.851048 70.851048 0 0 1 902.095238 396.361143v434.883047A70.89981 70.89981 0 0 1 831.146667 902.095238h-282.819048l0.024381-218.112h-71.826286v218.087619L192.853333 902.095238A70.89981 70.89981 0 0 1 121.904762 831.24419V390.241524c0-24.527238 12.678095-47.299048 33.54819-60.220953l318.659048-197.485714a70.972952 70.972952 0 0 1 75.50781 0.487619zM828.952381 828.952381V397.214476L511.488 195.047619 195.047619 391.119238V828.952381h211.309714v-216.551619h212.187429v216.527238L828.952381 828.952381z" p-id="9657" fill="#707070"></path></svg></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
+  <script src="../assets/js/articles-detail.js"></script>
+  <script>
+    hljs.highlightAll();
+  </script>
+</body>
+</html>
+    

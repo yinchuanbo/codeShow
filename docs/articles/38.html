@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>链模式</title>
+    <meta charset="utf-8">
+    <meta name="description" content="This is a page">
+    <meta name="keywords" content="page, sample">
+    <meta name="author" content="None">
+    <link rel="icon" sizes="any" mask href="../assets/images/ico6.svg" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <link rel="stylesheet" href="../assets/css/articles.css">
+</head>
+<body>
+  <div class="article__wrapper_left">
+    <div class="article__wrapper_left-mulu">目录</div>
+    <ul class="articles__list"><li class="">
+          <a href="/articles/39.html">
+            当你的网站有新内容，如何立即通知你的用户呢？
+          </a>
+        </li><li class="">
+          <a href="/articles/40.html">
+            裁剪的3种方式，CSS 如何隐藏移动端的滚动条？
+          </a>
+        </li><li class="">
+          <a href="/articles/41.html">
+            属性的 getter 和 setter
+          </a>
+        </li><li class="">
+          <a href="/articles/42.html">
+            原生的延迟加载支持
+          </a>
+        </li><li class="">
+          <a href="/articles/43.html">
+            视频加载
+          </a>
+        </li><li class="">
+          <a href="/articles/44.html">
+            加载注意事项
+          </a>
+        </li><li class="">
+          <a href="/articles/45.html">
+            网站优化之静态资源优化
+          </a>
+        </li><li class="">
+          <a href="/articles/46.html">
+            资源优先级
+          </a>
+        </li><li class="">
+          <a href="/articles/47.html">
+            书写高性能的代码
+          </a>
+        </li><li class="">
+          <a href="/articles/48.html">
+            构建优化
+          </a>
+        </li></ul>
+  </div>
+  <div class="article__wrapper_sidebar">
+    <a href="/" target="_blank"><svg t="1714001835347" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4298" width="48" height="48"><path d="M147.904 304.128l301.866667-179.541333a128 128 0 0 1 131.712 0.512l295.466666 178.88A128 128 0 0 1 938.666667 413.482667V810.666667a128 128 0 0 1-128 128H213.333333a128 128 0 0 1-128-128V414.144a128 128 0 0 1 62.570667-110.016z m43.626667 73.344A42.666667 42.666667 0 0 0 170.666667 414.144V810.666667a42.666667 42.666667 0 0 0 42.666666 42.666666h597.333334a42.666667 42.666667 0 0 0 42.666666-42.666666V413.482667a42.666667 42.666667 0 0 0-20.565333-36.501334l-295.466667-178.88a42.666667 42.666667 0 0 0-43.925333-0.170666l-301.866667 179.541333z" fill="#8a919f" p-id="4299"></path><path d="M405.333333 469.333333h213.333334a42.666667 42.666667 0 1 1 0 85.333334H405.333333a42.666667 42.666667 0 1 1 0-85.333334z m0 85.333334a42.666667 42.666667 0 1 0 0-85.333334h213.333334a42.666667 42.666667 0 1 0 0 85.333334H405.333333z" fill="#8a919f" p-id="4300"></path></svg></a>
+    <a href="/tools/" target="_blank"><svg t="1714002003458" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6911" width="48" height="48"><path d="M817.87 556.31h-63.58v-66.24A42.27 42.27 0 0 0 712 447.8h-84.81a42.27 42.27 0 0 0-42.27 42.27v66.24H436.57v-66.24a42.27 42.27 0 0 0-42.27-42.27h-84.83a42.27 42.27 0 0 0-42.27 42.27v66.24h-61.83A22.39 22.39 0 0 0 183 578.7a22.39 22.39 0 0 0 22.39 22.39h61.81v65.55a42.27 42.27 0 0 0 42.27 42.27h84.83a42.27 42.27 0 0 0 42.27-42.27v-65.55h148.36v65.55a42.27 42.27 0 0 0 42.27 42.27H712a42.27 42.27 0 0 0 42.27-42.27v-65.55h63.58a22.39 22.39 0 0 0 22.39-22.39 22.39 22.39 0 0 0-22.37-22.39z m-438.64 95.26h-54.69V505.14h54.69z m317.72 0h-54.69V505.14H697z" p-id="6912" fill="#8a919f"></path><path d="M823 202.58h-90.81v-63.09a71.88 71.88 0 0 0-71.88-71.88H363.19a71.88 71.88 0 0 0-71.88 71.88v63.08h-90.12A137.17 137.17 0 0 0 64 339.75v479a137.17 137.17 0 0 0 137.19 137.14H823a137.17 137.17 0 0 0 137.19-137.17v-479A137.17 137.17 0 0 0 823 202.58z m-474.36-54.1A23.52 23.52 0 0 1 372.17 125h279.16a23.52 23.52 0 0 1 23.52 23.52v54.1h-326.2z m554.23 673.31a76.76 76.76 0 0 1-76.76 76.76h-628a76.76 76.76 0 0 1-76.76-76.76V336.67a76.76 76.76 0 0 1 76.76-76.76h628a76.76 76.76 0 0 1 76.76 76.76z" p-id="6913" fill="#8a919f"></path></svg></a>
+  </div>
+  <div class="article__wrapper">
+    <div class="article__wrapper__main">
+      <div class="article__wrapper_header">
+        <h1>链模式</h1>
+        <span class="articles__home_time">NaN/NaN/NaN · YinHao</span>
+      </div>
+      <blockquote>
+<p>通过在对象方法中将当前对象返回，实现对同一个对象多个方法的链式调用。</p>
+</blockquote>
+<h3>找位助手</h3>
+<pre><code class="language-js">var A = function () {
+  return A.fn();
+};
+A.fn = A.prototype = {};
+</code></pre>
+<h3>获取元素</h3>
+<pre><code class="language-js">var A = function (selector) {
+  return A.fn.init(selector);
+};
+A.fn = A.prototype = {
+  init: function (selector) {
+    return document.getElementById(selector);
+  },
+  length: 2,
+  size: function () {
+    return this.length;
+  },
+};
+console.log(A(&quot;demo&quot;));
+</code></pre>
+<h3>一个大问题</h3>
+<p>现在，我还想让 A 对象返回的结果还能够拥有 A.fn 中的方法，如 size 等，现在的设计是办不到的，</p>
+<pre><code class="language-js">var A = function (selector) {
+  return A.fn.init(selector);
+};
+A.fn = A.prototype = {
+  init: function (selector) {
+    // this === A.fn
+    // 作为当前对象的属性值保存
+    this[0] = document.getElementById(selector);
+    this.length = 1; // 矫正 length
+    return this;
+  },
+  length: 2,
+  size: function () {
+    return this.length;
+  },
+};
+// 使用
+var demo = A(&quot;demo&quot;);
+console.log(demo);
+console.log(A(&quot;demo&quot;).size()); // 1
+</code></pre>
+<p>奇怪现象：后获取的 test 元素将先获取的 demo 元素覆盖了</p>
+<pre><code class="language-js">var test = A(&quot;test&quot;);
+console.log(test);
+</code></pre>
+<h3>覆盖获取</h3>
+<p>要解决这个问题，直接使用 new 关键字复制创建即可，不过此时调用 size 方法就会报错。</p>
+<pre><code class="language-js">var A = function (selector) {
+  return new A.fn.init(selector);
+};
+console.log(A(&quot;demo&quot;));
+console.log(A(&quot;test&quot;));
+console.log(A(&quot;demo&quot;).size()); // TypeError
+</code></pre>
+<p>上面的问题是由于 this 指向的改变造成的，加了 new 之后，this 指向 A.fn.A.init 函数。</p>
+<p><strong>A.fn.A.init 如何得到的？</strong></p>
+<p>如何表示 <code>new A.fn.init(selector)</code> 的构造函数呢？可以有以下两种方式：01 <code>A.fn.init</code> 或 02 <code>A.init</code>，将 <code>A.init</code> 带入到 <code>A.fn.init</code> 中的 init，可以得到 <code>A.fn.A.init</code>。</p>
+<h3>对比 jQuery</h3>
+<pre><code class="language-js">console.log(A(&quot;demo&quot;));
+console.log($(&quot;#demo&quot;));
+</code></pre>
+<p>发现他们的原型有些不同：</p>
+<p><img src="../assets/images/articles/38/01.jpg" alt=""></p>
+<p>第一个 <code>__proto__</code> 为 <code>A.fn.A.init</code></p>
+<p>第二个 <code>__proto__</code> 为 <code>jQuery[0]</code></p>
+<p>解决这个问题的方式很简单也很巧妙，只要将构造函数的原型指向一个已存在的对象即可。</p>
+<pre><code class="language-js">A.fn.init.prototype = A.fn;
+</code></pre>
+<p><img src="../assets/images/articles/38/02.jpg" alt=""></p>
+<p>果然是 Object 了，不过 jQuery 中确实是 jQuery 啊？？</p>
+<p>这是因为实例化的对象是在构造函数执行时创建的，所以 constructor 指向的就是 <code>A.fn.A.init</code> 构造函数，但是这个对象在执行完毕之后就 ‘不存在’ 了，所以我们为了加强 constructor，想像 jQuery 一样，为了让 <code>__proto__</code> 指向 A 对象，可以这么做：</p>
+<pre><code class="language-js">var A = function (selector) {
+  return new A.fn.init(selector);
+};
+A.fn = A.prototype = {
+  // 强化构造器
+  constructor: A,
+  init: function (selector) {
+    console.log(this.constructor);
+    /*
+      输出结果：
+      function (selector) {
+        return new A.fn.init(selector);
+      }
+    */
+  },
+  //...
+};
+A.fn.init.prototype = A.fn;
+</code></pre>
+<p><img src="../assets/images/articles/38/03.jpg" alt=""></p>
+<p>此时，我们 A 框架的 <code>__proto__</code> 为 A 了，并且 size 方法也可以正常使用了</p>
+<pre><code class="language-js">console.log(A(&quot;demo&quot;).size());
+</code></pre>
+<h3>丰富元素的获取</h3>
+<pre><code class="language-js">var A = function (selector) {
+  return new A.fn.init(selector);
+};
+A.fn = A.prototype = {
+  // 强化构造器
+  constructor: A,
+  init: function (selector, context) {
+    // 获取元素的长度
+    this.lenth = 0;
+    // 默认获取元素的上下文为 document
+    context = context || document;
+    // 如果是 id 的选择符，按位非将 -1 转化为 0，~-1 === 0
+    if (~selector.indexOf(&quot;#&quot;)) {
+      // 截取 id 并选择
+      this[0] = document.getElementById(selector.slice(1));
+      this.length = 1;
+    } else {
+      // 如果是元素名称
+      var doms = context.getElementsByTagName(selector),
+        i = 0,
+        len = doms.length;
+      for (; i &lt; len; i++) {
+        this[i] = doms[i];
+      }
+      // 校正长度
+      this.length = len;
+    }
+    // 保存上下文
+    this.context = context;
+    // 保存选择符
+    this.selector = selector;
+    // 返回对象
+    return this;
+  },
+  //...
+};
+A.fn.init.prototype = A.fn;
+</code></pre>
+<h3>数组与对象</h3>
+<p>测试的时候发现控制台：jQuery 获取的元素更像一个数组，而 A 框架返回的更像是一个对象。</p>
+<p><img src="../assets/images/articles/38/04.jpg" alt=""></p>
+<p>由于 js 是弱类型的语言，并且数组、对象、函数都被看成是对象的实例，所以 js 中并没有一个纯粹的数组类型。而且 js 引擎的视线也没有做严格的校验，也是基于对象实现的。一些浏览器解析引擎在判断对象是否是数组的时候不仅仅判断其有没有 length 属性，可否通过 ‘[索引值]’ 方式访问元素，还会判断其是否具有数组方法来确定是否要用数组的形式展现，所以我们只需要在 A.fn 中添加几个数组常用的方法来增强数组特性就可以解决问题了。</p>
+<pre><code class="language-js">A.fn = A.prototype = {
+  //...
+  // 增强数组
+  push: [].push,
+  sort: [].sort,
+  splice: [].splice,
+};
+</code></pre>
+<p>测试结果：</p>
+<p><img src="../assets/images/articles/38/05.jpg" alt=""></p>
+<h3>方法拓展</h3>
+<pre><code class="language-js">// 对象拓展
+A.extend = A.fn.extend = function () {
+  var i = 1,
+    len = arguments.length,
+    target = arguments[0],
+    j;
+  // 如果只传一个参数
+  if (i === len) {
+    // 源对象为当前对象
+    target = this;
+    // i 从 0 开始计数
+    i--;
+  }
+  // 遍历参数中的拓展对象
+  for (; i &lt; len; i++) {
+    for (j in arguments[i]) {
+      target[j] = arguments[i][j];
+    }
+  }
+  // 返回源对象
+  return target;
+};
+</code></pre>
+<ul>
+<li>测试用例</li>
+</ul>
+<pre><code class="language-js">// 拓展一个对象
+var demo = A.extend(
+  {
+    first: 1,
+  },
+  {
+    second: 2,
+  },
+  {
+    third: 3,
+  }
+);
+console.log(demo); // { first: 1, second: 2, third: 3 }
+// 拓展 A.fn 方式一
+A.extend(A.fn, { version: &quot;1.0&quot; });
+console.log(A(&quot;demo&quot;).version); // 1.0
+// 拓展 A.fn 方式二
+A.fn.extend({
+  getVersion: function () {
+    return this.version;
+  },
+});
+console.log(A(&quot;demo&quot;).getVersion()); // 1.0
+// 拓展 A 方式一
+A.extend(A, {
+  author: &quot;yinhao&quot;,
+});
+console.log(A.author); // yinhao
+// 拓展 A 方式二
+A.extend({
+  nickname: &quot;雨夜清河&quot;,
+});
+console.log(A.nickname); // 雨夜清河
+</code></pre>
+<h3>添加方法</h3>
+<pre><code class="language-js">A.fn.extend({
+  // 添加事件
+  on: (function () {
+    if (document.addEventListener) {
+      return function (type, fn) {
+        var i = this.length - 1;
+        for (; i &gt;= 0; i--) {
+          this[i].addEventListener(type, fn, false);
+        }
+        return this;
+      };
+    } else if (document.attchEvent) {
+      return function (type, fn) {
+        var i = this.length - 1;
+        for (; i &gt;= 0; i--) {
+          this[i].addEvent(&quot;on&quot; + type, fn);
+        }
+        return this;
+      };
+    } else {
+      return function (type, fn) {
+        var i = this.length - 1;
+        for (; i &gt;= 0; i--) {
+          this[i][&quot;on&quot; + type] = fn;
+        }
+        return this;
+      };
+    }
+  })(),
+});
+</code></pre>
+<pre><code class="language-js">A.extend({
+  // 将 ‘-’ 分割线转化为驼峰式，如 border-color =&gt; borderColor
+  camelCase: function (str) {
+    return str.replace(/\-(\w)/g, function (all, letter) {
+      return letter.toUpperCase();
+    });
+  },
+});
+</code></pre>
+<pre><code class="language-js">A.extend({
+  // 设置 css 样式
+  css: function () {
+    var arg = arguments,
+      len = arg.length;
+    if (this.length &lt; 1) {
+      return this;
+    }
+    // 只有一个参数时
+    if (len === 1) {
+      // 如果是字符串则为获取第一个元素的 css 样式
+      if (typeof arg[0] === &quot;string&quot;) {
+        // IE
+        if (this[0].currentStyle) {
+          return this[0].currentStyle[name];
+        } else {
+          return getComputedStyle(this[0], false)[name];
+        }
+      } else if (typeof arg[0] === &quot;object&quot;) {
+        // 为对象时则设置多个样式
+        for (var i in arg[0]) {
+          for (var j = this.length - 1; j &gt;= 0; j--) {
+            this[j].style[A.camelCase(i)] = arg[0][i];
+          }
+        }
+      }
+    } else if (len === 2) {
+      // 两个参数则设置一个样式
+      for (var j = this.length - 1; j &gt;= 0; j--) {
+        this[j].style[A.camelCase(0)] = arg[i];
+      }
+    }
+    return this;
+  },
+});
+</code></pre>
+<pre><code class="language-js">// 设置属性
+A.fn.extend({
+  attr: function () {
+    var arg = arguments,
+      len = arg.length;
+    if (this.length &lt; 1) {
+      return this;
+    }
+    // 如果一个参数
+    if (len === 1) {
+      // 为字符串则获取第一个元素属性
+      if (typeof arg[0] === &quot;string&quot;) {
+        return this[0].getAttribute(arg[0]);
+      } else if (typeof arg[0] === &quot;object&quot;) {
+        for (var i in arg[0]) {
+          for (var j = this.length - 1; j &gt;= 0; j--) {
+            this[j].setAttribute(i, arg[0][i]);
+          }
+        }
+      }
+    } else if (len === 2) {
+      for (var j = this.length - 1; j &gt;= 0; j--) {
+        this[j].setAttribute(arg[0], arg[1]);
+      }
+    }
+    return this;
+  },
+});
+</code></pre>
+<pre><code class="language-js">A.fn.extend({
+  html: function () {
+    var arg = arguments,
+      len = arg.length;
+    // 无参数则获取第一个元素的内容
+    if (len === 0) {
+      return this[0] &amp;&amp; this[0].innerHTML;
+    } else {
+      // 一个参数则设置每一个元素的内容
+      for (var i = this.length - 1; i &gt;= 0; i--) {
+        this[i].innerHTML = arg[0];
+      }
+    }
+    return this;
+  },
+});
+</code></pre>
+<h3>大功告成</h3>
+<pre><code class="language-js">A(&quot;div&quot;)
+  .css({
+    height: &quot;30px&quot;,
+    border: &quot;1px solid red&quot;,
+    &quot;background-color&quot;: &quot;red&quot;,
+  })
+  .attr(&quot;class&quot;, &quot;demo&quot;)
+  .html(&quot;add demo text&quot;)
+  .on(&quot;click&quot;, function () {
+    console.log(&quot;clicked&quot;);
+  });
+</code></pre>
+ 
+    </div>
+  </div>
+  <div class="article__wrapper_footer">
+    <a class="article__wrapper_footer-left " href="/articles/37.html"><svg t="1713708729970" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8437" width="48" height="48"><path d="M409.272947 512.57741l403.237243 403.237243a63.349415 63.349415 0 1 1-89.622481 89.622482L274.839224 557.324726a63.349415 63.349415 0 0 1 0-89.494632L722.951633 19.717685a63.349415 63.349415 0 1 1 89.494633 89.622482L409.336872 512.57741z" p-id="8438" fill="#8a8a8a"></path></svg></a>
+    <a class="article__wrapper_footer-right " href="/articles/39.html"><svg t="1713708697355" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8093" width="48" height="48"><path d="M855.123 517.004c0 8.245-3.167 15.51-9.503 21.823L402.999 981.47c-6.336 6.336-13.625 9.477-21.869 9.477s-15.51-3.142-21.845-9.477L311.8 933.96c-6.336-6.336-9.502-13.6-9.502-21.845 0-8.222 3.167-15.51 9.502-21.845l373.29-373.29-373.293-373.267c-6.336-6.336-9.502-13.6-9.502-21.845s3.167-15.533 9.503-21.869l47.484-47.484c6.336-6.336 13.6-9.502 21.845-9.502s15.533 3.167 21.869 9.503l442.621 442.622c6.334 6.334 9.503 13.625 9.503 21.869z" fill="#8a8a8a" p-id="8094"></path></svg></a>
+  </div>
+  <a class="article__wrapper_index" href="/articles/"><svg t="1713708857338" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="9656" width="48" height="48"><path d="M549.61981 133.022476l319.683047 203.605334A70.851048 70.851048 0 0 1 902.095238 396.361143v434.883047A70.89981 70.89981 0 0 1 831.146667 902.095238h-282.819048l0.024381-218.112h-71.826286v218.087619L192.853333 902.095238A70.89981 70.89981 0 0 1 121.904762 831.24419V390.241524c0-24.527238 12.678095-47.299048 33.54819-60.220953l318.659048-197.485714a70.972952 70.972952 0 0 1 75.50781 0.487619zM828.952381 828.952381V397.214476L511.488 195.047619 195.047619 391.119238V828.952381h211.309714v-216.551619h212.187429v216.527238L828.952381 828.952381z" p-id="9657" fill="#707070"></path></svg></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
+  <script src="../assets/js/articles-detail.js"></script>
+  <script>
+    hljs.highlightAll();
+  </script>
+</body>
+</html>
+    

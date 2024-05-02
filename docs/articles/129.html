@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>超有用的 Web API</title>
+    <meta charset="utf-8">
+    <meta name="description" content="This is a page">
+    <meta name="keywords" content="page, sample">
+    <meta name="author" content="None">
+    <link rel="icon" sizes="any" mask href="../assets/images/ico6.svg" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <link rel="stylesheet" href="../assets/css/articles.css">
+</head>
+<body>
+  <div class="article__wrapper_left">
+    <div class="article__wrapper_left-mulu">目录</div>
+    <ul class="articles__list"><li class="">
+          <a href="/articles/13.html">
+            JS错误监控篇
+          </a>
+        </li><li class="">
+          <a href="/articles/130.html">
+            动态执行 js 的方法
+          </a>
+        </li><li class="">
+          <a href="/articles/131.html">
+            多个有趣的 JavaScript 与 CSS 库
+          </a>
+        </li><li class="">
+          <a href="/articles/132.html">
+            使用对象
+          </a>
+        </li><li class="">
+          <a href="/articles/133.html">
+            构造函数、原型和继承[未完]
+          </a>
+        </li><li class="">
+          <a href="/articles/134.html">
+            3个超酷的 Node.js 新功能
+          </a>
+        </li><li class="">
+          <a href="/articles/135.html">
+            一些很重要的 HTML 属性
+          </a>
+        </li><li class="">
+          <a href="/articles/136.html">
+            页面关闭时如何成功发送 API 请求
+          </a>
+        </li><li class="">
+          <a href="/articles/137.html">
+            更灵活的 Map - array.flatMap()
+          </a>
+        </li><li class="">
+          <a href="/articles/138.html">
+            提升JavaScript代码质量的最佳实践
+          </a>
+        </li></ul>
+  </div>
+  <div class="article__wrapper_sidebar">
+    <a href="/" target="_blank"><svg t="1714001835347" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4298" width="48" height="48"><path d="M147.904 304.128l301.866667-179.541333a128 128 0 0 1 131.712 0.512l295.466666 178.88A128 128 0 0 1 938.666667 413.482667V810.666667a128 128 0 0 1-128 128H213.333333a128 128 0 0 1-128-128V414.144a128 128 0 0 1 62.570667-110.016z m43.626667 73.344A42.666667 42.666667 0 0 0 170.666667 414.144V810.666667a42.666667 42.666667 0 0 0 42.666666 42.666666h597.333334a42.666667 42.666667 0 0 0 42.666666-42.666666V413.482667a42.666667 42.666667 0 0 0-20.565333-36.501334l-295.466667-178.88a42.666667 42.666667 0 0 0-43.925333-0.170666l-301.866667 179.541333z" fill="#8a919f" p-id="4299"></path><path d="M405.333333 469.333333h213.333334a42.666667 42.666667 0 1 1 0 85.333334H405.333333a42.666667 42.666667 0 1 1 0-85.333334z m0 85.333334a42.666667 42.666667 0 1 0 0-85.333334h213.333334a42.666667 42.666667 0 1 0 0 85.333334H405.333333z" fill="#8a919f" p-id="4300"></path></svg></a>
+    <a href="/tools/" target="_blank"><svg t="1714002003458" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6911" width="48" height="48"><path d="M817.87 556.31h-63.58v-66.24A42.27 42.27 0 0 0 712 447.8h-84.81a42.27 42.27 0 0 0-42.27 42.27v66.24H436.57v-66.24a42.27 42.27 0 0 0-42.27-42.27h-84.83a42.27 42.27 0 0 0-42.27 42.27v66.24h-61.83A22.39 22.39 0 0 0 183 578.7a22.39 22.39 0 0 0 22.39 22.39h61.81v65.55a42.27 42.27 0 0 0 42.27 42.27h84.83a42.27 42.27 0 0 0 42.27-42.27v-65.55h148.36v65.55a42.27 42.27 0 0 0 42.27 42.27H712a42.27 42.27 0 0 0 42.27-42.27v-65.55h63.58a22.39 22.39 0 0 0 22.39-22.39 22.39 22.39 0 0 0-22.37-22.39z m-438.64 95.26h-54.69V505.14h54.69z m317.72 0h-54.69V505.14H697z" p-id="6912" fill="#8a919f"></path><path d="M823 202.58h-90.81v-63.09a71.88 71.88 0 0 0-71.88-71.88H363.19a71.88 71.88 0 0 0-71.88 71.88v63.08h-90.12A137.17 137.17 0 0 0 64 339.75v479a137.17 137.17 0 0 0 137.19 137.14H823a137.17 137.17 0 0 0 137.19-137.17v-479A137.17 137.17 0 0 0 823 202.58z m-474.36-54.1A23.52 23.52 0 0 1 372.17 125h279.16a23.52 23.52 0 0 1 23.52 23.52v54.1h-326.2z m554.23 673.31a76.76 76.76 0 0 1-76.76 76.76h-628a76.76 76.76 0 0 1-76.76-76.76V336.67a76.76 76.76 0 0 1 76.76-76.76h628a76.76 76.76 0 0 1 76.76 76.76z" p-id="6913" fill="#8a919f"></path></svg></a>
+  </div>
+  <div class="article__wrapper">
+    <div class="article__wrapper__main">
+      <div class="article__wrapper_header">
+        <h1>超有用的 Web API</h1>
+        <span class="articles__home_time">NaN/NaN/NaN · YinHao</span>
+      </div>
+      <h2>Screen Wake Lock API</h2>
+<p>Screen Wake Lock API 提供了一种方式，使得当应用程序需要保持运行时，能够防止设备因为闲置而自动调低亮度或锁定屏幕。</p>
+<p>这对于如视频会议、演示文稿、实时游戏、在线教育等需要用户持续关注且不允许屏幕熄灭的应用场景尤其有用。</p>
+<p>通过这个 API，即使在没有用户交互的情况下，开发者也能确保屏幕始终保持开启状态。</p>
+<pre><code class="language-html">&lt;button onclick=&quot;onLockScreen()&quot;&gt;锁屏&lt;/button&gt;
+&lt;button onclick=&quot;onUnlockScreen()&quot;&gt;释放&lt;/button&gt;
+&lt;div id=&quot;statusElem&quot;&gt;&lt;/div&gt;
+</code></pre>
+<pre><code class="language-js">let wakeLock = null;
+async function onLockScreen() {
+  try {
+    wakeLock = await navigator.wakeLock.request(&quot;screen&quot;);
+    statusElem.textContent = &quot;唤醒锁已激活&quot;;
+    wakeLock.addEventListener(&quot;release&quot;, () =&gt; {
+      statusElem.textContent = &quot;唤醒锁已释放&quot;;
+    });
+  } catch (err) {
+    statusElem.textContent = `${err.name}, ${err.message}`;
+  }
+}
+async function onUnlockScreen() {
+  if (!wakeLock) return;
+  wakeLock.release().then(() =&gt; {
+    wakeLock = null;
+  });
+}
+</code></pre>
+<h2>Cookie Store API</h2>
+<p>按照以往，开发者如何获取 cookie 信息呢？当前是 <code>document.cookie</code>。</p>
+<p>这种的缺点是没法知道 <code>domain</code>、<code>path</code>、<code>expired</code> 等信息。</p>
+<p>Cookie Store API 可以获取开发工具的 cookie 属性，当然，具有 <code>HttpOnly</code> 的属性的是获取不到的。</p>
+<pre><code class="language-js">await cookieStore.getAll();
+</code></pre>
+<p><img src="../assets/images/articles/129/01.png" alt=""></p>
+<p><strong>当然还提供了</strong></p>
+<ul>
+<li>
+<p>cookieStore.delete: 删除</p>
+</li>
+<li>
+<p>cookieStore.get: 获取单个 cookie 信息</p>
+</li>
+<li>
+<p>cookieStore.set: 设置单个 cookie 信息</p>
+</li>
+</ul>
+<h2>Compression Stream API</h2>
+<p>Compression Stream API 提供一种 Js API，使用 gzip 或者默认格式压缩和解压缩数据流，内置的压缩库意味着 Js 应用不再需要包含其他压缩库，这使得应用程序的下载大小更小。</p>
+<p>比如下面上传一个文本文件到浏览器，代码采用 gzip 压缩纯文本之后，从 6kb 变为了 1kb，解压缩后又变成了 6kb。</p>
+<p><img src="../assets/images/articles/129/02.png" alt=""></p>
+<pre><code class="language-html">&lt;input type=&quot;file&quot; id=&quot;file&quot; /&gt;
+&lt;script&gt;
+  async function compressAndDownload(filename, content) {
+    // 创建原始数据流
+    const stringStream = new ReadableStream({
+      start(controller) {
+        controller.enqueue(new TextEncoder().encode(content));
+        controller.close();
+      },
+    });
+
+    // 创建压缩流
+    const compressionStream = new CompressionStream(&quot;gzip&quot;);
+
+    // 将原始数据流连接到压缩流
+    const compressedStream = stringStream.pipeThrough(compressionStream);
+
+    // 创建ArrayBuffer容器接收压缩数据
+    const chunks = [];
+    const reader = compressedStream.getReader();
+    try {
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        chunks.push(value);
+      }
+    } finally {
+      reader.releaseLock();
+    }
+
+    // 合并压缩数据并创建Blob
+    const compressedBlob = new Blob(chunks, { type: &quot;application/gzip&quot; });
+
+    // 创建下载链接
+    const url = URL.createObjectURL(compressedBlob);
+    const link = document.createElement(&quot;a&quot;);
+    link.href = url;
+    link.download = `${filename}.gz`;
+    document.body.appendChild(link);
+
+    // 触发下载
+    link.click();
+
+    // 清理
+    setTimeout(() =&gt; {
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+    }, 0);
+  }
+
+  file.addEventListener(&quot;change&quot;, async (event) =&gt; {
+    if (event.target.files.length === 0) {
+      return;
+    }
+    const file = event.target.files[0];
+    const reader = new FileReader();
+    reader.readAsText(event.target.files[0]);
+    reader.onload = async () =&gt; {
+      const content = reader.result;
+      compressAndDownload(file.name, content);
+    };
+  });
+&lt;/script&gt;
+</code></pre>
+<h2>CSS Custom Highlight API</h2>
+<p>CSS 自定义高亮 API 提供了一种方法，可以通过使用 Js 创建范文并使用 CSS 定义样式来设置文档中任意文本范围的样式。</p>
+<p><img src="../assets/images/articles/129/03.png" alt=""></p>
+<p>其逻辑就是查找所有文本节点，收集匹配内容的 <code>Range</code>，最后作为参数构建 <code>HighLight</code> 对象，需要注意的是其 <code>并未产生新的节点</code>。</p>
+<pre><code class="language-js">const query = document.getElementById(&quot;query&quot;);
+const article = document.querySelector(&quot;article&quot;);
+
+// Find all text nodes in the article. We'll search within these text nodes.
+const treeWalker = document.createTreeWalker(article, NodeFilter.SHOW_TEXT);
+const allTextNodes = [];
+let currentNode = treeWalker.nextNode();
+while (currentNode) {
+  allTextNodes.push(currentNode);
+  currentNode = treeWalker.nextNode();
+}
+// Listen to the input event to run the search.
+query.addEventListener(&quot;input&quot;, () =&gt; {
+  // If the CSS Custom Highlight API is not supported, display a message and bail-out.
+  if (!CSS.highlights) {
+    article.textContent = &quot;CSS Custom Highlight API not supported.&quot;;
+    return;
+  }
+
+  // Clear the HighlightRegistry to remove the previous search results.
+  CSS.highlights.clear();
+
+  // Clean-up the search query and bail-out if if it's empty.
+  const str = query.value.trim().toLowerCase();
+  if (!str) {
+    return;
+  }
+
+  // Iterate over all text nodes and find matches.
+  const ranges = allTextNodes
+    .map((el) =&gt; {
+      return { el, text: el.textContent.toLowerCase() };
+    })
+    .map(({ text, el }) =&gt; {
+      const indices = [];
+      let startPos = 0;
+      while (startPos &lt; text.length) {
+        const index = text.indexOf(str, startPos);
+        if (index === -1) break;
+        indices.push(index);
+        startPos = index + str.length;
+      }
+
+      // Create a range object for each instance of str we found in the text node.
+      return indices.map((index) =&gt; {
+        const range = new Range();
+        range.setStart(el, index);
+        range.setEnd(el, index + str.length);
+        return range;
+      });
+    });
+
+  // Create a Highlight object for the ranges.
+  const searchResultsHighlight = new Highlight(...ranges.flat());
+
+  // Register the Highlight object in the registry.
+  CSS.highlights.set(&quot;search-results&quot;, searchResultsHighlight);
+});
+</code></pre>
+<h2>EyeDropper</h2>
+<p>可以打开并使用它从屏幕上选择颜色。</p>
+<p><img src="../assets/images/articles/129/04.png" alt=""></p>
+<pre><code class="language-html">&lt;button id=&quot;start-button&quot;&gt;打开拾色器&lt;/button&gt;
+&lt;img
+  src=&quot;https://img.alicdn.com/imgextra/i1/O1CN01CC9kic1ig1r4sAY5d_!!6000000004441-2-tps-880-210.png&quot;
+/&gt;
+&lt;div&gt;颜色是：&lt;span id=&quot;result&quot;&gt;&lt;/span&gt;&lt;/div&gt;
+&lt;script&gt;
+  document.getElementById(&quot;start-button&quot;).addEventListener(&quot;click&quot;, () =&gt; {
+    const resultElement = document.getElementById(&quot;result&quot;);
+
+    if (!window.EyeDropper) {
+      resultElement.textContent = &quot;你的浏览器不支持 EyeDropper API&quot;;
+      return;
+    }
+
+    const eyeDropper = new EyeDropper();
+    const abortController = new AbortController();
+
+    eyeDropper
+      .open({ signal: abortController.signal })
+      .then((result) =&gt; {
+        resultElement.textContent = result.sRGBHex;
+        resultElement.style.backgroundColor = result.sRGBHex;
+      })
+      .catch((e) =&gt; {
+        resultElement.textContent = e;
+      });
+  });
+&lt;/script&gt;
+</code></pre>
+<h2>Prioritized Task Scheduling API</h2>
+<p>提供了一种标准化的方法，用于对属于应用程序的所有任务进行优先级排序。</p>
+<p>优先级任务调度 API 允许开发者为异步任务分配优先级，这些任务按照以下三种优先级顺序执行：</p>
+<ol>
+<li>
+<p>user-blocking：这类任务优先级最高，它们直接影响用户的交互体验。这类任务主要包括页面渲染至可交互状态的过程，以及对用户输入的即时响应。例如，页面初次加载的核心内容渲染、按钮点击事件的处理等。</p>
+</li>
+<li>
+<p>user-visible： 这类任务虽可见于用户界面，但并不阻止用户继续进行其他操作。这类任务包括渲染页面的非关键部分，例如非核心图片加载、非关键动画渲染等。这是默认的优先级等级。</p>
+</li>
+<li>
+<p>background： 优先级最低的一类任务，它们对时间要求不严苛，可以在不影响用户体验的前提下稍后执行。这类任务包括日志处理、非必需的第三方库初始化以及其他不影响页面即时呈现的工作。这些任务通常在主线程空闲时执行，以避免阻塞用户可见或交互相关的高优先级任务。</p>
+</li>
+</ol>
+<pre><code class="language-html">&lt;div id=&quot;log&quot;&gt;&lt;/div&gt;
+&lt;script&gt;
+  let log = document.getElementById(&quot;log&quot;);
+  function mylog(text) {
+    log.innerHTML += `${text}&lt;br/&gt;`;
+  }
+
+  // three tasks, in reverse order of priority
+  scheduler.postTask(() =&gt; mylog(&quot;background 1&quot;), { priority: &quot;background&quot; });
+  scheduler.postTask(() =&gt; mylog(&quot;user-visible 1&quot;), {
+    priority: &quot;user-visible&quot;,
+  });
+  scheduler.postTask(() =&gt; mylog(&quot;user-blocking 1&quot;), {
+    priority: &quot;user-blocking&quot;,
+  });
+
+  // three more tasks, in reverse order of priority
+  scheduler.postTask(() =&gt; mylog(&quot;background 2&quot;), { priority: &quot;background&quot; });
+  scheduler.postTask(() =&gt; mylog(&quot;user-visible 2&quot;), {
+    priority: &quot;user-visible&quot;,
+  });
+  scheduler.postTask(() =&gt; mylog(&quot;user-blocking 2&quot;), {
+    priority: &quot;user-blocking&quot;,
+  });
+
+  // Task with default priority: user-visible
+  scheduler.postTask(() =&gt; mylog(&quot;user-visible 3 (default)&quot;));
+&lt;/script&gt;
+</code></pre>
+<p><img src="../assets/images/articles/129/05.png" alt=""></p>
+<h2>Trusted Types API</h2>
+<p>为 Web 开发者提供了一种锁定 DOM API 中不安全部分的方法，目的是防止客户端跨站脚本（<code>Cross-site scripting，XSS</code>）攻击</p>
+<p>在下面的例子中，通过 <code>TrustedTypePolicyFactory.createPolicy()</code> 方法创建一个策略，通过 <code>TrustedTypePolicy.createHTML</code> 方法创建一个安全的 HTML 字符串插入到文档中。</p>
+<p>有很大的灵活性，策略是自己可以定义的。</p>
+<pre><code class="language-html">&lt;div id=&quot;myDiv&quot;&gt;&lt;/div&gt;
+
+&lt;script&gt;
+  var entityMap = {
+    &quot;&amp;&quot;: &quot;&amp;amp;&quot;,
+    &quot;&lt;&quot;: &quot;&amp;lt;&quot;,
+    &quot;&gt;&quot;: &quot;&amp;gt;&quot;,
+    '&quot;': &quot;&amp;quot;&quot;,
+    &quot;'&quot;: &quot;&amp;#39;&quot;,
+    &quot;/&quot;: &quot;&amp;#x2F;&quot;,
+  };
+  // 创建一个策略，该策略将用于将不受信任的输入转换为安全的内容。
+  const escapeHTMLPolicy = trustedTypes.createPolicy(&quot;myEscapePolicy&quot;, {
+    createHTML: (string) =&gt;
+      string.replace(/[&amp;&lt;&gt;&quot;'\/]/g, function (s) {
+        return entityMap[s];
+      }),
+  });
+
+  let el = document.getElementById(&quot;myDiv&quot;);
+  const escaped = escapeHTMLPolicy.createHTML(&quot;&lt;img src=x onerror=alert(1)&gt;&quot;);
+  console.log(escaped instanceof TrustedHTML); // true
+  el.innerHTML = escaped;
+&lt;/script&gt;
+</code></pre>
+<p>除此之外，还可以用来创建用来检查 <code>Script</code> 和 <code>ScriptURL</code> 的策略。</p>
+<pre><code class="language-js">const policy = trustedTypes.createPolicy(&quot;myPolicy&quot;, {
+  createScriptURL: (s, type, sink) =&gt; {
+    //...
+  },
+  createScript: (s) =&gt; {
+    //...
+  },
+});
+</code></pre>
+<h2>CSS Font Loading API</h2>
+<p>CSS 字体加载 API 为你提供了动态加载字体资源的事件和接口。</p>
+<p>以往引入字体主要是靠 css 来实现的, 动态引入字体也可以通过动态添加 link 节点来实现。</p>
+<pre><code class="language-css">@font-face {
+  font-family: &quot;MyCustomFont&quot;;
+  src: url(&quot;fonts/mycustomfont.woff2&quot;) format(&quot;woff2&quot;), url(&quot;fonts/mycustomfont.woff&quot;)
+      format(&quot;woff&quot;);
+  font-weight: normal;
+  font-style: normal;
+}
+</code></pre>
+<p>现在内置了原生 API， 能动态加载字体，而且能控制加载时机，以及加载的状态。</p>
+<pre><code class="language-js">const font = new FontFace(&quot;myfont&quot;, &quot;url(myfont.woff)&quot;, {
+  style: &quot;italic&quot;,
+  weight: &quot;400&quot;,
+  stretch: &quot;condensed&quot;,
+});
+
+// 加载字体
+font.load().then(
+  () =&gt; {
+    // 加载完毕
+  },
+  (err) =&gt; {
+    // 加载异常
+    console.error(err);
+  }
+);
+
+// 等待到所有的字体都加载完毕
+document.fonts.ready.then(() =&gt; {
+  // 使用该字体渲染文字（如：在 canvas 中绘制）
+});
+</code></pre>
+<h2>URL Pattern API</h2>
+<p>URL Pattern API 定义了一种语法，该语法用于创建 URL 模式匹配器。这些模式能够与完整的 URL 或 URL 的各个组成部分进行匹配。 其借鉴了 <a href="https://github.com/pillarjs/path-to-regexp">path-to-regexp</a>的语法。</p>
+<p>匹配模块包含： URL Pattern API 的模式语法包括：</p>
+<ol>
+<li>
+<p><strong>字面字符串</strong>：将精确匹配的文本字符串，例如 &quot;/home&quot; 或 &quot;/contact&quot;。</p>
+</li>
+<li>
+<p><strong>通配符</strong>：如 &quot;/posts/ <em>&quot; 中的星号 (</em> ) 表示匹配任何字符序列，直至遇到下一个路径分隔符（/）。</p>
+</li>
+<li>
+<p><strong>命名组</strong>：如 &quot;/books/:id&quot; 中的 &quot;:id&quot;，它会提取匹配 URL 中对应部分的值，作为单独的数据项。</p>
+</li>
+<li>
+<p><strong>非捕获组</strong>：如 &quot;/books{/old}?&quot;，这里的花括号  <code>{...}?</code>  表示该部分模式是可选的，可以匹配 0 次或 1 次，且不会作为一个单独的数据项提取出来。</p>
+</li>
+<li>
+<p><strong>正则表达式组</strong>：如 &quot;/books/(\d+)&quot; 中的  <code>(\d+)</code>，这部分遵循 JavaScript 正则表达式的规则，用于进行复杂匹配，尽管在 URL Pattern API 中有一定的限制。例如，此处的正则表达式将匹配一个或多个数字字符，并将其作为一个独立的数据项提取出来。</p>
+</li>
+</ol>
+<pre><code class="language-js">// A pattern matching with a named group
+const pattern = new URLPattern({ pathname: &quot;/books/:id&quot; });
+console.log(pattern.test(&quot;https://example.com/books/123&quot;)); // true
+console.log(pattern.exec(&quot;https://example.com/books/123&quot;).pathname.groups); // { id: '123' }
+</code></pre>
+<h2>Audio Output Devices API</h2>
+<p>音频输出设备 API（Audio Output Devices API）赋予了 Web 应用程序能力，使其能够询问用户希望使用哪个音频输出设备进行声音播放。</p>
+<p>欸， 可以选择音频输出设备，还是比较有意思的。协议原文 <a href="https://w3c.github.io/mediacapture-output/">Audio Output Devices API</a>， 可惜还没有浏览器支持。</p>
+<pre><code class="language-js">document.querySelector(&quot;#myButton&quot;).addEventListener(&quot;click&quot;, async () =&gt; {
+  if (!navigator.mediaDevices.selectAudioOutput) {
+    console.log(&quot;selectAudioOutput() not supported or not in secure context.&quot;);
+    return;
+  }
+
+  // Display prompt to select device
+  const audioDevice = await navigator.mediaDevices.selectAudioOutput();
+
+  // Create an audio element and start playing audio on the default device
+  const audio = document.createElement(&quot;audio&quot;);
+  audio.src = &quot;https://example.com/audio.mp3&quot;;
+  audio.play();
+
+  // Change the sink to the selected audio output device.
+  audio.setSinkId(audioDevice.deviceId);
+});
+</code></pre>
+<h2>Device Memory API</h2>
+<p>传统上，开发人员评估客户端设备性能时，由于无法直接获取设备的 RAM 大小信息，他们往往需要采取一些经验法则，或是通过设备基准测试，抑或是根据设备制造商、用户代理(User Agent)字符串等其他因素间接推测设备能力。</p>
+<p>但现在，有以下两种方法可以直接或间接确定设备的大致 RAM 量：</p>
+<ol>
+<li>
+<p><strong>Device Memory JavaScript API</strong>： 这个 API 为开发者提供了一种直接了解设备内存（RAM）容量的方式。通过<code>navigator.deviceMemory</code>属性，可以获得设备内存级别的大致信息，如 0.5 表示小于 1GB 的 RAM，1 表示 1-2GB，以此类推。</p>
+</li>
+<li>
+<p><strong>接受 Client Hints</strong>： 客户端提示（Client Hints）是一种 HTTP 协议扩展，允许浏览器在 HTTP 请求中主动发送设备能力相关信息。其中，<code>Device-Memory</code> HTTP 请求头就包含了设备的内存类别信息。虽然这不是直接在 JavaScript 中获取，但服务器可以根据这个头信息动态调整响应内容，帮助开发者根据设备 RAM 大小优化用户体验。</p>
+</li>
+</ol>
+<pre><code class="language-js">const RAM = navigator.deviceMemory; // 8
+</code></pre>
+<p>值是  <code>0.25</code>, <code>0.5</code>, <code>1</code>, <code>2</code>, <code>4</code>，<code>8</code> 之一，所以机器 16G 内存，显示的也是 8。</p>
+<h2>Barcode Detection API</h2>
+<p>用于检测图像中的条形码和二维码。</p>
+<p>欸， 这就很有意思，配和 <code>navigator.mediaDevices.getUserMedia</code>唤起摄像头，定期截图分析，是不是就是一个 web 版本的扫码能力呢？</p>
+<p>![](../assets/images/articles/129/01.awebp&quot; /&gt;</p>
+<pre><code class="language-js">if (!(&quot;BarcodeDetector&quot; in globalThis)) {
+  console.log(&quot;此浏览器不支持条形码检测器。&quot;);
+} else {
+  console.log(&quot;条形码检测器是支持的！&quot;);
+
+  // 创建新检测器
+  const barcodeDetector = new BarcodeDetector({
+    formats: [&quot;code_39&quot;, &quot;codabar&quot;, &quot;ean_13&quot;],
+  });
+
+  barcodeDetector
+    .detect(imageEl)
+    .then((barcodes) =&gt; {
+      barcodes.forEach((barcode) =&gt; console.log(barcode.rawValue));
+    })
+    .catch((err) =&gt; {
+      console.log(err);
+    });
+}
+</code></pre>
+<h2>CSS Typed Object Model API</h2>
+<p>CSS Typed Object Model（CSSOM）API 从根本上改变了开发者在 JavaScript 中处理 CSS 属性的方式，通过引入类型安全性和效率优化。</p>
+<p>比如：简简单单就能获取样式的键值对， 其实还有一个结果有类似功能 API <code>window.getComputedStyle</code></p>
+<p>![](../assets/images/articles/129/02.awebp&quot; /&gt;</p>
+ 
+    </div>
+  </div>
+  <div class="article__wrapper_footer">
+    <a class="article__wrapper_footer-left " href="/articles/128.html"><svg t="1713708729970" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8437" width="48" height="48"><path d="M409.272947 512.57741l403.237243 403.237243a63.349415 63.349415 0 1 1-89.622481 89.622482L274.839224 557.324726a63.349415 63.349415 0 0 1 0-89.494632L722.951633 19.717685a63.349415 63.349415 0 1 1 89.494633 89.622482L409.336872 512.57741z" p-id="8438" fill="#8a8a8a"></path></svg></a>
+    <a class="article__wrapper_footer-right " href="/articles/130.html"><svg t="1713708697355" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8093" width="48" height="48"><path d="M855.123 517.004c0 8.245-3.167 15.51-9.503 21.823L402.999 981.47c-6.336 6.336-13.625 9.477-21.869 9.477s-15.51-3.142-21.845-9.477L311.8 933.96c-6.336-6.336-9.502-13.6-9.502-21.845 0-8.222 3.167-15.51 9.502-21.845l373.29-373.29-373.293-373.267c-6.336-6.336-9.502-13.6-9.502-21.845s3.167-15.533 9.503-21.869l47.484-47.484c6.336-6.336 13.6-9.502 21.845-9.502s15.533 3.167 21.869 9.503l442.621 442.622c6.334 6.334 9.503 13.625 9.503 21.869z" fill="#8a8a8a" p-id="8094"></path></svg></a>
+  </div>
+  <a class="article__wrapper_index" href="/articles/"><svg t="1713708857338" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="9656" width="48" height="48"><path d="M549.61981 133.022476l319.683047 203.605334A70.851048 70.851048 0 0 1 902.095238 396.361143v434.883047A70.89981 70.89981 0 0 1 831.146667 902.095238h-282.819048l0.024381-218.112h-71.826286v218.087619L192.853333 902.095238A70.89981 70.89981 0 0 1 121.904762 831.24419V390.241524c0-24.527238 12.678095-47.299048 33.54819-60.220953l318.659048-197.485714a70.972952 70.972952 0 0 1 75.50781 0.487619zM828.952381 828.952381V397.214476L511.488 195.047619 195.047619 391.119238V828.952381h211.309714v-216.551619h212.187429v216.527238L828.952381 828.952381z" p-id="9657" fill="#707070"></path></svg></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
+  <script src="../assets/js/articles-detail.js"></script>
+  <script>
+    hljs.highlightAll();
+  </script>
+</body>
+</html>
+    

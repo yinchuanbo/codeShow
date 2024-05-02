@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>获取上传进度的几种方式</title>
+    <meta charset="utf-8">
+    <meta name="description" content="This is a page">
+    <meta name="keywords" content="page, sample">
+    <meta name="author" content="None">
+    <link rel="icon" sizes="any" mask href="../assets/images/ico6.svg" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <link rel="stylesheet" href="../assets/css/articles.css">
+</head>
+<body>
+  <div class="article__wrapper_left">
+    <div class="article__wrapper_left-mulu">目录</div>
+    <ul class="articles__list"><li class="">
+          <a href="/articles/102.html">
+            使用音频和视频
+          </a>
+        </li><li class="">
+          <a href="/articles/103.html">
+            History API 与单页应用
+          </a>
+        </li><li class="">
+          <a href="/articles/104.html">
+            Drag 和 Drop 介绍
+          </a>
+        </li><li class="">
+          <a href="/articles/105.html">
+            利用 Performance API 分析网站性能
+          </a>
+        </li><li class="">
+          <a href="/articles/106.html">
+            使用 HTML5 音频和视频
+          </a>
+        </li><li class="">
+          <a href="/articles/107.html">
+            Web Storage
+          </a>
+        </li><li class="">
+          <a href="/articles/108.html">
+            文件操作
+          </a>
+        </li><li class="">
+          <a href="/articles/109.html">
+            FileReader
+          </a>
+        </li><li class="">
+          <a href="/articles/11.html">
+            高效加载第三方JavaScript
+          </a>
+        </li><li class="">
+          <a href="/articles/110.html">
+            Preload 和 Prefetch
+          </a>
+        </li></ul>
+  </div>
+  <div class="article__wrapper_sidebar">
+    <a href="/" target="_blank"><svg t="1714001835347" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4298" width="48" height="48"><path d="M147.904 304.128l301.866667-179.541333a128 128 0 0 1 131.712 0.512l295.466666 178.88A128 128 0 0 1 938.666667 413.482667V810.666667a128 128 0 0 1-128 128H213.333333a128 128 0 0 1-128-128V414.144a128 128 0 0 1 62.570667-110.016z m43.626667 73.344A42.666667 42.666667 0 0 0 170.666667 414.144V810.666667a42.666667 42.666667 0 0 0 42.666666 42.666666h597.333334a42.666667 42.666667 0 0 0 42.666666-42.666666V413.482667a42.666667 42.666667 0 0 0-20.565333-36.501334l-295.466667-178.88a42.666667 42.666667 0 0 0-43.925333-0.170666l-301.866667 179.541333z" fill="#8a919f" p-id="4299"></path><path d="M405.333333 469.333333h213.333334a42.666667 42.666667 0 1 1 0 85.333334H405.333333a42.666667 42.666667 0 1 1 0-85.333334z m0 85.333334a42.666667 42.666667 0 1 0 0-85.333334h213.333334a42.666667 42.666667 0 1 0 0 85.333334H405.333333z" fill="#8a919f" p-id="4300"></path></svg></a>
+    <a href="/tools/" target="_blank"><svg t="1714002003458" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6911" width="48" height="48"><path d="M817.87 556.31h-63.58v-66.24A42.27 42.27 0 0 0 712 447.8h-84.81a42.27 42.27 0 0 0-42.27 42.27v66.24H436.57v-66.24a42.27 42.27 0 0 0-42.27-42.27h-84.83a42.27 42.27 0 0 0-42.27 42.27v66.24h-61.83A22.39 22.39 0 0 0 183 578.7a22.39 22.39 0 0 0 22.39 22.39h61.81v65.55a42.27 42.27 0 0 0 42.27 42.27h84.83a42.27 42.27 0 0 0 42.27-42.27v-65.55h148.36v65.55a42.27 42.27 0 0 0 42.27 42.27H712a42.27 42.27 0 0 0 42.27-42.27v-65.55h63.58a22.39 22.39 0 0 0 22.39-22.39 22.39 22.39 0 0 0-22.37-22.39z m-438.64 95.26h-54.69V505.14h54.69z m317.72 0h-54.69V505.14H697z" p-id="6912" fill="#8a919f"></path><path d="M823 202.58h-90.81v-63.09a71.88 71.88 0 0 0-71.88-71.88H363.19a71.88 71.88 0 0 0-71.88 71.88v63.08h-90.12A137.17 137.17 0 0 0 64 339.75v479a137.17 137.17 0 0 0 137.19 137.14H823a137.17 137.17 0 0 0 137.19-137.17v-479A137.17 137.17 0 0 0 823 202.58z m-474.36-54.1A23.52 23.52 0 0 1 372.17 125h279.16a23.52 23.52 0 0 1 23.52 23.52v54.1h-326.2z m554.23 673.31a76.76 76.76 0 0 1-76.76 76.76h-628a76.76 76.76 0 0 1-76.76-76.76V336.67a76.76 76.76 0 0 1 76.76-76.76h628a76.76 76.76 0 0 1 76.76 76.76z" p-id="6913" fill="#8a919f"></path></svg></a>
+  </div>
+  <div class="article__wrapper">
+    <div class="article__wrapper__main">
+      <div class="article__wrapper_header">
+        <h1>获取上传进度的几种方式</h1>
+        <span class="articles__home_time">NaN/NaN/NaN · YinHao</span>
+      </div>
+      <h3>前端使用 axios 实现监听上传进度</h3>
+<blockquote>
+<p>咱们先使用<code>axios</code>实现监听上传进度如下：</p>
+</blockquote>
+<pre><code class="language-js">axios
+  .post(&quot;/api/file/uploadfile&quot;, form, {
+    headers: {
+      &quot;Content-Type&quot;: &quot;multipart/form-data&quot;,
+    },
+    onUploadProgress: (progressEvent) =&gt; {
+      if (progressEvent.lengthComputable) {
+        this.progresss = Math.round(
+          (progressEvent.loaded / progressEvent.total) * 100
+        );
+      }
+    },
+  })
+  .then((res) =&gt; {
+    // ...
+  });
+</code></pre>
+<h3>前端使用<code>ajax</code>获取上传进度</h3>
+<blockquote>
+<p>前端使用<code>ajax</code>如何获取上传进度呢？ 如下：</p>
+</blockquote>
+<pre><code class="language-js">const xhr = new XMLHttpRequest();
+xhr.upload.addEventListener(&quot;progress&quot;, (event) =&gt; {
+  if (event.lengthComputable) {
+    const progressPercentage = Math.round((event.loaded / event.total) * 100);
+    console.log(`上传进度: ${progressPercentage}%`);
+  }
+});
+</code></pre>
+<h3>前端使用<code>fetch API</code>获取上传进度</h3>
+<blockquote>
+<p>如何使用<code>fetch API</code>获取上传的进度呢？如下：</p>
+</blockquote>
+<pre><code class="language-js">const file = document.getElementById(&quot;fileInput&quot;).files[0];
+fetch(&quot;/upload&quot;, {
+  method: &quot;POST&quot;,
+  body: file,
+  onprogress: (event) =&gt; {
+    if (event.lengthComputable) {
+      const progressPercentage = Math.round((event.loaded / event.total) * 100);
+      console.log(`上传进度: ${progressPercentage}%`);
+    }
+  },
+})
+  .then((response) =&gt; {
+    // 处理响应结果
+  })
+  .catch((error) =&gt; {
+    // 处理错误
+  });
+</code></pre>
+<h3>多文件上传展示一个进度条</h3>
+<blockquote>
+<p>如果支持多个文件上传，并已文件上传个数展示进度条的话，一般都是怎么做的呢？</p>
+</blockquote>
+<ul>
+<li>需要考虑多个文件比如 10 个文件，在你上传完第一个的时候进度条需要控制再 10%以下，依此类推。如下面一块代码：</li>
+</ul>
+<pre><code class="language-js">let progress = 0;
+const UPLOAD_TYPE_MAP = {
+  UPLOADING: &quot;uploading&quot;,
+  COMPLATE: &quot;complate&quot;,
+};
+const files = [
+  { file: &quot;&quot;, status: UPLOAD_TYPE_MAP.UPLOADING },
+  { file: &quot;&quot;, status: UPLOAD_TYPE_MAP.UPLOADING },
+];
+
+for (let index = 0; index &lt; files.length; index++) {
+  const element = files[index];
+  // 1、这里是调接口的逻辑，可以是并行也可以完成一个调下一个，这个看你们的接口的限速吧，我就按照并行做了。
+  // 2、这里是每个文件上传完成的逻辑，更改当前文件的状态把status 改成UPLOAD_TYPE_MAP.COMPLATE
+}
+
+const timer = setInterval(() =&gt; {
+  const eachProgress = 100 / files.length; // 计算单个的比例
+  const complateUpload = files.filter(
+    (item) =&gt; item.status === UPLOAD_TYPE_MAP.COMPLATE
+  );
+  const upperLimit = (complateUpload.length + 1) * eachProgress;
+  const maxProgress = upperLimit &gt; 100 ? 100 : upperLimit; // 计算出当前最大进度
+
+  if (progress &lt; maxProgress) {
+    progress++; // 边界控制
+  }
+  if (maxProgress === 100) {
+    progress = 100;
+    clearInterval(time);
+  }
+}, 500);
+</code></pre>
+<blockquote>
+<p>上面就多文件展示一个进度条的具体代码。其实不是很准确，文件有大有小，如果文件大小差不太多展示开可以。其实最好的方案是分别利用<code>axios</code>、<code>ajax</code>等分别展示一个进度条。还是看业务需求吧，</p>
+</blockquote>
+<h2>大文件分片上传展示进度条</h2>
+<blockquote>
+<p>先简单说下分片上传的好处如下：</p>
+</blockquote>
+<ol>
+<li>可靠性和鲁棒性：将大文件分成小块进行上传，即使出现网络中断或其他意外情况，只需要重新上传失败的分片，而不需要重新上传整个文件，提高上传的可靠性和鲁棒性。</li>
+<li>传输效率：由于大文件被分成多个小块进行<strong>并行</strong>上传，可以充分利用网络带宽，提高传输速度和效率。</li>
+<li>断点续传：如果上传过程中断，可以根据已成功上传的分片信息，从上次中断的地方继续上传，避免重复上传已经上传过的部分，节省时间和资源。</li>
+<li>内存占用低：大文件一次性加载到内存中可能导致内存溢出，而分片上传只需加载单个分片，减少了对内存的压力，并适应内存有限的环境。</li>
+<li>服务器负载平衡：使用分片上传可以将上传请求分散到多个服务器，降低单一服务器的负载压力，提高整体系统的稳定性和吞吐量。</li>
+<li>灵活性：分片上传允许用户在任意时间暂停、取消或恢复上传过程，提供了更好的用户体验和操作灵活性。</li>
+</ol>
+<p>其实像咱们经常说别的网站为啥有的上传速度这么快，我用的网速一样我的为啥这么慢。其实还有就是看你们上传的文件大小有没有必要做分片上传，毕竟没有直接一个接口上传开发快，前端、服务端都需要增加工作成本。那咱们下面先看下怎么实现分片如下：</p>
+<pre><code class="language-js">// 定义分片大小（以字节为单位） // 1MB
+
+// 将文件切割为多个分片
+function sliceFileIntoChunks(file, chunkSize = 1024 * 1024) {
+  const fileSize = file.size;
+  const chunks = Math.ceil(fileSize / chunkSize);
+  const fileChunks = [];
+  let start = 0;
+  let end = chunkSize;
+
+  for (let i = 0; i &lt; chunks; i++) {
+    const chunk = file.slice(start, end); // slice 可以把文件按照需要的大小分割
+    fileChunks.push(chunk);
+
+    start = end;
+    end = start + chunkSize;
+  }
+
+  return fileChunks;
+}
+</code></pre>
+<p>获取上传进度（这个需求又回到了【多文件上传展示一个进度条】上面）如下：</p>
+<pre><code class="language-js">const files = sliceFileIntoChunks(originFile).map((item) =&gt; ({
+  file: item,
+  status: UPLOAD_TYPE_MAP.UPLOADING,
+}));
+
+// ... 忽略
+const timer = setInterval(() =&gt; {
+  const eachProgress = 100 / files.length; // 计算单个的比例
+  const complateUpload = files.filter(
+    (item) =&gt; item.status === UPLOAD_TYPE_MAP.COMPLATE
+  );
+  const upperLimit = (complateUpload.length + 1) * eachProgress;
+  const maxProgress = upperLimit &gt; 100 ? 100 : upperLimit; // 计算出当前最大进度
+
+  if (progress &lt; maxProgress) {
+    progress++; // 边界控制
+  }
+  if (maxProgress === 100) {
+    progress = 100;
+    clearInterval(time);
+  }
+}, 500);
+</code></pre>
+<p><strong>有一个点需要注意你要告诉服务端你得切片索引，后面服务端还要合并切片呢！！！</strong>。还有如果你们是按照大小切割的比如<code>1M</code>，你还要再上传完成给<strong>服务端发送一个合并切片的通知</strong>。 如果你们是以份额切分的每次就分为 10 等份，那么这个上传完成的请求你不再通知服务端也能判断上。</p>
+ 
+    </div>
+  </div>
+  <div class="article__wrapper_footer">
+    <a class="article__wrapper_footer-left " href="/articles/100.html"><svg t="1713708729970" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8437" width="48" height="48"><path d="M409.272947 512.57741l403.237243 403.237243a63.349415 63.349415 0 1 1-89.622481 89.622482L274.839224 557.324726a63.349415 63.349415 0 0 1 0-89.494632L722.951633 19.717685a63.349415 63.349415 0 1 1 89.494633 89.622482L409.336872 512.57741z" p-id="8438" fill="#8a8a8a"></path></svg></a>
+    <a class="article__wrapper_footer-right " href="/articles/102.html"><svg t="1713708697355" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8093" width="48" height="48"><path d="M855.123 517.004c0 8.245-3.167 15.51-9.503 21.823L402.999 981.47c-6.336 6.336-13.625 9.477-21.869 9.477s-15.51-3.142-21.845-9.477L311.8 933.96c-6.336-6.336-9.502-13.6-9.502-21.845 0-8.222 3.167-15.51 9.502-21.845l373.29-373.29-373.293-373.267c-6.336-6.336-9.502-13.6-9.502-21.845s3.167-15.533 9.503-21.869l47.484-47.484c6.336-6.336 13.6-9.502 21.845-9.502s15.533 3.167 21.869 9.503l442.621 442.622c6.334 6.334 9.503 13.625 9.503 21.869z" fill="#8a8a8a" p-id="8094"></path></svg></a>
+  </div>
+  <a class="article__wrapper_index" href="/articles/"><svg t="1713708857338" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="9656" width="48" height="48"><path d="M549.61981 133.022476l319.683047 203.605334A70.851048 70.851048 0 0 1 902.095238 396.361143v434.883047A70.89981 70.89981 0 0 1 831.146667 902.095238h-282.819048l0.024381-218.112h-71.826286v218.087619L192.853333 902.095238A70.89981 70.89981 0 0 1 121.904762 831.24419V390.241524c0-24.527238 12.678095-47.299048 33.54819-60.220953l318.659048-197.485714a70.972952 70.972952 0 0 1 75.50781 0.487619zM828.952381 828.952381V397.214476L511.488 195.047619 195.047619 391.119238V828.952381h211.309714v-216.551619h212.187429v216.527238L828.952381 828.952381z" p-id="9657" fill="#707070"></path></svg></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
+  <script src="../assets/js/articles-detail.js"></script>
+  <script>
+    hljs.highlightAll();
+  </script>
+</body>
+</html>
+    

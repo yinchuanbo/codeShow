@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>梳理一下浏览器中常见Observer</title>
+    <meta charset="utf-8">
+    <meta name="description" content="This is a page">
+    <meta name="keywords" content="page, sample">
+    <meta name="author" content="None">
+    <link rel="icon" sizes="any" mask href="../assets/images/ico6.svg" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <link rel="stylesheet" href="../assets/css/articles.css">
+</head>
+<body>
+  <div class="article__wrapper_left">
+    <div class="article__wrapper_left-mulu">目录</div>
+    <ul class="articles__list"><li class="">
+          <a href="/articles/88.html">
+            前端外描边完美实现
+          </a>
+        </li><li class="">
+          <a href="/articles/89.html">
+            HTMl+CSS+JS实现瀑布流式页面布局
+          </a>
+        </li><li class="">
+          <a href="/articles/90.html">
+            token无感知刷新
+          </a>
+        </li><li class="">
+          <a href="/articles/91.html">
+            聊聊图片预加载
+          </a>
+        </li><li class="">
+          <a href="/articles/92.html">
+            使用CSS+JS实现多行文本的展开收起效果
+          </a>
+        </li><li class="">
+          <a href="/articles/93.html">
+            纯前端也可以访问文件系统
+          </a>
+        </li><li class="">
+          <a href="/articles/94.html">
+            纯前端也可以实现「用户无感知录屏」
+          </a>
+        </li><li class="">
+          <a href="/articles/95.html">
+            IntersectionObserver：实现滚动动画、懒加载、虚拟列表...
+          </a>
+        </li><li class="">
+          <a href="/articles/96.html">
+            PageSpy:支持远程调试的 vConsole
+          </a>
+        </li><li class="">
+          <a href="/articles/97.html">
+            CSS属性 appearance
+          </a>
+        </li></ul>
+  </div>
+  <div class="article__wrapper_sidebar">
+    <a href="/" target="_blank"><svg t="1714001835347" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4298" width="48" height="48"><path d="M147.904 304.128l301.866667-179.541333a128 128 0 0 1 131.712 0.512l295.466666 178.88A128 128 0 0 1 938.666667 413.482667V810.666667a128 128 0 0 1-128 128H213.333333a128 128 0 0 1-128-128V414.144a128 128 0 0 1 62.570667-110.016z m43.626667 73.344A42.666667 42.666667 0 0 0 170.666667 414.144V810.666667a42.666667 42.666667 0 0 0 42.666666 42.666666h597.333334a42.666667 42.666667 0 0 0 42.666666-42.666666V413.482667a42.666667 42.666667 0 0 0-20.565333-36.501334l-295.466667-178.88a42.666667 42.666667 0 0 0-43.925333-0.170666l-301.866667 179.541333z" fill="#8a919f" p-id="4299"></path><path d="M405.333333 469.333333h213.333334a42.666667 42.666667 0 1 1 0 85.333334H405.333333a42.666667 42.666667 0 1 1 0-85.333334z m0 85.333334a42.666667 42.666667 0 1 0 0-85.333334h213.333334a42.666667 42.666667 0 1 0 0 85.333334H405.333333z" fill="#8a919f" p-id="4300"></path></svg></a>
+    <a href="/tools/" target="_blank"><svg t="1714002003458" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6911" width="48" height="48"><path d="M817.87 556.31h-63.58v-66.24A42.27 42.27 0 0 0 712 447.8h-84.81a42.27 42.27 0 0 0-42.27 42.27v66.24H436.57v-66.24a42.27 42.27 0 0 0-42.27-42.27h-84.83a42.27 42.27 0 0 0-42.27 42.27v66.24h-61.83A22.39 22.39 0 0 0 183 578.7a22.39 22.39 0 0 0 22.39 22.39h61.81v65.55a42.27 42.27 0 0 0 42.27 42.27h84.83a42.27 42.27 0 0 0 42.27-42.27v-65.55h148.36v65.55a42.27 42.27 0 0 0 42.27 42.27H712a42.27 42.27 0 0 0 42.27-42.27v-65.55h63.58a22.39 22.39 0 0 0 22.39-22.39 22.39 22.39 0 0 0-22.37-22.39z m-438.64 95.26h-54.69V505.14h54.69z m317.72 0h-54.69V505.14H697z" p-id="6912" fill="#8a919f"></path><path d="M823 202.58h-90.81v-63.09a71.88 71.88 0 0 0-71.88-71.88H363.19a71.88 71.88 0 0 0-71.88 71.88v63.08h-90.12A137.17 137.17 0 0 0 64 339.75v479a137.17 137.17 0 0 0 137.19 137.14H823a137.17 137.17 0 0 0 137.19-137.17v-479A137.17 137.17 0 0 0 823 202.58z m-474.36-54.1A23.52 23.52 0 0 1 372.17 125h279.16a23.52 23.52 0 0 1 23.52 23.52v54.1h-326.2z m554.23 673.31a76.76 76.76 0 0 1-76.76 76.76h-628a76.76 76.76 0 0 1-76.76-76.76V336.67a76.76 76.76 0 0 1 76.76-76.76h628a76.76 76.76 0 0 1 76.76 76.76z" p-id="6913" fill="#8a919f"></path></svg></a>
+  </div>
+  <div class="article__wrapper">
+    <div class="article__wrapper__main">
+      <div class="article__wrapper_header">
+        <h1>梳理一下浏览器中常见Observer</h1>
+        <span class="articles__home_time">NaN/NaN/NaN · YinHao</span>
+      </div>
+      <h2>MutationObserver</h2>
+<p>MutationObserver 用于监听 DOM 对象的变更（包括子节点），当节点属性发生变化，或执行增删改操作时执行对应的 callback。</p>
+<p>MutationObserver 为我们提供了一种十分方便的监听 DOM 变化的方式。</p>
+<h3>基本使用</h3>
+<pre><code class="language-js">// Observer需要一个用于监听的目标DOM
+const targetNode = document.getElementById(&quot;app&quot;);
+
+//用于确定mutation监听变化的范围
+const config = {
+  attributes: true, // 监听目标节点的属性变化，例如id，class等属性
+  childList: true, // 除目标节点外还要监听目标节点的直接子节点
+  subtree: true, // subtree的范围大于childList，还包括子节点children
+  characterData: true, // 监听TextNode需要额外配置，默认TextNode变化不会触发callback
+};
+
+// 当观察到变动时执行的回调函数，mutationsList包含本次变更的信息
+const callback = function (mutationsList, observer) {
+  console.log(mutationsList);
+};
+
+const observer = new MutationObserver(callback);
+observer.observe(targetNode, config);
+</code></pre>
+<h2>API 介绍</h2>
+<h3>observe</h3>
+<p>observe 用于开启对某个 DOM 的监听，一个 MutationObserver 可以通过多次调用 observe 监听多个 DOM 的变化。</p>
+<p>当变化发生时 MutationObserver 会将一个或多个 mutation 对象传给 callback 的第一个参数，mutation 对象内包含本次变更的相关信息下面看一下 mutation 的结构</p>
+<pre><code class="language-js">{
+  addedNodes: [],  //新增DOM时会包含被新增的DOM
+  attributeName: &quot;id&quot;,   //本次变更的属性名
+  attributeNamespace: null,  //命名空间URI，一般用不到
+  nextSibling: null, //当存在添加/删除节点的操作时会存在nextSibling/previousSibling, 引用上一个/下一个兄弟节点
+  previousSibling: null,
+  oldValue: null,
+  removedNodes: [],
+  target: Text,
+  type: &quot;characterData&quot; //变更类型，如characterData，childList等
+}
+</code></pre>
+<h3>takeRecords</h3>
+<p>takeRecords 用于获取在事件队列中但还未传递给 callback 的 mutation 对象，通常使用在调用 disconnect 时又不想丢失之前的 mutationRecords（如果 mutation 连续触发，可能出现 mutation 还在队列中但未传递给 callback 的情况）。</p>
+<h3>disconnect</h3>
+<pre><code class="language-js">observer.disconnect();
+</code></pre>
+<p>调用 observer.disconnect 后 Observer 将不再监听 target，如果不需要监听请及时调用该方法，以免产生预期之外的行为以及内存泄漏。</p>
+<h2>常见场景</h2>
+<p>对于需要监听 DOM 变化的场景可考虑使用 MutationObserver，利于用于 Tag group 内元素的动态渲染，下面使用 MutationObserver 实现一个简单的 Todo List</p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;MutationObserver To-Do List Demo&lt;/title&gt;
+    &lt;style&gt;
+      #todo-list {
+        list-style-type: none;
+      }
+    &lt;/style&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;待办事项列表&lt;/h1&gt;
+
+    &lt;ul id=&quot;todo-list&quot;&gt;
+      &lt;li&gt;完成作业&lt;/li&gt;
+      &lt;li&gt;购物&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;button id=&quot;addTask&quot;&gt;添加任务&lt;/button&gt;
+    &lt;button id=&quot;removeTask&quot;&gt;移除任务&lt;/button&gt;
+    &lt;p id=&quot;taskCount&quot;&gt;任务数量：2&lt;/p&gt;
+
+    &lt;script&gt;
+      const todoList = document.getElementById(&quot;todo-list&quot;);
+      const taskCount = document.getElementById(&quot;taskCount&quot;);
+
+      const observer = new MutationObserver((mutationsList, observer) =&gt; {
+        mutationsList.forEach((mutation) =&gt; {
+          if (mutation.type === &quot;childList&quot;) {
+            updateTaskCount();
+          }
+        });
+      });
+
+      const config = { childList: true };
+
+      observer.observe(todoList, config);
+
+      document.getElementById(&quot;addTask&quot;).addEventListener(&quot;click&quot;, () =&gt; {
+        const newTask = document.createElement(&quot;li&quot;);
+        newTask.textContent = &quot;新任务&quot;;
+        todoList.appendChild(newTask);
+      });
+
+      document.getElementById(&quot;removeTask&quot;).addEventListener(&quot;click&quot;, () =&gt; {
+        const tasks = todoList.getElementsByTagName(&quot;li&quot;);
+        if (tasks.length &gt; 0) {
+          todoList.removeChild(tasks[0]);
+        }
+      });
+
+      function updateTaskCount() {
+        const tasks = todoList.getElementsByTagName(&quot;li&quot;);
+        taskCount.textContent = `任务数量：${tasks.length}`;
+      }
+    &lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h2>IntersectionObserver</h2>
+<p>IntersectionObserver 用于监听一个元素的可见比例（一个 DOM 元素被另一个 DOM 元素遮挡百分比）变化。</p>
+<h3>基本使用</h3>
+<pre><code class="language-js">const target = document.getElementById(&quot;app&quot;);
+
+const options = {
+  root: rootTarget, // 相对于某个元素进行遮挡计算
+  rootMargin: &quot;0px&quot;, // 进行计算的边界范围，通过rootMargin可以实现提前计算或延迟计算（相对于root原本尺寸）的效果
+  threshold: 0.5, // 触发callback时的遮挡比例，0.5代表元素被遮挡50%时触发callback。由于浏览器事件循环机制的影响，callback触发时遮挡比例通常不会是精确的50%。
+};
+
+const intersectionObserver = new IntersectionObserver((entries, observer) =&gt; {
+  //和MutationObserver相同，也是产生一个array
+  entries.forEach((entry) =&gt; {
+    console.log(entry);
+  });
+}, options);
+
+intersectionObserver.observe(target);
+</code></pre>
+<h2>API 介绍</h2>
+<h3>observe &amp; options</h3>
+<p>observe 方法用于启动一个 Observer 对 DOM 元素的监听。在创建 IntersectionObserver 时可以通过传入 option 改变监听的行为。</p>
+<pre><code class="language-js">const options = {
+  root: root,
+  rootMargin: &quot;100px&quot;,
+  threshold: 0.7,
+};
+</code></pre>
+<p>在上面的配置中，通过配置 rootMargin 为 100px 在 target 距离 root 元素 100px 时即可判定为被遮挡，通过 threshold 设置为 0.7，当遮挡比例超过 70% 时执行 callback。</p>
+<h3>entry</h3>
+<p>callback 第一个 param 是 entry 对象构成的 array，entry 包含了触发 callback 时 DOM 的位置信息</p>
+<pre><code class="language-js">//被监听DOM元素的Rect信息
+boundingClientRect:  {
+  bottom: 208
+  height: 200
+  left: 8
+  right: 208
+  top: 8
+  width: 200
+  x: 8
+  y: 8
+}
+intersectionRatio: 1 //交叉比例
+// 被监听元素与Root元素交叉部分矩形的Rect信息。
+intersectionRect: {
+  bottom: 208,
+  height: 200,
+  left: 8,
+  right: 208,
+  top: 8,
+  width: 200,
+  x: 8,
+  y: 8
+},
+// 是否处于交叉状态
+isIntersecting: true,
+isVisible: false,
+// Root元素的Rect信息
+rootBounds:  {
+  bottom: 606,
+  height: 606,
+  left: 0,
+  right: 476,
+  top: 0,
+  width: 476,
+  x: 0,
+  y: 0
+},
+// root元素
+target: div#target,
+time: 49.09999990463257
+</code></pre>
+<h2>常见场景</h2>
+<p>乍一看 IntersectionObserver 好像没啥用，单这个 Api 在某些场景下十分好用。</p>
+<p>比如我们有一个通过 sticky 固定在屏幕顶部的 header 元素，我们希望在触发 sticky 时给 header 加一个 shadow（很多 table 都有这样的功能）</p>
+<p>一种很常见的做法是监听 scroll，当滚动一定距离时加上 shadow 即可。但是监听 scroll 本身会早成一定的渲染压力（scroll 触发非常频繁），同时如果使用 React 这样的框架又会造成额外的 render，在用户的视角看来更卡了。</p>
+<p>此时使用 IntersectionObserver 就很合适了，因为我们需要监听的只是触发 sticky 的一瞬间，其他的滚动都是无效的，没必要进行计算。</p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot; /&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;
+    &lt;title&gt;Sticky Header with Shadow on Intersection&lt;/title&gt;
+    &lt;style&gt;
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      header {
+        height: 80px;
+        background-color: #3498db;
+        color: white;
+        text-align: center;
+        line-height: 80px;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      .header-shadow {
+        transition: box-shadow 0.3s ease;
+      }
+
+      .header-shadow.shadow {
+        box-shadow: 0 2px 5px black;
+      }
+
+      section {
+        height: 1000px;
+        background-color: #ecf0f1;
+        padding: 20px;
+      }
+    &lt;/style&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id=&quot;guard&quot;&gt;&lt;/div&gt;
+    &lt;header id=&quot;sticky-header&quot; class=&quot;header-shadow&quot;&gt;Sticky Header&lt;/header&gt;
+
+    &lt;section&gt;
+      &lt;p&gt;向下滚动触发sticky时展示shadow&lt;/p&gt;
+    &lt;/section&gt;
+
+    &lt;script&gt;
+      const header = document.getElementById(&quot;sticky-header&quot;);
+      const section = document.querySelector(&quot;section&quot;);
+
+      const options = {
+        threshold: 1,
+      };
+      //guard滚动到可视区域以外时认为触发了shadow
+      const intersectionObserver = new IntersectionObserver((entries) =&gt; {
+        entries.forEach((entry) =&gt; {
+          if (entry.isIntersecting) {
+            header.classList.remove(&quot;shadow&quot;);
+          } else {
+            header.classList.add(&quot;shadow&quot;);
+          }
+        });
+      }, options);
+      intersectionObserver.observe(document.getElementById(&quot;guard&quot;));
+    &lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h2>ResizeObserver</h2>
+<h3>基本使用</h3>
+<p>和前面的 api 用法差不多，这里不过多介绍。</p>
+<pre><code class="language-js">const box = document.getElementById(&quot;box&quot;);
+
+const resizeObserver = new ResizeObserver((entries) =&gt; {
+  entries.forEach((entry) =&gt; {
+    console.log(entry);
+  });
+});
+
+resizeObserver.observe(box);
+</code></pre>
+<p>entry 对象包含 resize 相关的信息，下面看一下 entry 的结构</p>
+<pre><code class="language-js">{
+  // 不同box-sizing下的尺寸
+  borderBoxSize: [{
+    blockSize: 200,
+    inlineSize: 200,
+  }],
+  contentBoxSize: [{
+    blockSize: 200,
+    inlineSize: 200,
+  }],
+  contentRect: {
+    bottom: 200,
+    height: 200,
+    left: 0,
+    right: 200,
+    top: 0,
+    width: 200,
+    x: 0,
+    y: 0
+  },
+  // 在物理设备像素上的大小, 在不同的屏幕上尺寸不同例如Retina
+  devicePixelContentBoxSize: [{
+      blockSize: 300,
+      inlineSize: 300
+    }
+  ],
+  target: div#resizable-box
+}
+</code></pre>
+<h2>常见场景</h2>
+<p>可以基于 ResizeObserver 实现一个简单的 resize-detector（参考 react-resize-detector），在尺寸变化时返回尺寸信息。</p>
+<h3>实现一个简单的 resize-detector</h3>
+<p>这个 demo 做简单一点，点击盒子就算拖拽有效。</p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot; /&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;
+    &lt;title&gt;ResizeObserver Demo with Resizable Box&lt;/title&gt;
+    &lt;style&gt;
+      #resizable-box {
+        width: 200px;
+        height: 200px;
+        background-color: #3498db;
+        color: white;
+        text-align: center;
+        line-height: 200px;
+        font-size: 24px;
+        transition: background-color 0.5s ease;
+        resize: both;
+        overflow: auto;
+        cursor: pointer;
+      }
+    &lt;/style&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id=&quot;resizable-box&quot;&gt;Resize me!&lt;/div&gt;
+
+    &lt;script&gt;
+      const resizableBox = document.getElementById(&quot;resizable-box&quot;);
+      let isResizing = false;
+      let startX, startY, startWidth, startHeight;
+
+      const resizeObserver = new ResizeObserver((entries) =&gt; {
+        for (const entry of entries) {
+          const { width, height } = entry.contentRect;
+          console.log(&quot;宽度:&quot;, width, &quot;高度:&quot;, height);
+        }
+      });
+
+      resizeObserver.observe(resizableBox);
+
+      resizableBox.addEventListener(&quot;mousedown&quot;, startResize);
+      document.addEventListener(&quot;mousemove&quot;, handleResize);
+      document.addEventListener(&quot;mouseup&quot;, stopResize);
+
+      function startResize(e) {
+        isResizing = true;
+        startX = e.clientX;
+        startY = e.clientY;
+        startWidth = parseInt(
+          document.defaultView.getComputedStyle(resizableBox).width,
+          10
+        );
+        startHeight = parseInt(
+          document.defaultView.getComputedStyle(resizableBox).height,
+          10
+        );
+      }
+
+      function handleResize(e) {
+        if (!isResizing) return;
+        const newWidth = startWidth + (e.clientX - startX);
+        const newHeight = startHeight + (e.clientY - startY);
+
+        resizableBox.style.width = newWidth + &quot;px&quot;;
+        resizableBox.style.height = newHeight + &quot;px&quot;;
+      }
+
+      function stopResize() {
+        isResizing = false;
+      }
+    &lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h2>PerformanceObserver</h2>
+<p>PerformanceObserver 用于监听浏览器的 performance 事件，方便在 performance 事件触发时作统一处理。</p>
+<h3>基本使用</h3>
+<pre><code class="language-js">// mdn demo
+function perf_observer(list, observer) {
+  console.log(list);
+}
+var observer2 = new PerformanceObserver(perf_observer);
+// entryTypes用于指定要监听的事件类型
+observer2.observe({ entryTypes: [&quot;measure&quot;] });
+</code></pre>
+<p>下面列一下常见的 entryTypes</p>
+<ul>
+<li>mark 用于标记时间戳的事件</li>
+<li>measure performance.measure 触发的事件</li>
+<li>frame 网页渲染的事件</li>
+<li>navigation 导航的事件，例如页面加载或重新加载</li>
+<li>resource 资源加载事件</li>
+<li>longtask 长任务事件</li>
+<li>paint：绘制事件，例如 FP，FCP</li>
+<li>layout-shift 用于监视布局变化的事件</li>
+</ul>
+<p>对于对性能比较敏感的项目以及长期性能监控来说这个 api 还是比较方便的。</p>
+<h2>ReportingObserver</h2>
+<p>ReportingObserver 用于监听浏览器报告的事件，例如废弃 API，过时特性，网络错误。做监控 SDK 的同学应该经常能用到，日常业务代码用的比较少。</p>
+<h3>基本使用</h3>
+<pre><code class="language-js">const observer = new ReportingObserver((reports, observer) =&gt; {
+  reports.forEach((report) =&gt; {
+    console.log(report);
+  });
+});
+
+// 监听过时特性
+observer.observe({ types: [&quot;deprecation&quot;] });
+</code></pre>
+ 
+    </div>
+  </div>
+  <div class="article__wrapper_footer">
+    <a class="article__wrapper_footer-left " href="/articles/86.html"><svg t="1713708729970" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8437" width="48" height="48"><path d="M409.272947 512.57741l403.237243 403.237243a63.349415 63.349415 0 1 1-89.622481 89.622482L274.839224 557.324726a63.349415 63.349415 0 0 1 0-89.494632L722.951633 19.717685a63.349415 63.349415 0 1 1 89.494633 89.622482L409.336872 512.57741z" p-id="8438" fill="#8a8a8a"></path></svg></a>
+    <a class="article__wrapper_footer-right " href="/articles/88.html"><svg t="1713708697355" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8093" width="48" height="48"><path d="M855.123 517.004c0 8.245-3.167 15.51-9.503 21.823L402.999 981.47c-6.336 6.336-13.625 9.477-21.869 9.477s-15.51-3.142-21.845-9.477L311.8 933.96c-6.336-6.336-9.502-13.6-9.502-21.845 0-8.222 3.167-15.51 9.502-21.845l373.29-373.29-373.293-373.267c-6.336-6.336-9.502-13.6-9.502-21.845s3.167-15.533 9.503-21.869l47.484-47.484c6.336-6.336 13.6-9.502 21.845-9.502s15.533 3.167 21.869 9.503l442.621 442.622c6.334 6.334 9.503 13.625 9.503 21.869z" fill="#8a8a8a" p-id="8094"></path></svg></a>
+  </div>
+  <a class="article__wrapper_index" href="/articles/"><svg t="1713708857338" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="9656" width="48" height="48"><path d="M549.61981 133.022476l319.683047 203.605334A70.851048 70.851048 0 0 1 902.095238 396.361143v434.883047A70.89981 70.89981 0 0 1 831.146667 902.095238h-282.819048l0.024381-218.112h-71.826286v218.087619L192.853333 902.095238A70.89981 70.89981 0 0 1 121.904762 831.24419V390.241524c0-24.527238 12.678095-47.299048 33.54819-60.220953l318.659048-197.485714a70.972952 70.972952 0 0 1 75.50781 0.487619zM828.952381 828.952381V397.214476L511.488 195.047619 195.047619 391.119238V828.952381h211.309714v-216.551619h212.187429v216.527238L828.952381 828.952381z" p-id="9657" fill="#707070"></path></svg></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
+  <script src="../assets/js/articles-detail.js"></script>
+  <script>
+    hljs.highlightAll();
+  </script>
+</body>
+</html>
+    

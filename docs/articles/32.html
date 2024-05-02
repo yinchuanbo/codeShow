@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>职责链模式</title>
+    <meta charset="utf-8">
+    <meta name="description" content="This is a page">
+    <meta name="keywords" content="page, sample">
+    <meta name="author" content="None">
+    <link rel="icon" sizes="any" mask href="../assets/images/ico6.svg" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <link rel="stylesheet" href="../assets/css/articles.css">
+</head>
+<body>
+  <div class="article__wrapper_left">
+    <div class="article__wrapper_left-mulu">目录</div>
+    <ul class="articles__list"><li class="">
+          <a href="/articles/33.html">
+            命令模式
+          </a>
+        </li><li class="">
+          <a href="/articles/34.html">
+            中介者模式
+          </a>
+        </li><li class="">
+          <a href="/articles/35.html">
+            迭代器模式
+          </a>
+        </li><li class="">
+          <a href="/articles/36.html">
+            简单模板模式
+          </a>
+        </li><li class="">
+          <a href="/articles/37.html">
+            惰性模式
+          </a>
+        </li><li class="">
+          <a href="/articles/38.html">
+            链模式
+          </a>
+        </li><li class="">
+          <a href="/articles/39.html">
+            当你的网站有新内容，如何立即通知你的用户呢？
+          </a>
+        </li><li class="">
+          <a href="/articles/40.html">
+            裁剪的3种方式，CSS 如何隐藏移动端的滚动条？
+          </a>
+        </li><li class="">
+          <a href="/articles/41.html">
+            属性的 getter 和 setter
+          </a>
+        </li><li class="">
+          <a href="/articles/42.html">
+            原生的延迟加载支持
+          </a>
+        </li></ul>
+  </div>
+  <div class="article__wrapper_sidebar">
+    <a href="/" target="_blank"><svg t="1714001835347" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4298" width="48" height="48"><path d="M147.904 304.128l301.866667-179.541333a128 128 0 0 1 131.712 0.512l295.466666 178.88A128 128 0 0 1 938.666667 413.482667V810.666667a128 128 0 0 1-128 128H213.333333a128 128 0 0 1-128-128V414.144a128 128 0 0 1 62.570667-110.016z m43.626667 73.344A42.666667 42.666667 0 0 0 170.666667 414.144V810.666667a42.666667 42.666667 0 0 0 42.666666 42.666666h597.333334a42.666667 42.666667 0 0 0 42.666666-42.666666V413.482667a42.666667 42.666667 0 0 0-20.565333-36.501334l-295.466667-178.88a42.666667 42.666667 0 0 0-43.925333-0.170666l-301.866667 179.541333z" fill="#8a919f" p-id="4299"></path><path d="M405.333333 469.333333h213.333334a42.666667 42.666667 0 1 1 0 85.333334H405.333333a42.666667 42.666667 0 1 1 0-85.333334z m0 85.333334a42.666667 42.666667 0 1 0 0-85.333334h213.333334a42.666667 42.666667 0 1 0 0 85.333334H405.333333z" fill="#8a919f" p-id="4300"></path></svg></a>
+    <a href="/tools/" target="_blank"><svg t="1714002003458" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6911" width="48" height="48"><path d="M817.87 556.31h-63.58v-66.24A42.27 42.27 0 0 0 712 447.8h-84.81a42.27 42.27 0 0 0-42.27 42.27v66.24H436.57v-66.24a42.27 42.27 0 0 0-42.27-42.27h-84.83a42.27 42.27 0 0 0-42.27 42.27v66.24h-61.83A22.39 22.39 0 0 0 183 578.7a22.39 22.39 0 0 0 22.39 22.39h61.81v65.55a42.27 42.27 0 0 0 42.27 42.27h84.83a42.27 42.27 0 0 0 42.27-42.27v-65.55h148.36v65.55a42.27 42.27 0 0 0 42.27 42.27H712a42.27 42.27 0 0 0 42.27-42.27v-65.55h63.58a22.39 22.39 0 0 0 22.39-22.39 22.39 22.39 0 0 0-22.37-22.39z m-438.64 95.26h-54.69V505.14h54.69z m317.72 0h-54.69V505.14H697z" p-id="6912" fill="#8a919f"></path><path d="M823 202.58h-90.81v-63.09a71.88 71.88 0 0 0-71.88-71.88H363.19a71.88 71.88 0 0 0-71.88 71.88v63.08h-90.12A137.17 137.17 0 0 0 64 339.75v479a137.17 137.17 0 0 0 137.19 137.14H823a137.17 137.17 0 0 0 137.19-137.17v-479A137.17 137.17 0 0 0 823 202.58z m-474.36-54.1A23.52 23.52 0 0 1 372.17 125h279.16a23.52 23.52 0 0 1 23.52 23.52v54.1h-326.2z m554.23 673.31a76.76 76.76 0 0 1-76.76 76.76h-628a76.76 76.76 0 0 1-76.76-76.76V336.67a76.76 76.76 0 0 1 76.76-76.76h628a76.76 76.76 0 0 1 76.76 76.76z" p-id="6913" fill="#8a919f"></path></svg></a>
+  </div>
+  <div class="article__wrapper">
+    <div class="article__wrapper__main">
+      <div class="article__wrapper_header">
+        <h1>职责链模式</h1>
+        <span class="articles__home_time">NaN/NaN/NaN · YinHao</span>
+      </div>
+      <blockquote>
+<p>解决请求的发送者与请求的接受者之间的耦合，通过职责链上的多个对象对分解请求流程，实现请求在多个对象之间传递，直到最后一个对象完成请求的处理。</p>
+</blockquote>
+<h3>分解需求</h3>
+<p>既然一个需求要做很多事情，那就把每件事情独立出一个模块对象去处理，这样完整的需求就被分解成一部分一部分相互独立的模块需求</p>
+<h3>第一站：请求模块</h3>
+<p>创建一个异步请求</p>
+<pre><code class="language-js">var sendData = function (data, dealType, dom) {
+  var xhr = new XMLHttpRequest();
+  var url = &quot;getData.php?mod=userInfo&quot;;
+  xhr.onload = function (event) {
+    if ((xhr.status &gt;= 200 &amp;&amp; xhr.status &lt; 300) || xhr.status === 304) {
+      // 请求成功
+      dealData(xhr.responseText, dealType, dom);
+    } else {
+      // 请求失败
+    }
+  };
+  // 拼接请求字符串
+  for (var i in data) {
+    url += &quot;&amp;&quot; + i + &quot;=&quot; + data[i];
+  }
+  // 发送异步请求
+  xhr.open(&quot;get&quot;, url, true);
+  xhr.send(null);
+};
+</code></pre>
+<h3>下一站：响应数据适配模块</h3>
+<pre><code class="language-js">var dealData = function (data, dealType, dom) {
+  var dataType = Object.prototype.toString.call(data);
+  switch (dealType) {
+    case &quot;sug&quot;:
+      if (dataType === &quot;[object Array]&quot;) {
+        return createSug(data, dom);
+      }
+      if (dataType === &quot;[object Object]&quot;) {
+        var newData = [];
+        for (var i in data) {
+          newData.push(data[i]);
+        }
+        return createSug(newData, dom);
+      }
+      return createSug([data], dom);
+      break;
+    case &quot;validate&quot;:
+      return createValidataResult(data, dom);
+      break;
+  }
+};
+</code></pre>
+<h3>终点站：创建组件模块</h3>
+<pre><code class="language-js">var createSug = function (data, dom) {
+  var i = 0,
+    len = data.length,
+    html = &quot;&quot;;
+  for (; i &lt; len; i++) {
+    html += &quot;&lt;li&gt;&quot; + data[i] + &quot;&lt;/li&gt;&quot;;
+  }
+  dom.parentNode.getElementsByTagName(&quot;ul&quot;)[0].innerHTML = html;
+};
+var createValidataResult = function (data, dom) {
+  dom.parentNode.getElementsByTagName(&quot;span&quot;)[0].innerHTML = data;
+};
+</code></pre>
+<h3>站点检测：单元测试</h3>
+<pre><code class="language-js">dealData(&quot;用户名不正确&quot;, &quot;validate&quot;, input[0]);
+dealData(123, &quot;sug&quot;, input[1]);
+dealData([&quot;爱奇艺&quot;, &quot;阿里巴巴&quot;, &quot;爱漫画&quot;], &quot;sug&quot;, input[1]);
+dealData(
+  {
+    iqy: &quot;爱奇艺&quot;,
+    albb: &quot;阿里巴巴&quot;,
+    imh: &quot;爱漫画&quot;,
+  },
+  &quot;sug&quot;,
+  input[1]
+);
+</code></pre>
+<p>模拟 createSug 和 createSug 方法</p>
+<pre><code class="language-js">var createSug = function (data, dom) {
+  console.log(data, dom, &quot;createSug&quot;);
+};
+var createValidataResult = function (data, dom) {
+  console.log(data, dom, &quot;createValidataResult&quot;);
+};
+</code></pre>
+<h3>方案确定</h3>
+<pre><code class="language-js">var input = document.getElementsByTagName(&quot;input&quot;);
+input[0].onchange = function (e) {
+  sendData({ value: input[0].value }, &quot;validate&quot;, input[0]);
+};
+input[1].onkeydown = function (e) {
+  sendData({ value: input[1].value }, &quot;sug&quot;, input[1]);
+};
+</code></pre>
+ 
+    </div>
+  </div>
+  <div class="article__wrapper_footer">
+    <a class="article__wrapper_footer-left " href="/articles/31.html"><svg t="1713708729970" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8437" width="48" height="48"><path d="M409.272947 512.57741l403.237243 403.237243a63.349415 63.349415 0 1 1-89.622481 89.622482L274.839224 557.324726a63.349415 63.349415 0 0 1 0-89.494632L722.951633 19.717685a63.349415 63.349415 0 1 1 89.494633 89.622482L409.336872 512.57741z" p-id="8438" fill="#8a8a8a"></path></svg></a>
+    <a class="article__wrapper_footer-right " href="/articles/33.html"><svg t="1713708697355" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8093" width="48" height="48"><path d="M855.123 517.004c0 8.245-3.167 15.51-9.503 21.823L402.999 981.47c-6.336 6.336-13.625 9.477-21.869 9.477s-15.51-3.142-21.845-9.477L311.8 933.96c-6.336-6.336-9.502-13.6-9.502-21.845 0-8.222 3.167-15.51 9.502-21.845l373.29-373.29-373.293-373.267c-6.336-6.336-9.502-13.6-9.502-21.845s3.167-15.533 9.503-21.869l47.484-47.484c6.336-6.336 13.6-9.502 21.845-9.502s15.533 3.167 21.869 9.503l442.621 442.622c6.334 6.334 9.503 13.625 9.503 21.869z" fill="#8a8a8a" p-id="8094"></path></svg></a>
+  </div>
+  <a class="article__wrapper_index" href="/articles/"><svg t="1713708857338" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="9656" width="48" height="48"><path d="M549.61981 133.022476l319.683047 203.605334A70.851048 70.851048 0 0 1 902.095238 396.361143v434.883047A70.89981 70.89981 0 0 1 831.146667 902.095238h-282.819048l0.024381-218.112h-71.826286v218.087619L192.853333 902.095238A70.89981 70.89981 0 0 1 121.904762 831.24419V390.241524c0-24.527238 12.678095-47.299048 33.54819-60.220953l318.659048-197.485714a70.972952 70.972952 0 0 1 75.50781 0.487619zM828.952381 828.952381V397.214476L511.488 195.047619 195.047619 391.119238V828.952381h211.309714v-216.551619h212.187429v216.527238L828.952381 828.952381z" p-id="9657" fill="#707070"></path></svg></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
+  <script src="../assets/js/articles-detail.js"></script>
+  <script>
+    hljs.highlightAll();
+  </script>
+</body>
+</html>
+    

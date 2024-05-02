@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>webpack5-高级篇2</title>
+    <meta charset="utf-8">
+    <meta name="description" content="This is a page">
+    <meta name="keywords" content="page, sample">
+    <meta name="author" content="None">
+    <link rel="icon" sizes="any" mask href="../assets/images/ico6.svg" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <link rel="stylesheet" href="../assets/css/articles.css">
+</head>
+<body>
+  <div class="article__wrapper_left">
+    <div class="article__wrapper_left-mulu">目录</div>
+    <ul class="articles__list"><li class="">
+          <a href="/articles/114.html">
+            CSS修改滚动条样式 scrollbar
+          </a>
+        </li><li class="">
+          <a href="/articles/115.html">
+            Web Components
+          </a>
+        </li><li class="">
+          <a href="/articles/116.html">
+            数据类型
+          </a>
+        </li><li class="">
+          <a href="/articles/117.html">
+            严格模式
+          </a>
+        </li><li class="">
+          <a href="/articles/118.html">
+            类型检测
+          </a>
+        </li><li class="">
+          <a href="/articles/119.html">
+            类型转换
+          </a>
+        </li><li class="">
+          <a href="/articles/12.html">
+            前端异常处理最佳实践
+          </a>
+        </li><li class="">
+          <a href="/articles/120.html">
+            运算符和表达式
+          </a>
+        </li><li class="">
+          <a href="/articles/121.html">
+            语句和程序结构
+          </a>
+        </li><li class="">
+          <a href="/articles/122.html">
+            Js 技巧
+          </a>
+        </li></ul>
+  </div>
+  <div class="article__wrapper_sidebar">
+    <a href="/" target="_blank"><svg t="1714001835347" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4298" width="48" height="48"><path d="M147.904 304.128l301.866667-179.541333a128 128 0 0 1 131.712 0.512l295.466666 178.88A128 128 0 0 1 938.666667 413.482667V810.666667a128 128 0 0 1-128 128H213.333333a128 128 0 0 1-128-128V414.144a128 128 0 0 1 62.570667-110.016z m43.626667 73.344A42.666667 42.666667 0 0 0 170.666667 414.144V810.666667a42.666667 42.666667 0 0 0 42.666666 42.666666h597.333334a42.666667 42.666667 0 0 0 42.666666-42.666666V413.482667a42.666667 42.666667 0 0 0-20.565333-36.501334l-295.466667-178.88a42.666667 42.666667 0 0 0-43.925333-0.170666l-301.866667 179.541333z" fill="#8a919f" p-id="4299"></path><path d="M405.333333 469.333333h213.333334a42.666667 42.666667 0 1 1 0 85.333334H405.333333a42.666667 42.666667 0 1 1 0-85.333334z m0 85.333334a42.666667 42.666667 0 1 0 0-85.333334h213.333334a42.666667 42.666667 0 1 0 0 85.333334H405.333333z" fill="#8a919f" p-id="4300"></path></svg></a>
+    <a href="/tools/" target="_blank"><svg t="1714002003458" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6911" width="48" height="48"><path d="M817.87 556.31h-63.58v-66.24A42.27 42.27 0 0 0 712 447.8h-84.81a42.27 42.27 0 0 0-42.27 42.27v66.24H436.57v-66.24a42.27 42.27 0 0 0-42.27-42.27h-84.83a42.27 42.27 0 0 0-42.27 42.27v66.24h-61.83A22.39 22.39 0 0 0 183 578.7a22.39 22.39 0 0 0 22.39 22.39h61.81v65.55a42.27 42.27 0 0 0 42.27 42.27h84.83a42.27 42.27 0 0 0 42.27-42.27v-65.55h148.36v65.55a42.27 42.27 0 0 0 42.27 42.27H712a42.27 42.27 0 0 0 42.27-42.27v-65.55h63.58a22.39 22.39 0 0 0 22.39-22.39 22.39 22.39 0 0 0-22.37-22.39z m-438.64 95.26h-54.69V505.14h54.69z m317.72 0h-54.69V505.14H697z" p-id="6912" fill="#8a919f"></path><path d="M823 202.58h-90.81v-63.09a71.88 71.88 0 0 0-71.88-71.88H363.19a71.88 71.88 0 0 0-71.88 71.88v63.08h-90.12A137.17 137.17 0 0 0 64 339.75v479a137.17 137.17 0 0 0 137.19 137.14H823a137.17 137.17 0 0 0 137.19-137.17v-479A137.17 137.17 0 0 0 823 202.58z m-474.36-54.1A23.52 23.52 0 0 1 372.17 125h279.16a23.52 23.52 0 0 1 23.52 23.52v54.1h-326.2z m554.23 673.31a76.76 76.76 0 0 1-76.76 76.76h-628a76.76 76.76 0 0 1-76.76-76.76V336.67a76.76 76.76 0 0 1 76.76-76.76h628a76.76 76.76 0 0 1 76.76 76.76z" p-id="6913" fill="#8a919f"></path></svg></a>
+  </div>
+  <div class="article__wrapper">
+    <div class="article__wrapper__main">
+      <div class="article__wrapper_header">
+        <h1>webpack5-高级篇2</h1>
+        <span class="articles__home_time">NaN/NaN/NaN · YinHao</span>
+      </div>
+      <h2>多页面应用</h2>
+<h3>4.1 entry 配置</h3>
+<p><strong>单入口</strong></p>
+<pre><code class="language-js">module.exports = {
+  entry: &quot;./path/to/my/entry/file.js&quot;,
+};
+</code></pre>
+<p>entry 属性的单个入口语法，参考下面的简写：</p>
+<pre><code class="language-js">module.exports = {
+  entry: {
+    main: &quot;./path/to/my/entry/file.js&quot;,
+  },
+};
+</code></pre>
+<p>我们也可以将一个文件路径数组传递给 entry 数组，在你想一次注入多个依赖文件，并且将它们的依赖关系绘制在一个 <code>chunk</code> 中时，这种方式就很有用了。</p>
+<pre><code class="language-js">module.exports = {
+  entry: [&quot;./src/file_1.js&quot;, &quot;./src/file_2.js&quot;],
+  output: {
+    filename: &quot;bundle.js&quot;,
+  },
+};
+</code></pre>
+<p><strong>对象语法</strong></p>
+<pre><code class="language-js">module.exports = {
+  entry: {
+    app: &quot;./src/app.js&quot;,
+    adminApp: &quot;./src/adminApp.js&quot;,
+  },
+};
+</code></pre>
+<ul>
+<li>
+<p>描述入口的对象：</p>
+<ul>
+<li>dependOn: 当前入口所依赖的入口，它们必须在该入口被加载前被加载。</li>
+<li>filename: 指定要输出的文件名称。</li>
+<li>import: 启动时需加载的模块。</li>
+<li>library: 指定 library 选项，为当前 entry 构建一个 library。</li>
+<li>runtime: 运行时 chunk 的名字，如果设置了，就会创建一个新的运行时 chunk，在 webpack 5.43.0 之后可以将其设置为 false，以避免一个新的运行时 chunk。</li>
+<li>publicPath: 当该入口的输出文件在浏览器中被引用时，为它们指定一个公共 URL 地址，</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-js">module.exports = {
+  entry: {
+    a2: &quot;dependingfile.js&quot;,
+    b2: {
+      dependOn: &quot;a2&quot;,
+      import: &quot;./src/app.js&quot;,
+    },
+  },
+};
+</code></pre>
+<p>runtime 和 dependOn 不应在同一个入口上被同时使用，所以如下配置无效，并且会抛出错误：</p>
+<pre><code class="language-js">module.exports = {
+  entry: {
+    a2: &quot;./a&quot;,
+    b2: {
+      runtime: &quot;x2&quot;,
+      dependOn: &quot;a2&quot;,
+      import: &quot;./b&quot;,
+    },
+  },
+};
+</code></pre>
+<p>确保 runtime 不能指向一个已存在的入口名称，例如下面配置会抛出一个错误：</p>
+<pre><code class="language-js">module.exports = {
+  entry: {
+    a2: &quot;./a&quot;,
+    b2: {
+      runtime: &quot;a1&quot;,
+      import: &quot;./b&quot;,
+    },
+  },
+};
+</code></pre>
+<p><strong>示例 1. entry 是一个数组</strong></p>
+<p>enrty 数组中可以列出多个入口文件，它们会被打包到同一个 bundle 中。</p>
+<ul>
+<li>示例文件</li>
+</ul>
+<pre><code class="language-js">//app1.js
+cosnole.log(&quot;app1&quot;);
+</code></pre>
+<pre><code class="language-js">//app2.js
+cosnole.log(&quot;app2&quot;);
+</code></pre>
+<ul>
+<li>webpack.config.js</li>
+</ul>
+<pre><code class="language-js">module.exports = {
+  //...
+  entry: [&quot;./src/app1.js&quot;, &quot;./src/app2.js&quot;],
+};
+</code></pre>
+<ul>
+<li>结论：</li>
+</ul>
+<ol>
+<li>
+<p>app1.js、app2.js 之间可以没有任何关系。</p>
+</li>
+<li>
+<p>entry 是一个数组的时候，里面列出的模块会被打包到同一个 bundle 中。</p>
+</li>
+<li>
+<p>entry 数组中的多个模块的执行顺序：从头到尾。</p>
+</li>
+</ol>
+<p><strong>示例 2. entry 数组中包含第三方包</strong></p>
+<p>自定义模块和第三方包会被打包到同一个 bundle 中。</p>
+<ul>
+<li>修改配置：</li>
+</ul>
+<pre><code class="language-js">module.exports = {
+  //...
+  entry: [&quot;./src/app1.js&quot;, &quot;./src/app2.js&quot;, &quot;lodash&quot;],
+};
+</code></pre>
+<ul>
+<li>结论：输出的 bundle 中还包含第三方代码。</li>
+</ul>
+<p><strong>示例 3. 单独输出第三方包</strong></p>
+<p>希望自定义模块和第三方包能分开打包，并且输出到不同的 bundle 中去。</p>
+<ul>
+<li>修改配置：</li>
+</ul>
+<pre><code class="language-js">module.exports = {
+  //...
+  entry: {
+    main: [&quot;./src/app1.js&quot;, &quot;./src/app2.js&quot;],
+    lodash: &quot;lodash&quot;,
+  },
+};
+</code></pre>
+<ul>
+<li>结论：会输出两个 bundle：main.js 和 lodash.js</li>
+</ul>
+<p><strong>示例 4. 重复打包</strong></p>
+<p>如果在 app1.js 中使用了 lodash，打包后 bundle 的体积会如何变化呢？</p>
+<ul>
+<li>修改 app1.js</li>
+</ul>
+<pre><code class="language-js">import _ from &quot;lodash&quot;;
+console.log(&quot;app1.js&quot;);
+console.log(_);
+</code></pre>
+<ul>
+<li>打包</li>
+</ul>
+<pre><code class="language-js">module.exports = {
+  //...
+  entry: {
+    main: [&quot;./src/app1.js&quot;, &quot;./src/app2.js&quot;],
+    lodash: &quot;lodash&quot;,
+  },
+};
+</code></pre>
+<ul>
+<li>结论：会发现 lodash.js 体积没什么变化，而 main.js 的体积却变大很多，几乎和 lodash.js 一样大，说明 lodash 也被打包到 main.js 中去了。</li>
+</ul>
+<p><strong>示例 5. 避免重复打包</strong></p>
+<p>上例子中存在一个问题，打包后的代码存在两份 lodash，导致代码重复冗余，如何解决呢？</p>
+<ul>
+<li>修改配置：</li>
+</ul>
+<pre><code class="language-js">module.exports = {
+  //...
+  entry: {
+    main: {
+      import: [&quot;./src/app1.js&quot;, &quot;./src/app2.js&quot;],
+      dependOn: &quot;lodash&quot;,
+    },
+    lodash: &quot;lodash&quot;,
+  },
+};
+</code></pre>
+<ul>
+<li>结论：打包后只会存在一个 lodash，成功解决重复打包问题。</li>
+</ul>
+<p><strong>示例 6. 多 bundle 引用相同的第三方包</strong></p>
+<p>如果多个 bundle 中都引用同一个第三方包，会引起重复打包的问题吗？</p>
+<ul>
+<li>新增 app3.js</li>
+</ul>
+<pre><code class="language-js">//app3.js
+import _ from &quot;lodash&quot;;
+console.log(-)
+</code></pre>
+<ul>
+<li>修改配置：</li>
+</ul>
+<pre><code class="language-js">module.exports = {
+  //...
+  entry: {
+    main1: {
+      import: [&quot;./src/app1.js&quot;, &quot;./src/app2.js&quot;],
+      dependOn: &quot;lodash&quot;,
+    },
+    main2: {
+      import: &quot;./src/app3.js&quot;,
+      dependOn: &quot;lodash&quot;,
+    },
+    lodash: &quot;lodash&quot;,
+  },
+};
+</code></pre>
+<ul>
+<li>结论：第三方包只会打包一份，不会重复打包。</li>
+</ul>
+<h3>4.2 配置 index.html 模板</h3>
+<p><strong>生成多个 HTML 文件</strong></p>
+<p>要生多个 HTML 文件，请在插件数组中多次声明插件。</p>
+<pre><code class="language-js">module.exports = {
+  //...
+  entry: &quot;index.js&quot;,
+  output: {
+    path: __dirname + &quot;/dist&quot;,
+    filename: &quot;index_bundle.js&quot;,
+  },
+  plugins: [
+    new HtmlWebpackPlugin(), // Generate default index.html
+    new HtmlWebpackPlugin({
+      filename: &quot;test.html&quot;,
+      template: &quot;src/assets/test.html&quot;,
+    }),
+  ],
+};
+</code></pre>
+<p><strong>编写自己的模板</strong></p>
+<ul>
+<li>webpack.config.js</li>
+</ul>
+<pre><code class="language-js">module.exports = {
+  //...
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: &quot;Custom template&quot;,
+      template: &quot;index.html&quot;,
+    }),
+  ],
+};
+</code></pre>
+<ul>
+<li>index.html</li>
+</ul>
+<pre><code class="language-html">&lt;!-- index.html --&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;&lt;%= htmlWebpackPlugin.options.title %&gt;&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p><strong>HtmlWebpackPlugin 插件常用配置项</strong></p>
+<ol>
+<li>
+<p>在 <code>new HtmlWebpackPlugin()</code> 时，可传入一个配置对象，在配置对象中，不仅可以设置内置的属性，还可以自定义属性，在 html 模板中可以通过模板语法 <code>&lt;%= htmlWebpackPlugin.options.xxx %&gt;</code> 来使用这些自定义的属性。title 属性就是一个自定义属性。</p>
+</li>
+<li>
+<p>template：指定 html 模板。</p>
+</li>
+<li>
+<p>inject：指定在哪个位置引入打包后的文件，默认为 “head”，我们也可以修改为 “body”。</p>
+</li>
+<li>
+<p>chunks：指定引入哪些 chunks。默认情况下，htmlWebpackPlugin 插件会自动引入打包后所有的 chunks。</p>
+</li>
+</ol>
+<ul>
+<li>webpack.config.js</li>
+</ul>
+<pre><code class="language-js">module.exports = {
+  //...
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: &quot;多页面应用&quot;,
+      template: &quot;./src/index.html&quot;,
+      inject: &quot;body&quot;,
+      chunks: [&quot;main&quot;, &quot;lodash&quot;],
+    }),
+  ],
+};
+</code></pre>
+<p><strong>示例：HtmlWebpackPlugin 插件常用配置</strong></p>
+<ul>
+<li>webpack.config.js</li>
+</ul>
+<pre><code class="language-js">module.exports = {
+  //...
+  entry: {
+    main1: {
+      import: [&quot;./src/app1.js&quot;, &quot;./src/app2.js&quot;],
+      dependOn: &quot;lodash&quot;,
+    },
+    main2: {
+      import: &quot;./src/app3.js&quot;,
+      dependOn: &quot;lodash&quot;,
+    },
+    lodash: &quot;lodash&quot;,
+  },
+  output: {
+    clean: true,
+  },
+  mode: &quot;development&quot;,
+  devtool: &quot;cheap-module-source-map&quot;,
+  devServer: {
+    static: path.resolve(__dirname, &quot;./dist&quot;),
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: &quot;多页面应用&quot;,
+      template: &quot;./src/index.html&quot;,
+      inject: &quot;body&quot;,
+      chunks: [&quot;main&quot;, &quot;lodash&quot;],
+    }),
+  ],
+};
+</code></pre>
+<ul>
+<li>打包后结果：</li>
+</ul>
+<pre><code class="language-html">&lt;!-- index.html --&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;多页面应用&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;script defer src=&quot;main.js&quot;&gt;&lt;/script&gt;
+    &lt;script defer src=&quot;lodash.js&quot;&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h3>4.3 多页面应用</h3>
+<p>搭建多页面应用，需要进行哪些操作？</p>
+<ol>
+<li>
+<p>打包出多个 html 文件，每个 html 文件对应一个单页面应用</p>
+</li>
+<li>
+<p>将每个 html 文件和它里面独有引入的 chunk 存放在同一个目录中，公共的 chunk 也可以放在一个单独的目录中</p>
+</li>
+<li>
+<p>每个 html 文件引入 chunk 不完全相同</p>
+</li>
+</ol>
+<p><strong>配置项说明</strong></p>
+<ol>
+<li>
+<p><code>entry.Chunk.import</code>: 指定当前 chunk 的入口文件，如果有多个，则使用一个数组。</p>
+</li>
+<li>
+<p><code>entry.Chunk.dependOn</code>: 列出当前的 chunk 依赖的第三方包，它会被单独打包，避免将自己的代码和第三方包打包到一个 chunk 中，导致体积过大。</p>
+</li>
+<li>
+<p><code>entry.Chunk.filename</code>: 指定当前 chunk 的输出的名字，还可以指定存放的目录。</p>
+</li>
+<li>
+<p><code>plugins.HtmlWebpackPlugin.filename</code>: 指定生成的 html 的名字，还可以指定存放的目录。</p>
+</li>
+<li>
+<p><code>plugins.HtmlWebpackPlugin.publicPath</code>: 指定域名，如果要将打包输出的 chunk 部署到 cdn 上，就可以使用该 publicPath 选项来指定 cdn 域名。</p>
+</li>
+</ol>
+<p><strong>示例：搭建多页面应用环境</strong></p>
+<ul>
+<li>代码结构如下：</li>
+</ul>
+<pre><code class="language-sh">├─src
+    ├─app.js
+    ├─app2.js
+    ├─app3.js
+    ├─index.html
+    ├─index2.html
+├─package.json
+├─webpack.config.js
+</code></pre>
+<ul>
+<li>app.js</li>
+</ul>
+<pre><code class="language-js">import _ from &quot;lodash&quot;;
+console.log(&quot;app.js&quot;);
+console.log(_);
+</code></pre>
+<ul>
+<li>app2.js</li>
+</ul>
+<pre><code class="language-js">console.log(&quot;app2.js&quot;);
+</code></pre>
+<ul>
+<li>app3.js</li>
+</ul>
+<pre><code class="language-js">import _ from &quot;lodash&quot;;
+console.log(_);
+</code></pre>
+<ul>
+<li>index.html</li>
+</ul>
+<pre><code class="language-html">&lt;!-- index.html --&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;&lt;%= htmlWebpackPlugin.options.title %&gt;&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;p&gt;我是html模板&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<ul>
+<li>index2.html</li>
+</ul>
+<pre><code class="language-html">&lt;!-- index.html --&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;&lt;%= htmlWebpackPlugin.options.title %&gt;&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;p&gt;我是html模板2&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<ul>
+<li>配置文件：webpack.config.js</li>
+</ul>
+<pre><code class="language-js">const path = require(&quot;path&quot;);
+const HtmlWebpackPlugin = require(&quot;html-webpack-plugin&quot;);
+
+module.exports = {
+  entry: {
+    main: {
+      import: [&quot;./src/app.js&quot;, &quot;./src/app2.js&quot;],
+      dependOn: &quot;lodash&quot;,
+      filename: &quot;page1/[name].js&quot;,
+    },
+    main2: {
+      import: &quot;./src/app3.js&quot;,
+      dependOn: &quot;lodash&quot;,
+      filename: &quot;page2/[name].js&quot;,
+    },
+    lodash: {
+      import: &quot;lodash&quot;,
+      filename: &quot;common/[name].js&quot;,
+    },
+  },
+  output: {
+    clean: true,
+  },
+  mode: &quot;development&quot;,
+  devtool: &quot;cheap-module-source-map&quot;,
+  devServer: {
+    static: path.resolve(__dirname, &quot;./dist&quot;),
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: &quot;多页面应用-页面1&quot;,
+      template: &quot;./src/index.html&quot;,
+      inject: &quot;body&quot;,
+      filename: &quot;page1/index.html&quot;,
+      chunks: [&quot;main&quot;, &quot;lodash&quot;],
+      publicPath: &quot;http://www.a.com/&quot;,
+    }),
+    new HtmlWebpackPlugin({
+      title: &quot;多页面应用-页面2&quot;,
+      template: &quot;./src/index2.html&quot;,
+      inject: &quot;body&quot;,
+      filename: &quot;page2/index.html&quot;,
+      chunks: [&quot;main2&quot;, &quot;lodash&quot;],
+      publicPath: &quot;http://www.b.com/&quot;,
+    }),
+  ],
+};
+</code></pre>
+<ul>
+<li>打包后结果:</li>
+</ul>
+<pre><code class="language-sh">├─dist
+    ├─common
+        ├─lodash.js
+    ├─page1
+        ├─index.html
+        ├─main.js
+    ├─page2
+        ├─index2.html
+        ├─main2.js
+</code></pre>
+<h2>Tree shaking</h2>
+<ol>
+<li>
+<p>默认情况下，被 import 导入的模块中的代码，不管是否被使用到，都会被打包到当前模块。</p>
+</li>
+<li>
+<p>如果想去掉未使用的代码，该怎么办呢？</p>
+<ul>
+<li>设置生成模式：<code>mode: &quot;production&quot;</code></li>
+<li>设置 <code>optimization.usedExports</code></li>
+</ul>
+</li>
+</ol>
+<pre><code class="language-js">module.exports = {
+  //...
+  optimization: {
+    usedExports: true,
+  },
+};
+</code></pre>
+<ol start="3">
+<li>webpack5 tree-shaking 功能的特点：</li>
+</ol>
+<ul>
+<li>
+<p>对于自定义模块：如果只导入，而没有调用它，则也被 “摇” 掉</p>
+</li>
+<li>
+<p>对于第三方包：如果只导入，而没有调用它，则也被打包</p>
+</li>
+<li>
+<p>对于 .css 文件：如果只导入，而没有调用它，则也被打包。<code>这是 webpack 智能 tree-shaking 的一个表现，因为样式文件一般只要导入就能够生效，而不需要调用</code></p>
+</li>
+</ul>
+<p><strong>sideEffects</strong></p>
+<p>注意 webpack 不能百分百安全的进行 tree-shaking，有些模块导入，只要被引入，就会对应用程序产生重要的影响。一个很好的例子就是全局样式表，或者设置全局配置的 javascript 文件。</p>
+<p>webpack 认为这样的文件有 “副作用”，具有副作用的文件不应该被 tree-shaking，因为这将破坏整个应用程序。</p>
+<p>webpack 设计者清楚的认识到不知道哪些文件有副作用的情况下打包代码的风险，因此 webpack4 默认的将所有代码视为有副作用。这可以保护比免于删除必要的文件，但这意味着 webpack 的默认行为实际上是不进行 tree-shaking 的，值得注意的是 webpack5 默认会进行 tree-shaking。</p>
+<p>如果告诉 webpack 你的代码无副作用，可以通过 package,json 有一个特殊的属性 sideEffects，就是为此而存在的。</p>
+<p>它可能有三个值：</p>
+<ol>
+<li>
+<p>true: 这意味着所有的文件都有副作用，也就是没有一个文件可以 tree-shaking。</p>
+</li>
+<li>
+<p>false: 告诉 webpack 没有文件有副作用，所有文件都可以 tree-shaking</p>
+</li>
+<li>
+<p>数组：是文件路径数组，它告诉 webpack，除了数组中包含的文件外，你的任何文件都没有副作用，因此，除了指定的文件之外，其他文件都可以安全的进行 tree-shaking。</p>
+</li>
+</ol>
+<p><strong>[注]</strong></p>
+<ol>
+<li>
+<p>sideEffects 是 package.json 的配置项，而不是 webpack.config.js</p>
+</li>
+<li>
+<p>sideEffects 用来告诉 webpack 哪些文件是有 “副作用” 的，不要对它进行 tree-shaking，一律全部打包。</p>
+</li>
+<li>
+<p>webpack 默认认为样式文件是有 “副作用” 的，不会对它进行 tree-shaking，一律全部打包。相当于 <code>sideEffects: [&quot;*.css&quot;]</code></p>
+</li>
+</ol>
+<p><strong>示例：sideEffects 的基本使用</strong></p>
+<ul>
+<li>sytle.css</li>
+</ul>
+<pre><code class="language-css">body {
+  background-color: pink;
+}
+</code></pre>
+<ul>
+<li>m.global.js</li>
+</ul>
+<pre><code class="language-js">// 全局 js 文件，即使只导入而未使用，也不希望被 tree-shaking
+console.log(&quot;global code&quot;);
+</code></pre>
+<ul>
+<li>app.js</li>
+</ul>
+<pre><code class="language-js">import &quot;./sytle.css&quot;;
+import &quot;./m.global.js&quot;;
+</code></pre>
+<ul>
+<li>sideEffects 选项：</li>
+</ul>
+<pre><code class="language-json">{
+  &quot;sideEffects&quot;: [&quot;*.css&quot;, &quot;*.global.js&quot;]
+}
+</code></pre>
+<h2>shimming 预置依赖</h2>
+<p>webpack compiler 能够识别遵循 ES2015 模块语法、CommonJS 或 AMD 规范编写的模块，然而，一些 third party（第三方库）可能会引用一些全局依赖（例如 jQuery 中的 $）。因此这些 library 也可能会创建一些需要导出的全局变量。</p>
+<p>shim 另外一个及其重要的使用场景就是：当你希望 polyfill 扩展浏览器的能力，来支持更多用户时，在这种情况下，你可能只是想要将这些 polyfills 提供给需要修补的浏览器，也就是实现按需加载。</p>
+<h3>7.1 Shimming 预设全局变量</h3>
+<p>例如，把应用程序中的模块依赖，改为一个全局变量依赖，</p>
+<p>要实现这些，我们需要使用 <code>ProvidePlugin</code> 插件。</p>
+<blockquote>
+<p>ProvidePlugin 不需要安装，是 webpack 内置的。</p>
+</blockquote>
+<p>使用 <code>ProvidePlugin</code> 后，能够在 webpack 编译的每个模块中，通过访问一个变量来获取一个 package。</p>
+<p>如果 webpack 看到模块中用到这个变量，它将在最终 bundle 中引入给定的 package。</p>
+<p>让我们先移除 lodash 的 import 语句，改为通过插件提供它：</p>
+<ul>
+<li>src/index.js</li>
+</ul>
+<pre><code class="language-js">console.log(_.join([&quot;hello&quot;, &quot;webpack&quot;], &quot; &quot;));
+</code></pre>
+<ul>
+<li>webpack.config.js</li>
+</ul>
+<pre><code class="language-js">module.exports = {
+  //...
+  plugins: [
+    new webpack.ProvidePlugin({
+      _: &quot;lodash&quot;,
+    }),
+  ],
+};
+</code></pre>
+<p>还可以使用 <code>ProvidePlugin</code> 暴露出某个模块中单独导出，通过配置一个 “数组路径”（例如：[module, child, ...chindren?]）实现此功能。</p>
+<ul>
+<li>src/index.js</li>
+</ul>
+<pre><code class="language-js">console.log(join([&quot;hello&quot;, &quot;webpack&quot;], &quot; &quot;));
+</code></pre>
+<ul>
+<li>webpack.config.js</li>
+</ul>
+<pre><code class="language-js">module.exports = {
+  //...
+  plugins: [
+    new webpack.ProvidePlugin({
+      join: [&quot;lodash&quot;, &quot;join&quot;],
+    }),
+  ],
+};
+</code></pre>
+<p><strong>示例：第三方包 shimming</strong></p>
+<p>一般情况下，我们会在一个模块中先导入 lodash，然后私用它。</p>
+<p>那能不能将 lodash 变成一个全局变量呢？这样在任何模块中，都可以直接使用 lodash，而不需要导入了。</p>
+<p>可以通过将第三方包预设成全局变量来实现，即第三方包的 shimming。</p>
+<ul>
+<li>webpack.config.js</li>
+</ul>
+<pre><code class="language-js">module.exports = {
+  //...
+  plugins: [
+    new webpack.ProvidePlugin({
+      _: &quot;lodash&quot;,
+    }),
+  ],
+};
+</code></pre>
+<p>注意：不需要手动安装 lodash，执行 <code>npx webpack</code> 打包时，ProvidePlugin 插件会自动帮我们下载 lodash。</p>
+<h3>7.2 细粒度 Shimming</h3>
+<p>一些遗留模块依赖的 this 指向的是 window 对象，</p>
+<pre><code class="language-js">this.alert(&quot;hello webpack&quot;);
+</code></pre>
+<p>当模块运行在 commonJS 上下文中，这将会变成一个问题，也就是说此时的 this 指向的是 module.exports。在这种情况下，你可以通过使用 <code>imports-loader</code> 覆盖 this 指向。</p>
+<pre><code class="language-js">module.exports = {
+  //...
+  module: {
+    rules: [
+      {
+        test: require.resolve(&quot;./src/index.js&quot;),
+        use: &quot;imports-loader?wrapper=window&quot;,
+      },
+    ],
+  },
+};
+</code></pre>
+<p><strong>示例：imports-loader 基本使用</strong></p>
+<p>如果我们想在模块中使用 this 这个变量，并希望他是指向浏览器的 window 对象的，该怎么办呢？</p>
+<ul>
+<li>安装</li>
+</ul>
+<pre><code class="language-sh">npm i imports-loader -D
+</code></pre>
+<ul>
+<li>index.js</li>
+</ul>
+<pre><code class="language-js">this.alert(&quot;hello, webpack&quot;);
+</code></pre>
+<ul>
+<li>webpack.config.js</li>
+</ul>
+<pre><code class="language-js">module.exports = {
+  //...
+  module: {
+    rules: [
+      {
+        test: require.resolve(&quot;./src/index.js&quot;),
+        use: &quot;imports-loader?wrapper=window&quot;,
+      },
+    ],
+  },
+};
+</code></pre>
+<ul>
+<li>结论：可以通过 imports-loader 来修改 this 的指向。</li>
+</ul>
+<h3>7.4 加载 Polyfills</h3>
+<p>引入 <code>@babel/polyfill</code></p>
+<pre><code class="language-sh">npm install @babel/polyfill --save
+</code></pre>
+<p>然后，使用 import 将其引入到我们主 bundle 文件：</p>
+<pre><code class="language-js">import &quot;@babel/polyfill&quot;;
+console.log(Array.from([1, 2, 3], (x) =&gt; x + x));
+</code></pre>
+<p>注意，这种方式优先考虑正确性，而不考虑 bundle 体积大小。为了安全和可靠，<code>polyfill/shim</code> 必须运行于所有其他代码之前，而且需要同步加载，或者说，需要在所有 <code>polyfill/shim</code> 加载之后，再去加载所有应用程序代码。</p>
+<p>社区中存在许多误解，即现在浏览器 “不需要 polyfill”，或者 <code>polyfill/shim</code> 仅用于添加缺失功能。</p>
+<p>实际上，它们通常用于 <strong>修复损坏实现</strong>，即使是在最现代的浏览器中，也会出现这种情况。</p>
+<p>因此，最佳实践仍然是，不加选择的和同步的加载所有 <code>polyfill/shim</code>，尽管这会导致额外的 bundle 体积成本。</p>
+<ul>
+<li>为什么要使用 polyfill?</li>
+</ul>
+<p>有些最新的 javascript api 是低版本浏览器不支持的，通过引用 polyfill，可以将这些 api 的实现代码打包到 web 应用中，这样就可以正常使用了。</p>
+<h3>7.5 进一步优化 Polyfills</h3>
+<p>不建议使用 <code>import @babel/polyfill</code>。因为这样做的缺点是会全局引入整个 polyfill 包，比如 <code>Array.from</code> 会全局引入，不但包的体积大，而且还会污染全局环境。</p>
+<p><code>babel-preset-env</code> package 通过 <code>browserslist</code> 来转译那些你浏览器不支持的特性。这个 preset 使用 <code>useBuiltIns</code> 选项，默认是 false，这种方式可以将全局 <code>babel-polyfill</code> 导入，改进为更细粒度的 <code>import</code> 格式：</p>
+<pre><code class="language-js">import &quot;core-js/modules/es7.string.pad-start&quot;;
+import &quot;core-js/modules/es7.string.pad-end&quot;;
+import &quot;core-js/modules/web.timers&quot;;
+import &quot;core-js/modules/web.immediate&quot;;
+import &quot;core-js/modules/web.dom.iterable&quot;;
+</code></pre>
+<ul>
+<li>安装 <code>@babel/preset-env</code> 及相关的包</li>
+</ul>
+<pre><code class="language-sh">npm i babel-loader @babel/core @babel/preset-env -D
+</code></pre>
+<ul>
+<li>webpack.config.js</li>
+</ul>
+<pre><code class="language-js">module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: &quot;babel-loader&quot;,
+          options: {
+            presets: [
+              [
+                &quot;@babel/preset-env&quot;,
+                {
+                  targets: [&quot;last 1 version&quot;, &quot;&gt; 1%&quot;],
+                  useBuiltIns: &quot;usage&quot;,
+                },
+              ],
+            ],
+          },
+        },
+      },
+    ],
+  },
+};
+</code></pre>
+<p>useBuiltIns 参数有 3 个取值：entry、usage、false</p>
+<ul>
+<li>
+<p>entry: 会将文件中 <code>import &quot;@babel/polyfill&quot;</code> 语句结合 targets，转换为一系列引入语句，去掉目标浏览器已支持的 polyfill 模块，不管代码里有没有用到，只要目标浏览器不支持都会引入对应的 pofyfill 模块。</p>
+</li>
+<li>
+<p>usage: 不需要手动在代码中写 <code>import &quot;@babel/polyfill&quot;</code>，打包时会自动根据实际代码的使用情况，结合 targets 引入代码里实际用到部分 polyfill 模块。</p>
+</li>
+<li>
+<p>false: 对 <code>import &quot;@babel/polyfill&quot;</code> 不作任何处理，也不会自动引入 pofyfill 模块。</p>
+</li>
+</ul>
+<blockquote>
+<p>需要注意的是在 webpack 打包文件配置的 entry 中引入 @babel/polyfill 不会根据 useBuiltIns 配置任何转换处理。</p>
+</blockquote>
+<p>由于 <code>@babel/polyfill</code> 在 7.4.0 中被弃用，建议直接添加 corejs 并通过 corejs 选项设置版本。</p>
+<ul>
+<li>执行 <code>npx webpack</code></li>
+</ul>
+<p>提示我们需要安装 <code>core-js</code></p>
+<pre><code class="language-sh">npm i core-js@3 -S
+</code></pre>
+<p>此时还需要，添加一个配置：</p>
+<pre><code class="language-js">module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: &quot;babel-loader&quot;,
+          options: {
+            presets: [
+              [
+                &quot;@babel/preset-env&quot;,
+                {
+                  targets: [&quot;last 1 version&quot;, &quot;&gt; 1%&quot;],
+                  useBuiltIns: &quot;usage&quot;,
+                  corejs: 3,
+                },
+              ],
+            ],
+          },
+        },
+      },
+    ],
+  },
+};
+</code></pre>
+<p><strong>示例：优化 polyfill</strong></p>
+<ul>
+<li>安装依赖</li>
+</ul>
+<pre><code class="language-sh">npm i -D babel-loader @babel/core @babel/preset-env
+npm i -D core-js@3
+</code></pre>
+<ul>
+<li>webpack.config.js</li>
+</ul>
+<pre><code class="language-js">module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: &quot;babel-loader&quot;,
+          options: {
+            presets: [
+              [
+                &quot;@babel/preset-env&quot;,
+                {
+                  targets: [&quot;last 1 version&quot;, &quot;&gt; 1%&quot;],
+                  useBuiltIns: &quot;usage&quot;,
+                  corejs: 3,
+                },
+              ],
+            ],
+          },
+        },
+      },
+    ],
+  },
+};
+</code></pre>
+<ul>
+<li>不需要手动导入 <code>@babel/polyfill</code></li>
+</ul>
+<pre><code class="language-js">// import &quot;@babel/polyfill&quot;
+console.log(Array.from([1, 2, 3], (x) =&gt; x + x));
+</code></pre>
+ 
+    </div>
+  </div>
+  <div class="article__wrapper_footer">
+    <a class="article__wrapper_footer-left " href="/articles/112.html"><svg t="1713708729970" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8437" width="48" height="48"><path d="M409.272947 512.57741l403.237243 403.237243a63.349415 63.349415 0 1 1-89.622481 89.622482L274.839224 557.324726a63.349415 63.349415 0 0 1 0-89.494632L722.951633 19.717685a63.349415 63.349415 0 1 1 89.494633 89.622482L409.336872 512.57741z" p-id="8438" fill="#8a8a8a"></path></svg></a>
+    <a class="article__wrapper_footer-right " href="/articles/114.html"><svg t="1713708697355" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8093" width="48" height="48"><path d="M855.123 517.004c0 8.245-3.167 15.51-9.503 21.823L402.999 981.47c-6.336 6.336-13.625 9.477-21.869 9.477s-15.51-3.142-21.845-9.477L311.8 933.96c-6.336-6.336-9.502-13.6-9.502-21.845 0-8.222 3.167-15.51 9.502-21.845l373.29-373.29-373.293-373.267c-6.336-6.336-9.502-13.6-9.502-21.845s3.167-15.533 9.503-21.869l47.484-47.484c6.336-6.336 13.6-9.502 21.845-9.502s15.533 3.167 21.869 9.503l442.621 442.622c6.334 6.334 9.503 13.625 9.503 21.869z" fill="#8a8a8a" p-id="8094"></path></svg></a>
+  </div>
+  <a class="article__wrapper_index" href="/articles/"><svg t="1713708857338" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="9656" width="48" height="48"><path d="M549.61981 133.022476l319.683047 203.605334A70.851048 70.851048 0 0 1 902.095238 396.361143v434.883047A70.89981 70.89981 0 0 1 831.146667 902.095238h-282.819048l0.024381-218.112h-71.826286v218.087619L192.853333 902.095238A70.89981 70.89981 0 0 1 121.904762 831.24419V390.241524c0-24.527238 12.678095-47.299048 33.54819-60.220953l318.659048-197.485714a70.972952 70.972952 0 0 1 75.50781 0.487619zM828.952381 828.952381V397.214476L511.488 195.047619 195.047619 391.119238V828.952381h211.309714v-216.551619h212.187429v216.527238L828.952381 828.952381z" p-id="9657" fill="#707070"></path></svg></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
+  <script src="../assets/js/articles-detail.js"></script>
+  <script>
+    hljs.highlightAll();
+  </script>
+</body>
+</html>
+    

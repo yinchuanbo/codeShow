@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>比较运算</title>
+    <meta charset="utf-8">
+    <meta name="description" content="This is a page">
+    <meta name="keywords" content="page, sample">
+    <meta name="author" content="None">
+    <link rel="icon" sizes="any" mask href="../assets/images/ico6.svg" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <link rel="stylesheet" href="../assets/css/articles.css">
+</head>
+<body>
+  <div class="article__wrapper_left">
+    <div class="article__wrapper_left-mulu">目录</div>
+    <ul class="articles__list"><li class="">
+          <a href="/articles/79.html">
+            如何使用 Promise 去控制并发请求？
+          </a>
+        </li><li class="">
+          <a href="/articles/80.html">
+            细数那些惊艳一时的 CSS 属性
+          </a>
+        </li><li class="">
+          <a href="/articles/81.html">
+            CSS counters 嵌套索引
+          </a>
+        </li><li class="">
+          <a href="/articles/82.html">
+            IntersectionObserver：前端性能优化的新利器
+          </a>
+        </li><li class="">
+          <a href="/articles/83.html">
+            性能优化-前端时间分片渲染简单做法
+          </a>
+        </li><li class="">
+          <a href="/articles/84.html">
+            如何及时发现网页的隐形错误
+          </a>
+        </li><li class="">
+          <a href="/articles/85.html">
+            前端数字格式化展示方法
+          </a>
+        </li><li class="">
+          <a href="/articles/86.html">
+            普通的文本输入框实现敏感词文字高亮
+          </a>
+        </li><li class="">
+          <a href="/articles/87.html">
+            梳理一下浏览器中常见Observer
+          </a>
+        </li><li class="">
+          <a href="/articles/88.html">
+            前端外描边完美实现
+          </a>
+        </li></ul>
+  </div>
+  <div class="article__wrapper_sidebar">
+    <a href="/" target="_blank"><svg t="1714001835347" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4298" width="48" height="48"><path d="M147.904 304.128l301.866667-179.541333a128 128 0 0 1 131.712 0.512l295.466666 178.88A128 128 0 0 1 938.666667 413.482667V810.666667a128 128 0 0 1-128 128H213.333333a128 128 0 0 1-128-128V414.144a128 128 0 0 1 62.570667-110.016z m43.626667 73.344A42.666667 42.666667 0 0 0 170.666667 414.144V810.666667a42.666667 42.666667 0 0 0 42.666666 42.666666h597.333334a42.666667 42.666667 0 0 0 42.666666-42.666666V413.482667a42.666667 42.666667 0 0 0-20.565333-36.501334l-295.466667-178.88a42.666667 42.666667 0 0 0-43.925333-0.170666l-301.866667 179.541333z" fill="#8a919f" p-id="4299"></path><path d="M405.333333 469.333333h213.333334a42.666667 42.666667 0 1 1 0 85.333334H405.333333a42.666667 42.666667 0 1 1 0-85.333334z m0 85.333334a42.666667 42.666667 0 1 0 0-85.333334h213.333334a42.666667 42.666667 0 1 0 0 85.333334H405.333333z" fill="#8a919f" p-id="4300"></path></svg></a>
+    <a href="/tools/" target="_blank"><svg t="1714002003458" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6911" width="48" height="48"><path d="M817.87 556.31h-63.58v-66.24A42.27 42.27 0 0 0 712 447.8h-84.81a42.27 42.27 0 0 0-42.27 42.27v66.24H436.57v-66.24a42.27 42.27 0 0 0-42.27-42.27h-84.83a42.27 42.27 0 0 0-42.27 42.27v66.24h-61.83A22.39 22.39 0 0 0 183 578.7a22.39 22.39 0 0 0 22.39 22.39h61.81v65.55a42.27 42.27 0 0 0 42.27 42.27h84.83a42.27 42.27 0 0 0 42.27-42.27v-65.55h148.36v65.55a42.27 42.27 0 0 0 42.27 42.27H712a42.27 42.27 0 0 0 42.27-42.27v-65.55h63.58a22.39 22.39 0 0 0 22.39-22.39 22.39 22.39 0 0 0-22.37-22.39z m-438.64 95.26h-54.69V505.14h54.69z m317.72 0h-54.69V505.14H697z" p-id="6912" fill="#8a919f"></path><path d="M823 202.58h-90.81v-63.09a71.88 71.88 0 0 0-71.88-71.88H363.19a71.88 71.88 0 0 0-71.88 71.88v63.08h-90.12A137.17 137.17 0 0 0 64 339.75v479a137.17 137.17 0 0 0 137.19 137.14H823a137.17 137.17 0 0 0 137.19-137.17v-479A137.17 137.17 0 0 0 823 202.58z m-474.36-54.1A23.52 23.52 0 0 1 372.17 125h279.16a23.52 23.52 0 0 1 23.52 23.52v54.1h-326.2z m554.23 673.31a76.76 76.76 0 0 1-76.76 76.76h-628a76.76 76.76 0 0 1-76.76-76.76V336.67a76.76 76.76 0 0 1 76.76-76.76h628a76.76 76.76 0 0 1 76.76 76.76z" p-id="6913" fill="#8a919f"></path></svg></a>
+  </div>
+  <div class="article__wrapper">
+    <div class="article__wrapper__main">
+      <div class="article__wrapper_header">
+        <h1>比较运算</h1>
+        <span class="articles__home_time">NaN/NaN/NaN · YinHao</span>
+      </div>
+      <h2>等值检测</h2>
+<p>等值检测的目的是判断两个变量是否相等，</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>运算符</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>相等</td>
+<td>==</td>
+<td>比较两个表达式，看是否相等</td>
+</tr>
+<tr>
+<td>不等</td>
+<td>!=</td>
+<td>比较两个表达式，看是否不相等</td>
+</tr>
+<tr>
+<td>严格相等</td>
+<td>===</td>
+<td>比较两个表达式，看值是否相等并具有相同的数据类型</td>
+</tr>
+<tr>
+<td>不严格相等</td>
+<td>!==</td>
+<td>比较两个表达式，看是否具有不相等的值或不同的数据类型</td>
+</tr>
+</tbody>
+</table>
+<p>对于等值检测来说，最简单和最有效的方法当然是比较两个变量引用（所指向的内存地址），但这并不准确，因为我们显然会在两个不同的内存地址上存放同样的数据，例如两个相同的字符串。</p>
+<p>因此比较引用虽然高效，但在很多时候却需要比较两个变量的值。</p>
+<ul>
+<li><strong>等值检测中“相等”的运算原则</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>运算规则</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>值类型与引用类型进行比较</td>
+<td>将引用类型的数据转换为与值类型数据相同的数据，再进行“数据等值”比较</td>
+</tr>
+<tr>
+<td>两个值类型进行比较</td>
+<td>转换成相同数据类型的值进行“数据等值”比较</td>
+</tr>
+<tr>
+<td>两个引用类型进行比较</td>
+<td>比较引用（内存地址）</td>
+</tr>
+</tbody>
+</table>
+<p>上述规则中所谓的 “数据等值” 仅指对 “值类型” 的比较而言，表明比较是变量所指向的存储单元中的数据（通常指 “内存数据”）</p>
+<p>在三种值类型（数值、布尔值、字符串）中，如果两个被比较的值类型不用，那么：</p>
+<ol>
+<li>
+<p>有任何一个是数字时，会将另一个转换为数字进行比较</p>
+</li>
+<li>
+<p>有任何一个数布尔值时，它将被转换为数字进行比较（并且由于上一个规则的存在，所以另一个数据也将被转换为数字），</p>
+</li>
+<li>
+<p>有任何一个是对象（或函数）时，将调用该对象的 <code>valueOf()</code> 方法将其转换为数据进行比较，且在多数情况下该值数据作为数字值处理</p>
+</li>
+<li>
+<p>按照特定规则返回比较结果，例如 undefined 与 null 值总是相等的。</p>
+</li>
+</ol>
+<pre><code class="language-js">undefined === undefined; // true
+null === null; // true
+</code></pre>
+<p>可见，Js 总是尽量用<strong>数字值</strong>比较来实现等值检测，</p>
+<p>这主要是因为 Js 内部的数据存储格式适合这一操作，同样的原因（即出于内部存储的格式的限制），字符串检测通常会存在非常大的开销。</p>
+<p>严格来说，必须对字符串中的每一个字符串进行比较，才能判断两个字符串是否相等，</p>
+<pre><code class="language-js">var str1 = &quot;abc&quot; + &quot;def&quot;;
+console.log(typeof str1); // string
+var str2 = &quot;abcd&quot; + &quot;ef&quot;;
+console.log(typeof str2); // string
+console.log(str1 === str2); // 这个运算需要进行 6 次字符比较，才能得到结果值 true
+</code></pre>
+<ul>
+<li><strong>等值检测中“严格相等”的运算原则</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>运算规则</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>值类型与引用类型进行比较</td>
+<td>必然 “不严格相等”</td>
+</tr>
+<tr>
+<td>两个值类型进行比较</td>
+<td>如果数据类型不同，则必然 “不严格相等”，否则，按等值检测中 “相等” 的运算规则进行比较</td>
+</tr>
+<tr>
+<td>两个引用类型进行比较</td>
+<td>比较引用（地址）</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-js">var obj,
+  str = &quot;abcdef&quot;;
+var obj1 = new String(str);
+var obj2 = (obj = new String(str));
+// 比较
+console.log(obj1 == obj2); // false
+console.log(obj1 === obj2); // false
+console.log(obj == obj2); // true
+console.log(obj === obj2); // true
+</code></pre>
+<p>在等值检测运算中存在一些特例，包括：</p>
+<pre><code class="language-js">// 1.NaN 不等于自身
+NaN == NaN; // false
+NaN === NaN; // false
+NaN != NaN; // true
+NaN !== NaN; // true
+// 2.符号可以转换为 true，但不等值于 true
+Boolean(Symbol()); // true
+!Symbol(); // false
+Symbol() == true; // false
+Symbol() === true; // false
+// 3.即使字面量相同的引用类型，也不是严格相等的
+{} === {}; // false
+/./ === /./; // false
+function() {} === funciton() {}; // false
+</code></pre>
+<h2>序列检测</h2>
+<ul>
+<li><strong>Js 中可进行序列检测的数据类型</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>可比较序列的类型</th>
+<th>序列值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>boolean</td>
+<td>0 ~ 1</td>
+</tr>
+<tr>
+<td>string</td>
+<td>当等值检测中有任何一个数据是符号时，该符号无须进行任何数据转换，因为它总是不等值于任何其他数据</td>
+</tr>
+<tr>
+<td>number</td>
+<td>NEGATIVE_INFINITY ~ POSITIVE_INFINITY</td>
+</tr>
+</tbody>
+</table>
+<p>序列检测的含义在于比较变量在序列中的大小，</p>
+<ul>
+<li><strong>序列检测的运算规则</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>运算负责</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>两个值类型进行比较</td>
+<td>直接比较数据在序列中的大小</td>
+</tr>
+<tr>
+<td>值类型与引用类型进行比较</td>
+<td>将引用类型的数据转换为与值类型数据相同的数据，再进行 “序列大小” 比较</td>
+</tr>
+<tr>
+<td>两个引用类型进行比较</td>
+<td>无意义，总是返回 false</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-js">var o1 = {};
+var o2 = {};
+var str = &quot;123&quot;;
+var num = 1;
+var b0 = false;
+var b1 = true;
+var ref = new String();
+
+// 1.值类型的比较
+console.log(b1 &lt; num); // false
+console.log(b1 &lt;= num); // true
+console.log(b1 &gt; b0); // true
+
+// 2.值类型与引用类型的比较
+// 空字符串被转换为 0
+console.log(num &gt; ref); // true
+
+// 3.两个对象比较时总是返回 false
+console.log(o1 &gt; o2 || o1 &lt; o2 || o1 == o2);
+</code></pre>
+<ul>
+<li>
+<p>当两个操作数都是字符串时，使用 <code>&gt;、&gt;=、&lt;、&lt;=</code> 表示字符串序列检测</p>
+</li>
+<li>
+<p>当任意一个操作数是非字符串时，会将字符串转换为数值来参与运算</p>
+</li>
+</ul>
+<p>下例说明：</p>
+<pre><code class="language-js">var s1 = &quot;abc&quot;;
+var s2 = &quot;ab&quot;;
+var s3 = &quot;101&quot;;
+
+var b = true;
+var i = 100;
+
+// 1.两个操作数为字符串，将比较 `每个字符` 的序列值，
+console.log(s1 &gt; s2);
+
+// 2. 在将字符串 s3 转换为数值时得到 101
+console.log(s3 &gt; i); // 101 &gt; 100 true
+
+// 3. 在将字符串 s1 转换为数值时得到 NaN，
+// 变量 b 的布尔值为 true，转换为数值 1 参与运算
+console.log(s1 &gt; b || s1 &lt; b || s1 == b); // false
+
+// 4.两个 NaN 的比较，NaN 不等值也不大于或小于自身，所以下面的三个比较都为 false
+console.log(s1 &gt; NaN || s1 &lt; NaN || s1 == NaN);
+</code></pre>
+ 
+    </div>
+  </div>
+  <div class="article__wrapper_footer">
+    <a class="article__wrapper_footer-left " href="/articles/77.html"><svg t="1713708729970" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8437" width="48" height="48"><path d="M409.272947 512.57741l403.237243 403.237243a63.349415 63.349415 0 1 1-89.622481 89.622482L274.839224 557.324726a63.349415 63.349415 0 0 1 0-89.494632L722.951633 19.717685a63.349415 63.349415 0 1 1 89.494633 89.622482L409.336872 512.57741z" p-id="8438" fill="#8a8a8a"></path></svg></a>
+    <a class="article__wrapper_footer-right " href="/articles/79.html"><svg t="1713708697355" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8093" width="48" height="48"><path d="M855.123 517.004c0 8.245-3.167 15.51-9.503 21.823L402.999 981.47c-6.336 6.336-13.625 9.477-21.869 9.477s-15.51-3.142-21.845-9.477L311.8 933.96c-6.336-6.336-9.502-13.6-9.502-21.845 0-8.222 3.167-15.51 9.502-21.845l373.29-373.29-373.293-373.267c-6.336-6.336-9.502-13.6-9.502-21.845s3.167-15.533 9.503-21.869l47.484-47.484c6.336-6.336 13.6-9.502 21.845-9.502s15.533 3.167 21.869 9.503l442.621 442.622c6.334 6.334 9.503 13.625 9.503 21.869z" fill="#8a8a8a" p-id="8094"></path></svg></a>
+  </div>
+  <a class="article__wrapper_index" href="/articles/"><svg t="1713708857338" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="9656" width="48" height="48"><path d="M549.61981 133.022476l319.683047 203.605334A70.851048 70.851048 0 0 1 902.095238 396.361143v434.883047A70.89981 70.89981 0 0 1 831.146667 902.095238h-282.819048l0.024381-218.112h-71.826286v218.087619L192.853333 902.095238A70.89981 70.89981 0 0 1 121.904762 831.24419V390.241524c0-24.527238 12.678095-47.299048 33.54819-60.220953l318.659048-197.485714a70.972952 70.972952 0 0 1 75.50781 0.487619zM828.952381 828.952381V397.214476L511.488 195.047619 195.047619 391.119238V828.952381h211.309714v-216.551619h212.187429v216.527238L828.952381 828.952381z" p-id="9657" fill="#707070"></path></svg></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
+  <script src="../assets/js/articles-detail.js"></script>
+  <script>
+    hljs.highlightAll();
+  </script>
+</body>
+</html>
+    

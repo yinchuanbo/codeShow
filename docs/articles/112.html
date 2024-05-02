@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>webpack5-高级篇1</title>
+    <meta charset="utf-8">
+    <meta name="description" content="This is a page">
+    <meta name="keywords" content="page, sample">
+    <meta name="author" content="None">
+    <link rel="icon" sizes="any" mask href="../assets/images/ico6.svg" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <link rel="stylesheet" href="../assets/css/articles.css">
+</head>
+<body>
+  <div class="article__wrapper_left">
+    <div class="article__wrapper_left-mulu">目录</div>
+    <ul class="articles__list"><li class="">
+          <a href="/articles/113.html">
+            webpack5-高级篇2
+          </a>
+        </li><li class="">
+          <a href="/articles/114.html">
+            CSS修改滚动条样式 scrollbar
+          </a>
+        </li><li class="">
+          <a href="/articles/115.html">
+            Web Components
+          </a>
+        </li><li class="">
+          <a href="/articles/116.html">
+            数据类型
+          </a>
+        </li><li class="">
+          <a href="/articles/117.html">
+            严格模式
+          </a>
+        </li><li class="">
+          <a href="/articles/118.html">
+            类型检测
+          </a>
+        </li><li class="">
+          <a href="/articles/119.html">
+            类型转换
+          </a>
+        </li><li class="">
+          <a href="/articles/12.html">
+            前端异常处理最佳实践
+          </a>
+        </li><li class="">
+          <a href="/articles/120.html">
+            运算符和表达式
+          </a>
+        </li><li class="">
+          <a href="/articles/121.html">
+            语句和程序结构
+          </a>
+        </li></ul>
+  </div>
+  <div class="article__wrapper_sidebar">
+    <a href="/" target="_blank"><svg t="1714001835347" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4298" width="48" height="48"><path d="M147.904 304.128l301.866667-179.541333a128 128 0 0 1 131.712 0.512l295.466666 178.88A128 128 0 0 1 938.666667 413.482667V810.666667a128 128 0 0 1-128 128H213.333333a128 128 0 0 1-128-128V414.144a128 128 0 0 1 62.570667-110.016z m43.626667 73.344A42.666667 42.666667 0 0 0 170.666667 414.144V810.666667a42.666667 42.666667 0 0 0 42.666666 42.666666h597.333334a42.666667 42.666667 0 0 0 42.666666-42.666666V413.482667a42.666667 42.666667 0 0 0-20.565333-36.501334l-295.466667-178.88a42.666667 42.666667 0 0 0-43.925333-0.170666l-301.866667 179.541333z" fill="#8a919f" p-id="4299"></path><path d="M405.333333 469.333333h213.333334a42.666667 42.666667 0 1 1 0 85.333334H405.333333a42.666667 42.666667 0 1 1 0-85.333334z m0 85.333334a42.666667 42.666667 0 1 0 0-85.333334h213.333334a42.666667 42.666667 0 1 0 0 85.333334H405.333333z" fill="#8a919f" p-id="4300"></path></svg></a>
+    <a href="/tools/" target="_blank"><svg t="1714002003458" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6911" width="48" height="48"><path d="M817.87 556.31h-63.58v-66.24A42.27 42.27 0 0 0 712 447.8h-84.81a42.27 42.27 0 0 0-42.27 42.27v66.24H436.57v-66.24a42.27 42.27 0 0 0-42.27-42.27h-84.83a42.27 42.27 0 0 0-42.27 42.27v66.24h-61.83A22.39 22.39 0 0 0 183 578.7a22.39 22.39 0 0 0 22.39 22.39h61.81v65.55a42.27 42.27 0 0 0 42.27 42.27h84.83a42.27 42.27 0 0 0 42.27-42.27v-65.55h148.36v65.55a42.27 42.27 0 0 0 42.27 42.27H712a42.27 42.27 0 0 0 42.27-42.27v-65.55h63.58a22.39 22.39 0 0 0 22.39-22.39 22.39 22.39 0 0 0-22.37-22.39z m-438.64 95.26h-54.69V505.14h54.69z m317.72 0h-54.69V505.14H697z" p-id="6912" fill="#8a919f"></path><path d="M823 202.58h-90.81v-63.09a71.88 71.88 0 0 0-71.88-71.88H363.19a71.88 71.88 0 0 0-71.88 71.88v63.08h-90.12A137.17 137.17 0 0 0 64 339.75v479a137.17 137.17 0 0 0 137.19 137.14H823a137.17 137.17 0 0 0 137.19-137.17v-479A137.17 137.17 0 0 0 823 202.58z m-474.36-54.1A23.52 23.52 0 0 1 372.17 125h279.16a23.52 23.52 0 0 1 23.52 23.52v54.1h-326.2z m554.23 673.31a76.76 76.76 0 0 1-76.76 76.76h-628a76.76 76.76 0 0 1-76.76-76.76V336.67a76.76 76.76 0 0 1 76.76-76.76h628a76.76 76.76 0 0 1 76.76 76.76z" p-id="6913" fill="#8a919f"></path></svg></a>
+  </div>
+  <div class="article__wrapper">
+    <div class="article__wrapper__main">
+      <div class="article__wrapper_header">
+        <h1>webpack5-高级篇1</h1>
+        <span class="articles__home_time">NaN/NaN/NaN · YinHao</span>
+      </div>
+      <h2>提高开发效率与完善团队开发规范</h2>
+<h3>1.1 source-map</h3>
+<ul>
+<li>开启</li>
+</ul>
+<pre><code class="language-js">module.exports = {
+  devtool: &quot;source-map&quot;, // 开发环境中推荐使用 source-map，生成环境一般不建议开启
+};
+</code></pre>
+<p><strong>7 种模式</strong></p>
+<table>
+<thead>
+<tr>
+<th>模式</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>eval</td>
+<td>默认值，每个 module 会封装到 eval 里包裹起来执行，并且会在末尾追加注释 //@ sourceURL</td>
+</tr>
+<tr>
+<td>source-map</td>
+<td>会生成一个 sourceMap 文件</td>
+</tr>
+<tr>
+<td>hidden-source-map</td>
+<td>和 source-map 一样，但不会在 bundle 末尾追加注释</td>
+</tr>
+<tr>
+<td>inline-source-map</td>
+<td>生成一个 DataUrl 形式的 SourceMap 文件</td>
+</tr>
+<tr>
+<td>eval-source-map</td>
+<td>每个 module 会用过 eval() 来执行，并且生成一个 DataUrl 形式的 SourceMap</td>
+</tr>
+<tr>
+<td>cheap-source-map</td>
+<td>生成一个没有列信息的 SourceMaps 文件，不包含 loader 的 sourcemap</td>
+</tr>
+<tr>
+<td>cheap-module-source-map</td>
+<td>生成一个没有列信息的 SourceMaps 文件，同时 loader 的 sourcemap 也被简化为只包含对应行的</td>
+</tr>
+</tbody>
+</table>
+<p><strong>1. eval</strong></p>
+<ul>
+<li>默认情况下，即使我们没有配置 source map，webpack 也会在开发环境下，设置 source map，值为 eval。eval 可以准确定位到源代码。</li>
+</ul>
+<p><strong>2. 关闭 source map</strong></p>
+<ul>
+<li>关闭后，不可以准确定位到源代码</li>
+</ul>
+<pre><code class="language-js">module.exports = {
+  devtool: false,
+};
+</code></pre>
+<p><strong>3. source-map</strong></p>
+<ul>
+<li>
+<p>会生成一个 <code>.map</code> 文件，</p>
+</li>
+<li>
+<p>source-map 可以精准定位到源代码，可以定位到行数和列数</p>
+</li>
+</ul>
+<p><strong>4. hidden-source-map</strong></p>
+<ul>
+<li>
+<p>会生成一个 <code>.map</code> 文件，</p>
+</li>
+<li>
+<p>bundle 末尾没有添加注释，所以 bundle 和 <code>.map</code> 文件无法关联起来</p>
+</li>
+<li>
+<p>不能定位到源代码</p>
+</li>
+</ul>
+<p><strong>5. inline-source-map</strong></p>
+<ul>
+<li>
+<p>没有生成 <code>.map</code> 文件，但是其内容以 dataURL 方式嵌入到 bundle 文件中</p>
+</li>
+<li>
+<p>可以定位到源代码</p>
+</li>
+</ul>
+<p><strong>6. eval-source-map</strong></p>
+<ul>
+<li>
+<p>没有生成 <code>.map</code> 文件，但是其内容以 dataURL 方式嵌入到 bundle 文件中</p>
+</li>
+<li>
+<p><code>eval()</code> 执行 module 代码</p>
+</li>
+<li>
+<p>可以定位到源代码</p>
+</li>
+</ul>
+<p><strong>7. cheap-source-map</strong></p>
+<ul>
+<li>
+<p>生成了一个 <code>.map</code> 文件</p>
+</li>
+<li>
+<p>可以精准定位到源代码，只能定位到行数，不能定位到列数</p>
+</li>
+</ul>
+<p><strong>8. cheap-module-source-map</strong></p>
+<ul>
+<li>
+<p>生成了一个 <code>.map</code> 文件</p>
+</li>
+<li>
+<p>可以定位到被 babel 转换前的源代码，即定位到类语法的代码</p>
+</li>
+</ul>
+<blockquote>
+<p>cheap-module-source-map 可以定位到 babel 转换前的源代码，而 cheap-source-map 只能定位到 babel 转换后的代码。<strong>推荐在开发环境中，使用 cheap-module-source-map。</strong></p>
+</blockquote>
+<h3>devServer</h3>
+<ul>
+<li>安装</li>
+</ul>
+<pre><code class="language-sh">npm install -D webpack-dev-server
+</code></pre>
+<ul>
+<li>使用</li>
+</ul>
+<pre><code class="language-js">// webpack.config.js
+module.exports = {
+  //...
+  devServer: {
+    port: 3000,
+    // 设置 web 服务的根目录
+    static: path.resolve(__dirname, &quot;./dist&quot;),
+  },
+};
+</code></pre>
+<p><strong>开启 gzip 压缩</strong></p>
+<pre><code class="language-js">// webpack.config.js
+module.exports = {
+  //...
+  devServer: {
+    compress: true,
+  },
+};
+</code></pre>
+<p><strong>设置响应头</strong></p>
+<pre><code class="language-js">// webpack.config.js
+module.exports = {
+  //...
+  devServer: {
+    // 设置响应头
+    headers: {
+      &quot;X-Access-Token&quot;: &quot;abc123&quot;,
+    },
+  },
+};
+</code></pre>
+<p><strong>启动代理</strong></p>
+<pre><code class="language-js">// webpack.config.js
+module.exports = {
+  //...
+  devServer: {
+    proxy: {
+      &quot;/api&quot;: &quot;http://localhost: 4001&quot;,
+    },
+  },
+};
+</code></pre>
+<p><strong>https</strong></p>
+<pre><code class="language-js">// webpack.config.js
+module.exports = {
+  //...
+  devServer: {
+    https: true,
+  },
+};
+</code></pre>
+<p>也可以我们自己提供证书</p>
+<pre><code class="language-js">// webpack.config.js
+module.exports = {
+  //...
+  devServer: {
+    https: {
+      cacert: &quot;./server.pem&quot;,
+      pfx: &quot;./server.pfx&quot;,
+      key: &quot;./server.key&quot;,
+      cert: &quot;./server.crt&quot;,
+      passphrase: &quot;webpack-dev-server&quot;,
+      requestCert: true,
+    },
+  },
+};
+</code></pre>
+<p><strong>http2</strong></p>
+<p>如果想配置 http2，可以直接设置：</p>
+<pre><code class="language-js">// webpack.config.js
+module.exports = {
+  //...
+  devServer: {
+    http2: true,
+  },
+};
+</code></pre>
+<p>即可，http2 默认自带 https 自签名证书</p>
+<p><strong>historyApiFallback</strong></p>
+<p>如果我们的项目是 spa 应用，如 vue、react 等，而且使用的是 H5 history 历史路由模式时，我们在刷新页面或者直接在地址栏修改路由路径时，页面可能会报错，如何解决呢？</p>
+<pre><code class="language-js">// webpack.config.js
+module.exports = {
+  //...
+  devServer: {
+    historyApiFallback: true,
+  },
+};
+</code></pre>
+<p>此时重启服务刷新后发现请求变成了 index.html，当前，在多数业务场景下，我们需要根据不同的访问路径定制替代的页面，这种情况下，我们可以使用 rewrites 这个配置项，如下：</p>
+<pre><code class="language-js">// webpack.config.js
+module.exports = {
+  //...
+  devServer: {
+    historyApiFallback: {
+      rewrites: [
+        {
+          from: /^\/$/,
+          to: &quot;/view/landing.html&quot;,
+        },
+        {
+          from: /^\/subpage/,
+          to: &quot;/view/subpage.html&quot;,
+        },
+        {
+          from: /./,
+          to: &quot;/view/404.html&quot;,
+        },
+      ],
+    },
+  },
+};
+</code></pre>
+<h3>1.3 模块热替换与热加载</h3>
+<p><strong>热替换</strong></p>
+<p>模块热替换（HMR）功能会在应用程序运行过程中，替换、添加、或删除模块，而无需重新加载整个页面。</p>
+<ul>
+<li>启用</li>
+</ul>
+<pre><code class="language-js">// webpack.config.js
+module.exports = {
+  //...
+  devServer: {
+    hot: true,
+  },
+};
+</code></pre>
+<ul>
+<li>HMR 加载样式</li>
+</ul>
+<p>如果你配置了 <code>style-loader</code>，那么现在已经同样支持样式文件的热替换功能了</p>
+<pre><code class="language-js">// webpack.config.js
+module.exports = {
+  //...
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: [&quot;style-loader&quot;, &quot;css-loader&quot;],
+      },
+    ],
+  },
+};
+</code></pre>
+<p>这是因为 <code>style-loader</code> 的实现使用了 <code>module.hot.accept</code>，在 css 依赖模块更新之后，会对 style 标签打补丁，从而实现这个功能。</p>
+<p><strong>热加载</strong></p>
+<p>文件更新时，自动刷新我们的服务和页面</p>
+<p>新版 <code>webpack-dev-server</code> 默认已经开启了热加载的功能，它对应的参数是 <code>devServer.liveReload</code>，默认为 true，注意，如果想要关掉它，要将 liveReload 设置为 false 的同时，也要关掉 hot。</p>
+<pre><code class="language-js">// webpack.config.js
+module.exports = {
+  //...
+  devServer: {
+    liveReload: false, // 默认为 true，即开启热更新功能
+  },
+};
+</code></pre>
+<h3>1.4 eslint</h3>
+<ul>
+<li>基本使用</li>
+</ul>
+<pre><code class="language-sh">npm i eslint -D
+npx eslint --init # 生成 eslint 配置文件
+</code></pre>
+<p>然后我们在 <code>package.json</code> 中添加一条命令</p>
+<pre><code class="language-json">//...
+{
+  &quot;scripts&quot;: {
+    &quot;eslint&quot;: &quot;eslint ./src&quot;
+  }
+}
+//...
+</code></pre>
+<p><strong>vscode 插件</strong></p>
+<p>可以在 vscode 中，安装一个 eslint 插件，该插件会直接在编辑区域中，使用红色波浪线来标记出不符合规范的代码，而不需要手动执行 <code>npx eslint</code>，</p>
+<p><strong>结合 webpack 使用</strong></p>
+<p>我们期望 eslint 能够实时提示报错而不必等待执行命令。这个功能可以通过 IDE 安装对应的 eslint 插件来实现，然而，不是每一个 IDE 都有插件的，如果不想使用插件，又想实时提示报错，那么可以结合 webpack 的打包编译功能来实现。</p>
+<pre><code class="language-js">module.exports = {
+  //...
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: [&quot;babel-loader&quot;, &quot;eslint-loader&quot;],
+      },
+    ],
+  },
+};
+</code></pre>
+<p>需要同时使用 devServer</p>
+<p>现在我们就可以实时看到代码里的不规范报错啦</p>
+<p><strong>关闭覆盖层</strong></p>
+<p>如果我们不想再页面上显示 eslint 语法检查的报错信息，则可以关闭覆盖层：</p>
+<pre><code class="language-js">// webpack.config.js
+module.exports = {
+  //...
+  devServer: {
+    client: {
+      overlay: false,
+    },
+  },
+};
+</code></pre>
+<p>这样的话，就只有命令行窗口和浏览器控制台中，输出 eslint 语法检查的报错信息，而页面上就不会显示。</p>
+<h3>2.1 webpack 模块与解析原理</h3>
+<h3>2.2 模块解析</h3>
+<p><strong>设置别名</strong></p>
+<pre><code class="language-js">// webpack.config.js
+module.exports = {
+  //...
+  resolve: {
+    alias: {
+      &quot;@utils&quot;: path.resolve(__dirname, &quot;src/utils/&quot;),
+    },
+  },
+};
+</code></pre>
+<p><strong>省略后缀名</strong></p>
+<pre><code class="language-js">// webpack.config.js
+module.exports = {
+  //...
+  resolve: {
+    extensions: [&quot;.js&quot;, &quot;.json&quot;, &quot;.wasm&quot;],
+  },
+};
+</code></pre>
+<p><strong>自动引入 CDN 链接</strong></p>
+<p>修改 <code>externals</code> 选项，而且添加一个 <code>externalsType</code> 选项</p>
+<pre><code class="language-js">module.exports = {
+  //...
+  externalsType: &quot;script&quot;,
+  externals: {
+    jquery: [&quot;https://cdn.bootcdn.net/ajax/libs/juqery/3.6.0/jquery.js&quot;, &quot;$&quot;],
+  },
+  //...
+};
+</code></pre>
+<h3>3.1 PostCSS 与 CSS 模块</h3>
+<p><strong>PostCSS</strong></p>
+<p>PostCSS 与 webpack 结合，需要安装 <code>style-loader</code>、<code>css-loader</code>、<code>postcss-loader</code> 三个 loader:</p>
+<pre><code class="language-js">module.exports = {
+  //...
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: [&quot;style-loader&quot;, &quot;css-loader&quot;, &quot;postcss-loader&quot;],
+      },
+    ],
+  },
+};
+</code></pre>
+<p>然后再根目录下创建 postcss.config.js</p>
+<pre><code class="language-js">module.exports = {
+  plugins: [require(&quot;autoprefixer&quot;), require(&quot;postcss-nested&quot;)],
+};
+</code></pre>
+<p>插件 autoprefixer 提供自动给样式添加前缀去兼容浏览器，postcss-nested 提供编写嵌套的样式语法。</p>
+<p>最后，在 package.json 内增加如下实例内容：</p>
+<pre><code class="language-json">{
+  &quot;browserslist&quot;: [&quot;&gt; 1%&quot;, &quot;last 2 versions&quot;]
+}
+</code></pre>
+<blockquote>
+<p>autoprefixer、postcss-nested 都是 postcss 的插件。autoprefixer 为 css 样式添加兼容前缀。postcss-nested 允许我们在 .css 文件中使用嵌套语法，来简化选择器的编写。</p>
+</blockquote>
+<p><strong>CSS 模块</strong></p>
+<p>目前还有一个问题，就是多人编写的样式可能会冲突，出现重名的情况，开启 CSS 模块可以解决这个问题。</p>
+<pre><code class="language-js">module.exports = {
+  //...
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: [
+          &quot;style-loader&quot;,
+          {
+            loader: &quot;css-loader&quot;,
+            options: {
+              modules: true, // 开启 css 模块
+            },
+          },
+          &quot;postcss-loader&quot;,
+        ],
+      },
+    ],
+  },
+};
+</code></pre>
+<p>样式文件 style.css:</p>
+<pre><code class="language-css">body {
+  display: flex;
+  background-color: pink;
+  .box {
+    width: 100px;
+    height: 100px;
+    background-color: green;
+  }
+}
+</code></pre>
+<p>在 js 文件里导入 css 文件</p>
+<pre><code class="language-js">import style from &quot;./style.css&quot;;
+
+const div = document.createElement(&quot;div&quot;);
+div.textContent = &quot;hello webpack&quot;;
+div.classList.add(style.box);
+document.body.appendChild(div);
+</code></pre>
+<p>也可以部分开启 CSS 模块模式，比如全局样式可以冠以 <code>.global</code> 前缀，如：</p>
+<ul>
+<li>
+<p><code>*.global.css</code> 普通模式</p>
+</li>
+<li>
+<p><code>.css</code> CSS module 模式</p>
+</li>
+</ul>
+<pre><code class="language-js">module.exports = {
+  //...
+  module: [
+    // CSS module
+    {
+      test: new RegExp(`^(?.*\\.global).*\\.css`),
+      use: [
+        {
+          loader: &quot;style-loader&quot;,
+        },
+        {
+          loader: &quot;css-loader&quot;,
+          options: {
+            modules: true,
+            localIdentName: &quot;[hash:base64:6]&quot;,
+          },
+        },
+        {
+          loader: &quot;postcss-loader&quot;,
+        },
+      ],
+      exclude: [path.resolve(__dirname, &quot;..&quot;, &quot;node_modules&quot;)],
+    },
+    // 普通模式
+    {
+      test: new RegExp(`^(.*\\.global).*\\.css`),
+      use: [
+        {
+          loader: &quot;style-loader&quot;,
+        },
+        {
+          loader: &quot;css-loader&quot;,
+        },
+        {
+          loader: &quot;postcss-loader&quot;,
+        },
+      ],
+      exclude: [path.resolve(__dirname, &quot;..&quot;, &quot;node_modules&quot;)],
+    },
+  ],
+};
+</code></pre>
+ 
+    </div>
+  </div>
+  <div class="article__wrapper_footer">
+    <a class="article__wrapper_footer-left " href="/articles/111.html"><svg t="1713708729970" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8437" width="48" height="48"><path d="M409.272947 512.57741l403.237243 403.237243a63.349415 63.349415 0 1 1-89.622481 89.622482L274.839224 557.324726a63.349415 63.349415 0 0 1 0-89.494632L722.951633 19.717685a63.349415 63.349415 0 1 1 89.494633 89.622482L409.336872 512.57741z" p-id="8438" fill="#8a8a8a"></path></svg></a>
+    <a class="article__wrapper_footer-right " href="/articles/113.html"><svg t="1713708697355" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8093" width="48" height="48"><path d="M855.123 517.004c0 8.245-3.167 15.51-9.503 21.823L402.999 981.47c-6.336 6.336-13.625 9.477-21.869 9.477s-15.51-3.142-21.845-9.477L311.8 933.96c-6.336-6.336-9.502-13.6-9.502-21.845 0-8.222 3.167-15.51 9.502-21.845l373.29-373.29-373.293-373.267c-6.336-6.336-9.502-13.6-9.502-21.845s3.167-15.533 9.503-21.869l47.484-47.484c6.336-6.336 13.6-9.502 21.845-9.502s15.533 3.167 21.869 9.503l442.621 442.622c6.334 6.334 9.503 13.625 9.503 21.869z" fill="#8a8a8a" p-id="8094"></path></svg></a>
+  </div>
+  <a class="article__wrapper_index" href="/articles/"><svg t="1713708857338" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="9656" width="48" height="48"><path d="M549.61981 133.022476l319.683047 203.605334A70.851048 70.851048 0 0 1 902.095238 396.361143v434.883047A70.89981 70.89981 0 0 1 831.146667 902.095238h-282.819048l0.024381-218.112h-71.826286v218.087619L192.853333 902.095238A70.89981 70.89981 0 0 1 121.904762 831.24419V390.241524c0-24.527238 12.678095-47.299048 33.54819-60.220953l318.659048-197.485714a70.972952 70.972952 0 0 1 75.50781 0.487619zM828.952381 828.952381V397.214476L511.488 195.047619 195.047619 391.119238V828.952381h211.309714v-216.551619h212.187429v216.527238L828.952381 828.952381z" p-id="9657" fill="#707070"></path></svg></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
+  <script src="../assets/js/articles-detail.js"></script>
+  <script>
+    hljs.highlightAll();
+  </script>
+</body>
+</html>
+    

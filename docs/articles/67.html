@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>页面加载流程分析技巧</title>
+    <meta charset="utf-8">
+    <meta name="description" content="This is a page">
+    <meta name="keywords" content="page, sample">
+    <meta name="author" content="None">
+    <link rel="icon" sizes="any" mask href="../assets/images/ico6.svg" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <link rel="stylesheet" href="../assets/css/articles.css">
+</head>
+<body>
+  <div class="article__wrapper_left">
+    <div class="article__wrapper_left-mulu">目录</div>
+    <ul class="articles__list"><li class="">
+          <a href="/articles/68.html">
+            浏览器渲染性能分析技巧
+          </a>
+        </li><li class="">
+          <a href="/articles/69.html">
+            错误处理技巧
+          </a>
+        </li><li class="">
+          <a href="/articles/70.html">
+            Console信息
+          </a>
+        </li><li class="">
+          <a href="/articles/71.html">
+            Console API
+          </a>
+        </li><li class="">
+          <a href="/articles/72.html">
+            Console Utilities API
+          </a>
+        </li><li class="">
+          <a href="/articles/73.html">
+            URI的编码与反编码
+          </a>
+        </li><li class="">
+          <a href="/articles/74.html">
+            变量的数据类型
+          </a>
+        </li><li class="">
+          <a href="/articles/75.html">
+            转义符
+          </a>
+        </li><li class="">
+          <a href="/articles/77.html">
+            20个JS工具函数助力高效开发
+          </a>
+        </li><li class="">
+          <a href="/articles/78.html">
+            比较运算
+          </a>
+        </li></ul>
+  </div>
+  <div class="article__wrapper_sidebar">
+    <a href="/" target="_blank"><svg t="1714001835347" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4298" width="48" height="48"><path d="M147.904 304.128l301.866667-179.541333a128 128 0 0 1 131.712 0.512l295.466666 178.88A128 128 0 0 1 938.666667 413.482667V810.666667a128 128 0 0 1-128 128H213.333333a128 128 0 0 1-128-128V414.144a128 128 0 0 1 62.570667-110.016z m43.626667 73.344A42.666667 42.666667 0 0 0 170.666667 414.144V810.666667a42.666667 42.666667 0 0 0 42.666666 42.666666h597.333334a42.666667 42.666667 0 0 0 42.666666-42.666666V413.482667a42.666667 42.666667 0 0 0-20.565333-36.501334l-295.466667-178.88a42.666667 42.666667 0 0 0-43.925333-0.170666l-301.866667 179.541333z" fill="#8a919f" p-id="4299"></path><path d="M405.333333 469.333333h213.333334a42.666667 42.666667 0 1 1 0 85.333334H405.333333a42.666667 42.666667 0 1 1 0-85.333334z m0 85.333334a42.666667 42.666667 0 1 0 0-85.333334h213.333334a42.666667 42.666667 0 1 0 0 85.333334H405.333333z" fill="#8a919f" p-id="4300"></path></svg></a>
+    <a href="/tools/" target="_blank"><svg t="1714002003458" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6911" width="48" height="48"><path d="M817.87 556.31h-63.58v-66.24A42.27 42.27 0 0 0 712 447.8h-84.81a42.27 42.27 0 0 0-42.27 42.27v66.24H436.57v-66.24a42.27 42.27 0 0 0-42.27-42.27h-84.83a42.27 42.27 0 0 0-42.27 42.27v66.24h-61.83A22.39 22.39 0 0 0 183 578.7a22.39 22.39 0 0 0 22.39 22.39h61.81v65.55a42.27 42.27 0 0 0 42.27 42.27h84.83a42.27 42.27 0 0 0 42.27-42.27v-65.55h148.36v65.55a42.27 42.27 0 0 0 42.27 42.27H712a42.27 42.27 0 0 0 42.27-42.27v-65.55h63.58a22.39 22.39 0 0 0 22.39-22.39 22.39 22.39 0 0 0-22.37-22.39z m-438.64 95.26h-54.69V505.14h54.69z m317.72 0h-54.69V505.14H697z" p-id="6912" fill="#8a919f"></path><path d="M823 202.58h-90.81v-63.09a71.88 71.88 0 0 0-71.88-71.88H363.19a71.88 71.88 0 0 0-71.88 71.88v63.08h-90.12A137.17 137.17 0 0 0 64 339.75v479a137.17 137.17 0 0 0 137.19 137.14H823a137.17 137.17 0 0 0 137.19-137.17v-479A137.17 137.17 0 0 0 823 202.58z m-474.36-54.1A23.52 23.52 0 0 1 372.17 125h279.16a23.52 23.52 0 0 1 23.52 23.52v54.1h-326.2z m554.23 673.31a76.76 76.76 0 0 1-76.76 76.76h-628a76.76 76.76 0 0 1-76.76-76.76V336.67a76.76 76.76 0 0 1 76.76-76.76h628a76.76 76.76 0 0 1 76.76 76.76z" p-id="6913" fill="#8a919f"></path></svg></a>
+  </div>
+  <div class="article__wrapper">
+    <div class="article__wrapper__main">
+      <div class="article__wrapper_header">
+        <h1>页面加载流程分析技巧</h1>
+        <span class="articles__home_time">NaN/NaN/NaN · YinHao</span>
+      </div>
+      <h2>分析</h2>
+<p>浏览器在开始渲染网页内容前，大致会经过以下步骤：</p>
+<ol>
+<li>
+<p>载入 HTML</p>
+</li>
+<li>
+<p>开始解析 HTML</p>
+</li>
+<li>
+<p>载入或解析其他文件</p>
+</li>
+<li>
+<p>继续解析 HTML，重复以上步骤</p>
+</li>
+<li>
+<p>所有文件解析完毕，开始渲染页面</p>
+</li>
+</ol>
+<p>例如：</p>
+<pre><code class="language-html">&lt;html&gt;
+  &lt;head&gt;
+    &lt;link rel=&quot;stylesheel&quot; href=&quot;style.css&quot; /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div&gt;Hello, World!&lt;/div&gt;
+    &lt;script src=&quot;index.js&quot;&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>浏览器在下载完 HTML 后，将会开始解析，步骤如下：</p>
+<ol>
+<li>
+<p>解析 HTML 至第 3 行时，开始加载 style.css，解析完成前不进行渲染。</p>
+</li>
+<li>
+<p>解析 HTML 至第 7 行时，开始加载 index.js，程序代码执行完毕前，暂停解析 HTML。</p>
+</li>
+<li>
+<p>若先下载完 style.css，则开始解析 style.css；若先下载完 index.js，则需等待 style.css 解析完毕后，才能执行程序代码。</p>
+</li>
+<li>
+<p>解析 HTML 完成，开始渲染页面。</p>
+</li>
+</ol>
+<blockquote>
+<p>可以注意到在解析 HTML 的过程中，可能由于某些原因被 “阻塞” 而延后了渲染页面的时机，因此造成了阻塞的原因即为分析的重点。</p>
+</blockquote>
+<h3>阻塞</h3>
+<p>解析 HTML 的过程中，会有许多需要加载的文件，例如 JavaScript、CSS、图片等，其中某些文件可能会造成阻塞，让浏览器无法开始渲染。阻塞分为 “阻塞渲染” 和 “阻塞解析” 两种。</p>
+<ol>
+<li>阻塞渲染</li>
+</ol>
+<p>浏览器需要 HTML 和 CSS 才能绘制出完整的页面，若解析完 HTML 马上显示页面，等到解析完 CSS 又显示另一版页面，用户就会看到屏幕一闪而过，几乎无法阅读其中的文字，接着再变为加入 CSS 的正常页面，这种现象被称为 <code>Flash of Unstyled Content(FOUC)</code>。</p>
+<p>为了避免 FOUC 影响用户体验，浏览器在解析完 CSS 前不会进行渲染，CSS 文件越大、下载时间越久，越会延迟浏览器开始渲染页面的时间。</p>
+<ol start="2">
+<li>阻塞解析</li>
+</ol>
+<p>为了让页面的交互性更强，现在的网页几乎少不了 JavaScript，但因为执行 JavaScript 需占用主线程，且能够修改 DOM 结构，因此遇到 JavaScript 时，浏览器会将主线程的控制权从解析 HTML 交给 JavaScript 引擎，执行完毕后再继续解析 HTML。</p>
+<p>但别忘了 JavaScript 能够修改样式表单，所以浏览器会等在此之前加载的 CSS 都解析完毕后，才开始执行 JavaScript，相当于让 CSS 也加入阻塞解析的行列，这也是为什么常常看到 <code>&lt;script&gt;</code> 被放在 HTML 的最下方，以避免阻塞。</p>
+<h3>避免阻塞</h3>
+<p>避免阻塞渲染的方式有很多，主要有以下几点:</p>
+<p>(1) 降低文件大小</p>
+<p>用压缩、Tree shaking、Code splitting 等方式降低阻塞资源的大小，以加快下载和解析速度。</p>
+<p>(2) 内嵌阻塞资源</p>
+<p>将 CSS 直接嵌入 HTML 中，如此一来，无须等待下载完 HTML 并解析至 <code>&lt;link&gt;</code> 才开始加载 CSS。</p>
+<blockquote>
+<p>通常只会将渲染初始网页所需的部分嵌入 HTML 中，渲染页面后再加载完整的资源，借此减少 HTML 的下载时间。</p>
+</blockquote>
+<p>(3) 加入属性</p>
+<p>如果 JavaScript 的运行和 HTML、CSS 无直接关系，可以为 <code>&lt;script&gt;</code> 加上 defer 或 async 属性以避免阻塞解析。</p>
+<ul>
+<li>
+<p>defer: 下载时不阻塞解析，等解析完 HTML 后才执行。</p>
+</li>
+<li>
+<p>async: 下载时不阻塞解析，但下载完时立即执行，仍可能会阻塞解析。</p>
+</li>
+</ul>
+<p>或者为 <code>&lt;link&gt;</code> 加上 media 属性，当页面的 media 状态与属性相符时才阻塞渲染，例如：</p>
+<pre><code class="language-html">&lt;link rel=&quot;stylesheel&quot; href=&quot;print.css&quot; media=&quot;print&quot; /&gt;
+</code></pre>
+<p>(4) 提早、并行下载</p>
+<p>尽可能让渲染初始网页所需的文件越早开始下载越好，因为下载通常是花费时间最长的。</p>
+<pre><code class="language-html">&lt;link rel=&quot;stylesheel&quot; href=&quot;print.css&quot; media=&quot;print&quot; /&gt;
+</code></pre>
+<h2>实例</h2>
+<p>请确保执行以下前置操作：</p>
+<ol>
+<li>
+<p>以无痕模式打开范例网站</p>
+</li>
+<li>
+<p>打开 <code>DevTools</code> 中的 <code>Network</code> 面板</p>
+</li>
+<li>
+<p>勾选 <code>Capture screenshots</code> 来逐帧截图</p>
+</li>
+<li>
+<p>单击 <code>No throttling</code>，并将流量限制调整为 <code>Slow 3G</code></p>
+</li>
+<li>
+<p>勾选 <code>Disable cache</code> 以关闭缓存</p>
+</li>
+</ol>
+<p><strong>避免阻塞渲染</strong></p>
+<pre><code class="language-html">&lt;link
+  rel=&quot;preload&quot;
+  href=&quot;xxx&quot;
+  as=&quot;style&quot;
+  onload=&quot;this.onload=null;this.rel='stylesheet'&quot;
+/&gt;
+</code></pre>
+<p><strong>避免阻塞解析</strong></p>
+<ul>
+<li>加上 async 属性来避免阻塞解析，此时 index.js 会在下载完成时立即执行。</li>
+</ul>
+<pre><code class="language-html">&lt;script src=&quot;index.js&quot; async&gt;&lt;/script&gt;
+</code></pre>
+ 
+    </div>
+  </div>
+  <div class="article__wrapper_footer">
+    <a class="article__wrapper_footer-left " href="/articles/66.html"><svg t="1713708729970" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8437" width="48" height="48"><path d="M409.272947 512.57741l403.237243 403.237243a63.349415 63.349415 0 1 1-89.622481 89.622482L274.839224 557.324726a63.349415 63.349415 0 0 1 0-89.494632L722.951633 19.717685a63.349415 63.349415 0 1 1 89.494633 89.622482L409.336872 512.57741z" p-id="8438" fill="#8a8a8a"></path></svg></a>
+    <a class="article__wrapper_footer-right " href="/articles/68.html"><svg t="1713708697355" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8093" width="48" height="48"><path d="M855.123 517.004c0 8.245-3.167 15.51-9.503 21.823L402.999 981.47c-6.336 6.336-13.625 9.477-21.869 9.477s-15.51-3.142-21.845-9.477L311.8 933.96c-6.336-6.336-9.502-13.6-9.502-21.845 0-8.222 3.167-15.51 9.502-21.845l373.29-373.29-373.293-373.267c-6.336-6.336-9.502-13.6-9.502-21.845s3.167-15.533 9.503-21.869l47.484-47.484c6.336-6.336 13.6-9.502 21.845-9.502s15.533 3.167 21.869 9.503l442.621 442.622c6.334 6.334 9.503 13.625 9.503 21.869z" fill="#8a8a8a" p-id="8094"></path></svg></a>
+  </div>
+  <a class="article__wrapper_index" href="/articles/"><svg t="1713708857338" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="9656" width="48" height="48"><path d="M549.61981 133.022476l319.683047 203.605334A70.851048 70.851048 0 0 1 902.095238 396.361143v434.883047A70.89981 70.89981 0 0 1 831.146667 902.095238h-282.819048l0.024381-218.112h-71.826286v218.087619L192.853333 902.095238A70.89981 70.89981 0 0 1 121.904762 831.24419V390.241524c0-24.527238 12.678095-47.299048 33.54819-60.220953l318.659048-197.485714a70.972952 70.972952 0 0 1 75.50781 0.487619zM828.952381 828.952381V397.214476L511.488 195.047619 195.047619 391.119238V828.952381h211.309714v-216.551619h212.187429v216.527238L828.952381 828.952381z" p-id="9657" fill="#707070"></path></svg></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
+  <script src="../assets/js/articles-detail.js"></script>
+  <script>
+    hljs.highlightAll();
+  </script>
+</body>
+</html>
+    

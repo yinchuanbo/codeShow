@@ -14,6 +14,8 @@ const pagesMeta = {};
 //   fs.removeSync(path.join(outputPath, file));
 // }
 
+let allHTML = null;
+
 // 2.加载配置文件
 console.log("Loading pages metadata...");
 for (var pageMeta of fs.readdirSync(pagesMetaPath)) {
@@ -24,9 +26,10 @@ for (var pageMeta of fs.readdirSync(pagesMetaPath)) {
 const allPages = fs.readdirSync(pages);
 const allLens = Object.keys(allPages).length;
 
-function getHTML(name = '') {
+function getHTML(name = "") {
   let curI = 0;
   let listHTML = `<ul class="articles__list">`;
+  let listHTML2 = '';
   for (var page of allPages) {
     curI++;
     var pageName = page.slice(0, page.lastIndexOf("."));
@@ -46,14 +49,63 @@ function getHTML(name = '') {
     date = newDate(date);
     metaData.title = title || metaData.title || pageName;
     pageContent = pageContent.replace(/^---[\s\S]*?---/, "");
-    listHTML += `<li class="${ pageName === name ? 'active' : '' }">
+
+    listHTML2 += `<div class="card" onclick="location.href='/articles/${pageName}.html'">${metaData.title}</div>`;
+    listHTML += `<li class="${pageName === name ? "active" : ""}">
     <a href="/articles/${pageName}.html">
       ${metaData.title}
     </a>
   </li>`;
   }
   listHTML += `</ul>`;
-  return unescapeHtml(listHTML);
+  return {
+    list1: unescapeHtml(listHTML),
+    list2: unescapeHtml(listHTML2)
+  };
+}
+
+function getHTML2(name = "") {
+  let lock = false;
+  let _idx = 0;
+  let html = `<ul class="articles__list">`;
+  for (var page of allPages) {
+    var pageName = page.slice(0, page.lastIndexOf("."));
+    var metaData = JSON.parse(pagesMeta["index.json"]);
+    var pageContent = fs.readFileSync(path.join(pages, page)).toString();
+    const tokens = marked.lexer(pageContent);
+    let h2Content = "";
+    tokens.forEach((token) => {
+      if (token.type === "heading") {
+        h2Content += token.text;
+      }
+    });
+    const titleMatch = h2Content.match(/title:\s*"([^"]+)"/);
+    const dateMatch = h2Content.match(/date:\s*([^\s]+)/);
+    const title = titleMatch ? titleMatch[1] : null;
+    let date = dateMatch ? dateMatch[1] : null;
+    date = newDate(date);
+    metaData.title = title || metaData.title || pageName;
+    pageContent = pageContent.replace(/^---[\s\S]*?---/, "");
+
+    if(pageName === name) {
+      lock = true;
+    }
+
+    if(lock) {
+      if(_idx >= 1 && _idx <= 10) {
+        html += `<li class="${pageName === name ? "active" : ""}">
+          <a href="/articles/${pageName}.html">
+            ${metaData.title}
+          </a>
+        </li>`;
+      }
+      _idx++;
+    }
+  }
+
+  html += `</ul>`;
+  return html;
+
 }
 
 for (var page of allPages) {
@@ -74,6 +126,11 @@ for (var page of allPages) {
   date = newDate(date);
   metaData.title = title || metaData.title || pageName;
   pageContent = pageContent.replace(/^---[\s\S]*?---/, "");
+
+  if(!allHTML) {
+    allHTML = getHTML()['list2']
+  }
+
   fs.writeFileSync(
     path.join(outputPath, pageName + ".html"),
     pageTemplate.generatePage(pageContent, {
@@ -81,7 +138,7 @@ for (var page of allPages) {
       date,
       prev: Number(pageName) <= 1 ? 0 : Number(pageName) - 1,
       next: Number(pageName) >= allLens ? 0 : Number(pageName) + 1,
-      lists: getHTML(pageName),
+      lists: getHTML2(pageName),
     })
   );
 }
@@ -106,12 +163,10 @@ function newDate(dateString = "") {
   return formattedDate;
 }
 
-// listHTML += `</ul>`;
+const homeContent = fs.readFileSync("./template-article-home.html", "utf-8");
 
-// const homeContent = fs.readFileSync("./template-article-home.html", "utf-8");
+const homeHTML = ejs.render(homeContent, {
+  content: unescapeHtml(allHTML),
+});
 
-// const homeHTML = ejs.render(homeContent, {
-//   content: unescapeHtml(listHTML),
-// });
-
-// fs.writeFileSync(`./docs/articles/index.html`, homeHTML);
+fs.writeFileSync(`./docs/articles/index.html`, homeHTML);

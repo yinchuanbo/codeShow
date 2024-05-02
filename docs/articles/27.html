@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>模板方法模式</title>
+    <meta charset="utf-8">
+    <meta name="description" content="This is a page">
+    <meta name="keywords" content="page, sample">
+    <meta name="author" content="None">
+    <link rel="icon" sizes="any" mask href="../assets/images/ico6.svg" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <link rel="stylesheet" href="../assets/css/articles.css">
+</head>
+<body>
+  <div class="article__wrapper_left">
+    <div class="article__wrapper_left-mulu">目录</div>
+    <ul class="articles__list"><li class="">
+          <a href="/articles/28.html">
+            VSCODE 快捷键
+          </a>
+        </li><li class="">
+          <a href="/articles/29.html">
+            观察者模式
+          </a>
+        </li><li class="">
+          <a href="/articles/30.html">
+            状态模式
+          </a>
+        </li><li class="">
+          <a href="/articles/31.html">
+            策略模式
+          </a>
+        </li><li class="">
+          <a href="/articles/32.html">
+            职责链模式
+          </a>
+        </li><li class="">
+          <a href="/articles/33.html">
+            命令模式
+          </a>
+        </li><li class="">
+          <a href="/articles/34.html">
+            中介者模式
+          </a>
+        </li><li class="">
+          <a href="/articles/35.html">
+            迭代器模式
+          </a>
+        </li><li class="">
+          <a href="/articles/36.html">
+            简单模板模式
+          </a>
+        </li><li class="">
+          <a href="/articles/37.html">
+            惰性模式
+          </a>
+        </li></ul>
+  </div>
+  <div class="article__wrapper_sidebar">
+    <a href="/" target="_blank"><svg t="1714001835347" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4298" width="48" height="48"><path d="M147.904 304.128l301.866667-179.541333a128 128 0 0 1 131.712 0.512l295.466666 178.88A128 128 0 0 1 938.666667 413.482667V810.666667a128 128 0 0 1-128 128H213.333333a128 128 0 0 1-128-128V414.144a128 128 0 0 1 62.570667-110.016z m43.626667 73.344A42.666667 42.666667 0 0 0 170.666667 414.144V810.666667a42.666667 42.666667 0 0 0 42.666666 42.666666h597.333334a42.666667 42.666667 0 0 0 42.666666-42.666666V413.482667a42.666667 42.666667 0 0 0-20.565333-36.501334l-295.466667-178.88a42.666667 42.666667 0 0 0-43.925333-0.170666l-301.866667 179.541333z" fill="#8a919f" p-id="4299"></path><path d="M405.333333 469.333333h213.333334a42.666667 42.666667 0 1 1 0 85.333334H405.333333a42.666667 42.666667 0 1 1 0-85.333334z m0 85.333334a42.666667 42.666667 0 1 0 0-85.333334h213.333334a42.666667 42.666667 0 1 0 0 85.333334H405.333333z" fill="#8a919f" p-id="4300"></path></svg></a>
+    <a href="/tools/" target="_blank"><svg t="1714002003458" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6911" width="48" height="48"><path d="M817.87 556.31h-63.58v-66.24A42.27 42.27 0 0 0 712 447.8h-84.81a42.27 42.27 0 0 0-42.27 42.27v66.24H436.57v-66.24a42.27 42.27 0 0 0-42.27-42.27h-84.83a42.27 42.27 0 0 0-42.27 42.27v66.24h-61.83A22.39 22.39 0 0 0 183 578.7a22.39 22.39 0 0 0 22.39 22.39h61.81v65.55a42.27 42.27 0 0 0 42.27 42.27h84.83a42.27 42.27 0 0 0 42.27-42.27v-65.55h148.36v65.55a42.27 42.27 0 0 0 42.27 42.27H712a42.27 42.27 0 0 0 42.27-42.27v-65.55h63.58a22.39 22.39 0 0 0 22.39-22.39 22.39 22.39 0 0 0-22.37-22.39z m-438.64 95.26h-54.69V505.14h54.69z m317.72 0h-54.69V505.14H697z" p-id="6912" fill="#8a919f"></path><path d="M823 202.58h-90.81v-63.09a71.88 71.88 0 0 0-71.88-71.88H363.19a71.88 71.88 0 0 0-71.88 71.88v63.08h-90.12A137.17 137.17 0 0 0 64 339.75v479a137.17 137.17 0 0 0 137.19 137.14H823a137.17 137.17 0 0 0 137.19-137.17v-479A137.17 137.17 0 0 0 823 202.58z m-474.36-54.1A23.52 23.52 0 0 1 372.17 125h279.16a23.52 23.52 0 0 1 23.52 23.52v54.1h-326.2z m554.23 673.31a76.76 76.76 0 0 1-76.76 76.76h-628a76.76 76.76 0 0 1-76.76-76.76V336.67a76.76 76.76 0 0 1 76.76-76.76h628a76.76 76.76 0 0 1 76.76 76.76z" p-id="6913" fill="#8a919f"></path></svg></a>
+  </div>
+  <div class="article__wrapper">
+    <div class="article__wrapper__main">
+      <div class="article__wrapper_header">
+        <h1>模板方法模式</h1>
+        <span class="articles__home_time">NaN/NaN/NaN · YinHao</span>
+      </div>
+      <blockquote>
+<p>父类中定义一组操作算法骨架，而将一些实现步骤延迟到子类中，使得子类可以不改变父类的算法结构的同时可重新定义算法中某些步骤。</p>
+</blockquote>
+<h3>创建基本提示框</h3>
+<p>首先要做的就是创建一个基本提示框基类，然后其他提示框类只需要在继承基础上，拓展自己所需即可。</p>
+<pre><code class="language-js">// 模板类 基础提示框 data 渲染数据
+var Alert = function (data) {
+  // 没有数据则返回，防止后面程序执行
+  if (!data) {
+    return;
+  }
+  // 设置内容
+  this.content = data.content;
+  // 创建提示框面板
+  this.panel = document.createElement(&quot;div&quot;);
+  // 创建提示内容组件
+  this.contentNode = document.createElement(&quot;p&quot;);
+  // 创建确定按钮组件
+  this.confirmBtn = document.createElement(&quot;span&quot;);
+  // 创建关闭按钮组件
+  this.closeBtn = document.createElement(&quot;b&quot;);
+  // 为提示框面板添加类
+  this.panel.className = &quot;alert&quot;;
+  // 为关闭按钮添加类
+  this.closeBtn.className = &quot;a-close&quot;;
+  // 为确定按钮添加类
+  this.confirmBtn.className = &quot;a-confirm&quot;;
+  // 为确定按钮添加文件
+  this.confirmBtn.innerHTML = data.confirm || &quot;确认&quot;;
+  // 为提示内容添加文本
+  this.contentNode.innerHTML = this.content;
+  // 点击确定按钮执行方法 如果 data 中有 success 方法则为 success 方法，否则为空函数
+  this.success = data.success || function () {};
+  // 点击关闭按钮执行方法
+  this.fail = data.fail || function () {};
+};
+</code></pre>
+<h3>模板的原型方法</h3>
+<pre><code class="language-js">// 提示框原型方法
+Alert.prototype = {
+  // 创建方法
+  init: function () {
+    // 生成提示框
+    this.panel.appendChild(this.closeBtn);
+    this.panel.appendChild(this.contentNode);
+    this.panel.appendChild(this.confirmBtn);
+    // 插入页面中
+    document.body.appendChild(this.panel);
+    // 绑定事件
+    this.bingEvent();
+    // 显示提示框
+    this.show();
+  },
+  bindEvent: function () {
+    var me = this;
+    // 关闭按钮事件
+    this.closeBtn.onclick = function () {
+      // 执行关闭方法
+      me.fail();
+      // 隐藏弹层
+      me.hide();
+    };
+    // 确定按钮事件
+    this.confirmBtn.onclick = function () {
+      // 执行关闭确认方法
+      me.success();
+      // 隐藏弹窗
+      me.hide();
+    };
+  },
+  hide: function () {
+    this.panel.style.display = &quot;none&quot;;
+  },
+  show: function () {
+    this.panel.style.display = &quot;block&quot;;
+  },
+};
+</code></pre>
+<h3>根据模板创建类</h3>
+<p>比如，右侧按钮提示框</p>
+<pre><code class="language-js">// 右侧按钮提示框
+var RightAlert = function (data) {
+  // 继承基本提示框构造函数
+  // 这种方式只能继承自身属性和方法，不能继承原型的属性
+  Alert.call(this, data);
+  // 为确认按钮添加 right 类设置位置居右
+  this.confirmBtn.className = this.comfirmBtn.className + &quot; right&quot;;
+};
+
+RightAlert.prototype = new Alert();
+</code></pre>
+<p>同理，实现标题提示框</p>
+<pre><code class="language-js">// 标题提示框
+var TitleAlert = function (data) {
+  // 继承基本提示框构造函数
+  Alert.call(this, data);
+  // 设置标题内容
+  this.title = data.title || &quot;&quot;;
+  // 创建标题组件
+  this.titleNode = document.createElement(&quot;h3&quot;);
+  // 标题组件中写入标题内容
+  this.titleNode.innerHTML = this.title;
+};
+// 继承基本提示框方法
+TitleAlert.prototype = new Alert();
+// 对基本提示框创建方法拓展
+TitleAlert.prototype.init = function () {
+  // 插入标题
+  this.panel.insertBefore(this.titleNode, this.panel.firstChild);
+  Alert.prototype.init.call(this);
+};
+</code></pre>
+<h3>继承类也可作为模板类</h3>
+<blockquote>
+<p>在次基础上，如果想创建带有取消按钮的标题提示框也变得容易，只需要在构造函数中创建一个取消按钮，然后在原型方法的实例化方法 init 中加入取消按钮，以及对绑定的事件 bindEvent 方法进行拓展即可。</p>
+</blockquote>
+<pre><code class="language-js">// 带有取消按钮的弹出框
+var CancelAlert = function (data) {
+  // 继承标题提示框构造函数
+  TitleAlert.call(this, data);
+  // 取消按钮文案
+  this.cancel = data.cancel;
+  // 创建取消按钮
+  this.cancelBtn = document.createElement(&quot;span&quot;);
+  // 为取消按钮添加类
+  this.cancelBtn.className = &quot;cancel&quot;;
+  // 设置取消按钮内容
+  this.cancelBtn.innerHTML = this.cancel || &quot;取消&quot;;
+};
+// 继承标题提示框原型方法
+CancelAlert.prototype = new Alert();
+CancelAlert.prototype.init = function () {
+  // 继承标题提示框创建方法
+  TitleAlert.prototype.init.call(this);
+  // 由于取消按钮要添加在末尾，所以在创建完其他组件后添加
+  this.panel.appenChild(this.cancelBtn);
+};
+CancelAlert.prototype.bindEvent = function () {
+  var me = this;
+  TitleAlert.prototype.bindEvent.call(me);
+  this.cancelBtn.onclick = function () {
+    me.fail();
+    me.hide();
+  };
+};
+</code></pre>
+<h3>创建一个提示框</h3>
+<pre><code class="language-js">new CancelAlert({
+  title: &quot;提示标题&quot;,
+  content: &quot;提示内容&quot;,
+  success: function () {
+    console.log(&quot;ok&quot;);
+  },
+  fail: function () {
+    console.log(&quot;cancel&quot;);
+  },
+}).init();
+</code></pre>
+<h3>创建多类导航</h3>
+<pre><code class="language-js">// 格式化字符串方法
+function formateString(str, data) {
+  return str.replace(/\{#(\w+)#\}/g, function (match, key) {
+    return typeof data[key] === undefined ? &quot;&quot; : data[key];
+  });
+}
+var Nav = function (data) {
+  this.item = '&lt;a href=&quot;{#href#}&quot; title=&quot;{#title#}&quot;&gt;{#name#}&lt;/a&gt;';
+  this.html = &quot;&quot;;
+  for (var i = 0, len = data.length; i &lt; len; i++) {
+    this.html += formateString(this.item, data[i]);
+  }
+  return this.html;
+};
+</code></pre>
+<pre><code class="language-js">// 带有消息提醒信息导航
+var NumNav = function (data) {
+  var tpl = &quot;&lt;b&gt;{#num#}&lt;/b&gt;&quot;;
+  for (var i = data.length - 1; i &gt;= 0; i--) {
+    data[i].name += data[i].name + formateString(tpl, data[i]);
+  }
+  return Nav.call(this, data);
+};
+</code></pre>
+<pre><code class="language-js">// 带有链接地址的导航
+var LinkNav = function (data) {
+  var tpl = &quot;&lt;span&gt;{#link#}&lt;/span&gt;&quot;;
+  for (var i = data.length - 1; i &gt;= 0; i--) {
+    data[i].name += data[i].name + formateString(tpl, data[i]);
+  }
+  return Nav.call(this, data);
+};
+</code></pre>
+<h3>创建导航更容易</h3>
+<p>比如我们测试带有消息提醒组件的导航模块。</p>
+<pre><code class="language-js">var nav = document.getElementById('content');
+nav.innerHTML = NumNav([
+  {
+    href: &quot;http://www.baidu.com&quot;,
+    title: &quot;百度一下，你就知道&quot;,
+    name: &quot;百度&quot;,
+    num: &quot;10&quot;
+  },
+  {
+    href: &quot;http://www.taobao.com&quot;,
+    title: &quot;淘宝商城&quot;,
+    name: &quot;淘宝&quot;,
+    num: &quot;2&quot;
+  },
+  {
+    href: &quot;http://www.qq.com&quot;,
+    title: &quot;腾讯首页&quot;,
+    name: &quot;腾讯&quot;,
+    num: &quot;3&quot;
+  }
+])
+</code></pre>
+ 
+    </div>
+  </div>
+  <div class="article__wrapper_footer">
+    <a class="article__wrapper_footer-left " href="/articles/26.html"><svg t="1713708729970" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8437" width="48" height="48"><path d="M409.272947 512.57741l403.237243 403.237243a63.349415 63.349415 0 1 1-89.622481 89.622482L274.839224 557.324726a63.349415 63.349415 0 0 1 0-89.494632L722.951633 19.717685a63.349415 63.349415 0 1 1 89.494633 89.622482L409.336872 512.57741z" p-id="8438" fill="#8a8a8a"></path></svg></a>
+    <a class="article__wrapper_footer-right " href="/articles/28.html"><svg t="1713708697355" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8093" width="48" height="48"><path d="M855.123 517.004c0 8.245-3.167 15.51-9.503 21.823L402.999 981.47c-6.336 6.336-13.625 9.477-21.869 9.477s-15.51-3.142-21.845-9.477L311.8 933.96c-6.336-6.336-9.502-13.6-9.502-21.845 0-8.222 3.167-15.51 9.502-21.845l373.29-373.29-373.293-373.267c-6.336-6.336-9.502-13.6-9.502-21.845s3.167-15.533 9.503-21.869l47.484-47.484c6.336-6.336 13.6-9.502 21.845-9.502s15.533 3.167 21.869 9.503l442.621 442.622c6.334 6.334 9.503 13.625 9.503 21.869z" fill="#8a8a8a" p-id="8094"></path></svg></a>
+  </div>
+  <a class="article__wrapper_index" href="/articles/"><svg t="1713708857338" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="9656" width="48" height="48"><path d="M549.61981 133.022476l319.683047 203.605334A70.851048 70.851048 0 0 1 902.095238 396.361143v434.883047A70.89981 70.89981 0 0 1 831.146667 902.095238h-282.819048l0.024381-218.112h-71.826286v218.087619L192.853333 902.095238A70.89981 70.89981 0 0 1 121.904762 831.24419V390.241524c0-24.527238 12.678095-47.299048 33.54819-60.220953l318.659048-197.485714a70.972952 70.972952 0 0 1 75.50781 0.487619zM828.952381 828.952381V397.214476L511.488 195.047619 195.047619 391.119238V828.952381h211.309714v-216.551619h212.187429v216.527238L828.952381 828.952381z" p-id="9657" fill="#707070"></path></svg></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
+  <script src="../assets/js/articles-detail.js"></script>
+  <script>
+    hljs.highlightAll();
+  </script>
+</body>
+</html>
+    

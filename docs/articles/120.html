@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>运算符和表达式</title>
+    <meta charset="utf-8">
+    <meta name="description" content="This is a page">
+    <meta name="keywords" content="page, sample">
+    <meta name="author" content="None">
+    <link rel="icon" sizes="any" mask href="../assets/images/ico6.svg" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <link rel="stylesheet" href="../assets/css/articles.css">
+</head>
+<body>
+  <div class="article__wrapper_left">
+    <div class="article__wrapper_left-mulu">目录</div>
+    <ul class="articles__list"><li class="">
+          <a href="/articles/121.html">
+            语句和程序结构
+          </a>
+        </li><li class="">
+          <a href="/articles/122.html">
+            Js 技巧
+          </a>
+        </li><li class="">
+          <a href="/articles/123.html">
+            Git开发工作流程
+          </a>
+        </li><li class="">
+          <a href="/articles/124.html">
+            SCSS
+          </a>
+        </li><li class="">
+          <a href="/articles/125.html">
+            操作字符串
+          </a>
+        </li><li class="">
+          <a href="/articles/126.html">
+            使用函数
+          </a>
+        </li><li class="">
+          <a href="/articles/127.html">
+            统一 Node 版本
+          </a>
+        </li><li class="">
+          <a href="/articles/128.html">
+            JS复制粘贴兼容处理
+          </a>
+        </li><li class="">
+          <a href="/articles/129.html">
+            超有用的 Web API
+          </a>
+        </li><li class="">
+          <a href="/articles/13.html">
+            JS错误监控篇
+          </a>
+        </li></ul>
+  </div>
+  <div class="article__wrapper_sidebar">
+    <a href="/" target="_blank"><svg t="1714001835347" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4298" width="48" height="48"><path d="M147.904 304.128l301.866667-179.541333a128 128 0 0 1 131.712 0.512l295.466666 178.88A128 128 0 0 1 938.666667 413.482667V810.666667a128 128 0 0 1-128 128H213.333333a128 128 0 0 1-128-128V414.144a128 128 0 0 1 62.570667-110.016z m43.626667 73.344A42.666667 42.666667 0 0 0 170.666667 414.144V810.666667a42.666667 42.666667 0 0 0 42.666666 42.666666h597.333334a42.666667 42.666667 0 0 0 42.666666-42.666666V413.482667a42.666667 42.666667 0 0 0-20.565333-36.501334l-295.466667-178.88a42.666667 42.666667 0 0 0-43.925333-0.170666l-301.866667 179.541333z" fill="#8a919f" p-id="4299"></path><path d="M405.333333 469.333333h213.333334a42.666667 42.666667 0 1 1 0 85.333334H405.333333a42.666667 42.666667 0 1 1 0-85.333334z m0 85.333334a42.666667 42.666667 0 1 0 0-85.333334h213.333334a42.666667 42.666667 0 1 0 0 85.333334H405.333333z" fill="#8a919f" p-id="4300"></path></svg></a>
+    <a href="/tools/" target="_blank"><svg t="1714002003458" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6911" width="48" height="48"><path d="M817.87 556.31h-63.58v-66.24A42.27 42.27 0 0 0 712 447.8h-84.81a42.27 42.27 0 0 0-42.27 42.27v66.24H436.57v-66.24a42.27 42.27 0 0 0-42.27-42.27h-84.83a42.27 42.27 0 0 0-42.27 42.27v66.24h-61.83A22.39 22.39 0 0 0 183 578.7a22.39 22.39 0 0 0 22.39 22.39h61.81v65.55a42.27 42.27 0 0 0 42.27 42.27h84.83a42.27 42.27 0 0 0 42.27-42.27v-65.55h148.36v65.55a42.27 42.27 0 0 0 42.27 42.27H712a42.27 42.27 0 0 0 42.27-42.27v-65.55h63.58a22.39 22.39 0 0 0 22.39-22.39 22.39 22.39 0 0 0-22.37-22.39z m-438.64 95.26h-54.69V505.14h54.69z m317.72 0h-54.69V505.14H697z" p-id="6912" fill="#8a919f"></path><path d="M823 202.58h-90.81v-63.09a71.88 71.88 0 0 0-71.88-71.88H363.19a71.88 71.88 0 0 0-71.88 71.88v63.08h-90.12A137.17 137.17 0 0 0 64 339.75v479a137.17 137.17 0 0 0 137.19 137.14H823a137.17 137.17 0 0 0 137.19-137.17v-479A137.17 137.17 0 0 0 823 202.58z m-474.36-54.1A23.52 23.52 0 0 1 372.17 125h279.16a23.52 23.52 0 0 1 23.52 23.52v54.1h-326.2z m554.23 673.31a76.76 76.76 0 0 1-76.76 76.76h-628a76.76 76.76 0 0 1-76.76-76.76V336.67a76.76 76.76 0 0 1 76.76-76.76h628a76.76 76.76 0 0 1 76.76 76.76z" p-id="6913" fill="#8a919f"></path></svg></a>
+  </div>
+  <div class="article__wrapper">
+    <div class="article__wrapper__main">
+      <div class="article__wrapper_header">
+        <h1>运算符和表达式</h1>
+        <span class="articles__home_time">NaN/NaN/NaN · YinHao</span>
+      </div>
+      <h2>运算符</h2>
+<h3>左值、赋值及其副作用</h3>
+<pre><code class="language-js">var a = 0;
+a++;
+console.log(a); // 1
+</code></pre>
+<pre><code class="language-js">var a = 1;
+a = (a++) + (++a) - (a++) - (++a);
+console.log(a)
+</code></pre>
+<p>拆解表达式：</p>
+<pre><code class="language-js">var a = 1; // 初始值为 1
+var b = a++; // a 先赋值给 b，在递加变为 2
+var c = ++a; // a 先递加变为 3，再赋 3 给 c
+var d = a++; // a 赋 3 给 d，在递加变为 4
+var e = ++a; // a 先递加变为 5，在赋 5 给 e
+console.log(b + c - d -e); // -4
+</code></pre>
+<h2>算术运算</h2>
+<h3>加法运算</h3>
+<pre><code class="language-js">var n = 5;
+console.log(NaN + n); // NaN 与任意操作数相加，结果都是 NaN
+console.log(Infinity + n); // Infinity 与任意操作数相加，结果都是 Infinity
+console.log(Infinity + Infinity); // Infinity 与 Infinity 相加，结果是 Infinity
+console.log((-Infinity) + (-Infinity)); // 负 -Infinity 相加，结果是负 Infinity
+console.log((-Infinity) + Infinity); // 正负 Infinity 相加，结果 NaN
+</code></pre>
+<p>加运算符能够根据操作数的数据类型，决定是相加操作，还是相连操作</p>
+<pre><code class="language-js">console.log(1 + 1); // 2
+console.log(1 + &quot;1&quot;); // &quot;11&quot;
+console.log(3.0 + 4.3 + &quot;&quot;); // &quot;7.3&quot;
+console.log(3.0 + &quot;&quot; + 4.3); // &quot;34.3&quot; 3.0 转换为字符串 3
+</code></pre>
+<h3>减法运算</h3>
+<pre><code class="language-js">var n = 5;
+console.log(NaN - n); // NaN 与任意操作数相减，结果都是 NaN
+console.log(Infinity - n); // Infinity 与任意操作数相减，结果都是 Infinity
+console.log(Infinity - Infinity); // Infinity 与 Infinity 相减，结果 NaN
+console.log((-Infinity) - (-Infinity)); // 负 Infinity 相减，结果是 NaN
+console.log((-Infinity) - Infinity); // 正负 Infinity 相减，结果是 -Infinity
+</code></pre>
+<p>在减法运算中，如果操作数为字符串，先尝试把它转换为数值，再进行运算，如果有一个操作数不是数字，则返回 NaN。</p>
+<pre><code class="language-js">console.log(2 - &quot;1&quot;); // 1
+console.log(2 - &quot;a&quot;); // NaN
+</code></pre>
+<p>技巧：</p>
+<p>使用值减去 0，可以快速把值转换为数字。这与调用 parseFloat() 方法的结果相同，但减法更高效、快捷。</p>
+<p>减法运算符的隐性转换如果失败，则返回 NaN，这与使用 parseFloat() 方法执行转换时的返回值是不同的。</p>
+<p>例如，对于字符串 &quot;100aaa&quot; 而言，parseFloat() 方法能够解析出前面几个数字，而对于减法运算符来说，则必须是完整的数字，才可以进行转换。</p>
+<pre><code class="language-js">console.log(parseFloat(&quot;100aa&quot;)); // 100
+console.log(&quot;100aaa&quot; - 0); // NaN
+</code></pre>
+<p>对于布尔值来说，parseFloat() 方法能够把 true 转换为 1，把 false 转换为 0，而减法运算符视其为 NaN。</p>
+<p>对于对象来说，parseFloat() 方法会尝试调用对象的 toString() 方法进行转换，而减法运算符先尝试调用对象的 valueOf() 方法进行转换，失败之后再调用 toString() 进行转换。</p>
+<h3>乘法运算</h3>
+<pre><code class="language-js">var n = 5;
+console.log(NaN * n); // NaN 与任意操作数相乘，结果都是 NaN
+console.log(Infinity * n); // Infinity 与任意非零正数相乘，结果都是 Infinity
+console.log(Infinity * (-n)); // Infinity 与任意非零负数相乘，结果都是 -Infinity
+console.log(Infinity * 0); // Infinity 与 0 相乘，结果都是 NaN
+console.log(Infinity * Infinity); // Infinity 与 Infinity 相乘，结果是 Infinity
+</code></pre>
+<h3>除法运算</h3>
+<pre><code class="language-js">var n = 5;
+console.log(NaN / n); // 如果一个操作数是 NaN，结果都是 NaN
+console.log(Infinity / n); // Infinity 被任意数字除，结果是 Infinity 或 -Infinity
+console.log(Infinity / Infinity); // 返回 NaN
+console.log(n / 0); // 0 除一个非无穷大的数字，结果是 Infinity 或 -Infinity，符号由第二个操作数的符号决定
+console.log(n / -0); // 返回 -Infinity，解释同上
+</code></pre>
+<h3>求余运算</h3>
+<p>求余运算也称模运算，例如：</p>
+<pre><code class="language-js">console.log(3 % 2); // 返回余数 1
+</code></pre>
+<p>模运算主要针对整数进行操作，也适用于浮点数，例如：</p>
+<pre><code class="language-js">console.log(3.1 % 2.3); // 返回余数 0.8000000000000003
+</code></pre>
+<p>注意特殊操作数的求余运算</p>
+<pre><code class="language-js">var n = 5;
+console.log(Infinity % n); // NaN
+console.log(Infinity % Infinity); // NaN
+console.log(n % Infinity); // 5
+console.log(0 % n); // 0
+console.log(0 % Infinity); // 0
+console.log(n % 0); // NaN
+console.log(Infinity % 0); // NaN
+</code></pre>
+<h3>取反运算</h3>
+<p>取反运算符是一元运算符，也称一元减法运算符</p>
+<pre><code class="language-js">console.log(-5); // -5，正常数值取负数
+console.log(-&quot;5&quot;); // -5 &quot;number&quot;，先转换字符串数字为数值类型
+console.log(-&quot;a&quot;); // 返回 NaN，无法完全匹配运算，返回 NaN
+console.log(-Infinity); // 返回 -Infinity
+console.log(-(-Infinity)); // 返回 Infinity
+console.log(-NaN); // 返回 NaN
+</code></pre>
+<h3>递增和递减</h3>
+<p>递增（++）和递减（--）运算就是通过不断地加 1 或 减 1，然后把结果赋值给左侧操作数，以实现改变自身结果的一种简洁方法。</p>
+<p>运算方式可以分为 4 种：</p>
+<ul>
+<li>
+<p>前置递增（++n）: 先递增，再赋值</p>
+</li>
+<li>
+<p>前置递减（--n）: 先递减，再赋值</p>
+</li>
+<li>
+<p>后置递增（n++）: 先赋值，再递减</p>
+</li>
+<li>
+<p>后置递减（n--）: 先赋值，再递减</p>
+</li>
+</ul>
+<pre><code class="language-js">var a=b=c=4;
+console.log(a++); // 4，先赋值，再递增，运算结果不变
+console.log(++b); // 5，先递增，再赋值，运算结果加 1
+console.log(c++); // 4，先赋值，再递增，运算结果不变
+console.log(c); // 5，变量的值加 1
+console.log(++c); // 6，先递增，再赋值，运算结果加 1
+console.log(c); // 6，变量的值也加 1
+</code></pre>
+<h2>逻辑运算</h2>
+<h3>逻辑与运算</h3>
+<p>逻辑与是一种短路逻辑，如果左侧表达式为 false，则直接短路返回结果，不再运算右侧表达式，运算逻辑如下：</p>
+<p>第 1 步：计算第一个操作数（左侧表达式）的值</p>
+<p>第 2 步：检测第一个操作数的值。如果左侧表达式的值可转换为 false（如 null、undefined、NaN、0、&quot;&quot;、false），那么就会结束运算，直接返回第一个操作数的值。</p>
+<p>第 3 步：如果第一个操作数可以转换为 true，则计算第二个操作数（右侧表达式）的值。</p>
+<p>第 4 步：返回第二个操作数的值。</p>
+<pre><code class="language-js">var user;
+(!user &amp;&amp; console.log(&quot;没有赋值&quot;)); // &quot;没有赋值&quot;
+</code></pre>
+<p>使用逻辑与运算符可以代替设计多重分支结构</p>
+<pre><code class="language-js">var n = 3;
+(n == 1) &amp;&amp; console.log(1);
+(n == 2) &amp;&amp; console.log(2);
+(n == 3) &amp;&amp; console.log(3);
+(!n) &amp;&amp; console.log(&quot;null&quot;);
+</code></pre>
+<p>上面的代码等效于下面多重分支结构</p>
+<pre><code class="language-js">var n = 3;
+switch(n) {
+  case 1:
+    console.log(1);
+    break;
+  case 2:
+    console.log(2);
+    break;
+  case 3:
+    console.log(3);
+    break;
+}
+</code></pre>
+<p>对象被转换为布尔值时为 true，例如，一个空对象与一个布尔值进行逻辑与运算。</p>
+<pre><code class="language-js">console.log(typeof({} &amp;&amp; true)); // 返回第二个操作数的值 true 的类型：布尔值
+console.log(typeof(true &amp;&amp; {})); // 返回第二个操作数的值 {} 的类型：对象
+</code></pre>
+<p>如果操作数中包含 null，则返回值总是 null，不管位置如何，返回的总是 null。</p>
+<pre><code class="language-js">console.log(typeof(&quot;null&quot; &amp;&amp; null)); // 返回 null 类型：对象
+console.log(typeof(null &amp;&amp; &quot;null&quot;)); // 返回 null 类型：对象
+</code></pre>
+<p>如果操作数中包含 NaN，则返回值总是 NaN，</p>
+<pre><code class="language-js">console.log(typeof(&quot;NaN&quot; &amp;&amp; NaN)); // 返回 NaN 的类型：数值
+console.log(typeof(NaN &amp;&amp; &quot;NaN&quot;)); // 返回 NaN 的类型：数值
+</code></pre>
+<p>对于 Infinity 来说，将被转换为 true，与普通数值一样参与逻辑与运算。</p>
+<pre><code class="language-js">console.log(typeof(&quot;Infinity&quot; &amp;&amp; Infinity)); // 返回第二个操作数 Infinity 类型：数值
+console.log(typeof(Infinity &amp;&amp; &quot;Infinity&quot;)); // 返回第二个操作数 &quot;Infinity&quot; 的类型：字符串
+</code></pre>
+<p>如果操作数中包含 undefined，则返回 undefined。</p>
+<pre><code class="language-js">console.log(typeof(&quot;undefined&quot; &amp;&amp; undefined)); // undefined
+console.log(typeof(undefined &amp;&amp; &quot;undefined&quot;)); // undefined
+</code></pre>
+<h3>逻辑或运算</h3>
+<p>逻辑解析：</p>
+<p>逻辑或也是一种短路逻辑，如果左侧表达式为 true，则直接短路返回结果，不再运算右侧表达式。</p>
+<p>第 1 步：计算第一个操作数（左侧表达式）的值</p>
+<p>第 2 步：检测第一个操作数的值，如果左侧表达式的值可以转换为 true，那就会结束运算，直接返回第一个操作数的值。</p>
+<p>第 3 步：如果第一个操作数可以转换为 false，则计算第二个操作数的值。</p>
+<p>第 4 步：返回第二个操作数的值。</p>
+<pre><code class="language-js">var n = 3;
+(n == 1) &amp;&amp; console.log(1);
+(n == 2) &amp;&amp; console.log(2);
+(n == 3) &amp;&amp; console.log(3);
+(!n) &amp;&amp; console.log(&quot;null&quot;)
+</code></pre>
+<p>可以使用逻辑或对其进行合并</p>
+<pre><code class="language-js">var n = 3;
+(n == 1) &amp;&amp; console.log(1) || 
+(n == 2) &amp;&amp; console.log(2) || 
+(n == 3) &amp;&amp; console.log(3) || 
+(!n) &amp;&amp; console.log(&quot;null&quot;)
+</code></pre>
+<p>由于 &quot;&amp;&amp;&quot; 运算符的优先级高于 &quot;||&quot; 运算符的优先级，所以不必使用小括号进行分组，不过使用小括号分组后，代码更容易阅读。</p>
+<pre><code class="language-js">var n = 3;
+((n == 1) &amp;&amp; console.log(1)) || 
+((n == 2) &amp;&amp; console.log(2)) || 
+((n == 3) &amp;&amp; console.log(3)) || 
+((!n) &amp;&amp; console.log(&quot;null&quot;))
+</code></pre>
+<p>在下面条件分支中，由于 a = &quot;string&quot; 操作数可以转换为 true，则逻辑或运算就不再执行右侧的定义对象表达式。最后 console.log(b.a); 语句抛出异常。</p>
+<pre><code class="language-js">if(a = &quot;string&quot; || (b = {
+  a: &quot;string&quot;
+})) console.log(b.a)
+</code></pre>
+<p>如果使用逻辑与运算，就可以避免上述问题</p>
+<pre><code class="language-js">if(a = &quot;string&quot; &amp;&amp; (b = {
+  a: &quot;string&quot;
+})) console.log(b.a)
+</code></pre>
+<p>下面代码设计一个复杂的嵌套结构，根据变量 a 决定是否执行下一个循环。</p>
+<pre><code class="language-js">var a = b = 2;
+if(a) {
+  while(b++ &lt; 10) console.log(b++)
+}
+</code></pre>
+<p>使用逻辑与和逻辑或运算符进行简化：</p>
+<pre><code class="language-js">var a = b = 2;
+while(a &amp;&amp; b++ &lt; 10) console.log(b++);
+</code></pre>
+<p>如果转换为如下嵌套结构就不能够继续使用上述表达式进行简化，因为下面的代码是先执行循环体，后执行条件检测。</p>
+<pre><code class="language-js">while(b++ &lt; 10) {
+  if(a) {
+    console.log(b++);
+  }
+}
+</code></pre>
+<h3>逻辑非运算</h3>
+<pre><code class="language-js">console.log(!{}); // false
+console.log(!0); // true
+console.log(!(n = 5)); // false，n = 5
+console.log(!null); // true
+console.log(!NaN); // true
+console.log(!Infinity); // false
+console.log(!(-Infinity)); // false
+console.log(!undefined); // true
+</code></pre>
+<p>如果对操作数执行两次逻辑非运算操作，就相当于把操作数转换为布尔值。</p>
+<pre><code class="language-js">console.log(!0); // true
+console.log(!!0); // false
+</code></pre>
+<h2>关系运算</h2>
+<h3>大小比较</h3>
+<ul>
+<li>
+<p>&quot;&lt;&quot;</p>
+</li>
+<li>
+<p>&quot;&lt;=&quot;</p>
+</li>
+<li>
+<p>&quot;&gt;=&quot;</p>
+</li>
+<li>
+<p>&quot;&gt;&quot;</p>
+</li>
+</ul>
+<p>比较运算中的操作数可以是任意类型的值，但是在执行运算时，会被转换为数字或字符串，然后再进行比较。</p>
+<p>如果是数字，则比较大小；如果是字符串，则根据字符编码表中的编号值，从左到右逐个进行比较。</p>
+<p>如果两个操作数都是数字，或者一个是数值，另一个可以被转换成数字，则将根据数字大小进行比较。</p>
+<pre><code class="language-js">console.log(4 &gt; 3); // true
+console.log(&quot;4&quot; &gt; Infinity); // false，无穷大比任何数字都大
+</code></pre>
+<p>如果两个操作数都是字符串，则执行字符串比较。</p>
+<pre><code class="language-js">console.log(&quot;4&quot; &gt; &quot;3&quot;); // true，根据字符编码表的编号比较
+console.log(&quot;a&quot; &gt; &quot;b&quot;); // false，a 编码为 61，b 编码为 62
+console.log(&quot;ab&quot; &gt; &quot;cb&quot;); // false，c 编码为 63
+console.log(&quot;abd&quot; &gt; &quot;abc&quot;); // true，d 编码为 64
+// 如果前面相同，则比较下一个字符，以此类推
+</code></pre>
+<p>字符比较是区分大小写的，一般小写字符大于大写字符。</p>
+<p>如果一个操作数是数字，或者被转换为数字，另一个是字符串，或者被转换为字符串，则使用 parseInt() 将字符串转换为数字。（对于非数字字符串，将被转换为 NaN），最后以数字方式进行比较。</p>
+<p>如果一个操作数为 NaN，或者被转换为 NaN，则始终返回 false。</p>
+<pre><code class="language-js">console.log(&quot;a&quot; &gt; &quot;3&quot;); // 返回 true，字符 a 编码为 61，字符 3 编码为 33
+console.log(&quot;a&quot; &gt; 3); // false，字符 a 被强制转换为 NaN
+</code></pre>
+<p>如果一个操作数是对象，则先使用 valueOf() 取其值，再进行比较，如果没有 valueOf() 方法，则使用 toString() 取其字符串表示，再进行比较。</p>
+<p>如果一个操作数是布尔值，则先转换为数值，再进行比较。</p>
+<p>如果操作数都无法转换为数字或字符串，则比较结果为 false。</p>
+<h3>相等和全等</h3>
+<ul>
+<li>
+<p>“==” 相等：比较两个操作数的值是否相等。</p>
+</li>
+<li>
+<p>“!=” 不相等：比较两个操作数的值是否不相等。</p>
+</li>
+<li>
+<p>“===” 全等：比较两个操作数的值是否相等，同时检测它们的类型是否相同。</p>
+</li>
+<li>
+<p>“!==” 不全等：比较两个操作数的值是否不相等，同时检测它们的类型是否不相同。</p>
+</li>
+</ul>
+<p>如果操作数是布尔值，则先转换为数值，其中 false 转为 0，true 转换为 1。</p>
+<p>如果一个操作数是字符串，另一个操作数是数字，则先尝试把字符串转换为数字。</p>
+<p>如果一个操作数是字符串，另一个操作数是对象，则先尝试把对象转换为字符串。</p>
+<p>如果一个操作数是数字，另一个操作数是对象，则先尝试把对象转换为数字。</p>
+<pre><code class="language-js">console.log(&quot;1&quot; == 1); // true，字符串被转换为数字
+console.log(true == 1); // true，true 被转换为 1
+console.log(false == 0); // true，false 被转换为 0
+console.log(null == 0); // false，
+console.log(undefined == 0); // false，
+console.log(undefined == null); // true
+console.log(NaN == &quot;NaN&quot;); // false
+console.log(NaN == 1); // false
+console.log(NaN == NaN); // false
+console.log(NaN != NaN); // true
+</code></pre>
+<p>注意：</p>
+<p>NaN 与任何值都不相等，包括它自己。</p>
+<p>null 与 undefined 值相等，但是它们是不同类型的数据。</p>
+<p>在相等比较中，null 和 undefined 不允许被转换为其他类型的值。</p>
+<p>下面两个变量的值是相等的：</p>
+<pre><code class="language-js">var a = &quot;abc&quot; + &quot;d&quot;;
+var b = &quot;a&quot; + &quot;bcd&quot;;
+console.log(a == b); // true
+</code></pre>
+<p>提示：</p>
+<p>数值和布尔值的相等比较运算效率比较高，而字符串需要逐个字符进行比较，相等比较运算效率比较低。</p>
+<p>在全等运算中，需要注意以下几个问题：</p>
+<p>如果两个操作数都是简单的值，则只要值相等，类型相同，就全等。</p>
+<p>如果一个操作数是简单的值，另一个操作数是复合型对象，则不全等。</p>
+<p>如果两个操作数都是复合型对象，则比较引用地址是否相同。</p>
+<pre><code class="language-js">console.log(null === undefined); // false
+console.log(0 === &quot;0&quot;); // false
+console.log(0 === false); // false
+</code></pre>
+<pre><code class="language-js">var a = {};
+var b = a;
+console.log(a === b); // true
+</code></pre>
+<pre><code class="language-js">var a = {};
+var b = {};
+console.log(a === b); // false
+</code></pre>
+<pre><code class="language-js">var a = new String(&quot;abcd&quot;);
+var b = new String(&quot;abcd&quot;);
+console.log(a === b); // false
+console.log(a == b); // false
+</code></pre>
+<p>对于简单值，只要类型相同、值相等，他们就全等</p>
+<pre><code class="language-js">var a = &quot;1&quot; + 1;
+var b = &quot;11&quot;;
+console.log(a === b); // true
+</code></pre>
+<h2>对象操作运算</h2>
+<h3>归属检测</h3>
+<p>in 运算符能够检测左侧操作数是否为右侧操作数的成员。</p>
+<pre><code class="language-js">var o = {
+  a: 1,
+  b: function() {}
+};
+console.log(&quot;a&quot; in o); // true
+console.log(&quot;b&quot; in o); // true
+console.log(&quot;c&quot; in o); // false
+console.log(&quot;valueOf&quot; in o); // true，继承 Object 的原型方法
+console.log(&quot;constructor&quot; in o); // true，继承 Object 的原型方法
+</code></pre>
+<p>instanceof 运算符能够检测左侧的对象是否为右侧类型实例</p>
+<p>左侧是 <code>实例对象</code>，右侧是 <code>构造函数</code>。</p>
+<pre><code class="language-js">var a = new Array();
+console.log(a instanceof Array); // true
+console.log(a instanceof Object); // true，Array 是 Object 的子类
+console.log(a instanceof Function); // false
+</code></pre>
+<p>如果左侧操作数不是对象，或者右侧操作数不是类型函数，则返回 false，如果右侧操作数不是复合型，则将返回错误。</p>
+<h3>删除属性</h3>
+<p>delete 运算符能够删除指定对象的属性、数组元素或变量。如果删除操作成功，则返回 true，否则返回 false。</p>
+<pre><code class="language-js">var a = {
+  x: 1,
+  y: 2
+};
+console.log(delete a.x); // 删除成功，返回 true
+console.log(a.x); // undefined
+</code></pre>
+<p>部分 Js 内置成员和客户端成员，以及使用 var 语句声明的变量不允许删除。</p>
+<pre><code class="language-js">c = 1; // 初始化变量 c，没有使用 var 语句声明
+console.log(delete c); // true，说明删除成功
+var b = 1; // 使用 var 语句声明并初始化变量
+console.log(delete b); // false，说明不允许删除
+console.log(delete Object.constructor); // true，说明部分内部成员可以被删除
+</code></pre>
+<p>如果删除不存在的对象成员，或者非对象成员、数组元素、变量，则返回 true。因此，使用 delete 运算符时，要注意区分成功删除与无效操作。</p>
+<pre><code class="language-js">var a = {};
+console.log(delete a); // false，说明不允许删除
+console.log(delete a.z); // true，说明不存在该属性
+console.log(delete b); // true，说明不存在该变量
+</code></pre>
+<p>下面代码使用 delete 运算符，配合 in 运算符，实现对数组成员执行检测、插入、删除或更新操作。</p>
+<pre><code class="language-js">var a = [];
+if(&quot;x&quot; in a) {
+  delete a[&quot;x&quot;];
+} else {
+  a[&quot;x&quot;] = true;
+}
+console.log(a.x);
+if(delete a[&quot;x&quot;]) {
+  a[&quot;x&quot;] = false;
+}
+console.log(a.x);
+</code></pre>
+<h2>案例实战</h2>
+<h3>使用 new</h3>
+<p>new 是一个运算符，可以创建对象，初始化实例，其语法格式如下：</p>
+<pre><code class="language-js">new constructor(arguments);
+</code></pre>
+<p>constructor 必须是一个构造函数表达式，参数 arguments 可有可无，参数之间用逗号分隔。</p>
+<p>下面使用 new 运算符实例化 Array，并演示 3 种不同的使用方法，</p>
+<pre><code class="language-js">var a = new Array; // 创建数组，省略小括号
+var b = new Array(); // 创建数组
+var c = new Array(1, 2, 3); // 创建数组，并初始化元素值
+console.log(c[2]); // 3
+</code></pre>
+<p>new 被执行时，首先会创建一个新对象，然后调用指定的构造函数，并根据传入参数初始化实例；最后把初始化的实例传递给新对象。</p>
+<p>下面代码自定义类，然后使用它创建新的对象</p>
+<pre><code class="language-js">var a = function() {
+  this.x = 1;
+  this.y = 2;
+};
+var b = new a;
+console.log(b.x); // 调用对象属性 x，返回 1
+</code></pre>
+<p>下面两种方法都可以读取数组 a 中第二个元素的值，虽然说 <code>a[&quot;1&quot;]</code> 中参数是一个字符串，但是中括号运算符能够把它转化为数字。</p>
+<pre><code class="language-js">var a = [&quot;x&quot;, true, {}]; // 定义数组
+console.log(a[1]); // true
+console.log(a[&quot;1&quot;]); // true
+</code></pre>
+<p>提示：</p>
+<p>如果中括号运算符的第二个操作数为对象，会调用 toString() 方法把对象转换为字符串表示，如果是布尔值 true 和 false，将被转换为字符串 <code>&quot;true&quot;</code> 和 <code>&quot;false</code>，而不是 1 和 0。</p>
+<pre><code class="language-js">var a = {
+  &quot;true&quot;: 1,
+  &quot;false&quot;: 0
+} 
+console.log(a[true]); // 1，把布尔值 true 转换为字符串 &quot;true&quot;
+console.log(a[false]); // 0，把布尔值 false 转换为字符串 &quot;false&quot;
+console.log(a[false]); // 0
+</code></pre>
+<p>便利 window 对象：</p>
+<pre><code class="language-js">if(var o in window) {
+  document.write(&quot;window.&quot; + o + &quot; = &quot; + window[o] + &quot;&lt;br /&gt;&quot;)
+}
+</code></pre>
+ 
+    </div>
+  </div>
+  <div class="article__wrapper_footer">
+    <a class="article__wrapper_footer-left " href="/articles/119.html"><svg t="1713708729970" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8437" width="48" height="48"><path d="M409.272947 512.57741l403.237243 403.237243a63.349415 63.349415 0 1 1-89.622481 89.622482L274.839224 557.324726a63.349415 63.349415 0 0 1 0-89.494632L722.951633 19.717685a63.349415 63.349415 0 1 1 89.494633 89.622482L409.336872 512.57741z" p-id="8438" fill="#8a8a8a"></path></svg></a>
+    <a class="article__wrapper_footer-right " href="/articles/121.html"><svg t="1713708697355" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8093" width="48" height="48"><path d="M855.123 517.004c0 8.245-3.167 15.51-9.503 21.823L402.999 981.47c-6.336 6.336-13.625 9.477-21.869 9.477s-15.51-3.142-21.845-9.477L311.8 933.96c-6.336-6.336-9.502-13.6-9.502-21.845 0-8.222 3.167-15.51 9.502-21.845l373.29-373.29-373.293-373.267c-6.336-6.336-9.502-13.6-9.502-21.845s3.167-15.533 9.503-21.869l47.484-47.484c6.336-6.336 13.6-9.502 21.845-9.502s15.533 3.167 21.869 9.503l442.621 442.622c6.334 6.334 9.503 13.625 9.503 21.869z" fill="#8a8a8a" p-id="8094"></path></svg></a>
+  </div>
+  <a class="article__wrapper_index" href="/articles/"><svg t="1713708857338" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="9656" width="48" height="48"><path d="M549.61981 133.022476l319.683047 203.605334A70.851048 70.851048 0 0 1 902.095238 396.361143v434.883047A70.89981 70.89981 0 0 1 831.146667 902.095238h-282.819048l0.024381-218.112h-71.826286v218.087619L192.853333 902.095238A70.89981 70.89981 0 0 1 121.904762 831.24419V390.241524c0-24.527238 12.678095-47.299048 33.54819-60.220953l318.659048-197.485714a70.972952 70.972952 0 0 1 75.50781 0.487619zM828.952381 828.952381V397.214476L511.488 195.047619 195.047619 391.119238V828.952381h211.309714v-216.551619h212.187429v216.527238L828.952381 828.952381z" p-id="9657" fill="#707070"></path></svg></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
+  <script src="../assets/js/articles-detail.js"></script>
+  <script>
+    hljs.highlightAll();
+  </script>
+</body>
+</html>
+    

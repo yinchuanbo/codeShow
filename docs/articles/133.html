@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>构造函数、原型和继承[未完]</title>
+    <meta charset="utf-8">
+    <meta name="description" content="This is a page">
+    <meta name="keywords" content="page, sample">
+    <meta name="author" content="None">
+    <link rel="icon" sizes="any" mask href="../assets/images/ico6.svg" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <link rel="stylesheet" href="../assets/css/articles.css">
+</head>
+<body>
+  <div class="article__wrapper_left">
+    <div class="article__wrapper_left-mulu">目录</div>
+    <ul class="articles__list"><li class="">
+          <a href="/articles/134.html">
+            3个超酷的 Node.js 新功能
+          </a>
+        </li><li class="">
+          <a href="/articles/135.html">
+            一些很重要的 HTML 属性
+          </a>
+        </li><li class="">
+          <a href="/articles/136.html">
+            页面关闭时如何成功发送 API 请求
+          </a>
+        </li><li class="">
+          <a href="/articles/137.html">
+            更灵活的 Map - array.flatMap()
+          </a>
+        </li><li class="">
+          <a href="/articles/138.html">
+            提升JavaScript代码质量的最佳实践
+          </a>
+        </li><li class="">
+          <a href="/articles/139.html">
+            如何使用 JavaScript 阻止屏幕进入睡眠状态
+          </a>
+        </li><li class="">
+          <a href="/articles/14.html">
+            前端异常监控解决方案研究
+          </a>
+        </li><li class="">
+          <a href="/articles/140.html">
+            如何让 cookie 有 session 的特性
+          </a>
+        </li><li class="">
+          <a href="/articles/141.html">
+            三种 async/await 错误捕获方式
+          </a>
+        </li><li class="">
+          <a href="/articles/142.html">
+            2024 想学习的几个框架
+          </a>
+        </li></ul>
+  </div>
+  <div class="article__wrapper_sidebar">
+    <a href="/" target="_blank"><svg t="1714001835347" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4298" width="48" height="48"><path d="M147.904 304.128l301.866667-179.541333a128 128 0 0 1 131.712 0.512l295.466666 178.88A128 128 0 0 1 938.666667 413.482667V810.666667a128 128 0 0 1-128 128H213.333333a128 128 0 0 1-128-128V414.144a128 128 0 0 1 62.570667-110.016z m43.626667 73.344A42.666667 42.666667 0 0 0 170.666667 414.144V810.666667a42.666667 42.666667 0 0 0 42.666666 42.666666h597.333334a42.666667 42.666667 0 0 0 42.666666-42.666666V413.482667a42.666667 42.666667 0 0 0-20.565333-36.501334l-295.466667-178.88a42.666667 42.666667 0 0 0-43.925333-0.170666l-301.866667 179.541333z" fill="#8a919f" p-id="4299"></path><path d="M405.333333 469.333333h213.333334a42.666667 42.666667 0 1 1 0 85.333334H405.333333a42.666667 42.666667 0 1 1 0-85.333334z m0 85.333334a42.666667 42.666667 0 1 0 0-85.333334h213.333334a42.666667 42.666667 0 1 0 0 85.333334H405.333333z" fill="#8a919f" p-id="4300"></path></svg></a>
+    <a href="/tools/" target="_blank"><svg t="1714002003458" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6911" width="48" height="48"><path d="M817.87 556.31h-63.58v-66.24A42.27 42.27 0 0 0 712 447.8h-84.81a42.27 42.27 0 0 0-42.27 42.27v66.24H436.57v-66.24a42.27 42.27 0 0 0-42.27-42.27h-84.83a42.27 42.27 0 0 0-42.27 42.27v66.24h-61.83A22.39 22.39 0 0 0 183 578.7a22.39 22.39 0 0 0 22.39 22.39h61.81v65.55a42.27 42.27 0 0 0 42.27 42.27h84.83a42.27 42.27 0 0 0 42.27-42.27v-65.55h148.36v65.55a42.27 42.27 0 0 0 42.27 42.27H712a42.27 42.27 0 0 0 42.27-42.27v-65.55h63.58a22.39 22.39 0 0 0 22.39-22.39 22.39 22.39 0 0 0-22.37-22.39z m-438.64 95.26h-54.69V505.14h54.69z m317.72 0h-54.69V505.14H697z" p-id="6912" fill="#8a919f"></path><path d="M823 202.58h-90.81v-63.09a71.88 71.88 0 0 0-71.88-71.88H363.19a71.88 71.88 0 0 0-71.88 71.88v63.08h-90.12A137.17 137.17 0 0 0 64 339.75v479a137.17 137.17 0 0 0 137.19 137.14H823a137.17 137.17 0 0 0 137.19-137.17v-479A137.17 137.17 0 0 0 823 202.58z m-474.36-54.1A23.52 23.52 0 0 1 372.17 125h279.16a23.52 23.52 0 0 1 23.52 23.52v54.1h-326.2z m554.23 673.31a76.76 76.76 0 0 1-76.76 76.76h-628a76.76 76.76 0 0 1-76.76-76.76V336.67a76.76 76.76 0 0 1 76.76-76.76h628a76.76 76.76 0 0 1 76.76 76.76z" p-id="6913" fill="#8a919f"></path></svg></a>
+  </div>
+  <div class="article__wrapper">
+    <div class="article__wrapper__main">
+      <div class="article__wrapper_header">
+        <h1>构造函数、原型和继承[未完]</h1>
+        <span class="articles__home_time">NaN/NaN/NaN · YinHao</span>
+      </div>
+      <h2>构造函数</h2>
+<h3>调用构造函数</h3>
+<pre><code class="language-js">function Point(x, y) {
+  this.x = x;
+  this.y = y;
+  this.sum = function () {
+    return this.x + this.y;
+  };
+}
+var p1 = new Point(100, 200);
+var p2 = new Point(300, 400);
+console.log(p1.x);
+console.log(p2.x);
+console.log(p1.sum());
+console.log(p2.sum());
+</code></pre>
+<blockquote>
+<p>如果不使用 new 命令，直接使用小括号调用构造函数，这时构造函数就是普通函数，不会生成实例对象。this 就代表调用函数的对象，在客户端指代全局对象 window。</p>
+</blockquote>
+<p>为了避免误用，最有效的方法是在函数中启用严格模式。</p>
+<pre><code class="language-js">function Point(x, y) {
+  &quot;use strict&quot;;
+  this.x = x;
+  this.y = y;
+  this.sum = function () {
+    return this.x + this.y;
+  };
+}
+</code></pre>
+<p>这样调用构造函数时，必须使用 new 命令，否则将抛出异常。</p>
+<p>或者使用 if 对 this 进行检测，如果 this 不是实例对象，则强迫返回实例对象。</p>
+<pre><code class="language-js">function Point(x, y) {
+  if (!this instanceof Point) return new Point(x, y);
+  this.x = x;
+  this.y = y;
+  this.sum = function () {
+    return this.x + this.y;
+  };
+}
+</code></pre>
+<h3>构造函数的返回值</h3>
+<p>构造函数允许使用 return 语句，如果返回值为简单值，则将被忽略，直接返回 this 指代的实例对象；</p>
+<p>如果返回值为对象，则将覆盖 this 指代的实例，返回 return 后面跟随的对象。</p>
+<p>返回对象：</p>
+<pre><code class="language-js">function Point(x, y) {
+  this.x = x;
+  this.y = y;
+  return {
+    x: true,
+    y: false,
+  };
+}
+var p1 = new Point(100, 200);
+console.log(p1.x); // true
+console.log(p2.y); // false
+</code></pre>
+<p>返回简单值：</p>
+<pre><code class="language-js">function Point(x, y) {
+  this.x = x;
+  this.y = y;
+  return true;
+}
+var p1 = new Point(100, 200);
+console.log(p1.x); // 100
+console.log(p2.y); // 200
+</code></pre>
+<h3>引用构造函数</h3>
+<p>在普通函数内部，使用 <code>arguments.callee</code> 可以引用函数自身。如果在严格模式下，是不允许使用 <code>arguments.callee</code> 引用函数的，这时可以使用 <code>new.target</code> 来访问构造函数。</p>
+<pre><code class="language-js">function Point(x, y) {
+  &quot;use strict&quot;;
+  if (!(this instanceof new.target)) return new new.target(x, y); // 检测 this 是否为实例对象
+  this.x = x;
+  this.y = y;
+}
+var p1 = new Point(100, 200);
+console.log(p1.x); // 100
+</code></pre>
+<h2>this 指针</h2>
+<pre><code class="language-js">var x = &quot;window&quot;;
+
+function a() {
+  this.x = &quot;a&quot;;
+}
+
+function b() {
+  this.x = &quot;b&quot;;
+}
+
+function c() {
+  console.log(x);
+}
+
+function f() {
+  console.log(this.x);
+}
+
+f(); // &quot;window&quot;，this 指向 window 对象
+f.call(window); // &quot;window&quot;，this 指向 window 对象
+f.call(new a()); // &quot;a&quot;，this 指向函数 a 的实例
+f.call(new b()); // &quot;b&quot;，this 指向函数 b 的实例
+f.call(c); // undefined，this 指向函数 c 对象
+</code></pre>
+<p><strong>下面简单总结 this 的 5 种常用场景：</strong></p>
+<ol>
+<li>普通调用</li>
+</ol>
+<pre><code class="language-js">var obj = {
+  name: &quot;父对象 obj&quot;,
+  func: function () {
+    return this;
+  },
+};
+obj.sub_obj = {
+  name: &quot;子对象 sub_obj&quot;,
+  func: obj.func,
+};
+var who = obj.sub_obj.func();
+console.log(who.name); // &quot;子对象 sub_obj&quot;，说明 this 代表 sub_obj
+</code></pre>
+<p>如果把子对象 sub_obj 的 func 改为函数调用。</p>
+<pre><code class="language-js">obj.sub_obj = {
+  name: &quot;子对象 sub_obj&quot;,
+  func: obj.func(), // 调用父对象 obj 的方法 func
+};
+</code></pre>
+<p>则函数中的 this 所代表的是定义函数时所在的父对象 obj。</p>
+<pre><code class="language-js">var who = obj.sub_obj.func;
+console.log(who.name); // &quot;父对象 obj&quot;
+</code></pre>
+<ol start="2">
+<li>实例化</li>
+</ol>
+<p>使用 new 命令调用函数时，this 总是指代实例对象。</p>
+<pre><code class="language-js">var obj = {};
+obj.func = function () {
+  if (this === obj) console.log(&quot;this = obj&quot;);
+  else if (this === window) console.log(&quot;this = window&quot;);
+  else if (this.constructor === arguments.callee)
+    console.log(&quot;this = 实例对象&quot;);
+};
+new obj.func(); // 实例化 “this = 实例对象”
+</code></pre>
+<ol start="3">
+<li>动态调用</li>
+</ol>
+<p>使用 call 和 apply 可以强制改变 this，使其指向参数对象</p>
+<pre><code class="language-js">function func() {
+  if (this.constructor === arguments.callee) console.log(&quot;this = 实例对象&quot;);
+  else if (this === window) console.log(&quot;this = window 对象&quot;);
+  else
+    console.log(&quot;this == 其他对象 \n this.constructor = &quot; + this.constructor);
+}
+func(); // this 指向 window
+new func(); // this 指向实例对象
+func.call(1); // this 指向数值对象
+</code></pre>
+<p>使用 <code>call()</code> 执行函数 <code>func()</code> 时，由于 call() 方法的参数值为数字 1，则 Js 引擎会把数字 1 强制封装为数值对象，此时 this 就会指向这个数值对象。</p>
+<ol start="4">
+<li>事件处理</li>
+</ol>
+<p>在事件处理函数中，this 总是指向触发该事件的对象。</p>
+<pre><code class="language-html">&lt;input type=&quot;button&quot; value=&quot;测试按钮&quot; /&gt;
+</code></pre>
+<pre><code class="language-js">var button = document.getElementsByTagName(&quot;input&quot;)[0];
+var obj = {};
+obj.func = function () {
+  if (this == obj) console.log(&quot;this = obj&quot;);
+  if (this == window) console.log(&quot;this = window&quot;);
+  if (this == button) console.log(&quot;this = button&quot;);
+};
+button.onclick = obj.fun;
+</code></pre>
+<ol start="5">
+<li>定时器</li>
+</ol>
+<pre><code class="language-js">var obj = {};
+obj.func = function () {
+  if (this == obj) console.log(&quot;this = obj&quot;);
+  else if (this == window) console.log(&quot;this = window&quot;);
+  else if (this.constructor == arguments.callee) console.log(&quot;this = 实例对象&quot;);
+  else
+    console.log(&quot;this == 其他对象 \n this.constructor = &quot; + this.constructor);
+};
+setTimeout(obj.func, 100); // &quot;this = window&quot;
+
+setTimeout(function () {
+  obj.func.call(obj); // &quot;this = obj&quot;
+}, 100);
+</code></pre>
+<h3>this 安全策略</h3>
+<p>由于 this 的不确定性，会给开发带来很多风险，因此使用 this 时，应该时刻保持谨慎。</p>
+<p><strong>锁定 this 有以下两种基本方法：</strong></p>
+<ul>
+<li>
+<p>使用私有变量存储 this</p>
+</li>
+<li>
+<p>使用 call 和 apply 强制固定 this 的值</p>
+</li>
+</ul>
+<p>使用 this 作为参数来调用函数，可以避免产生 this 因环境变化而变化的问题。</p>
+<p>例如，下面这种方式就是错误的，因为 this 会始终指向 window 对象，而不是当前按钮对象。</p>
+<pre><code class="language-html">&lt;input type=&quot;button&quot; value=&quot;按钮1&quot; onclick=&quot;func()&quot; /&gt;
+&lt;input type=&quot;button&quot; value=&quot;按钮2&quot; onclick=&quot;func()&quot; /&gt;
+&lt;input type=&quot;button&quot; value=&quot;按钮3&quot; onclick=&quot;func()&quot; /&gt;
+
+&lt;script&gt;
+  function func() {
+    console.log(this.value);
+  }
+&lt;/script&gt;
+</code></pre>
+<p>如果把 this 作为参数进行传递，那么它就会代表当前对象。</p>
+<pre><code class="language-html">&lt;input type=&quot;button&quot; value=&quot;按钮1&quot; onclick=&quot;func(this)&quot; /&gt;
+&lt;input type=&quot;button&quot; value=&quot;按钮2&quot; onclick=&quot;func(this)&quot; /&gt;
+&lt;input type=&quot;button&quot; value=&quot;按钮3&quot; onclick=&quot;func(this)&quot; /&gt;
+
+&lt;script&gt;
+  function func(obj) {
+    console.log(obj.value);
+  }
+&lt;/script&gt;
+</code></pre>
+<p>使用私有变量存储 this，设计静态指针。</p>
+<pre><code class="language-js">function Base() {
+  var _this = this;
+  this.func = function () {
+    return _this;
+  };
+  this.name = &quot;Base&quot;;
+}
+function Sub() {
+  this.name = &quot;sub&quot;;
+}
+Sub.prototype = new Base();
+var _this = sub.func();
+console.log(_this.name); // this 始终指向基类实例，而不是子类实例
+</code></pre>
+<p>使用 call 和 apply 强制固定 this 的值</p>
+<blockquote>
+<p>作为一个动态指针，this 也可以被转换为静态指针，实现方法：使用 call() 或 apply() 方法强制指定 this 的指代对象。</p>
+</blockquote>
+<pre><code class="language-js">// 把 this 转换为静态指针
+// 参数 obj 表示预设值 this 所指代的对象，返回一个预备调用的函数
+Function.prototype.pointTo = function (obj) {
+  var _this = this;
+  return function () {
+    return _this.apply(obj, arguments);
+  };
+};
+</code></pre>
+<p>下面利用这个扩展方法，实现强制指定对象的 obj1 的方法 func() 中的 this 始终指向 obj1</p>
+<pre><code class="language-js">var obj1 = {
+  name: &quot;this = obj1&quot;,
+};
+obj1.func = function () {
+  return this;
+}.pointTo(obj1);
+
+var obj2 = {
+  name: &quot;this = obj2&quot;,
+  func: obj1.func,
+};
+
+var _this = obj2.func();
+console.log(_this.name); // &quot;this=obj1&quot;，说明 this 指向 obj1，而不是 obj2
+</code></pre>
+<p><strong>扩展</strong></p>
+<p>可以扩展 new 命令的替代方法，从而间接实现自定义实例化类，</p>
+<pre><code class="language-js">// 把构造函数转换为实例对象
+// 参数 func 表示构造函数，返回构造函数 func 的实例对象
+function instanceFrom(func) {
+  var _arg = [].slice.call(argument, 1); // 获取构造函数可能需要的初始化参数，即获取除第一个参数之外的所有参数
+  func.prototype.constructor = func;
+  // call 和 apply 是 Function 的原型方法，它们能够将特定函数当做一个方法绑定到指定对象上，并进行调用。
+  func.apply(func.prototype, _arg); // 在原型对象上调用构造函数
+  /*
+    将 func 当做 func.prototype 的一个方法，并调用 func，而 func 又是一个构造函数，相当于实例化对象。
+  */
+  return func.prototype;
+}
+</code></pre>
+<p>使用：</p>
+<pre><code class="language-js">function F() {
+  this.name = &quot;F&quot;;
+}
+var f = instanceFrom(F);
+console.log(f.name);
+</code></pre>
+<h3>绑定函数</h3>
+<p>绑定函数是为了纠正函数的执行上下文，把 this 绑定到指定对象上，避免在不同执行上下文中调用函数时，this 指代的对象不断变化。</p>
+<pre><code class="language-js">function bind(fn, context) {
+  return function () {
+    // arguments 属于内部函数，而不属于 bind() 函数
+    return fn.apply(context, arguments);
+  };
+}
+</code></pre>
+<p>代码测试：</p>
+<pre><code class="language-html">&lt;button id=&quot;btn&quot;&gt;测试按钮&lt;/button&gt;
+&lt;script&gt;
+  var handler = {
+    message: &quot;handler&quot;,
+    click: function (event) {
+      console.log(this.message);
+    },
+  };
+  var btn = document.getElementById(&quot;btn&quot;);
+  btn.addEventListener(&quot;click&quot;, handler.click); // undefined
+  // this 最后指向了 Dom 按钮，而不是 handler
+&lt;/script&gt;
+</code></pre>
+<p>解决办法：使用闭包修正</p>
+<pre><code class="language-html">&lt;button id=&quot;btn&quot;&gt;测试按钮&lt;/button&gt;
+&lt;script&gt;
+  var handler = {
+    message: &quot;handler&quot;,
+    click: function (event) {
+      console.log(this.message);
+    },
+  };
+  var btn = document.getElementById(&quot;btn&quot;);
+  btn.addEventListener(&quot;click&quot;, function () {
+    handler.click(); // &quot;handler&quot;，使用闭包修正，封装事件处理函数的调用
+  });
+&lt;/script&gt;
+</code></pre>
+<p>改进方法：使用 bind 函数</p>
+<pre><code class="language-html">&lt;button id=&quot;btn&quot;&gt;测试按钮&lt;/button&gt;
+&lt;script&gt;
+  var handler = {
+    message: &quot;handler&quot;,
+    click: function (event) {
+      console.log(this.message);
+    },
+  };
+  var btn = document.getElementById(&quot;btn&quot;);
+  btn.addEventListener(&quot;click&quot;, bind(handle.click, handler)); // &quot;handler&quot;
+&lt;/script&gt;
+</code></pre>
+<h3>使用 bind</h3>
+<p>用来把函数绑定到指定对象上，</p>
+<pre><code class="language-js">var check = function(value) {
+  if(typeof value !== &quot;number&quot;) return false;
+  else return value &gt;= this.min &amp;&amp; value &lt;= this.max;
+}
+var range = { min: 10, max: 20 };
+var check1 = check.bind(range);
+var return = check1(12);
+console.log(result);
+</code></pre>
+<pre><code class="language-js">var obj = {
+  min: 50,
+  max: 100,
+  check: function (value) {
+    if (typeof value !== &quot;number&quot;) {
+      return false;
+    } else {
+      return value &gt;= this.min &amp;&amp; value &lt;= this.max;
+    }
+  },
+};
+var result = obj.check(10);
+console.log(result); // false
+var range = { min: 10, max: 20 };
+var check1 = obj.check.bind(range);
+var result1 = check1(10);
+console.log(result); // true
+</code></pre>
+<p>下面演示如何利用 bind() 方法为函数传递两次参数值，以便实现连续参数求值的计算。</p>
+<pre><code class="language-js">var func = function (val1, val2, val3, val4) {
+  console.log(val1 + &quot; &quot; + val2 + &quot; &quot; + val3 + &quot; &quot; + val4);
+};
+var obj = {};
+var func1 = func.bind(obj, 12, &quot;a&quot;);
+func1(&quot;b&quot;, &quot;c&quot;); // 12 a b c
+</code></pre>
+<h3>链式语法</h3>
+<p>下面实例演示如何在函数中返回 this 来设计链式调用，</p>
+<pre><code class="language-js">Function.prototype.method = function (name, func) {
+  if (!this.prototype[name]) {
+    this.prototype[name] = func;
+    return this;
+  }
+};
+String.method(&quot;trim&quot;, function () {
+  return this.replace(/^\s+|\s+$/g, &quot;&quot;);
+});
+String.method(&quot;writeln&quot;, function() {
+  console.log(this)
+  return this;
+})
+String.method(&quot;log&quot;, function() {
+  console.log(this)
+  return this;
+});
+var str = &quot;abc&quot;;
+str.trim().writeln().log();
+</code></pre>
+<h2>原型</h2>
+<p>在 JavaScript 中，函数都有原型，函数实例化后，实例对象用过 prototype 可以访问原型，实现继承机制。</p>
+<h3>定义原型</h3>
+ 
+    </div>
+  </div>
+  <div class="article__wrapper_footer">
+    <a class="article__wrapper_footer-left " href="/articles/132.html"><svg t="1713708729970" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8437" width="48" height="48"><path d="M409.272947 512.57741l403.237243 403.237243a63.349415 63.349415 0 1 1-89.622481 89.622482L274.839224 557.324726a63.349415 63.349415 0 0 1 0-89.494632L722.951633 19.717685a63.349415 63.349415 0 1 1 89.494633 89.622482L409.336872 512.57741z" p-id="8438" fill="#8a8a8a"></path></svg></a>
+    <a class="article__wrapper_footer-right " href="/articles/134.html"><svg t="1713708697355" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8093" width="48" height="48"><path d="M855.123 517.004c0 8.245-3.167 15.51-9.503 21.823L402.999 981.47c-6.336 6.336-13.625 9.477-21.869 9.477s-15.51-3.142-21.845-9.477L311.8 933.96c-6.336-6.336-9.502-13.6-9.502-21.845 0-8.222 3.167-15.51 9.502-21.845l373.29-373.29-373.293-373.267c-6.336-6.336-9.502-13.6-9.502-21.845s3.167-15.533 9.503-21.869l47.484-47.484c6.336-6.336 13.6-9.502 21.845-9.502s15.533 3.167 21.869 9.503l442.621 442.622c6.334 6.334 9.503 13.625 9.503 21.869z" fill="#8a8a8a" p-id="8094"></path></svg></a>
+  </div>
+  <a class="article__wrapper_index" href="/articles/"><svg t="1713708857338" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="9656" width="48" height="48"><path d="M549.61981 133.022476l319.683047 203.605334A70.851048 70.851048 0 0 1 902.095238 396.361143v434.883047A70.89981 70.89981 0 0 1 831.146667 902.095238h-282.819048l0.024381-218.112h-71.826286v218.087619L192.853333 902.095238A70.89981 70.89981 0 0 1 121.904762 831.24419V390.241524c0-24.527238 12.678095-47.299048 33.54819-60.220953l318.659048-197.485714a70.972952 70.972952 0 0 1 75.50781 0.487619zM828.952381 828.952381V397.214476L511.488 195.047619 195.047619 391.119238V828.952381h211.309714v-216.551619h212.187429v216.527238L828.952381 828.952381z" p-id="9657" fill="#707070"></path></svg></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
+  <script src="../assets/js/articles-detail.js"></script>
+  <script>
+    hljs.highlightAll();
+  </script>
+</body>
+</html>
+    

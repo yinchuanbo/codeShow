@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>使用对象</title>
+    <meta charset="utf-8">
+    <meta name="description" content="This is a page">
+    <meta name="keywords" content="page, sample">
+    <meta name="author" content="None">
+    <link rel="icon" sizes="any" mask href="../assets/images/ico6.svg" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <link rel="stylesheet" href="../assets/css/articles.css">
+</head>
+<body>
+  <div class="article__wrapper_left">
+    <div class="article__wrapper_left-mulu">目录</div>
+    <ul class="articles__list"><li class="">
+          <a href="/articles/133.html">
+            构造函数、原型和继承[未完]
+          </a>
+        </li><li class="">
+          <a href="/articles/134.html">
+            3个超酷的 Node.js 新功能
+          </a>
+        </li><li class="">
+          <a href="/articles/135.html">
+            一些很重要的 HTML 属性
+          </a>
+        </li><li class="">
+          <a href="/articles/136.html">
+            页面关闭时如何成功发送 API 请求
+          </a>
+        </li><li class="">
+          <a href="/articles/137.html">
+            更灵活的 Map - array.flatMap()
+          </a>
+        </li><li class="">
+          <a href="/articles/138.html">
+            提升JavaScript代码质量的最佳实践
+          </a>
+        </li><li class="">
+          <a href="/articles/139.html">
+            如何使用 JavaScript 阻止屏幕进入睡眠状态
+          </a>
+        </li><li class="">
+          <a href="/articles/14.html">
+            前端异常监控解决方案研究
+          </a>
+        </li><li class="">
+          <a href="/articles/140.html">
+            如何让 cookie 有 session 的特性
+          </a>
+        </li><li class="">
+          <a href="/articles/141.html">
+            三种 async/await 错误捕获方式
+          </a>
+        </li></ul>
+  </div>
+  <div class="article__wrapper_sidebar">
+    <a href="/" target="_blank"><svg t="1714001835347" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4298" width="48" height="48"><path d="M147.904 304.128l301.866667-179.541333a128 128 0 0 1 131.712 0.512l295.466666 178.88A128 128 0 0 1 938.666667 413.482667V810.666667a128 128 0 0 1-128 128H213.333333a128 128 0 0 1-128-128V414.144a128 128 0 0 1 62.570667-110.016z m43.626667 73.344A42.666667 42.666667 0 0 0 170.666667 414.144V810.666667a42.666667 42.666667 0 0 0 42.666666 42.666666h597.333334a42.666667 42.666667 0 0 0 42.666666-42.666666V413.482667a42.666667 42.666667 0 0 0-20.565333-36.501334l-295.466667-178.88a42.666667 42.666667 0 0 0-43.925333-0.170666l-301.866667 179.541333z" fill="#8a919f" p-id="4299"></path><path d="M405.333333 469.333333h213.333334a42.666667 42.666667 0 1 1 0 85.333334H405.333333a42.666667 42.666667 0 1 1 0-85.333334z m0 85.333334a42.666667 42.666667 0 1 0 0-85.333334h213.333334a42.666667 42.666667 0 1 0 0 85.333334H405.333333z" fill="#8a919f" p-id="4300"></path></svg></a>
+    <a href="/tools/" target="_blank"><svg t="1714002003458" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6911" width="48" height="48"><path d="M817.87 556.31h-63.58v-66.24A42.27 42.27 0 0 0 712 447.8h-84.81a42.27 42.27 0 0 0-42.27 42.27v66.24H436.57v-66.24a42.27 42.27 0 0 0-42.27-42.27h-84.83a42.27 42.27 0 0 0-42.27 42.27v66.24h-61.83A22.39 22.39 0 0 0 183 578.7a22.39 22.39 0 0 0 22.39 22.39h61.81v65.55a42.27 42.27 0 0 0 42.27 42.27h84.83a42.27 42.27 0 0 0 42.27-42.27v-65.55h148.36v65.55a42.27 42.27 0 0 0 42.27 42.27H712a42.27 42.27 0 0 0 42.27-42.27v-65.55h63.58a22.39 22.39 0 0 0 22.39-22.39 22.39 22.39 0 0 0-22.37-22.39z m-438.64 95.26h-54.69V505.14h54.69z m317.72 0h-54.69V505.14H697z" p-id="6912" fill="#8a919f"></path><path d="M823 202.58h-90.81v-63.09a71.88 71.88 0 0 0-71.88-71.88H363.19a71.88 71.88 0 0 0-71.88 71.88v63.08h-90.12A137.17 137.17 0 0 0 64 339.75v479a137.17 137.17 0 0 0 137.19 137.14H823a137.17 137.17 0 0 0 137.19-137.17v-479A137.17 137.17 0 0 0 823 202.58z m-474.36-54.1A23.52 23.52 0 0 1 372.17 125h279.16a23.52 23.52 0 0 1 23.52 23.52v54.1h-326.2z m554.23 673.31a76.76 76.76 0 0 1-76.76 76.76h-628a76.76 76.76 0 0 1-76.76-76.76V336.67a76.76 76.76 0 0 1 76.76-76.76h628a76.76 76.76 0 0 1 76.76 76.76z" p-id="6913" fill="#8a919f"></path></svg></a>
+  </div>
+  <div class="article__wrapper">
+    <div class="article__wrapper__main">
+      <div class="article__wrapper_header">
+        <h1>使用对象</h1>
+        <span class="articles__home_time">NaN/NaN/NaN · YinHao</span>
+      </div>
+      <h2>定义对象</h2>
+<h3>使用 Object.create</h3>
+<p>用来定义一个实例对象，该方法可以指定对象的原型和对象特性，</p>
+<pre><code class="language-js">Object.create(prototype, descriptors);
+</code></pre>
+<ul>
+<li>
+<p>prototype: 必须参数，指定原型对象，可以为 null</p>
+</li>
+<li>
+<p>descriptors: 可选参数，包含一个或多个属性描述符的 JavaScript 对象。属性描述符包含数据特性和访问器特性，其中数据特性说明如下：</p>
+<ul>
+<li>
+<p>value: 指定属性值。</p>
+</li>
+<li>
+<p>writable: 默认为 false，设置属性值是否可写。</p>
+</li>
+<li>
+<p>enumerable: 默认为 false，设置属性是否可枚举（for/in）</p>
+</li>
+<li>
+<p>configurable: 默认为 false，设置是否为可修改属性特性和删除属性</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>访问器特性包含两个方法，简单说明如下：</p>
+<ul>
+<li>
+<p>set(): 设置属性值</p>
+</li>
+<li>
+<p>get(): 返回属性值</p>
+</li>
+</ul>
+<p>下面示例使用 <code>Object.create</code> 定义一个对象，继承 null，包含两个可枚举的属性 size 和 shape，属性值分别为 large 和 round。</p>
+<pre><code class="language-js">var newObj = Object.create(null, {
+  size: {
+    value: &quot;large&quot;,
+    enumerable: true, // 可以枚举
+  },
+  shape: {
+    value: &quot;round&quot;,
+    enumerable: true,
+  },
+});
+console.log(newObj.size); // large
+console.log(newObj.shape); // round
+console.log(Object.getPrototypeOf(newObj));
+</code></pre>
+<p>下面示例使用 <code>Object.create</code> 定义一个与对象直接量具有相同原型的对象</p>
+<pre><code class="language-js">var obj = Object.create(Object.prototype, {
+  x: {
+    value: undefined,
+    writable: true, // 可写
+    configurable: true, // 可以配置
+    enumerable: true, // 可以枚举
+  },
+});
+console.log(&quot;obj.prototype = &quot; + Object.getPrototypeOf(obj)); // obj.prototype = [object Object]
+</code></pre>
+<p><strong>提示：</strong></p>
+<p><code>Object.getPrototypeOf()</code> 函数可获取原始对象的原型，如果要获取对象的属性描述符，可以使用 <code>Object.getOwnPropertyDescriptor()</code></p>
+<p>下面示例定义一个对象，使用访问器属性 b 来读写数据属性 a</p>
+<pre><code class="language-js">var obj = Object.create(Object.prototye. {
+    a: {
+        writable: true,
+        value: &quot;a&quot;
+    },
+    b: {
+        get: function() {
+            return this.a;
+        },
+        set: function() {
+            this.a = value;
+        }
+    }
+});
+console.log(obj.a); // &quot;a&quot;
+console.log(obj.b); // &quot;a&quot;
+obj.b = 20;
+console.log(obj.b); // 20
+</code></pre>
+<h2>操作对象</h2>
+<h3>复制对象</h3>
+<p>复制对象就是利用 <code>for/in</code> 遍历对象，然后把每个对象成员赋值给另一个对象。</p>
+<pre><code class="language-js">var obj = {
+  x: true,
+  y: false,
+};
+var obj1 = {};
+for (var i in obj) {
+  obj1[i] = obj[i];
+}
+console.log(obj1 === obj); // false，说明两个对象不同
+console.log(obj1.x); // true
+console.log(obj.x); // true
+</code></pre>
+<h3>克隆对象</h3>
+<p>克隆对象也是一个复制操作，不过它的执行效率更高一些。</p>
+<p>封装一个克隆工具，为 Function 类型扩展一个原型方法：</p>
+<pre><code class="language-js">var clone = function (obj) {
+  function Temp() {}
+  Temp.prototype = obj;
+  return new Temp();
+};
+</code></pre>
+<pre><code class="language-js">var obj = {
+  x: true,
+  y: true,
+};
+var obj1 = {};
+obj1 = clone(obj); // 克隆对象
+
+console.log(obj1 === obj); // false，说明两个对象不同
+console.log(obj1.x); // true
+console.log(obj.x); // true
+</code></pre>
+<h3>销毁对象</h3>
+<p>当对象不被任何变量引用时，Js 会自动回收对象所占用的资源。</p>
+<pre><code class="language-js">var obj = {
+  x: true,
+  y: true,
+};
+obj = null;
+</code></pre>
+<h2>操作属性</h2>
+<h3>定义属性</h3>
+<ol>
+<li>直接量定义</li>
+</ol>
+<pre><code class="language-js">var obj = {
+  x: 1,
+  y: function () {
+    return this.x + this.x;
+  },
+};
+</code></pre>
+<ol start="2">
+<li>点语法定义</li>
+</ol>
+<pre><code class="language-js">var obj = {};
+obj.x = 1;
+obj.y = function () {
+  return this.x + this.x;
+};
+</code></pre>
+<ol start="3">
+<li>使用 <code>Object.defineProperty</code></li>
+</ol>
+<p>使用 <code>Object.defineProperty</code> 函数可以为对象添加属性，或者修改现有属性，如果指定的属性名在对象中不存在，则执行添加操作；如果在对象中存在同名属性，则执行修改操作。</p>
+<p><strong>具体用法：</strong></p>
+<pre><code class="language-js">Object.defineProperty(object, propertyname, descriptor);
+</code></pre>
+<ul>
+<li>
+<p>object: 执行要添加或修改属性的对象，可以是 JS 对象或 DOM 对象。</p>
+</li>
+<li>
+<p>propertyname: 表示属性名的字符串。</p>
+</li>
+<li>
+<p>descriptor: 定义属性描述符，包括对数据属性或访问器属性。</p>
+</li>
+</ul>
+<pre><code class="language-js">var obj = {};
+Object.defineProperty(obj, &quot;x&quot;, {
+  value: 1,
+  writable: true, // 可写
+  enumerable: true, // 可枚举
+  configurable: true, // 可修改
+});
+console.log(obj.x); // 1
+</code></pre>
+<ol start="4">
+<li>Object.defineProperties</li>
+</ol>
+<p>使用 <code>Object.defineProperties</code> 函数可以一次性定义多个属性，具体用法：</p>
+<pre><code class="language-js">Object.defineProperties(object, descriptors);
+</code></pre>
+<pre><code class="language-js">var obj = {};
+Object.defineProperties(obj, {
+  x: {
+    value: 1,
+    writable: true,
+  },
+  y: {
+    set: function (x) {
+      this.x = x;
+    },
+    get: function () {
+      return this.x;
+    },
+  },
+});
+obj.y = 10;
+console.log(obj.x); // 10
+</code></pre>
+<h3>读写属性</h3>
+<ol>
+<li>使用点语法</li>
+</ol>
+<pre><code class="language-js">var obj = {
+  x: 1,
+};
+console.log(obj.x); // 1
+obj.x = 2;
+console.log(obj.x); // 2
+</code></pre>
+<ol start="2">
+<li>使用中括号语法</li>
+</ol>
+<pre><code class="language-js">console.log(obj[&quot;x&quot;]); //2
+obj[&quot;x&quot;] = 3;
+console.log(obj[&quot;x&quot;]); // 3
+</code></pre>
+<p>下面示例使用 <code>for/in</code> 遍历对象的可枚举属性，并读取它们的值，然后重写属性值。</p>
+<pre><code class="language-js">for (var i in obj) {
+  console.log(obj[i]);
+  obj[i] = obj[i] + obj[i];
+  console.log(obj[i]);
+}
+</code></pre>
+<ol start="3">
+<li>使用 <code>Object.getOwnPropertyNames</code></li>
+</ol>
+<p>使用 <code>Object.getOwnPropertyNames</code> 函数能够返回指定对象私有属性的名称。</p>
+<pre><code class="language-js">Object.getOwnPropertyNames(object);
+</code></pre>
+<pre><code class="language-js">var obj = { x: 1, y: 2, z: 3 };
+var arr = Object.getOwnPropertyNames(obj);
+console.log(arr); // ['x', 'y', 'z']
+</code></pre>
+<ol start="4">
+<li>使用 <code>Object.keys</code></li>
+</ol>
+<p>使用 <code>Object.keys</code> 函数仅能获取可枚举的所有属性名称</p>
+<pre><code class="language-js">Object.keys(object);
+</code></pre>
+<p>参数 object 表示指定对象，可以是 JavaScript 对象或 DOM 对象，返回值是一个数组，其中包含对象的可枚举属性名称。</p>
+<ol start="5">
+<li><code>Object.getOwnPropertyDescriptor</code></li>
+</ol>
+<p>使用 <code>Object.getOwnPropertyDescriptor</code> 函数能够获取对象属性的描述符，</p>
+<pre><code class="language-js">Object.getOwnPropertyDescriptor(object, propertyname);
+</code></pre>
+<pre><code class="language-js">var obj = {
+  x: 1,
+  y: 2,
+  z: 3,
+};
+var des = Object.getOwnPropertyDescriptor(obj, &quot;x&quot;);
+/*
+ { 
+   value: 1, 
+   writable: true, 
+   enumerable: true, 
+   configurable: true 
+  }
+*/
+for (var prop in des) {
+  console.log(prop + &quot;: &quot; + des[prop]);
+}
+des.writable = false; // 重写特性，不允许修改属性
+des.value = 100; // 重写属性值
+Object.defineProperty(obj, &quot;x&quot;, des); // 使用修改后的数据属性描述符覆盖属性 x
+var des = Object.getOwnPropertyDescriptor(obj, &quot;x&quot;);
+console.log(&quot;des&quot;, des);
+for (var prop in des) {
+  console.log(prop + &quot;: &quot; + des[prop]);
+}
+/*
+  {
+    value: 100, 
+    writable: false, 
+    enumerable: true, 
+    configurable: true
+  }
+*/
+</code></pre>
+<h3>删除属性</h3>
+<pre><code class="language-js">var obj = { x: 1 };
+delete obj.x;
+console.log(obj.x); // undefined
+</code></pre>
+<h3>使用方法</h3>
+<pre><code class="language-js">var obj = {};
+obj.f = function () {
+  return 10 * n;
+};
+var n = obj.f(5);
+console.log(n); // 50
+</code></pre>
+<pre><code class="language-js">var obj = {
+  f: function () {
+    console.log(this);
+  },
+};
+obj.f(); // 此时 this 指向对象 obj
+var f1 = obj.f; // 引用对象 obj 的方法 f
+f1(); // 此时 this 指向对象 window
+</code></pre>
+<h2>属性描述对象</h2>
+<h3>属性描述对象的结构</h3>
+<p>属性描述符实际上就是一个对象，属性描述符包含 6 个属性，可以选择使用。</p>
+<ol>
+<li>
+<p>value: 设置属性值，默认值为 undefined</p>
+</li>
+<li>
+<p>writable: 设置属性是否可写，默认值为 true</p>
+</li>
+<li>
+<p>enumerable: 设置属性是否可枚举，即是否允许使用 <code>for/in</code> 语句或 <code>Object.keys()</code> 函数遍历访问，默认为 true</p>
+</li>
+<li>
+<p>configurable: 设置是否可设置属性也行，默认为 true。如果为 false，将无法删除该属性，不能修改属性值，也不能修改属性的属性描述符对象</p>
+</li>
+<li>
+<p>get: 取值函数，默认为 undefined</p>
+</li>
+<li>
+<p>set: 存值函数，默认为 undefined</p>
+</li>
+</ol>
+<p><strong>下面示例演示了使用 value 读写属性值的基本用法</strong></p>
+<pre><code class="language-js">var obj = {};
+Object.defineProperty(obj, &quot;x&quot;, { value: 100 });
+console.log(Object.getOwnPropertyDescriptor(obj, &quot;x&quot;).value); // 100
+</code></pre>
+<p><strong>下面示例演示了使用 writable 属性禁止修改属性 x</strong></p>
+<pre><code class="language-js">var obj = {};
+Object.defineProperty(obj, &quot;x&quot;, {
+  value: 1,
+  writable: false,
+});
+obj.x = 2;
+console.log(obj.x); // 1
+</code></pre>
+<p><strong>enumerable 可以禁止 for/in 语句，Object.keys() 函数、Json.stringify() 方法遍历访问指定属性，这样可以设置隐藏属性</strong></p>
+<pre><code class="language-js">var obj = {};
+Object.defineProperty(obj, &quot;x&quot;, {
+  value: 1,
+  enumerable: false,
+});
+console.log(obj.x); // 1
+for (var key in obj) {
+  console.log(key); // 空
+}
+console.log(Object.keys(obj)); // []
+console.log(JSON.stringify(obj)); // &quot;{}&quot;
+</code></pre>
+<p><strong>configurable 可以禁止修改属性描述对象，当其值 false 时，value、writable、enumerable、configurable 禁止修改，同时禁止删除属性。</strong></p>
+<pre><code class="language-js">var obj = Object.defineProperty({}, &quot;x&quot;, {
+  configurable: false, // 禁止配置
+});
+obj.x = 5;
+console.log(obj.x); // undefined
+Object.defineProperty(obj, &quot;x&quot;, { value: 2 }); // 抛出异常
+Object.defineProperty(obj, &quot;x&quot;, { writable: true }); // 抛出异常
+Object.defineProperty(obj, &quot;x&quot;, { enumerable: true }); // 抛出异常
+Object.defineProperty(obj, &quot;x&quot;, { configurable: true }); // 抛出异常
+</code></pre>
+<h3>访问器</h3>
+<p>除了使用点语法或中括号语法访问属性的 value 外，还可以使用访问器，包括 set 和 get 两个函数，其中，set() 函数可以设置 value 属性值，get() 函数可以读取 value 属性值。</p>
+<pre><code class="language-js">var obj = Object.create(Object.prototype, {
+  _x: {
+    value: 1,
+    writable: true,
+  },
+  x: {
+    get: function () {
+      return this._x;
+    },
+    set: function (value) {
+      if (typeof value != &quot;number&quot;) throw new Error(&quot;请输入数字&quot;);
+      this._x = value;
+    },
+  },
+});
+console.log(obj.x); // 1
+obj.x = &quot;2&quot;; // Uncaught Error: 请输入数字
+</code></pre>
+<p><strong>JavaScript 也支持一种简写方法，针对上面示例，通过以下方式可以快速定义属性</strong></p>
+<pre><code class="language-js">var obj = {
+  _x: 1,
+  get x() {
+    return this._x;
+  },
+  set x(value) {
+    if (typeof value != &quot;number&quot;) throw new Error(&quot;请输入数字&quot;);
+    this._x = value;
+  },
+};
+console.log(obj.x); // 1
+obj.x = 2;
+console.log(obj.x); // 2
+</code></pre>
+<h3>操作属性描述对象</h3>
+<p>属性描述对象是一个内部对象，无法直接读写，可以通过下面几个函数进行操作：</p>
+<ul>
+<li>
+<p>Object.getOwnPropertyDescriptor(): 可以读出指定对象私有属性的属性描述对象。</p>
+</li>
+<li>
+<p>Object.defineProperty(): 通过定义属性描述对象来定义或修改一个属性，然后返回修改后的对象。</p>
+</li>
+<li>
+<p>Object.defineProperties(): 可以同时定义多个属性描述对象。</p>
+</li>
+<li>
+<p>Object.getOwnPropertyNames(): 获取对象的私有属性。</p>
+</li>
+<li>
+<p>Object.keys(): 获取对象的所有本地可枚举的属性。</p>
+</li>
+<li>
+<p>propertyEnumerable(): 对象实例方法，直接调用，判断指定的属性是否可枚举。</p>
+</li>
+</ul>
+<pre><code class="language-js">var obj = Object.create(Object.prototype, {
+  _x: {
+    value: 1,
+    writable: true,
+  },
+  x: {
+    configurable: true,
+    get: function () {
+      return this._x;
+    },
+    set: function (value) {
+      if (typeof value !== &quot;number&quot;) throw new Error(&quot;请输入数字&quot;);
+      this._x = value;
+    },
+  },
+});
+var des = Object.getOwnPropertyDescriptor(obj, &quot;x&quot;); // 获取属性 x 的属性描述对象
+des.set = function (value) {
+  if (typeof value !== &quot;number&quot; &amp;&amp; isNaN(value * 1))
+    throw new Error(&quot;请输入数字&quot;);
+  this._x = value;
+};
+obj = Object.defineProperty(obj, &quot;x&quot;, des);
+console.log(obj.x); // 1
+obj.x = &quot;2&quot;;
+console.log(obj.x); // 2
+</code></pre>
+<p>之前介绍过对象复制的方法，但是上述操作方法无法复制属性描述符包含的丰富信息。</p>
+<p>下面先定义一个扩展函数，使用它可以把一个对象包含的属性以及丰富的信息复制给另一个对象。</p>
+<pre><code class="language-js">function extend(toObj, fromObj) {
+  for (var property in fromObj) {
+    if (!fromObj.hasOwnProperty(property)) continue;
+    Object.defineProperty(
+      toObj,
+      property,
+      Object.getOwnPropertyDescriptor(fromObj, property)
+    );
+  }
+  return toObj;
+}
+</code></pre>
+<pre><code class="language-js">var obj = {};
+obj.x = 1;
+extend(obj, {
+  get y() {
+    return 2;
+  },
+});
+console.log(obj.y);
+</code></pre>
+<h3>控制对象状态</h3>
+<p>JavaScript 提供了 3 种方法，用来精确控制了一个对象的读写状态，防止对象被改变。</p>
+<ul>
+<li>
+<p>Object.preventExtensions: 阻止为对象添加新的属性，</p>
+</li>
+<li>
+<p>Object.seal: 阻止为对象添加新的属性，同时也无法删除旧属性。</p>
+</li>
+<li>
+<p>Object.freeze: 阻止为一个对象添加新属性、删除旧属性、修改属性值。</p>
+</li>
+</ul>
+<p>同时提供了 3 个对应的辅助检查函数，简单说明如下：</p>
+<ul>
+<li>
+<p>Object.isExtensible: 检查一个对象是否允许添加新的属性。</p>
+</li>
+<li>
+<p>Object.isSealed: 检查一个对象是否使用了 Object.seal 方法。</p>
+</li>
+<li>
+<p>Object.isFrozen: 检查一个对象是否使用了 Object.freeze 方法。</p>
+</li>
+</ul>
+<pre><code class="language-js">var obj1 = {};
+console.log(Object.isExtensible(obj1)); // true，检查是否允许添加新属性
+
+Object.preventExtensions(obj1); // 阻止为对象添加新的属性
+console.log(Object.isExtensible(obj1)); // false
+
+var obj2 = {};
+console.log(Object.isSealed(obj2)); // false，检查一个对象是否使用了 Object.seal 方法
+
+var obj3 = {};
+console.log(Object.isFrozen(obj3)); // false
+
+Object.freeze(obj3);
+console.log(Object.isFrozen(obj3)); // true
+</code></pre>
+<h2>Object 原型方法</h2>
+<h3>使用 toString()</h3>
+<p>toString() 方法能够返回一个对象的字符串，</p>
+<pre><code class="language-js">function F(x, y) {
+  this.x = x;
+  this.y = y;
+}
+var f = new F(1, 2);
+console.log(F.toString()); // &quot;function F(x, y) { this.x = x; this.y = y; }&quot;
+console.log(f.toString()); // &quot;[object Object]&quot;
+</code></pre>
+<p>toString() 方法返回信息简单，为了能够返回更多有用信息，用户可以重写该方法。</p>
+<p>例如，实例对象返回的字符串都是 “[object Object]”，可以对其进行扩展，让对象实例能够返回构造函数的源代码。</p>
+<pre><code class="language-js">Object.prototype.toString = function () {
+  return this.constructor.toString();
+};
+</code></pre>
+<p>当把数据转换为字符串时，Js 一般都会用 toString() 方法来实现，由于不同类型的对象在调用该方法时，所转换的字符串都不同，而且是有规律的，所以开发人员常用它来判断对象的类型，弥补 typeof 运算符和 constructor 属性在检测对象数据类型不足。</p>
+<p><strong>自定义类型</strong></p>
+<pre><code class="language-js">function Me() {}
+Me.prototype.toString = function () {
+  return &quot;[object Me]&quot;;
+};
+var me = new Me();
+console.log(me.toString());
+console.log(Object.prototype.toString.apply(me));
+</code></pre>
+<h3>使用 valueOf()</h3>
+<p>valueOf() 能够返回对象的值，</p>
+<p>Js 自动类型转换时会默认调用这个方法，Object 对象默认 valueOf() 方法返回值与 toString() 方法返回值相同。但是部分类型对象重写了 valueOf() 方法。</p>
+<p><strong>Date 对象的 valueOf() 方法返回值时当前日期对象的毫秒数</strong></p>
+<pre><code class="language-js">var o = new Date();
+console.log(o.toString()); // Wed Mar 27 2024 22:06:02 GMT+0800 (China Standard Time)
+console.log(o.valueOf()); // 1711548362537
+console.log(Object.prototype.valueOf.apply(o)); // Wed Mar 27 2024 22:09:11 GMT+0800 (China Standard Time)
+</code></pre>
+<p>当 String、Number、Boolean 对象具有明显的原始值时，它们的 valueOf() 方法会返回合适的原始值。</p>
+<p><strong>也可以重写 valueOf()</strong></p>
+<pre><code class="language-js">function Point(x, y) {
+  this.x = x;
+  this.y = y;
+}
+
+Point.prototype.valueOf = function () {
+  return &quot;(&quot; + this.x + &quot;,&quot; + this.y + &quot;)&quot;;
+};
+
+var p = new Point(26, 88);
+console.log(p.valueOf()); // &quot;(26, 88)&quot;
+console.log(Object.prototype.valueOf.apply(p)); // &quot;[object Object]&quot;
+</code></pre>
+<p>在特定环境下进行数据类型转换时，valueOf() 方法的优先级要比 toString() 方法的优先级高，因此，如果一个对象的 valueOf() 方法返回值和 toString() 方法返回值不同，且希望转换的字符串为 toString() 方法的返回值时，就必须明确调用对象的 toString() 方法。</p>
+<p><strong>在下面示例中，当获取自定义类型的对象 p 时，console.log() 方法会首先调用 valueOf() 方法，而不是 toString() 方法，如果需要获取该对象的字符串表示，则必须明确调用对象的 toString()</strong></p>
+<pre><code class="language-js">function Point(x, y) {
+  this.x = x;
+  this.y = y;
+}
+
+Point.prototype.valueOf = function () {
+  return &quot;(&quot; + this.x + &quot;,&quot; + this.y + &quot;)&quot;;
+};
+
+Point.prototype.toString = function () {
+  return &quot;[object Object]&quot;;
+};
+var p = new Point(26, 88);
+console.log(&quot;typeof p = &quot; + p); // 默认调用 valueOf() 方法进行类型转换
+console.log(&quot;typeof p = &quot; + p.toString()); // 直接调用 toString() 方法进行类型转换
+</code></pre>
+<h3>检测私有属性</h3>
+<p>对象属性可以分为两类：私有属性和继承属性。</p>
+<p>在下面自定义类型中，this.name 就表示对象的私有属性，而原型对象中的 name 属性就是继承属性。</p>
+<pre><code class="language-js">function F() {
+  this.name = &quot;私有属性&quot;;
+}
+
+F.prototype.name = &quot;继承属性&quot;;
+</code></pre>
+<p><strong>快速检测属性的类型</strong></p>
+<pre><code class="language-js">var f = F();
+console.log(f.hasOwnProperty(&quot;name&quot;)); // true
+console.log(f.name); // &quot;私有属性&quot;
+</code></pre>
+<p>下面示例中，演示了 <code>toString()</code> 方法对于 Date 对象来说是继承属性，但是对于 Date 构造函数的原型对象来说，则是它的私有属性。</p>
+<pre><code class="language-js">var d = Date;
+console.log(d.hasOwnProperty(&quot;toString&quot;)); // false
+var d = Date.prototype;
+console.log(d.hasOwnProperty(&quot;toString&quot;)); // true
+</code></pre>
+<p>hasOwnProperty() 方法只能判断指定对象中是否包含指定名称的属性，无法检查对象原型链中是否包含某个属性，所以能够检测出来的属性必须是对象成员。</p>
+<p>下面演示了 hasOwnProperty() 方法所能检测的属性范围：</p>
+<pre><code class="language-js">var o = {
+  o1: {
+    o2: {
+      name: 1,
+    },
+  },
+};
+console.log(o.hasOwnProperty(o1)); // true
+console.log(o.hasOwnProperty(o2)); // false
+console.log(o.o1.hasOwnProperty(&quot;o2&quot;)); // true
+console.log(o.o1.hasOwnProperty(&quot;name&quot;)); // false
+console.log(o.o1.o2.hasOwnProperty(&quot;name&quot;)); // true
+</code></pre>
+<h3>检测枚举属性</h3>
+<p>在大多数情况下，使用 in 运算符是探测对象中属性是否存在的最好途径。</p>
+<p>然后某些情况下，可能希望仅在当一个属性是自有属性时才检查其是否存在，in 运算符会检查私有属性和原型属性，所以不得不选择 hasOwnProperty() 方法。</p>
+<pre><code class="language-js">var person = {
+  &quot;first-name&quot;: &quot;zhang&quot;,
+  &quot;last-name&quot;: &quot;san&quot;,
+  sayName: function () {
+    console.log(this[&quot;first-name&quot;] + this[&quot;last-name&quot;]);
+  },
+};
+console.log(&quot;first-name&quot; in person); // true
+console.log(person.hasOwnProperty(&quot;first-name&quot;)); // true
+console.log(&quot;toString&quot; in person); // true
+console.log(person.hasOwnProperty(&quot;toString&quot;)); // false
+</code></pre>
+<p><code>for/in</code> 语句可用来遍历一个对象中的所有属性名，包括原型属性和私有属性，很多情况下需要过滤一些不想要的值。如方法或原型属性，</p>
+<pre><code class="language-js">for (var name in person) {
+  if (typeof person[name] != &quot;function&quot;) {
+    conosle.log(name + &quot;:&quot; + person[name]);
+  }
+}
+</code></pre>
+<p>对于 Js 对象来说，用户可以使用 <code>for/in</code> 语句遍历一个对象 “可枚举” 的属性，但不是所有对象属性都可以枚举，只有用户自定义的私有属性和原型属性才允许枚举。</p>
+<p>对于下面的自定义对象 o，使用 <code>for/in</code> 循环可以遍历它的所有的私有属性、原型属性，但是 Js 允许枚举的属性只有 a、b、c。</p>
+<pre><code class="language-js">function F() {
+  this.a = 1;
+  this.b = 2;
+}
+F.prototype.c = 3;
+F.d = 4;
+var o = new F();
+for (var I in o) {
+  console.log(I);
+}
+</code></pre>
+<p>为了判断指定私有属性是否允许枚举，Object 对象定义了 <code>propertyIsEnumerable()</code> 方法，该方法的返回值 true，则说明指定的私有属性可以枚举，否则是不允许枚举的。</p>
+<pre><code class="language-js">console.log(o.propertyIsEnumerable(&quot;a&quot;)); // true，可以枚举
+console.log(o.propertyIsEnumerable(&quot;b&quot;)); // true
+console.log(o.propertyIsEnumerable(&quot;c&quot;)); // false
+console.log(o.propertyIsEnumerable(&quot;d&quot;)); // false
+var o = F;
+console.log(o.propertyIsEnumerable(&quot;d&quot;)); // true，说明可以枚举
+</code></pre>
+<h3>检测原型对象</h3>
+<p>在 Js 中，Function 对象预定义了 prototype 属性，该属性指向一个原型对象。</p>
+<pre><code class="language-js">var f = function () {};
+f.prototype = {
+  a: 1,
+  b: function () {
+    return 2;
+  },
+};
+console.log(f.prototype.a); // 1
+console.log(f.prototype.b()); // 2
+</code></pre>
+<p>当使用 new 运算符调用函数时，就会创建一个实例对象，这个实例对象见继承构造函数的原型对象中所有属性。</p>
+<pre><code class="language-js">var o = new f();
+console.log(o.a); // 访问原型对象的属性
+console.log(o.b()); // 访问对象的属性
+</code></pre>
+<p>为了方便判断，Object 对象定义了 <code>isPrototypeOf()</code> 方法，该方法可以检测一个对象的原型对象。</p>
+<pre><code class="language-js">var b = f.prototype.isPrototypeOf(o);
+console.log(b); // true
+</code></pre>
+<p>函数的原型对象可以是 <code>Object.prototype</code>，或者是 <code>Function.prototype</code></p>
+<pre><code class="language-js">var f = function () {};
+console.log(Object.prototype.isPrototypeOf(f)); // true
+console.log(Function.prototype.isPrototypeOf(f)); // true
+</code></pre>
+<p>Object 和 Function 对象的原型对象比较特殊</p>
+<pre><code class="language-js">console.log(Function.prototype.isPrototypeOf(Object)); // true
+console.log(Object.prototype.isPrototypeOf(Function)); // true
+</code></pre>
+<h3>Object 静态函数</h3>
+<h3>对象包装函数</h3>
+<p><code>Object()</code> 也是一个函数，它可以将任意值转换为对象，如果参数为空，或者为 undefined 和 null ，<code>Object()</code> 将返回一个空对象。</p>
+<pre><code class="language-js">var obj = Object();
+// 等同于
+var obj = Object(undefined);
+var obj = Object(null);
+</code></pre>
+<p>如果参数为数组、对象、函数，则返回原对象，不进行转换。根据这个特性，可以设计一个类型检测函数，专门检测一个值是否为引用类型。</p>
+<pre><code class="language-js">function isObject(value) {
+  return value === Object(value);
+}
+console.log(isObject([])); // true
+console.log(isObject(true)); // false
+</code></pre>
+<h3>对象构造函数</h3>
+<p>Object() 不仅可以当做工具函数使用，还可以当做构造函数使用。如果使用 new 命令调用 Object() 函数，将创建一个实例对象。</p>
+<p>例如，下面代码将创建一个新的实例对象。</p>
+<pre><code class="language-js">var obj = new Object();
+</code></pre>
+<h3>静态函数</h3>
+<p>Object 对象包含很多静态函数，</p>
+<p><strong>遍历对象</strong></p>
+<ul>
+<li>
+<p>Object.keys: 以数组形式返回参数对象的可枚举的私有属性名。</p>
+</li>
+<li>
+<p>Object.gteOwnPropertyNames: 以数组形式返回参数对象包含的私有属性名。</p>
+</li>
+</ul>
+<p><strong>对象属性</strong></p>
+<ul>
+<li>
+<p>Object.getOwnPropertyDescriptor(): 获取某个属性的描述对象。</p>
+</li>
+<li>
+<p>Object.defineProperty(): 通过描述对象，定义某个属性。</p>
+</li>
+<li>
+<p>Object.defineProperties(): 通过描述对象，定义多个属性。</p>
+</li>
+</ul>
+<p><strong>对象状态控制</strong></p>
+<ul>
+<li>
+<p>Object.preventExtensions(): 防止对象扩展。</p>
+</li>
+<li>
+<p>Object.isExtensible(): 判断对象是否可扩展。</p>
+</li>
+<li>
+<p>Object.seal(): 禁止对象配置。</p>
+</li>
+<li>
+<p>Object.isSealed(): 判断一个对象是否可配置。</p>
+</li>
+<li>
+<p>Object.freeze(): 冻结一个对象。</p>
+</li>
+<li>
+<p>Object.isFrozen(): 判断一个对象是否被冻结。</p>
+</li>
+</ul>
+<p><strong>对象原型</strong></p>
+<ul>
+<li>
+<p>Object.create(): 返回一个新的对象，并指定原型对象和属性。</p>
+</li>
+<li>
+<p>Object.getProtorypeOf(): 获取对象的 Prototype 对象。</p>
+</li>
+</ul>
+ 
+    </div>
+  </div>
+  <div class="article__wrapper_footer">
+    <a class="article__wrapper_footer-left " href="/articles/131.html"><svg t="1713708729970" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8437" width="48" height="48"><path d="M409.272947 512.57741l403.237243 403.237243a63.349415 63.349415 0 1 1-89.622481 89.622482L274.839224 557.324726a63.349415 63.349415 0 0 1 0-89.494632L722.951633 19.717685a63.349415 63.349415 0 1 1 89.494633 89.622482L409.336872 512.57741z" p-id="8438" fill="#8a8a8a"></path></svg></a>
+    <a class="article__wrapper_footer-right " href="/articles/133.html"><svg t="1713708697355" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8093" width="48" height="48"><path d="M855.123 517.004c0 8.245-3.167 15.51-9.503 21.823L402.999 981.47c-6.336 6.336-13.625 9.477-21.869 9.477s-15.51-3.142-21.845-9.477L311.8 933.96c-6.336-6.336-9.502-13.6-9.502-21.845 0-8.222 3.167-15.51 9.502-21.845l373.29-373.29-373.293-373.267c-6.336-6.336-9.502-13.6-9.502-21.845s3.167-15.533 9.503-21.869l47.484-47.484c6.336-6.336 13.6-9.502 21.845-9.502s15.533 3.167 21.869 9.503l442.621 442.622c6.334 6.334 9.503 13.625 9.503 21.869z" fill="#8a8a8a" p-id="8094"></path></svg></a>
+  </div>
+  <a class="article__wrapper_index" href="/articles/"><svg t="1713708857338" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="9656" width="48" height="48"><path d="M549.61981 133.022476l319.683047 203.605334A70.851048 70.851048 0 0 1 902.095238 396.361143v434.883047A70.89981 70.89981 0 0 1 831.146667 902.095238h-282.819048l0.024381-218.112h-71.826286v218.087619L192.853333 902.095238A70.89981 70.89981 0 0 1 121.904762 831.24419V390.241524c0-24.527238 12.678095-47.299048 33.54819-60.220953l318.659048-197.485714a70.972952 70.972952 0 0 1 75.50781 0.487619zM828.952381 828.952381V397.214476L511.488 195.047619 195.047619 391.119238V828.952381h211.309714v-216.551619h212.187429v216.527238L828.952381 828.952381z" p-id="9657" fill="#707070"></path></svg></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
+  <script src="../assets/js/articles-detail.js"></script>
+  <script>
+    hljs.highlightAll();
+  </script>
+</body>
+</html>
+    

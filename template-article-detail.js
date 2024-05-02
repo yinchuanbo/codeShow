@@ -55,13 +55,6 @@ module.exports = {
   <script src="../assets/js/articles-detail.js"></script>
   <script>
     hljs.highlightAll();
-    const dom = document.querySelector('.articles__list li.active');
-    if(dom) {
-      dom.scrollIntoView({
-        block: "center",
-        behavior: "smooth"
-      });
-    }
   </script>
 </body>
 </html>

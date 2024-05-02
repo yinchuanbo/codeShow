@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>21条CSS高级技巧</title>
+    <meta charset="utf-8">
+    <meta name="description" content="This is a page">
+    <meta name="keywords" content="page, sample">
+    <meta name="author" content="None">
+    <link rel="icon" sizes="any" mask href="../assets/images/ico6.svg" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <link rel="stylesheet" href="../assets/css/articles.css">
+</head>
+<body>
+  <div class="article__wrapper_left">
+    <div class="article__wrapper_left-mulu">目录</div>
+    <ul class="articles__list"><li class="">
+          <a href="/articles/25.html">
+            现代 CSS 解决方案:CSS 数学函数
+          </a>
+        </li><li class="">
+          <a href="/articles/26.html">
+            reset.css 知多少
+          </a>
+        </li><li class="">
+          <a href="/articles/27.html">
+            模板方法模式
+          </a>
+        </li><li class="">
+          <a href="/articles/28.html">
+            VSCODE 快捷键
+          </a>
+        </li><li class="">
+          <a href="/articles/29.html">
+            观察者模式
+          </a>
+        </li><li class="">
+          <a href="/articles/30.html">
+            状态模式
+          </a>
+        </li><li class="">
+          <a href="/articles/31.html">
+            策略模式
+          </a>
+        </li><li class="">
+          <a href="/articles/32.html">
+            职责链模式
+          </a>
+        </li><li class="">
+          <a href="/articles/33.html">
+            命令模式
+          </a>
+        </li><li class="">
+          <a href="/articles/34.html">
+            中介者模式
+          </a>
+        </li></ul>
+  </div>
+  <div class="article__wrapper_sidebar">
+    <a href="/" target="_blank"><svg t="1714001835347" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4298" width="48" height="48"><path d="M147.904 304.128l301.866667-179.541333a128 128 0 0 1 131.712 0.512l295.466666 178.88A128 128 0 0 1 938.666667 413.482667V810.666667a128 128 0 0 1-128 128H213.333333a128 128 0 0 1-128-128V414.144a128 128 0 0 1 62.570667-110.016z m43.626667 73.344A42.666667 42.666667 0 0 0 170.666667 414.144V810.666667a42.666667 42.666667 0 0 0 42.666666 42.666666h597.333334a42.666667 42.666667 0 0 0 42.666666-42.666666V413.482667a42.666667 42.666667 0 0 0-20.565333-36.501334l-295.466667-178.88a42.666667 42.666667 0 0 0-43.925333-0.170666l-301.866667 179.541333z" fill="#8a919f" p-id="4299"></path><path d="M405.333333 469.333333h213.333334a42.666667 42.666667 0 1 1 0 85.333334H405.333333a42.666667 42.666667 0 1 1 0-85.333334z m0 85.333334a42.666667 42.666667 0 1 0 0-85.333334h213.333334a42.666667 42.666667 0 1 0 0 85.333334H405.333333z" fill="#8a919f" p-id="4300"></path></svg></a>
+    <a href="/tools/" target="_blank"><svg t="1714002003458" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6911" width="48" height="48"><path d="M817.87 556.31h-63.58v-66.24A42.27 42.27 0 0 0 712 447.8h-84.81a42.27 42.27 0 0 0-42.27 42.27v66.24H436.57v-66.24a42.27 42.27 0 0 0-42.27-42.27h-84.83a42.27 42.27 0 0 0-42.27 42.27v66.24h-61.83A22.39 22.39 0 0 0 183 578.7a22.39 22.39 0 0 0 22.39 22.39h61.81v65.55a42.27 42.27 0 0 0 42.27 42.27h84.83a42.27 42.27 0 0 0 42.27-42.27v-65.55h148.36v65.55a42.27 42.27 0 0 0 42.27 42.27H712a42.27 42.27 0 0 0 42.27-42.27v-65.55h63.58a22.39 22.39 0 0 0 22.39-22.39 22.39 22.39 0 0 0-22.37-22.39z m-438.64 95.26h-54.69V505.14h54.69z m317.72 0h-54.69V505.14H697z" p-id="6912" fill="#8a919f"></path><path d="M823 202.58h-90.81v-63.09a71.88 71.88 0 0 0-71.88-71.88H363.19a71.88 71.88 0 0 0-71.88 71.88v63.08h-90.12A137.17 137.17 0 0 0 64 339.75v479a137.17 137.17 0 0 0 137.19 137.14H823a137.17 137.17 0 0 0 137.19-137.17v-479A137.17 137.17 0 0 0 823 202.58z m-474.36-54.1A23.52 23.52 0 0 1 372.17 125h279.16a23.52 23.52 0 0 1 23.52 23.52v54.1h-326.2z m554.23 673.31a76.76 76.76 0 0 1-76.76 76.76h-628a76.76 76.76 0 0 1-76.76-76.76V336.67a76.76 76.76 0 0 1 76.76-76.76h628a76.76 76.76 0 0 1 76.76 76.76z" p-id="6913" fill="#8a919f"></path></svg></a>
+  </div>
+  <div class="article__wrapper">
+    <div class="article__wrapper__main">
+      <div class="article__wrapper_header">
+        <h1>21条CSS高级技巧</h1>
+        <span class="articles__home_time">NaN/NaN/NaN · YinHao</span>
+      </div>
+      <h3>使用 CSS 复位</h3>
+<p>CSS 复位可以在不同的浏览器上保持一致的样式风格。您可以使用 CSS reset 库<a href="http://necolas.github.io/normalize.css/">Normalize</a>等，也可以使用一个更简化的复位方法：</p>
+<pre><code class="language-css">* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+</code></pre>
+<p>现在元素的 margin 和 padding 已为 0，<code>box-sizing</code>可以管理您的 CSS 盒模型布局。 <a href="http://codepen.io/AllThingsSmitty/pen/kkrkLL">演示</a> 注意：如果你遵循接下来继承 <code>box-sizing</code>讲解的这个技巧, 你不需要在以上代码中添加 <code>box-sizing</code> 属性。</p>
+<h3>继承 <code>box-sizing</code></h3>
+<p>从 <code>html</code> 元素继承 <code>box-sizing</code> ：</p>
+<pre><code class="language-css">html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+</code></pre>
+<p>如此在插件或其它组件里改变 <code>box-sizing</code> 变得简单。</p>
+<h3>使用 <code>:not()</code> 选择器来决定表单是否显示边框</h3>
+<p>先为元素添加边框</p>
+<pre><code class="language-css">/* 添加边框 */
+.nav li {
+  border-right: 1px solid #666;
+}
+</code></pre>
+<p>为最后一个元素去除边框</p>
+<pre><code class="language-css">/* 去掉边框 */
+.nav li:last-child {
+  border-right: none;
+}
+</code></pre>
+<p>不过不要这么做，使用 <code>:not()</code> 伪类来达到同样的效果：</p>
+<pre><code class="language-css">.nav li:not(:last-child) {
+  border-right: 1px solid #666;
+}
+</code></pre>
+<p>当然，你也可以使用 <code>.nav li + li</code> 或者 <code>.nav li:first-child ~ li</code> ，但是 <code>:not()</code> 更加清晰，具有可读性。 <a href="http://codepen.io/AllThingsSmitty/pen/LkymvO">演示</a></p>
+<h3>为 <code>body</code> 元素添加行高</h3>
+<p>不必为每一个 <code>&lt;p&gt;</code>，<code>&lt;h*&gt;</code> 元素逐一添加 <code>line-height</code>，直接添加到 <code>body</code> 元素：</p>
+<pre><code class="language-css">body {
+  line-height: 1.5;
+}
+</code></pre>
+<p>文本元素可以很容易地继承 <code>body</code> 的样式。 <a href="http://codepen.io/AllThingsSmitty/pen/VjbdYd">演示</a></p>
+<h3>垂直居中任何元素</h3>
+<p>不！这绝不是黑魔法，真的可以垂直居中任何元素：</p>
+<pre><code class="language-css">html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-flex;
+  display: flex;
+}
+</code></pre>
+<p>这还不够？垂直方向，水平方向？任何元素，任何时间，任何地点？CSS-Tricks <a href="https://css-tricks.com/centering-css-complete-guide/">有篇好文</a> 讲到了各种居中的技巧。 <strong>注意：</strong> IE11 对 flexbox 的支持<a href="https://github.com/philipwalton/flexbugs#3-min-height-on-a-flex-container-wont-apply-to-its-flex-items">有点 bug</a>。 <a href="http://codepen.io/AllThingsSmitty/pen/GqmGqZ">演示</a></p>
+<h3>逗号分隔列表</h3>
+<p>使列表的每项都由逗号分隔：</p>
+<pre><code class="language-css">ul &gt; li:not(:last-child)::after {
+  content: &quot;,&quot;;
+}
+</code></pre>
+<p>因最后一项不加逗号，可以使用 <code>:not()</code> 伪类。 **注意：**这一技巧对于无障碍，特别是屏幕阅读器而言并不理想。而且复制粘贴并不会带走 CSS 生成的内容,需要注意。</p>
+<h3>使用负的 <code>nth-child</code> 来选择元素</h3>
+<p>使用负的 <code>nth-child</code> 可以选择 1 至 n 个元素。</p>
+<pre><code class="language-css">li {
+  display: none;
+}
+
+/* 选择第 1 至第 3 个元素并显示出来 */
+li:nth-child(-n + 3) {
+  display: block;
+}
+</code></pre>
+<p>或许你已经掌握了如何使用 <code>:not()</code>这个技巧，试下这个：</p>
+<pre><code class="language-css">/* 选择第 1 至第 3 个元素并显示出来 */
+li:not(:nth-child(-n + 3)) {
+  display: none;
+}
+</code></pre>
+<p>如此简单！ <a href="http://codepen.io/AllThingsSmitty/pen/WxjKZp">演示</a></p>
+<h3>使用 SVG 图标</h3>
+<p>没有理由不使用 SVG 图标：</p>
+<pre><code class="language-css">.logo {
+  background: url(&quot;logo.svg&quot;);
+}
+</code></pre>
+<p>SVG 在所有分辨率下都可以良好缩放，并且支持所有 IE9 以后的浏览器，丢掉你的 .png, .jpg, 或 .gif-jif-whatev 文件吧。 <strong>注意：</strong> 针对仅有图标的按钮，如果 SVG 没有加载成功的话，以下样式对无障碍有所帮助：</p>
+<pre><code class="language-css">.no-svg .icon-only:after {
+  content: attr(aria-label);
+}
+</code></pre>
+<h3>使用 “形似猫头鹰” 的选择器</h3>
+<p>这个名字可能比较陌生，不过通用选择器 (<code>*</code>) 和 相邻兄弟选择器 (<code>+</code>) 一起使用，效果非凡：</p>
+<pre><code class="language-css">* + * {
+  margin-top: 1.5em;
+}
+</code></pre>
+<p>在此示例中，文档流中的所有的相邻兄弟元素将都将设置 <code>margin-top: 1.5em</code> 的样式。 更多 “形似猫头鹰” 的选择器，可参考 <em>A List Apart</em> 上面 <a href="http://alistapart.com/article/axiomatic-css-and-lobotomized-owls">Heydon Pickering 的文章</a> <a href="http://codepen.io/AllThingsSmitty/pen/grRvWq">演示</a></p>
+<h3>使用 <code>max-height</code> 来建立纯 CSS 的滑块</h3>
+<p><code>max-height</code> 与 overflow hidden 一起来建立纯 CSS 的滑块：</p>
+<pre><code class="language-css">.slider {
+  max-height: 200px;
+  overflow-y: hidden;
+  width: 300px;
+}
+
+.slider:hover {
+  max-height: 600px;
+  overflow-y: scroll;
+}
+</code></pre>
+<p>鼠标移入滑块元素时增大它的 <code>max-height</code> 值，便可以显示溢出部分。</p>
+<h3>创造格子等宽的表格</h3>
+<p><code>table-layout: fixed</code> 可以让每个格子保持等宽：</p>
+<pre><code class="language-css">.calendar {
+  table-layout: fixed;
+}
+</code></pre>
+<p>无痛的 table 布局。 <a href="http://codepen.io/AllThingsSmitty/pen/jALALm">演示</a></p>
+<h3>利用 Flexbox 去除多余的外边距</h3>
+<p>与其使用 <code>nth-</code>， <code>first-</code>， 和 <code>last-child</code> 去除列之间多余的间隙，不如使用 flexbox 的 <code>space-between</code> 属性：</p>
+<pre><code class="language-css">.list {
+  display: flex;
+  justify-content: space-between;
+}
+
+.list .person {
+  flex-basis: 23%;
+}
+</code></pre>
+<p>列之间的间隙总是均匀相等。</p>
+<h3>利用属性选择器来选择空链接</h3>
+<p>当 <code>&lt;a&gt;</code> 元素没有文本内容，但有 <code>href</code> 属性的时候，显示它的 <code>href</code> 属性：</p>
+<pre><code class="language-css">a[href^=&quot;http&quot;]:empty::before {
+  content: attr(href);
+}
+</code></pre>
+<p>相当简便。 <a href="http://codepen.io/AllThingsSmitty/pen/zBzXRx">演示</a></p>
+<h3>给 “默认” 链接定义样式</h3>
+<p>给 “默认” 链接定义样式：</p>
+<pre><code class="language-css">a[href]:not([class]) {
+  color: #008000;
+  text-decoration: underline;
+}
+</code></pre>
+<p>通过 CMS 系统插入的链接，通常没有 <code>class</code> 属性，以上样式可以甄别它们，而且不会影响其它样式。</p>
+<h3>一致垂直节奏</h3>
+<p>通用选择器 (<code>*</code>) 跟元素一起使用，可以保持一致的垂直节奏：</p>
+<pre><code class="language-css">.intro &gt; * {
+  margin-bottom: 1.25rem;
+}
+</code></pre>
+<p>一致的垂直节奏可以提供视觉美感，增强内容的可读性。</p>
+<h3>固定比例盒子</h3>
+<p>要创建具有固定比例的一个盒子，所有你需要做的就是给 div 设置一个 padding：</p>
+<pre><code class="language-css">.container {
+  height: 0;
+  padding-bottom: 20%;
+  position: relative;
+}
+
+.container div {
+  border: 2px dashed #ddd;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+</code></pre>
+<p>使用 20％的 padding-bottom 使得框等于其宽度的 20％的高度。与视口宽度无关，子元素的 div 将保持其宽高比（100％/ 20％= 5:1）。 <a href="http://codepen.io/AllThingsSmitty/pen/jALZvE">演示</a></p>
+<h3>为破碎图象定义样式</h3>
+<p>只要一点 CSS 就可以美化破碎的图象：</p>
+<pre><code class="language-css">img {
+  display: block;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  height: auto;
+  line-height: 2;
+  position: relative;
+  text-align: center;
+  width: 100%;
+}
+</code></pre>
+<p>以添加伪元素的法则来显示用户信息和 URL 的引用：</p>
+<pre><code class="language-css">img:before {
+  content: &quot;We're sorry, the image below is broken :(&quot;;
+  display: block;
+  margin-bottom: 10px;
+}
+
+img:after {
+  content: &quot;(url: &quot; attr(src) &quot;)&quot;;
+  display: block;
+  font-size: 12px;
+}
+</code></pre>
+<p>了解更多关于这类样式的技巧 <a href="https://github.com/ireade/">Ire Aderinokun</a>的 <a href="http://bitsofco.de/styling-broken-images/">原帖</a>.</p>
+<h3>用 <code>rem</code> 来调整全局大小；用 <code>em</code> 来调整局部大小</h3>
+<p>在根元素设置基本字体大小后 (<code>html { font-size: 100%; }</code>), 使用 <code>em</code> 设置文本元素的字体大小:</p>
+<pre><code class="language-css">h2 {
+  font-size: 2em;
+}
+
+p {
+  font-size: 1em;
+}
+</code></pre>
+<p>然后设置模块的字体大小为 <code>rem</code>:</p>
+<pre><code class="language-css">article {
+  font-size: 1.25rem;
+}
+
+aside .module {
+  font-size: 0.9rem;
+}
+</code></pre>
+<p>现在，每个模块变得独立，更容易、灵活的样式便于维护。</p>
+<h3>隐藏没有静音、自动播放的影片</h3>
+<p>这是一个自定义用户样式表的不错的技巧。避免在加载页面时自动播放。如果没有静音，则不显示视频：</p>
+<pre><code class="language-css">video[autoplay]:not([muted]) {
+  display: none;
+}
+</code></pre>
+<p>再次，我们利用了 <code>:not()</code> 的优点。</p>
+<h3>使用选择器<code>:root</code>来控制字体弹性</h3>
+<p>在响应式布局中，字体大小应需要根据不同的视口进行调整。你可以计算字体大小根据视口高度的字体大小和宽度，这时需要用到<code>:root</code>:</p>
+<pre><code class="language-css">:root {
+  font-size: calc(1vw + 1vh + 0.5vmin);
+}
+</code></pre>
+<p>现在，您可以使用 <code>root em</code></p>
+<pre><code class="language-css">body {
+  font: 1rem/1.6 sans-serif;
+}
+</code></pre>
+<p><a href="http://codepen.io/AllThingsSmitty/pen/XKgOkR">演示</a></p>
+<h3>为更好的移动体验，为表单元素设置字体大小</h3>
+<p>当触发<code>&lt;select&gt;</code>的下拉列表时，为了避免表单元素在移动浏览器（IOS Safari 等等）上的缩放，加上<code>font-size</code>：</p>
+<pre><code class="language-css">input[type=&quot;text&quot;],
+input[type=&quot;number&quot;],
+select,
+textarea {
+  font-size: 16px;
+}
+</code></pre>
+ 
+    </div>
+  </div>
+  <div class="article__wrapper_footer">
+    <a class="article__wrapper_footer-left " href="/articles/23.html"><svg t="1713708729970" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8437" width="48" height="48"><path d="M409.272947 512.57741l403.237243 403.237243a63.349415 63.349415 0 1 1-89.622481 89.622482L274.839224 557.324726a63.349415 63.349415 0 0 1 0-89.494632L722.951633 19.717685a63.349415 63.349415 0 1 1 89.494633 89.622482L409.336872 512.57741z" p-id="8438" fill="#8a8a8a"></path></svg></a>
+    <a class="article__wrapper_footer-right " href="/articles/25.html"><svg t="1713708697355" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8093" width="48" height="48"><path d="M855.123 517.004c0 8.245-3.167 15.51-9.503 21.823L402.999 981.47c-6.336 6.336-13.625 9.477-21.869 9.477s-15.51-3.142-21.845-9.477L311.8 933.96c-6.336-6.336-9.502-13.6-9.502-21.845 0-8.222 3.167-15.51 9.502-21.845l373.29-373.29-373.293-373.267c-6.336-6.336-9.502-13.6-9.502-21.845s3.167-15.533 9.503-21.869l47.484-47.484c6.336-6.336 13.6-9.502 21.845-9.502s15.533 3.167 21.869 9.503l442.621 442.622c6.334 6.334 9.503 13.625 9.503 21.869z" fill="#8a8a8a" p-id="8094"></path></svg></a>
+  </div>
+  <a class="article__wrapper_index" href="/articles/"><svg t="1713708857338" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="9656" width="48" height="48"><path d="M549.61981 133.022476l319.683047 203.605334A70.851048 70.851048 0 0 1 902.095238 396.361143v434.883047A70.89981 70.89981 0 0 1 831.146667 902.095238h-282.819048l0.024381-218.112h-71.826286v218.087619L192.853333 902.095238A70.89981 70.89981 0 0 1 121.904762 831.24419V390.241524c0-24.527238 12.678095-47.299048 33.54819-60.220953l318.659048-197.485714a70.972952 70.972952 0 0 1 75.50781 0.487619zM828.952381 828.952381V397.214476L511.488 195.047619 195.047619 391.119238V828.952381h211.309714v-216.551619h212.187429v216.527238L828.952381 828.952381z" p-id="9657" fill="#707070"></path></svg></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
+  <script src="../assets/js/articles-detail.js"></script>
+  <script>
+    hljs.highlightAll();
+  </script>
+</body>
+</html>
+    

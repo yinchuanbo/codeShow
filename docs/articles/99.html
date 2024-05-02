@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>前端代码重复度检测</title>
+    <meta charset="utf-8">
+    <meta name="description" content="This is a page">
+    <meta name="keywords" content="page, sample">
+    <meta name="author" content="None">
+    <link rel="icon" sizes="any" mask href="../assets/images/ico6.svg" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <link rel="stylesheet" href="../assets/css/articles.css">
+</head>
+<body>
+  <div class="article__wrapper_left">
+    <div class="article__wrapper_left-mulu">目录</div>
+    <ul class="articles__list"></ul>
+  </div>
+  <div class="article__wrapper_sidebar">
+    <a href="/" target="_blank"><svg t="1714001835347" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4298" width="48" height="48"><path d="M147.904 304.128l301.866667-179.541333a128 128 0 0 1 131.712 0.512l295.466666 178.88A128 128 0 0 1 938.666667 413.482667V810.666667a128 128 0 0 1-128 128H213.333333a128 128 0 0 1-128-128V414.144a128 128 0 0 1 62.570667-110.016z m43.626667 73.344A42.666667 42.666667 0 0 0 170.666667 414.144V810.666667a42.666667 42.666667 0 0 0 42.666666 42.666666h597.333334a42.666667 42.666667 0 0 0 42.666666-42.666666V413.482667a42.666667 42.666667 0 0 0-20.565333-36.501334l-295.466667-178.88a42.666667 42.666667 0 0 0-43.925333-0.170666l-301.866667 179.541333z" fill="#8a919f" p-id="4299"></path><path d="M405.333333 469.333333h213.333334a42.666667 42.666667 0 1 1 0 85.333334H405.333333a42.666667 42.666667 0 1 1 0-85.333334z m0 85.333334a42.666667 42.666667 0 1 0 0-85.333334h213.333334a42.666667 42.666667 0 1 0 0 85.333334H405.333333z" fill="#8a919f" p-id="4300"></path></svg></a>
+    <a href="/tools/" target="_blank"><svg t="1714002003458" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6911" width="48" height="48"><path d="M817.87 556.31h-63.58v-66.24A42.27 42.27 0 0 0 712 447.8h-84.81a42.27 42.27 0 0 0-42.27 42.27v66.24H436.57v-66.24a42.27 42.27 0 0 0-42.27-42.27h-84.83a42.27 42.27 0 0 0-42.27 42.27v66.24h-61.83A22.39 22.39 0 0 0 183 578.7a22.39 22.39 0 0 0 22.39 22.39h61.81v65.55a42.27 42.27 0 0 0 42.27 42.27h84.83a42.27 42.27 0 0 0 42.27-42.27v-65.55h148.36v65.55a42.27 42.27 0 0 0 42.27 42.27H712a42.27 42.27 0 0 0 42.27-42.27v-65.55h63.58a22.39 22.39 0 0 0 22.39-22.39 22.39 22.39 0 0 0-22.37-22.39z m-438.64 95.26h-54.69V505.14h54.69z m317.72 0h-54.69V505.14H697z" p-id="6912" fill="#8a919f"></path><path d="M823 202.58h-90.81v-63.09a71.88 71.88 0 0 0-71.88-71.88H363.19a71.88 71.88 0 0 0-71.88 71.88v63.08h-90.12A137.17 137.17 0 0 0 64 339.75v479a137.17 137.17 0 0 0 137.19 137.14H823a137.17 137.17 0 0 0 137.19-137.17v-479A137.17 137.17 0 0 0 823 202.58z m-474.36-54.1A23.52 23.52 0 0 1 372.17 125h279.16a23.52 23.52 0 0 1 23.52 23.52v54.1h-326.2z m554.23 673.31a76.76 76.76 0 0 1-76.76 76.76h-628a76.76 76.76 0 0 1-76.76-76.76V336.67a76.76 76.76 0 0 1 76.76-76.76h628a76.76 76.76 0 0 1 76.76 76.76z" p-id="6913" fill="#8a919f"></path></svg></a>
+  </div>
+  <div class="article__wrapper">
+    <div class="article__wrapper__main">
+      <div class="article__wrapper_header">
+        <h1>前端代码重复度检测</h1>
+        <span class="articles__home_time">NaN/NaN/NaN · YinHao</span>
+      </div>
+      <p>在前端开发中，代码的重复度是一个常见的问题。重复的代码不仅增加了代码的维护成本，还可能导致程序的低效运行。为了解决这个问题，有许多工具和技术被用来检测和消除代码重复。其中一个被广泛使用的工具就是<code>jscpd</code>。</p>
+<h2>jscpd 简介</h2>
+<p><code>jscpd</code>是一款开源的<code>JavaScript</code>的工具库，用于检测代码重复的情况，针对复制粘贴的代码检测很有效果。它可以通过扫描源代码文件，分析其中的代码片段，并比较它们之间的相似性来检测代码的重复度。<code>jscpd</code>支持各种前端框架和语言，包括 HTML、CSS 和 JavaScript 等 150 种的源码文件格式。无论是原生的 JavaScript、CSS、HTML 代码，<code>还是使用typescript</code>、<code>scss</code>、<code>vue</code>、<code>react</code>等代码，都能很好的检测出项目中的重复代码。</p>
+<p>开源仓库地址：github.com/kucherenko/jscpd/tree/master</p>
+<h2>如何使用</h2>
+<p>使用<code>jscpd</code>进行代码重复度检测非常简单。我们需要安装<code>jscpd</code>。可以通过<code>npm</code>或<code>yarn</code>来安装<code>jscpd</code>。</p>
+<pre><code class="language-sh">npm install -g jscpd
+</code></pre>
+<pre><code class="language-sh">yarn global add jscpd
+</code></pre>
+<p>安装完成后，我们可以在终端运行 jscpd 命令，指定要检测的代码目录或文件。例如，我们可以输入以下命令来检测当前目录下的所有 JavaScript 文件：</p>
+<pre><code class="language-sh">jscpd .
+</code></pre>
+<p>指定目录检测：</p>
+<pre><code class="language-sh">jscpd /path/to/code
+</code></pre>
+<p>在命令行执行成功后的效果如下图所示：</p>
+<p><img src="../assets/images/articles/99/01.awebp" alt=""></p>
+<p>简要说明一下对应图中的字段内容：</p>
+<ul>
+<li>Clone found (javascript)： 显示找到的重复代码块，这里是 javascript 文件。并且会显示重复代码在文件中具体的行数，便于查找。</li>
+<li>Format：文件格式，这里是 javascript，还可以是 scss、markup 等。</li>
+<li>Files analyzed：已分析的文件数量，统计被检测中的文件数量。</li>
+<li>Total lines：所有文件的总行数。</li>
+<li>Total tokens：所有的 token 数量，一行代码一般包含几个到几十个不等的 token 数量。</li>
+<li>Clones found：找到的重复块数量。</li>
+<li>Duplicated lines：重复的代码行数和占比。</li>
+<li>Duplicated tokens：重复的 token 数量和占比。</li>
+<li>Detection time：检测耗时。</li>
+</ul>
+<h2>工程配置</h2>
+<p>以上示例是比较简单直接检测单个文件或文件夹。当下主流的前端项目大多都是基于脚手架生成或包含相关前端工程化的文件，由于很多文件是辅助工具如依赖包、构建脚本、文档、配置文件等，这类文件都不需要检测，需要排除。这种情况下的工程一般使用配置文件的方式，通过选项配置规范 <code>jscpd</code> 的使用。</p>
+<p><code>jscpd</code> 的配置选项可以通过以下两种方式创建，增加的内容都一致无需区分对应的前端框架。</p>
+<p>在项目根目录下创建配置文件 <code>.jscpd.json</code>，然后在该文件中增加具体的配置选项：</p>
+<pre><code class="language-json">{
+  &quot;threshold&quot;: 0,
+  &quot;reporters&quot;: [&quot;html&quot;, &quot;console&quot;, &quot;badge&quot;],
+  &quot;ignore&quot;: [&quot;**/__snapshots__/**&quot;],
+  &quot;absolute&quot;: true
+}
+</code></pre>
+<p>也可直接在 <code>package.json</code> 文件中添加<code>jscpd</code>：</p>
+<pre><code class="language-json">{
+  //   ...
+  &quot;jscpd&quot;: {
+    &quot;threshold&quot;: 0.1,
+    &quot;reporters&quot;: [&quot;html&quot;, &quot;console&quot;, &quot;badge&quot;],
+    &quot;ignore&quot;: [&quot;**/__snapshots__/**&quot;],
+    &quot;absolute&quot;: true,
+    &quot;gitignore&quot;: true
+  }
+  //   ...
+}
+</code></pre>
+<p>简要介绍一下上述配置字段含义：</p>
+<ul>
+<li>threshold：表示重复度的阈值，超过这个值，就会输出错误报警。如阈值设为 10，当重复度为 18.1%时，会提示以下错误 ❌，但代码的检测会正常完成。</li>
+</ul>
+<pre><code class="language-sh">ERROR: jscpd found too many duplicates (18.1%) over threshold (10%)
+</code></pre>
+<ul>
+<li>reporters：表示生成结果检测报告的方式，一般有以下几种：
+<ul>
+<li>console：控制台打印输出</li>
+<li>consoleFull：控制台完整打印重复代码块</li>
+<li>json：输出 <code>json</code> 格式的报告</li>
+<li>xml：输出 <code>xml</code> 格式的报告</li>
+<li>csv：输出 <code>csv</code> 格式的报告</li>
+<li>markdown：输出带有 <code>markdown</code> 格式的报告</li>
+<li>html：生成<code>html</code>报告到<code>html</code>文件夹</li>
+<li>verbose：输出大量调试信息到控制台</li>
+</ul>
+</li>
+<li>ignore：检测忽略的文件或文件目录，过滤一些非业务代码，如依赖包、文档或静态文件等</li>
+<li>format：需要进行重复度检测的源代码格式，目前支持 150 多种，我们常用的如 javascript、typescript、css 等</li>
+<li>absolute：在检测报告中使用绝对路径</li>
+</ul>
+<p>除此之外还有很多其他的配置，有兴趣的可以看源码文档中有详细的介绍。</p>
+<h2>检测报告</h2>
+<p>完成以上<code>jscpd</code>配置后执行以下命令即可输出对应的重复检测报告。运行完毕后，<code>jscpd</code>会生成一个报告，展示每个重复代码片段的信息。报告中包含了重复代码的位置、相似性百分比和代码行数等详细信息。通过这些信息，我们可以有针对性的进行代码重构。</p>
+<pre><code class="language-sh">jscpd ./src -o 'report'
+</code></pre>
+<p>项目中的业务代码通常会选择放在 <code>./src</code> 目录下，所以可以直接检测该目录下的文件，如果是放在其他目录下根据实际情况调整即可。 通过命令行参数<code>-o 'report'</code>输出检测报告到项目根目录下的 <code>report</code> 文件夹中，这里的<code>report</code>也可以自定义其他目录名称，输出的目录结构如下所示：</p>
+<p><img src="../assets/images/articles/99/02.awebp" alt=""></p>
+<p>生成的报告页面如下所示：</p>
+<p>项目概览数据：</p>
+<p><img src="../assets/images/articles/99/03.awebp" alt=""></p>
+<p>具体重复代码的位置和行数：</p>
+<p><img src="../assets/images/articles/99/04.awebp" alt=""></p>
+<p>默认检测重复代码的行数（5 行）和 tokens（50）比较小，所以产生的重复代码块可能比较多，在实际使用中可以针对检测范围进行设置，如下设置参数供参考：</p>
+<ul>
+<li>最小 tokens：<code>--min-tokens</code>，简写 <code>-k</code></li>
+<li>最小行数：<code>--min-lines</code>，简写 <code>-l</code></li>
+<li>最大行数：<code>--max-lines</code>，简写 <code>-x</code></li>
+</ul>
+<pre><code class="language-sh">jscpd ./src --min-tokens 200 --min-lines 20 -o 'report'
+</code></pre>
+<p>为了更便捷的使用此命令，可将这段命令集成到 <code>package.json</code> 中的 <code>scripts</code> 中，后续只需执行 <code>npm run jscpd</code> 即可执行检测。如下所示：</p>
+<pre><code class="language-js">&quot;scripts&quot;: {
+  // ...
+  &quot;jscpd&quot;: &quot;jscpd ./src --min-tokens 200 --min-lines 20 -o 'report'&quot;,
+  // ...
+}
+</code></pre>
+<h2>忽略代码块</h2>
+<p>上面所提到的<code>ignore</code>可以忽略某个文件或文件夹，还有一种忽略方式是忽略文件中的某一块代码。由于一些重复代码在实际情况中是必要的，可以使用代码注释标识的方式忽略检测，在代码的首尾位置添加注释，<code>jscpd:ignore-start</code> 和 <code>jscpd:ignore-end</code> 包裹代码即可。</p>
+<p>在 js 代码中使用方式：</p>
+<pre><code class="language-js">/* jscpd:ignore-start */
+import lodash from &quot;lodash&quot;;
+import React from &quot;react&quot;;
+import { User } from &quot;./models&quot;;
+import { UserService } from &quot;./services&quot;;
+/* jscpd:ignore-end */
+</code></pre>
+<p>在 CSS 和各种预处理中与 js 中的用法一致：</p>
+<pre><code class="language-css">/* jscpd:ignore-start */
+.style {
+  padding: 40px 0;
+  font-size: 26px;
+  font-weight: 400;
+  color: #464646;
+  line-height: 26px;
+}
+/* jscpd:ignore-end */
+</code></pre>
+<p>在 html 代码中使用方式：</p>
+<pre><code class="language-html">&lt;!--
+// jscpd:ignore-start
+--&gt;
+&lt;meta data-react-helmet=&quot;true&quot; name=&quot;theme-color&quot; content=&quot;#cb3837&quot; /&gt;
+&lt;link
+  data-react-helmet=&quot;true&quot;
+  rel=&quot;stylesheet&quot;
+  href=&quot;https://static.npmjs.com/103af5b8a2b3c971cba419755f3a67bc.css&quot;
+/&gt;
+&lt;link
+  data-react-helmet=&quot;true&quot;
+  rel=&quot;apple-touch-icon&quot;
+  sizes=&quot;120x120&quot;
+  href=&quot;https://static.npmjs.com/58a19602036db1daee0d7863c94673a4.png&quot;
+/&gt;
+&lt;link
+  data-react-helmet=&quot;true&quot;
+  rel=&quot;icon&quot;
+  type=&quot;image/png&quot;
+  href=&quot;https://static.npmjs.com/b0f1a8318363185cc2ea6a40ac23eeb2.png&quot;
+  sizes=&quot;32x32&quot;
+/&gt;
+&lt;!--
+// jscpd:ignore-end
+--&gt;
+</code></pre>
+<h2>总结</h2>
+<p><code>jscpd</code>是一款强大的前端本地代码重复度检测工具。它可以帮助开发者快速发现代码重复问题，简单的配置即可输出直观的代码重复数据，通过解决重复的代码提高代码的质量和可维护性。</p>
+<p>使用<code>jscpd</code>我们可以有效地优化前端开发过程，提高代码的效率和性能。希望本文能够对你了解基于<code>jscpd</code>的前端本地代码重复度检测有所帮助。</p>
+ 
+    </div>
+  </div>
+  <div class="article__wrapper_footer">
+    <a class="article__wrapper_footer-left " href="/articles/98.html"><svg t="1713708729970" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8437" width="48" height="48"><path d="M409.272947 512.57741l403.237243 403.237243a63.349415 63.349415 0 1 1-89.622481 89.622482L274.839224 557.324726a63.349415 63.349415 0 0 1 0-89.494632L722.951633 19.717685a63.349415 63.349415 0 1 1 89.494633 89.622482L409.336872 512.57741z" p-id="8438" fill="#8a8a8a"></path></svg></a>
+    <a class="article__wrapper_footer-right " href="/articles/100.html"><svg t="1713708697355" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8093" width="48" height="48"><path d="M855.123 517.004c0 8.245-3.167 15.51-9.503 21.823L402.999 981.47c-6.336 6.336-13.625 9.477-21.869 9.477s-15.51-3.142-21.845-9.477L311.8 933.96c-6.336-6.336-9.502-13.6-9.502-21.845 0-8.222 3.167-15.51 9.502-21.845l373.29-373.29-373.293-373.267c-6.336-6.336-9.502-13.6-9.502-21.845s3.167-15.533 9.503-21.869l47.484-47.484c6.336-6.336 13.6-9.502 21.845-9.502s15.533 3.167 21.869 9.503l442.621 442.622c6.334 6.334 9.503 13.625 9.503 21.869z" fill="#8a8a8a" p-id="8094"></path></svg></a>
+  </div>
+  <a class="article__wrapper_index" href="/articles/"><svg t="1713708857338" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="9656" width="48" height="48"><path d="M549.61981 133.022476l319.683047 203.605334A70.851048 70.851048 0 0 1 902.095238 396.361143v434.883047A70.89981 70.89981 0 0 1 831.146667 902.095238h-282.819048l0.024381-218.112h-71.826286v218.087619L192.853333 902.095238A70.89981 70.89981 0 0 1 121.904762 831.24419V390.241524c0-24.527238 12.678095-47.299048 33.54819-60.220953l318.659048-197.485714a70.972952 70.972952 0 0 1 75.50781 0.487619zM828.952381 828.952381V397.214476L511.488 195.047619 195.047619 391.119238V828.952381h211.309714v-216.551619h212.187429v216.527238L828.952381 828.952381z" p-id="9657" fill="#707070"></path></svg></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
+  <script src="../assets/js/articles-detail.js"></script>
+  <script>
+    hljs.highlightAll();
+  </script>
+</body>
+</html>
+    

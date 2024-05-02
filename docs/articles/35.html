@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>迭代器模式</title>
+    <meta charset="utf-8">
+    <meta name="description" content="This is a page">
+    <meta name="keywords" content="page, sample">
+    <meta name="author" content="None">
+    <link rel="icon" sizes="any" mask href="../assets/images/ico6.svg" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <link rel="stylesheet" href="../assets/css/articles.css">
+</head>
+<body>
+  <div class="article__wrapper_left">
+    <div class="article__wrapper_left-mulu">目录</div>
+    <ul class="articles__list"><li class="">
+          <a href="/articles/36.html">
+            简单模板模式
+          </a>
+        </li><li class="">
+          <a href="/articles/37.html">
+            惰性模式
+          </a>
+        </li><li class="">
+          <a href="/articles/38.html">
+            链模式
+          </a>
+        </li><li class="">
+          <a href="/articles/39.html">
+            当你的网站有新内容，如何立即通知你的用户呢？
+          </a>
+        </li><li class="">
+          <a href="/articles/40.html">
+            裁剪的3种方式，CSS 如何隐藏移动端的滚动条？
+          </a>
+        </li><li class="">
+          <a href="/articles/41.html">
+            属性的 getter 和 setter
+          </a>
+        </li><li class="">
+          <a href="/articles/42.html">
+            原生的延迟加载支持
+          </a>
+        </li><li class="">
+          <a href="/articles/43.html">
+            视频加载
+          </a>
+        </li><li class="">
+          <a href="/articles/44.html">
+            加载注意事项
+          </a>
+        </li><li class="">
+          <a href="/articles/45.html">
+            网站优化之静态资源优化
+          </a>
+        </li></ul>
+  </div>
+  <div class="article__wrapper_sidebar">
+    <a href="/" target="_blank"><svg t="1714001835347" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4298" width="48" height="48"><path d="M147.904 304.128l301.866667-179.541333a128 128 0 0 1 131.712 0.512l295.466666 178.88A128 128 0 0 1 938.666667 413.482667V810.666667a128 128 0 0 1-128 128H213.333333a128 128 0 0 1-128-128V414.144a128 128 0 0 1 62.570667-110.016z m43.626667 73.344A42.666667 42.666667 0 0 0 170.666667 414.144V810.666667a42.666667 42.666667 0 0 0 42.666666 42.666666h597.333334a42.666667 42.666667 0 0 0 42.666666-42.666666V413.482667a42.666667 42.666667 0 0 0-20.565333-36.501334l-295.466667-178.88a42.666667 42.666667 0 0 0-43.925333-0.170666l-301.866667 179.541333z" fill="#8a919f" p-id="4299"></path><path d="M405.333333 469.333333h213.333334a42.666667 42.666667 0 1 1 0 85.333334H405.333333a42.666667 42.666667 0 1 1 0-85.333334z m0 85.333334a42.666667 42.666667 0 1 0 0-85.333334h213.333334a42.666667 42.666667 0 1 0 0 85.333334H405.333333z" fill="#8a919f" p-id="4300"></path></svg></a>
+    <a href="/tools/" target="_blank"><svg t="1714002003458" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6911" width="48" height="48"><path d="M817.87 556.31h-63.58v-66.24A42.27 42.27 0 0 0 712 447.8h-84.81a42.27 42.27 0 0 0-42.27 42.27v66.24H436.57v-66.24a42.27 42.27 0 0 0-42.27-42.27h-84.83a42.27 42.27 0 0 0-42.27 42.27v66.24h-61.83A22.39 22.39 0 0 0 183 578.7a22.39 22.39 0 0 0 22.39 22.39h61.81v65.55a42.27 42.27 0 0 0 42.27 42.27h84.83a42.27 42.27 0 0 0 42.27-42.27v-65.55h148.36v65.55a42.27 42.27 0 0 0 42.27 42.27H712a42.27 42.27 0 0 0 42.27-42.27v-65.55h63.58a22.39 22.39 0 0 0 22.39-22.39 22.39 22.39 0 0 0-22.37-22.39z m-438.64 95.26h-54.69V505.14h54.69z m317.72 0h-54.69V505.14H697z" p-id="6912" fill="#8a919f"></path><path d="M823 202.58h-90.81v-63.09a71.88 71.88 0 0 0-71.88-71.88H363.19a71.88 71.88 0 0 0-71.88 71.88v63.08h-90.12A137.17 137.17 0 0 0 64 339.75v479a137.17 137.17 0 0 0 137.19 137.14H823a137.17 137.17 0 0 0 137.19-137.17v-479A137.17 137.17 0 0 0 823 202.58z m-474.36-54.1A23.52 23.52 0 0 1 372.17 125h279.16a23.52 23.52 0 0 1 23.52 23.52v54.1h-326.2z m554.23 673.31a76.76 76.76 0 0 1-76.76 76.76h-628a76.76 76.76 0 0 1-76.76-76.76V336.67a76.76 76.76 0 0 1 76.76-76.76h628a76.76 76.76 0 0 1 76.76 76.76z" p-id="6913" fill="#8a919f"></path></svg></a>
+  </div>
+  <div class="article__wrapper">
+    <div class="article__wrapper__main">
+      <div class="article__wrapper_header">
+        <h1>迭代器模式</h1>
+        <span class="articles__home_time">NaN/NaN/NaN · YinHao</span>
+      </div>
+      <blockquote>
+<p>在不暴露对象内部结构的同时，可以顺序的访问聚合对象内部的元素。</p>
+</blockquote>
+<h3>迭代器</h3>
+<p>迭代器就是用来顺序的访问一个聚合对象内部的元素，可以简化遍历操作，</p>
+<p>焦点图的例子中，那些图片元素对象其实就是一组聚合对象，然后你要做的就是创建一个迭代器，专门用来访问这些图片数据的，比如前一张、后一张、第一张、最后一张，对每一张图片的处理，对当前图片处理等等。</p>
+<pre><code class="language-js">// 迭代器
+var Iterator = function (items, container) {
+  // 父容器
+  var container = (container &amp;&amp; document.getElementById(container)) || document,
+    // 获取元素
+    items = container.getElementsByTagName(items),
+    length = items.length,
+    index = 0;
+  // 缓存原生数组的 splice 方法
+  var splice = [].splice;
+  return {
+    //  获取第一个元素
+    first: function () {},
+    // 获取最后一个元素
+    second: function () {},
+    // 获取前一个元素
+    pre: function () {},
+    // 获取后一个元素
+    next: function () {},
+    // 获取某一个元素
+    get: function () {},
+    // 对每一个元素执行某一个方法
+    dealEach: function () {},
+    // 对某一个元素执行某一个方法
+    dealItem: function () {},
+    // 排他方式处理某一个元素
+    exclusive: function () {},
+  };
+};
+</code></pre>
+<h3>实现迭代器</h3>
+<pre><code class="language-js">// 获取第一个元素
+first: function() {
+  index = 0;
+  return items[index]
+},
+// 获取最后一个元素
+second: function() {
+  index = length - 1;
+  return items[index];
+},
+// 获取前一个元素
+pre: function() {
+  if(--index &gt; 0) {
+    return items[index]
+  } else {
+    index = 0;
+    return null
+  }
+},
+// 获取后一个元素
+next: function() {
+  if(++index &lt; length) {
+    return items[index]
+  } else {
+    index = length - 1;
+    return null;
+  }
+},
+// 获取某一个元素
+get: function(num) {
+  index = num &gt;= 0 ? num % length : num % length + length;
+  return items[index];
+},
+// 对每一个元素执行某一个方法
+dealEach: function (fn) {
+  var args = splice.call(arguments, 1);
+  for(var i = 0; i &lt; length; i++) {
+    fn.apply(items[i], args);
+  }
+},
+// 对某一个元素执行某一个方法
+dealItem: function (num, fn) {
+  fn.apply(this.get(num), splice.call(arguments, 2))
+},
+// 排他方式处理某一个元素
+exclusive: function (num, allFn, numFn) {
+  // 对所有元素执行回调函数
+  this.dealEach(allFn);
+  // 如果 num 为数组类型
+  if (Object.prototype.toString.call(num) === &quot;[object Array]&quot;) {
+    for(var i = 0, len = num.length; i &lt; len; i++ ) {
+      // 分别处理数组中的每一个元素
+      this.dealItem(num[i], numFn);
+    }
+  } else {
+    // 处理第 num 个元素
+    this.dealItem(num, numFn)
+  }
+},
+</code></pre>
+<h3>小试牛刀</h3>
+<pre><code class="language-js">var demo = new Iterator(&quot;li&quot;, &quot;container&quot;);
+console.log(demo.filst());
+console.log(demo.pre());
+console.log(demo.next());
+console.log(demo.get(2000));
+demo.dealEach(
+  function (text, color) {
+    this.innerHTML = text;
+    this.style.background = color;
+  },
+  &quot;test&quot;,
+  &quot;pink&quot;
+);
+// 排他思想处理第3与第4个元素
+demo.exclusive(
+  [2, 3],
+  function () {
+    this.innerHTML = &quot;被排除的&quot;;
+    this.style.background = &quot;green&quot;;
+  },
+  function () {
+    this.innerHTML = &quot;选中的&quot;;
+    this.style.background = &quot;red&quot;;
+  }
+);
+</code></pre>
+<h3>数组迭代器</h3>
+<p>依次对数组中的每一个元素遍历，并将该元素的索引与索引值传入回调函数中</p>
+<pre><code class="language-js">var eachArray = function (arr, fn) {
+  var i = 0,
+    len = arr.length;
+  for (; i &lt; len; i++) {
+    // 依次执行回调函数，回调函数中传入的参数第一个为索引，第二个为该索引对应的值
+    if (fn.call(arr[i], i, arr[i]) === false) {
+      break;
+    }
+  }
+};
+</code></pre>
+<h3>对象迭代器</h3>
+<pre><code class="language-js">var eachObject = function (obj, fn) {
+  for (var i in obj) {
+    if (fn.call(obj[i], i, obj[i]) === false) {
+      break;
+    }
+  }
+};
+</code></pre>
+<h3>试用迭代器</h3>
+<ul>
+<li>创建一个数组</li>
+</ul>
+<pre><code class="language-js">for(var arr = [], i = 0, i &lt; 5; arr[i++] = i);
+eachArray(arr, function(i, data) {
+  console.log(i, data)
+})
+/*
+  0 1
+  1 2
+  2 3
+  3 4
+  4 5
+*/
+</code></pre>
+<ul>
+<li>创建一个对象</li>
+</ul>
+<pre><code class="language-js">var obj = {
+  a: 23,
+  b: 56,
+  c: 67,
+};
+eachObject(obj, function (i, data) {
+  console.log(i, data);
+});
+/*
+  a 23
+  b 56
+  c 67
+*/
+</code></pre>
+<h3>同步变量迭代器</h3>
+<p>例如： 对象 A: <code>var A = {}</code>，获取 A 属性 b 下面的 c 属性，<code>var c = A.b.c</code> (这种直接的方式是不允许的，会报错)。正确的方式是：<code>var c = A &amp;&amp; A.b &amp;&amp; A.b.c</code>。</p>
+<p>通过迭代器我们可以减少编写这类校验代码，有如下一组数据：</p>
+<pre><code class="language-js">// 同步变量
+var A = {
+  common: {},
+  client: {
+    user: {
+      username: &quot;雨夜&quot;,
+      uid: &quot;123&quot;,
+    },
+  },
+  server: {},
+};
+</code></pre>
+<pre><code class="language-js">// 同步变量迭代取值器
+var AGetter = function (key) {
+  if (!A) return undefined;
+  var result = A;
+  key = key.split(&quot;.&quot;);
+  for (var i = 0, len = key.length; i &lt; len; i++) {
+    if (result[key[i]] !== undefined) {
+      result = result[key[i]];
+    } else {
+      return undefined;
+    }
+  }
+  return result;
+};
+console.log(AGetter(&quot;client.user.username&quot;)); // 雨夜
+console.log(AGetter(&quot;server.lang.local&quot;)); // undefined
+</code></pre>
+<p>有时候在交互中会修改或者增加一些同步变量属性数据，</p>
+<pre><code class="language-js">// 同步变量迭代取值器
+var ASetter = function (key, val) {
+  if (!A) return false;
+  var result = A;
+  key = key.split(&quot;.&quot;);
+  for (var i = 0, len = key.length; i &lt; len - 1; i++) {
+    if (result[key[i]] === undefined) {
+      result[key[i]] = {};
+    }
+    if (!(result[key[i]] instanceof Object)) {
+      throw new Error(&quot;A.&quot; + key.splice(0, i + 1).join(&quot;.&quot;) + &quot; is not Object&quot;);
+      return false;
+    }
+    result = result[key[i]];
+  }
+  return (result[key[i]] = val);
+};
+// 缓存添加体育新闻模块数据
+console.log(ASetter(&quot;client.user.username.sports&quot;), &quot;on&quot;);
+// Uncaught Error: A.client.user.username is not Object
+</code></pre>
+ 
+    </div>
+  </div>
+  <div class="article__wrapper_footer">
+    <a class="article__wrapper_footer-left " href="/articles/34.html"><svg t="1713708729970" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8437" width="48" height="48"><path d="M409.272947 512.57741l403.237243 403.237243a63.349415 63.349415 0 1 1-89.622481 89.622482L274.839224 557.324726a63.349415 63.349415 0 0 1 0-89.494632L722.951633 19.717685a63.349415 63.349415 0 1 1 89.494633 89.622482L409.336872 512.57741z" p-id="8438" fill="#8a8a8a"></path></svg></a>
+    <a class="article__wrapper_footer-right " href="/articles/36.html"><svg t="1713708697355" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8093" width="48" height="48"><path d="M855.123 517.004c0 8.245-3.167 15.51-9.503 21.823L402.999 981.47c-6.336 6.336-13.625 9.477-21.869 9.477s-15.51-3.142-21.845-9.477L311.8 933.96c-6.336-6.336-9.502-13.6-9.502-21.845 0-8.222 3.167-15.51 9.502-21.845l373.29-373.29-373.293-373.267c-6.336-6.336-9.502-13.6-9.502-21.845s3.167-15.533 9.503-21.869l47.484-47.484c6.336-6.336 13.6-9.502 21.845-9.502s15.533 3.167 21.869 9.503l442.621 442.622c6.334 6.334 9.503 13.625 9.503 21.869z" fill="#8a8a8a" p-id="8094"></path></svg></a>
+  </div>
+  <a class="article__wrapper_index" href="/articles/"><svg t="1713708857338" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="9656" width="48" height="48"><path d="M549.61981 133.022476l319.683047 203.605334A70.851048 70.851048 0 0 1 902.095238 396.361143v434.883047A70.89981 70.89981 0 0 1 831.146667 902.095238h-282.819048l0.024381-218.112h-71.826286v218.087619L192.853333 902.095238A70.89981 70.89981 0 0 1 121.904762 831.24419V390.241524c0-24.527238 12.678095-47.299048 33.54819-60.220953l318.659048-197.485714a70.972952 70.972952 0 0 1 75.50781 0.487619zM828.952381 828.952381V397.214476L511.488 195.047619 195.047619 391.119238V828.952381h211.309714v-216.551619h212.187429v216.527238L828.952381 828.952381z" p-id="9657" fill="#707070"></path></svg></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
+  <script src="../assets/js/articles-detail.js"></script>
+  <script>
+    hljs.highlightAll();
+  </script>
+</body>
+</html>
+    
