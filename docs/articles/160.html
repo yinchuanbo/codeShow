@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>滚动插件 BetterScroll, 增强用户交互体验</title>
+    <meta charset="utf-8">
+    <meta name="description" content="This is a page">
+    <meta name="keywords" content="page, sample">
+    <meta name="author" content="None">
+    <link rel="icon" sizes="any" mask href="../assets/images/ico4.svg" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <link rel="stylesheet" href="../assets/css/articles.css">
+</head>
+<body>
+  <!--<div class="article__wrapper_left">
+    <div class="article__wrapper_left-mulu">目录</div>
+    <ul class="articles__list"><li class="">
+          <a href="/articles/161.html">
+            一个聚合了所有中国独立开发者项目的资源
+          </a>
+        </li><li class="">
+          <a href="/articles/162.html">
+            前端接口防止重复请求实现方案
+          </a>
+        </li><li class="">
+          <a href="/articles/163.html">
+            JS的哪些新特性，你都用过么？
+          </a>
+        </li><li class="">
+          <a href="/articles/164.html">
+            8个小而美的前端库
+          </a>
+        </li></ul>
+  </div>-->
+  <div class="article__wrapper_sidebar">
+    <a href="/articles/"><svg t="1714001835347" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4298" width="48" height="48"><path d="M147.904 304.128l301.866667-179.541333a128 128 0 0 1 131.712 0.512l295.466666 178.88A128 128 0 0 1 938.666667 413.482667V810.666667a128 128 0 0 1-128 128H213.333333a128 128 0 0 1-128-128V414.144a128 128 0 0 1 62.570667-110.016z m43.626667 73.344A42.666667 42.666667 0 0 0 170.666667 414.144V810.666667a42.666667 42.666667 0 0 0 42.666666 42.666666h597.333334a42.666667 42.666667 0 0 0 42.666666-42.666666V413.482667a42.666667 42.666667 0 0 0-20.565333-36.501334l-295.466667-178.88a42.666667 42.666667 0 0 0-43.925333-0.170666l-301.866667 179.541333z" fill="currentColor" p-id="4299"></path><path d="M405.333333 469.333333h213.333334a42.666667 42.666667 0 1 1 0 85.333334H405.333333a42.666667 42.666667 0 1 1 0-85.333334z m0 85.333334a42.666667 42.666667 0 1 0 0-85.333334h213.333334a42.666667 42.666667 0 1 0 0 85.333334H405.333333z" fill="currentColor" p-id="4300"></path></svg></a>
+    <a href="/tools/"><svg t="1714002003458" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6911" width="48" height="48"><path d="M817.87 556.31h-63.58v-66.24A42.27 42.27 0 0 0 712 447.8h-84.81a42.27 42.27 0 0 0-42.27 42.27v66.24H436.57v-66.24a42.27 42.27 0 0 0-42.27-42.27h-84.83a42.27 42.27 0 0 0-42.27 42.27v66.24h-61.83A22.39 22.39 0 0 0 183 578.7a22.39 22.39 0 0 0 22.39 22.39h61.81v65.55a42.27 42.27 0 0 0 42.27 42.27h84.83a42.27 42.27 0 0 0 42.27-42.27v-65.55h148.36v65.55a42.27 42.27 0 0 0 42.27 42.27H712a42.27 42.27 0 0 0 42.27-42.27v-65.55h63.58a22.39 22.39 0 0 0 22.39-22.39 22.39 22.39 0 0 0-22.37-22.39z m-438.64 95.26h-54.69V505.14h54.69z m317.72 0h-54.69V505.14H697z" p-id="6912" fill="currentColor"></path><path d="M823 202.58h-90.81v-63.09a71.88 71.88 0 0 0-71.88-71.88H363.19a71.88 71.88 0 0 0-71.88 71.88v63.08h-90.12A137.17 137.17 0 0 0 64 339.75v479a137.17 137.17 0 0 0 137.19 137.14H823a137.17 137.17 0 0 0 137.19-137.17v-479A137.17 137.17 0 0 0 823 202.58z m-474.36-54.1A23.52 23.52 0 0 1 372.17 125h279.16a23.52 23.52 0 0 1 23.52 23.52v54.1h-326.2z m554.23 673.31a76.76 76.76 0 0 1-76.76 76.76h-628a76.76 76.76 0 0 1-76.76-76.76V336.67a76.76 76.76 0 0 1 76.76-76.76h628a76.76 76.76 0 0 1 76.76 76.76z" p-id="6913" fill="currentColor"></path></svg></a>
+  </div>
+  <div class="article__wrapper">
+    <div class="article__wrapper__main">
+      <div class="article__wrapper_header">
+        <h1>滚动插件 BetterScroll, 增强用户交互体验</h1>
+        <span class="articles__home_time">2024/04/29 · YinHao</span>
+      </div>
+      <p>今天推荐一个拖拽滚动万分丝滑的插件库 BetterScroll，支持 VUE 系列和 react 系列，当然还有 JavaScript 原生开发。文档有中文版和英文版，做得很认真的插件。</p>
+<h2>BetterScroll 介绍</h2>
+<p>BetterScroll 是一个专为解决移动端（已支持 PC）滚动情况而设计的插件。它的核心灵感来自于 scroll，并对其进行了改良。BetterScroll 不仅提供了丰富的 API 来满足各种滚动场景的需求，同时它的滚动效果很流畅，给用户带来了良好的使用体验。同时，BetterScroll 最新版 2.0 是使用 typescript 技术升级的，支持 vue 系列和 react 系列，当然也兼容原生开发了。安装配置文档资源在下文获取。文章篇幅有限，只是获取了部分功能截图，更多功能都在官方文档。</p>
+<p><img src="../assets/images/articles/160/01.png" alt=""></p>
+<h2>应用场景分析</h2>
+<ol>
+<li>
+<p>垂直滚动和水平滚动：BetterScroll 支持在垂直方向或水平方向上滚动，或者同时在两个方向上滚动；</p>
+</li>
+<li>
+<p>滚动列表：这是最常见的滚动场景。比如长页面滚动、下拉加载更多等场景，都可以用 BetterScroll 来实现；</p>
+</li>
+<li>
+<p>轮播图：有时我们希望在一个轮播图中实现用户滑动切换。BetterScroll 提供了滚动结束事件和滚动至界限事件等 API，利用这些 API 可以很容易地实现这个功能；</p>
+</li>
+<li>
+<p>选择器：在移动端，我们经常使用选择器来选择时间或者其他选项。BetterScroll 的定制化选项使得实现自定义的滚动选择器变得非常简单；</p>
+</li>
+<li>
+<p>侧边栏：在一些情况下，我们希望有一个可滚动的侧边栏与主内容区域联动。使用 BetterScroll 的 scrollToElement 方法可以轻松实现这样的效果；</p>
+</li>
+<li>
+<p>下拉刷新和上拉加载：BetterScroll 提供了一套完整的下拉刷新和上拉加载解决方案。只需要简单地监听 pullingDown 和 pullingUp 事件，并调用相应的 finishPullDown 和 finishPullUp 方法即可。</p>
+</li>
+<li>
+<p>横向滚动：如果你需要一个横向滚动的列表或者菜单，BetterScroll 也可以非常方便地实现。</p>
+</li>
+</ol>
+<p><img src="../assets/images/articles/160/01.gif" alt=""></p>
+<h2>扩展灵活</h2>
+<p>提供插件机制，便于对基础滚动进行功能扩展，目前支持上拉加载、下拉刷新、Picker、鼠标滚轮、放大缩小、移动缩放、轮播图、滚动视觉差，放大镜等等能力。有了插件功能，就能满足滚动需求的方方面面，以下插件是根据滚动需求来下载，并不是全部都要下载，避免浪费内存。</p>
+<p>地址：https://better-scroll.github.io/docs/zh-CN/plugins/</p>
+<p><img src="../assets/images/articles/160/02.png" alt=""></p>
+<h2>获取资源</h2>
+<table>
+<thead>
+<tr>
+<th>网站</th>
+<th>网址</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GitHub</td>
+<td>https://github.com/ustbhuangyi/better-scroll</td>
+</tr>
+<tr>
+<td>官方</td>
+<td>https://better-scroll.github.io/docs/zh-CN/</td>
+</tr>
+<tr>
+<td>插件地址</td>
+<td>https://better-scroll.github.io/docs/zh-CN/plugins/</td>
+</tr>
+<tr>
+<td>案例演示</td>
+<td>https://better-scroll.github.io/examples/#/</td>
+</tr>
+</tbody>
+</table>
+<p><img src="../assets/images/articles/160/02.gif" alt=""></p>
+<p><img src="../assets/images/articles/160/03.gif" alt=""></p>
+<p><img src="../assets/images/articles/160/04.gif" alt=""></p>
+<p><img src="../assets/images/articles/160/05.gif" alt=""></p>
+<p><img src="../assets/images/articles/160/06.gif" alt=""></p>
+<p><img src="../assets/images/articles/160/07.gif" alt=""></p>
+<h2>总结</h2>
+<p>总的来说，BetterScroll 是一个非常实用和强大的滚动插件，它为移动端的滚动提供了很多便利，如果你在开发移动端页面并且需要一个可以自由定制的滚动效果，BetterScroll 会是一个非常好的选择。</p>
+ 
+    </div>
+  </div>
+  <div class="article__wrapper_footer">
+    <a class="article__wrapper_footer-left " href="/articles/159.html"><svg t="1713708729970" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8437" width="48" height="48"><path d="M409.272947 512.57741l403.237243 403.237243a63.349415 63.349415 0 1 1-89.622481 89.622482L274.839224 557.324726a63.349415 63.349415 0 0 1 0-89.494632L722.951633 19.717685a63.349415 63.349415 0 1 1 89.494633 89.622482L409.336872 512.57741z" p-id="8438" fill="currentColor"></path></svg></a>
+    <a class="article__wrapper_footer-right " href="/articles/161.html"><svg t="1713708697355" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8093" width="48" height="48"><path d="M855.123 517.004c0 8.245-3.167 15.51-9.503 21.823L402.999 981.47c-6.336 6.336-13.625 9.477-21.869 9.477s-15.51-3.142-21.845-9.477L311.8 933.96c-6.336-6.336-9.502-13.6-9.502-21.845 0-8.222 3.167-15.51 9.502-21.845l373.29-373.29-373.293-373.267c-6.336-6.336-9.502-13.6-9.502-21.845s3.167-15.533 9.503-21.869l47.484-47.484c6.336-6.336 13.6-9.502 21.845-9.502s15.533 3.167 21.869 9.503l442.621 442.622c6.334 6.334 9.503 13.625 9.503 21.869z" fill="currentColor" p-id="8094"></path></svg></a>
+  </div>
+  <a class="article__wrapper_index" href="/articles/"><svg t="1713708857338" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="9656" width="48" height="48"><path d="M549.61981 133.022476l319.683047 203.605334A70.851048 70.851048 0 0 1 902.095238 396.361143v434.883047A70.89981 70.89981 0 0 1 831.146667 902.095238h-282.819048l0.024381-218.112h-71.826286v218.087619L192.853333 902.095238A70.89981 70.89981 0 0 1 121.904762 831.24419V390.241524c0-24.527238 12.678095-47.299048 33.54819-60.220953l318.659048-197.485714a70.972952 70.972952 0 0 1 75.50781 0.487619zM828.952381 828.952381V397.214476L511.488 195.047619 195.047619 391.119238V828.952381h211.309714v-216.551619h212.187429v216.527238L828.952381 828.952381z" p-id="9657" fill="#707070"></path></svg></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
+  <script src="../assets/js/articles-detail.js"></script>
+  <script>
+    hljs.highlightAll();
+  </script>
+</body>
+</html>
+    

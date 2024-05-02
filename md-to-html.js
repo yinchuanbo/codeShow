@@ -2,12 +2,24 @@ const path = require("path");
 const fs = require("fs-extra");
 const ejs = require("ejs");
 const marked = require("marked");
-const showNum = 10;
 const pages = "./pages";
 const pageTemplate = require("./template-article-detail");
 const outputPath = "./docs/articles";
 const pagesMetaPath = "./fileConfig";
 const pagesMeta = {};
+
+// 创建一个新的 marked 渲染器
+const renderer = new marked.Renderer();
+
+// 自定义渲染器来处理 iframe 标签
+renderer.html = function (html) {
+  // 如果是 iframe 标签，直接返回，保持原样
+  if (html.slice(0, 6) === "<iframe") {
+    return html;
+  }
+  // 其他情况使用默认渲染方式
+  return marked.Renderer.prototype.html.call(this, html);
+};
 
 // 1.清空dist
 // for (var file of fs.readdirSync(outputPath)) {
@@ -23,8 +35,16 @@ for (var pageMeta of fs.readdirSync(pagesMetaPath)) {
   pagesMeta[pageMeta] = content;
 }
 
-const allPages = fs.readdirSync(pages);
+let allPages = fs.readdirSync(pages);
 const allLens = Object.keys(allPages).length;
+
+allPages.sort((a, b) => {
+  // 提取文件名中的数字部分并转换为整数
+  const numA = parseInt(a.match(/\d+/)[0]);
+  const numB = parseInt(b.match(/\d+/)[0]);
+  // 数字比较
+  return numA - numB;
+});
 
 function getHTML(name = "") {
   let curI = 0;
@@ -109,7 +129,7 @@ for (var page of allPages) {
   var pageName = page.slice(0, page.lastIndexOf("."));
   var metaData = JSON.parse(pagesMeta["index.json"]);
   var pageContent = fs.readFileSync(path.join(pages, page)).toString();
-  const tokens = marked.lexer(pageContent);
+  const tokens = marked.lexer(pageContent, { renderer: renderer });
   let h2Content = "";
   tokens.forEach((token) => {
     if (token.type === "heading") {

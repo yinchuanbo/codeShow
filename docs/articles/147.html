@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>js-pytorch：开启前端+AI新世界</title>
+    <meta charset="utf-8">
+    <meta name="description" content="This is a page">
+    <meta name="keywords" content="page, sample">
+    <meta name="author" content="None">
+    <link rel="icon" sizes="any" mask href="../assets/images/ico4.svg" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <link rel="stylesheet" href="../assets/css/articles.css">
+</head>
+<body>
+  <!--<div class="article__wrapper_left">
+    <div class="article__wrapper_left-mulu">目录</div>
+    <ul class="articles__list"><li class="">
+          <a href="/articles/148.html">
+            根据已有视频生成指定样式视频
+          </a>
+        </li><li class="">
+          <a href="/articles/149.html">
+            视频实时录制，并设置镜像翻转及圆角，下载视频样式同设置
+          </a>
+        </li><li class="">
+          <a href="/articles/150.html">
+            视频录制，音频实时更新且视频画面固定唯一
+          </a>
+        </li><li class="">
+          <a href="/articles/151.html">
+            IOS Window.Open 弹窗被阻止解决方案
+          </a>
+        </li><li class="">
+          <a href="/articles/152.html">
+            浏览器保存密码后自动填充问题
+          </a>
+        </li><li class="">
+          <a href="/articles/153.html">
+            前端工具库 Radash，取代 Lodash
+          </a>
+        </li><li class="">
+          <a href="/articles/154.html">
+            如何实现页面刷新后不定位到之前的滚动位置？
+          </a>
+        </li><li class="">
+          <a href="/articles/155.html">
+            三种 async/await 错误捕获方式
+          </a>
+        </li><li class="">
+          <a href="/articles/156.html">
+            如何使用 JavaScript 阻止屏幕进入睡眠状态
+          </a>
+        </li><li class="">
+          <a href="/articles/157.html">
+            分享几个前端中好玩且有用的开源工具
+          </a>
+        </li></ul>
+  </div>-->
+  <div class="article__wrapper_sidebar">
+    <a href="/articles/"><svg t="1714001835347" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4298" width="48" height="48"><path d="M147.904 304.128l301.866667-179.541333a128 128 0 0 1 131.712 0.512l295.466666 178.88A128 128 0 0 1 938.666667 413.482667V810.666667a128 128 0 0 1-128 128H213.333333a128 128 0 0 1-128-128V414.144a128 128 0 0 1 62.570667-110.016z m43.626667 73.344A42.666667 42.666667 0 0 0 170.666667 414.144V810.666667a42.666667 42.666667 0 0 0 42.666666 42.666666h597.333334a42.666667 42.666667 0 0 0 42.666666-42.666666V413.482667a42.666667 42.666667 0 0 0-20.565333-36.501334l-295.466667-178.88a42.666667 42.666667 0 0 0-43.925333-0.170666l-301.866667 179.541333z" fill="currentColor" p-id="4299"></path><path d="M405.333333 469.333333h213.333334a42.666667 42.666667 0 1 1 0 85.333334H405.333333a42.666667 42.666667 0 1 1 0-85.333334z m0 85.333334a42.666667 42.666667 0 1 0 0-85.333334h213.333334a42.666667 42.666667 0 1 0 0 85.333334H405.333333z" fill="currentColor" p-id="4300"></path></svg></a>
+    <a href="/tools/"><svg t="1714002003458" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6911" width="48" height="48"><path d="M817.87 556.31h-63.58v-66.24A42.27 42.27 0 0 0 712 447.8h-84.81a42.27 42.27 0 0 0-42.27 42.27v66.24H436.57v-66.24a42.27 42.27 0 0 0-42.27-42.27h-84.83a42.27 42.27 0 0 0-42.27 42.27v66.24h-61.83A22.39 22.39 0 0 0 183 578.7a22.39 22.39 0 0 0 22.39 22.39h61.81v65.55a42.27 42.27 0 0 0 42.27 42.27h84.83a42.27 42.27 0 0 0 42.27-42.27v-65.55h148.36v65.55a42.27 42.27 0 0 0 42.27 42.27H712a42.27 42.27 0 0 0 42.27-42.27v-65.55h63.58a22.39 22.39 0 0 0 22.39-22.39 22.39 22.39 0 0 0-22.37-22.39z m-438.64 95.26h-54.69V505.14h54.69z m317.72 0h-54.69V505.14H697z" p-id="6912" fill="currentColor"></path><path d="M823 202.58h-90.81v-63.09a71.88 71.88 0 0 0-71.88-71.88H363.19a71.88 71.88 0 0 0-71.88 71.88v63.08h-90.12A137.17 137.17 0 0 0 64 339.75v479a137.17 137.17 0 0 0 137.19 137.14H823a137.17 137.17 0 0 0 137.19-137.17v-479A137.17 137.17 0 0 0 823 202.58z m-474.36-54.1A23.52 23.52 0 0 1 372.17 125h279.16a23.52 23.52 0 0 1 23.52 23.52v54.1h-326.2z m554.23 673.31a76.76 76.76 0 0 1-76.76 76.76h-628a76.76 76.76 0 0 1-76.76-76.76V336.67a76.76 76.76 0 0 1 76.76-76.76h628a76.76 76.76 0 0 1 76.76 76.76z" p-id="6913" fill="currentColor"></path></svg></a>
+  </div>
+  <div class="article__wrapper">
+    <div class="article__wrapper__main">
+      <div class="article__wrapper_header">
+        <h1>js-pytorch：开启前端+AI新世界</h1>
+        <span class="articles__home_time">2024/04/22 · YinHao</span>
+      </div>
+      <p>目前人工智能领域中，<strong>深度学习</strong>技术正以惊人的速度发展。<code>PyTorch</code> 就是其中一个备受关注的深度学习框架。而 <code>js-pytorch</code> 将 <code>PyTorch</code> 的强大功能带入了 <code>JavaScript</code> 世界。</p>
+<p><code>js-pytorch</code> 是一个将 <code>PyTorch</code> 模型转换为 <code>JavaScript</code> 格式的项目，使其能够在浏览器中运行。这意味着你可以在网页上直接运行 <code>PyTorch</code> 模型，无需服务器端的支持。</p>
+<p>github 地址：<code>https://github.com/eduardoleao052/js-pytorch</code></p>
+<h2>使用场景</h2>
+<p><code>js-pytorch</code> 为网页上的实时推理和模型部署提供了便利。以下是我总结的一些使用场景：</p>
+<p><img src="../assets/images/articles/147/01.awebp" alt=""></p>
+<p><strong>1. 网页中的图像识别</strong>：我们可以使用预训练的图像分类模型，让用户上传图片并在浏览器中实时获取预测结果。</p>
+<p><img src="../assets/images/articles/147/02.awebp" alt=""></p>
+<p><strong>2. 自然语言处理</strong>：将语言模型集成到网页中，实现实时的文本生成、问答系统等。</p>
+<p><img src="../assets/images/articles/147/03.awebp" alt=""></p>
+<p><strong>3. 在线预测和推荐系统</strong>：根据用户的行为和数据，进行实时的个性化推荐。</p>
+<h2>特点</h2>
+<ol>
+<li>
+<p><strong>跨平台支持</strong>：无论是在桌面浏览器还是移动设备上，js-pytorch 都能运行。</p>
+</li>
+<li>
+<p><strong>模型压缩和优化</strong>：它支持将已训练好的 PyTorch 模型转换为紧凑的 JavaScript 代码，并进行优化以提高性能。</p>
+</li>
+<li>
+<p><strong>简单易用</strong>：js-pytorch 提供了简洁的 API 和示例，使开发者能够轻松地将 PyTorch 模型集成到 JavaScript 项目中。</p>
+</li>
+</ol>
+<h2>应用案例</h2>
+<p>以下是一些使用 js-pytorch 的应用案例：</p>
+<ol>
+<li><a href="https://github.com/eduardoleao052/Style-Transfer-in-the-Browser">Style Transfer in the Browser</a>：</li>
+</ol>
+<p><img src="../assets/images/articles/147/04.awebp" alt=""></p>
+<p>这个项目展示了如何在浏览器中实时进行风格迁移。</p>
+<ol start="2">
+<li><a href="https://github.com/eduardoleao052/Real-time_Object_Detection_with_YOLO_v5">Real-time Object Detection with YOLO v5</a>：</li>
+</ol>
+<p><img src="../assets/images/articles/147/05.awebp" alt=""></p>
+<p>它演示了在浏览器中使用 YOLO v5 进行实时目标检测。</p>
+<h2>基本用法</h2>
+<p>根据文档教程，在 <code>JavaScript</code> 项目中安装和使用 <code>js-pytorch</code> 的步骤如下：</p>
+<ol>
+<li>安装 - 可以使用 npm 命令行工具来安装 js-pytorch，执行以下命令：</li>
+</ol>
+<pre><code class="language-sh">npm install js-pytorch
+</code></pre>
+<ol start="2">
+<li>使用 - 在安装完成后，可以在 <code>JavaScript</code> 代码中引入 <code>js-pytorch</code> 库，并使用其中的函数和类。以下是一个简单的示例：</li>
+</ol>
+<pre><code class="language-js">const { torch } = require(&quot;js-pytorch&quot;);
+
+// 创建一个随机张量
+let x = torch.randn([8, 4, 5]);
+
+// 创建一个全连接层
+let fc = new torch.nn.Linear(5, 4);
+
+// 前向传播
+let y = fc.forward(x);
+
+console.log(y);
+</code></pre>
+<p>在这个示例中，我们首先引入了 <code>js-pytorch</code> 库，并使用 <code>torch</code> 来创建一个随机张量 <code>x</code> 和一个全连接层 <code>fc</code>。然后，我们使用 <code>fc</code> 的 <code>forward</code> 方法来执行前向传播，并将结果存储在 <code>y</code> 中。最后，我们打印出 <code>y</code> 的值。</p>
+<p>请注意，<code>js-pytorch</code> 库需要与 <code>Node.js</code> 环境配合使用。如果大家还没有安装 <code>Node.js</code>，可以在 <code>Node.js</code> 的官方网站上下载并安装。</p>
+<p><code>torch.randn([8, 4, 5])</code> 是一个在 PyTorch 深度学习框架中用于生成随机张量的函数调用。它的具体解释如下：</p>
+<ol>
+<li>
+<p><code>torch</code>：这是 PyTorch 库的名称，用于进行深度学习和张量计算。</p>
+</li>
+<li>
+<p><code>randn()</code>：这是 PyTorch 中的一个函数，用于生成服从正态分布（均值为 0，标准差为 1）的随机数。</p>
+</li>
+<li>
+<p><code>[8, 4, 5]</code>：这是一个张量的形状表示，指定了生成随机张量的维度。</p>
+<ul>
+<li>第一个维度为 8，表示张量在第一个维度上有 8 个元素。</li>
+<li>第二个维度为 4，表示张量在第二个维度上有 4 个元素。</li>
+<li>第三个维度为 5，表示张量在第三个维度上有 5 个元素。</li>
+</ul>
+</li>
+</ol>
+<p>综上所述，<code>torch.randn([8, 4, 5])</code> 会生成一个形状为 [8, 4, 5] 的随机张量，其中每个元素都服从正态分布，均值为 0，标准差为 1。这个随机张量可以用于深度学习模型的初始化、随机权重生成等操作。每次调用该函数都会得到一个新的随机张量。</p>
+ 
+    </div>
+  </div>
+  <div class="article__wrapper_footer">
+    <a class="article__wrapper_footer-left " href="/articles/146.html"><svg t="1713708729970" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8437" width="48" height="48"><path d="M409.272947 512.57741l403.237243 403.237243a63.349415 63.349415 0 1 1-89.622481 89.622482L274.839224 557.324726a63.349415 63.349415 0 0 1 0-89.494632L722.951633 19.717685a63.349415 63.349415 0 1 1 89.494633 89.622482L409.336872 512.57741z" p-id="8438" fill="currentColor"></path></svg></a>
+    <a class="article__wrapper_footer-right " href="/articles/148.html"><svg t="1713708697355" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8093" width="48" height="48"><path d="M855.123 517.004c0 8.245-3.167 15.51-9.503 21.823L402.999 981.47c-6.336 6.336-13.625 9.477-21.869 9.477s-15.51-3.142-21.845-9.477L311.8 933.96c-6.336-6.336-9.502-13.6-9.502-21.845 0-8.222 3.167-15.51 9.502-21.845l373.29-373.29-373.293-373.267c-6.336-6.336-9.502-13.6-9.502-21.845s3.167-15.533 9.503-21.869l47.484-47.484c6.336-6.336 13.6-9.502 21.845-9.502s15.533 3.167 21.869 9.503l442.621 442.622c6.334 6.334 9.503 13.625 9.503 21.869z" fill="currentColor" p-id="8094"></path></svg></a>
+  </div>
+  <a class="article__wrapper_index" href="/articles/"><svg t="1713708857338" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="9656" width="48" height="48"><path d="M549.61981 133.022476l319.683047 203.605334A70.851048 70.851048 0 0 1 902.095238 396.361143v434.883047A70.89981 70.89981 0 0 1 831.146667 902.095238h-282.819048l0.024381-218.112h-71.826286v218.087619L192.853333 902.095238A70.89981 70.89981 0 0 1 121.904762 831.24419V390.241524c0-24.527238 12.678095-47.299048 33.54819-60.220953l318.659048-197.485714a70.972952 70.972952 0 0 1 75.50781 0.487619zM828.952381 828.952381V397.214476L511.488 195.047619 195.047619 391.119238V828.952381h211.309714v-216.551619h212.187429v216.527238L828.952381 828.952381z" p-id="9657" fill="#707070"></path></svg></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
+  <script src="../assets/js/articles-detail.js"></script>
+  <script>
+    hljs.highlightAll();
+  </script>
+</body>
+</html>
+    

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Git Worktree 让你无需切换分支</title>
+    <meta charset="utf-8">
+    <meta name="description" content="This is a page">
+    <meta name="keywords" content="page, sample">
+    <meta name="author" content="None">
+    <link rel="icon" sizes="any" mask href="../assets/images/ico4.svg" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <link rel="stylesheet" href="../assets/css/articles.css">
+</head>
+<body>
+  <!--<div class="article__wrapper_left">
+    <div class="article__wrapper_left-mulu">目录</div>
+    <ul class="articles__list"><li class="">
+          <a href="/articles/144.html">
+            git worktree
+          </a>
+        </li><li class="">
+          <a href="/articles/145.html">
+            git cherry-pick
+          </a>
+        </li><li class="">
+          <a href="/articles/146.html">
+            Git 生成 patch 和应用 patch
+          </a>
+        </li><li class="">
+          <a href="/articles/147.html">
+            js-pytorch：开启前端+AI新世界
+          </a>
+        </li><li class="">
+          <a href="/articles/148.html">
+            根据已有视频生成指定样式视频
+          </a>
+        </li><li class="">
+          <a href="/articles/149.html">
+            视频实时录制，并设置镜像翻转及圆角，下载视频样式同设置
+          </a>
+        </li><li class="">
+          <a href="/articles/150.html">
+            视频录制，音频实时更新且视频画面固定唯一
+          </a>
+        </li><li class="">
+          <a href="/articles/151.html">
+            IOS Window.Open 弹窗被阻止解决方案
+          </a>
+        </li><li class="">
+          <a href="/articles/152.html">
+            浏览器保存密码后自动填充问题
+          </a>
+        </li><li class="">
+          <a href="/articles/153.html">
+            前端工具库 Radash，取代 Lodash
+          </a>
+        </li></ul>
+  </div>-->
+  <div class="article__wrapper_sidebar">
+    <a href="/articles/"><svg t="1714001835347" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4298" width="48" height="48"><path d="M147.904 304.128l301.866667-179.541333a128 128 0 0 1 131.712 0.512l295.466666 178.88A128 128 0 0 1 938.666667 413.482667V810.666667a128 128 0 0 1-128 128H213.333333a128 128 0 0 1-128-128V414.144a128 128 0 0 1 62.570667-110.016z m43.626667 73.344A42.666667 42.666667 0 0 0 170.666667 414.144V810.666667a42.666667 42.666667 0 0 0 42.666666 42.666666h597.333334a42.666667 42.666667 0 0 0 42.666666-42.666666V413.482667a42.666667 42.666667 0 0 0-20.565333-36.501334l-295.466667-178.88a42.666667 42.666667 0 0 0-43.925333-0.170666l-301.866667 179.541333z" fill="currentColor" p-id="4299"></path><path d="M405.333333 469.333333h213.333334a42.666667 42.666667 0 1 1 0 85.333334H405.333333a42.666667 42.666667 0 1 1 0-85.333334z m0 85.333334a42.666667 42.666667 0 1 0 0-85.333334h213.333334a42.666667 42.666667 0 1 0 0 85.333334H405.333333z" fill="currentColor" p-id="4300"></path></svg></a>
+    <a href="/tools/"><svg t="1714002003458" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6911" width="48" height="48"><path d="M817.87 556.31h-63.58v-66.24A42.27 42.27 0 0 0 712 447.8h-84.81a42.27 42.27 0 0 0-42.27 42.27v66.24H436.57v-66.24a42.27 42.27 0 0 0-42.27-42.27h-84.83a42.27 42.27 0 0 0-42.27 42.27v66.24h-61.83A22.39 22.39 0 0 0 183 578.7a22.39 22.39 0 0 0 22.39 22.39h61.81v65.55a42.27 42.27 0 0 0 42.27 42.27h84.83a42.27 42.27 0 0 0 42.27-42.27v-65.55h148.36v65.55a42.27 42.27 0 0 0 42.27 42.27H712a42.27 42.27 0 0 0 42.27-42.27v-65.55h63.58a22.39 22.39 0 0 0 22.39-22.39 22.39 22.39 0 0 0-22.37-22.39z m-438.64 95.26h-54.69V505.14h54.69z m317.72 0h-54.69V505.14H697z" p-id="6912" fill="currentColor"></path><path d="M823 202.58h-90.81v-63.09a71.88 71.88 0 0 0-71.88-71.88H363.19a71.88 71.88 0 0 0-71.88 71.88v63.08h-90.12A137.17 137.17 0 0 0 64 339.75v479a137.17 137.17 0 0 0 137.19 137.14H823a137.17 137.17 0 0 0 137.19-137.17v-479A137.17 137.17 0 0 0 823 202.58z m-474.36-54.1A23.52 23.52 0 0 1 372.17 125h279.16a23.52 23.52 0 0 1 23.52 23.52v54.1h-326.2z m554.23 673.31a76.76 76.76 0 0 1-76.76 76.76h-628a76.76 76.76 0 0 1-76.76-76.76V336.67a76.76 76.76 0 0 1 76.76-76.76h628a76.76 76.76 0 0 1 76.76 76.76z" p-id="6913" fill="currentColor"></path></svg></a>
+  </div>
+  <div class="article__wrapper">
+    <div class="article__wrapper__main">
+      <div class="article__wrapper_header">
+        <h1>Git Worktree 让你无需切换分支</h1>
+        <span class="articles__home_time">2024/04/17 · YinHao</span>
+      </div>
+      <p>我们假设一个场景：</p>
+<p>你正在某个分支中处理一个名为 “feature” 的功能，突然之间需要在主分支（master）中修复一个关键性 bug。</p>
+<p>如果没有使用 <code>git worktree</code>，那么必须如下：</p>
+<ul>
+<li>
+<p>在功能分支（feature）中存储或提交更改</p>
+</li>
+<li>
+<p>切换到主分支（master），在主分支中修复错误，提交修复</p>
+</li>
+<li>
+<p>切换回功能分支，然后取消存储或检出更改</p>
+</li>
+</ul>
+<p><strong>特别是如果需要多次来回切换，这就显得很麻烦了。</strong></p>
+<p>但是，如果使用了 <code>git worktree</code>，那么整个操作的流程就会变得更加简单，</p>
+<p><strong>你可以直接拥有 feature 和 master 两个分支的单独工作目录，并且可以分别在不同目录之间完成开发工作，不再需要进行来回切换。</strong></p>
+<h3>使用 git worktree 完成修复工作</h3>
+<p>假设你目前 <code>feature</code> 分支上，正在处理项目的开发工作，突然间，需要在主分支上修复一个错误；</p>
+<p>那么此时可以使用以下命令为主分支创建一个 <strong>新的工作数（worktree）</strong></p>
+<pre><code class="language-sh">git worktree add ../bugfix master
+</code></pre>
+<p>该命令在当前存储库的相对路径 <code>../bugfix</code> 处创建一个新目录，并在该目录中签出主分支。现在，你可以转到 bugfix 目录并修复 bug:</p>
+<pre><code class="language-sh">cd ../bugfix
+</code></pre>
+<p>你在这里进行的 <strong>任何更改都将在主分支上进行，并不会影响其他分支</strong>。一旦完成了 bug 修复，则可以直接提交你的更改：</p>
+<pre><code class="language-sh">git commit -am &quot;修复 bug&quot;
+</code></pre>
+<p>现在，可以返回到原工作目录并继续在原分支（feature）上完成之前的工作：</p>
+<pre><code class="language-bash">cd ../featrue
+</code></pre>
+<h3>git worktree 带来的其他好处</h3>
+<ol>
+<li>
+<p>代码审查：如果你正在审查多个分支的代码，可以在单独的 worktree 中检出每个分支。这样可以快速的在它们之间切换，而无需每次都执行检出的操作。</p>
+</li>
+<li>
+<p>持续集成/部署：如果你有一个需要同时处理同一个存储库的多个分支的 CI/CD，git worktree 可以让每个分支都在自己的 worktree 中，避免冲突。</p>
+</li>
+<li>
+<p>长时间运行的任务：如果你有一项长时间运行的任务，你希望在一个分支上运行该任务的同时继续在另一个分支上工作，可以在一个目录中运行任务另一个目录中工作。</p>
+</li>
+</ol>
+ 
+    </div>
+  </div>
+  <div class="article__wrapper_footer">
+    <a class="article__wrapper_footer-left " href="/articles/142.html"><svg t="1713708729970" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8437" width="48" height="48"><path d="M409.272947 512.57741l403.237243 403.237243a63.349415 63.349415 0 1 1-89.622481 89.622482L274.839224 557.324726a63.349415 63.349415 0 0 1 0-89.494632L722.951633 19.717685a63.349415 63.349415 0 1 1 89.494633 89.622482L409.336872 512.57741z" p-id="8438" fill="currentColor"></path></svg></a>
+    <a class="article__wrapper_footer-right " href="/articles/144.html"><svg t="1713708697355" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8093" width="48" height="48"><path d="M855.123 517.004c0 8.245-3.167 15.51-9.503 21.823L402.999 981.47c-6.336 6.336-13.625 9.477-21.869 9.477s-15.51-3.142-21.845-9.477L311.8 933.96c-6.336-6.336-9.502-13.6-9.502-21.845 0-8.222 3.167-15.51 9.502-21.845l373.29-373.29-373.293-373.267c-6.336-6.336-9.502-13.6-9.502-21.845s3.167-15.533 9.503-21.869l47.484-47.484c6.336-6.336 13.6-9.502 21.845-9.502s15.533 3.167 21.869 9.503l442.621 442.622c6.334 6.334 9.503 13.625 9.503 21.869z" fill="currentColor" p-id="8094"></path></svg></a>
+  </div>
+  <a class="article__wrapper_index" href="/articles/"><svg t="1713708857338" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="9656" width="48" height="48"><path d="M549.61981 133.022476l319.683047 203.605334A70.851048 70.851048 0 0 1 902.095238 396.361143v434.883047A70.89981 70.89981 0 0 1 831.146667 902.095238h-282.819048l0.024381-218.112h-71.826286v218.087619L192.853333 902.095238A70.89981 70.89981 0 0 1 121.904762 831.24419V390.241524c0-24.527238 12.678095-47.299048 33.54819-60.220953l318.659048-197.485714a70.972952 70.972952 0 0 1 75.50781 0.487619zM828.952381 828.952381V397.214476L511.488 195.047619 195.047619 391.119238V828.952381h211.309714v-216.551619h212.187429v216.527238L828.952381 828.952381z" p-id="9657" fill="#707070"></path></svg></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
+  <script src="../assets/js/articles-detail.js"></script>
+  <script>
+    hljs.highlightAll();
+  </script>
+</body>
+</html>
+    

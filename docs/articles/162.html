@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>前端接口防止重复请求实现方案</title>
+    <meta charset="utf-8">
+    <meta name="description" content="This is a page">
+    <meta name="keywords" content="page, sample">
+    <meta name="author" content="None">
+    <link rel="icon" sizes="any" mask href="../assets/images/ico4.svg" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <link rel="stylesheet" href="../assets/css/articles.css">
+</head>
+<body>
+  <!--<div class="article__wrapper_left">
+    <div class="article__wrapper_left-mulu">目录</div>
+    <ul class="articles__list"><li class="">
+          <a href="/articles/163.html">
+            JS的哪些新特性，你都用过么？
+          </a>
+        </li><li class="">
+          <a href="/articles/164.html">
+            8个小而美的前端库
+          </a>
+        </li></ul>
+  </div>-->
+  <div class="article__wrapper_sidebar">
+    <a href="/articles/"><svg t="1714001835347" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4298" width="48" height="48"><path d="M147.904 304.128l301.866667-179.541333a128 128 0 0 1 131.712 0.512l295.466666 178.88A128 128 0 0 1 938.666667 413.482667V810.666667a128 128 0 0 1-128 128H213.333333a128 128 0 0 1-128-128V414.144a128 128 0 0 1 62.570667-110.016z m43.626667 73.344A42.666667 42.666667 0 0 0 170.666667 414.144V810.666667a42.666667 42.666667 0 0 0 42.666666 42.666666h597.333334a42.666667 42.666667 0 0 0 42.666666-42.666666V413.482667a42.666667 42.666667 0 0 0-20.565333-36.501334l-295.466667-178.88a42.666667 42.666667 0 0 0-43.925333-0.170666l-301.866667 179.541333z" fill="currentColor" p-id="4299"></path><path d="M405.333333 469.333333h213.333334a42.666667 42.666667 0 1 1 0 85.333334H405.333333a42.666667 42.666667 0 1 1 0-85.333334z m0 85.333334a42.666667 42.666667 0 1 0 0-85.333334h213.333334a42.666667 42.666667 0 1 0 0 85.333334H405.333333z" fill="currentColor" p-id="4300"></path></svg></a>
+    <a href="/tools/"><svg t="1714002003458" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6911" width="48" height="48"><path d="M817.87 556.31h-63.58v-66.24A42.27 42.27 0 0 0 712 447.8h-84.81a42.27 42.27 0 0 0-42.27 42.27v66.24H436.57v-66.24a42.27 42.27 0 0 0-42.27-42.27h-84.83a42.27 42.27 0 0 0-42.27 42.27v66.24h-61.83A22.39 22.39 0 0 0 183 578.7a22.39 22.39 0 0 0 22.39 22.39h61.81v65.55a42.27 42.27 0 0 0 42.27 42.27h84.83a42.27 42.27 0 0 0 42.27-42.27v-65.55h148.36v65.55a42.27 42.27 0 0 0 42.27 42.27H712a42.27 42.27 0 0 0 42.27-42.27v-65.55h63.58a22.39 22.39 0 0 0 22.39-22.39 22.39 22.39 0 0 0-22.37-22.39z m-438.64 95.26h-54.69V505.14h54.69z m317.72 0h-54.69V505.14H697z" p-id="6912" fill="currentColor"></path><path d="M823 202.58h-90.81v-63.09a71.88 71.88 0 0 0-71.88-71.88H363.19a71.88 71.88 0 0 0-71.88 71.88v63.08h-90.12A137.17 137.17 0 0 0 64 339.75v479a137.17 137.17 0 0 0 137.19 137.14H823a137.17 137.17 0 0 0 137.19-137.17v-479A137.17 137.17 0 0 0 823 202.58z m-474.36-54.1A23.52 23.52 0 0 1 372.17 125h279.16a23.52 23.52 0 0 1 23.52 23.52v54.1h-326.2z m554.23 673.31a76.76 76.76 0 0 1-76.76 76.76h-628a76.76 76.76 0 0 1-76.76-76.76V336.67a76.76 76.76 0 0 1 76.76-76.76h628a76.76 76.76 0 0 1 76.76 76.76z" p-id="6913" fill="currentColor"></path></svg></a>
+  </div>
+  <div class="article__wrapper">
+    <div class="article__wrapper__main">
+      <div class="article__wrapper_header">
+        <h1>前端接口防止重复请求实现方案</h1>
+        <span class="articles__home_time">2024/04/29 · YinHao</span>
+      </div>
+      <p>前段时间老板心血来潮，要我们前端组对整个的项目都做一下接口防止重复请求的处理（似乎是有用户通过一些快速点击薅到了一些优惠券啥的）。。。听到这个需求，第一反应就是，防止薅羊毛最保险的方案不还是在服务端加限制吗？前端加限制能够拦截的毕竟有限。</p>
+<p>虽然大部分的接口处理我们都是加了<strong>loading</strong>的，但又不能确保真的是每个接口都加了的，可是如果要一个接口一个接口的排查，那这维护了四五年的系统，成百上千的接口肯定要耗费非常多的精力，根本就是不现实的，所以就只能去做<strong>全局处理</strong>。下面就来总结一下这次的防重复请求的实现方案：</p>
+<h2>方案一</h2>
+<p>这个方案是最容易想到也是最<strong>朴实无华</strong>的一个方案：通过使用 axios 拦截器，在<strong>请求拦截器</strong>中开启全屏 Loading，然后在<strong>响应拦截器</strong>中将 Loading 关闭。</p>
+<p><img src="../assets/images/articles/162/01.awebp" alt=""></p>
+<p>这个方案固然已经可以满足我们目前的需求，但不管三七二十一，直接搞个全屏 Loading 还是<strong>不太美观</strong>，何况在目前项目的接口处理逻辑中还有一些<strong>局部 Loading</strong>，就有可能会出现<strong>Loading 套 Loading</strong>的情况，两个圈一起转，头皮发麻。</p>
+<h2>方案二</h2>
+<p>加 Loading 的方案不太友好，而对于同一个接口，如果传参都是一样的，一般来说都没有必要连续请求多次吧。那我们可不可以通过代码逻辑直接<strong>把完全相同的请求给拦截掉</strong>，不让它到达服务端呢？这个思路不错，我们说干就干。</p>
+<p>首先，我们要判断<strong>什么样的请求属于是相同请求</strong>：</p>
+<p>一个请求包含的内容不外乎就是<strong>请求方法</strong>，<strong>地址</strong>，<strong>参数</strong>以及请求发出的<strong>页面 hash</strong>。那我们是不是就可以根据这几个数据把这个请求生成一个<strong>key</strong>来作为这个<strong>请求的标识</strong>呢？</p>
+<pre><code class="language-js">// 根据请求生成对应的key
+function generateReqKey(config, hash) {
+  const { method, url, params, data } = config;
+  return [method, url, JSON.stringify(params), JSON.stringify(data), hash].join(
+    &quot;&amp;&quot;
+  );
+}
+</code></pre>
+<p>有了请求的 key，我们就可以在请求拦截器中把每次发起的请求给<strong>收集起来</strong>，后续如果有相同请求进来，那都去这个集合中去比对，<strong>如果已经存在了，说明就是一个重复的请求</strong>，我们就给拦截掉。当请求完成响应后，再将这个请求从集合中移除。<strong>合理，nice!</strong></p>
+<p>具体实现如下：</p>
+<p><img src="../assets/images/articles/162/02.awebp" alt=""></p>
+<p>是不是觉得这种方案还不错，万事大吉？</p>
+<p><strong>no，no，no！</strong> 这个方案虽然理论上是解决了接口防重复请求这个问题，但是它会引发更多的问题。</p>
+<p>比如，我有这样一个接口处理：</p>
+<p><img src="../assets/images/articles/162/03.awebp" alt=""></p>
+<p>那么，当我们触发多次请求时：</p>
+<p><img src="../assets/images/articles/162/04.awebp" alt=""></p>
+<p>这里我连续点击了 4 次按钮，可以看到，的确是只有一个请求发送出去，可是因为在代码逻辑中，我们对错误进行了一些处理，所以就将报错消息提示了 3 次，这样是很不友好的，而且，如果在错误捕获中有做更多的逻辑处理，那么很有可能会导致整个程序的异常。</p>
+<p>而且，这种方案还会有另外一个<strong>比较严重的问题</strong>：</p>
+<p>我们在上面在生成请求<strong>key</strong>的时候把<strong>hash</strong>考虑进去了(<em>如果是 history 路由，可以将 pathname 加入生成 key</em>)，这是因为项目中会有一些数据字典型的接口，这些接口可能有不同页面都需要去调用，如果第一个页面请求的字典接口比较慢，第二个页面的接口就被拦截了，最后就会导致第二个页面逻辑错误。那么这么一看，我们生成<strong>key</strong>的时候加入了<strong>hash</strong>，讲道理就没问题了呀。</p>
+<p>可是倘若我这<strong>两个请求是来自同一个页面</strong>呢？</p>
+<p>比如，一个页面同时加载两个组件，而这两个组件都需要调用某个接口时：</p>
+<p><img src="../assets/images/articles/162/05.awebp" alt=""></p>
+<p>那么此时，<strong>后调接口的组件就无法拿到正确数据了</strong>。啊这，真是难顶！</p>
+<h2>方案三</h2>
+<p>方案二的路子，我们发现确实问题重重，那么接下来我们来看第三种方案，也是我们最终采用的方案。</p>
+<p>延续我们方案二的前面思路，仍然是拦截相同请求，但这次我们可不可以<strong>不直接把请求挂掉</strong>，而是<strong>对于相同的请求我们先给它挂起，等到最先发出去的请求拿到结果回来之后，把成功或失败的结果共享给后面到来的相同请求</strong>。</p>
+<p><img src="../assets/images/articles/162/06.awebp" alt=""></p>
+<p>思路我们已经明确了，但这里有几个需要注意的点：</p>
+<ul>
+<li>
+<p>我们在拿到响应结果后，返回给之前我们<strong>挂起的请求</strong>时，我们要用到<strong>发布订阅模式</strong>（日常在面试题中看到，这次终于让我给用上了(<em>^▽^</em>)）</p>
+</li>
+<li>
+<p>对于挂起的请求，我们需要将它<strong>拦截</strong>，不能让它执行正常的请求逻辑，所以一定要在<strong>请求拦截器</strong>中通过<code>return Promise.reject()</code>来直接中断请求，并做一些<strong>特殊的标记</strong>，以便于<strong>在响应拦截器中进行特殊处理</strong>。</p>
+</li>
+</ul>
+<p>最后，直接附上完整代码：</p>
+<pre><code class="language-js">import axios from &quot;axios&quot;;
+
+let instance = axios.create({
+  baseURL: &quot;/api/&quot;,
+});
+
+// 发布订阅
+class EventEmitter {
+  constructor() {
+    this.event = {};
+  }
+  on(type, cbres, cbrej) {
+    if (!this.event[type]) {
+      this.event[type] = [[cbres, cbrej]];
+    } else {
+      this.event[type].push([cbres, cbrej]);
+    }
+  }
+
+  emit(type, res, ansType) {
+    if (!this.event[type]) return;
+    else {
+      this.event[type].forEach((cbArr) =&gt; {
+        if (ansType === &quot;resolve&quot;) {
+          cbArr[0](res);
+        } else {
+          cbArr[1](res);
+        }
+      });
+    }
+  }
+}
+
+// 根据请求生成对应的key
+function generateReqKey(config, hash) {
+  const { method, url, params, data } = config;
+  return [method, url, JSON.stringify(params), JSON.stringify(data), hash].join(
+    &quot;&amp;&quot;
+  );
+}
+
+// 存储已发送但未响应的请求
+const pendingRequest = new Set();
+// 发布订阅容器
+const ev = new EventEmitter();
+
+// 添加请求拦截器
+instance.interceptors.request.use(
+  async (config) =&gt; {
+    let hash = location.hash;
+    // 生成请求Key
+    let reqKey = generateReqKey(config, hash);
+
+    if (pendingRequest.has(reqKey)) {
+      // 如果是相同请求,在这里将请求挂起，通过发布订阅来为该请求返回结果
+      // 这里需注意，拿到结果后，无论成功与否，都需要return Promise.reject()来中断这次请求，否则请求会正常发送至服务器
+      let res = null;
+      try {
+        // 接口成功响应
+        res = await new Promise((resolve, reject) =&gt; {
+          ev.on(reqKey, resolve, reject);
+        });
+        return Promise.reject({
+          type: &quot;limiteResSuccess&quot;,
+          val: res,
+        });
+      } catch (limitFunErr) {
+        // 接口报错
+        return Promise.reject({
+          type: &quot;limiteResError&quot;,
+          val: limitFunErr,
+        });
+      }
+    } else {
+      // 将请求的key保存在config
+      config.pendKey = reqKey;
+      pendingRequest.add(reqKey);
+    }
+
+    return config;
+  },
+  function (error) {
+    return Promise.reject(error);
+  }
+);
+
+// 添加响应拦截器
+instance.interceptors.response.use(
+  function (response) {
+    // 将拿到的结果发布给其他相同的接口
+    handleSuccessResponse_limit(response);
+    return response;
+  },
+  function (error) {
+    return handleErrorResponse_limit(error);
+  }
+);
+
+// 接口响应成功
+function handleSuccessResponse_limit(response) {
+  const reqKey = response.config.pendKey;
+  if (pendingRequest.has(reqKey)) {
+    let x = null;
+    try {
+      x = JSON.parse(JSON.stringify(response));
+    } catch (e) {
+      x = response;
+    }
+    pendingRequest.delete(reqKey);
+    ev.emit(reqKey, x, &quot;resolve&quot;);
+    delete ev.reqKey;
+  }
+}
+
+// 接口走失败响应
+function handleErrorResponse_limit(error) {
+  if (error.type &amp;&amp; error.type === &quot;limiteResSuccess&quot;) {
+    return Promise.resolve(error.val);
+  } else if (error.type &amp;&amp; error.type === &quot;limiteResError&quot;) {
+    return Promise.reject(error.val);
+  } else {
+    const reqKey = error.config.pendKey;
+    if (pendingRequest.has(reqKey)) {
+      let x = null;
+      try {
+        x = JSON.parse(JSON.stringify(error));
+      } catch (e) {
+        x = error;
+      }
+      pendingRequest.delete(reqKey);
+      ev.emit(reqKey, x, &quot;reject&quot;);
+      delete ev.reqKey;
+    }
+  }
+  return Promise.reject(error);
+}
+
+export default instance;
+</code></pre>
+<h2>补充</h2>
+<p>到这里，这么一通操作下来上面的代码讲道理是万无一失了，但不得不说，线上的情况仍然是<strong>复杂多样</strong>的。而其中一个比较特殊的情况就是<strong>文件上传</strong>。</p>
+<p><img src="../assets/images/articles/162/07.awebp" alt=""></p>
+<p>可以看到，我在这里是上传了两个<strong>不同的文件</strong>的，但只调用了一次上传接口。按理说是两个不同的请求，可为什么会被我们前面写的逻辑给拦截掉一个呢？</p>
+<p>我们打印一下请求的 config：</p>
+<p><img src="../assets/images/articles/162/08.awebp" alt=""></p>
+<p>可以看到，<strong>请求体 data</strong>中的数据是<strong>FormData 类型</strong>，而我们在生成<strong>请求 key</strong>的时候，是通过<code>JSON.stringify</code>方法进行操作的，而对于<strong>FormData 类型</strong>的数据执行该函数得到的只有<code>{}</code>。所以，对于文件上传，尽管我们上传了不同的文件，但它们所发出的请求生成的<strong>key</strong>都是一样的，这么一来就触发了我们前面的拦截机制。</p>
+<p>那么我们接下来我们只需要在我们原来的拦截逻辑中判断一下请求体的数据类型即可，如果含有<strong>FormData 类型</strong>的数据，我们就<strong>直接放行</strong>不再关注这个请求就是了。</p>
+<pre><code class="language-js">function isFileUploadApi(config) {
+  return Object.prototype.toString.call(config.data) === &quot;[object FormData]&quot;;
+}
+</code></pre>
+<p>到这里，整个的需求总算是完结啦！不用一个个接口的改代码，又可以愉快的打代码了，nice！</p>
+<p><a href="https://github.com/GuJiugc/JueJinDemo">Demo 地址</a></p>
+ 
+    </div>
+  </div>
+  <div class="article__wrapper_footer">
+    <a class="article__wrapper_footer-left " href="/articles/161.html"><svg t="1713708729970" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8437" width="48" height="48"><path d="M409.272947 512.57741l403.237243 403.237243a63.349415 63.349415 0 1 1-89.622481 89.622482L274.839224 557.324726a63.349415 63.349415 0 0 1 0-89.494632L722.951633 19.717685a63.349415 63.349415 0 1 1 89.494633 89.622482L409.336872 512.57741z" p-id="8438" fill="currentColor"></path></svg></a>
+    <a class="article__wrapper_footer-right " href="/articles/163.html"><svg t="1713708697355" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8093" width="48" height="48"><path d="M855.123 517.004c0 8.245-3.167 15.51-9.503 21.823L402.999 981.47c-6.336 6.336-13.625 9.477-21.869 9.477s-15.51-3.142-21.845-9.477L311.8 933.96c-6.336-6.336-9.502-13.6-9.502-21.845 0-8.222 3.167-15.51 9.502-21.845l373.29-373.29-373.293-373.267c-6.336-6.336-9.502-13.6-9.502-21.845s3.167-15.533 9.503-21.869l47.484-47.484c6.336-6.336 13.6-9.502 21.845-9.502s15.533 3.167 21.869 9.503l442.621 442.622c6.334 6.334 9.503 13.625 9.503 21.869z" fill="currentColor" p-id="8094"></path></svg></a>
+  </div>
+  <a class="article__wrapper_index" href="/articles/"><svg t="1713708857338" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="9656" width="48" height="48"><path d="M549.61981 133.022476l319.683047 203.605334A70.851048 70.851048 0 0 1 902.095238 396.361143v434.883047A70.89981 70.89981 0 0 1 831.146667 902.095238h-282.819048l0.024381-218.112h-71.826286v218.087619L192.853333 902.095238A70.89981 70.89981 0 0 1 121.904762 831.24419V390.241524c0-24.527238 12.678095-47.299048 33.54819-60.220953l318.659048-197.485714a70.972952 70.972952 0 0 1 75.50781 0.487619zM828.952381 828.952381V397.214476L511.488 195.047619 195.047619 391.119238V828.952381h211.309714v-216.551619h212.187429v216.527238L828.952381 828.952381z" p-id="9657" fill="#707070"></path></svg></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
+  <script src="../assets/js/articles-detail.js"></script>
+  <script>
+    hljs.highlightAll();
+  </script>
+</body>
+</html>
+    
