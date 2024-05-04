@@ -70,7 +70,9 @@ function getHTML(name = "") {
     metaData.title = title || metaData.title || pageName;
     pageContent = pageContent.replace(/^---[\s\S]*?---/, "");
 
-    listHTML2 += `<div class="card" onclick="location.href='/articles/${pageName}.html'">${metaData.title}</div>`;
+    listHTML2 += `<div class="card" onclick="location.href='/articles/${pageName}.html'">
+      <div class="card__content">${metaData.title}</div>
+    </div>`;
     listHTML += `<li class="${pageName === name ? "active" : ""}">
     <a href="/articles/${pageName}.html">
       ${metaData.title}
